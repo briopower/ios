@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgw-jc-D4N">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ipf-Hp-GCl">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="Mgw-jc-D4N" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b7t-me-nf2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4TR-5a-sfZ" kind="relationship" relationship="rootViewController" id="SUv-sz-MSh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQD-st-5fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-76" y="451"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="Fxa-ue-wlC">
+            <objects>
+                <viewController storyboardIdentifier="signupView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L4Y-fC-z0i" customClass="SignUpViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1NR-yJ-bhR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ib4-Bj-LSQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zot-hs-yXF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-oO-aMW" customClass="LoginSignupTableView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="503"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYN-bw-GKp">
+                                <rect key="frame" x="21" y="508" width="558" height="75"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyb-Zi-rPk" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="558" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <state key="normal" title="LOGIN">
+                                            <color key="titleColor" red="0.094117647058823528" green="0.36470588235294116" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLocalized" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginAction:" destination="L4Y-fC-z0i" eventType="touchUpInside" id="TSS-TC-Ufh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Fyb-Zi-rPk" firstAttribute="top" secondItem="zYN-bw-GKp" secondAttribute="top" id="Ela-6b-tq1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fyb-Zi-rPk" secondAttribute="trailing" id="KgC-lw-N3l"/>
+                                    <constraint firstAttribute="width" secondItem="zYN-bw-GKp" secondAttribute="height" multiplier="1155:155" priority="999" id="RGa-9t-DDH"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fyb-Zi-rPk" secondAttribute="bottom" id="uNI-sN-qKE"/>
+                                    <constraint firstItem="Fyb-Zi-rPk" firstAttribute="leading" secondItem="zYN-bw-GKp" secondAttribute="leading" id="xR1-ej-bPd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ib4-Bj-LSQ" firstAttribute="top" secondItem="zYN-bw-GKp" secondAttribute="bottom" multiplier="1.03" id="2BB-MN-5Pj"/>
+                            <constraint firstItem="mJF-oO-aMW" firstAttribute="leading" secondItem="zot-hs-yXF" secondAttribute="leading" id="8SE-tg-4Q7"/>
+                            <constraint firstAttribute="trailing" secondItem="mJF-oO-aMW" secondAttribute="trailing" id="9CM-qV-VXF"/>
+                            <constraint firstItem="zYN-bw-GKp" firstAttribute="centerX" secondItem="zot-hs-yXF" secondAttribute="centerX" id="KEe-Ck-NKt"/>
+                            <constraint firstItem="mJF-oO-aMW" firstAttribute="top" secondItem="zot-hs-yXF" secondAttribute="top" id="inr-Sh-akr"/>
+                            <constraint firstItem="zYN-bw-GKp" firstAttribute="top" secondItem="mJF-oO-aMW" secondAttribute="bottom" multiplier="1.01" id="n5Z-Nf-4kt"/>
+                            <constraint firstItem="zYN-bw-GKp" firstAttribute="width" secondItem="zot-hs-yXF" secondAttribute="width" multiplier="1155:1242" id="nE0-ck-fff"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jzw-vr-GSa"/>
+                    <connections>
+                        <outlet property="container" destination="zYN-bw-GKp" id="BVd-YC-vv8"/>
+                        <outlet property="signupButton" destination="Fyb-Zi-rPk" id="aDf-d8-IZj"/>
+                        <outlet property="tblView" destination="mJF-oO-aMW" id="8Kk-rF-Iye"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ts0-uc-U1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="558" y="451"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="B8x-GL-0Nf">
+            <objects>
+                <viewController storyboardIdentifier="loginView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4TR-5a-sfZ" customClass="LoginViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BVu-PC-0Bp"/>
+                        <viewControllerLayoutGuide type="bottom" id="KsU-Iu-oXq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Efu-AO-vd9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fKX-RB-Yex" customClass="LoginSignupTableView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="503"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9A-EU-tPp">
+                                <rect key="frame" x="21" y="508" width="558" height="75"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0br-rl-fkj" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="558" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <state key="normal" title="SIGN UP NOW">
+                                            <color key="titleColor" red="0.094117647060000004" green="0.36470588240000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLocalized" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="L4Y-fC-z0i" kind="show" id="0EV-pM-k0R"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="0br-rl-fkj" secondAttribute="bottom" id="4mc-wh-WGn"/>
+                                    <constraint firstAttribute="width" secondItem="m9A-EU-tPp" secondAttribute="height" multiplier="1155:155" priority="999" id="Hup-sT-vg6"/>
+                                    <constraint firstItem="0br-rl-fkj" firstAttribute="top" secondItem="m9A-EU-tPp" secondAttribute="top" id="rhG-x6-2OF"/>
+                                    <constraint firstItem="0br-rl-fkj" firstAttribute="leading" secondItem="m9A-EU-tPp" secondAttribute="leading" id="yrC-zk-2sA"/>
+                                    <constraint firstAttribute="trailing" secondItem="0br-rl-fkj" secondAttribute="trailing" id="zJp-c8-uEr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KsU-Iu-oXq" firstAttribute="top" secondItem="m9A-EU-tPp" secondAttribute="bottom" multiplier="1.03" id="9if-4n-TH5"/>
+                            <constraint firstItem="m9A-EU-tPp" firstAttribute="centerX" secondItem="Efu-AO-vd9" secondAttribute="centerX" id="Ekb-xg-WqS"/>
+                            <constraint firstItem="fKX-RB-Yex" firstAttribute="top" secondItem="Efu-AO-vd9" secondAttribute="top" id="M6v-RT-Oke"/>
+                            <constraint firstItem="m9A-EU-tPp" firstAttribute="width" secondItem="Efu-AO-vd9" secondAttribute="width" multiplier="1155:1242" id="ipF-Mr-g8y"/>
+                            <constraint firstItem="m9A-EU-tPp" firstAttribute="top" secondItem="fKX-RB-Yex" secondAttribute="bottom" multiplier="1.01" id="me5-Dr-Jue"/>
+                            <constraint firstItem="fKX-RB-Yex" firstAttribute="leading" secondItem="Efu-AO-vd9" secondAttribute="leading" id="qbR-4A-7oM"/>
+                            <constraint firstAttribute="trailing" secondItem="fKX-RB-Yex" secondAttribute="trailing" id="woF-zV-YwH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZAO-Ve-5of"/>
+                    <connections>
+                        <outlet property="container" destination="m9A-EU-tPp" id="nEf-cD-Awl"/>
+                        <outlet property="loginButton" destination="0br-rl-fkj" id="hls-W1-Nb2"/>
+                        <outlet property="tblView" destination="fKX-RB-Yex" id="sxK-yD-Ebv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRc-Y8-vXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-76" y="1169"/>
+        </scene>
+    </scenes>
+</document>

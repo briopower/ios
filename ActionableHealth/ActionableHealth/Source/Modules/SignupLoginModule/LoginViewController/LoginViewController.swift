@@ -24,7 +24,7 @@ class LoginViewController: CommonViewController {
         CommonMethods.addShadowToView(container)
         CommonMethods.setCornerRadius(loginButton)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 

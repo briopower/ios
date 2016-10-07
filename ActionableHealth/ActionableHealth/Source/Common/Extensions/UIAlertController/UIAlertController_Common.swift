@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias ActionHandler = (index:Int?) -> Void
+typealias ActionHandler = (tappedAtIndex:Int?) -> Void
 
 //MARK:- Additional methods
 extension UIAlertController{
@@ -26,7 +26,7 @@ extension UIAlertController{
                     { (action) in
                         dispatch_async(dispatch_get_main_queue(), {
                             if  completion != nil{
-                                completion!(index:count)
+                                completion!(tappedAtIndex:count)
                             }
                         })
                 })
@@ -36,7 +36,7 @@ extension UIAlertController{
         let  alertAction = UIAlertAction(title:cancelTitle, style: UIAlertActionStyle.Cancel,handler:{ (action) in
             dispatch_async(dispatch_get_main_queue(), {
                 if  completion != nil{
-                    completion!(index:-1)
+                    completion!(tappedAtIndex:-1)
                 }
             })
         })

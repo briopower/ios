@@ -13,8 +13,10 @@ class DetailsScrollableTableView: UITableView {
 
     //MARK:- Variables
     var isLogin = false
+}
 
-    //MARK:- Additional methods
+//MARK:- Additional methods
+extension DetailsScrollableTableView{
     func setupTableView(isLogin:Bool) {
         self.isLogin = isLogin
         self.delegate = self

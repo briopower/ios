@@ -21,14 +21,15 @@ class SignUpViewController: CommonViewController {
         tblView.setupTableView(false)
         CommonMethods.addShadowToView(container)
         CommonMethods.setCornerRadius(signupButton)
-
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
     }
+}
 
-    //MARK:- Button Actions
+//MARK:- Button Actions
+extension SignUpViewController{
     @IBAction func loginAction(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }

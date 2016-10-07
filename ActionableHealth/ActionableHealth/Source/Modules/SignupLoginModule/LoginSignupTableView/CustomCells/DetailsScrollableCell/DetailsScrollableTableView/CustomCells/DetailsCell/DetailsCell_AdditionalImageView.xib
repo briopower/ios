@@ -4,7 +4,16 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+        <mutableArray key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,16 +34,16 @@
                                     <constraint firstAttribute="height" constant="1" id="eKf-9U-mWd"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VzW-tv-Sog">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="password" translatesAutoresizingMaskIntoConstraints="NO" id="VzW-tv-Sog">
                                 <rect key="frame" x="0.0" y="0.0" width="46" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VzW-tv-Sog" secondAttribute="height" multiplier="145:200" id="Gxk-qg-LVj"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-8M-Ncq" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
-                                <rect key="frame" x="47" y="23" width="64" height="17"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="47" y="25" width="61" height="14"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
+                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="biF-zd-K5O">
@@ -43,16 +52,22 @@
                                     <constraint firstAttribute="width" secondItem="biF-zd-K5O" secondAttribute="height" multiplier="50:200" id="hv3-X6-C4A"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joG-7L-KFf">
-                                <rect key="frame" x="368" y="0.0" width="30" height="64"/>
-                                <state key="normal" title="i"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joG-7L-KFf">
+                                <rect key="frame" x="372" y="0.0" width="26" height="64"/>
+                                <state key="normal" image="forgot-password"/>
                                 <connections>
                                     <action selector="forgotPasswordAction:" destination="Fty-c7-dJb" eventType="touchUpInside" id="o7t-Tc-DVV"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cO2-re-aeL">
+                                <rect key="frame" x="207" y="0.0" width="1" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="ttu-8K-GK3"/>
+                                </constraints>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGO-Xy-OCw" customClass="UITextField_FontSizeTextField" customModule="ActionableHealth" customModuleProvider="target">
-                                <rect key="frame" x="136" y="0.0" width="242" height="64"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="208" y="0.0" width="160" height="64"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
@@ -65,9 +80,10 @@
                             <constraint firstItem="biF-zd-K5O" firstAttribute="leading" secondItem="joG-7L-KFf" secondAttribute="trailing" id="Dd2-xJ-LGP"/>
                             <constraint firstAttribute="trailing" secondItem="biF-zd-K5O" secondAttribute="trailing" id="Dhb-7q-jXQ"/>
                             <constraint firstItem="ot7-Pg-J5V" firstAttribute="top" secondItem="EGO-Xy-OCw" secondAttribute="bottom" id="Fop-TD-Ail"/>
-                            <constraint firstItem="EGO-Xy-OCw" firstAttribute="leading" secondItem="33a-8M-Ncq" secondAttribute="trailing" constant="25" id="Jqn-Hu-GAe"/>
+                            <constraint firstItem="cO2-re-aeL" firstAttribute="centerY" secondItem="Xbl-Rd-R01" secondAttribute="centerY" id="Q5O-Wz-Dz8"/>
+                            <constraint firstItem="cO2-re-aeL" firstAttribute="centerX" secondItem="Xbl-Rd-R01" secondAttribute="centerX" id="U5z-fU-ZQI"/>
                             <constraint firstItem="33a-8M-Ncq" firstAttribute="centerY" secondItem="VzW-tv-Sog" secondAttribute="centerY" id="VL4-v6-lyv"/>
-                            <constraint firstItem="joG-7L-KFf" firstAttribute="leading" secondItem="EGO-Xy-OCw" secondAttribute="trailing" constant="-10" id="dcr-HG-63a"/>
+                            <constraint firstItem="joG-7L-KFf" firstAttribute="leading" secondItem="EGO-Xy-OCw" secondAttribute="trailing" multiplier="1.01" id="dcr-HG-63a"/>
                             <constraint firstItem="VzW-tv-Sog" firstAttribute="top" secondItem="Xbl-Rd-R01" secondAttribute="top" id="eSN-Yu-UVI"/>
                             <constraint firstItem="33a-8M-Ncq" firstAttribute="leading" secondItem="VzW-tv-Sog" secondAttribute="trailing" constant="1" id="gsS-zz-84Z"/>
                             <constraint firstItem="VzW-tv-Sog" firstAttribute="leading" secondItem="Xbl-Rd-R01" secondAttribute="leading" id="hKH-ZR-eGM"/>
@@ -75,6 +91,8 @@
                             <constraint firstItem="joG-7L-KFf" firstAttribute="top" secondItem="Xbl-Rd-R01" secondAttribute="top" id="kNN-AK-KIJ"/>
                             <constraint firstAttribute="bottom" secondItem="biF-zd-K5O" secondAttribute="bottom" id="lLN-Bp-d6h"/>
                             <constraint firstItem="EGO-Xy-OCw" firstAttribute="top" secondItem="Xbl-Rd-R01" secondAttribute="top" id="lPg-pt-IvI"/>
+                            <constraint firstItem="cO2-re-aeL" firstAttribute="height" secondItem="Xbl-Rd-R01" secondAttribute="height" id="lp0-sD-phN"/>
+                            <constraint firstItem="EGO-Xy-OCw" firstAttribute="leading" secondItem="cO2-re-aeL" secondAttribute="trailing" id="n7P-hS-aqR"/>
                             <constraint firstItem="ot7-Pg-J5V" firstAttribute="top" secondItem="joG-7L-KFf" secondAttribute="bottom" id="pXY-FP-mlz"/>
                             <constraint firstAttribute="width" secondItem="Xbl-Rd-R01" secondAttribute="height" multiplier="1155:200" priority="999" id="v5N-aN-nYi"/>
                         </constraints>
@@ -95,4 +113,8 @@
             <point key="canvasLocation" x="399" y="453"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="forgot-password" width="26" height="26"/>
+        <image name="password" width="13" height="19"/>
+    </resources>
 </document>

@@ -32,13 +32,14 @@ class DetailsCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
-    //MARK:- Action
-    @IBAction func forgotPasswordAction(sender: AnyObject) {
-    }
-    
 }
 
+//MARK:- Button Action
+
+extension DetailsCell{
+    @IBAction func forgotPasswordAction(sender: AnyObject) {
+    }
+}
 
 //MARK:- Additional methods
 extension DetailsCell{
@@ -47,10 +48,17 @@ extension DetailsCell{
         switch self.type {
         case .Email:
             detailsLabel.text = "Email"
+            detailsImage.image = UIImage(named: "message")
+            detailsValue.placeholder = "Enter email"
         case .Password:
             detailsLabel.text = "Password"
+            detailsImage.image = UIImage(named: "password")
+            detailsValue.placeholder = "Enter password"
+
         case .ConfirmPassword:
             detailsLabel.text = "Confirm Password"
+            detailsImage.image = UIImage(named: "password")
+            detailsValue.placeholder = "Confirm password"
         default:
             break
         }

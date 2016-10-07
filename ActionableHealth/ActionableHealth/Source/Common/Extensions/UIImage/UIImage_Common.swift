@@ -49,9 +49,9 @@ extension UIImage{
             return UIImage(named: "Brand Assets-700@2x.png") // 640 960
         case .AppleIphone5, .AppleIphone5C, .AppleIphone5S:
             return UIImage(named: "Brand Assets-700-568h@2x.png") // 640 1136
-        case .AppleIphone6, .AppleIphone6S:
+        case .AppleIphone6, .AppleIphone6S, .AppleIphone7:
             return UIImage(named: "Brand Assets-800-667h@2x.png") // 750 1334
-        case .AppleIphone6P, .AppleIphone6SP:
+        case .AppleIphone6P, .AppleIphone6SP, .AppleIphone7P:
             return UIImage(named: "Brand Assets-800-Portrait-736h@3x.png") // 1242 2208
         default:
             return UIImage(named: "Brand Assets-700-568h@2x.png") // 640 960

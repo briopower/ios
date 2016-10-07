@@ -32,6 +32,8 @@
 		3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EC58C1DA3A864003DC2A3 /* NullCaseView.swift */; };
 		3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */; };
 		3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */; };
+		3C4387EE1DA7827000F68125 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4387ED1DA7827000F68125 /* TabBar.storyboard */; };
+		3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4387F11DA7835500F68125 /* HomeViewController.swift */; };
 		3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */; };
 		3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */; };
 		3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */; };
@@ -44,6 +46,13 @@
 		3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13221DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift */; };
 		3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */; };
 		3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */; };
+		3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */; };
+		3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */; };
+		3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */; };
+		3CBD5C781DA7AFAD004BCAE0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */; };
+		3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */; };
+		3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C7B1DA7AFC0004BCAE0 /* TracksViewController.swift */; };
+		3CBD5C7F1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C7E1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout.swift */; };
 		3CCF8AD21DA61AA900C76C64 /* SignupLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF8AD11DA61AA900C76C64 /* SignupLogin.storyboard */; };
 		3CCF8AD91DA621B300C76C64 /* LoginSignupTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AD81DA621B300C76C64 /* LoginSignupTableView.swift */; };
 		3CCF8AE01DA6231900C76C64 /* LogoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8ADE1DA6231900C76C64 /* LogoHeaderCell.swift */; };
@@ -116,6 +125,8 @@
 		3C1EC58C1DA3A864003DC2A3 /* NullCaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullCaseView.swift; sourceTree = "<group>"; };
 		3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NullCaseView.xib; sourceTree = "<group>"; };
 		3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		3C4387ED1DA7827000F68125 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		3C4387F11DA7835500F68125 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_CenterAllign.swift; sourceTree = "<group>"; };
 		3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_FontSizeButton.swift; sourceTree = "<group>"; };
 		3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Localizable.swift; sourceTree = "<group>"; };
@@ -128,6 +139,13 @@
 		3C9D13221DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_FontSizeTextView.swift; sourceTree = "<group>"; };
 		3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_Localizable.swift; sourceTree = "<group>"; };
 		3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarItem_Custom.swift; sourceTree = "<group>"; };
+		3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3CBD5C7B1DA7AFC0004BCAE0 /* TracksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksViewController.swift; sourceTree = "<group>"; };
+		3CBD5C7E1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		3CCF8AD11DA61AA900C76C64 /* SignupLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignupLogin.storyboard; sourceTree = "<group>"; };
 		3CCF8AD81DA621B300C76C64 /* LoginSignupTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignupTableView.swift; sourceTree = "<group>"; };
 		3CCF8ADE1DA6231900C76C64 /* LogoHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoHeaderCell.swift; sourceTree = "<group>"; };
@@ -277,6 +295,8 @@
 		3C1EC5541DA3A864003DC2A3 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */,
+				3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -334,7 +354,6 @@
 		3C1EC55D1DA3A864003DC2A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3C9D13111DA3CDF100998DA2 /* UITabBarItem */,
 				3C1EC55E1DA3A864003DC2A3 /* AppDelegate */,
 				3C1EC5601DA3A864003DC2A3 /* NSDate */,
 				3C1EC5621DA3A864003DC2A3 /* NSUserDefaults */,
@@ -432,6 +451,7 @@
 		3C1EC5821DA3A864003DC2A3 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				3CBD5C7D1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout */,
 				3C1EC5841DA3A864003DC2A3 /* VNProgressHUD */,
 			);
 			path = Library;
@@ -482,16 +502,39 @@
 		3C1EC58E1DA3A864003DC2A3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3C4387EC1DA7823B00F68125 /* TabBarModule */,
 				3CCF8ACE1DA61A9500C76C64 /* SignupLoginModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		3C9D13111DA3CDF100998DA2 /* UITabBarItem */ = {
+		3C4387EC1DA7823B00F68125 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CBD5C6B1DA7AF71004BCAE0 /* ChatsModule */,
+				3CBD5C6D1DA7AF71004BCAE0 /* GroupsModule */,
+				3CBD5C6F1DA7AF71004BCAE0 /* SettingsModule */,
+				3CBD5C711DA7AF71004BCAE0 /* TracksModule */,
+				3C4387EF1DA7832000F68125 /* HomeModule */,
+				3C4387ED1DA7827000F68125 /* TabBar.storyboard */,
 			);
-			path = UITabBarItem;
+			path = TabBarModule;
+			sourceTree = "<group>";
+		};
+		3C4387EF1DA7832000F68125 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				3C4387F01DA7832000F68125 /* HomeViewController */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		3C4387F01DA7832000F68125 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C4387F11DA7835500F68125 /* HomeViewController.swift */,
+			);
+			path = HomeViewController;
 			sourceTree = "<group>";
 		};
 		3C9D13121DA3CE5800998DA2 /* CustomViews */ = {
@@ -559,6 +602,78 @@
 				3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */,
 			);
 			path = UITextView;
+			sourceTree = "<group>";
+		};
+		3CBD5C6B1DA7AF71004BCAE0 /* ChatsModule */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C6C1DA7AF71004BCAE0 /* ChatsViewController */,
+			);
+			path = ChatsModule;
+			sourceTree = "<group>";
+		};
+		3CBD5C6C1DA7AF71004BCAE0 /* ChatsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */,
+			);
+			path = ChatsViewController;
+			sourceTree = "<group>";
+		};
+		3CBD5C6D1DA7AF71004BCAE0 /* GroupsModule */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C6E1DA7AF71004BCAE0 /* GroupsViewController */,
+			);
+			path = GroupsModule;
+			sourceTree = "<group>";
+		};
+		3CBD5C6E1DA7AF71004BCAE0 /* GroupsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */,
+			);
+			path = GroupsViewController;
+			sourceTree = "<group>";
+		};
+		3CBD5C6F1DA7AF71004BCAE0 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C701DA7AF71004BCAE0 /* SettingsViewController */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		3CBD5C701DA7AF71004BCAE0 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		3CBD5C711DA7AF71004BCAE0 /* TracksModule */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C721DA7AF71004BCAE0 /* TracksViewController */,
+			);
+			path = TracksModule;
+			sourceTree = "<group>";
+		};
+		3CBD5C721DA7AF71004BCAE0 /* TracksViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C7B1DA7AFC0004BCAE0 /* TracksViewController.swift */,
+			);
+			path = TracksViewController;
+			sourceTree = "<group>";
+		};
+		3CBD5C7D1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				3CBD5C7E1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout.swift */,
+			);
+			path = CHTCollectionViewWaterfallLayout;
 			sourceTree = "<group>";
 		};
 		3CCF8ACE1DA61A9500C76C64 /* SignupLoginModule */ = {
@@ -814,13 +929,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CCF8AFE1DA65F5F00C76C64 /* DetailsCell_AdditionalImageView.xib in Resources */,
+				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
 				3CCF8AFC1DA6560F00C76C64 /* ButtonCell_OrSeperator.xib in Resources */,
 				3CCF8AE11DA6231900C76C64 /* LogoHeaderCell.xib in Resources */,
 				3CCF8AD21DA61AA900C76C64 /* SignupLogin.storyboard in Resources */,
 				3CCF8AE91DA6278C00C76C64 /* DetailsScrollableCell.xib in Resources */,
+				3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
 				3CCF8AE51DA6247800C76C64 /* ButtonCell.xib in Resources */,
+				3C4387EE1DA7827000F68125 /* TabBar.storyboard in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
 				3CCF8AF21DA62B2D00C76C64 /* DetailsCell.xib in Resources */,
 				3CCF8AFB1DA6560F00C76C64 /* ButtonCell_GooglePlus.xib in Resources */,
@@ -974,18 +1092,24 @@
 			files = (
 				3C9D13281DA3CE5800998DA2 /* UIImageView_RoundImageView.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
+				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
 				3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */,
 				3C9D132B1DA3CE5800998DA2 /* UITextField_FontSizeTextField.swift in Sources */,
+				3CBD5C7F1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */,
+				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
 				3C1EC5AA1DA3A864003DC2A3 /* UIViewController_Common.swift in Sources */,
 				3CCF8AED1DA62A9900C76C64 /* DetailsScrollableTableView.swift in Sources */,
+				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
+				3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */,
 				3CCF8AE41DA6247800C76C64 /* ButtonCell.swift in Sources */,
 				3C1EC5941DA3A864003DC2A3 /* CommonViewController.swift in Sources */,
 				3CCF8AE01DA6231900C76C64 /* LogoHeaderCell.swift in Sources */,
 				3C9D13291DA3CE5800998DA2 /* UILabel_FontSizeLabel.swift in Sources */,
 				3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */,
+				3CBD5C781DA7AFAD004BCAE0 /* GroupsViewController.swift in Sources */,
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,

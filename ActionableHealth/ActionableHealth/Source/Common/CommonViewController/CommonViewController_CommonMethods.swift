@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back
+    case Empty, None, Back, Search_Notification
 }
 
 enum BarButtonPosition {
@@ -18,6 +18,9 @@ import UIKit
 
 let NoneButtonImage = UIImage(named: "noneButton")
 let BackButtonImage = UIImage(named: "back")
+let SearchButtonImage = UIImage(named: "search")
+let NotificationButtonImage = UIImage(named: "notification")
+
 
 //MARK: Navigation Controller Delegate
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
@@ -38,27 +41,42 @@ extension CommonViewController:UINavigationControllerDelegate, UIGestureRecogniz
 }
 //MARK: NavigationBar Setup
 extension CommonViewController{
+
+    func getNavigationController() -> UINavigationController? {
+        if let tabbar = self.tabBarController{
+            return tabbar.navigationController
+        }
+        return self.navigationController
+    }
+    func getNavigationItem() -> UINavigationItem? {
+
+        if let tabbar = self.tabBarController{
+            return tabbar.navigationItem
+        }
+        return self.navigationItem
+    }
+    
     func setNavigationBarBackgroundColor(color:UIColor?) -> Void {
         if color != nil {
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color!), forBarMetrics: UIBarMetrics.Default)
+            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color!), forBarMetrics: UIBarMetrics.Default)
         }else{
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(UIColor.getColorFromHexValue(0xF5F5F5, Alpha: 1)), forBarMetrics: UIBarMetrics.Default)
+            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(UIColor.getColorFromHexValue(0xF5F5F5, Alpha: 1)), forBarMetrics: UIBarMetrics.Default)
         }
-        self.navigationController?.navigationBar.setNeedsDisplay()
+        getNavigationController()?.navigationBar.setNeedsDisplay()
     }
 
     func setNavigationBarWithTitleView(titleView:UIView, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
-        self.navigationItem.titleView = titleView
-        self.navigationItem.title = ""
+        getNavigationItem()?.titleView = titleView
+        getNavigationItem()?.title = ""
         setBarButtonAt(.Left, Type: leftButtonType)
         setBarButtonAt(.Right, Type: rightButtonType)
     }
     func setNavigationBarWithTitle(title:String, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
-        self.navigationItem.titleView = nil
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
+        getNavigationItem()?.titleView = nil
+        getNavigationController()?.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.getAppTextColor(),
             NSFontAttributeName: UIFont.getAppTitleFontWithSize(20)!.getDynamicSizeFont()]
-        self.navigationItem.title = title
+        getNavigationItem()?.title = title
         setBarButtonAt(.Left, Type: leftButtonType)
         setBarButtonAt(.Right, Type: rightButtonType)
     }
@@ -72,9 +90,12 @@ extension CommonViewController{
         case .None:
             barButton = UIBarButtonItem(customView:getButtonWithImage(NoneButtonImage,Action: #selector(self.noneButtonAction(_:))))
             barButton1 = nil
-            self.navigationItem.backBarButtonItem = nil
+            getNavigationItem()?.backBarButtonItem = nil
         case .Back:
             barButton = UIBarButtonItem(customView:getButtonWithImage(BackButtonImage,Action: #selector(self.backButtonAction(_:))))
+        case .Search_Notification:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(NotificationButtonImage,Action: #selector(self.notificationButtonAction(_:))))
+            barButton1 = UIBarButtonItem(customView:getButtonWithImage(SearchButtonImage,Action: #selector(self.searchButtonAction(_:))))
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -83,15 +104,15 @@ extension CommonViewController{
         switch position {
         case .Left:
             if barButton1 != nil {
-                self.navigationItem.setLeftBarButtonItems([barButton!, flexibleSpace, barButton1!], animated: false)
+                getNavigationItem()?.setLeftBarButtonItems([barButton!, flexibleSpace, barButton1!], animated: false)
             }else{
-                self.navigationItem.setLeftBarButtonItem(barButton, animated: false)
+                getNavigationItem()?.setLeftBarButtonItems([barButton!], animated: false)
             }
         case .Right:
             if barButton1 != nil {
-                self.navigationItem.setRightBarButtonItems([barButton!, flexibleSpace, barButton1!], animated: false)
+                getNavigationItem()?.setRightBarButtonItems([barButton!, flexibleSpace, barButton1!], animated: false)
             }else{
-                self.navigationItem.setRightBarButtonItem(barButton, animated: false)
+                getNavigationItem()?.setRightBarButtonItems([barButton!], animated: false)
             }
         }
     }
@@ -165,7 +186,11 @@ extension CommonViewController{
     }
     @IBAction func backButtonAction(sender:UIButton?){
         self.dissmissKeyboard()
-        self.navigationController?.popViewControllerAnimated(true)
+        getNavigationController()?.popViewControllerAnimated(true)
+    }
+    @IBAction func searchButtonAction(sender:UIButton?){
+    }
+    @IBAction func notificationButtonAction(sender:UIButton?){
     }
 }
 

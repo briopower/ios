@@ -39,6 +39,17 @@ class ButtonCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+
+}
+
+//MARK:- Button Action
+extension ButtonCell{
+    @IBAction func buttonAction(sender: UIButton) {
+        if type == ButtonCellType.Login {
+            UIViewController.getTopMostViewController()?.dismissViewControllerAnimated(true, completion: nil)
+            NSUserDefaults.setLoggedIn(true)
+        }
+    }
 }
 
 //MARK:- Additional methods

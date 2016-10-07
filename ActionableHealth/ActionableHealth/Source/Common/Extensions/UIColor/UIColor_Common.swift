@@ -20,7 +20,7 @@ extension UIColor{
     }
     
     class func getAppTextColor() -> UIColor{
-        return self.getColorFromHexValue(0x3E303B, Alpha: 1)
+        return self.getColorFromHexValue(0x464646, Alpha: 1)
     }
     
     class func getAppDisabledTextColor() -> UIColor{

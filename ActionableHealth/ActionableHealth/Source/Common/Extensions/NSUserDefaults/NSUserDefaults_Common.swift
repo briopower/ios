@@ -26,4 +26,13 @@ extension NSUserDefaults{
         userDefault.setValue(token, forKey: "deviceTokenPush_Key")
         userDefault.synchronize()
     }
+
+    class func isLoggedIn() -> Bool {
+        return userDefault.boolForKey("userLoggedIn")
+    }
+
+    class func setLoggedIn(loggedIn:Bool) {
+        userDefault.setBool(loggedIn, forKey: "userLoggedIn")
+        userDefault.synchronize()
+    }
 }

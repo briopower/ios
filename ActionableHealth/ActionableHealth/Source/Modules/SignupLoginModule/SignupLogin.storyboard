@@ -6,6 +6,12 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+            <string>ProximaNova-Semibold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="ipf-Hp-GCl">
@@ -46,7 +52,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyb-Zi-rPk" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="558" height="75"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                         <state key="normal" title="LOGIN">
                                             <color key="titleColor" red="0.094117647058823528" green="0.36470588235294116" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -112,7 +118,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0br-rl-fkj" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="558" height="75"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="18"/>
                                         <state key="normal" title="SIGN UP NOW">
                                             <color key="titleColor" red="0.094117647060000004" green="0.36470588240000001" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>

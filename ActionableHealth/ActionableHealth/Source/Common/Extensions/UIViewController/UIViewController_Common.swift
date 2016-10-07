@@ -20,8 +20,8 @@ extension UIViewController{
 
     class func getTopPresentedViewController(viewControllerObj:UIViewController) -> UIViewController {
 
-        if viewControllerObj.presentedViewController != nil {
-            return self.getTopPresentedViewController(viewControllerObj.presentedViewController!)
+        if let presentedViewController = viewControllerObj.presentedViewController {
+            return self.getTopPresentedViewController(presentedViewController)
         }else{
             return viewControllerObj
         }

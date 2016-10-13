@@ -39,6 +39,7 @@ class HomeViewController: CommonViewController {
 //MARK:- Additional methods
 extension HomeViewController{
     func setupView() {
+        setNavigationBarBackgroundColor(UIColor.whiteColor())
         CommonMethods.addShadowToView(buttonsContainer)
         var index = 0
         while(index<14){
@@ -47,6 +48,8 @@ extension HomeViewController{
             index += 1
         }
         clctView.setCollectionViewLayout(CHTCollectionViewWaterfallLayout(), animated: false)
+        clctView.registerNib(UINib(nibName: String(HomeViewCell), bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: String(HomeViewCell))
+        clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
     }
 }
 //MARK:- Button Action
@@ -81,6 +84,9 @@ extension HomeViewController:UICollectionViewDataSource{
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(String(HomeViewCell), forIndexPath: indexPath) as? HomeViewCell {
+            return cell
+        }
         return UICollectionViewCell()
     }
 }

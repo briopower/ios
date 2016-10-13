@@ -76,32 +76,44 @@ extension FiltersViewController{
         subProperty4.parentProperty = prop1
         prop1.subProperties.addObject(subProperty4)
 
+        filterObj.properties.addObject(prop1)
+
 
         let prop2 = Properties()
         prop2.name = "Type"
 
         let subProperty12 = SubProperties()
-        subProperty12.name = "Type1"
+        subProperty12.name = "Daily Routine"
         subProperty12.parentProperty = prop2
         prop2.subProperties.addObject(subProperty12)
 
         let subProperty22 = SubProperties()
-        subProperty22.name = "Type2"
+        subProperty22.name = "Special Case"
         subProperty22.parentProperty = prop2
         prop2.subProperties.addObject(subProperty22)
 
         let subProperty32 = SubProperties()
-        subProperty32.name = "Type3"
+        subProperty32.name = "Senior Citizen"
         subProperty32.parentProperty = prop2
         prop2.subProperties.addObject(subProperty32)
 
         let subProperty42 = SubProperties()
-        subProperty42.name = "Type4"
+        subProperty42.name = "Student"
         subProperty42.parentProperty = prop2
         prop2.subProperties.addObject(subProperty42)
 
-        filterObj.properties.addObject(prop1)
+        let subProperty52 = SubProperties()
+        subProperty52.name = "Disease"
+        subProperty52.parentProperty = prop2
+        prop2.subProperties.addObject(subProperty52)
+
+        let subProperty62 = SubProperties()
+        subProperty62.name = "Women"
+        subProperty62.parentProperty = prop2
+        prop2.subProperties.addObject(subProperty62)
+
         filterObj.properties.addObject(prop2)
+
         return filterObj
     }
 }
@@ -131,6 +143,9 @@ extension FiltersViewController{
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func clearButtonActions(sender: UIButton) {
+        filterObj.deselectAllSubProperties()
+        propertiesTblView.reloadData()
+        subPropertiesTblView.reloadData()
     }
     @IBAction func applyButtonActions(sender: UIButton) {
     }

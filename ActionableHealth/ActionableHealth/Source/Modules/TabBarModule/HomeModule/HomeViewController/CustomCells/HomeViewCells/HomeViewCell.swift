@@ -10,9 +10,13 @@ import UIKit
 
 class HomeViewCell: UICollectionViewCell {
 
+    //MARK:- Outlets
+    @IBOutlet weak var container: UIView!
+
+    //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        CommonMethods.addShadowToView(container)
     }
 
 }

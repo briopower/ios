@@ -34,9 +34,9 @@ class SubPropertiesCell: UITableViewCell {
         currentSubProperty = subProperty
         subPropertyNameLabel.text = subProperty.name
         if subProperty.isSelected {
-            checkBox.image = UIImage(named: "filter")
+            checkBox.image = UIImage(named: "checkbox-selected")
         }else{
-            checkBox.image = UIImage(named: "notification")
+            checkBox.image = UIImage(named: "checkbox")
         }
     }
 }

@@ -5,6 +5,8 @@ target 'ActionableHealth' do
   use_frameworks!
     pod 'Alamofire'
     pod 'TPKeyboardAvoiding'
+    pod 'HCSStarRatingView'
+    
   target 'ActionableHealthTests' do
     inherit! :search_paths
     # Pods for testing

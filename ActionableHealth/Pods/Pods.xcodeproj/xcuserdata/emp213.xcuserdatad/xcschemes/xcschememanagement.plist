@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HCSStarRatingView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ActionableHealth.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,12 +37,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>21EA8F5CC917E9CDE2A618912FB11CC0</key>
+		<key>2B30E0D0DC10819F641913818FA1B4CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B30E0D0DC10819F641913818FA1B4CC</key>
+		<key>77FC508660ED09C03DD781C859DF68AD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>97E5D28D3DA6F0CA23C263B2B5833B9F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B08F69D886A5188869DAF9C302FD3F1F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC63D605465122F30CD1218C93B321DA</key>
+		<key>C191AFCAA5E657F2CF0D2BA8D65B9E13</key>
 		<dict>
 			<key>primary</key>
 			<true/>

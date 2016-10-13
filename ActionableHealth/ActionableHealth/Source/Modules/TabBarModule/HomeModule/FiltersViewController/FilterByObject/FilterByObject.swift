@@ -56,6 +56,19 @@ class FilterByObject: NSObject {
             subProperty.parentProperty?.selectedItemsCount += 1
         }
     }
+
+    func deselectAllSubProperties() {
+        for obj in properties {
+            if let prop = obj as? Properties {
+                prop.selectedItemsCount = 0
+                for temp in prop.subProperties {
+                    if let subProp = temp as? SubProperties {
+                        subProp.isSelected = false
+                    }
+                }
+            }
+        }
+    }
 }
 
 

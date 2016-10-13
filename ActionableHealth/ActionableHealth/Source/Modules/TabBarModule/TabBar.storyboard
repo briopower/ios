@@ -193,7 +193,8 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k6A-O7-zxG">
-                                <rect key="frame" x="0.0" y="153" width="600" height="398"/>
+                                <rect key="frame" x="5" y="158" width="590" height="388"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jO3-iY-a1Z">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -202,19 +203,19 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="Z2f-Jx-dhb" id="Nrj-va-mej"/>
-                                    <outlet property="delegate" destination="Z2f-Jx-dhb" id="hMj-Vy-7yY"/>
+                                    <outlet property="dataSource" destination="Z2f-Jx-dhb" id="tfT-5A-jCf"/>
+                                    <outlet property="delegate" destination="Z2f-Jx-dhb" id="D0h-AX-J4o"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="k6A-O7-zxG" firstAttribute="top" secondItem="qQP-kR-Pb0" secondAttribute="bottom" id="3K2-R1-Nza"/>
-                            <constraint firstItem="ZaX-s9-l9n" firstAttribute="top" secondItem="k6A-O7-zxG" secondAttribute="bottom" id="5Gc-io-2iS"/>
+                            <constraint firstItem="k6A-O7-zxG" firstAttribute="top" secondItem="qQP-kR-Pb0" secondAttribute="bottom" constant="5" id="3K2-R1-Nza"/>
+                            <constraint firstItem="ZaX-s9-l9n" firstAttribute="top" secondItem="k6A-O7-zxG" secondAttribute="bottom" constant="5" id="5Gc-io-2iS"/>
                             <constraint firstItem="qQP-kR-Pb0" firstAttribute="top" secondItem="Cvj-R6-Qsd" secondAttribute="bottom" id="A7I-Yz-EyF"/>
-                            <constraint firstAttribute="trailing" secondItem="k6A-O7-zxG" secondAttribute="trailing" id="QPc-8x-m40"/>
+                            <constraint firstAttribute="trailing" secondItem="k6A-O7-zxG" secondAttribute="trailing" constant="5" id="QPc-8x-m40"/>
                             <constraint firstAttribute="trailing" secondItem="qQP-kR-Pb0" secondAttribute="trailing" id="TxK-bQ-aan"/>
-                            <constraint firstItem="k6A-O7-zxG" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" id="pjy-Sx-wRx"/>
+                            <constraint firstItem="k6A-O7-zxG" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" constant="5" id="pjy-Sx-wRx"/>
                             <constraint firstItem="qQP-kR-Pb0" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" id="qdA-D4-l38"/>
                         </constraints>
                     </view>
@@ -299,15 +300,15 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBA-mQ-47R">
-                                        <rect key="frame" x="41" y="36" width="19" height="22"/>
+                                        <rect key="frame" x="43" y="38" width="15" height="18"/>
                                         <color key="tintColor" red="0.082352941176470587" green="0.52941176470588236" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="notification"/>
+                                        <state key="normal" image="cut"/>
                                         <connections>
                                             <action selector="crossButtonActions:" destination="vHP-6H-Iac" eventType="touchUpInside" id="5sD-mN-gS4"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTER BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSY-Z2-YwV" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
-                                        <rect key="frame" x="78" y="38" width="76" height="17"/>
+                                        <rect key="frame" x="75" y="38" width="76" height="17"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                         <color key="textColor" red="0.082352941176470587" green="0.52941176470588236" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -395,8 +396,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cut" width="15" height="15"/>
         <image name="filter" width="11" height="11"/>
-        <image name="notification" width="19" height="22"/>
         <image name="sort" width="14" height="11"/>
     </resources>
 </document>

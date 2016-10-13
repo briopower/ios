@@ -26,9 +26,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZi-Wa-2qw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="07f-Sy-6Vg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="07f-Sy-6Vg" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="414" height="1"/>
-                                <color key="backgroundColor" red="0.90588235294117647" green="0.90980392156862744" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="fp5-TD-nhz"/>
                                 </constraints>

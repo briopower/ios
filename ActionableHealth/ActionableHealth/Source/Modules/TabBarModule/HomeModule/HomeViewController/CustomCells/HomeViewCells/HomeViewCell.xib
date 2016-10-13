@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeViewCell" customModule="ActionableHealth" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRA-3F-c7K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnK-8o-Haq">
+                                <rect key="frame" x="0.0" y="286" width="320" height="77"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sv2-Pj-bfV">
+                                        <rect key="frame" x="19" y="11" width="55" height="55"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-LL-1pY">
+                                        <rect key="frame" x="0.0" y="0.0" width="19" height="77"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-LU-7eF" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="85" y="11" width="38" height="16"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZBl-LL-1pY" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="35:580" id="4Yg-iM-3Nr"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZBl-LL-1pY" secondAttribute="bottom" id="4dv-hL-kAj"/>
+                                    <constraint firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="height" multiplier="580:140" id="Di7-8R-f74"/>
+                                    <constraint firstItem="Ccb-LU-7eF" firstAttribute="top" secondItem="Sv2-Pj-bfV" secondAttribute="top" id="OCu-Kd-R2g"/>
+                                    <constraint firstItem="ZBl-LL-1pY" firstAttribute="leading" secondItem="tnK-8o-Haq" secondAttribute="leading" id="ifH-3u-KxY"/>
+                                    <constraint firstItem="ZBl-LL-1pY" firstAttribute="top" secondItem="tnK-8o-Haq" secondAttribute="top" id="ipA-kH-DdH"/>
+                                    <constraint firstItem="Ccb-LU-7eF" firstAttribute="leading" secondItem="Sv2-Pj-bfV" secondAttribute="trailing" multiplier="1.15" id="mrP-EO-4Ab"/>
+                                    <constraint firstItem="Sv2-Pj-bfV" firstAttribute="centerY" secondItem="tnK-8o-Haq" secondAttribute="centerY" id="sUl-Ha-ian"/>
+                                    <constraint firstItem="Sv2-Pj-bfV" firstAttribute="leading" secondItem="ZBl-LL-1pY" secondAttribute="trailing" id="wLv-V8-OvA"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMd-zb-0Yx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="286"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VMd-zb-0Yx" firstAttribute="leading" secondItem="kRA-3F-c7K" secondAttribute="leading" id="DeE-5C-sVJ"/>
+                            <constraint firstItem="tnK-8o-Haq" firstAttribute="leading" secondItem="kRA-3F-c7K" secondAttribute="leading" id="Lyx-pc-faT"/>
+                            <constraint firstItem="tnK-8o-Haq" firstAttribute="top" secondItem="VMd-zb-0Yx" secondAttribute="bottom" id="Mha-ld-mW6"/>
+                            <constraint firstAttribute="trailing" secondItem="VMd-zb-0Yx" secondAttribute="trailing" id="YKO-X1-vwK"/>
+                            <constraint firstItem="VMd-zb-0Yx" firstAttribute="top" secondItem="kRA-3F-c7K" secondAttribute="top" id="eL0-AE-d9c"/>
+                            <constraint firstAttribute="bottom" secondItem="tnK-8o-Haq" secondAttribute="bottom" id="sTh-eE-rt6"/>
+                            <constraint firstAttribute="trailing" secondItem="tnK-8o-Haq" secondAttribute="trailing" id="vsJ-qx-bW0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="kRA-3F-c7K" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AKq-lb-fTR"/>
+                <constraint firstAttribute="trailing" secondItem="kRA-3F-c7K" secondAttribute="trailing" id="RKs-Hh-tMd"/>
+                <constraint firstAttribute="bottom" secondItem="kRA-3F-c7K" secondAttribute="bottom" id="SY1-wG-rul"/>
+                <constraint firstItem="kRA-3F-c7K" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="i8d-od-Bvw"/>
+            </constraints>
+            <size key="customSize" width="320" height="363"/>
+            <point key="canvasLocation" x="418" y="468.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="logo-1" width="55" height="55"/>
+    </resources>
+</document>

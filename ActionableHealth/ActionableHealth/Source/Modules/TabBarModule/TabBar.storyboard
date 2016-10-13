@@ -10,6 +10,9 @@
         <mutableArray key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -140,7 +143,7 @@
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Filter" image="filter"/>
+                                                <state key="normal" title="FILTER" image="filter"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLocalized" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
@@ -153,7 +156,7 @@
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Sort" image="sort"/>
+                                                <state key="normal" title="SORT" image="sort"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLocalized" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
@@ -189,11 +192,29 @@
                                     <constraint firstItem="0kp-31-erY" firstAttribute="centerY" secondItem="qQP-kR-Pb0" secondAttribute="centerY" id="lfE-mn-oBr"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k6A-O7-zxG">
+                                <rect key="frame" x="0.0" y="153" width="600" height="398"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jO3-iY-a1Z">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Z2f-Jx-dhb" id="Nrj-va-mej"/>
+                                    <outlet property="delegate" destination="Z2f-Jx-dhb" id="hMj-Vy-7yY"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="k6A-O7-zxG" firstAttribute="top" secondItem="qQP-kR-Pb0" secondAttribute="bottom" id="3K2-R1-Nza"/>
+                            <constraint firstItem="ZaX-s9-l9n" firstAttribute="top" secondItem="k6A-O7-zxG" secondAttribute="bottom" id="5Gc-io-2iS"/>
                             <constraint firstItem="qQP-kR-Pb0" firstAttribute="top" secondItem="Cvj-R6-Qsd" secondAttribute="bottom" id="A7I-Yz-EyF"/>
+                            <constraint firstAttribute="trailing" secondItem="k6A-O7-zxG" secondAttribute="trailing" id="QPc-8x-m40"/>
                             <constraint firstAttribute="trailing" secondItem="qQP-kR-Pb0" secondAttribute="trailing" id="TxK-bQ-aan"/>
+                            <constraint firstItem="k6A-O7-zxG" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" id="pjy-Sx-wRx"/>
                             <constraint firstItem="qQP-kR-Pb0" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" id="qdA-D4-l38"/>
                         </constraints>
                     </view>
@@ -202,11 +223,154 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="buttonsContainer" destination="qQP-kR-Pb0" id="DuO-cF-sB4"/>
+                        <outlet property="clctView" destination="k6A-O7-zxG" id="ScA-D0-QZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N7-ou-kQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1384" y="-819"/>
+        </scene>
+        <!--Filters View Controller-->
+        <scene sceneID="fkl-Yl-CCO">
+            <objects>
+                <viewController storyboardIdentifier="filtersView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vHP-6H-Iac" customClass="FiltersViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IWN-Wo-tFe"/>
+                        <viewControllerLayoutGuide type="bottom" id="SfA-vF-9nM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j9i-99-OIX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bi4-kA-24k" customClass="PropertiesTableView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="73" width="273" height="527"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cIc-rI-iY5" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="273" y="73" width="1" height="527"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="Um1-k4-TTJ"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Kb-U5-4vo" customClass="SubPropertiesTableView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="274" y="73" width="326" height="527"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pH-8R-WmE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="73"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t3b-ee-HDE">
+                                        <rect key="frame" x="0.0" y="20" width="600" height="53"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-4r-1OQ" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="7Uu-De-MPC"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shd-Ez-skf" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="456" y="27" width="108" height="39"/>
+                                        <color key="backgroundColor" red="0.082352941176470587" green="0.52941176470588236" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="shd-Ez-skf" secondAttribute="height" multiplier="222:82" id="DLl-Ok-ePd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                        <state key="normal" title="Apply">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="applyButtonActions:" destination="vHP-6H-Iac" eventType="touchUpInside" id="3dF-FK-Jco"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cl5-Xr-Kzc" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="348" y="27" width="108" height="39"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                        <state key="normal" title="Clear">
+                                            <color key="titleColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearButtonActions:" destination="vHP-6H-Iac" eventType="touchUpInside" id="ar7-Lu-FkF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBA-mQ-47R">
+                                        <rect key="frame" x="41" y="36" width="19" height="22"/>
+                                        <color key="tintColor" red="0.082352941176470587" green="0.52941176470588236" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="notification"/>
+                                        <connections>
+                                            <action selector="crossButtonActions:" destination="vHP-6H-Iac" eventType="touchUpInside" id="5sD-mN-gS4"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTER BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSY-Z2-YwV" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="78" y="38" width="76" height="17"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                        <color key="textColor" red="0.082352941176470587" green="0.52941176470588236" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="sSY-Z2-YwV" firstAttribute="centerY" secondItem="MBA-mQ-47R" secondAttribute="centerY" id="0Fk-f4-bYR"/>
+                                    <constraint firstItem="cl5-Xr-Kzc" firstAttribute="centerY" secondItem="shd-Ez-skf" secondAttribute="centerY" id="1uI-Qa-6gc"/>
+                                    <constraint firstItem="MBA-mQ-47R" firstAttribute="centerX" secondItem="7pH-8R-WmE" secondAttribute="centerX" multiplier="105:621" id="6xR-zn-Dd3"/>
+                                    <constraint firstItem="shd-Ez-skf" firstAttribute="centerY" secondItem="t3b-ee-HDE" secondAttribute="centerY" id="9hp-0Y-CNE"/>
+                                    <constraint firstItem="t3b-ee-HDE" firstAttribute="top" secondItem="7pH-8R-WmE" secondAttribute="top" constant="20" id="9o5-bA-emx"/>
+                                    <constraint firstAttribute="bottom" secondItem="t3b-ee-HDE" secondAttribute="bottom" id="ABy-Ez-rZT"/>
+                                    <constraint firstItem="t3b-ee-HDE" firstAttribute="leading" secondItem="7pH-8R-WmE" secondAttribute="leading" id="BQo-lo-xZJ"/>
+                                    <constraint firstItem="hCt-4r-1OQ" firstAttribute="leading" secondItem="7pH-8R-WmE" secondAttribute="leading" id="ENO-Dw-fsb"/>
+                                    <constraint firstItem="shd-Ez-skf" firstAttribute="width" secondItem="7pH-8R-WmE" secondAttribute="width" multiplier="222:1242" id="HwK-qx-jJl"/>
+                                    <constraint firstItem="cl5-Xr-Kzc" firstAttribute="height" secondItem="shd-Ez-skf" secondAttribute="height" id="KN1-SC-7oz"/>
+                                    <constraint firstItem="sSY-Z2-YwV" firstAttribute="leading" secondItem="MBA-mQ-47R" secondAttribute="trailing" multiplier="175:135" id="Nwz-dr-I8q"/>
+                                    <constraint firstAttribute="trailing" secondItem="t3b-ee-HDE" secondAttribute="trailing" id="QF0-xf-rvd"/>
+                                    <constraint firstItem="shd-Ez-skf" firstAttribute="centerX" secondItem="7pH-8R-WmE" secondAttribute="centerX" multiplier="1055:621" id="Ulp-HF-Qff"/>
+                                    <constraint firstAttribute="bottom" secondItem="hCt-4r-1OQ" secondAttribute="bottom" id="Wmd-9e-JGE"/>
+                                    <constraint firstItem="shd-Ez-skf" firstAttribute="centerY" secondItem="7pH-8R-WmE" secondAttribute="centerY" id="c18-xP-v7s"/>
+                                    <constraint firstItem="cl5-Xr-Kzc" firstAttribute="width" secondItem="shd-Ez-skf" secondAttribute="width" id="cLV-fH-eXJ"/>
+                                    <constraint firstItem="shd-Ez-skf" firstAttribute="leading" secondItem="cl5-Xr-Kzc" secondAttribute="trailing" id="cbT-QG-Vzt"/>
+                                    <constraint firstItem="shd-Ez-skf" firstAttribute="width" secondItem="7pH-8R-WmE" secondAttribute="height" multiplier="46:73" id="fWI-FC-SlY"/>
+                                    <constraint firstAttribute="trailing" secondItem="hCt-4r-1OQ" secondAttribute="trailing" id="nYE-yZ-ey1"/>
+                                    <constraint firstItem="MBA-mQ-47R" firstAttribute="centerY" secondItem="cl5-Xr-Kzc" secondAttribute="centerY" id="nu5-9R-UeX"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="c18-xP-v7s"/>
+                                        <exclude reference="fWI-FC-SlY"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="7pH-8R-WmE" firstAttribute="top" secondItem="j9i-99-OIX" secondAttribute="top" id="2UQ-0M-p5s"/>
+                            <constraint firstItem="1Kb-U5-4vo" firstAttribute="top" secondItem="7pH-8R-WmE" secondAttribute="bottom" id="2gX-03-Kik"/>
+                            <constraint firstAttribute="trailing" secondItem="1Kb-U5-4vo" secondAttribute="trailing" id="8lL-Re-PAN"/>
+                            <constraint firstItem="cIc-rI-iY5" firstAttribute="top" secondItem="7pH-8R-WmE" secondAttribute="bottom" id="Bkg-eG-x92"/>
+                            <constraint firstItem="SfA-vF-9nM" firstAttribute="top" secondItem="1Kb-U5-4vo" secondAttribute="bottom" id="Mlf-F7-Cof"/>
+                            <constraint firstItem="7pH-8R-WmE" firstAttribute="leading" secondItem="j9i-99-OIX" secondAttribute="leading" id="Pkw-Ab-Kl5"/>
+                            <constraint firstItem="SfA-vF-9nM" firstAttribute="top" secondItem="cIc-rI-iY5" secondAttribute="bottom" id="QKc-hV-aaM"/>
+                            <constraint firstItem="SfA-vF-9nM" firstAttribute="top" secondItem="bi4-kA-24k" secondAttribute="bottom" id="af6-D7-Jfc"/>
+                            <constraint firstAttribute="trailing" secondItem="7pH-8R-WmE" secondAttribute="trailing" id="ag0-Gg-LnN"/>
+                            <constraint firstItem="bi4-kA-24k" firstAttribute="width" secondItem="j9i-99-OIX" secondAttribute="width" multiplier="565:1242" id="asl-bP-cM3"/>
+                            <constraint firstItem="bi4-kA-24k" firstAttribute="top" secondItem="7pH-8R-WmE" secondAttribute="bottom" id="fY3-l9-0Mn"/>
+                            <constraint firstItem="1Kb-U5-4vo" firstAttribute="leading" secondItem="cIc-rI-iY5" secondAttribute="trailing" id="nLw-Uc-2h5"/>
+                            <constraint firstItem="7pH-8R-WmE" firstAttribute="height" secondItem="j9i-99-OIX" secondAttribute="height" multiplier="270:2207" id="oYS-Ga-Scz"/>
+                            <constraint firstItem="cIc-rI-iY5" firstAttribute="leading" secondItem="bi4-kA-24k" secondAttribute="trailing" id="vO3-Ee-lvp"/>
+                            <constraint firstItem="bi4-kA-24k" firstAttribute="leading" secondItem="j9i-99-OIX" secondAttribute="leading" id="zD1-fY-z11"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="propertiesTblView" destination="bi4-kA-24k" id="P32-gR-N89"/>
+                        <outlet property="subPropertiesTblView" destination="1Kb-U5-4vo" id="Tdk-WE-LLl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dcq-lJ-ajW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1384" y="-149"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JRn-VW-6RH">
@@ -216,7 +380,6 @@
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" itemPositioning="fill" id="Atu-D4-5Yh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.36862745098039218" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Z2f-Jx-dhb" kind="relationship" relationship="viewControllers" id="9QP-oN-Bwi"/>
@@ -233,6 +396,7 @@
     </scenes>
     <resources>
         <image name="filter" width="11" height="11"/>
+        <image name="notification" width="19" height="22"/>
         <image name="sort" width="14" height="11"/>
     </resources>
 </document>

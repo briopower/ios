@@ -74,7 +74,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ib4-Bj-LSQ" firstAttribute="top" secondItem="zYN-bw-GKp" secondAttribute="bottom" multiplier="1.03" id="2BB-MN-5Pj"/>
                             <constraint firstItem="mJF-oO-aMW" firstAttribute="leading" secondItem="zot-hs-yXF" secondAttribute="leading" id="8SE-tg-4Q7"/>
@@ -140,7 +140,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KsU-Iu-oXq" firstAttribute="top" secondItem="m9A-EU-tPp" secondAttribute="bottom" multiplier="1.03" id="9if-4n-TH5"/>
                             <constraint firstItem="m9A-EU-tPp" firstAttribute="centerX" secondItem="Efu-AO-vd9" secondAttribute="centerX" id="Ekb-xg-WqS"/>

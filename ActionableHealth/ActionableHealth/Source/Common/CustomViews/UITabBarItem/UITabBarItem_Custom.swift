@@ -14,8 +14,10 @@ class UITabBarItem_Custom: UITabBarItem {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setImages()
-        self.imageInsets = UIEdgeInsets(top: 5.5, left: 0, bottom: -5.5, right: 0)
+        self.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         self.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 15)
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage(named: "tabBarBG")
     }
 
     func setImages() {
@@ -49,12 +51,11 @@ class UITabBarItem_Custom: UITabBarItem {
         case .AppleIphone6P, .AppleIphone6SP, .AppleIphone7P:
             return "_3x.png"
         case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
-            return "_2x.png"
-        case .Simulator:
-            return "_2x.png"
-        default:
             return "_x.png"
-
+        case .Simulator:
+            return "_x.png"
+        default:
+            return "_2x.png"
         }
     }
 }

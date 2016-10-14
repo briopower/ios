@@ -214,7 +214,7 @@
         <!--Navigation Controller-->
         <scene sceneID="qlu-uS-xYf">
             <objects>
-                <navigationController storyboardIdentifier="notificationView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QjP-eT-zip" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="notificationNavigationView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QjP-eT-zip" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4oT-9i-7Ss">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -230,7 +230,7 @@
         <!--Notifications View Controller-->
         <scene sceneID="GKO-kq-Sx4">
             <objects>
-                <viewController id="SVV-Z1-vei" customClass="NotificationsViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notificationView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SVV-Z1-vei" customClass="NotificationsViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5dg-8z-InO"/>
                         <viewControllerLayoutGuide type="bottom" id="JJO-63-6mb"/>

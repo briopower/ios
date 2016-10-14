@@ -305,9 +305,12 @@
             <objects>
                 <tabBarController id="H35-u2-zJN" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="TFs-aW-uGA"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBarBG" shadowImage="asdasd" id="Atu-D4-5Yh">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBarBG" shadowImage="asdasd" itemPositioning="fill" id="Atu-D4-5Yh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Z2f-Jx-dhb" kind="relationship" relationship="viewControllers" id="9QP-oN-Bwi"/>

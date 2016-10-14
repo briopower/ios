@@ -10,22 +10,22 @@ import UIKit
 enum GroupMemberDetailsCellType:Int {
     case Image, Name, Email, PhoneNumber, Company, Interest, Hobbies, Count
 
-    func getTitle() -> String {
+    func getTitleAndFont() -> (title:String, font:UIFont?) {
         switch self {
         case .Name:
-            return "NAME"
+            return ("NAME" , UIFont.getAppSemiboldFontWithSize(15)?.getDynamicSizeFont())
         case .Email:
-            return "EMAIL ADDRESS"
+            return ("EMAIL ADDRESS" , UIFont.getAppSemiboldFontWithSize(15)?.getDynamicSizeFont())
         case .PhoneNumber:
-            return "PHONE NUMBER"
+            return ("PHONE NUMBER" , UIFont.getAppSemiboldFontWithSize(15)?.getDynamicSizeFont())
         case .Company:
-            return "TITLE/COMPANY"
+            return ("TITLE/COMPANY" , UIFont.getAppSemiboldFontWithSize(15)?.getDynamicSizeFont())
         case .Interest:
-            return "INTEREST"
+            return ("INTEREST" , UIFont.getAppRegularFontWithSize(15)?.getDynamicSizeFont())
         case .Hobbies:
-            return "HOBBIES"
+            return ("HOBBIES" , UIFont.getAppRegularFontWithSize(15)?.getDynamicSizeFont())
         default:
-            return ""
+            return ("", nil)
         }
     }
 }
@@ -49,6 +49,8 @@ class GroupMemberDetailsCell: UITableViewCell {
 //MARK:- Additional methods
 extension GroupMemberDetailsCell{
     func configureCellForType(type:GroupMemberDetailsCellType) {
-        titleDescLabel.text = type.getTitle()
+        let (title, font) = type.getTitleAndFont()
+        titleDescLabel.text = title
+        contentLabel.font = font
     }
 }

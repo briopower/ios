@@ -63,7 +63,7 @@ extension HomeViewController{
     }
     override func notificationButtonAction(sender: UIButton?) {
         super.notificationButtonAction(sender)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.notificationView) as? UINavigationController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.notificationNavigationView) as? UINavigationController {
             UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
         }
     }

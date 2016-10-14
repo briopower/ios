@@ -14,8 +14,8 @@ class UITabBarItem_Custom: UITabBarItem {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setImages()
-        self.imageInsets = UIEdgeInsets(top: 5.4, left: 0, bottom: -5.4, right: 0)
-        self.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 15)
+        self.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+       self.title = nil
     }
 
     func setImages() {
@@ -51,7 +51,7 @@ class UITabBarItem_Custom: UITabBarItem {
         case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
             return "_x.png"
         case .Simulator:
-            return "_x.png"
+            return "_2x.png"
         default:
             return "_2x.png"
         }

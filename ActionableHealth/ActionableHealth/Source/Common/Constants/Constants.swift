@@ -29,6 +29,7 @@ class Constants: NSObject {
             static let storyboardRestorationId = "Home"
             static let filtersView = "filtersView"
             static let searchView = "searchView"
+            static let notificationNavigationView = "notificationNavigationView"
             static let notificationView = "notificationView"
         }
 

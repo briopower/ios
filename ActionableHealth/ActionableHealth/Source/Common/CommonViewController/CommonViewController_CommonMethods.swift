@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search_Notification
+    case Empty, None, Back, Search_Notification, Cross
 }
 
 enum BarButtonPosition {
@@ -17,9 +17,10 @@ enum BarButtonPosition {
 import UIKit
 
 let NoneButtonImage = UIImage(named: "noneButton")
-let BackButtonImage = UIImage(named: "back")
+let BackButtonImage = UIImage(named: "back-btn")
 let SearchButtonImage = UIImage(named: "search")
 let NotificationButtonImage = UIImage(named: "notification")
+let CrossButtonImage = UIImage(named: "cut")
 
 
 //MARK: Navigation Controller Delegate
@@ -74,7 +75,7 @@ extension CommonViewController{
     func setNavigationBarWithTitle(title:String, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
         getNavigationItem()?.titleView = nil
         getNavigationController()?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.getAppTextColor(),
+            NSForegroundColorAttributeName: UIColor.getAppThemeColor(),
             NSFontAttributeName: UIFont.getAppTitleFontWithSize(20)!.getDynamicSizeFont()]
         getNavigationItem()?.title = title
         setBarButtonAt(.Left, Type: leftButtonType)
@@ -96,6 +97,9 @@ extension CommonViewController{
         case .Search_Notification:
             barButton = UIBarButtonItem(customView:getButtonWithImage(NotificationButtonImage,Action: #selector(self.notificationButtonAction(_:))))
             barButton1 = UIBarButtonItem(customView:getButtonWithImage(SearchButtonImage,Action: #selector(self.searchButtonAction(_:))))
+        case .Cross:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(CrossButtonImage,Action: #selector(self.crossButtonAction(_:))))
+
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -191,6 +195,8 @@ extension CommonViewController{
     @IBAction func searchButtonAction(sender:UIButton?){
     }
     @IBAction func notificationButtonAction(sender:UIButton?){
+    }
+    @IBAction func crossButtonAction(sender:UIButton?){
     }
 }
 

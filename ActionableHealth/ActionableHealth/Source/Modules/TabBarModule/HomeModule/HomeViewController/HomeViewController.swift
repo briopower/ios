@@ -24,7 +24,7 @@ class HomeViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
+        self.setNavigationBarWithTitle("HOME", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,6 +39,7 @@ class HomeViewController: CommonViewController {
 //MARK:- Additional methods
 extension HomeViewController{
     func setupView() {
+        CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
         setNavigationBarBackgroundColor(UIColor.whiteColor())
         CommonMethods.addShadowToView(buttonsContainer)
         var index = 0
@@ -54,8 +55,20 @@ extension HomeViewController{
 }
 //MARK:- Button Action
 extension HomeViewController{
+    override func searchButtonAction(sender: UIButton?) {
+        super.searchButtonAction(sender)
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.searchView) as? UINavigationController {
+            UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
+        }
+    }
+    override func notificationButtonAction(sender: UIButton?) {
+        super.notificationButtonAction(sender)
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.notificationView) as? UINavigationController {
+            UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
+        }
+    }
     @IBAction func filterAction(sender: UIButton) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TabBarStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TabBarStoryboard.filtersView) as? FiltersViewController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.filtersView) as? FiltersViewController {
             UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
         }
     }

@@ -22,7 +22,22 @@ class Constants: NSObject {
         struct TabBarStoryboard {
             static let storyboardName = "TabBar"
             static let storyboardRestorationId = "TabBar"
-            static let filtersView = "filtersView"
         }
+
+        struct HomeStoryboard {
+            static let storyboardName = "Home"
+            static let storyboardRestorationId = "Home"
+            static let filtersView = "filtersView"
+            static let searchView = "searchView"
+            static let notificationView = "notificationView"
+        }
+
+        struct GroupsStoryboard {
+            static let storyboardName = "Groups"
+            static let storyboardRestorationId = "Groups"
+            static let groupMemberView = "groupMemberView"
+            static let memberDetailsView = "memberDetailsView"
+        }
+
     }
 }

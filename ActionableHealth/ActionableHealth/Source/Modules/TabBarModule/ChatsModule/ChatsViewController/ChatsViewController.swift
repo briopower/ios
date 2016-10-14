@@ -19,7 +19,7 @@ class ChatsViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        self.setNavigationBarWithTitle("CHATS", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

@@ -10,24 +10,58 @@ import UIKit
 
 class SettingsViewController: CommonViewController {
 
-    //MARK:- Variables
+    //MARK:- Outlets
+    @IBOutlet weak var settingsTblView: UITableView!
 
-    //MARK:- Lifecycle
+    //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
     }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("SETTINGS", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
     }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
 
+//MARK:- Additional methods
+extension SettingsViewController{
+    func setupView() {
+        settingsTblView.estimatedRowHeight = 200
+        settingsTblView.rowHeight = UITableViewAutomaticDimension
+        settingsTblView.registerNib(UINib(nibName: String(SettingsViewCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SettingsViewCell))
+        settingsTblView.registerNib(UINib(nibName: String(SeparatorCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SeparatorCell))
+        settingsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
+
+    }
+}
+
+//MARK:- UITableViewDataSource
+extension SettingsViewController:UITableViewDataSource{
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SettingsCellType.Count.rawValue
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        if let type = SettingsCellType(rawValue: indexPath.row) {
+            switch type {
+            case .Separator1, .Separator2:
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(SeparatorCell)) as? SeparatorCell {
+                    return cell
+                }
+            default:
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(SettingsViewCell)) as? SettingsViewCell {
+                    cell.configureCellForType(type)
+                    return cell
+                }
+            }
+        }
+        return UITableViewCell()
+    }
 }

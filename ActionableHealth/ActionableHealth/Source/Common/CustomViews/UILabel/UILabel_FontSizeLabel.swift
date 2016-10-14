@@ -17,6 +17,7 @@ class UILabel_FontSizeLabel: UILabel_Localizable {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setDynamicFontSize()
     }
 }
 

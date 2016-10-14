@@ -32,8 +32,13 @@
 		3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EC58C1DA3A864003DC2A3 /* NullCaseView.swift */; };
 		3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */; };
 		3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */; };
-		3C4387EE1DA7827000F68125 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C4387ED1DA7827000F68125 /* TabBar.storyboard */; };
 		3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4387F11DA7835500F68125 /* HomeViewController.swift */; };
+		3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */; };
+		3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */; };
+		3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6763141DB0F1F8001F7A4A /* SeparatorCell.swift */; };
+		3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763151DB0F1F8001F7A4A /* SeparatorCell.xib */; };
+		3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */; };
+		3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */; };
 		3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */; };
 		3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */; };
 		3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */; };
@@ -46,8 +51,21 @@
 		3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13221DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift */; };
 		3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */; };
 		3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */; };
+		3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */; };
+		3CAB0F981DB0BA090090BEF3 /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB0F961DB0BA090090BEF3 /* GroupsCell.swift */; };
+		3CAB0F991DB0BA090090BEF3 /* GroupsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0F971DB0BA090090BEF3 /* GroupsCell.xib */; };
+		3CAB0F9C1DB0C0260090BEF3 /* Groups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0F9B1DB0C0260090BEF3 /* Groups.storyboard */; };
+		3CAB0F9F1DB0C2B40090BEF3 /* GroupMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB0F9E1DB0C2B40090BEF3 /* GroupMembersViewController.swift */; };
+		3CAB0FA21DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB0FA11DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift */; };
+		3CAB0FA71DB0D7AE0090BEF3 /* GroupMemberDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB0FA51DB0D7AE0090BEF3 /* GroupMemberDetailsCell.swift */; };
+		3CAB0FA81DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0FA61DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib */; };
+		3CAB0FAC1DB0D8900090BEF3 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB0FAA1DB0D8900090BEF3 /* ProfileImageCell.swift */; };
+		3CAB0FAD1DB0D8900090BEF3 /* ProfileImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0FAB1DB0D8900090BEF3 /* ProfileImageCell.xib */; };
 		3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */; };
 		3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */; };
+		3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */; };
+		3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B51DB0A02B00D733C2 /* TabBar.storyboard */; };
+		3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B81DB0A03A00D733C2 /* Home.storyboard */; };
 		3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */; };
 		3CBD5C781DA7AFAD004BCAE0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */; };
 		3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */; };
@@ -78,7 +96,6 @@
 		3CCECDD61DAF915900831242 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3CCECDC81DAF915900831242 /* 9.jpg */; };
 		3CCECDDB1DAF948900831242 /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECDD91DAF948900831242 /* HomeViewCell.swift */; };
 		3CCECDDC1DAF948900831242 /* HomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCECDDA1DAF948900831242 /* HomeViewCell.xib */; };
-		3CCF8AD21DA61AA900C76C64 /* SignupLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF8AD11DA61AA900C76C64 /* SignupLogin.storyboard */; };
 		3CCF8AD91DA621B300C76C64 /* LoginSignupTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AD81DA621B300C76C64 /* LoginSignupTableView.swift */; };
 		3CCF8AE01DA6231900C76C64 /* LogoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8ADE1DA6231900C76C64 /* LogoHeaderCell.swift */; };
 		3CCF8AE11DA6231900C76C64 /* LogoHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF8ADF1DA6231900C76C64 /* LogoHeaderCell.xib */; };
@@ -150,8 +167,13 @@
 		3C1EC58C1DA3A864003DC2A3 /* NullCaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullCaseView.swift; sourceTree = "<group>"; };
 		3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NullCaseView.xib; sourceTree = "<group>"; };
 		3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		3C4387ED1DA7827000F68125 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		3C4387F11DA7835500F68125 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewCell.xib; sourceTree = "<group>"; };
+		3C6763141DB0F1F8001F7A4A /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
+		3C6763151DB0F1F8001F7A4A /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
+		3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_CenterAllign.swift; sourceTree = "<group>"; };
 		3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_FontSizeButton.swift; sourceTree = "<group>"; };
 		3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Localizable.swift; sourceTree = "<group>"; };
@@ -164,8 +186,21 @@
 		3C9D13221DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_FontSizeTextView.swift; sourceTree = "<group>"; };
 		3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_Localizable.swift; sourceTree = "<group>"; };
 		3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarItem_Custom.swift; sourceTree = "<group>"; };
+		3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Medium.ttf"; sourceTree = "<group>"; };
+		3CAB0F961DB0BA090090BEF3 /* GroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
+		3CAB0F971DB0BA090090BEF3 /* GroupsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupsCell.xib; sourceTree = "<group>"; };
+		3CAB0F9B1DB0C0260090BEF3 /* Groups.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Groups.storyboard; sourceTree = "<group>"; };
+		3CAB0F9E1DB0C2B40090BEF3 /* GroupMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMembersViewController.swift; sourceTree = "<group>"; };
+		3CAB0FA11DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberDetailsViewController.swift; sourceTree = "<group>"; };
+		3CAB0FA51DB0D7AE0090BEF3 /* GroupMemberDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberDetailsCell.swift; sourceTree = "<group>"; };
+		3CAB0FA61DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupMemberDetailsCell.xib; sourceTree = "<group>"; };
+		3CAB0FAA1DB0D8900090BEF3 /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		3CAB0FAB1DB0D8900090BEF3 /* ProfileImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileImageCell.xib; sourceTree = "<group>"; };
 		3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
+		3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignupLogin.storyboard; sourceTree = "<group>"; };
+		3CAE70B51DB0A02B00D733C2 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		3CAE70B81DB0A03A00D733C2 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -196,7 +231,6 @@
 		3CCECDC81DAF915900831242 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
 		3CCECDD91DAF948900831242 /* HomeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		3CCECDDA1DAF948900831242 /* HomeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewCell.xib; sourceTree = "<group>"; };
-		3CCF8AD11DA61AA900C76C64 /* SignupLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignupLogin.storyboard; sourceTree = "<group>"; };
 		3CCF8AD81DA621B300C76C64 /* LoginSignupTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignupTableView.swift; sourceTree = "<group>"; };
 		3CCF8ADE1DA6231900C76C64 /* LogoHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoHeaderCell.swift; sourceTree = "<group>"; };
 		3CCF8ADF1DA6231900C76C64 /* LogoHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoHeaderCell.xib; sourceTree = "<group>"; };
@@ -345,6 +379,7 @@
 		3C1EC5541DA3A864003DC2A3 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */,
 				3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */,
 				3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */,
 			);
@@ -562,12 +597,12 @@
 		3C4387EC1DA7823B00F68125 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CAE70B41DB0A02B00D733C2 /* Storyboard */,
 				3CBD5C6B1DA7AF71004BCAE0 /* ChatsModule */,
 				3CBD5C6D1DA7AF71004BCAE0 /* GroupsModule */,
 				3CBD5C6F1DA7AF71004BCAE0 /* SettingsModule */,
 				3CBD5C711DA7AF71004BCAE0 /* TracksModule */,
 				3C4387EF1DA7832000F68125 /* HomeModule */,
-				3C4387ED1DA7827000F68125 /* TabBar.storyboard */,
 			);
 			path = TabBarModule;
 			sourceTree = "<group>";
@@ -575,6 +610,9 @@
 		3C4387EF1DA7832000F68125 /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CAE70B71DB0A03A00D733C2 /* Storyboard */,
+				3C7DA1D91DB0A5BA002C9A50 /* NotificationViewController */,
+				3C7DA1DA1DB0A5BA002C9A50 /* SearchViewController */,
 				3CCECD9D1DAF55C900831242 /* FiltersViewController */,
 				3C4387F01DA7832000F68125 /* HomeViewController */,
 			);
@@ -588,6 +626,49 @@
 				3C4387F11DA7835500F68125 /* HomeViewController.swift */,
 			);
 			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		3C67630D1DB0EA7B001F7A4A /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3C67630E1DB0EA7B001F7A4A /* SeparatorCell */,
+				3C67630F1DB0EA7B001F7A4A /* SettingsViewCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3C67630E1DB0EA7B001F7A4A /* SeparatorCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C6763141DB0F1F8001F7A4A /* SeparatorCell.swift */,
+				3C6763151DB0F1F8001F7A4A /* SeparatorCell.xib */,
+			);
+			path = SeparatorCell;
+			sourceTree = "<group>";
+		};
+		3C67630F1DB0EA7B001F7A4A /* SettingsViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */,
+				3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */,
+			);
+			path = SettingsViewCell;
+			sourceTree = "<group>";
+		};
+		3C7DA1D91DB0A5BA002C9A50 /* NotificationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */,
+			);
+			path = NotificationViewController;
+			sourceTree = "<group>";
+		};
+		3C7DA1DA1DB0A5BA002C9A50 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */,
+			);
+			path = SearchViewController;
 			sourceTree = "<group>";
 		};
 		3C9D13121DA3CE5800998DA2 /* CustomViews */ = {
@@ -658,6 +739,99 @@
 			path = UITextView;
 			sourceTree = "<group>";
 		};
+		3CAB0F941DB0B9C10090BEF3 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0F951DB0B9C10090BEF3 /* GroupsCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CAB0F951DB0B9C10090BEF3 /* GroupsCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0F961DB0BA090090BEF3 /* GroupsCell.swift */,
+				3CAB0F971DB0BA090090BEF3 /* GroupsCell.xib */,
+			);
+			path = GroupsCell;
+			sourceTree = "<group>";
+		};
+		3CAB0F9A1DB0C0190090BEF3 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0F9B1DB0C0260090BEF3 /* Groups.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3CAB0F9D1DB0C29C0090BEF3 /* GroupMembersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0F9E1DB0C2B40090BEF3 /* GroupMembersViewController.swift */,
+			);
+			path = GroupMembersViewController;
+			sourceTree = "<group>";
+		};
+		3CAB0FA01DB0D6F10090BEF3 /* GroupMemberDeatilsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0FA31DB0D7910090BEF3 /* CustomCells */,
+				3CAB0FA11DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift */,
+			);
+			path = GroupMemberDeatilsViewController;
+			sourceTree = "<group>";
+		};
+		3CAB0FA31DB0D7910090BEF3 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0FA91DB0D8710090BEF3 /* ProfileImageCell */,
+				3CAB0FA41DB0D7910090BEF3 /* GroupMemberDeailsCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CAB0FA41DB0D7910090BEF3 /* GroupMemberDeailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0FA51DB0D7AE0090BEF3 /* GroupMemberDetailsCell.swift */,
+				3CAB0FA61DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib */,
+			);
+			path = GroupMemberDeailsCell;
+			sourceTree = "<group>";
+		};
+		3CAB0FA91DB0D8710090BEF3 /* ProfileImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CAB0FAA1DB0D8900090BEF3 /* ProfileImageCell.swift */,
+				3CAB0FAB1DB0D8900090BEF3 /* ProfileImageCell.xib */,
+			);
+			path = ProfileImageCell;
+			sourceTree = "<group>";
+		};
+		3CAE70B11DB0A01D00D733C2 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3CAE70B41DB0A02B00D733C2 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3CAE70B51DB0A02B00D733C2 /* TabBar.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3CAE70B71DB0A03A00D733C2 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3CAE70B81DB0A03A00D733C2 /* Home.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		3CBD5C6B1DA7AF71004BCAE0 /* ChatsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,6 +851,9 @@
 		3CBD5C6D1DA7AF71004BCAE0 /* GroupsModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CAB0F9A1DB0C0190090BEF3 /* Storyboard */,
+				3CAB0FA01DB0D6F10090BEF3 /* GroupMemberDeatilsViewController */,
+				3CAB0F9D1DB0C29C0090BEF3 /* GroupMembersViewController */,
 				3CBD5C6E1DA7AF71004BCAE0 /* GroupsViewController */,
 			);
 			path = GroupsModule;
@@ -685,6 +862,7 @@
 		3CBD5C6E1DA7AF71004BCAE0 /* GroupsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3CAB0F941DB0B9C10090BEF3 /* CustomCells */,
 				3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */,
 			);
 			path = GroupsViewController;
@@ -701,6 +879,7 @@
 		3CBD5C701DA7AF71004BCAE0 /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3C67630D1DB0EA7B001F7A4A /* CustomCells */,
 				3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */,
 			);
 			path = SettingsViewController;
@@ -850,10 +1029,10 @@
 		3CCF8ACE1DA61A9500C76C64 /* SignupLoginModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CAE70B11DB0A01D00D733C2 /* Storyboard */,
 				3CCF8AD71DA6219800C76C64 /* LoginSignupTableView */,
 				3CCF8AD51DA6217B00C76C64 /* LoginViewController */,
 				3CCF8AF31DA6360300C76C64 /* SignUpViewController */,
-				3CCF8AD11DA61AA900C76C64 /* SignupLogin.storyboard */,
 			);
 			path = SignupLoginModule;
 			sourceTree = "<group>";
@@ -1102,10 +1281,15 @@
 				3CCECDD51DAF915900831242 /* 8.jpg in Resources */,
 				3CCECDC91DAF915900831242 /* 0.jpg in Resources */,
 				3CCECDCA1DAF915900831242 /* 1.jpg in Resources */,
+				3CAB0FA81DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib in Resources */,
 				3CCECDD61DAF915900831242 /* 9.jpg in Resources */,
 				3CCF8AFE1DA65F5F00C76C64 /* DetailsCell_AdditionalImageView.xib in Resources */,
 				3CCECDDC1DAF948900831242 /* HomeViewCell.xib in Resources */,
+				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
+				3CAB0FAD1DB0D8900090BEF3 /* ProfileImageCell.xib in Resources */,
+				3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */,
 				3CCECDD21DAF915900831242 /* 5.jpg in Resources */,
+				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
 				3CCECDD01DAF915900831242 /* 3.jpg in Resources */,
@@ -1113,23 +1297,26 @@
 				3CCECDD41DAF915900831242 /* 7.jpg in Resources */,
 				3CCECDCF1DAF915900831242 /* 2.jpg in Resources */,
 				3CCF8AE11DA6231900C76C64 /* LogoHeaderCell.xib in Resources */,
-				3CCF8AD21DA61AA900C76C64 /* SignupLogin.storyboard in Resources */,
+				3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */,
 				3CCECDCD1DAF915900831242 /* 12.jpg in Resources */,
 				3CCF8AE91DA6278C00C76C64 /* DetailsScrollableCell.xib in Resources */,
 				3CCECDD11DAF915900831242 /* 4.jpg in Resources */,
 				3CCECDD31DAF915900831242 /* 6.jpg in Resources */,
 				3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */,
 				3CCECDCB1DAF915900831242 /* 10.jpg in Resources */,
+				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
+				3CAB0F991DB0BA090090BEF3 /* GroupsCell.xib in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
 				3CCECDCC1DAF915900831242 /* 11.jpg in Resources */,
 				3CCECDCE1DAF915900831242 /* 13.jpg in Resources */,
 				3CCF8AE51DA6247800C76C64 /* ButtonCell.xib in Resources */,
-				3C4387EE1DA7827000F68125 /* TabBar.storyboard in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
 				3CCECDB31DAF6AA200831242 /* PropertiesCell.xib in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
 				3CCF8AF21DA62B2D00C76C64 /* DetailsCell.xib in Resources */,
+				3CAB0F9C1DB0C0260090BEF3 /* Groups.storyboard in Resources */,
 				3CCF8AFB1DA6560F00C76C64 /* ButtonCell_GooglePlus.xib in Resources */,
+				3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */,
 				3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1278,8 +1465,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */,
 				3CCECDAC1DAF69EB00831242 /* PropertiesTableView.swift in Sources */,
 				3C9D13281DA3CE5800998DA2 /* UIImageView_RoundImageView.swift in Sources */,
+				3CAB0FA21DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift in Sources */,
+				3CAB0F9F1DB0C2B40090BEF3 /* GroupMembersViewController.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
 				3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */,
@@ -1294,6 +1484,7 @@
 				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
+				3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */,
 				3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */,
 				3CCF8AE41DA6247800C76C64 /* ButtonCell.swift in Sources */,
 				3C1EC5941DA3A864003DC2A3 /* CommonViewController.swift in Sources */,
@@ -1305,18 +1496,22 @@
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,
+				3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */,
 				3CCECDDB1DAF948900831242 /* HomeViewCell.swift in Sources */,
 				3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */,
 				3C1EC5971DA3A864003DC2A3 /* NSDate_Common.swift in Sources */,
 				3C9D132C1DA3CE5800998DA2 /* UITextField_Localizable.swift in Sources */,
 				3CCF8AF11DA62B2D00C76C64 /* DetailsCell.swift in Sources */,
+				3CAB0FAC1DB0D8900090BEF3 /* ProfileImageCell.swift in Sources */,
 				3C1EC5AB1DA3A864003DC2A3 /* VNProgreessHUD.swift in Sources */,
 				3C1EC59F1DA3A864003DC2A3 /* UIColor_Common.swift in Sources */,
+				3CAB0F981DB0BA090090BEF3 /* GroupsCell.swift in Sources */,
 				3C9D13271DA3CE5800998DA2 /* UIButton_RoundButton.swift in Sources */,
 				3C1EC5AD1DA3A864003DC2A3 /* Reachability.swift in Sources */,
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,
+				3CAB0FA71DB0D7AE0090BEF3 /* GroupMemberDetailsCell.swift in Sources */,
 				3CCF8B001DA6652600C76C64 /* LoginViewController.swift in Sources */,
 				3C1EC5961DA3A864003DC2A3 /* AppDelegate_Common.swift in Sources */,
 				3CCF8AF81DA64B1000C76C64 /* CommonMethods.swift in Sources */,
@@ -1328,6 +1523,7 @@
 				3C9D132A1DA3CE5800998DA2 /* UILabel_Localizable.swift in Sources */,
 				3C1EC59A1DA3A864003DC2A3 /* UIAlertController_Common.swift in Sources */,
 				3C1EC5921DA3A864003DC2A3 /* ActionableHealth.xcdatamodeld in Sources */,
+				3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */,
 				3CCF8AE81DA6278C00C76C64 /* DetailsScrollableCell.swift in Sources */,
 				3C1EC5951DA3A864003DC2A3 /* CommonViewController_CommonMethods.swift in Sources */,
 				3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */,
@@ -1480,11 +1676,13 @@
 			baseConfigurationReference = C3346372087476E9DB865E13 /* Pods-ActionableHealth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00c78739-51ea-4c99-a957-1c57b8c86756";
 			};
 			name = Release;
 		};

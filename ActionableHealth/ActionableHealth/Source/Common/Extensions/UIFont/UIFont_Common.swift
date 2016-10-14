@@ -37,7 +37,7 @@ extension UIFont {
     }
 
     class func getAppTitleFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "ProximaNova-Regular", size: size)
+        return UIFont(name: "ProximaNovaSW07-Medium", size: size)
     }
     class func getAppRegularFontWithSize(size:CGFloat) -> UIFont?{
         return UIFont(name: "ProximaNova-Regular", size: size)

@@ -24,6 +24,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>ProximaNova-Medium.ttf</string>
 		<string>ProximaNova-Semibold.otf</string>
 		<string>ProximaNova-Regular.otf</string>
 	</array>

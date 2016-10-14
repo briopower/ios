@@ -14,10 +14,8 @@ class UITabBarItem_Custom: UITabBarItem {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setImages()
-        self.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        self.imageInsets = UIEdgeInsets(top: 5.4, left: 0, bottom: -5.4, right: 0)
         self.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 15)
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().backgroundImage = UIImage(named: "tabBarBG")
     }
 
     func setImages() {

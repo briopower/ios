@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SF-UI-Display-Regular.otf">
+            <string>SFUIDisplay-Regular</string>
+            <string>SFUIDisplay-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="161" id="KGk-i7-Jjw" customClass="RecievedMessageCell" customModule="ActionableHealth" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="161"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lNv-jS-K2P">
+                        <rect key="frame" x="32" y="4" width="229" height="150"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recievedMessage" translatesAutoresizingMaskIntoConstraints="NO" id="zJb-pm-AXz">
+                                <rect key="frame" x="0.0" y="0.0" width="229" height="155"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="2 min ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwD-ve-LyW" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="24" y="130" width="58" height="16"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="13"/>
+                                <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin ." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3W-gx-TSM" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="24" y="8" width="193" height="122"/>
+                                <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14.659999847412109"/>
+                                <color key="textColor" red="0.1843137255" green="0.1215686275" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="S3W-gx-TSM" secondAttribute="trailing" constant="12" id="0tY-jd-RJH"/>
+                            <constraint firstItem="WwD-ve-LyW" firstAttribute="top" secondItem="S3W-gx-TSM" secondAttribute="bottom" id="8Ll-P0-49R"/>
+                            <constraint firstItem="zJb-pm-AXz" firstAttribute="leading" secondItem="lNv-jS-K2P" secondAttribute="leading" id="B4b-QS-RXW"/>
+                            <constraint firstAttribute="bottom" secondItem="zJb-pm-AXz" secondAttribute="bottom" constant="-5" id="LH2-fF-CSl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WwD-ve-LyW" secondAttribute="trailing" constant="12" id="Pk8-yy-yiQ"/>
+                            <constraint firstAttribute="trailing" secondItem="zJb-pm-AXz" secondAttribute="trailing" id="paf-iO-5VD"/>
+                            <constraint firstItem="S3W-gx-TSM" firstAttribute="leading" secondItem="WwD-ve-LyW" secondAttribute="leading" id="qZW-QD-Kc6"/>
+                            <constraint firstItem="zJb-pm-AXz" firstAttribute="top" secondItem="lNv-jS-K2P" secondAttribute="top" id="u76-jl-TAJ"/>
+                            <constraint firstItem="S3W-gx-TSM" firstAttribute="top" secondItem="lNv-jS-K2P" secondAttribute="top" constant="8" id="vMy-Gp-bhb"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nkv-Fc-2xl" customClass="UIImageView_RoundImageView" customModule="ActionableHealth" customModuleProvider="target">
+                        <rect key="frame" x="12" y="122" width="28" height="28"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="nkv-Fc-2xl" secondAttribute="height" multiplier="1:1" id="9fU-El-ops"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3d-uW-ikZ">
+                        <rect key="frame" x="12" y="122" width="28" height="28"/>
+                        <connections>
+                            <action selector="userTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TYa-JM-LIY"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="lNv-jS-K2P" secondAttribute="bottom" constant="6" id="8hv-t8-dmP"/>
+                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="centerY" secondItem="nkv-Fc-2xl" secondAttribute="centerY" id="BSu-MR-dLP"/>
+                    <constraint firstItem="nkv-Fc-2xl" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="110:1242" id="GYy-FM-3xT"/>
+                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="centerX" secondItem="nkv-Fc-2xl" secondAttribute="centerX" id="K8r-dG-cDU"/>
+                    <constraint firstItem="nkv-Fc-2xl" firstAttribute="width" secondItem="nkv-Fc-2xl" secondAttribute="height" multiplier="1:1" id="MiO-U5-Leq"/>
+                    <constraint firstItem="nkv-Fc-2xl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Msv-Kw-UAb"/>
+                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="width" secondItem="nkv-Fc-2xl" secondAttribute="width" id="Srb-8T-ECe"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lNv-jS-K2P" secondAttribute="trailing" constant="32" id="USD-ug-U9I"/>
+                    <constraint firstItem="lNv-jS-K2P" firstAttribute="leading" secondItem="nkv-Fc-2xl" secondAttribute="trailing" constant="-8" id="aXj-fk-Uc2"/>
+                    <constraint firstItem="lNv-jS-K2P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="cK7-nX-afc"/>
+                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="height" secondItem="nkv-Fc-2xl" secondAttribute="height" id="fVK-yX-5Ru"/>
+                    <constraint firstItem="WwD-ve-LyW" firstAttribute="bottom" secondItem="nkv-Fc-2xl" secondAttribute="bottom" id="pcx-sL-FIg"/>
+                    <constraint firstAttribute="bottom" secondItem="nkv-Fc-2xl" secondAttribute="bottom" constant="10" id="tTc-FT-cdg"/>
+                    <constraint firstItem="WwD-ve-LyW" firstAttribute="leading" secondItem="nkv-Fc-2xl" secondAttribute="trailing" constant="16" id="tzN-LK-L6b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="messageLabel" destination="S3W-gx-TSM" id="IpB-V8-9t3"/>
+                <outlet property="profileIcon" destination="nkv-Fc-2xl" id="LdM-lk-rZb"/>
+                <outlet property="timeLabel" destination="WwD-ve-LyW" id="d0J-Vb-BfY"/>
+            </connections>
+            <point key="canvasLocation" x="279" y="158.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="recievedMessage" width="36" height="28"/>
+    </resources>
+</document>

@@ -6,7 +6,8 @@ target 'ActionableHealth' do
     pod 'Alamofire'
     pod 'TPKeyboardAvoiding'
     pod 'HCSStarRatingView'
-    
+    pod 'DAKeyboardControl'
+
   target 'ActionableHealthTests' do
     inherit! :search_paths
     # Pods for testing

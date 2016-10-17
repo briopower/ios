@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (3.5.1)
+  - DAKeyboardControl (2.4.0)
   - HCSStarRatingView (1.4.5)
   - TPKeyboardAvoiding (1.3)
 
 DEPENDENCIES:
   - Alamofire
+  - DAKeyboardControl
   - HCSStarRatingView
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
+  DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: bfabfb0b74223d271104275dfb84681a6a1f49f9
+PODFILE CHECKSUM: 0ed0a483b7b94dafdca5d66df0f0730bb2afdb68
 
 COCOAPODS: 1.0.0

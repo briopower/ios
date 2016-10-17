@@ -28,6 +28,7 @@ class CommonViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.dissmissKeyboard()
+//        self.tabBarController?.tabBar.hidden = true
     }
 
     override func viewWillDisappear(animated: Bool) {

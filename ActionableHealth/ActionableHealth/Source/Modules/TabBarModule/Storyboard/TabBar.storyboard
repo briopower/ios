@@ -62,11 +62,30 @@
                     <view key="view" contentMode="scaleToFill" id="Uzd-Ze-DRq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uxY-UU-0UW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5ce-bV-DGT" id="VDj-dO-hZH"/>
+                                    <outlet property="delegate" destination="5ce-bV-DGT" id="hTK-xF-EcJ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uxY-UU-0UW" firstAttribute="top" secondItem="Uzd-Ze-DRq" secondAttribute="top" id="Jn2-0r-B6X"/>
+                            <constraint firstAttribute="trailing" secondItem="uxY-UU-0UW" secondAttribute="trailing" id="RvM-ir-AJ7"/>
+                            <constraint firstItem="zeC-VH-BAx" firstAttribute="top" secondItem="uxY-UU-0UW" secondAttribute="bottom" id="ZYC-N6-xsd"/>
+                            <constraint firstItem="uxY-UU-0UW" firstAttribute="leading" secondItem="Uzd-Ze-DRq" secondAttribute="leading" id="e3y-nm-9Z5"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Chat" id="eH4-ek-7qM" customClass="UITabBarItem_Custom" customModule="ActionableHealth" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="messagesListTblView" destination="uxY-UU-0UW" id="fU5-Ny-6X5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIh-UO-Tzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

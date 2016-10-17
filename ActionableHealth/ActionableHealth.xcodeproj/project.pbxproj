@@ -39,6 +39,15 @@
 		3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763151DB0F1F8001F7A4A /* SeparatorCell.xib */; };
 		3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */; };
 		3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */; };
+		3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */; };
+		3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */; };
+		3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */; };
+		3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C9641331DB4D73500EE9676 /* Chats.storyboard */; };
+		3C9641371DB4DA6E00EE9676 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9641361DB4DA6E00EE9676 /* MessagingViewController.swift */; };
+		3C96413F1DB4DACC00EE9676 /* RecievedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96413A1DB4DACC00EE9676 /* RecievedMessageCell.swift */; };
+		3C9641401DB4DACC00EE9676 /* RecievedMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96413B1DB4DACC00EE9676 /* RecievedMessageCell.xib */; };
+		3C9641411DB4DACC00EE9676 /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96413D1DB4DACC00EE9676 /* SentMessageCell.swift */; };
+		3C9641421DB4DACC00EE9676 /* SentMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96413E1DB4DACC00EE9676 /* SentMessageCell.xib */; };
 		3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */; };
 		3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */; };
 		3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */; };
@@ -180,6 +189,15 @@
 		3C6763151DB0F1F8001F7A4A /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
 		3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidingViewController.swift; sourceTree = "<group>"; };
+		3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListCell.swift; sourceTree = "<group>"; };
+		3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
+		3C9641331DB4D73500EE9676 /* Chats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
+		3C9641361DB4DA6E00EE9676 /* MessagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
+		3C96413A1DB4DACC00EE9676 /* RecievedMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecievedMessageCell.swift; sourceTree = "<group>"; };
+		3C96413B1DB4DACC00EE9676 /* RecievedMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecievedMessageCell.xib; sourceTree = "<group>"; };
+		3C96413D1DB4DACC00EE9676 /* SentMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
+		3C96413E1DB4DACC00EE9676 /* SentMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentMessageCell.xib; sourceTree = "<group>"; };
 		3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_CenterAllign.swift; sourceTree = "<group>"; };
 		3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_FontSizeButton.swift; sourceTree = "<group>"; };
 		3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Localizable.swift; sourceTree = "<group>"; };
@@ -443,6 +461,7 @@
 		3C1EC55A1DA3A864003DC2A3 /* CommonViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */,
 				3C1EC55B1DA3A864003DC2A3 /* CommonViewController.swift */,
 				3C1EC55C1DA3A864003DC2A3 /* CommonViewController_CommonMethods.swift */,
 			);
@@ -683,6 +702,67 @@
 			path = SearchViewController;
 			sourceTree = "<group>";
 		};
+		3C96412C1DB4CD6100EE9676 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3C96412D1DB4CD6100EE9676 /* MessageListCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3C96412D1DB4CD6100EE9676 /* MessageListCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */,
+				3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */,
+			);
+			path = MessageListCell;
+			sourceTree = "<group>";
+		};
+		3C9641321DB4D72B00EE9676 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3C9641331DB4D73500EE9676 /* Chats.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3C9641351DB4DA5300EE9676 /* MessagingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C9641381DB4DACC00EE9676 /* CustomCells */,
+				3C9641361DB4DA6E00EE9676 /* MessagingViewController.swift */,
+			);
+			path = MessagingViewController;
+			sourceTree = "<group>";
+		};
+		3C9641381DB4DACC00EE9676 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3C9641391DB4DACC00EE9676 /* RecievedMessageCell */,
+				3C96413C1DB4DACC00EE9676 /* SentMessageCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3C9641391DB4DACC00EE9676 /* RecievedMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C96413A1DB4DACC00EE9676 /* RecievedMessageCell.swift */,
+				3C96413B1DB4DACC00EE9676 /* RecievedMessageCell.xib */,
+			);
+			path = RecievedMessageCell;
+			sourceTree = "<group>";
+		};
+		3C96413C1DB4DACC00EE9676 /* SentMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C96413D1DB4DACC00EE9676 /* SentMessageCell.swift */,
+				3C96413E1DB4DACC00EE9676 /* SentMessageCell.xib */,
+			);
+			path = SentMessageCell;
+			sourceTree = "<group>";
+		};
 		3C9D13121DA3CE5800998DA2 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,6 +927,8 @@
 		3CBD5C6B1DA7AF71004BCAE0 /* ChatsModule */ = {
 			isa = PBXGroup;
 			children = (
+				3C9641321DB4D72B00EE9676 /* Storyboard */,
+				3C9641351DB4DA5300EE9676 /* MessagingViewController */,
 				3CBD5C6C1DA7AF71004BCAE0 /* ChatsViewController */,
 			);
 			path = ChatsModule;
@@ -855,6 +937,7 @@
 		3CBD5C6C1DA7AF71004BCAE0 /* ChatsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3C96412C1DB4CD6100EE9676 /* CustomCells */,
 				3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */,
 			);
 			path = ChatsViewController;
@@ -1330,6 +1413,7 @@
 			files = (
 				3CCECDD51DAF915900831242 /* 8.jpg in Resources */,
 				3CCECDC91DAF915900831242 /* 0.jpg in Resources */,
+				3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */,
 				3CCECDCA1DAF915900831242 /* 1.jpg in Resources */,
 				3CAB0FA81DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib in Resources */,
 				3CCECDD61DAF915900831242 /* 9.jpg in Resources */,
@@ -1341,10 +1425,12 @@
 				3CCECDD21DAF915900831242 /* 5.jpg in Resources */,
 				3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */,
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
+				3C9641401DB4DACC00EE9676 /* RecievedMessageCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
 				3CCECDD01DAF915900831242 /* 3.jpg in Resources */,
 				3CCF8AFC1DA6560F00C76C64 /* ButtonCell_OrSeperator.xib in Resources */,
+				3C9641421DB4DACC00EE9676 /* SentMessageCell.xib in Resources */,
 				3CCECDD41DAF915900831242 /* 7.jpg in Resources */,
 				3CCECDCF1DAF915900831242 /* 2.jpg in Resources */,
 				3CCF8AE11DA6231900C76C64 /* LogoHeaderCell.xib in Resources */,
@@ -1359,6 +1445,7 @@
 				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
 				3CAB0F991DB0BA090090BEF3 /* GroupsCell.xib in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
+				3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */,
 				3CCECDCC1DAF915900831242 /* 11.jpg in Resources */,
 				3CCECDCE1DAF915900831242 /* 13.jpg in Resources */,
 				3CCF8AE51DA6247800C76C64 /* ButtonCell.xib in Resources */,
@@ -1540,6 +1627,7 @@
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
+				3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */,
 				3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */,
 				3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */,
 				3CCF8AE41DA6247800C76C64 /* ButtonCell.swift in Sources */,
@@ -1556,6 +1644,7 @@
 				3CCECDDB1DAF948900831242 /* HomeViewCell.swift in Sources */,
 				3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */,
 				3C1EC5971DA3A864003DC2A3 /* NSDate_Common.swift in Sources */,
+				3C9641371DB4DA6E00EE9676 /* MessagingViewController.swift in Sources */,
 				3C9D132C1DA3CE5800998DA2 /* UITextField_Localizable.swift in Sources */,
 				3CCF8AF11DA62B2D00C76C64 /* DetailsCell.swift in Sources */,
 				3CAB0FAC1DB0D8900090BEF3 /* ProfileImageCell.swift in Sources */,
@@ -1565,6 +1654,7 @@
 				3C9D13271DA3CE5800998DA2 /* UIButton_RoundButton.swift in Sources */,
 				3C1EC5AD1DA3A864003DC2A3 /* Reachability.swift in Sources */,
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
+				3C96413F1DB4DACC00EE9676 /* RecievedMessageCell.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,
 				3CAB0FA71DB0D7AE0090BEF3 /* GroupMemberDetailsCell.swift in Sources */,
@@ -1575,6 +1665,8 @@
 				3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */,
 				3C1EC5991DA3A864003DC2A3 /* String_Common.swift in Sources */,
 				3CCF8AD91DA621B300C76C64 /* LoginSignupTableView.swift in Sources */,
+				3C9641411DB4DACC00EE9676 /* SentMessageCell.swift in Sources */,
+				3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */,
 				3C1EC5A11DA3A864003DC2A3 /* UIFont_Common.swift in Sources */,
 				3C9D132A1DA3CE5800998DA2 /* UILabel_Localizable.swift in Sources */,
 				3C1EC59A1DA3A864003DC2A3 /* UIAlertController_Common.swift in Sources */,

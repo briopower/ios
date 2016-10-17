@@ -61,26 +61,16 @@
                             <constraint firstAttribute="width" secondItem="nkv-Fc-2xl" secondAttribute="height" multiplier="1:1" id="9fU-El-ops"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3d-uW-ikZ">
-                        <rect key="frame" x="12" y="122" width="28" height="28"/>
-                        <connections>
-                            <action selector="userTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TYa-JM-LIY"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="lNv-jS-K2P" secondAttribute="bottom" constant="6" id="8hv-t8-dmP"/>
-                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="centerY" secondItem="nkv-Fc-2xl" secondAttribute="centerY" id="BSu-MR-dLP"/>
                     <constraint firstItem="nkv-Fc-2xl" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="110:1242" id="GYy-FM-3xT"/>
-                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="centerX" secondItem="nkv-Fc-2xl" secondAttribute="centerX" id="K8r-dG-cDU"/>
                     <constraint firstItem="nkv-Fc-2xl" firstAttribute="width" secondItem="nkv-Fc-2xl" secondAttribute="height" multiplier="1:1" id="MiO-U5-Leq"/>
                     <constraint firstItem="nkv-Fc-2xl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Msv-Kw-UAb"/>
-                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="width" secondItem="nkv-Fc-2xl" secondAttribute="width" id="Srb-8T-ECe"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lNv-jS-K2P" secondAttribute="trailing" constant="32" id="USD-ug-U9I"/>
                     <constraint firstItem="lNv-jS-K2P" firstAttribute="leading" secondItem="nkv-Fc-2xl" secondAttribute="trailing" constant="-8" id="aXj-fk-Uc2"/>
                     <constraint firstItem="lNv-jS-K2P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="cK7-nX-afc"/>
-                    <constraint firstItem="C3d-uW-ikZ" firstAttribute="height" secondItem="nkv-Fc-2xl" secondAttribute="height" id="fVK-yX-5Ru"/>
                     <constraint firstItem="WwD-ve-LyW" firstAttribute="bottom" secondItem="nkv-Fc-2xl" secondAttribute="bottom" id="pcx-sL-FIg"/>
                     <constraint firstAttribute="bottom" secondItem="nkv-Fc-2xl" secondAttribute="bottom" constant="10" id="tTc-FT-cdg"/>
                     <constraint firstItem="WwD-ve-LyW" firstAttribute="leading" secondItem="nkv-Fc-2xl" secondAttribute="trailing" constant="16" id="tzN-LK-L6b"/>

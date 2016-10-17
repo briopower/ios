@@ -17,7 +17,7 @@ class CommonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNavigationController()?.delegate = self
-
+        
     }
 
     override func didReceiveMemoryWarning() {

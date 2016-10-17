@@ -26,19 +26,12 @@ let DoneButtonImage = UIImage(named: "cut")
 
 //MARK: Navigation Controller Delegate
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
-    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool){
-        if navigationController.childViewControllers.count > 1{
-            navigationController.interactivePopGestureRecognizer?.enabled = true
-            navigationController.interactivePopGestureRecognizer?.delegate = self
-        }else{
-            navigationController.interactivePopGestureRecognizer?.enabled = false
-            navigationController.interactivePopGestureRecognizer?.delegate = nil
-        }
-    }
 
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         self.dissmissKeyboard()
         viewController.view?.endEditing(true)
+        navigationController.interactivePopGestureRecognizer?.enabled = true
+        navigationController.interactivePopGestureRecognizer?.delegate = self
     }
 }
 //MARK: NavigationBar Setup

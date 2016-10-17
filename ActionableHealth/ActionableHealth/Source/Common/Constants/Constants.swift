@@ -14,19 +14,16 @@ class Constants: NSObject {
     struct Storyboard {
         struct LoginStoryboard {
             static let storyboardName = "SignupLogin"
-            static let storyboardRestorationId = "SignupLogin"
             static let SignupView = "signupView"
             static let LoginView = "loginView"
         }
 
         struct TabBarStoryboard {
             static let storyboardName = "TabBar"
-            static let storyboardRestorationId = "TabBar"
         }
 
         struct HomeStoryboard {
             static let storyboardName = "Home"
-            static let storyboardRestorationId = "Home"
             static let filtersView = "filtersView"
             static let searchView = "searchView"
             static let notificationNavigationView = "notificationNavigationView"
@@ -38,6 +35,11 @@ class Constants: NSObject {
             static let storyboardRestorationId = "Groups"
             static let groupMemberView = "groupMemberView"
             static let memberDetailsView = "memberDetailsView"
+        }
+
+        struct SettingsStoryboard {
+            static let storyboardName = "Settings"
+            static let editProfileView = "editProfileView"
         }
 
     }

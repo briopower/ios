@@ -71,6 +71,10 @@ extension SettingsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let type = SettingsCellType(rawValue: indexPath.row) {
             switch type {
+            case .Edit_Profile:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
+                    self.navigationController?.pushViewController(viewCont, animated: true)
+                }
             case .Notification:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.notificationView) as? NotificationsViewController {
                     self.navigationController?.pushViewController(viewCont, animated: true)

@@ -59,6 +59,7 @@ extension GroupMemberDetailsViewController:UITableViewDataSource{
             switch type {
             case .Image:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(ProfileImageCell)) as? ProfileImageCell {
+                    cell.configureForMemberImageCell()
                     return cell
                 }
             default:

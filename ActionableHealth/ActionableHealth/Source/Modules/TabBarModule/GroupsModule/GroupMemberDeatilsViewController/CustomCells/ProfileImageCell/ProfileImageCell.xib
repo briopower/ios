@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -27,12 +28,18 @@
                                     <constraint firstAttribute="height" constant="1" id="I4c-pA-SFe"/>
                                 </constraints>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cj-aE-6BU">
+                                <rect key="frame" x="276" y="144" width="15" height="18"/>
+                                <state key="normal" image="cut"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gYm-f3-5Z6" secondAttribute="trailing" id="AsS-qH-Bpv"/>
                             <constraint firstItem="gYm-f3-5Z6" firstAttribute="top" secondItem="gQt-bd-xrv" secondAttribute="top" id="Eqs-IP-kbp"/>
                             <constraint firstItem="GIE-B0-6kV" firstAttribute="leading" secondItem="gQt-bd-xrv" secondAttribute="leading" id="FjD-BY-1fF"/>
+                            <constraint firstItem="5cj-aE-6BU" firstAttribute="centerY" secondItem="gQt-bd-xrv" secondAttribute="centerY" multiplier="630:385" id="JNo-Qj-4t9"/>
+                            <constraint firstItem="5cj-aE-6BU" firstAttribute="centerX" secondItem="gQt-bd-xrv" secondAttribute="centerX" multiplier="1100:621" id="RDK-I6-hbI"/>
                             <constraint firstAttribute="bottom" secondItem="gYm-f3-5Z6" secondAttribute="bottom" id="UBd-lL-2jR"/>
                             <constraint firstAttribute="width" secondItem="gQt-bd-xrv" secondAttribute="height" multiplier="1242:760" priority="999" id="Z7J-mN-3xC"/>
                             <constraint firstItem="gYm-f3-5Z6" firstAttribute="leading" secondItem="gQt-bd-xrv" secondAttribute="leading" id="eKP-b1-7Ga"/>
@@ -48,10 +55,15 @@
                     <constraint firstAttribute="bottom" secondItem="gQt-bd-xrv" secondAttribute="bottom" id="zKE-Wm-wMH"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="editButton" destination="5cj-aE-6BU" id="4DQ-7J-YtV"/>
+                <outlet property="profileImage" destination="gYm-f3-5Z6" id="lCL-SH-gna"/>
+            </connections>
             <point key="canvasLocation" x="480" y="456"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="cut" width="15" height="15"/>
         <image name="logo" width="131" height="35"/>
     </resources>
 </document>

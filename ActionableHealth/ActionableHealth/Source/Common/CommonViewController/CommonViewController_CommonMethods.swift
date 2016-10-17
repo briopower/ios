@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search_Notification, Cross
+    case Empty, None, Back, Search_Notification, Cross, Done
 }
 
 enum BarButtonPosition {
@@ -21,6 +21,7 @@ let BackButtonImage = UIImage(named: "back-btn")
 let SearchButtonImage = UIImage(named: "search")
 let NotificationButtonImage = UIImage(named: "notification")
 let CrossButtonImage = UIImage(named: "cut")
+let DoneButtonImage = UIImage(named: "cut")
 
 
 //MARK: Navigation Controller Delegate
@@ -99,6 +100,8 @@ extension CommonViewController{
             barButton1 = UIBarButtonItem(customView:getButtonWithImage(SearchButtonImage,Action: #selector(self.searchButtonAction(_:))))
         case .Cross:
             barButton = UIBarButtonItem(customView:getButtonWithImage(CrossButtonImage,Action: #selector(self.crossButtonAction(_:))))
+        case .Done:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(DoneButtonImage,Action: #selector(self.doneButtonAction(_:))))
 
         }
 
@@ -197,6 +200,9 @@ extension CommonViewController{
     @IBAction func notificationButtonAction(sender:UIButton?){
     }
     @IBAction func crossButtonAction(sender:UIButton?){
+    }
+    @IBAction func doneButtonAction(sender:UIButton?){
+        self.dissmissKeyboard()
     }
 }
 

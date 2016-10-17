@@ -114,6 +114,12 @@
 		3CCF8B001DA6652600C76C64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */; };
 		3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */; };
 		3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B051DA6682300C76C64 /* Constants.swift */; };
+		3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAE91DB4A08E0067387F /* Settings.storyboard */; };
+		3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF6AAEB1DB4A1030067387F /* EditProfileViewController.swift */; };
+		3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF6AAF01DB4A4F80067387F /* EditProfileDetailsCell.swift */; };
+		3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAF11DB4A4F80067387F /* EditProfileDetailsCell.xib */; };
+		3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */; };
+		3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */; };
 		3DADFB9880771B64955ED386 /* Pods_ActionableHealthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
 /* End PBXBuildFile section */
@@ -249,6 +255,12 @@
 		3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
 		3CCF8B051DA6682300C76C64 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3CF6AAE91DB4A08E0067387F /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		3CF6AAEB1DB4A1030067387F /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		3CF6AAF01DB4A4F80067387F /* EditProfileDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileDetailsCell.swift; sourceTree = "<group>"; };
+		3CF6AAF11DB4A4F80067387F /* EditProfileDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell.xib; sourceTree = "<group>"; };
+		3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_TextView.xib; sourceTree = "<group>"; };
+		3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_Name.xib; sourceTree = "<group>"; };
 		448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E175286D6CB4870D551118E /* Pods-ActionableHealthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthTests/Pods-ActionableHealthTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -871,6 +883,8 @@
 		3CBD5C6F1DA7AF71004BCAE0 /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CF6AAE71DB4A0810067387F /* EditProfileVeiwController */,
+				3CF6AAE81DB4A0810067387F /* Storyboard */,
 				3CBD5C701DA7AF71004BCAE0 /* SettingsViewController */,
 			);
 			path = SettingsModule;
@@ -1153,6 +1167,42 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		3CF6AAE71DB4A0810067387F /* EditProfileVeiwController */ = {
+			isa = PBXGroup;
+			children = (
+				3CF6AAED1DB4A4100067387F /* CustomCells */,
+				3CF6AAEB1DB4A1030067387F /* EditProfileViewController.swift */,
+			);
+			path = EditProfileVeiwController;
+			sourceTree = "<group>";
+		};
+		3CF6AAE81DB4A0810067387F /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3CF6AAE91DB4A08E0067387F /* Settings.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3CF6AAED1DB4A4100067387F /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CF6AAEE1DB4A4100067387F /* EditProfileDetailsCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CF6AAEE1DB4A4100067387F /* EditProfileDetailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CF6AAF01DB4A4F80067387F /* EditProfileDetailsCell.swift */,
+				3CF6AAF11DB4A4F80067387F /* EditProfileDetailsCell.xib */,
+				3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */,
+				3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */,
+			);
+			path = EditProfileDetailsCell;
+			sourceTree = "<group>";
+		};
 		623BBCDDBBA68AEC3583C3DC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1289,6 +1339,7 @@
 				3CAB0FAD1DB0D8900090BEF3 /* ProfileImageCell.xib in Resources */,
 				3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */,
 				3CCECDD21DAF915900831242 /* 5.jpg in Resources */,
+				3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */,
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
@@ -1303,6 +1354,7 @@
 				3CCECDD11DAF915900831242 /* 4.jpg in Resources */,
 				3CCECDD31DAF915900831242 /* 6.jpg in Resources */,
 				3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */,
+				3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */,
 				3CCECDCB1DAF915900831242 /* 10.jpg in Resources */,
 				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
 				3CAB0F991DB0BA090090BEF3 /* GroupsCell.xib in Resources */,
@@ -1310,9 +1362,11 @@
 				3CCECDCC1DAF915900831242 /* 11.jpg in Resources */,
 				3CCECDCE1DAF915900831242 /* 13.jpg in Resources */,
 				3CCF8AE51DA6247800C76C64 /* ButtonCell.xib in Resources */,
+				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
 				3CCECDB31DAF6AA200831242 /* PropertiesCell.xib in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
+				3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */,
 				3CCF8AF21DA62B2D00C76C64 /* DetailsCell.xib in Resources */,
 				3CAB0F9C1DB0C0260090BEF3 /* Groups.storyboard in Resources */,
 				3CCF8AFB1DA6560F00C76C64 /* ButtonCell_GooglePlus.xib in Resources */,
@@ -1478,10 +1532,12 @@
 				3CBD5C7F1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */,
 				3CCECDB81DAF872300831242 /* SubPropertiesCell.swift in Sources */,
+				3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */,
 				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
 				3C1EC5AA1DA3A864003DC2A3 /* UIViewController_Common.swift in Sources */,
 				3CCF8AED1DA62A9900C76C64 /* DetailsScrollableTableView.swift in Sources */,
 				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
+				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
 				3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */,

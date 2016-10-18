@@ -13,9 +13,6 @@ class ChatsViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var messagesListTblView: UITableView!
 
-    //MARK:- Variables
-    var messagingViewController:MessagingViewController?
-
     //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +24,7 @@ class ChatsViewController: CommonViewController {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryBoard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryBoard.messagingView) as? MessagingViewController {
-            messagingViewController = viewCont
-            messagingViewController?.view
-        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,8 +61,10 @@ extension ChatsViewController:UITableViewDataSource{
 //MARK:- UITableViewDelegate
 extension ChatsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let viewCont = messagingViewController {
-            self.navigationController?.pushViewController(viewCont, animated: true)
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryBoard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryBoard.messagingView) as? MessagingViewController {
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.navigationController?.pushViewController(viewCont, animated: true)
+            })
         }
     }
 }

@@ -12,10 +12,8 @@ class HomeViewController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var buttonsContainer: UIView!
-    @IBOutlet weak var clctView: UICollectionView!
+    @IBOutlet weak var clctView: StaggeredCollectionView!
 
-    //MARK:- Variables
-    var imageNameList : Array <NSString> = []
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -43,14 +41,31 @@ extension HomeViewController{
         setNavigationBarBackgroundColor(UIColor.whiteColor())
         CommonMethods.addShadowToView(buttonsContainer)
         var index = 0
+        var imageNameList : Array <NSString> = []
         while(index<14){
             let imageName = NSString(format: "%d.jpg", index)
             imageNameList.append(imageName)
             index += 1
         }
-        clctView.setCollectionViewLayout(CHTCollectionViewWaterfallLayout(), animated: false)
-        clctView.registerNib(UINib(nibName: String(HomeViewCell), bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: String(HomeViewCell))
+        clctView.commonCollectionViewDelegate = self
+        clctView.dataArray = NSMutableArray(array: imageNameList)
+        clctView.type = CollectionViewType.HomeView
+        clctView.registerCells()
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
+    }
+}
+//MARK:- CommonCollectionViewDelegate
+extension HomeViewController:CommonCollectionViewDelegate{
+    func topElements(view: UIView) {
+
+    }
+
+    func bottomElements(view: UIView) {
+
+    }
+
+    func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
+
     }
 }
 //MARK:- Button Action
@@ -76,36 +91,5 @@ extension HomeViewController{
         UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["NEAR BY LOCATION", "RATING (HIGH TO LOW)"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
             print("Clicked at index \(tappedAtIndex)")
         }
-    }
-}
-//MARK:- CHTCollectionViewDelegateWaterfallLayout
-extension HomeViewController:CHTCollectionViewDelegateWaterfallLayout{
-    func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
-                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        let image:UIImage! = UIImage(named: self.imageNameList[indexPath.row] as String)
-        let gridWidth : CGFloat = (UIScreen.mainScreen().bounds.size.width/2)-5.0
-        let imageHeight = image.size.height*gridWidth/image.size.width
-        return CGSizeMake(gridWidth, imageHeight)
-    }
-}
-
-//MARK:- UICollectionViewDataSource
-extension HomeViewController:UICollectionViewDataSource{
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageNameList.count
-    }
-
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(String(HomeViewCell), forIndexPath: indexPath) as? HomeViewCell {
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-}
-//MARK:- UICollectionViewDelegate
-extension HomeViewController:UICollectionViewDelegate{
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-        
     }
 }

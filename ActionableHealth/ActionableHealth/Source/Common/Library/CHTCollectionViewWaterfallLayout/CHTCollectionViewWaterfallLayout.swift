@@ -108,7 +108,21 @@ class CHTCollectionViewWaterfallLayout : UICollectionViewLayout{
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.headerHeight = 0.0
+        self.footerHeight = 0.0
+        self.columnCount = 2
+        self.minimumInteritemSpacing = 10
+        self.minimumColumnSpacing = 10
+        self.sectionInset = UIEdgeInsetsZero
+        self.itemRenderDirection = .ShortestFirst
+
+        headersAttributes = NSMutableDictionary()
+        footersAttributes = NSMutableDictionary()
+        unionRects = NSMutableArray()
+        columnHeights = NSMutableArray()
+        allItemAttributes = NSMutableArray()
+        sectionItemAttributes = NSMutableArray()
+        super.init(coder: aDecoder)
     }
     
     func itemWidthInSectionAtIndex (section : NSInteger) -> CGFloat {

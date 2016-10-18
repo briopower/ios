@@ -41,11 +41,28 @@
                     <view key="view" contentMode="scaleToFill" id="lC0-bM-nel">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ToL-FB-Ffe" customClass="StaggeredCollectionView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="590" height="541"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="684-to-x0C" customClass="CHTCollectionViewWaterfallLayout" customModule="ActionableHealth" customModuleProvider="target"/>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ToL-FB-Ffe" firstAttribute="top" secondItem="lC0-bM-nel" secondAttribute="top" constant="5" id="CRb-IJ-yPi"/>
+                            <constraint firstAttribute="trailing" secondItem="ToL-FB-Ffe" secondAttribute="trailing" constant="5" id="RfI-Sd-748"/>
+                            <constraint firstItem="ToL-FB-Ffe" firstAttribute="leading" secondItem="lC0-bM-nel" secondAttribute="leading" constant="5" id="V7b-kB-cZ6"/>
+                            <constraint firstItem="Uoh-yK-Aja" firstAttribute="top" secondItem="ToL-FB-Ffe" secondAttribute="bottom" constant="5" id="trM-iD-UWj"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="Track" id="cU2-yq-mcQ" customClass="UITabBarItem_Custom" customModule="ActionableHealth" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="clctView" destination="ToL-FB-Ffe" id="jxy-hF-qgL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ly4-2a-cNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,20 +297,11 @@
                                     <constraint firstItem="0kp-31-erY" firstAttribute="centerY" secondItem="qQP-kR-Pb0" secondAttribute="centerY" id="lfE-mn-oBr"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k6A-O7-zxG">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k6A-O7-zxG" customClass="StaggeredCollectionView" customModule="ActionableHealth" customModuleProvider="target">
                                 <rect key="frame" x="5" y="158" width="590" height="388"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jO3-iY-a1Z">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="E7R-WD-7Oq" customClass="CHTCollectionViewWaterfallLayout" customModule="ActionableHealth" customModuleProvider="target"/>
                                 <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Z2f-Jx-dhb" id="tfT-5A-jCf"/>
-                                    <outlet property="delegate" destination="Z2f-Jx-dhb" id="D0h-AX-J4o"/>
-                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

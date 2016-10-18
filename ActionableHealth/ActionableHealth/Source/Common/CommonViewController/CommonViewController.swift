@@ -27,14 +27,13 @@ class CommonViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.dissmissKeyboard()
+        UIApplication.dismissKeyboard()
 //        self.tabBarController?.tabBar.hidden = true
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.dissmissKeyboard()
-
+        UIApplication.dismissKeyboard()
     }
 
     override func viewDidAppear(animated: Bool) {

@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search_Notification, Cross, Done
+    case Empty, None, Back, Search_Notification, Cross, Done, Details
 }
 
 enum BarButtonPosition {
@@ -22,13 +22,14 @@ let SearchButtonImage = UIImage(named: "search")
 let NotificationButtonImage = UIImage(named: "notification")
 let CrossButtonImage = UIImage(named: "cut")
 let DoneButtonImage = UIImage(named: "cut")
+let DetailsButtonImage = UIImage(named: "cut")
 
 
 //MARK: Navigation Controller Delegate
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
 
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        self.dissmissKeyboard()
+        UIApplication.dismissKeyboard()
         viewController.view?.endEditing(true)
         navigationController.interactivePopGestureRecognizer?.enabled = true
         navigationController.interactivePopGestureRecognizer?.delegate = self
@@ -95,7 +96,8 @@ extension CommonViewController{
             barButton = UIBarButtonItem(customView:getButtonWithImage(CrossButtonImage,Action: #selector(self.crossButtonAction(_:))))
         case .Done:
             barButton = UIBarButtonItem(customView:getButtonWithImage(DoneButtonImage,Action: #selector(self.doneButtonAction(_:))))
-
+        case .Details:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(DoneButtonImage,Action: #selector(self.detailsButtonAction(_:))))
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -137,13 +139,6 @@ extension CommonViewController{
     }
 }
 
-//MARK: Keyboard dismissal methods
-extension CommonViewController{
-    func dissmissKeyboard() {
-        self.view.endEditing(true)
-        UIApplication.sharedApplication().windows.first?.endEditing(true)
-    }
-}
 //MARK:- Loader methods
 extension CommonViewController{
     func showLoader() {
@@ -171,7 +166,7 @@ extension CommonViewController:NullCaseDelegate{
     // Delegate has been implemented in class Because of issue in swift
     func showNullCase(view:UIView, type:NullCaseType, identifier:Int?, shouldPassTouch:Bool = false) {
         hideLoader()
-        dissmissKeyboard()
+        UIApplication.dismissKeyboard()
         nullCaseView = NullCaseView.showNullCaseOn(view, nullCaseType: type, identifier: identifier, delegate: self, shouldPassTouch: shouldPassTouch)
     }
 
@@ -185,7 +180,7 @@ extension CommonViewController{
     @IBAction func noneButtonAction(sender:UIButton?){
     }
     @IBAction func backButtonAction(sender:UIButton?){
-        self.dissmissKeyboard()
+        UIApplication.dismissKeyboard()
         getNavigationController()?.popViewControllerAnimated(true)
     }
     @IBAction func searchButtonAction(sender:UIButton?){
@@ -195,7 +190,11 @@ extension CommonViewController{
     @IBAction func crossButtonAction(sender:UIButton?){
     }
     @IBAction func doneButtonAction(sender:UIButton?){
-        self.dissmissKeyboard()
+        UIApplication.dismissKeyboard()
     }
+    @IBAction func detailsButtonAction(sender:UIButton?){
+        UIApplication.dismissKeyboard()
+    }
+
 }
 

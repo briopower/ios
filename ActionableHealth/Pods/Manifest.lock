@@ -2,20 +2,25 @@ PODS:
   - Alamofire (3.5.1)
   - DAKeyboardControl (2.4.0)
   - HCSStarRatingView (1.4.5)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - TPKeyboardAvoiding (1.3)
 
 DEPENDENCIES:
   - Alamofire
   - DAKeyboardControl
   - HCSStarRatingView
+  - SDWebImage
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: 0ed0a483b7b94dafdca5d66df0f0730bb2afdb68
+PODFILE CHECKSUM: a0fb6012c9b12e29974e466c858a7aa2f15fc5bf
 
 COCOAPODS: 1.0.0

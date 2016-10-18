@@ -12,6 +12,19 @@ enum DetailsScrollableTableViewCellType:Int {
     func forgotPasswordAddon() -> String {
         return "DetailsCell_AdditionalImageView"
     }
+
+    func getData(user:UserModel?) -> (text:String, image:UIImage?, placeholder:String, value:String?, isSecureTextEntry:Bool, keyboardType: UIKeyboardType) {
+        switch self {
+        case .Email:
+            return ("Email", UIImage(named: "message"), "Enter email", user?.email, false, UIKeyboardType.EmailAddress)
+        case .Password:
+            return ("Password", UIImage(named: "password"), "Enter password", user?.password, true, UIKeyboardType.Default)
+        case .ConfirmPassword:
+            return ("Confirm Password", UIImage(named: "password"), "Confirm password", user?.confirmPassword, true, UIKeyboardType.Default)
+        default:
+            return ("", UIImage(named: ""), "", "", true, UIKeyboardType.Default)
+        }
+    }
 }
 class DetailsCell: UITableViewCell {
 
@@ -22,6 +35,7 @@ class DetailsCell: UITableViewCell {
 
     //MARK:- Variables
     var type = DetailsScrollableTableViewCellType.Email
+    weak var currentUser:UserModel?
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -43,22 +57,32 @@ extension DetailsCell{
 
 //MARK:- Additional methods
 extension DetailsCell{
-    func configureCellForType(type:DetailsScrollableTableViewCellType) {
+    func configureCellForType(type:DetailsScrollableTableViewCellType, user:UserModel?) {
+        currentUser = user
         self.type = type
+
+        let (text, image, placeholder, value, isSecureTextEntry, keyboardType) = self.type.getData(currentUser)
+
+        detailsLabel.text = text
+        detailsImage.image = image
+        detailsValue.placeholder = placeholder
+        detailsValue.text = value
+        detailsValue.secureTextEntry = isSecureTextEntry
+        detailsValue.keyboardType = keyboardType
+    }
+}
+
+//MARK:- TextChange Methods
+extension DetailsCell{
+    @IBAction func textDidChange(sender: UITextField) {
+        let text = sender.text?.getValidObject() ?? ""
         switch self.type {
         case .Email:
-            detailsLabel.text = "Email"
-            detailsImage.image = UIImage(named: "message")
-            detailsValue.placeholder = "Enter email"
+            currentUser?.email = text
         case .Password:
-            detailsLabel.text = "Password"
-            detailsImage.image = UIImage(named: "password")
-            detailsValue.placeholder = "Enter password"
-
+            currentUser?.password = text
         case .ConfirmPassword:
-            detailsLabel.text = "Confirm Password"
-            detailsImage.image = UIImage(named: "password")
-            detailsValue.placeholder = "Confirm password"
+            currentUser?.confirmPassword = text
         default:
             break
         }

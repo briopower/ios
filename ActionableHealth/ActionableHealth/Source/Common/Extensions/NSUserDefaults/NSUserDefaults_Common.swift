@@ -27,6 +27,15 @@ extension NSUserDefaults{
         userDefault.synchronize()
     }
 
+    class func getUserToken() -> String {
+        return userDefault.valueForKey("UserToken_Key") as? String ?? ""
+    }
+
+    class func setUserToken(token:String) {
+        userDefault.setValue(token, forKey: "UserToken_Key")
+        userDefault.synchronize()
+    }
+
     class func isLoggedIn() -> Bool {
         return userDefault.boolForKey("userLoggedIn")
     }
@@ -34,5 +43,15 @@ extension NSUserDefaults{
     class func setLoggedIn(loggedIn:Bool) {
         userDefault.setBool(loggedIn, forKey: "userLoggedIn")
         userDefault.synchronize()
+    }
+
+    class func saveUser(obj:AnyObject?) {
+        if let dict = obj {
+            userDefault.setObject(NSKeyedArchiver.archivedDataWithRootObject(dict), forKey: "currentUser")
+            if let token = dict["ahwToken"] as? String {
+                setUserToken(token)
+                setLoggedIn(true)
+            }
+        }
     }
 }

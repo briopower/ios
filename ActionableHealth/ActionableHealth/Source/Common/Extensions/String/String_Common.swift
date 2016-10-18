@@ -8,13 +8,15 @@
 
 import UIKit
 
-//MARK:- Additional methods
-
+//MARK:- Additional methods String
 extension String{
+
+    //MARK: Localized
     var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
     }
-    
+
+    //MARK: Height
     func getHeight(font:UIFont?, maxWidth:Double?) -> CGFloat {
         if font == nil || maxWidth == nil || self.isEmpty || self.characters.count == 0 {
             return CGSizeZero.height
@@ -23,6 +25,12 @@ extension String{
         }
     }
 
+    //MARK: Lenght 
+    func length() -> Int {
+        return self.characters.count
+    }
+    
+    //MARK: Validation
     func getValidObject() -> String? {
         
         if self == "" || self.isEmpty{
@@ -31,8 +39,15 @@ extension String{
 
         return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
+
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(self.getValidObject())
+    }
 }
 
+//MARK:- Additional methods NSAttributedString
 extension NSAttributedString{
     var localized: NSAttributedString {
         let mutAttrString = NSMutableAttributedString()

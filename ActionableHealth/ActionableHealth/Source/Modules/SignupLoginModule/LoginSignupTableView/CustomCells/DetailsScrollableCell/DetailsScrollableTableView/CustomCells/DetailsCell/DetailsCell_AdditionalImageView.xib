@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="width" secondItem="VzW-tv-Sog" secondAttribute="height" multiplier="145:200" id="Gxk-qg-LVj"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-8M-Ncq" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-8M-Ncq" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
                                 <rect key="frame" x="47" y="25" width="61" height="14"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,6 +69,10 @@
                                 <rect key="frame" x="208" y="0.0" width="160" height="64"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textDidChange:" destination="Fty-c7-dJb" eventType="editingDidEnd" id="77b-II-lmc"/>
+                                    <action selector="textDidChange:" destination="Fty-c7-dJb" eventType="editingDidEndOnExit" id="gA9-SE-ijZ"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

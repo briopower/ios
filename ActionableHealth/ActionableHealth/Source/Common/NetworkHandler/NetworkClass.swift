@@ -15,7 +15,8 @@ import Alamofire
 class NetworkClass:NSObject  {
     class func sendRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Alamofire.request(type, url, parameters: parameters, encoding: .JSON, headers: headers)
+
+        Alamofire.request(type, url, parameters: parameters, encoding: .JSON, headers: self.getUpdatedHeader(headers))
             .validate()
             .responseJSON { response in
                 switch response.result {
@@ -35,7 +36,7 @@ class NetworkClass:NSObject  {
 
     class func sendImageRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil,ImageName imageName:String?, ImageData imageData:NSData?, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Alamofire.upload(type, url, headers: headers, multipartFormData:
+        Alamofire.upload(type, url, headers: self.getUpdatedHeader(headers), multipartFormData:
             {(multipartFormData) in
                 if imageData != nil{
                     multipartFormData.appendBodyPart(data: imageData!, name: imageName! , fileName: "image.png", mimeType: "image/png")
@@ -85,7 +86,7 @@ class NetworkClass:NSObject  {
 
         let videoData = NSData(contentsOfURL: videoUrl)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Alamofire.upload(type, url, headers: headers, multipartFormData:
+        Alamofire.upload(type, url, headers: self.getUpdatedHeader(headers), multipartFormData:
             {(multipartFormData) in
                 if videoData != nil{
                     multipartFormData.appendBodyPart(data: videoData!, name: videoName , fileName: videoName, mimeType: "video/quicktime")
@@ -130,18 +131,38 @@ class NetworkClass:NSObject  {
 
         }
     }
-    class func isConnected()->Bool{
+    class func isConnected(showAlert:Bool)->Bool{
+        var val = false
         let reachability: Reachability
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
+            switch reachability.currentReachabilityStatus {
+            case .NotReachable:
+                val = false
+            default:
+                val = true
+            }
         }catch {
-            return false
+            val = false
         }
-        switch reachability.currentReachabilityStatus {
-        case .NotReachable:
-            return false
-        default:
-            return true
+
+        if !val && showAlert {
+            UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "No Internet Connection", completion: nil)
         }
+        return val
+    }
+
+    private class func getUpdatedHeader(header: [String: String]?) -> [String: String] {
+        var updatedHeader = ["Accept":"application/json", "Content-Type" : "application/json"]
+        if NSUserDefaults.isLoggedIn(){
+            updatedHeader["ahwToken"] = NSUserDefaults.getUserToken()
+        }
+
+        if let arr = header?.keys {
+            for key in arr {
+                updatedHeader[key] = header![key]
+            }
+        }
+        return updatedHeader
     }
 }

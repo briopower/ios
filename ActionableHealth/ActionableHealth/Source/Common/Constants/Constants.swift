@@ -48,4 +48,12 @@ class Constants: NSObject {
         }
 
     }
+
+    //MARK:- URLs
+    struct URLs {
+        static let base = "https://actionablehealth.appspot.com/"
+        static let mid = "auth/"
+        static let signup = "\(base)\(mid)create/"
+        static let login = "\(base)\(mid)authenticate/"
+    }
 }

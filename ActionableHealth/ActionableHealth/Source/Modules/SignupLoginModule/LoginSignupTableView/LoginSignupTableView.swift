@@ -7,21 +7,27 @@
 //
 
 import UIKit
-import TPKeyboardAvoiding
 
 enum LoginSignupTableViewCellType:Int {
     case Logo, ScrollableContent, RequestButton, OrSeperator, GooglePlusSignIn, Count
 }
 
+protocol LoginSignupTableViewDelegate:NSObjectProtocol {
+    func buttonPressed(type: ButtonCellType)
+}
 class LoginSignupTableView: TPKeyboardAvoidingTableView {
 
     //MARK:- Variables
     var isLogin = false
+    weak var currentUser:UserModel?
+    weak var loginSignupTblViewDelegate:LoginSignupTableViewDelegate?
+    
 }
 
 //MARK:- Additional methods
 extension LoginSignupTableView{
-    func setupTableView(isLogin:Bool) {
+    func setupTableView(isLogin:Bool, user:UserModel) {
+        currentUser = user
         self.isLogin = isLogin
         self.delegate = self
         self.dataSource = self
@@ -61,7 +67,7 @@ extension LoginSignupTableView:UITableViewDataSource{
                 }
             case .ScrollableContent:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(DetailsScrollableCell)) as? DetailsScrollableCell {
-                    cell.configureCell(isLogin)
+                    cell.configureCell(isLogin, user: currentUser)
                     return cell
                 }
             case .RequestButton:
@@ -71,16 +77,19 @@ extension LoginSignupTableView:UITableViewDataSource{
                     }else{
                         cell.configureForType(ButtonCellType.Signup)
                     }
+                    cell.delegate = self
                     return cell
                 }
             case .OrSeperator:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCellType.OrSeprator.nibNameAndReuseIdentifier()) as? ButtonCell {
                     cell.configureForType(ButtonCellType.OrSeprator)
+                    cell.delegate = self
                     return cell
                 }
             case.GooglePlusSignIn:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCellType.GooglePlus.nibNameAndReuseIdentifier()) as? ButtonCell {
                     cell.configureForType(ButtonCellType.GooglePlus)
+                    cell.delegate = self
                     return cell
                 }
             default:
@@ -91,6 +100,12 @@ extension LoginSignupTableView:UITableViewDataSource{
     }
 }
 
+//MARK:- ButtonCellDelagte
+extension LoginSignupTableView:ButtonCellDelegate{
+    func buttonPressed(type: ButtonCellType) {
+        loginSignupTblViewDelegate?.buttonPressed(type)
+    }
+}
 //MARK:- UITableViewDelegate
 extension LoginSignupTableView:UITableViewDelegate{
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

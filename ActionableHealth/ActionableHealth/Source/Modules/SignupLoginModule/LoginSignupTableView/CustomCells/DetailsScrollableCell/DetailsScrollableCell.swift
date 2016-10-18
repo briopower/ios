@@ -16,7 +16,8 @@ class DetailsScrollableCell: UITableViewCell {
 
     //MARK:- Variables
     var isLogin = false
-    
+    weak var currentUser:UserModel?
+
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,9 +35,10 @@ class DetailsScrollableCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension DetailsScrollableCell{
-    func configureCell(isLogin:Bool) {
+    func configureCell(isLogin:Bool, user:UserModel?) {
+        currentUser = user
         self.isLogin = isLogin
-        tblView.setupTableView(isLogin)
+        tblView.setupTableView(isLogin, user: currentUser)
     }
     class func getHeight(isLogin:Bool) -> CGFloat {
         let cellHeight = (195 * UIDevice.width()) / 1155

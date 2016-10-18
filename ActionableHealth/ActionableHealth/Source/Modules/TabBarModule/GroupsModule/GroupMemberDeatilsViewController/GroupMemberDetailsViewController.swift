@@ -44,6 +44,8 @@ extension GroupMemberDetailsViewController{
         subTitleDescLabel.font = subTitleDescLabel.font.getDynamicSizeFont()
 
         titleView.sizeToFit()
+
+        memberDeatilsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
     }
 }
 

@@ -70,6 +70,8 @@
 		3CAB0FA81DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0FA61DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib */; };
 		3CAB0FAC1DB0D8900090BEF3 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB0FAA1DB0D8900090BEF3 /* ProfileImageCell.swift */; };
 		3CAB0FAD1DB0D8900090BEF3 /* ProfileImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0FAB1DB0D8900090BEF3 /* ProfileImageCell.xib */; };
+		3CACF3A51DB5EB430034D700 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF3A41DB5EB430034D700 /* UserModel.swift */; };
+		3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF3A71DB5F7550034D700 /* UIApplication_Common.swift */; };
 		3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */; };
 		3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */; };
 		3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */; };
@@ -220,6 +222,9 @@
 		3CAB0FA61DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupMemberDetailsCell.xib; sourceTree = "<group>"; };
 		3CAB0FAA1DB0D8900090BEF3 /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
 		3CAB0FAB1DB0D8900090BEF3 /* ProfileImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileImageCell.xib; sourceTree = "<group>"; };
+		3CACF3A11DB5E6F50034D700 /* ActionableHealth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ActionableHealth-Bridging-Header.h"; sourceTree = "<group>"; };
+		3CACF3A41DB5EB430034D700 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		3CACF3A71DB5F7550034D700 /* UIApplication_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication_Common.swift; sourceTree = "<group>"; };
 		3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
 		3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignupLogin.storyboard; sourceTree = "<group>"; };
@@ -391,6 +396,7 @@
 		3C1EC5501DA3A864003DC2A3 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				3CACF3A21DB5EB2E0034D700 /* Users */,
 				3C1EC5511DA3A864003DC2A3 /* ActionableHealth.xcdatamodeld */,
 			);
 			path = DataModels;
@@ -444,6 +450,7 @@
 		3C1EC5591DA3A864003DC2A3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3CACF3A01DB5E6C40034D700 /* BridgingHeader */,
 				3CCF8B041DA6681500C76C64 /* Constants */,
 				3CCF8B011DA6678C00C76C64 /* GlobalEnums */,
 				3CCF8AF61DA64AF200C76C64 /* CommonMethods */,
@@ -481,6 +488,7 @@
 				3C1EC5711DA3A864003DC2A3 /* UIFont */,
 				3C1EC5731DA3A864003DC2A3 /* UIImage */,
 				3C1EC5801DA3A864003DC2A3 /* UIViewController */,
+				3CACF3A61DB5F73A0034D700 /* UIApplication */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -898,6 +906,39 @@
 				3CAB0FAB1DB0D8900090BEF3 /* ProfileImageCell.xib */,
 			);
 			path = ProfileImageCell;
+			sourceTree = "<group>";
+		};
+		3CACF3A01DB5E6C40034D700 /* BridgingHeader */ = {
+			isa = PBXGroup;
+			children = (
+				3CACF3A11DB5E6F50034D700 /* ActionableHealth-Bridging-Header.h */,
+			);
+			path = BridgingHeader;
+			sourceTree = "<group>";
+		};
+		3CACF3A21DB5EB2E0034D700 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				3CACF3A31DB5EB2E0034D700 /* UserModel */,
+			);
+			name = Users;
+			path = ActionableHealth.xcdatamodeld/Users;
+			sourceTree = "<group>";
+		};
+		3CACF3A31DB5EB2E0034D700 /* UserModel */ = {
+			isa = PBXGroup;
+			children = (
+				3CACF3A41DB5EB430034D700 /* UserModel.swift */,
+			);
+			path = UserModel;
+			sourceTree = "<group>";
+		};
+		3CACF3A61DB5F73A0034D700 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				3CACF3A71DB5F7550034D700 /* UIApplication_Common.swift */,
+			);
+			path = UIApplication;
 			sourceTree = "<group>";
 		};
 		3CAE70B11DB0A01D00D733C2 /* Storyboard */ = {
@@ -1640,6 +1681,7 @@
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,
+				3CACF3A51DB5EB430034D700 /* UserModel.swift in Sources */,
 				3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */,
 				3CCECDDB1DAF948900831242 /* HomeViewCell.swift in Sources */,
 				3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */,
@@ -1654,6 +1696,7 @@
 				3C9D13271DA3CE5800998DA2 /* UIButton_RoundButton.swift in Sources */,
 				3C1EC5AD1DA3A864003DC2A3 /* Reachability.swift in Sources */,
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
+				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
 				3C96413F1DB4DACC00EE9676 /* RecievedMessageCell.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,
@@ -1816,6 +1859,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1831,6 +1875,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "00c78739-51ea-4c99-a957-1c57b8c86756";
+				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 			};
 			name = Release;
 		};

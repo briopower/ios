@@ -29,7 +29,7 @@ class MessagingViewController: KeyboardAvoidingViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("New Chat", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("New Chat", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -71,10 +71,17 @@ extension MessagingViewController{
 //MARK:- Button Actions
 extension MessagingViewController{
     @IBAction func tableTapped(sender: UITapGestureRecognizer) {
-        self.dissmissKeyboard()
+        UIApplication.dismissKeyboard()
     }
 
     @IBAction func sendButtonAction(sender: UIButton) {
+    }
+
+    override func detailsButtonAction(sender: UIButton?) {
+        super.detailsButtonAction(sender)
+        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["VIEW PROFILE", "CLEAR CHAT"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
+            print("Clicked at index \(tappedAtIndex)")
+        }
     }
 }
 // MARK: - UITextViewDelegate

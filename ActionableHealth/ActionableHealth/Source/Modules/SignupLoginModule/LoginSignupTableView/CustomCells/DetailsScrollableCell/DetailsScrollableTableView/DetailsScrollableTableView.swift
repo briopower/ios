@@ -13,11 +13,14 @@ class DetailsScrollableTableView: UITableView {
 
     //MARK:- Variables
     var isLogin = false
+    weak var currentUser:UserModel?
+
 }
 
 //MARK:- Additional methods
 extension DetailsScrollableTableView{
-    func setupTableView(isLogin:Bool) {
+    func setupTableView(isLogin:Bool, user:UserModel?) {
+        currentUser = user
         self.isLogin = isLogin
         self.delegate = self
         self.dataSource = self
@@ -47,13 +50,13 @@ extension DetailsScrollableTableView:UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let type = DetailsScrollableTableViewCellType(rawValue: indexPath.row) {
             if let cell = tableView.dequeueReusableCellWithIdentifier(String(DetailsCell)) as? DetailsCell {
-                cell.configureCellForType(type)
+                cell.configureCellForType(type, user: currentUser)
                 switch type {
                 case .Email:
                     return cell
                 case .Password:
                     if let newCell = tableView.dequeueReusableCellWithIdentifier(DetailsScrollableTableViewCellType.Password.forgotPasswordAddon()) as? DetailsCell where isLogin{
-
+                        newCell.configureCellForType(type, user: currentUser)
                         return newCell
                     }else{
                         return cell

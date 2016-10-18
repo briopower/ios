@@ -22,6 +22,10 @@ enum ButtonCellType:Int {
     }
 }
 
+protocol ButtonCellDelegate: NSObjectProtocol {
+    func buttonPressed(type:ButtonCellType)
+}
+
 class ButtonCell: UITableViewCell {
 
     //MARK:- Outlets
@@ -30,6 +34,7 @@ class ButtonCell: UITableViewCell {
 
     //MARK:- Variables
     var type = ButtonCellType.Login
+    weak var delegate:ButtonCellDelegate?
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -45,10 +50,7 @@ class ButtonCell: UITableViewCell {
 //MARK:- Button Action
 extension ButtonCell{
     @IBAction func buttonAction(sender: UIButton) {
-        if type == ButtonCellType.Login {
-            UIViewController.getTopMostViewController()?.dismissViewControllerAnimated(true, completion: nil)
-            NSUserDefaults.setLoggedIn(true)
-        }
+        delegate?.buttonPressed(type)
     }
 }
 

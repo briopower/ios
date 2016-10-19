@@ -1,5 +1,5 @@
 //
-//  RecievedMessageCell.swift
+//  TrackPhasesCell.swift
 //  ActionableHealth
 //
 //  Created by Vidhan Nandi on 19/10/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecievedMessageCell: UITableViewCell {
+class TrackPhasesCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

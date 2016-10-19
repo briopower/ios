@@ -22,5 +22,8 @@ extension UIColor{
     class func getAppThemeColor() -> UIColor{
         return self.getColorFromHexValue(0x1587CC, Alpha: 1)
     }
-    
+
+    class func getAppSeperatorColor() -> UIColor {
+        return self.getColorFromHexValue(0xDDE0E0, Alpha: 1)
+    }
 }

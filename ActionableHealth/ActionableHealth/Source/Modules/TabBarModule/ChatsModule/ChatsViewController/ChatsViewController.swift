@@ -61,7 +61,7 @@ extension ChatsViewController:UITableViewDataSource{
 //MARK:- UITableViewDelegate
 extension ChatsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryBoard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryBoard.messagingView) as? MessagingViewController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController {
             dispatch_async(dispatch_get_main_queue(), { 
                 self.navigationController?.pushViewController(viewCont, animated: true)
             })

@@ -1,18 +1,14 @@
 //
 //  SentMessageCell.swift
-//  Petcomm
+//  ActionableHealth
 //
-//  Created by Vidhan Nandi on 02/07/16.
-//  Copyright © 2016 Freshworks. All rights reserved.
+//  Created by Vidhan Nandi on 19/10/16.
+//  Copyright © 2016 Finoit Technologies. All rights reserved.
 //
 
 import UIKit
 
 class SentMessageCell: UITableViewCell {
-
-    @IBOutlet weak var timeLabel: UILabel_FontSizeLabel!
-    @IBOutlet weak var messageLabel: UILabel_FontSizeLabel!
-    @IBOutlet weak var profileIcon: UIImageView_RoundImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,4 +20,5 @@ class SentMessageCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
 }

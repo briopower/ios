@@ -5,231 +5,95 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="SF-UI-Display-Regular.otf">
-            <string>SFUIDisplay-Regular</string>
-            <string>SFUIDisplay-Regular</string>
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
         <!--Messaging View Controller-->
-        <scene sceneID="FrI-UL-tyT">
+        <scene sceneID="5Ke-Fd-Owg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wGJ-SI-CVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="messagingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x16-6c-jaJ" customClass="MessagingViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="messagingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="43b-bR-qhj" customClass="MessagingViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M8a-gi-xc1"/>
-                        <viewControllerLayoutGuide type="bottom" id="DP6-yF-vlP"/>
+                        <viewControllerLayoutGuide type="top" id="pAW-UD-mDD"/>
+                        <viewControllerLayoutGuide type="bottom" id="PGH-lW-BBM"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NWp-pH-dSY">
+                    <view key="view" contentMode="scaleToFill" id="s1H-Kg-6xV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Dt-as-jo0">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4wN-dW-EPo">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="552"/>
-                                <color key="backgroundColor" red="0.98431372549999996" green="0.97254901959999995" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="x16-6c-jaJ" id="aLF-Cr-5tt"/>
-                                    <outlet property="delegate" destination="x16-6c-jaJ" id="VVo-6d-JOx"/>
+                                    <outlet property="dataSource" destination="43b-bR-qhj" id="k1D-Jo-VdI"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFC-pu-5RM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOH-uj-bJv">
                                 <rect key="frame" x="0.0" y="552" width="600" height="48"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jlE-CU-EWf">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
-                                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="fyO-fc-OvI"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwX-ei-mBT">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfh-0l-8Dn">
                                         <rect key="frame" x="556" y="0.0" width="44" height="48"/>
                                         <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                        <state key="normal" image="8DF9415E-FB0A-4817-B239-7282691033AA"/>
-                                        <connections>
-                                            <action selector="sendButtonAction:" destination="x16-6c-jaJ" eventType="touchUpInside" id="peX-T5-BzA"/>
-                                        </connections>
+                                        <state key="normal" image="send"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type your message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfh-hh-He8">
-                                        <rect key="frame" x="27" y="15" width="153" height="17"/>
-                                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4e-9s-UBU" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="16" width="144" height="14"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AvY-qj-fLW">
-                                        <rect key="frame" x="20" y="8" width="533" height="32"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xW5-SC-k38">
+                                        <rect key="frame" x="16" y="8" width="532" height="32"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="At3-oc-OL9"/>
-                                        </constraints>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
-                                            <outlet property="delegate" destination="x16-6c-jaJ" id="uKU-pA-8uL"/>
+                                            <outlet property="delegate" destination="43b-bR-qhj" id="uQc-6c-v9E"/>
                                         </connections>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="gwX-ei-mBT" firstAttribute="leading" secondItem="AvY-qj-fLW" secondAttribute="trailing" constant="3" id="3k1-Eb-f6H"/>
-                                    <constraint firstItem="jlE-CU-EWf" firstAttribute="leading" secondItem="zFC-pu-5RM" secondAttribute="leading" id="6mT-wF-jkN"/>
-                                    <constraint firstAttribute="trailing" secondItem="jlE-CU-EWf" secondAttribute="trailing" id="AGc-i6-KUD"/>
-                                    <constraint firstItem="AvY-qj-fLW" firstAttribute="leading" secondItem="zFC-pu-5RM" secondAttribute="leading" constant="20" id="B2h-Wr-JjU"/>
-                                    <constraint firstItem="jlE-CU-EWf" firstAttribute="top" secondItem="zFC-pu-5RM" secondAttribute="top" id="Hev-Oy-Zwq"/>
-                                    <constraint firstAttribute="bottom" secondItem="AvY-qj-fLW" secondAttribute="bottom" constant="8" id="Khh-tj-6wP"/>
-                                    <constraint firstItem="gwX-ei-mBT" firstAttribute="top" secondItem="zFC-pu-5RM" secondAttribute="top" id="MbF-p0-rT0"/>
-                                    <constraint firstItem="AvY-qj-fLW" firstAttribute="top" secondItem="zFC-pu-5RM" secondAttribute="top" constant="8" id="RNd-Tp-NzA"/>
-                                    <constraint firstAttribute="trailing" secondItem="gwX-ei-mBT" secondAttribute="trailing" id="WFn-8R-l9N"/>
-                                    <constraint firstItem="Lfh-hh-He8" firstAttribute="top" secondItem="AvY-qj-fLW" secondAttribute="top" constant="7" id="ZV7-Ts-4WE"/>
-                                    <constraint firstAttribute="bottom" secondItem="gwX-ei-mBT" secondAttribute="bottom" id="nZ0-Wm-sgX"/>
-                                    <constraint firstItem="Lfh-hh-He8" firstAttribute="leading" secondItem="AvY-qj-fLW" secondAttribute="leading" constant="7" id="tpZ-nZ-rbN"/>
+                                    <constraint firstItem="p4e-9s-UBU" firstAttribute="top" secondItem="kOH-uj-bJv" secondAttribute="top" constant="16" id="5ow-sV-u18"/>
+                                    <constraint firstItem="nfh-0l-8Dn" firstAttribute="leading" secondItem="xW5-SC-k38" secondAttribute="trailing" constant="8" id="8Dj-Ad-Z3n"/>
+                                    <constraint firstItem="xW5-SC-k38" firstAttribute="top" secondItem="kOH-uj-bJv" secondAttribute="top" constant="8" id="Ekd-CE-HTa"/>
+                                    <constraint firstItem="xW5-SC-k38" firstAttribute="leading" secondItem="kOH-uj-bJv" secondAttribute="leading" constant="16" id="HxL-xE-u74"/>
+                                    <constraint firstItem="p4e-9s-UBU" firstAttribute="leading" secondItem="xW5-SC-k38" secondAttribute="leading" constant="5" id="O28-F7-thy"/>
+                                    <constraint firstAttribute="bottom" secondItem="xW5-SC-k38" secondAttribute="bottom" constant="8" id="ere-P5-MYO"/>
+                                    <constraint firstAttribute="height" constant="48" id="f5g-CX-x8B"/>
+                                    <constraint firstAttribute="trailing" secondItem="nfh-0l-8Dn" secondAttribute="trailing" id="tqS-kc-O3w"/>
+                                    <constraint firstItem="nfh-0l-8Dn" firstAttribute="top" secondItem="kOH-uj-bJv" secondAttribute="top" id="ubh-a6-Rfr"/>
+                                    <constraint firstAttribute="bottom" secondItem="nfh-0l-8Dn" secondAttribute="bottom" id="wGR-Ug-nd2"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="DP6-yF-vlP" firstAttribute="top" secondItem="zFC-pu-5RM" secondAttribute="bottom" id="4h6-Td-jNc"/>
-                            <constraint firstItem="3Dt-as-jo0" firstAttribute="leading" secondItem="NWp-pH-dSY" secondAttribute="leading" id="5Zt-SH-3e3"/>
-                            <constraint firstItem="zFC-pu-5RM" firstAttribute="leading" secondItem="NWp-pH-dSY" secondAttribute="leading" id="DWC-2b-4GS"/>
-                            <constraint firstItem="3Dt-as-jo0" firstAttribute="top" secondItem="M8a-gi-xc1" secondAttribute="bottom" id="IiT-O0-tyG"/>
-                            <constraint firstAttribute="trailing" secondItem="zFC-pu-5RM" secondAttribute="trailing" id="LjD-qU-mJT"/>
-                            <constraint firstAttribute="trailing" secondItem="3Dt-as-jo0" secondAttribute="trailing" id="PCv-Rm-iQ6"/>
-                            <constraint firstItem="zFC-pu-5RM" firstAttribute="top" secondItem="3Dt-as-jo0" secondAttribute="bottom" id="aqz-GS-JEr"/>
-                            <constraint firstItem="3Dt-as-jo0" firstAttribute="top" secondItem="NWp-pH-dSY" secondAttribute="top" id="xlQ-S1-Rha"/>
+                            <constraint firstItem="kOH-uj-bJv" firstAttribute="leading" secondItem="s1H-Kg-6xV" secondAttribute="leading" id="Gao-NA-ciO"/>
+                            <constraint firstAttribute="trailing" secondItem="kOH-uj-bJv" secondAttribute="trailing" id="Hpm-2N-JQR"/>
+                            <constraint firstItem="4wN-dW-EPo" firstAttribute="leading" secondItem="s1H-Kg-6xV" secondAttribute="leading" id="Mdu-Nm-6IW"/>
+                            <constraint firstItem="kOH-uj-bJv" firstAttribute="top" secondItem="4wN-dW-EPo" secondAttribute="bottom" id="Qc4-xC-WMp"/>
+                            <constraint firstItem="4wN-dW-EPo" firstAttribute="top" secondItem="s1H-Kg-6xV" secondAttribute="top" id="onX-2n-FWA"/>
+                            <constraint firstItem="PGH-lW-BBM" firstAttribute="top" secondItem="kOH-uj-bJv" secondAttribute="bottom" id="tN4-Dh-i3A"/>
+                            <constraint firstAttribute="trailing" secondItem="4wN-dW-EPo" secondAttribute="trailing" id="xCu-h6-MJk"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="IiT-O0-tyG"/>
-                            </mask>
-                        </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="YEC-VC-Hhi" appends="YES" id="x51-dN-Neh"/>
-                        </connections>
                     </view>
                     <connections>
-                        <outlet property="chatTableView" destination="3Dt-as-jo0" id="QSW-V1-TLJ"/>
-                        <outlet property="chatTextView" destination="AvY-qj-fLW" id="L6u-M1-rDu"/>
-                        <outlet property="constraintBottomSpace" destination="4h6-Td-jNc" id="Efn-Ok-Svt"/>
-                        <outlet property="heightConstraint" destination="At3-oc-OL9" id="tfN-Fa-mAq"/>
-                        <outlet property="placeholderLabel" destination="Lfh-hh-He8" id="43j-TK-kMC"/>
-                        <outlet property="sendButton" destination="gwX-ei-mBT" id="nYJ-lc-rVF"/>
+                        <outlet property="chatTextView" destination="xW5-SC-k38" id="Hsy-dh-Ei4"/>
+                        <outlet property="constraintBottomSpace" destination="tN4-Dh-i3A" id="WNU-wZ-bLZ"/>
+                        <outlet property="heightConstraint" destination="f5g-CX-x8B" id="5YR-St-vAu"/>
+                        <outlet property="msgTblView" destination="4wN-dW-EPo" id="d5W-mL-cRb"/>
+                        <outlet property="placeholderLabel" destination="p4e-9s-UBU" id="fqJ-vb-1v2"/>
+                        <outlet property="sendButton" destination="nfh-0l-8Dn" id="EXj-l2-Yw6"/>
                     </connections>
                 </viewController>
-                <tapGestureRecognizer id="YEC-VC-Hhi">
-                    <connections>
-                        <action selector="tableTapped:" destination="x16-6c-jaJ" id="6QH-eZ-wgb"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6f-sA-boO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="323"/>
+            <point key="canvasLocation" x="949" y="463"/>
         </scene>
     </scenes>
     <resources>
-        <image name="8DF9415E-FB0A-4817-B239-7282691033AA" width="28" height="28">
-            <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
-GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
-c1dOU0NvbG9ygAKADRIgwAAAgAOAC1h7MjgsIDI4fdIVChYYWk5TLm9iamVjdHOhF4AEgArSFQoaHaIb
-HIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPERTeTU0AKgAADEgAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgIBAg0DAgMYBQMFHgUCBR0DAgMXAgEC
-DQAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAIDAgMRBQQFJAgECC8IBQk0CAUJNAgFCTQIBQk0CAUJNAgFCTQIBAguBgMG
-IgICAhAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAIBAg0GBAYnCAUJNAgFCDUIBQk0CQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCAUJNAgFCDUIBQk0BQQF
-JgEBAQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQCBBgIBQgyCAUJ
-NAkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwgFCDUIBQgxAwID
-FQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQCBBwIBQk0CAUJNAkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCAUJNAgFCTQDAgMYAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCAxcIBQg1CQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCAUJNAICAhQAAAAAAAAA
-AAAAAAAAAAAAAAAAAAIBAgwIBQgyCAUJNAkFCTMJBQkzCQUJMwkFCTMHBAcxCAQIMgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwgFCTQIBQgwAQABCQAAAAAAAAAAAAAA
-AAAAAAIGBAYnCAUINQkFCTMJBQkzCQUJMwkFCTMHBAcxHBgcRQ0KDTgDAAMtCAQIMgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCAUINQUEBSQAAAABAAAAAAAAAAADAgMQCAUJ
-NAkFCTMJBQkzCQUJMwkFCTMJBQkzAwADLV5aXn3CwcHOT0xPcQkGCTQDAAMsCAQIMgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzAgECDQAAAAAAAAAABgQGIwgFCDUJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwUCBS8vLDBW//////////++vL7LTUpNcAkGCTQDAAMsCAQIMgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCAUINQUDBR8AAAAAAAAABggECC4IBQk0CQUJMwkFCTMJBQkzCQUJ
-MwkFCTMHBAcxFhMWQNra2uP///////////////++u77KTUpNbwkGCTQDAAMsCAQIMgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwgFCTQHBQcrAAAAAwIBAg0JBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCAQI
-MgYEBjGysrLC//////////////////////////+9ur3JTUlNbwkGCTQDAAMsCAQIMgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMQEBAQoDAgMWCAUJNAkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMBAAEqiIaI
-n/////////////////////////////////////+9urrJTUpNbwoHCjUEAQQuCQUJMwkFCTMJBQkzCQUJ
-MwgFCTQDAQMQBAIEGwgFCTQJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzBgMGMCYhJk5oY2iEeXZ5
-k4qIiqGfnp+xubm5yNPQ09zp6Ont///////////DwsPPQj5CZQYDBjEJBQkzCQUJMwkFCTMIBQk0AwID
-FQQCBBsIBQk0CQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwUDBjAyLzJZh4WGnpiVmK2qqKq7ubm5
-yMTDxNDT0NPc6unq7v/////18/X2pqWmuDQxNFsHBAcxCQUJMwkFCTMJBQkzCAUJNAMCAxUCAgIVCAUJ
-NAkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMBAAEqj4yPpP//////////////////////////////
-//X19fignaCzNDE0WgUBBS8FAgUvCQUJMwkFCTMJBQkzCQUJMwgFCDUCAQIPAgECDAkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMIBAgyCAUIMrm4ucb/////////////////////8/Pz9qCgoLM0MDRaBQEF
-LgQBBC4JBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkxAQEBCQAAAAUIBAgtCAUJNAkFCTMJBQkzCQUJ
-MwkFCTMJBQkzBgMGMRgUGULe3t7n///////////09PT3oZ6htDQxNFoFAgUvBAEELgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMIBQk0BwUHKgAAAAIAAAAABQMFIQgFCDUJBQkzCQUJMwkFCTMJBQkzCQUJ
-MwUCBS41MjVb//////b29veioaK1NDE0WwUBBS4EAQQuCAUIMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCAUINQQCBB0AAAAAAAAAAAIBAg4JBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMDAAMtXlpe
-famnqbo1MjVbBQIFLwQBBC4IBQgzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJ
-MwkFCTIBAAELAAAAAAAAAAAAAAABBQQFJAgFCDUJBQkzCQUJMwkFCTMJBQkzCAUIMxMPEz0HBAcyBAEE
-LggFCDMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwgFCDUGAwYgAAAA
-AAAAAAAAAAAAAAAAAAEAAQkIBAgvCAUJNAkFCTMJBQkzCQUJMwkFCTMIBAgyCAQIMgkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwgFCTQIBAgtAAAABgAAAAAAAAAAAAAA
-AAAAAAAAAAAAAgICEwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwgFCTQIBQgyAwEDDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAADAgMXCQUJMwgFCTQJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJ
-MwkFCTMJBQkzCQUJMwgFCTQJBQkyAwIDFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAICAhMIBQgvCAUINQkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMJBQkzCQUJ
-MwgFCDUHBActAwEDEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAB
-CAYDBiIJBQkyCAUINQgFCTQJBQkzCQUJMwkFCTMJBQkzCQUJMwkFCTMIBQk0CAUINQgFCDEFAwUgAAAA
-BgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEB
-DAUDBR4HBAcqCAUIMQgFCTQIBQk0CAUJNAgFCTQIBQgwBwQHKgQCBBwBAAEKAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AgEBAQkCAQIPAwIDFAMCAxQCAQIOAQEBCAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAA4BAAADAAAAAQAcAAABAQADAAAAAQAcAAABAgADAAAABAAADPYBAwADAAAAAQABAAAB
-BgADAAAAAQACAAABEQAEAAAAAQAAAAgBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQAcAAAB
-FwAEAAAAAQAADEABHAADAAAAAQABAAABUgADAAAAAQABAAABUwADAAAABAAADP6HcwAHAAAH2AAADQYA
-AAAAAAgACAAIAAgAAQABAAEAAQAAB9hhcHBsAiAAAG1udHJSR0IgWFlaIAfZAAIAGQALABoAC2Fjc3BB
-UFBMAAAAAGFwcGwAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAAANMtYXBwbAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC2Rlc2MAAAEIAAAAb2RzY20AAAF4AAAFnGNwcnQA
-AAcUAAAAOHd0cHQAAAdMAAAAFHJYWVoAAAdgAAAAFGdYWVoAAAd0AAAAFGJYWVoAAAeIAAAAFHJUUkMA
-AAecAAAADmNoYWQAAAesAAAALGJUUkMAAAecAAAADmdUUkMAAAecAAAADmRlc2MAAAAAAAAAFEdlbmVy
-aWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAABRHZW5lcmljIFJHQiBQcm9maWxlAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtbHVjAAAAAAAAAB8AAAAMc2tTSwAAACgA
-AAGEZGFESwAAAC4AAAGsY2FFUwAAACQAAAHadmlWTgAAACQAAAH+cHRCUgAAACYAAAIidWtVQQAAACoA
-AAJIZnJGVQAAACgAAAJyaHVIVQAAACgAAAKaemhUVwAAABYAAALCbmJOTwAAACYAAALYY3NDWgAAACIA
-AAL+aGVJTAAAAB4AAAMgaXRJVAAAACgAAAM+cm9STwAAACQAAANmZGVERQAAACwAAAOKa29LUgAAABYA
-AAO2c3ZTRQAAACYAAALYemhDTgAAABYAAAPMamFKUAAAABoAAAPiZWxHUgAAACIAAAP8cHRQTwAAACYA
-AAQebmxOTAAAACgAAAREZXNFUwAAACYAAAQedGhUSAAAACQAAARsdHJUUgAAACIAAASQZmlGSQAAACgA
-AASyaHJIUgAAACgAAATacGxQTAAAACwAAAUCcnVSVQAAACIAAAUuYXJFRwAAACYAAAVQZW5VUwAAACYA
-AAV2AFYBYQBlAG8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbABHAGUAbgBlAHIAZQBsACAA
-UgBHAEIALQBiAGUAcwBrAHIAaQB2AGUAbABzAGUAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOgA
-cgBpAGMAQx6lAHUAIABoAOwAbgBoACAAUgBHAEIAIABDAGgAdQBuAGcAUABlAHIAZgBpAGwAIABSAEcA
-QgAgAEcAZQBuAOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5BDsAIABSAEcA
-QgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAUgBWAEIAwQBsAHQAYQBsAOEAbgBvAHMA
-IABSAEcAQgAgAHAAcgBvAGYAaQBskBp1KAAgAFIARwBCACCCcl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsA
-IABSAEcAQgAtAHAAcgBvAGYAaQBsAE8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbAXkBegF
-1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF2QBQAHIAbwBmAGkAbABvACAAUgBHAEIAIABnAGUAbgBlAHIA
-aQBjAG8AUAByAG8AZgBpAGwAIABSAEcAQgAgAGcAZQBuAGUAcgBpAGMAQQBsAGwAZwBlAG0AZQBpAG4A
-ZQBzACAAUgBHAEIALQBQAHIAbwBmAGkAbMd8vBgAIABSAEcAQgAg1QS4XNMMx3xmbpAaACAAUgBHAEIA
-IGPPj/Blh072TgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOsDkwO1A70DuQO6A8wAIAPAA8EDvwPGA68D
-uwAgAFIARwBCAFAAZQByAGYAaQBsACAAUgBHAEIAIABnAGUAbgDpAHIAaQBjAG8AQQBsAGcAZQBtAGUA
-ZQBuACAAUgBHAEIALQBwAHIAbwBmAGkAZQBsDkIOGw4jDkQOHw4lDkwAIABSAEcAQgAgDhcOMQ5IDicO
-RA4bAEcAZQBuAGUAbAAgAFIARwBCACAAUAByAG8AZgBpAGwAaQBZAGwAZQBpAG4AZQBuACAAUgBHAEIA
-LQBwAHIAbwBmAGkAaQBsAGkARwBlAG4AZQByAGkBDQBrAGkAIABSAEcAQgAgAHAAcgBvAGYAaQBsAFUA
-bgBpAHcAZQByAHMAYQBsAG4AeQAgAHAAcgBvAGYAaQBsACAAUgBHAEIEHgQxBEkEOAQ5ACAEPwRABD4E
-RAQ4BDsETAAgAFIARwBCBkUGRAZBACAGKgY5BjEGSgZBACAAUgBHAEIAIAYnBkQGOQYnBkUARwBlAG4A
-ZQByAGkAYwAgAFIARwBCACAAUAByAG8AZgBpAGwAZXRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUg
-SW5jLiwgYWxsIHJpZ2h0cyByZXNlcnZlZC4AWFlaIAAAAAAAAPNSAAEAAAABFs9YWVogAAAAAAAAdE0A
-AD3uAAAD0FhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAAACgaAAAVnwAAuDZjdXJ2AAAAAAAAAAEB
-zQAAc2YzMgAAAAAAAQxCAAAF3v//8yYAAAeSAAD9kf//+6L///2jAAAD3AAAwGzSJSYnKFokY2xhc3Nu
-YW1lWCRjbGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMnKSpaTlNJbWFnZVJlcFhOU09iamVjdNIlJiwt
-V05TQXJyYXmiLCrSJSYvMF5OU011dGFibGVBcnJheaMvLCrTMjMKNDU2V05TV2hpdGVcTlNDb2xvclNw
-YWNlRDAgMAAQA4AM0iUmODlXTlNDb2xvcqI4KtIlJjs8V05TSW1hZ2WiOypfEA9OU0tleWVkQXJjaGl2
-ZXLRP0BUcm9vdIABAAgAEQAaACMALQAyADcARgBMAFcAXgBlAHIAeQCBAIMAhQCKAIwAjgCXAJwApwCp
-AKsArQCyALUAtwC5ALsAvQDCANkA2wDdFb8VxBXPFdgV6xXvFfoWAxYIFhAWExYYFicWKxYyFjoWRxZM
-Fk4WUBZVFl0WYBZlFm0WcBaCFoUWigAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAABaMA
-</mutableData>
-        </image>
+        <image name="send" width="28" height="28"/>
     </resources>
 </document>

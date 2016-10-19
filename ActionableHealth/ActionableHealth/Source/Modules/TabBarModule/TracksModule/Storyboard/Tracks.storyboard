@@ -1,7 +1,180 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Track Details View Controller-->
+        <scene sceneID="gx4-xE-Kux">
+            <objects>
+                <viewController storyboardIdentifier="trackDetailsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8bK-0c-DA2" customClass="TrackDetailsViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="og2-0n-JAI"/>
+                        <viewControllerLayoutGuide type="bottom" id="2K0-yk-tRS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3uL-uv-Bus">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Byi-sT-NNP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bK-0c-DA2" id="tCY-Gb-eJK"/>
+                                    <outlet property="delegate" destination="8bK-0c-DA2" id="pFI-83-GSQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Byi-sT-NNP" firstAttribute="top" secondItem="3uL-uv-Bus" secondAttribute="top" id="Afl-Zp-hfj"/>
+                            <constraint firstAttribute="trailing" secondItem="Byi-sT-NNP" secondAttribute="trailing" id="ZCK-Fl-nfv"/>
+                            <constraint firstItem="2K0-yk-tRS" firstAttribute="top" secondItem="Byi-sT-NNP" secondAttribute="bottom" id="hya-ni-QJQ"/>
+                            <constraint firstItem="Byi-sT-NNP" firstAttribute="leading" secondItem="3uL-uv-Bus" secondAttribute="leading" id="nF6-yr-M9z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoButton" destination="BVx-xh-U9H" id="IGS-OB-8SK"/>
+                        <outlet property="phaseButton" destination="yPA-sJ-KAf" id="Jsp-sU-1DR"/>
+                        <outlet property="sectionHeaderView" destination="hqk-eu-oz4" id="Tcw-Ur-Rt7"/>
+                        <outlet property="trackDetailsTblView" destination="Byi-sT-NNP" id="3mE-rm-YcE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lSQ-DH-iUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="hqk-eu-oz4">
+                    <rect key="frame" x="0.0" y="0.0" width="594" height="69"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blx-1H-cpV">
+                            <rect key="frame" x="0.0" y="0.0" width="594" height="69"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-sJ-KAf" customClass="CommonHeaderButton" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="297" y="0.0" width="297" height="69"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                    <state key="normal" title="PHASE">
+                                        <color key="titleColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sectionButtonActions:" destination="8bK-0c-DA2" eventType="touchUpInside" id="hrB-Nq-2uw"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVx-xh-U9H" customClass="CommonHeaderButton" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="297" height="69"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                    <state key="normal" title="INFO">
+                                        <color key="titleColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="infoButtonAction:" destination="8bK-0c-DA2" eventType="touchUpInside" id="gf4-Jy-PB6"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.93725490196078431" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="yPA-sJ-KAf" firstAttribute="top" secondItem="blx-1H-cpV" secondAttribute="top" id="Ibt-kM-H0H"/>
+                                <constraint firstAttribute="width" secondItem="blx-1H-cpV" secondAttribute="height" multiplier="1242:500" priority="999" id="Ioc-Bc-mig"/>
+                                <constraint firstAttribute="bottom" secondItem="BVx-xh-U9H" secondAttribute="bottom" id="J09-vJ-umr"/>
+                                <constraint firstItem="BVx-xh-U9H" firstAttribute="top" secondItem="blx-1H-cpV" secondAttribute="top" id="Lac-Aj-9BH"/>
+                                <constraint firstItem="BVx-xh-U9H" firstAttribute="leading" secondItem="blx-1H-cpV" secondAttribute="leading" id="asb-r0-YHE"/>
+                                <constraint firstItem="yPA-sJ-KAf" firstAttribute="width" secondItem="BVx-xh-U9H" secondAttribute="width" id="cIz-yf-z3r"/>
+                                <constraint firstAttribute="bottom" secondItem="yPA-sJ-KAf" secondAttribute="bottom" id="fTU-ms-CSo"/>
+                                <constraint firstItem="yPA-sJ-KAf" firstAttribute="leading" secondItem="BVx-xh-U9H" secondAttribute="trailing" id="nCC-rr-640"/>
+                                <constraint firstAttribute="trailing" secondItem="yPA-sJ-KAf" secondAttribute="trailing" id="zR2-RU-EkK"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="blx-1H-cpV" firstAttribute="top" secondItem="hqk-eu-oz4" secondAttribute="top" id="2aH-E6-mz7"/>
+                        <constraint firstAttribute="trailing" secondItem="blx-1H-cpV" secondAttribute="trailing" id="Vfn-IS-zww"/>
+                        <constraint firstAttribute="bottom" secondItem="blx-1H-cpV" secondAttribute="bottom" id="bTh-pD-7wL"/>
+                        <constraint firstItem="blx-1H-cpV" firstAttribute="leading" secondItem="hqk-eu-oz4" secondAttribute="leading" id="f2f-ai-ls5"/>
+                    </constraints>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="630" y="419"/>
+        </scene>
+        <!--Invite For Track View Controller-->
+        <scene sceneID="GSE-sR-DGF">
+            <objects>
+                <viewController storyboardIdentifier="inviteTracksView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="W1e-xu-ApW" customClass="InviteForTrackViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z3M-c5-cfd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hsv-Xj-XU6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b4r-0G-kpV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NcZ-JQ-vgq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="W1e-xu-ApW" id="fud-EN-yLx"/>
+                                    <outlet property="delegate" destination="W1e-xu-ApW" id="8gZ-b6-f0V"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NcZ-JQ-vgq" firstAttribute="leading" secondItem="b4r-0G-kpV" secondAttribute="leading" id="S5L-Tf-apL"/>
+                            <constraint firstItem="NcZ-JQ-vgq" firstAttribute="top" secondItem="b4r-0G-kpV" secondAttribute="top" id="SID-Dn-lFS"/>
+                            <constraint firstAttribute="trailing" secondItem="NcZ-JQ-vgq" secondAttribute="trailing" id="n2Z-vu-bpi"/>
+                            <constraint firstItem="Hsv-Xj-XU6" firstAttribute="top" secondItem="NcZ-JQ-vgq" secondAttribute="bottom" id="zzZ-7U-JHW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tblView" destination="NcZ-JQ-vgq" id="2jv-sj-t6M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qId-Iy-hQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1251" y="419"/>
+        </scene>
+        <!--Join Track View Controller-->
+        <scene sceneID="FiE-oi-Njj">
+            <objects>
+                <viewController storyboardIdentifier="joinTracksView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dzN-3v-LJk" customClass="JoinTrackViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hVL-Lo-hNj"/>
+                        <viewControllerLayoutGuide type="bottom" id="z0g-6d-t9C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e1f-Ik-pvV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Adr-jp-61V">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dzN-3v-LJk" id="Wym-RI-ZRq"/>
+                                    <outlet property="delegate" destination="dzN-3v-LJk" id="ZGB-Le-odg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Adr-jp-61V" secondAttribute="trailing" id="He5-27-6BZ"/>
+                            <constraint firstItem="Adr-jp-61V" firstAttribute="leading" secondItem="e1f-Ik-pvV" secondAttribute="leading" id="IWR-SV-Uob"/>
+                            <constraint firstItem="Adr-jp-61V" firstAttribute="top" secondItem="e1f-Ik-pvV" secondAttribute="top" id="NA9-Ao-tiP"/>
+                            <constraint firstItem="z0g-6d-t9C" firstAttribute="top" secondItem="Adr-jp-61V" secondAttribute="bottom" id="i1l-rK-Mnt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tblView" destination="Adr-jp-61V" id="Ojx-Sz-Qcv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EYN-Q5-dBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1893" y="419"/>
+        </scene>
+    </scenes>
 </document>

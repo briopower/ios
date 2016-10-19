@@ -12,6 +12,6 @@ class UIImageView_SepratorImageView: UIImageView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.backgroundColor = UIColor.getColorFromHexValue(0xDDE0E0, Alpha: 1)
+        self.backgroundColor = UIColor.getAppSeperatorColor()
     }
 }

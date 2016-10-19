@@ -44,11 +44,6 @@
 		3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */; };
 		3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */; };
 		3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C9641331DB4D73500EE9676 /* Chats.storyboard */; };
-		3C9641371DB4DA6E00EE9676 /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9641361DB4DA6E00EE9676 /* MessagingViewController.swift */; };
-		3C96413F1DB4DACC00EE9676 /* RecievedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96413A1DB4DACC00EE9676 /* RecievedMessageCell.swift */; };
-		3C9641401DB4DACC00EE9676 /* RecievedMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96413B1DB4DACC00EE9676 /* RecievedMessageCell.xib */; };
-		3C9641411DB4DACC00EE9676 /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96413D1DB4DACC00EE9676 /* SentMessageCell.swift */; };
-		3C9641421DB4DACC00EE9676 /* SentMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96413E1DB4DACC00EE9676 /* SentMessageCell.xib */; };
 		3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */; };
 		3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */; };
 		3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */; };
@@ -112,6 +107,15 @@
 		3CCECDD41DAF915900831242 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3CCECDC61DAF915900831242 /* 7.jpg */; };
 		3CCECDD51DAF915900831242 /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3CCECDC71DAF915900831242 /* 8.jpg */; };
 		3CCECDD61DAF915900831242 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3CCECDC81DAF915900831242 /* 9.jpg */; };
+		3CCF30F71DB731CF001A1E7B /* RecievedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF30F51DB731CF001A1E7B /* RecievedMessageCell.swift */; };
+		3CCF30F81DB731CF001A1E7B /* RecievedMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF30F61DB731CF001A1E7B /* RecievedMessageCell.xib */; };
+		3CCF30FE1DB7327C001A1E7B /* MessagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF30FD1DB7327C001A1E7B /* MessagingViewController.swift */; };
+		3CCF31021DB7349B001A1E7B /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF31001DB7349B001A1E7B /* SentMessageCell.swift */; };
+		3CCF31031DB7349B001A1E7B /* SentMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF31011DB7349B001A1E7B /* SentMessageCell.xib */; };
+		3CCF31061DB74B7E001A1E7B /* TrackDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF31051DB74B7E001A1E7B /* TrackDetailsHeaderView.swift */; };
+		3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView.xib */; };
+		3CCF310A1DB75B24001A1E7B /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF31091DB75B24001A1E7B /* TrackDetailsViewController.swift */; };
+		3CCF310D1DB771DD001A1E7B /* CommonHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF310C1DB771DD001A1E7B /* CommonHeaderButton.swift */; };
 		3CCF8AD91DA621B300C76C64 /* LoginSignupTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AD81DA621B300C76C64 /* LoginSignupTableView.swift */; };
 		3CCF8AE01DA6231900C76C64 /* LogoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8ADE1DA6231900C76C64 /* LogoHeaderCell.swift */; };
 		3CCF8AE11DA6231900C76C64 /* LogoHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF8ADF1DA6231900C76C64 /* LogoHeaderCell.xib */; };
@@ -130,6 +134,18 @@
 		3CCF8B001DA6652600C76C64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */; };
 		3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */; };
 		3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B051DA6682300C76C64 /* Constants.swift */; };
+		3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5491DB7892000224046 /* TrackFilesCell.swift */; };
+		3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */; };
+		3CF5B54F1DB78AEC00224046 /* TrackInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */; };
+		3CF5B5501DB78AEC00224046 /* TrackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54E1DB78AEC00224046 /* TrackInfoCell.xib */; };
+		3CF5B5531DB78E4500224046 /* TrackPhasesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */; };
+		3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */; };
+		3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */; };
+		3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */; };
+		3CF5B55F1DB79E6900224046 /* InviteForTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B55D1DB79E6900224046 /* InviteForTrackCell.swift */; };
+		3CF5B5601DB79E6900224046 /* InviteForTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B55E1DB79E6900224046 /* InviteForTrackCell.xib */; };
+		3CF5B5661DB7A56700224046 /* CommnetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5641DB7A56700224046 /* CommnetsCell.swift */; };
+		3CF5B5671DB7A56700224046 /* CommnetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5651DB7A56700224046 /* CommnetsCell.xib */; };
 		3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAE91DB4A08E0067387F /* Settings.storyboard */; };
 		3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF6AAEB1DB4A1030067387F /* EditProfileViewController.swift */; };
 		3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF6AAF01DB4A4F80067387F /* EditProfileDetailsCell.swift */; };
@@ -201,11 +217,6 @@
 		3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListCell.swift; sourceTree = "<group>"; };
 		3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
 		3C9641331DB4D73500EE9676 /* Chats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
-		3C9641361DB4DA6E00EE9676 /* MessagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
-		3C96413A1DB4DACC00EE9676 /* RecievedMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecievedMessageCell.swift; sourceTree = "<group>"; };
-		3C96413B1DB4DACC00EE9676 /* RecievedMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecievedMessageCell.xib; sourceTree = "<group>"; };
-		3C96413D1DB4DACC00EE9676 /* SentMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
-		3C96413E1DB4DACC00EE9676 /* SentMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentMessageCell.xib; sourceTree = "<group>"; };
 		3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_CenterAllign.swift; sourceTree = "<group>"; };
 		3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_FontSizeButton.swift; sourceTree = "<group>"; };
 		3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Localizable.swift; sourceTree = "<group>"; };
@@ -270,6 +281,15 @@
 		3CCECDC61DAF915900831242 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
 		3CCECDC71DAF915900831242 /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
 		3CCECDC81DAF915900831242 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
+		3CCF30F51DB731CF001A1E7B /* RecievedMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecievedMessageCell.swift; sourceTree = "<group>"; };
+		3CCF30F61DB731CF001A1E7B /* RecievedMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecievedMessageCell.xib; sourceTree = "<group>"; };
+		3CCF30FD1DB7327C001A1E7B /* MessagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagingViewController.swift; sourceTree = "<group>"; };
+		3CCF31001DB7349B001A1E7B /* SentMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
+		3CCF31011DB7349B001A1E7B /* SentMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentMessageCell.xib; sourceTree = "<group>"; };
+		3CCF31051DB74B7E001A1E7B /* TrackDetailsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailsHeaderView.swift; sourceTree = "<group>"; };
+		3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackDetailsHeaderView.xib; sourceTree = "<group>"; };
+		3CCF31091DB75B24001A1E7B /* TrackDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailsViewController.swift; sourceTree = "<group>"; };
+		3CCF310C1DB771DD001A1E7B /* CommonHeaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderButton.swift; sourceTree = "<group>"; };
 		3CCF8AD81DA621B300C76C64 /* LoginSignupTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSignupTableView.swift; sourceTree = "<group>"; };
 		3CCF8ADE1DA6231900C76C64 /* LogoHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoHeaderCell.swift; sourceTree = "<group>"; };
 		3CCF8ADF1DA6231900C76C64 /* LogoHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoHeaderCell.xib; sourceTree = "<group>"; };
@@ -288,6 +308,18 @@
 		3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
 		3CCF8B051DA6682300C76C64 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3CF5B5491DB7892000224046 /* TrackFilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFilesCell.swift; sourceTree = "<group>"; };
+		3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackFilesCell.xib; sourceTree = "<group>"; };
+		3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInfoCell.swift; sourceTree = "<group>"; };
+		3CF5B54E1DB78AEC00224046 /* TrackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackInfoCell.xib; sourceTree = "<group>"; };
+		3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPhasesCell.swift; sourceTree = "<group>"; };
+		3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell.xib; sourceTree = "<group>"; };
+		3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackViewController.swift; sourceTree = "<group>"; };
+		3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinTrackViewController.swift; sourceTree = "<group>"; };
+		3CF5B55D1DB79E6900224046 /* InviteForTrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackCell.swift; sourceTree = "<group>"; };
+		3CF5B55E1DB79E6900224046 /* InviteForTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteForTrackCell.xib; sourceTree = "<group>"; };
+		3CF5B5641DB7A56700224046 /* CommnetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommnetsCell.swift; sourceTree = "<group>"; };
+		3CF5B5651DB7A56700224046 /* CommnetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommnetsCell.xib; sourceTree = "<group>"; };
 		3CF6AAE91DB4A08E0067387F /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		3CF6AAEB1DB4A1030067387F /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		3CF6AAF01DB4A4F80067387F /* EditProfileDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileDetailsCell.swift; sourceTree = "<group>"; };
@@ -654,7 +686,10 @@
 		3C39DAA91DB64A7400D86D24 /* TrackDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3CCF310B1DB771DD001A1E7B /* CommonHeaderButton */,
+				3CCF31041DB74B60001A1E7B /* TrackDetailsHeaderView */,
 				3C39DAAA1DB64A7400D86D24 /* CustomCell */,
+				3CCF31091DB75B24001A1E7B /* TrackDetailsViewController.swift */,
 			);
 			path = TrackDetailsViewController;
 			sourceTree = "<group>";
@@ -662,6 +697,9 @@
 		3C39DAAA1DB64A7400D86D24 /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
+				3CF5B5461DB7861500224046 /* TrackFilesCell */,
+				3CF5B5471DB7861500224046 /* TrackInfoCell */,
+				3CF5B5481DB7861500224046 /* TrackPhasesCell */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -766,42 +804,6 @@
 				3C9641331DB4D73500EE9676 /* Chats.storyboard */,
 			);
 			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		3C9641351DB4DA5300EE9676 /* MessagingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3C9641381DB4DACC00EE9676 /* CustomCells */,
-				3C9641361DB4DA6E00EE9676 /* MessagingViewController.swift */,
-			);
-			path = MessagingViewController;
-			sourceTree = "<group>";
-		};
-		3C9641381DB4DACC00EE9676 /* CustomCells */ = {
-			isa = PBXGroup;
-			children = (
-				3C9641391DB4DACC00EE9676 /* RecievedMessageCell */,
-				3C96413C1DB4DACC00EE9676 /* SentMessageCell */,
-			);
-			path = CustomCells;
-			sourceTree = "<group>";
-		};
-		3C9641391DB4DACC00EE9676 /* RecievedMessageCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C96413A1DB4DACC00EE9676 /* RecievedMessageCell.swift */,
-				3C96413B1DB4DACC00EE9676 /* RecievedMessageCell.xib */,
-			);
-			path = RecievedMessageCell;
-			sourceTree = "<group>";
-		};
-		3C96413C1DB4DACC00EE9676 /* SentMessageCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C96413D1DB4DACC00EE9676 /* SentMessageCell.swift */,
-				3C96413E1DB4DACC00EE9676 /* SentMessageCell.xib */,
-			);
-			path = SentMessageCell;
 			sourceTree = "<group>";
 		};
 		3C9D13121DA3CE5800998DA2 /* CustomViews */ = {
@@ -1039,8 +1041,8 @@
 			isa = PBXGroup;
 			children = (
 				3C9641321DB4D72B00EE9676 /* Storyboard */,
-				3C9641351DB4DA5300EE9676 /* MessagingViewController */,
 				3CBD5C6C1DA7AF71004BCAE0 /* ChatsViewController */,
+				3CCF30F11DB73186001A1E7B /* MessagingViewController */,
 			);
 			path = ChatsModule;
 			sourceTree = "<group>";
@@ -1097,6 +1099,9 @@
 			isa = PBXGroup;
 			children = (
 				3C39DAA81DB64A7400D86D24 /* Storyboard */,
+				3CF5B5611DB7A55000224046 /* CommentsViewController */,
+				3CF5B5551DB79DE600224046 /* InviteForTracksViewController */,
+				3CF5B5561DB79DE600224046 /* JoinTrackViewController */,
 				3C39DAA91DB64A7400D86D24 /* TrackDetailsViewController */,
 				3CBD5C721DA7AF71004BCAE0 /* TracksViewController */,
 			);
@@ -1217,6 +1222,59 @@
 				3CCECDC81DAF915900831242 /* 9.jpg */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		3CCF30F11DB73186001A1E7B /* MessagingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CCF30F21DB731A7001A1E7B /* CustomCells */,
+				3CCF30FD1DB7327C001A1E7B /* MessagingViewController.swift */,
+			);
+			path = MessagingViewController;
+			sourceTree = "<group>";
+		};
+		3CCF30F21DB731A7001A1E7B /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CCF30FF1DB7348A001A1E7B /* SentMessageCell */,
+				3CCF30F31DB731A7001A1E7B /* RecievedMessageCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CCF30F31DB731A7001A1E7B /* RecievedMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CCF30F51DB731CF001A1E7B /* RecievedMessageCell.swift */,
+				3CCF30F61DB731CF001A1E7B /* RecievedMessageCell.xib */,
+			);
+			path = RecievedMessageCell;
+			sourceTree = "<group>";
+		};
+		3CCF30FF1DB7348A001A1E7B /* SentMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CCF31001DB7349B001A1E7B /* SentMessageCell.swift */,
+				3CCF31011DB7349B001A1E7B /* SentMessageCell.xib */,
+			);
+			path = SentMessageCell;
+			sourceTree = "<group>";
+		};
+		3CCF31041DB74B60001A1E7B /* TrackDetailsHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				3CCF31051DB74B7E001A1E7B /* TrackDetailsHeaderView.swift */,
+				3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView.xib */,
+			);
+			path = TrackDetailsHeaderView;
+			sourceTree = "<group>";
+		};
+		3CCF310B1DB771DD001A1E7B /* CommonHeaderButton */ = {
+			isa = PBXGroup;
+			children = (
+				3CCF310C1DB771DD001A1E7B /* CommonHeaderButton.swift */,
+			);
+			path = CommonHeaderButton;
 			sourceTree = "<group>";
 		};
 		3CCF8ACE1DA61A9500C76C64 /* SignupLoginModule */ = {
@@ -1344,6 +1402,92 @@
 				3CCF8B051DA6682300C76C64 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		3CF5B5461DB7861500224046 /* TrackFilesCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B5491DB7892000224046 /* TrackFilesCell.swift */,
+				3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */,
+			);
+			path = TrackFilesCell;
+			sourceTree = "<group>";
+		};
+		3CF5B5471DB7861500224046 /* TrackInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */,
+				3CF5B54E1DB78AEC00224046 /* TrackInfoCell.xib */,
+			);
+			path = TrackInfoCell;
+			sourceTree = "<group>";
+		};
+		3CF5B5481DB7861500224046 /* TrackPhasesCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */,
+				3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */,
+			);
+			path = TrackPhasesCell;
+			sourceTree = "<group>";
+		};
+		3CF5B5551DB79DE600224046 /* InviteForTracksViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B55B1DB79E3100224046 /* CustomCells */,
+				3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */,
+			);
+			path = InviteForTracksViewController;
+			sourceTree = "<group>";
+		};
+		3CF5B5561DB79DE600224046 /* JoinTrackViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */,
+			);
+			path = JoinTrackViewController;
+			sourceTree = "<group>";
+		};
+		3CF5B55B1DB79E3100224046 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B55C1DB79E3100224046 /* InviteForTrackCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CF5B55C1DB79E3100224046 /* InviteForTrackCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B55D1DB79E6900224046 /* InviteForTrackCell.swift */,
+				3CF5B55E1DB79E6900224046 /* InviteForTrackCell.xib */,
+			);
+			path = InviteForTrackCell;
+			sourceTree = "<group>";
+		};
+		3CF5B5611DB7A55000224046 /* CommentsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B5621DB7A55000224046 /* CustomCells */,
+			);
+			path = CommentsViewController;
+			sourceTree = "<group>";
+		};
+		3CF5B5621DB7A55000224046 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B5631DB7A55000224046 /* CommnetsCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CF5B5631DB7A55000224046 /* CommnetsCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CF5B5641DB7A56700224046 /* CommnetsCell.swift */,
+				3CF5B5651DB7A56700224046 /* CommnetsCell.xib */,
+			);
+			path = CommnetsCell;
 			sourceTree = "<group>";
 		};
 		3CF6AAE71DB4A0810067387F /* EditProfileVeiwController */ = {
@@ -1511,24 +1655,26 @@
 				3CCECDC91DAF915900831242 /* 0.jpg in Resources */,
 				3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */,
 				3CCECDCA1DAF915900831242 /* 1.jpg in Resources */,
+				3CCF30F81DB731CF001A1E7B /* RecievedMessageCell.xib in Resources */,
 				3CAB0FA81DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib in Resources */,
 				3CCECDD61DAF915900831242 /* 9.jpg in Resources */,
 				3CCF8AFE1DA65F5F00C76C64 /* DetailsCell_AdditionalImageView.xib in Resources */,
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
+				3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */,
 				3CAB0FAD1DB0D8900090BEF3 /* ProfileImageCell.xib in Resources */,
 				3CACF4001DB635060034D700 /* HomeViewCell.xib in Resources */,
 				3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */,
 				3CCECDD21DAF915900831242 /* 5.jpg in Resources */,
 				3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */,
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
-				3C9641401DB4DACC00EE9676 /* RecievedMessageCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
 				3CCECDD01DAF915900831242 /* 3.jpg in Resources */,
 				3CCF8AFC1DA6560F00C76C64 /* ButtonCell_OrSeperator.xib in Resources */,
-				3C9641421DB4DACC00EE9676 /* SentMessageCell.xib in Resources */,
 				3CCECDD41DAF915900831242 /* 7.jpg in Resources */,
 				3CCECDCF1DAF915900831242 /* 2.jpg in Resources */,
+				3CF5B5601DB79E6900224046 /* InviteForTrackCell.xib in Resources */,
+				3CF5B5671DB7A56700224046 /* CommnetsCell.xib in Resources */,
 				3CCF8AE11DA6231900C76C64 /* LogoHeaderCell.xib in Resources */,
 				3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */,
 				3CCECDCD1DAF915900831242 /* 12.jpg in Resources */,
@@ -1539,6 +1685,7 @@
 				3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */,
 				3CCECDCB1DAF915900831242 /* 10.jpg in Resources */,
 				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
+				3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */,
 				3CAB0F991DB0BA090090BEF3 /* GroupsCell.xib in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
 				3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */,
@@ -1549,14 +1696,17 @@
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
 				3CCECDB31DAF6AA200831242 /* PropertiesCell.xib in Resources */,
+				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
 				3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */,
+				3CCF31031DB7349B001A1E7B /* SentMessageCell.xib in Resources */,
 				3CCF8AF21DA62B2D00C76C64 /* DetailsCell.xib in Resources */,
 				3CACF3F81DB634920034D700 /* CommonCollectionReusableView.xib in Resources */,
 				3CAB0F9C1DB0C0260090BEF3 /* Groups.storyboard in Resources */,
 				3CCF8AFB1DA6560F00C76C64 /* ButtonCell_GooglePlus.xib in Resources */,
 				3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */,
 				3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */,
+				3CF5B5501DB78AEC00224046 /* TrackInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1705,10 +1855,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */,
+				3CCF30FE1DB7327C001A1E7B /* MessagingViewController.swift in Sources */,
 				3CCECDAC1DAF69EB00831242 /* PropertiesTableView.swift in Sources */,
 				3C9D13281DA3CE5800998DA2 /* UIImageView_RoundImageView.swift in Sources */,
 				3CAB0FA21DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift in Sources */,
 				3CAB0F9F1DB0C2B40090BEF3 /* GroupMembersViewController.swift in Sources */,
+				3CCF310D1DB771DD001A1E7B /* CommonHeaderButton.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
 				3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */,
@@ -1719,17 +1871,20 @@
 				3CCECDB81DAF872300831242 /* SubPropertiesCell.swift in Sources */,
 				3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */,
 				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
+				3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */,
 				3C1EC5AA1DA3A864003DC2A3 /* UIViewController_Common.swift in Sources */,
 				3CCF8AED1DA62A9900C76C64 /* DetailsScrollableTableView.swift in Sources */,
 				3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */,
 				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
 				3CACF3F71DB634920034D700 /* CommonCollectionReusableView.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
+				3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
 				3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */,
 				3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */,
 				3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */,
+				3CCF31021DB7349B001A1E7B /* SentMessageCell.swift in Sources */,
 				3CCF8AE41DA6247800C76C64 /* ButtonCell.swift in Sources */,
 				3C1EC5941DA3A864003DC2A3 /* CommonViewController.swift in Sources */,
 				3CCECD9F1DAF55E800831242 /* FiltersViewController.swift in Sources */,
@@ -1740,34 +1895,39 @@
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,
+				3CCF30F71DB731CF001A1E7B /* RecievedMessageCell.swift in Sources */,
 				3CACF3A51DB5EB430034D700 /* UserModel.swift in Sources */,
 				3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */,
 				3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */,
+				3CF5B5661DB7A56700224046 /* CommnetsCell.swift in Sources */,
 				3C1EC5971DA3A864003DC2A3 /* NSDate_Common.swift in Sources */,
-				3C9641371DB4DA6E00EE9676 /* MessagingViewController.swift in Sources */,
 				3C9D132C1DA3CE5800998DA2 /* UITextField_Localizable.swift in Sources */,
+				3CF5B54F1DB78AEC00224046 /* TrackInfoCell.swift in Sources */,
 				3CCF8AF11DA62B2D00C76C64 /* DetailsCell.swift in Sources */,
 				3CAB0FAC1DB0D8900090BEF3 /* ProfileImageCell.swift in Sources */,
 				3C1EC5AB1DA3A864003DC2A3 /* VNProgreessHUD.swift in Sources */,
+				3CF5B55F1DB79E6900224046 /* InviteForTrackCell.swift in Sources */,
 				3C1EC59F1DA3A864003DC2A3 /* UIColor_Common.swift in Sources */,
 				3CAB0F981DB0BA090090BEF3 /* GroupsCell.swift in Sources */,
 				3C9D13271DA3CE5800998DA2 /* UIButton_RoundButton.swift in Sources */,
 				3C1EC5AD1DA3A864003DC2A3 /* Reachability.swift in Sources */,
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
+				3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */,
 				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
-				3C96413F1DB4DACC00EE9676 /* RecievedMessageCell.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,
 				3CAB0FA71DB0D7AE0090BEF3 /* GroupMemberDetailsCell.swift in Sources */,
 				3CCF8B001DA6652600C76C64 /* LoginViewController.swift in Sources */,
 				3C1EC5961DA3A864003DC2A3 /* AppDelegate_Common.swift in Sources */,
+				3CCF310A1DB75B24001A1E7B /* TrackDetailsViewController.swift in Sources */,
 				3CCF8AF81DA64B1000C76C64 /* CommonMethods.swift in Sources */,
+				3CF5B5531DB78E4500224046 /* TrackPhasesCell.swift in Sources */,
 				3C1EC5981DA3A864003DC2A3 /* NSUserDefaults_Common.swift in Sources */,
+				3CCF31061DB74B7E001A1E7B /* TrackDetailsHeaderView.swift in Sources */,
 				3CACF3F91DB634920034D700 /* CommonCollectionView.swift in Sources */,
 				3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */,
 				3C1EC5991DA3A864003DC2A3 /* String_Common.swift in Sources */,
 				3CCF8AD91DA621B300C76C64 /* LoginSignupTableView.swift in Sources */,
-				3C9641411DB4DACC00EE9676 /* SentMessageCell.swift in Sources */,
 				3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */,
 				3CACF4021DB635220034D700 /* StaggeredCollectionView.swift in Sources */,
 				3C1EC5A11DA3A864003DC2A3 /* UIFont_Common.swift in Sources */,

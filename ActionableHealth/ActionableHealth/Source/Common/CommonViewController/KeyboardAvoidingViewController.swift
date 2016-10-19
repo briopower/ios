@@ -39,19 +39,14 @@ class KeyboardAvoidingViewController: CommonViewController {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillAppear(_:)), name: UIKeyboardWillShowNotification, object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardDidAppear(_:)), name: UIKeyboardDidShowNotification, object: nil)
-
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillDisappear(_:)), name: UIKeyboardWillHideNotification, object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardDidDisappear(_:)), name: UIKeyboardDidHideNotification, object: nil)
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardDidHideNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,15 +86,6 @@ extension KeyboardAvoidingViewController{
         UIView.commitAnimations()
     }
 
-    func keyboardDidAppear(notification:NSNotification) {
-
-    }
-
-    func keyboardDidDisappear(notification:NSNotification) {
-
-    }
-
-    
     func moveToBottom() {
         
     }

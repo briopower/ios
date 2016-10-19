@@ -42,11 +42,17 @@ class Constants: NSObject {
             static let editProfileView = "editProfileView"
         }
 
-        struct MessagingStoryBoard {
+        struct MessagingStoryboard {
             static let storyboardName = "Chats"
             static let messagingView = "messagingView"
         }
 
+        struct TracksStoryboard {
+            static let storyboardName = "Tracks"
+            static let trackDetailsView = "trackDetailsView"
+            static let inviteTracksView = "inviteTracksView"
+            static let joinTracksView = "joinTracksView"
+        }
     }
 
     //MARK:- URLs

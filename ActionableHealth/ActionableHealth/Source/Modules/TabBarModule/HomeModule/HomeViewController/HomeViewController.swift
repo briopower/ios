@@ -65,7 +65,12 @@ extension HomeViewController:CommonCollectionViewDelegate{
     }
 
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
-
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
+            dispatch_async(dispatch_get_main_queue(), {
+                viewCont.sourceType = TrackDetailsSourceType.Home
+                self.navigationController?.pushViewController(viewCont, animated: true)
+            })
+        }
     }
 }
 //MARK:- Button Action

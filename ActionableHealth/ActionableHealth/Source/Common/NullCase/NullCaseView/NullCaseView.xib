@@ -34,11 +34,8 @@
                         <action selector="retryTapped:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="nxp-12-use"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-events" translatesAutoresizingMaskIntoConstraints="NO" id="t1t-Hx-Zqx">
-                    <rect key="frame" x="247" y="156" width="106" height="108"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Internet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eg-xi-S2j" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
-                    <rect key="frame" x="237" y="111" width="126" height="30"/>
+                    <rect key="frame" x="237" y="155" width="126" height="30"/>
                     <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="25"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -49,6 +46,9 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="t1t-Hx-Zqx">
+                    <rect key="frame" x="291" y="200" width="19" height="20"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -72,6 +72,6 @@
         </view>
     </objects>
     <resources>
-        <image name="no-events" width="106" height="108"/>
+        <image name="search" width="19" height="20"/>
     </resources>
 </document>

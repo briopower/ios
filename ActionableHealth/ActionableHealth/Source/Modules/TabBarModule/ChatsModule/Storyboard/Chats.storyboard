@@ -74,14 +74,13 @@
                             <constraint firstAttribute="trailing" secondItem="kOH-uj-bJv" secondAttribute="trailing" id="Hpm-2N-JQR"/>
                             <constraint firstItem="4wN-dW-EPo" firstAttribute="leading" secondItem="s1H-Kg-6xV" secondAttribute="leading" id="Mdu-Nm-6IW"/>
                             <constraint firstItem="kOH-uj-bJv" firstAttribute="top" secondItem="4wN-dW-EPo" secondAttribute="bottom" id="Qc4-xC-WMp"/>
+                            <constraint firstItem="PGH-lW-BBM" firstAttribute="top" secondItem="kOH-uj-bJv" secondAttribute="bottom" id="cCC-Z3-LYj"/>
                             <constraint firstItem="4wN-dW-EPo" firstAttribute="top" secondItem="s1H-Kg-6xV" secondAttribute="top" id="onX-2n-FWA"/>
-                            <constraint firstItem="PGH-lW-BBM" firstAttribute="top" secondItem="kOH-uj-bJv" secondAttribute="bottom" id="tN4-Dh-i3A"/>
                             <constraint firstAttribute="trailing" secondItem="4wN-dW-EPo" secondAttribute="trailing" id="xCu-h6-MJk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="chatTextView" destination="xW5-SC-k38" id="Hsy-dh-Ei4"/>
-                        <outlet property="constraintBottomSpace" destination="tN4-Dh-i3A" id="WNU-wZ-bLZ"/>
                         <outlet property="heightConstraint" destination="f5g-CX-x8B" id="5YR-St-vAu"/>
                         <outlet property="msgTblView" destination="4wN-dW-EPo" id="d5W-mL-cRb"/>
                         <outlet property="placeholderLabel" destination="p4e-9s-UBU" id="fqJ-vb-1v2"/>

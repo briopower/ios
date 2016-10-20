@@ -22,7 +22,12 @@ class CommonCollectionView: UICollectionView {
     weak var commonCollectionViewDelegate:CommonCollectionViewDelegate?
     var hasMoreData = false
     var dataArray = NSMutableArray()
-    var type = CollectionViewType.Default
+    var type = CollectionViewType.Default{
+        didSet{
+            registerCells()
+        }
+    }
+
 
     private var bottomViewVisible = false
     private var topViewVisible = false

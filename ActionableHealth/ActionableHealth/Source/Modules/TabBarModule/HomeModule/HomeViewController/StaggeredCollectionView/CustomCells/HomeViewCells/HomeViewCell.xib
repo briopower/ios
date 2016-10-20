@@ -58,7 +58,7 @@
                                             <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="rating-icon"/>
                                             <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="rating-fill-icon"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="spacing">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="3"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>

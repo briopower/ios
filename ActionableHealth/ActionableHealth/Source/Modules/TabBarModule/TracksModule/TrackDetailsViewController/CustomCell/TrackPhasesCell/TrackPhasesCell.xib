@@ -72,6 +72,9 @@
                         <color key="textColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="XrD-Cc-14f">
+                        <rect key="frame" x="294" y="95" width="7" height="12"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="CQf-Hx-OSh" firstAttribute="top" secondItem="cLP-O8-dh6" secondAttribute="bottom" multiplier="1.3" id="0DM-tf-oKq"/>
@@ -81,6 +84,7 @@
                     <constraint firstAttribute="trailing" secondItem="N1U-fa-paS" secondAttribute="trailing" id="H3I-Bs-CL1"/>
                     <constraint firstAttribute="trailing" secondItem="jsV-vJ-csQ" secondAttribute="trailing" id="Ikz-df-qzi"/>
                     <constraint firstAttribute="bottom" secondItem="tue-Zy-Z7b" secondAttribute="bottom" id="Ixv-ZA-fjF"/>
+                    <constraint firstItem="9YR-2r-nHv" firstAttribute="leading" secondItem="XrD-Cc-14f" secondAttribute="trailing" id="Jcm-FA-rSp"/>
                     <constraint firstItem="CQf-Hx-OSh" firstAttribute="leading" secondItem="gbN-la-fhx" secondAttribute="leading" id="MuA-fB-YbZ"/>
                     <constraint firstItem="N1U-fa-paS" firstAttribute="top" secondItem="gbN-la-fhx" secondAttribute="bottom" id="Nbj-wc-kL2"/>
                     <constraint firstItem="gbN-la-fhx" firstAttribute="leading" secondItem="tue-Zy-Z7b" secondAttribute="trailing" id="Nj1-al-lEN"/>
@@ -94,6 +98,7 @@
                     <constraint firstAttribute="trailing" secondItem="9YR-2r-nHv" secondAttribute="trailing" id="c1X-pq-h77"/>
                     <constraint firstItem="jsV-vJ-csQ" firstAttribute="leading" secondItem="gxp-0j-lL5" secondAttribute="leading" id="eae-8c-Sba"/>
                     <constraint firstItem="xub-g8-aUl" firstAttribute="top" secondItem="gxp-0j-lL5" secondAttribute="top" id="jZq-pC-2Uz"/>
+                    <constraint firstItem="XrD-Cc-14f" firstAttribute="centerY" secondItem="9YR-2r-nHv" secondAttribute="centerY" id="jcF-Vo-R5H"/>
                     <constraint firstItem="E0I-dd-kPb" firstAttribute="leading" secondItem="tue-Zy-Z7b" secondAttribute="trailing" id="oOt-gh-wyN"/>
                     <constraint firstItem="tue-Zy-Z7b" firstAttribute="width" secondItem="gxp-0j-lL5" secondAttribute="width" multiplier="75:1242" id="ofd-kK-3Hg"/>
                     <constraint firstItem="9YR-2r-nHv" firstAttribute="width" secondItem="tue-Zy-Z7b" secondAttribute="width" id="prf-08-Z30"/>
@@ -106,4 +111,7 @@
             <point key="canvasLocation" x="224" y="364"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow" width="7" height="12"/>
+    </resources>
 </document>

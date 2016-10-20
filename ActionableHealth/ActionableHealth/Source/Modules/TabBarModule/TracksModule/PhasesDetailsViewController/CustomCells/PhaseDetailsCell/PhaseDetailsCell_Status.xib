@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+        <mutableArray key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+            <string>ProximaNova-Semibold</string>
+            <string>ProximaNova-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="310" id="Lkn-Rt-G9e" customClass="PhaseDetailsCell" customModule="ActionableHealth" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="448" height="310"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lkn-Rt-G9e" id="X30-Ij-0T4">
+                <rect key="frame" x="0.0" y="0.0" width="448" height="309"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dhy-lq-qOA">
+                        <rect key="frame" x="0.0" y="0.0" width="448" height="90"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATUS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQr-SV-Q8f" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="25" y="57" width="54" height="15"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2U3-DW-NKV">
+                                <rect key="frame" x="0.0" y="72" width="448" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2U3-DW-NKV" secondAttribute="height" multiplier="1242:50" id="FAn-tU-0aG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IN PROGRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMD-rQ-jKj" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="327" y="57" width="96" height="15"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.0" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="87s-ky-ZdS" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="89" width="448" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="deU-wE-Bfw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE STATUS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNa-5y-NJi" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="313" y="26" width="110" height="14"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.92941176470588238" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="2U3-DW-NKV" secondAttribute="bottom" id="06g-hD-WCi"/>
+                            <constraint firstAttribute="trailing" secondItem="87s-ky-ZdS" secondAttribute="trailing" id="1Zy-fO-uVM"/>
+                            <constraint firstItem="87s-ky-ZdS" firstAttribute="leading" secondItem="Dhy-lq-qOA" secondAttribute="leading" id="2f9-cS-pRp"/>
+                            <constraint firstItem="2U3-DW-NKV" firstAttribute="top" secondItem="fQr-SV-Q8f" secondAttribute="bottom" id="6W2-tU-2P0"/>
+                            <constraint firstAttribute="trailing" secondItem="2U3-DW-NKV" secondAttribute="trailing" id="KhL-C4-xgI"/>
+                            <constraint firstItem="jNa-5y-NJi" firstAttribute="trailing" secondItem="qMD-rQ-jKj" secondAttribute="trailing" id="LIJ-5E-Fb5"/>
+                            <constraint firstAttribute="bottom" secondItem="87s-ky-ZdS" secondAttribute="bottom" id="ZLZ-Ro-J0Q"/>
+                            <constraint firstAttribute="width" secondItem="Dhy-lq-qOA" secondAttribute="height" multiplier="1242:250" id="cL5-74-M5K"/>
+                            <constraint firstItem="2U3-DW-NKV" firstAttribute="top" secondItem="qMD-rQ-jKj" secondAttribute="bottom" id="cuz-BK-3ur"/>
+                            <constraint firstItem="2U3-DW-NKV" firstAttribute="leading" secondItem="Dhy-lq-qOA" secondAttribute="leading" id="mVq-4e-4Ot"/>
+                            <constraint firstItem="qMD-rQ-jKj" firstAttribute="top" secondItem="jNa-5y-NJi" secondAttribute="bottom" multiplier="150:105" id="qoL-GR-REU"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Di-20-0PO">
+                        <rect key="frame" x="0.0" y="90" width="448" height="219"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ePr-SL-Hu5">
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="219"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LOY-Fi-nbz">
+                                <rect key="frame" x="0.0" y="0.0" width="448" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LOY-Fi-nbz" secondAttribute="height" multiplier="1242:60" id="m57-jf-8JW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-9Z-lfU" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="25" y="22" width="198" height="15"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.0" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="246" verticalHuggingPriority="246" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Completed on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ez9-et-ple" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="25" y="67" width="178" height="80"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBZ-BU-34K" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="25" y="182" width="121" height="15"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="149 Comments" image="cut"/>
+                            </button>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="uIU-Tf-dca" customClass="HCSStarRatingView">
+                                <rect key="frame" x="25" y="40" width="90" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uIU-Tf-dca" secondAttribute="height" multiplier="250:60" id="ZyN-HS-QDY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="4.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="rating-icon"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="rating-fill-icon"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E1n-wz-FgI">
+                                <rect key="frame" x="0.0" y="197" width="448" height="22"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qhd-Hm-pHQ">
+                                <rect key="frame" x="423" y="0.0" width="25" height="219"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bU3-JV-iRK" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="126" y="42" width="62" height="21"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me7-Yr-gfL" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="347" y="96" width="76" height="27"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="RATE TASK"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4sT-TD-qIz" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="218" width="448" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="iYR-My-gEh"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E1n-wz-FgI" firstAttribute="height" secondItem="LOY-Fi-nbz" secondAttribute="height" id="1KD-hB-w7F"/>
+                            <constraint firstAttribute="bottom" secondItem="E1n-wz-FgI" secondAttribute="bottom" id="1MR-fV-A2P"/>
+                            <constraint firstItem="E1n-wz-FgI" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="6at-lq-yU0"/>
+                            <constraint firstAttribute="trailing" secondItem="E1n-wz-FgI" secondAttribute="trailing" id="72z-Q3-Kp5"/>
+                            <constraint firstItem="ePr-SL-Hu5" firstAttribute="top" secondItem="6Di-20-0PO" secondAttribute="top" id="7mg-FR-sx0"/>
+                            <constraint firstItem="fwg-9Z-lfU" firstAttribute="top" secondItem="LOY-Fi-nbz" secondAttribute="bottom" id="FF7-Vt-cbf"/>
+                            <constraint firstItem="ePr-SL-Hu5" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="FhW-Xw-5Nw"/>
+                            <constraint firstItem="Qhd-Hm-pHQ" firstAttribute="leading" secondItem="Me7-Yr-gfL" secondAttribute="trailing" id="HW5-lR-xrD"/>
+                            <constraint firstAttribute="trailing" secondItem="LOY-Fi-nbz" secondAttribute="trailing" id="K86-yv-tMo"/>
+                            <constraint firstItem="Me7-Yr-gfL" firstAttribute="centerY" secondItem="Qhd-Hm-pHQ" secondAttribute="centerY" id="N3W-3e-Icc"/>
+                            <constraint firstItem="bU3-JV-iRK" firstAttribute="height" secondItem="uIU-Tf-dca" secondAttribute="height" id="NVC-hA-HB0"/>
+                            <constraint firstItem="uIU-Tf-dca" firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="width" multiplier="250:1242" id="Nmb-yz-4Ka"/>
+                            <constraint firstItem="ePr-SL-Hu5" firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="width" multiplier="70:1242" id="PIh-rn-OrB"/>
+                            <constraint firstItem="bU3-JV-iRK" firstAttribute="centerY" secondItem="uIU-Tf-dca" secondAttribute="centerY" multiplier="1.04" id="PLQ-Rs-WYZ"/>
+                            <constraint firstAttribute="bottom" secondItem="4sT-TD-qIz" secondAttribute="bottom" id="Qqm-rr-hFc"/>
+                            <constraint firstItem="Ez9-et-ple" firstAttribute="leading" secondItem="ePr-SL-Hu5" secondAttribute="trailing" id="Vxk-hP-DT3"/>
+                            <constraint firstItem="bU3-JV-iRK" firstAttribute="leading" secondItem="uIU-Tf-dca" secondAttribute="trailing" multiplier="350:320" id="XFy-7N-lVJ"/>
+                            <constraint firstItem="Ez9-et-ple" firstAttribute="leading" secondItem="uIU-Tf-dca" secondAttribute="leading" id="cH3-I6-SdA"/>
+                            <constraint firstItem="Ez9-et-ple" firstAttribute="top" secondItem="uIU-Tf-dca" secondAttribute="bottom" multiplier="1.1" id="eTB-zP-hBC"/>
+                            <constraint firstItem="Qhd-Hm-pHQ" firstAttribute="top" secondItem="6Di-20-0PO" secondAttribute="top" id="fau-Gq-baW"/>
+                            <constraint firstItem="uIU-Tf-dca" firstAttribute="leading" secondItem="fwg-9Z-lfU" secondAttribute="leading" id="h0g-ug-FRJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Qhd-Hm-pHQ" secondAttribute="trailing" id="hGK-pQ-RjZ"/>
+                            <constraint firstItem="4sT-TD-qIz" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="iDK-on-3XD"/>
+                            <constraint firstItem="LOY-Fi-nbz" firstAttribute="top" secondItem="6Di-20-0PO" secondAttribute="top" id="icL-fH-qi2"/>
+                            <constraint firstAttribute="bottom" secondItem="Qhd-Hm-pHQ" secondAttribute="bottom" id="ie0-6y-Vjb"/>
+                            <constraint firstItem="QBZ-BU-34K" firstAttribute="leading" secondItem="Ez9-et-ple" secondAttribute="leading" id="jHt-QT-a2k"/>
+                            <constraint firstItem="Qhd-Hm-pHQ" firstAttribute="width" secondItem="ePr-SL-Hu5" secondAttribute="width" id="kFg-5P-xJw"/>
+                            <constraint firstAttribute="trailing" secondItem="4sT-TD-qIz" secondAttribute="trailing" id="lZT-hh-seM"/>
+                            <constraint firstItem="LOY-Fi-nbz" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="m1U-cB-sBm"/>
+                            <constraint firstItem="E1n-wz-FgI" firstAttribute="top" secondItem="QBZ-BU-34K" secondAttribute="bottom" id="n8c-vx-xns"/>
+                            <constraint firstAttribute="bottom" secondItem="ePr-SL-Hu5" secondAttribute="bottom" id="pE9-KE-22P"/>
+                            <constraint firstItem="uIU-Tf-dca" firstAttribute="top" secondItem="fwg-9Z-lfU" secondAttribute="bottom" multiplier="1.1" id="sjf-gR-E5g"/>
+                            <constraint firstItem="QBZ-BU-34K" firstAttribute="top" secondItem="Ez9-et-ple" secondAttribute="bottom" multiplier="310:250" id="tRl-Eo-1gm"/>
+                            <constraint firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="height" multiplier="1242:440" priority="999" id="vRs-yq-VqJ"/>
+                            <constraint firstItem="fwg-9Z-lfU" firstAttribute="leading" secondItem="ePr-SL-Hu5" secondAttribute="trailing" id="zab-VV-Dme"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vRs-yq-VqJ"/>
+                                <exclude reference="Vxk-hP-DT3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6Di-20-0PO" firstAttribute="leading" secondItem="X30-Ij-0T4" secondAttribute="leading" id="CTw-eS-2hm"/>
+                    <constraint firstAttribute="trailing" secondItem="6Di-20-0PO" secondAttribute="trailing" id="KhH-v0-C24"/>
+                    <constraint firstAttribute="bottom" secondItem="6Di-20-0PO" secondAttribute="bottom" id="LXG-mA-PEu"/>
+                    <constraint firstItem="fQr-SV-Q8f" firstAttribute="leading" secondItem="uIU-Tf-dca" secondAttribute="leading" id="Trv-Pc-Cyi"/>
+                    <constraint firstItem="Dhy-lq-qOA" firstAttribute="leading" secondItem="X30-Ij-0T4" secondAttribute="leading" id="mBq-t6-Yn1"/>
+                    <constraint firstItem="6Di-20-0PO" firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="height" multiplier="1242:440" priority="999" id="mQW-Kh-fXv"/>
+                    <constraint firstItem="Qhd-Hm-pHQ" firstAttribute="leading" secondItem="qMD-rQ-jKj" secondAttribute="trailing" id="nEU-NH-kdr"/>
+                    <constraint firstItem="6Di-20-0PO" firstAttribute="top" secondItem="Dhy-lq-qOA" secondAttribute="bottom" id="qaS-ut-sV1"/>
+                    <constraint firstItem="Dhy-lq-qOA" firstAttribute="top" secondItem="X30-Ij-0T4" secondAttribute="top" id="up1-7t-fI2"/>
+                    <constraint firstAttribute="trailing" secondItem="Dhy-lq-qOA" secondAttribute="trailing" id="y1c-5f-R3q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="410" y="493"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cut" width="15" height="15"/>
+        <image name="rating-fill-icon" width="11" height="10"/>
+        <image name="rating-icon" width="11" height="10"/>
+    </resources>
+</document>

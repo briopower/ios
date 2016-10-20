@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="91" id="KGk-i7-Jjw" customClass="TrackFileCell" customModule="ActionableHealth" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLh-NL-xrR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dGh-9e-ZVT">
+                                <rect key="frame" x="0.0" y="0.0" width="18" height="90"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-iU-miK">
+                                <rect key="frame" x="18" y="19" width="52" height="52"/>
+                                <color key="backgroundColor" red="0.52156862745098043" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qRb-iU-miK" secondAttribute="height" id="KRm-G8-2bP"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title: Yoga Posees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ub-bU-y2J" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="81" y="19" width="128" height="16"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File Type: Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNy-gx-KF9" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="81" y="37" width="113" height="16"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added on 24 Aug 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ge1-G8-2YJ" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="81" y="55" width="163" height="16"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" red="0.52156862745098043" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GJt-ng-aXg" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="89" width="320" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="OiT-h5-LZl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GJt-ng-aXg" secondAttribute="bottom" id="3O1-0W-bfg"/>
+                            <constraint firstItem="qRb-iU-miK" firstAttribute="centerY" secondItem="FLh-NL-xrR" secondAttribute="centerY" id="53q-jy-8qS"/>
+                            <constraint firstItem="qRb-iU-miK" firstAttribute="width" secondItem="FLh-NL-xrR" secondAttribute="width" multiplier="200:1242" id="9RN-w0-X3k"/>
+                            <constraint firstItem="2ub-bU-y2J" firstAttribute="leading" secondItem="qRb-iU-miK" secondAttribute="trailing" multiplier="370:320" id="9vB-a4-xMY"/>
+                            <constraint firstItem="ge1-G8-2YJ" firstAttribute="bottom" secondItem="qRb-iU-miK" secondAttribute="bottom" id="Bpg-Sg-1om"/>
+                            <constraint firstItem="qRb-iU-miK" firstAttribute="leading" secondItem="dGh-9e-ZVT" secondAttribute="trailing" id="DeU-xi-HOU"/>
+                            <constraint firstItem="dGh-9e-ZVT" firstAttribute="leading" secondItem="FLh-NL-xrR" secondAttribute="leading" id="GtZ-mV-WCI"/>
+                            <constraint firstAttribute="trailing" secondItem="GJt-ng-aXg" secondAttribute="trailing" id="JPc-fY-OaF"/>
+                            <constraint firstItem="2ub-bU-y2J" firstAttribute="top" secondItem="qRb-iU-miK" secondAttribute="top" id="PnB-aE-cqY"/>
+                            <constraint firstItem="ge1-G8-2YJ" firstAttribute="leading" secondItem="2ub-bU-y2J" secondAttribute="leading" id="RFn-bR-0wc"/>
+                            <constraint firstAttribute="width" secondItem="FLh-NL-xrR" secondAttribute="height" multiplier="1242:300" priority="999" id="TQs-SY-0WY"/>
+                            <constraint firstItem="qNy-gx-KF9" firstAttribute="leading" secondItem="2ub-bU-y2J" secondAttribute="leading" id="ZuW-no-cEM"/>
+                            <constraint firstAttribute="bottom" secondItem="dGh-9e-ZVT" secondAttribute="bottom" id="fVp-JC-RAQ"/>
+                            <constraint firstItem="qNy-gx-KF9" firstAttribute="centerY" secondItem="qRb-iU-miK" secondAttribute="centerY" id="mi4-gS-fPL"/>
+                            <constraint firstItem="dGh-9e-ZVT" firstAttribute="width" secondItem="FLh-NL-xrR" secondAttribute="width" multiplier="70:1242" id="nTa-Er-Pta"/>
+                            <constraint firstItem="GJt-ng-aXg" firstAttribute="leading" secondItem="FLh-NL-xrR" secondAttribute="leading" id="saT-vK-VaG"/>
+                            <constraint firstItem="dGh-9e-ZVT" firstAttribute="top" secondItem="FLh-NL-xrR" secondAttribute="top" id="tZy-k5-4zA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FLh-NL-xrR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6E5-Bt-FRF"/>
+                    <constraint firstAttribute="trailing" secondItem="FLh-NL-xrR" secondAttribute="trailing" id="9BI-Hf-wsf"/>
+                    <constraint firstAttribute="bottom" secondItem="FLh-NL-xrR" secondAttribute="bottom" id="QR8-fq-ISN"/>
+                    <constraint firstItem="FLh-NL-xrR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xrL-71-bWR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="303" y="312.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -29,20 +29,17 @@ class TrackDetailsViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarWithTitle("TRACK DETAILS", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
-        
+
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        sizeHeaderToFit()
-    }
-
-    func sizeHeaderToFit() {
         if let headerView = trackDetailsTblView.tableHeaderView as? TrackDetailsHeaderView {
             headerView.delegate = self
             headerView.setupFrame()
             trackDetailsTblView.tableHeaderView = headerView
         }
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,7 +59,9 @@ extension TrackDetailsViewController{
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
     func commentsTapped(type: TrackDetailsSourceType) {
-
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+            self.navigationController?.pushViewController(viewCont, animated: true)
+        }
     }
 
     func requestButtonTapped(type: TrackDetailsSourceType) {
@@ -103,8 +102,8 @@ extension TrackDetailsViewController{
         phaseButton.selected = !infoSelected
         isInfoSelected = infoSelected
         trackDetailsTblView.reloadData()
-//        trackDetailsTblView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
     }
+
     func getInfoCellForIndexPath(indexPath:NSIndexPath) -> UITableViewCell {
 
         if indexPath.row == 0 {
@@ -125,6 +124,21 @@ extension TrackDetailsViewController{
         }
         return UITableViewCell()
     }
+
+    func infoCellSelectedAtIndexPath(indexPath:NSIndexPath) {
+        if indexPath.row == 1{
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
+                self.navigationController?.pushViewController(viewCont, animated: true)
+            }
+        }
+    }
+
+    func phaseCellSelectedAtIndexPath(indexPath:NSIndexPath) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
+            self.navigationController?.pushViewController(viewCont, animated: true)
+        }
+    }
+
 }
 
 //MARK:- UITableViewDataSource
@@ -146,10 +160,17 @@ extension TrackDetailsViewController:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension TrackDetailsViewController:UITableViewDelegate{
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if isInfoSelected {
+            infoCellSelectedAtIndexPath(indexPath)
+        }
+        phaseCellSelectedAtIndexPath(indexPath)
+    }
+
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         return sectionHeaderView
     }
-
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }

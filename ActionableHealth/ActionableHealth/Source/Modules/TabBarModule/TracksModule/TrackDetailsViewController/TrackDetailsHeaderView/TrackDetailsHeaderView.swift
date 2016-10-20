@@ -7,7 +7,6 @@
 //
 
 import UIKit
-let heightOf1PxlWidth:CGFloat = 1.0628019324
 enum TrackDetailsSourceType:Int {
     case Home, Tracks, Count
 }
@@ -24,6 +23,7 @@ class TrackDetailsHeaderView: UIView {
     @IBOutlet weak var requestButton: UIButton!
 
     //MARK:- Variables
+    static let heightOf1PxlWidth:CGFloat = 1.0628019324
     weak var delegate:TrackDetailsHeaderViewDelegate?
     var type:TrackDetailsSourceType = TrackDetailsSourceType.Home
 }
@@ -54,7 +54,7 @@ extension TrackDetailsHeaderView{
 
     func setupFrame() {
         CommonMethods.addShadowToTabBar(bottomContainer)
-        self.frame = CGRect(x: 0, y: 0, width: UIDevice.width(), height: UIDevice.width() * heightOf1PxlWidth)
+        self.frame = CGRect(x: 0, y: 0, width: UIDevice.width(), height: UIDevice.width() * TrackDetailsHeaderView.heightOf1PxlWidth)
     }
 
     func setupForType(type:TrackDetailsSourceType) {

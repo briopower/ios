@@ -52,6 +52,9 @@ class Constants: NSObject {
             static let trackDetailsView = "trackDetailsView"
             static let inviteTracksView = "inviteTracksView"
             static let joinTracksView = "joinTracksView"
+            static let commentsView = "commentsView"
+            static let trackFileView = "trackFileView"
+            static let phaseDetailsView = "phaseDetailsView"
         }
     }
 

@@ -4,9 +4,12 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
@@ -242,7 +245,7 @@
                     </view>
                     <connections>
                         <outlet property="commentsTblView" destination="0Kj-CE-WVw" id="jBy-J9-V2L"/>
-                        <outlet property="constraintBottomSpace" destination="GEF-ZU-IFd" id="LSs-PB-kvy"/>
+                        <outlet property="constraintBottomSpace" destination="6xK-en-NA3" id="dlD-Rw-9Ku"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0mK-rD-0bH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -317,14 +320,114 @@
                     </view>
                     <connections>
                         <outlet property="phaseDetailsTblView" destination="eJx-U2-zaf" id="aDp-XN-Nrk"/>
+                        <outlet property="ratingView" destination="fZe-4W-8iC" id="MLS-k8-oP8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seU-Nr-PyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="fZe-4W-8iC">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oax-xd-UcQ">
+                            <rect key="frame" x="11" y="197" width="298" height="174"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATE TASK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5Y-EB-FyN" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="298" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="X5Y-EB-FyN" secondAttribute="height" multiplier="1160:135" id="lZU-JN-iWw"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                    <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GS4-Yx-eEF" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="34" width="298" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="Mj5-v4-2Ya"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6pG-cu-3Ij" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="139" width="298" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="xxc-nU-eR8"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tlU-g5-7WV" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="140" width="298" height="34"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                    <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="OK"/>
+                                    <connections>
+                                        <action selector="rateTaskAction:" destination="Np4-Hx-sqP" eventType="touchUpInside" id="EBK-1G-0D9"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mF4-zR-gpw" customClass="HCSStarRatingView">
+                                    <rect key="frame" x="42" y="73" width="214" height="28"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="mF4-zR-gpw" secondAttribute="height" multiplier="1160:150" id="hW4-Ec-rAi"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                            <real key="value" value="2.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="rating-icon"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="rating-fill-icon"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="GS4-Yx-eEF" firstAttribute="leading" secondItem="oax-xd-UcQ" secondAttribute="leading" id="0PJ-gL-vnf"/>
+                                <constraint firstItem="tlU-g5-7WV" firstAttribute="top" secondItem="6pG-cu-3Ij" secondAttribute="bottom" id="0lG-eQ-MKF"/>
+                                <constraint firstItem="X5Y-EB-FyN" firstAttribute="top" secondItem="oax-xd-UcQ" secondAttribute="top" id="1UW-N1-QtN"/>
+                                <constraint firstAttribute="trailing" secondItem="tlU-g5-7WV" secondAttribute="trailing" id="3v0-pH-2A7"/>
+                                <constraint firstItem="tlU-g5-7WV" firstAttribute="leading" secondItem="oax-xd-UcQ" secondAttribute="leading" id="IHd-fs-chv"/>
+                                <constraint firstAttribute="trailing" secondItem="6pG-cu-3Ij" secondAttribute="trailing" id="O32-vf-06S"/>
+                                <constraint firstItem="mF4-zR-gpw" firstAttribute="centerX" secondItem="oax-xd-UcQ" secondAttribute="centerX" id="OHv-Zu-h14"/>
+                                <constraint firstAttribute="width" secondItem="oax-xd-UcQ" secondAttribute="height" multiplier="1160:680" id="Qle-6K-Q2y"/>
+                                <constraint firstAttribute="bottom" secondItem="tlU-g5-7WV" secondAttribute="bottom" id="W9J-EY-ciZ"/>
+                                <constraint firstItem="mF4-zR-gpw" firstAttribute="centerY" secondItem="oax-xd-UcQ" secondAttribute="centerY" id="XZB-Fd-7TZ"/>
+                                <constraint firstItem="GS4-Yx-eEF" firstAttribute="top" secondItem="X5Y-EB-FyN" secondAttribute="bottom" id="bre-eh-wX4"/>
+                                <constraint firstAttribute="trailing" secondItem="GS4-Yx-eEF" secondAttribute="trailing" id="i6x-LB-JpX"/>
+                                <constraint firstItem="mF4-zR-gpw" firstAttribute="width" secondItem="oax-xd-UcQ" secondAttribute="width" multiplier="835:1160" id="lgz-Ig-7eg"/>
+                                <constraint firstAttribute="trailing" secondItem="X5Y-EB-FyN" secondAttribute="trailing" id="oNN-E1-LRz"/>
+                                <constraint firstItem="X5Y-EB-FyN" firstAttribute="leading" secondItem="oax-xd-UcQ" secondAttribute="leading" id="pZ3-jg-G18"/>
+                                <constraint firstItem="6pG-cu-3Ij" firstAttribute="leading" secondItem="oax-xd-UcQ" secondAttribute="leading" id="tyP-z8-ShM"/>
+                                <constraint firstItem="tlU-g5-7WV" firstAttribute="height" secondItem="X5Y-EB-FyN" secondAttribute="height" id="zRq-PT-w0r"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.39784482758620687" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="oax-xd-UcQ" firstAttribute="centerX" secondItem="fZe-4W-8iC" secondAttribute="centerX" id="Esk-8L-jzC"/>
+                        <constraint firstItem="oax-xd-UcQ" firstAttribute="width" secondItem="fZe-4W-8iC" secondAttribute="width" multiplier="1160:1242" id="RCO-zx-cSr"/>
+                        <constraint firstItem="oax-xd-UcQ" firstAttribute="centerY" secondItem="fZe-4W-8iC" secondAttribute="centerY" id="d2p-qo-D2e"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="3775" y="419"/>
         </scene>
     </scenes>
     <resources>
+        <image name="rating-fill-icon" width="11" height="10"/>
+        <image name="rating-icon" width="11" height="10"/>
         <image name="send" width="28" height="28"/>
     </resources>
 </document>

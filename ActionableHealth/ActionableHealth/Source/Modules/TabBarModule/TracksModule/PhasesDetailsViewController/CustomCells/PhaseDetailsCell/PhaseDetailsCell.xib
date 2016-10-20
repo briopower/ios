@@ -58,6 +58,9 @@
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="149 Comments" image="cut"/>
+                                <connections>
+                                    <action selector="commentsAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K1a-eW-1dc"/>
+                                </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="BE8-SJ-Jvp" customClass="HCSStarRatingView">
                                 <rect key="frame" x="22" y="37" width="79" height="19"/>
@@ -100,6 +103,9 @@
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                 <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="RATE TASK"/>
+                                <connections>
+                                    <action selector="rateTaskAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nrG-xW-tTC"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zUw-z6-WNf" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="182" width="390" height="1"/>

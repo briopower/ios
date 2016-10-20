@@ -81,6 +81,7 @@
                     </view>
                     <connections>
                         <outlet property="chatTextView" destination="xW5-SC-k38" id="Hsy-dh-Ei4"/>
+                        <outlet property="constraintBottomSpace" destination="cCC-Z3-LYj" id="ijb-AG-L0z"/>
                         <outlet property="heightConstraint" destination="f5g-CX-x8B" id="5YR-St-vAu"/>
                         <outlet property="msgTblView" destination="4wN-dW-EPo" id="d5W-mL-cRb"/>
                         <outlet property="placeholderLabel" destination="p4e-9s-UBU" id="fqJ-vb-1v2"/>

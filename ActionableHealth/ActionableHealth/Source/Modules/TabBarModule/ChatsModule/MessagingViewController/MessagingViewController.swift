@@ -41,7 +41,10 @@ class MessagingViewController: KeyboardAvoidingViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        shouldScrollToBottom = false
+        if shouldScrollToBottom {
+            moveToBottom()
+            shouldScrollToBottom = false
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

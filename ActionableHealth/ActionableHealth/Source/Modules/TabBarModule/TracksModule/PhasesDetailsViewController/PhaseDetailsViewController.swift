@@ -12,6 +12,7 @@ class PhaseDetailsViewController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var phaseDetailsTblView: UITableView!
+    @IBOutlet var ratingView: UIView!
 
     //MARK:- Life cycle
     override func viewDidLoad() {
@@ -38,7 +39,13 @@ class PhaseDetailsViewController: CommonViewController {
     }
 
 }
-
+//MARK:- Button Actions
+extension PhaseDetailsViewController{
+    @IBAction func rateTaskAction(sender: UIButton) {
+        hideRatingView()
+    }
+    
+}
 //MARK:- Additional methods
 extension PhaseDetailsViewController{
     func setupView(){
@@ -64,13 +71,51 @@ extension PhaseDetailsViewController:UITableViewDataSource{
 
         if indexPath.row == 0 || indexPath.row == 1 {
             if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell)) as? PhaseDetailsCell {
+                cell.tag = indexPath.row
+                cell.delegate = self
                 return cell
             }
         }else{
             if let cell = tableView.dequeueReusableCellWithIdentifier(PhaseDetailsCell.statusCell) as? PhaseDetailsCell {
+                cell.tag = indexPath.row
+                cell.delegate = self
                 return cell
             }
         }
         return UITableViewCell()
+    }
+}
+
+//MARK:- RatingView Methods
+extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
+    func commentsTapped(tag: Int, obj: AnyObject?) {
+
+    }
+
+    func rateTaskTapped(tag: Int, obj: AnyObject?) {
+        showRatingView()
+    }
+
+    func showRatingView() {
+        if let view = getNavigationController()?.view {
+            ratingView.alpha = 0
+            ratingView.frame = view.frame
+            ratingView.userInteractionEnabled = false
+            view.addSubview(ratingView)
+            UIView.animateWithDuration(0.3, animations: { 
+                self.ratingView.alpha = 1
+                }, completion: { (completed:Bool) in
+                    self.ratingView.userInteractionEnabled = true
+            })
+        }
+    }
+
+    func hideRatingView() {
+        UIView.animateWithDuration(0.3, animations: { 
+            self.ratingView.alpha = 0
+            self.ratingView.userInteractionEnabled = false
+        }) { (completed:Bool) in
+            self.ratingView.userInteractionEnabled = false
+        }
     }
 }

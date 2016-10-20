@@ -89,7 +89,7 @@ extension TrackDetailsViewController{
         }
 
         trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
-        trackDetailsTblView.estimatedRowHeight = 80
+        trackDetailsTblView.estimatedRowHeight = 250
 
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackInfoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackInfoCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
@@ -153,8 +153,9 @@ extension TrackDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         if isInfoSelected {
             return getInfoCellForIndexPath(indexPath)
+        }else{
+            return getPhaseCellForIndexPath(indexPath)
         }
-        return getPhaseCellForIndexPath(indexPath)
     }
 }
 
@@ -163,8 +164,9 @@ extension TrackDetailsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if isInfoSelected {
             infoCellSelectedAtIndexPath(indexPath)
+        }else{
+            phaseCellSelectedAtIndexPath(indexPath)
         }
-        phaseCellSelectedAtIndexPath(indexPath)
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{

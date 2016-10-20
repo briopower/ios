@@ -30,12 +30,17 @@ class CommentsViewController: KeyboardAvoidingViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        shouldScrollToBottom = false
+        if shouldScrollToBottom {
+            moveToBottom()
+            shouldScrollToBottom = false
+        }
     }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarWithTitle("Comments", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

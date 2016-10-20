@@ -178,7 +178,7 @@
         <!--Settings-->
         <scene sceneID="tor-WR-usg">
             <objects>
-                <viewController id="VJW-rc-AcC" customClass="SettingsViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="VJW-rc-AcC" customClass="SettingsViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2So-iy-pxV"/>
                         <viewControllerLayoutGuide type="bottom" id="21z-lU-rhV"/>

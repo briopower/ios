@@ -52,6 +52,7 @@ class DetailsCell: UITableViewCell {
 
 extension DetailsCell{
     @IBAction func forgotPasswordAction(sender: AnyObject) {
+        UIApplication.dismissKeyboard()
         if let viewCont = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.forgotPasswordView) as? ForgotPasswordViewController {
             if let temp = currentUser {
                 viewCont.currentUser = temp

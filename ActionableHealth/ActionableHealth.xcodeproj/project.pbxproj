@@ -96,6 +96,7 @@
 		3CC9D0891DB8AE7100287068 /* PhaseDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC9D0871DB8AE7100287068 /* PhaseDetailsCell.xib */; };
 		3CC9D08B1DB8B44D00287068 /* PhaseDetailsCell_Status.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC9D08A1DB8B44D00287068 /* PhaseDetailsCell_Status.xib */; };
 		3CC9D08D1DB8B68F00287068 /* PhaseDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9D08C1DB8B68F00287068 /* PhaseDetailsViewController.swift */; };
+		3CC9D0901DB8D59C00287068 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9D08F1DB8D59C00287068 /* ForgotPasswordViewController.swift */; };
 		3CCECD9C1DAF54B300831242 /* UIImageView_SepratorImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECD9B1DAF54B300831242 /* UIImageView_SepratorImageView.swift */; };
 		3CCECD9F1DAF55E800831242 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECD9E1DAF55E800831242 /* FiltersViewController.swift */; };
 		3CCECDA21DAF61E000831242 /* FilterByObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECDA11DAF61E000831242 /* FilterByObject.swift */; };
@@ -282,6 +283,7 @@
 		3CC9D0871DB8AE7100287068 /* PhaseDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell.xib; sourceTree = "<group>"; };
 		3CC9D08A1DB8B44D00287068 /* PhaseDetailsCell_Status.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell_Status.xib; sourceTree = "<group>"; };
 		3CC9D08C1DB8B68F00287068 /* PhaseDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhaseDetailsViewController.swift; sourceTree = "<group>"; };
+		3CC9D08F1DB8D59C00287068 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		3CCECD9B1DAF54B300831242 /* UIImageView_SepratorImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView_SepratorImageView.swift; sourceTree = "<group>"; };
 		3CCECD9E1DAF55E800831242 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		3CCECDA11DAF61E000831242 /* FilterByObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterByObject.swift; sourceTree = "<group>"; };
@@ -1223,6 +1225,14 @@
 			path = PhaseDetailsCell;
 			sourceTree = "<group>";
 		};
+		3CC9D08E1DB8D52300287068 /* ForgotPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CC9D08F1DB8D59C00287068 /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPasswordViewController;
+			sourceTree = "<group>";
+		};
 		3CCECD9D1DAF55C900831242 /* FiltersViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1381,6 +1391,7 @@
 			children = (
 				3CAE70B11DB0A01D00D733C2 /* Storyboard */,
 				3CCF8AD71DA6219800C76C64 /* LoginSignupTableView */,
+				3CC9D08E1DB8D52300287068 /* ForgotPasswordViewController */,
 				3CCF8AD51DA6217B00C76C64 /* LoginViewController */,
 				3CCF8AF31DA6360300C76C64 /* SignUpViewController */,
 			);
@@ -1984,6 +1995,7 @@
 				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
 				3CACF3F71DB634920034D700 /* CommonCollectionReusableView.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
+				3CC9D0901DB8D59C00287068 /* ForgotPasswordViewController.swift in Sources */,
 				3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,

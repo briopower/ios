@@ -14,8 +14,9 @@ class Constants: NSObject {
     struct Storyboard {
         struct LoginStoryboard {
             static let storyboardName = "SignupLogin"
-            static let SignupView = "signupView"
-            static let LoginView = "loginView"
+            static let signupView = "signupView"
+            static let loginView = "loginView"
+            static let forgotPasswordView = "forgotPasswordView"
         }
 
         struct TabBarStoryboard {

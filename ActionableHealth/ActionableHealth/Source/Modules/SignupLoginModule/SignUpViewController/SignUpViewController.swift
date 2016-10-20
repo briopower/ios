@@ -32,7 +32,7 @@ class SignUpViewController: CommonViewController {
 //MARK:- Additional Methods
 extension SignUpViewController{
     func setupView() {
-        tblView.setupTableView(false, user: currentUser)
+        tblView.setupTableView(LoginSignupTableViewSourceType.Signup, user: currentUser)
         tblView.loginSignupTblViewDelegate = self
         CommonMethods.addShadowToView(container)
         CommonMethods.setCornerRadius(signupButton)

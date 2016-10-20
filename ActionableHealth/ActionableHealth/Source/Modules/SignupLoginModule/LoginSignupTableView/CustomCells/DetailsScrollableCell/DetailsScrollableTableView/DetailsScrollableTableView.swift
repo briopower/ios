@@ -12,16 +12,16 @@ import UIKit
 class DetailsScrollableTableView: UITableView {
 
     //MARK:- Variables
-    var isLogin = false
+    var sourceType = LoginSignupTableViewSourceType.Login
     weak var currentUser:UserModel?
 
 }
 
 //MARK:- Additional methods
 extension DetailsScrollableTableView{
-    func setupTableView(isLogin:Bool, user:UserModel?) {
+    func setupTableView(sourceType:LoginSignupTableViewSourceType, user:UserModel?) {
         currentUser = user
-        self.isLogin = isLogin
+        self.sourceType = sourceType
         self.delegate = self
         self.dataSource = self
         self.rowHeight = UITableViewAutomaticDimension
@@ -41,10 +41,16 @@ extension DetailsScrollableTableView{
 extension DetailsScrollableTableView:UITableViewDataSource{
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !isLogin {
+        switch sourceType {
+        case .Login:
+            return DetailsScrollableTableViewCellType.ConfirmPassword.rawValue
+        case .Signup:
             return DetailsScrollableTableViewCellType.Count.rawValue
+        case .ForgotPassword:
+            return DetailsScrollableTableViewCellType.Password.rawValue
+        default:
+            return 0
         }
-        return DetailsScrollableTableViewCellType.ConfirmPassword.rawValue
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -55,7 +61,7 @@ extension DetailsScrollableTableView:UITableViewDataSource{
                 case .Email:
                     return cell
                 case .Password:
-                    if let newCell = tableView.dequeueReusableCellWithIdentifier(DetailsScrollableTableViewCellType.Password.forgotPasswordAddon()) as? DetailsCell where isLogin{
+                    if let newCell = tableView.dequeueReusableCellWithIdentifier(DetailsScrollableTableViewCellType.Password.forgotPasswordAddon()) as? DetailsCell where sourceType == LoginSignupTableViewSourceType.Login{
                         newCell.configureCellForType(type, user: currentUser)
                         return newCell
                     }else{

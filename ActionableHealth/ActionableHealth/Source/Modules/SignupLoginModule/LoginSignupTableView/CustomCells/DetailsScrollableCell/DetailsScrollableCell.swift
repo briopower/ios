@@ -15,7 +15,7 @@ class DetailsScrollableCell: UITableViewCell {
     @IBOutlet weak var tblViewContainer: UIView!
 
     //MARK:- Variables
-    var isLogin = false
+    var sourceType = LoginSignupTableViewSourceType.Login
     weak var currentUser:UserModel?
 
     //MARK:- -------------------
@@ -35,17 +35,23 @@ class DetailsScrollableCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension DetailsScrollableCell{
-    func configureCell(isLogin:Bool, user:UserModel?) {
+    func configureCell(sourceType:LoginSignupTableViewSourceType, user:UserModel?) {
         currentUser = user
-        self.isLogin = isLogin
-        tblView.setupTableView(isLogin, user: currentUser)
+        self.sourceType = sourceType
+        tblView.setupTableView(sourceType, user: currentUser)
     }
-    class func getHeight(isLogin:Bool) -> CGFloat {
+    class func getHeight(sourceType:LoginSignupTableViewSourceType) -> CGFloat {
         let cellHeight = (195 * UIDevice.width()) / 1155
-        if isLogin {
+        switch sourceType {
+        case .Login:
             return 2 * cellHeight
+        case .Signup:
+            return 3 * cellHeight
+        case .ForgotPassword:
+            return cellHeight
+        default:
+            return 0
         }
-        return 3 * cellHeight
     }
     
 }

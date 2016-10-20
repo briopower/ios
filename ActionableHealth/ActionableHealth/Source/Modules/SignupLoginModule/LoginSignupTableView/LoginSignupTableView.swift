@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+enum LoginSignupTableViewSourceType:Int {
+    case Login, Signup, ForgotPassword, Count
+}
 enum LoginSignupTableViewCellType:Int {
     case Logo, ScrollableContent, RequestButton, OrSeperator, GooglePlusSignIn, Count
 }
@@ -18,7 +20,7 @@ protocol LoginSignupTableViewDelegate:NSObjectProtocol {
 class LoginSignupTableView: TPKeyboardAvoidingTableView {
 
     //MARK:- Variables
-    var isLogin = false
+    var sourceType = LoginSignupTableViewSourceType.Login
     weak var currentUser:UserModel?
     weak var loginSignupTblViewDelegate:LoginSignupTableViewDelegate?
     
@@ -26,9 +28,9 @@ class LoginSignupTableView: TPKeyboardAvoidingTableView {
 
 //MARK:- Additional methods
 extension LoginSignupTableView{
-    func setupTableView(isLogin:Bool, user:UserModel) {
+    func setupTableView(sourceType:LoginSignupTableViewSourceType, user:UserModel) {
         currentUser = user
-        self.isLogin = isLogin
+        self.sourceType = sourceType
         self.delegate = self
         self.dataSource = self
         self.rowHeight = UITableViewAutomaticDimension
@@ -52,10 +54,15 @@ extension LoginSignupTableView{
 extension LoginSignupTableView:UITableViewDataSource{
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isLogin {
+        switch sourceType {
+        case .Login:
             return LoginSignupTableViewCellType.Count.rawValue
+        case .Signup, .ForgotPassword:
+            return LoginSignupTableViewCellType.OrSeperator.rawValue
+
+        default:
+            return 0
         }
-        return LoginSignupTableViewCellType.OrSeperator.rawValue
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -67,15 +74,20 @@ extension LoginSignupTableView:UITableViewDataSource{
                 }
             case .ScrollableContent:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(DetailsScrollableCell)) as? DetailsScrollableCell {
-                    cell.configureCell(isLogin, user: currentUser)
+                    cell.configureCell(sourceType, user: currentUser)
                     return cell
                 }
             case .RequestButton:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(ButtonCellType.Login.nibNameAndReuseIdentifier()) as? ButtonCell {
-                    if isLogin {
+                    switch sourceType {
+                    case .Login:
                         cell.configureForType(ButtonCellType.Login)
-                    }else{
+                    case .Signup:
                         cell.configureForType(ButtonCellType.Signup)
+                    case .ForgotPassword:
+                        cell.configureForType(ButtonCellType.ForgotPassword)
+                    default:
+                        break
                     }
                     cell.delegate = self
                     return cell
@@ -112,7 +124,7 @@ extension LoginSignupTableView:UITableViewDelegate{
         if let type = LoginSignupTableViewCellType(rawValue: indexPath.row) {
             switch type {
             case .ScrollableContent:
-            return DetailsScrollableCell.getHeight(isLogin)
+            return DetailsScrollableCell.getHeight(sourceType)
             default:
                 break
             }

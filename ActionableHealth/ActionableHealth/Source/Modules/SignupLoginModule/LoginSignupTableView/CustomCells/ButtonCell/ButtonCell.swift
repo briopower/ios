@@ -9,7 +9,7 @@
 import UIKit
 
 enum ButtonCellType:Int {
-    case Login, Signup, OrSeprator, GooglePlus, Count
+    case Login, Signup, OrSeprator, ForgotPassword, GooglePlus, Count
     func nibNameAndReuseIdentifier() -> String {
         switch self {
         case .OrSeprator:
@@ -64,6 +64,9 @@ extension ButtonCell{
             addShadowAndCornerRadius()
         case .Signup:
             tappableButton.setTitle("SIGN UP", forState: .Normal)
+            addShadowAndCornerRadius()
+        case .ForgotPassword:
+            tappableButton.setTitle("RECOVER PASSWORD", forState: .Normal)
             addShadowAndCornerRadius()
         case .GooglePlus:
             tappableButton.setTitle("SIGN IN USING GOOGLE ACCOUNT", forState: .Normal)

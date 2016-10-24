@@ -10,22 +10,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActionableHealth/Source/Common/NetworkHandler/NetworkClass.swift"
-            timestampString = "498658937.797019"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "sendRequest(URL:RequestType:Parameters:Headers:CompletionHandler:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Common/NetworkHandler/NetworkClass.swift"
             timestampString = "498658940.884994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -49,38 +33,6 @@
             endingLineNumber = "71"
             landmarkName = "buttonPressed(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ActionableHealth.ForgotPasswordViewController.(buttonPressed (ActionableHealth.ButtonCellType) -&gt; ()).(closure #1)"
-                  moduleName = "ActionableHealth"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "498981129.221398"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "166">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ActionableHealth.ForgotPasswordViewController.(buttonPressed (ActionableHealth.ButtonCellType) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "ActionableHealth"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "498981129.221532"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,7 +58,7 @@
                   moduleName = "ActionableHealth"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "498981129.222612"
+                  timestampString = "499008551.321153"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "84"
@@ -121,7 +73,7 @@
                   moduleName = "ActionableHealth"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "498981129.222774"
+                  timestampString = "499008551.321386"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -170,7 +122,7 @@
                   moduleName = "ActionableHealth"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "498981129.223519"
+                  timestampString = "499008551.322527"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
@@ -185,7 +137,7 @@
                   moduleName = "ActionableHealth"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "498981129.223646"
+                  timestampString = "499008551.322759"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"
@@ -287,70 +239,6 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "buttonPressed(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/SignupLoginModule/LoginViewController/LoginViewController.swift"
-            timestampString = "498810746.844883"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "LoginViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ActionableHealth.LoginViewController.buttonPressed (ActionableHealth.ButtonCellType) -&gt; ()"
-                  moduleName = "ActionableHealth"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/LoginViewController/LoginViewController.swift"
-                  timestampString = "498981129.228687"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "protocol witness for ActionableHealth.LoginSignupTableViewDelegate.buttonPressed (ActionableHealth.ButtonCellType) -&gt; () in conformance ActionableHealth.LoginViewController : ActionableHealth.LoginSignupTableViewDelegate in ActionableHealth"
-                  moduleName = "ActionableHealth"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/LoginViewController/LoginViewController.swift"
-                  timestampString = "498981129.228872"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "11">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/SignupLoginModule/LoginViewController/LoginViewController.swift"
-            timestampString = "498813666.663996"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
             landmarkName = "buttonPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>

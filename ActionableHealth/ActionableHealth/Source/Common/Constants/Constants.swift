@@ -65,6 +65,8 @@ class Constants: NSObject {
         static let mid = "auth/"
         static let signup = "\(base)\(mid)create/"
         static let login = "\(base)\(mid)authenticate/"
-        static var forgotPasswordNotification = "\(base)\(mid)resetPasswordNotification/"
+        static let forgotPasswordNotification = "\(base)\(mid)resetPasswordNotification/"
+        static let allTemplates = "\(base)\(mid)getAllTemplates/"
+        static let templateDetails = "\(base)\(mid)getTemplateDetails/"
     }
 }

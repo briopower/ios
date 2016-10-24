@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -25,7 +25,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-CV-mYu">
                     <rect key="frame" x="0.0" y="0.0" width="351" height="353"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="9.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-zR-LgI">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-zR-LgI">
                             <rect key="frame" x="0.0" y="0.0" width="351" height="268"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCG-ZG-W60">
@@ -40,14 +40,37 @@
                                         <constraint firstAttribute="width" secondItem="cnB-D5-yTp" secondAttribute="height" id="P2c-DP-bKb"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="165 Active Tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP2-Mj-Gwj" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="165 Active Tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP2-Mj-Gwj" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
                                     <rect key="frame" x="96" y="35" width="114" height="15"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                     <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-wE-Ch1" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="96" y="56" width="121" height="15"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                    <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="149 Comments" image="cut"/>
+                                    <connections>
+                                        <action selector="commentsButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ooi-qc-H0i"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K79-jk-Xnz">
+                                    <rect key="frame" x="333" y="0.0" width="18" height="85"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
+                                    <rect key="frame" x="248" y="29" width="85" height="27"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
+                                    <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="JOIN TRACK"/>
+                                    <connections>
+                                        <action selector="requestButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="CQr-X3-Jcm"/>
+                                    </connections>
+                                </button>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-Vt-fO7" customClass="HCSStarRatingView">
-                                    <rect key="frame" x="96" y="14" width="79" height="20"/>
+                                    <rect key="frame" x="96" y="9" width="79" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4Gb-Vt-fO7" secondAttribute="height" multiplier="280:70" id="2bJ-gi-JnH"/>
                                     </constraints>
@@ -70,29 +93,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-wE-Ch1" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
-                                    <rect key="frame" x="96" y="56" width="121" height="15"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
-                                    <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
-                                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="149 Comments" image="cut"/>
-                                    <connections>
-                                        <action selector="commentsButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ooi-qc-H0i"/>
-                                    </connections>
-                                </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K79-jk-Xnz">
-                                    <rect key="frame" x="333" y="0.0" width="18" height="85"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="ActionableHealth" customModuleProvider="target">
-                                    <rect key="frame" x="248" y="29" width="85" height="27"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
-                                    <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="JOIN TRACK"/>
-                                    <connections>
-                                        <action selector="requestButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="CQr-X3-Jcm"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -116,7 +116,7 @@
                                 <constraint firstItem="dh5-wE-Ch1" firstAttribute="leading" secondItem="sP2-Mj-Gwj" secondAttribute="leading" id="uEm-QC-2m6"/>
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="280:1242" id="vgZ-2K-RRo"/>
                                 <constraint firstAttribute="bottom" secondItem="K79-jk-Xnz" secondAttribute="bottom" id="vrt-7Y-dIQ"/>
-                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="top" secondItem="cnB-D5-yTp" secondAttribute="top" id="wAM-43-Zk4"/>
+                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="top" secondItem="cnB-D5-yTp" secondAttribute="top" constant="-5" id="wAM-43-Zk4"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -143,13 +143,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomContainer" destination="wCG-ZG-W60" id="nNb-tI-jQh"/>
+                <outlet property="commentsCountButton" destination="dh5-wE-Ch1" id="rMR-yz-2ex"/>
+                <outlet property="ratingView" destination="4Gb-Vt-fO7" id="bee-yr-rxT"/>
                 <outlet property="requestButton" destination="f5O-3a-9u1" id="I6s-hg-9lb"/>
+                <outlet property="templateImage" destination="I1O-zR-LgI" id="ysy-uK-etL"/>
+                <outlet property="tracksCount" destination="sP2-Mj-Gwj" id="Dwz-qG-2IZ"/>
             </connections>
             <point key="canvasLocation" x="92.5" y="-92.5"/>
         </view>
     </objects>
     <resources>
-        <image name="9.jpg" width="512" height="720"/>
         <image name="cut" width="15" height="15"/>
         <image name="logo-1" width="55" height="55"/>
         <image name="rating-fill-icon" width="11" height="10"/>

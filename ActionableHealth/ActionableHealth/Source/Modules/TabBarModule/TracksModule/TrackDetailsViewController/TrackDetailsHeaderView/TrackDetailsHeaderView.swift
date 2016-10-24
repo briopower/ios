@@ -21,11 +21,16 @@ class TrackDetailsHeaderView: UIView {
     //MARK:- Outlets
     @IBOutlet weak var bottomContainer: UIView!
     @IBOutlet weak var requestButton: UIButton!
-
+    @IBOutlet weak var templateImage: UIImageView!
+    @IBOutlet weak var ratingView: HCSStarRatingView!
+    @IBOutlet weak var tracksCount: UILabel!
+    @IBOutlet weak var commentsCountButton: UIButton!
+    
     //MARK:- Variables
     static let heightOf1PxlWidth:CGFloat = 1.0628019324
     weak var delegate:TrackDetailsHeaderViewDelegate?
     var type:TrackDetailsSourceType = TrackDetailsSourceType.Home
+    var currentTemplate:TemplatesModel?
 }
 //MARK:- Button Action
 extension TrackDetailsHeaderView{
@@ -55,11 +60,11 @@ extension TrackDetailsHeaderView{
     func setupFrame() {
         CommonMethods.addShadowToTabBar(bottomContainer)
         self.frame = CGRect(x: 0, y: 0, width: UIDevice.width(), height: UIDevice.width() * TrackDetailsHeaderView.heightOf1PxlWidth)
+        setupView()
     }
 
-    func setupForType(type:TrackDetailsSourceType) {
+    func setupForType(type:TrackDetailsSourceType, template:TemplatesModel?) {
         self.type = type
-
         switch self.type {
         case .Home:
             requestButton.setTitle("JOIN TRACK", forState: .Normal)
@@ -68,5 +73,11 @@ extension TrackDetailsHeaderView{
         default:
             break
         }
+        currentTemplate = template
+        setupView()
+    }
+
+    func setupView() {
+        templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.imageUrl ?? ""))
     }
 }

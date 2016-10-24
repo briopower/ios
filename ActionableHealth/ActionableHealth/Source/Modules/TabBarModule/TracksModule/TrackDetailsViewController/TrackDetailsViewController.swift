@@ -17,6 +17,7 @@ class TrackDetailsViewController: CommonViewController {
     @IBOutlet weak var phaseButton: UIButton!
 
     //MARK:- Variables
+    var currentTemplate:TemplatesModel?
     var isInfoSelected = true
     var sourceType = TrackDetailsSourceType.Home
 
@@ -60,7 +61,9 @@ extension TrackDetailsViewController{
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
     func commentsTapped(type: TrackDetailsSourceType) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
-            self.navigationController?.pushViewController(viewCont, animated: true)
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.navigationController?.pushViewController(viewCont, animated: true)
+            })
         }
     }
 
@@ -84,17 +87,19 @@ extension TrackDetailsViewController{
     func setupView() {
         infoButtonAction(infoButton)
         if let headerView = TrackDetailsHeaderView.getView() {
-            headerView.setupForType(sourceType)
+            headerView.setupForType(sourceType, template: currentTemplate)
             trackDetailsTblView.tableHeaderView = headerView
         }
 
         trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
-        trackDetailsTblView.estimatedRowHeight = 250
+
+        trackDetailsTblView.estimatedRowHeight = 200
 
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackInfoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackInfoCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackPhasesCell))
 
+        updateTemplate()
     }
 
     func setSelectedButton(infoSelected:Bool) {
@@ -108,6 +113,7 @@ extension TrackDetailsViewController{
 
         if indexPath.row == 0 {
             if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackInfoCell)) as? TrackInfoCell {
+                cell.configCell(currentTemplate)
                 return cell
             }
         }else{
@@ -175,5 +181,31 @@ extension TrackDetailsViewController:UITableViewDelegate{
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
+    }
+}
+
+//MARK:- Network methods
+extension TrackDetailsViewController{
+    func updateTemplate() {
+        if let templateID = currentTemplate?.templateId where NetworkClass.isConnected(true){
+            showLoader()
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.templateDetails)\(templateID)", RequestType: .GET, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status{
+                    self.processResponse(responseObj)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func processResponse(responseObj:AnyObject?) {
+
+    }
+
+    func processError(error:NSError?) {
+
     }
 }

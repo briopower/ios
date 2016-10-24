@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search_Notification, Cross, Done, Details
+    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details
 }
 
 enum BarButtonPosition {
@@ -89,6 +89,8 @@ extension CommonViewController{
             getNavigationItem()?.backBarButtonItem = nil
         case .Back:
             barButton = UIBarButtonItem(customView:getButtonWithImage(BackButtonImage,Action: #selector(self.backButtonAction(_:))))
+        case .Search:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(SearchButtonImage,Action: #selector(self.searchButtonAction(_:))))
         case .Search_Notification:
             barButton = UIBarButtonItem(customView:getButtonWithImage(NotificationButtonImage,Action: #selector(self.notificationButtonAction(_:))))
             barButton1 = UIBarButtonItem(customView:getButtonWithImage(SearchButtonImage,Action: #selector(self.searchButtonAction(_:))))

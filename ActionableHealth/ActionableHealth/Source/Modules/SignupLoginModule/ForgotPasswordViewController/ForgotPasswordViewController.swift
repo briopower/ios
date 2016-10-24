@@ -31,8 +31,8 @@ class ForgotPasswordViewController: CommonViewController {
 extension ForgotPasswordViewController{
     @IBAction func dismissViewControllerAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
-       // self.dismissViewControllerAction(self)
-        
+        // self.dismissViewControllerAction(self)
+
     }
 }
 //MARK:- Additional Methods
@@ -62,7 +62,7 @@ extension ForgotPasswordViewController:LoginSignupTableViewDelegate{
         UIApplication.dismissKeyboard()
         if checkData() {
             if NetworkClass.isConnected(true) {
-                
+
                 showLoaderOnWindow()
                 let tempUrl = "\(Constants.URLs.forgotPasswordNotification)\(currentUser.email)/"
                 NetworkClass.sendRequest(URL: tempUrl, RequestType: .GET, Parameters: nil, Headers: nil, CompletionHandler: {

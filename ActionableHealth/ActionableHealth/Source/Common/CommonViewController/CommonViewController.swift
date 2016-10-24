@@ -17,7 +17,7 @@ class CommonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNavigationController()?.delegate = self
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +28,9 @@ class CommonViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.dismissKeyboard()
-//        self.tabBarController?.tabBar.hidden = true
+//        if !NSUserDefaults.isLoggedIn() {
+//            self.tabBarController?.tabBar.hidden = true
+//        }
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -42,7 +44,7 @@ class CommonViewController: UIViewController {
 
     //MARK:  Delegate
     func retryButtonTapped(nullCaseType: NullCaseType, identifier: Int?) {
-        
+
     }
 }
 

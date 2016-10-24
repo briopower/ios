@@ -23,6 +23,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRA-3F-c7K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMd-zb-0Yx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="286"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnK-8o-Haq">
                                 <rect key="frame" x="0.0" y="286" width="320" height="77"/>
                                 <subviews>
@@ -35,14 +38,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-LL-1pY">
                                         <rect key="frame" x="0.0" y="0.0" width="19" height="77"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-LU-7eF" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-LU-7eF" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
                                         <rect key="frame" x="85" y="12" width="52" height="14"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                         <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8m-Ui-gwT" customClass="HCSStarRatingView">
-                                        <rect key="frame" x="85" y="26" width="138" height="28"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d8m-Ui-gwT" customClass="HCSStarRatingView">
+                                        <rect key="frame" x="85" y="29" width="138" height="28"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                                 <integer key="value" value="5"/>
@@ -65,7 +68,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="d8m-Ui-gwT" firstAttribute="top" secondItem="Ccb-LU-7eF" secondAttribute="bottom" id="0Sv-Gp-5JR"/>
+                                    <constraint firstItem="d8m-Ui-gwT" firstAttribute="top" secondItem="Ccb-LU-7eF" secondAttribute="bottom" multiplier="1.1" id="0Sv-Gp-5JR"/>
                                     <constraint firstItem="ZBl-LL-1pY" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="35:580" id="4Yg-iM-3Nr"/>
                                     <constraint firstAttribute="bottom" secondItem="ZBl-LL-1pY" secondAttribute="bottom" id="4dv-hL-kAj"/>
                                     <constraint firstItem="Sv2-Pj-bfV" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="100:580" id="CYD-Rk-ASA"/>
@@ -81,9 +84,6 @@
                                     <constraint firstItem="d8m-Ui-gwT" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="250:580" id="yso-mb-fxW"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VMd-zb-0Yx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="286"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -108,12 +108,14 @@
             <size key="customSize" width="320" height="363"/>
             <connections>
                 <outlet property="container" destination="kRA-3F-c7K" id="ABp-H9-laT"/>
+                <outlet property="nameLabel" destination="Ccb-LU-7eF" id="rEt-Ug-DDc"/>
+                <outlet property="ratingView" destination="d8m-Ui-gwT" id="SYb-9H-9zO"/>
+                <outlet property="templateImage" destination="VMd-zb-0Yx" id="5Cu-m5-I0c"/>
             </connections>
             <point key="canvasLocation" x="272" y="-689.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="0.jpg" width="500" height="751"/>
         <image name="logo-1" width="55" height="55"/>
         <image name="rating-fill-icon" width="11" height="10"/>
         <image name="rating-icon" width="11" height="10"/>

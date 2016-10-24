@@ -67,6 +67,7 @@ extension CommonCollectionView{
     func setupView() {
         delegate = self
         dataSource = self
+        refreshControl.addTarget(self, action: #selector(self.topReached), forControlEvents: UIControlEvents.ValueChanged)
         registerNib(UINib(nibName: String(CommonCollectionReusableView), bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(CommonCollectionReusableView))
     }
 
@@ -82,6 +83,7 @@ extension CommonCollectionView{
         switch type {
         case .HomeView:
             if let cell = self.dequeueReusableCellWithReuseIdentifier(String(HomeViewCell), forIndexPath: indexPath) as? HomeViewCell {
+                cell.configCell(dataArray[indexPath.row] as? TemplatesModel)
                 return cell
             }
         default:

@@ -37,9 +37,8 @@ extension StaggeredCollectionView{
 extension StaggeredCollectionView:CHTCollectionViewDelegateWaterfallLayout{
     override func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
                          sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        let image:UIImage! = UIImage(named: self.dataArray[indexPath.row] as! String)
         let gridWidth : CGFloat = (UIScreen.mainScreen().bounds.size.width/2)-5.0
-        let imageHeight = image.size.height*gridWidth/image.size.width
+        let imageHeight = 1250*gridWidth/1250
         return CGSizeMake(gridWidth, imageHeight)
     }
     func colletionView (collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

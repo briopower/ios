@@ -12,6 +12,12 @@ class HomeViewCell: UICollectionViewCell {
 
     //MARK:- Outlets
     @IBOutlet weak var container: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ratingView: HCSStarRatingView!
+    @IBOutlet weak var templateImage: UIImageView!
+
+    //MARK:- Variables
+    var currentTemplate:TemplatesModel?
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -19,4 +25,13 @@ class HomeViewCell: UICollectionViewCell {
         CommonMethods.addShadowToView(container)
     }
 
+}
+
+//MARK:- Additional methods
+extension HomeViewCell{
+    func configCell(template:TemplatesModel?) {
+        currentTemplate = template
+        nameLabel.text = currentTemplate?.name
+        templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.imageUrl ?? ""))
+    }
 }

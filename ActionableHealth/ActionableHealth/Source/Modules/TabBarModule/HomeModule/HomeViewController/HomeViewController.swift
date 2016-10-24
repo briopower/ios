@@ -22,7 +22,12 @@ class HomeViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("HOME", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
+
+        if NSUserDefaults.isLoggedIn() {
+            self.setNavigationBarWithTitle("HOME", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
+        }else{
+            self.setNavigationBarWithTitle("HOME", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
+        }
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -40,33 +45,29 @@ extension HomeViewController{
         CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
         setNavigationBarBackgroundColor(UIColor.whiteColor())
         CommonMethods.addShadowToView(buttonsContainer)
-        var index = 0
-        var imageNameList : Array <NSString> = []
-        while(index<14){
-            let imageName = NSString(format: "%d.jpg", index)
-            imageNameList.append(imageName)
-            index += 1
-        }
+
         clctView.commonCollectionViewDelegate = self
-        clctView.dataArray = NSMutableArray(array: imageNameList)
+        clctView.dataArray = NSMutableArray()
         clctView.type = CollectionViewType.HomeView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
+        getData(clctView.dataArray.count)
     }
 }
 //MARK:- CommonCollectionViewDelegate
 extension HomeViewController:CommonCollectionViewDelegate{
     func topElements(view: UIView) {
-
+        getData(0)
     }
 
     func bottomElements(view: UIView) {
-
+        getData(clctView.dataArray.count)
     }
 
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 viewCont.sourceType = TrackDetailsSourceType.Home
+                viewCont.currentTemplate = object as? TemplatesModel
                 self.navigationController?.pushViewController(viewCont, animated: true)
             })
         }
@@ -95,5 +96,53 @@ extension HomeViewController{
         UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["NEAR BY LOCATION", "RATING (HIGH TO LOW)"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
             print("Clicked at index \(tappedAtIndex)")
         }
+    }
+}
+
+//MARK:- Network Methods
+extension HomeViewController{
+    func getData(withShift:Int) {
+        if NetworkClass.isConnected(true){
+            if clctView.dataArray.count == 0 {
+                showLoader()
+            }
+            NetworkClass.sendRequest(URL: Constants.URLs.allTemplates, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(withShift), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status{
+                    self.processResponse(responseObj, withShift: withShift)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func processResponse(responseObj:AnyObject?, withShift:Int) {
+
+        if let dict = responseObj {
+            if withShift == 0 {
+                clctView.dataArray.removeAllObjects()
+            }
+            let templatesArr = TemplatesModel.getResponseArray(dict)
+            for obj in templatesArr {
+                let template = TemplatesModel.getTemplateObj(obj)
+                clctView.dataArray.addObject(template)
+            }
+            if clctView.dataArray.count < TemplatesModel.getTotalObjectsCount(dict){
+                clctView.hasMoreData = true
+            }else{
+                clctView.hasMoreData = false
+            }
+            clctView.removeTopLoader()
+            if clctView.dataArray.count > 0 {
+                clctView.addTopLoader()
+            }
+        }
+        clctView.reloadContent()
+    }
+
+    func processError(error:NSError?) {
+        
     }
 }

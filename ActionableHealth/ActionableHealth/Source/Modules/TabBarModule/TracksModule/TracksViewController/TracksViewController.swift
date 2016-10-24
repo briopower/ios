@@ -38,16 +38,8 @@ class TracksViewController: CommonViewController {
 //MARK:- Additional methods
 extension TracksViewController{
     func setupView() {
-
-        var index = 0
-        var imageNameList : Array <NSString> = []
-        while(index<14){
-            let imageName = NSString(format: "%d.jpg", index)
-            imageNameList.append(imageName)
-            index += 1
-        }
         clctView.commonCollectionViewDelegate = self
-        clctView.dataArray = NSMutableArray(array: imageNameList)
+        clctView.dataArray = NSMutableArray()
         clctView.type = CollectionViewType.HomeView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
     }

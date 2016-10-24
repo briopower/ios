@@ -35,7 +35,7 @@ class TrackDetailsViewController: CommonViewController {
         super.viewDidLayoutSubviews()
         if let headerView = trackDetailsTblView.tableHeaderView as? TrackDetailsHeaderView {
             headerView.delegate = self
-            headerView.setupFrame()
+            headerView.setupFrame()     
             trackDetailsTblView.tableHeaderView = headerView
         }
     }

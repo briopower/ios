@@ -31,6 +31,8 @@ class ForgotPasswordViewController: CommonViewController {
 extension ForgotPasswordViewController{
     @IBAction func dismissViewControllerAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+       // self.dismissViewControllerAction(self)
+        
     }
 }
 //MARK:- Additional Methods
@@ -60,12 +62,39 @@ extension ForgotPasswordViewController:LoginSignupTableViewDelegate{
         UIApplication.dismissKeyboard()
         if checkData() {
             if NetworkClass.isConnected(true) {
+                
                 showLoaderOnWindow()
-//                NetworkClass.sendRequest(URL: Constants.URLs.login, RequestType: .POST, Parameters: currentUser.getLoginDictionary(), Headers: nil, CompletionHandler: {
-//                    (status, responseObj, error, statusCode) in
-//                    NSUserDefaults.saveUser(responseObj)
-//                    self.hideLoader()
-//                })
+                let tempUrl = "\(Constants.URLs.forgotPasswordNotification)\(currentUser.email)/"
+                NetworkClass.sendRequest(URL: tempUrl, RequestType: .GET, Parameters: nil, Headers: nil, CompletionHandler: {
+                    (status, responseObj, error, statusCode) in
+                    if statusCode == 200 {
+                        
+                        self.hideLoader()
+                        let alertController = UIAlertController(title: "Password recovery", message:
+                            "Mail sent to your registered emailid", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                            UIAlertAction in
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        }
+
+                        alertController.addAction(okAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                    
+                   else if statusCode == 500 {
+                        
+                        
+                        self.hideLoader()
+                        let alertController = UIAlertController(title: "Password recovery", message:
+                            "email id Not Registered", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil)
+                        alertController.addAction(okAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                    self.hideLoader()
+                })
             }
         }
     }

@@ -77,6 +77,39 @@ extension SignUpViewController:LoginSignupTableViewDelegate{
                 showLoaderOnWindow()
                 NetworkClass.sendRequest(URL: Constants.URLs.signup, RequestType: .POST, Parameters: currentUser.getSignupDictionary(), Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
+    
+                    var responseDictionary = responseObj as? Dictionary<String, AnyObject>
+                    
+                    let emailExist = (responseDictionary!["exists"] as? Bool)!
+                if(emailExist == false)
+                    {
+                            self.hideLoader()
+                            let alertController = UIAlertController(title: "SignUp Authentication", message:
+                                "mail sent to your email id  ", preferredStyle: UIAlertControllerStyle.Alert)
+                            
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                                UIAlertAction in
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                            
+                            alertController.addAction(okAction)
+                            self.presentViewController(alertController, animated: true, completion: nil)
+                        }
+
+                    else{
+                        self.hideLoader()
+                        let alertController = UIAlertController(title: "SignUp Authentication", message:
+                            "email already exists ", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                            UIAlertAction in
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        }
+                        
+                        alertController.addAction(okAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+
+                    }
                     
                     self.hideLoader()
                 })

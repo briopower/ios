@@ -47,10 +47,10 @@ extension NSUserDefaults{
 
     class func saveUser(obj:AnyObject?) {
         if let dict = obj {
-            userDefault.setObject(NSKeyedArchiver.archivedDataWithRootObject(dict), forKey: "currentUser")
             if let token = dict["ahwToken"] as? String {
-                setUserToken(token)
                 setLoggedIn(true)
+                setUserToken(token)
+                userDefault.setObject(NSKeyedArchiver.archivedDataWithRootObject(dict), forKey: "currentUser")
             }
         }
     }

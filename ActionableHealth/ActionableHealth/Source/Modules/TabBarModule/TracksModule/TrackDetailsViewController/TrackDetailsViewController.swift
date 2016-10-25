@@ -36,7 +36,7 @@ class TrackDetailsViewController: CommonViewController {
         super.viewDidLayoutSubviews()
         if let headerView = trackDetailsTblView.tableHeaderView as? TrackDetailsHeaderView {
             headerView.delegate = self
-            headerView.setupFrame()     
+            headerView.setupFrame()
             trackDetailsTblView.tableHeaderView = headerView
         }
     }
@@ -60,25 +60,34 @@ extension TrackDetailsViewController{
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
     func commentsTapped(type: TrackDetailsSourceType) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.navigationController?.pushViewController(viewCont, animated: true)
-            })
+        if NSUserDefaults.isLoggedIn() {
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.navigationController?.pushViewController(viewCont, animated: true)
+                })
+            }
+        }else{
+            UIViewController.presentLoginViewController()
         }
+
     }
 
     func requestButtonTapped(type: TrackDetailsSourceType) {
-        switch type {
-        case .Home:
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.joinTracksView) as? JoinTrackViewController {
-                self.navigationController?.pushViewController(viewCont, animated: true)
+        if NSUserDefaults.isLoggedIn() {
+            switch type {
+            case .Home:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.joinTracksView) as? JoinTrackViewController {
+                    self.navigationController?.pushViewController(viewCont, animated: true)
+                }
+            case .Tracks:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
+                    self.navigationController?.pushViewController(viewCont, animated: true)
+                }
+            default:
+                break
             }
-        case .Tracks:
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
-                self.navigationController?.pushViewController(viewCont, animated: true)
-            }
-        default:
-            break
+        }else{
+            UIViewController.presentLoginViewController()
         }
     }
 }
@@ -178,7 +187,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         return sectionHeaderView
     }
-    
+
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
@@ -200,12 +209,12 @@ extension TrackDetailsViewController{
             })
         }
     }
-
+    
     func processResponse(responseObj:AnyObject?) {
-
+        
     }
-
+    
     func processError(error:NSError?) {
-
+        
     }
 }

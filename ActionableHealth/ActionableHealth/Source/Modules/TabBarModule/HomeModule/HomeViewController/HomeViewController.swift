@@ -54,6 +54,13 @@ extension HomeViewController{
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         getData(clctView.dataArray.count)
     }
+
+    func reset() {
+        clctView.dataArray.removeAllObjects()
+        clctView.reloadContent()
+        nextUrl = ""
+        getData(0)
+    }
 }
 //MARK:- CommonCollectionViewDelegate
 extension HomeViewController:CommonCollectionViewDelegate{

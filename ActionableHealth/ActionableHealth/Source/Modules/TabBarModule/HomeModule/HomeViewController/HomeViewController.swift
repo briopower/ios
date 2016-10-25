@@ -45,7 +45,6 @@ class HomeViewController: CommonViewController {
 extension HomeViewController{
     func setupView() {
         CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
-        setNavigationBarBackgroundColor(UIColor.whiteColor())
         CommonMethods.addShadowToView(buttonsContainer)
 
         clctView.commonCollectionViewDelegate = self

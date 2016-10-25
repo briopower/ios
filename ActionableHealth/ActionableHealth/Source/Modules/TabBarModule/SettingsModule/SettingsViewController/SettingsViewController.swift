@@ -86,9 +86,8 @@ extension SettingsViewController:UITableViewDelegate{
                         (status, responseObj, error, statusCode) in
                         if statusCode == 200
                         {
-                            
                             dispatch_async(dispatch_get_main_queue(), {
-                                UIViewController.presentLoginViewController()
+                                UIViewController.presentLoginViewController(true)
                             })
                         }
                         else

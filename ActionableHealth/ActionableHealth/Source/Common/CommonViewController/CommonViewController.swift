@@ -17,7 +17,8 @@ class CommonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNavigationController()?.delegate = self
-
+//        self.edgesForExtendedLayout = UIRectEdge.None
+        setNavigationBarBackgroundColor(UIColor.whiteColor())
     }
 
     override func didReceiveMemoryWarning() {

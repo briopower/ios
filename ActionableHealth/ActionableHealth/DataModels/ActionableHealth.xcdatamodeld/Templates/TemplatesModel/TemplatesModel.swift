@@ -41,6 +41,10 @@ extension TemplatesModel{
         return dict["templateResultSet"] as? NSArray ?? []
     }
 
+    class func getNextUrl(dict:AnyObject) -> String? {
+        return dict["cursor"] as? String
+    }
+
     class func getTotalObjectsCount(dict:AnyObject) -> Int {
         return dict["totalCount"] as? Int ?? 0
     }

@@ -14,6 +14,8 @@ class HomeViewController: CommonViewController {
     @IBOutlet weak var buttonsContainer: UIView!
     @IBOutlet weak var clctView: StaggeredCollectionView!
 
+    //MARK:- Variables
+    var nextUrl = ""
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -60,7 +62,7 @@ extension HomeViewController:CommonCollectionViewDelegate{
     }
 
     func bottomElements(view: UIView) {
-        getData(clctView.dataArray.count)
+        getData(clctView.dataArray.count, url: nextUrl)
     }
 
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
@@ -101,12 +103,13 @@ extension HomeViewController{
 
 //MARK:- Network Methods
 extension HomeViewController{
-    func getData(withShift:Int) {
+
+    func getData(withShift:Int, url:String = Constants.URLs.allTemplates) {
         if NetworkClass.isConnected(true){
             if clctView.dataArray.count == 0 {
                 showLoader()
             }
-            NetworkClass.sendRequest(URL: Constants.URLs.allTemplates, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(withShift), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL:url, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(withShift), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.processResponse(responseObj, withShift: withShift)
@@ -129,9 +132,11 @@ extension HomeViewController{
                 let template = TemplatesModel.getTemplateObj(obj)
                 clctView.dataArray.addObject(template)
             }
-            if clctView.dataArray.count < TemplatesModel.getTotalObjectsCount(dict){
+            if let url = TemplatesModel.getNextUrl(dict){
+                nextUrl = url
                 clctView.hasMoreData = true
             }else{
+                nextUrl = ""
                 clctView.hasMoreData = false
             }
             clctView.removeTopLoader()

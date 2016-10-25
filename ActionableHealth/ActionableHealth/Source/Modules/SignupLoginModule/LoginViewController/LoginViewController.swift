@@ -32,6 +32,7 @@ class LoginViewController: CommonViewController {
 
 //MARK:- Additional Methods
 extension LoginViewController{
+    
     func setupView() {
         tblView.setupTableView(LoginSignupTableViewSourceType.Login, user: currentUser)
         tblView.loginSignupTblViewDelegate = self
@@ -63,17 +64,41 @@ extension LoginViewController{
 extension LoginViewController:LoginSignupTableViewDelegate{
     func buttonPressed(type: ButtonCellType) {
         UIApplication.dismissKeyboard()
-//        self.dismissViewControllerAnimated(true, completion: nil)
+
         if checkData() {
             if NetworkClass.isConnected(true) {
                 showLoaderOnWindow()
                 NetworkClass.sendRequest(URL: Constants.URLs.login, RequestType: .POST, Parameters: currentUser.getLoginDictionary(), Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     NSUserDefaults.saveUser(responseObj)
-                    
+                    if statusCode == 200
+                    {
+                    if let responseDictionary = responseObj as? Dictionary<String, AnyObject>{
+                        
+                        if let isAuthenticated = (responseDictionary["isAuthenticated"] as? Bool){
+                            
+                            if isAuthenticated
+                            {
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                            else{
+                                UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "emailid or Password Incorrect", completion: nil)
+                            }
+                        }
+                    }
+                    }
+                    else
+                    {
+                        UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "emailid or Password Incorrect", completion: nil)
+                    }
                     self.hideLoader()
                 })
             }
         }
     }
+    
+    @IBAction func closeLoginScreen(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

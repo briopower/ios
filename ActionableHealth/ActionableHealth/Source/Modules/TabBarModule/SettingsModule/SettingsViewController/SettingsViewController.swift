@@ -80,9 +80,26 @@ extension SettingsViewController:UITableViewDelegate{
                     self.navigationController?.pushViewController(viewCont, animated: true)
                 }
             case .LogOut:
-                dispatch_async(dispatch_get_main_queue(), {
-                    UIViewController.presentLoginViewController()
-                })
+                if NetworkClass.isConnected(true) {
+                    showLoaderOnWindow()
+                    NetworkClass.sendRequest(URL: Constants.URLs.logOut, RequestType: .GET, Parameters: nil, Headers: nil, CompletionHandler: {
+                        (status, responseObj, error, statusCode) in
+                        if statusCode == 200
+                        {
+                            
+                            dispatch_async(dispatch_get_main_queue(), {
+                                UIViewController.presentLoginViewController()
+                            })
+                        }
+                        else
+                        {
+                            UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Something went wrong! please try again", completion: nil)
+                        }
+                        self.hideLoader()
+                    })
+                }
+                
+
             default:
                 break
             }

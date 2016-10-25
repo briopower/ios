@@ -63,16 +63,17 @@ extension LoginViewController{
 extension LoginViewController:LoginSignupTableViewDelegate{
     func buttonPressed(type: ButtonCellType) {
         UIApplication.dismissKeyboard()
-        self.dismissViewControllerAnimated(true, completion: nil)
-//        if checkData() {
-//            if NetworkClass.isConnected(true) {
-//                showLoaderOnWindow()
-//                NetworkClass.sendRequest(URL: Constants.URLs.login, RequestType: .POST, Parameters: currentUser.getLoginDictionary(), Headers: nil, CompletionHandler: {
-//                    (status, responseObj, error, statusCode) in
-//                    NSUserDefaults.saveUser(responseObj)
-//                    self.hideLoader()
-//                })
-//            }
-//        }
+//        self.dismissViewControllerAnimated(true, completion: nil)
+        if checkData() {
+            if NetworkClass.isConnected(true) {
+                showLoaderOnWindow()
+                NetworkClass.sendRequest(URL: Constants.URLs.login, RequestType: .POST, Parameters: currentUser.getLoginDictionary(), Headers: nil, CompletionHandler: {
+                    (status, responseObj, error, statusCode) in
+                    NSUserDefaults.saveUser(responseObj)
+                    
+                    self.hideLoader()
+                })
+            }
+        }
     }
 }

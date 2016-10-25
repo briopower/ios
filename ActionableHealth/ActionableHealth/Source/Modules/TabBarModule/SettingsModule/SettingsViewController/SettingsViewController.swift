@@ -81,12 +81,7 @@ extension SettingsViewController:UITableViewDelegate{
                 }
             case .LogOut:
                 dispatch_async(dispatch_get_main_queue(), {
-                    if let tababarController = self.parentViewController as? UITabBarController {
-                        tababarController.selectedIndex = 0
-                    }
-                    if let viewCont=UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.loginView) as? LoginViewController {
-                      self.presentViewController(viewCont, animated: true, completion: nil)
-                    }
+                    UIViewController.presentLoginViewController()
                 })
             default:
                 break

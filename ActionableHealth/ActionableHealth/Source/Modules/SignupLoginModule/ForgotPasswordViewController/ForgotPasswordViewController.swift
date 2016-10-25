@@ -69,33 +69,16 @@ extension ForgotPasswordViewController:LoginSignupTableViewDelegate{
                     (status, responseObj, error, statusCode) in
                     if statusCode == 200 {
                         
-                       // self.hideLoader()
-//                        let alertController = UIAlertController(title: "Password recovery", message:
-//                            "Mail sent to your registered emailid", preferredStyle: UIAlertControllerStyle.Alert)
-//                        
-//                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-//                            UIAlertAction in
-//                            self.dismissViewControllerAnimated(true, completion: nil)
-//                        }
-//
-//                        alertController.addAction(okAction)
-//                        self.presentViewController(alertController, animated: true, completion: nil)
-                        
                         UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Title: "Password Recovery", Message: "Mail sent to your registered emailid", OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: {UIAlertAction in
                             self.dismissViewControllerAnimated(true, completion: nil)})
                     }
                     
                    else if statusCode == 500 {
                         
-                        
-//                       // self.hideLoader()
-//                        let alertController = UIAlertController(title: "Password recovery", message:
-//                            "email id Not Registered", preferredStyle: UIAlertControllerStyle.Alert)
-//                        
-//                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil)
-//                        alertController.addAction(okAction)
-//                        self.presentViewController(alertController, animated: true, completion: nil)
                         UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Title: "Password Recovery", Message: "email id Not Registered", OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: nil)
+                    }
+                    else {
+                        UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Something went wrong! Please try again", OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: nil)
                     }
                     self.hideLoader()
                 })

@@ -26,4 +26,18 @@ extension UIViewController{
             return viewControllerObj
         }
     }
+    class func presentLoginViewController(){
+        if let viewCont = getTopMostViewController() as? UINavigationController {
+            if viewCont.viewControllers.count > 0{
+                if let viewCont1 = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateInitialViewController() as? UINavigationController {
+                    viewCont.presentViewController(viewCont1, animated: true, completion: { 
+                        if let tabBarCont = viewCont.viewControllers[0] as? UITabBarController{
+                            tabBarCont.selectedIndex = 0
+                        }
+                    })
+                }
+            }
+        }
+        
+}
 }

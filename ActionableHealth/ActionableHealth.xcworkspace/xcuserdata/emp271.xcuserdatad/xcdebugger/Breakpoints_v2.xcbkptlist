@@ -38,54 +38,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-            timestampString = "498727101.661241"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "buttonPressed(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ActionableHealth.ForgotPasswordViewController.(buttonPressed (ActionableHealth.ButtonCellType) -&gt; ()).(closure #1)"
-                  moduleName = "ActionableHealth"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499008551.321153"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "166">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ActionableHealth.ForgotPasswordViewController.(buttonPressed (ActionableHealth.ButtonCellType) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "ActionableHealth"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499008551.321386"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -122,7 +74,7 @@
                   moduleName = "ActionableHealth"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499008551.322527"
+                  timestampString = "499079068.270101"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
@@ -137,7 +89,7 @@
                   moduleName = "ActionableHealth"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499008551.322759"
+                  timestampString = "499079068.270348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"

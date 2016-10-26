@@ -10,6 +10,16 @@ import UIKit
 
 class TrackPhasesCell: UITableViewCell {
 
+    //MARK:- Outlets
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var numberOfTaskLabel: UILabel!
+    @IBOutlet weak var allTaskStatusLabel: UILabel!
+
+    //MARK:- Variables
+    var currentPhase:PhasesModel?
+
+    //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +30,24 @@ class TrackPhasesCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
+}
+
+//MARK:- Additional methods
+extension TrackPhasesCell{
+    func configCell(phase:PhasesModel) {
+        currentPhase = phase
+        nameLabel.text = currentPhase?.phaseName ?? ""
+        ratingLabel.text = "3.5 Rating"
+        if let count = currentPhase?.tasks.count{
+            if count == 1 {
+                numberOfTaskLabel.text = "Overall \(count) task"
+            }else{
+                numberOfTaskLabel.text = "Overall \(count) tasks"
+            }
+        }else{
+            numberOfTaskLabel.text = ""
+        }
+        allTaskStatusLabel.text = "All Task Completed"
+    }
 }

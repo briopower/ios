@@ -14,6 +14,9 @@ class PhaseDetailsViewController: CommonViewController {
     @IBOutlet weak var phaseDetailsTblView: UITableView!
     @IBOutlet var ratingView: UIView!
 
+    //MARK:- Varibales
+    var currentPhase:PhasesModel?
+
     //MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ class PhaseDetailsViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("MONDAY", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(currentPhase?.phaseName ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
     override func viewDidLayoutSubviews() {
@@ -50,9 +53,9 @@ extension PhaseDetailsViewController{
 extension PhaseDetailsViewController{
     func setupView(){
 
-        if let headerView = AllTaskCompletedHeaderView.getView() {
-            phaseDetailsTblView.tableHeaderView = headerView
-        }
+//        if let headerView = AllTaskCompletedHeaderView.getView() {
+//            phaseDetailsTblView.tableHeaderView = headerView
+//        }
 
         phaseDetailsTblView.rowHeight = UITableViewAutomaticDimension
         phaseDetailsTblView.estimatedRowHeight = 100
@@ -64,24 +67,20 @@ extension PhaseDetailsViewController{
 //MARK:- UITableViewDataSource
 extension PhaseDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return currentPhase?.tasks.count ?? 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        if indexPath.row == 0 || indexPath.row == 1 {
-            if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell)) as? PhaseDetailsCell {
+        if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell)) as? PhaseDetailsCell {
+            if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
                 cell.tag = indexPath.row
                 cell.delegate = self
-                return cell
-            }
-        }else{
-            if let cell = tableView.dequeueReusableCellWithIdentifier(PhaseDetailsCell.statusCell) as? PhaseDetailsCell {
-                cell.tag = indexPath.row
-                cell.delegate = self
+                cell.configureCell(task)
                 return cell
             }
         }
+
         return UITableViewCell()
     }
 }
@@ -89,11 +88,23 @@ extension PhaseDetailsViewController:UITableViewDataSource{
 //MARK:- RatingView Methods
 extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
     func commentsTapped(tag: Int, obj: AnyObject?) {
-
+        if NSUserDefaults.isLoggedIn() {
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.navigationController?.pushViewController(viewCont, animated: true)
+                })
+            }
+        }else{
+            UIViewController.presentLoginViewController()
+        }
     }
 
     func rateTaskTapped(tag: Int, obj: AnyObject?) {
-        showRatingView()
+        if NSUserDefaults.isLoggedIn() {
+            showRatingView()
+        }else{
+            UIViewController.presentLoginViewController()
+        }
     }
 
     func showRatingView() {

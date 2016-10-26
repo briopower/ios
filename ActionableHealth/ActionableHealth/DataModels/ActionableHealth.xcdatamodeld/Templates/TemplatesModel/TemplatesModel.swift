@@ -24,7 +24,7 @@ class TemplatesModel: NSObject {
     var createDate = 0
     var sharedWith = []
     var key = ""
-
+    var phases = NSMutableArray()
 }
 
 //MARK:- Additional methods
@@ -48,7 +48,7 @@ extension TemplatesModel{
     class func getTotalObjectsCount(dict:AnyObject) -> Int {
         return dict["totalCount"] as? Int ?? 0
     }
-    
+
     class func getTemplateObj(dict:AnyObject) -> TemplatesModel {
         let model = TemplatesModel()
         updateObj(model, dict: dict)
@@ -69,5 +69,17 @@ extension TemplatesModel{
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.sharedWith = dict["sharedWith"] as? NSArray ?? []
         obj.key = dict["key"] as? String ?? ""
+    }
+
+    class func addPhases(dict:AnyObject, toModel:TemplatesModel) {
+        if let phases = dict as? NSMutableArray {
+            for phase in phases {
+                let phaseObj = PhasesModel.getPhaseUsingObj(phase)
+                phaseObj.parentTemplate = toModel
+                toModel.phases.addObject(phaseObj)
+            }
+            let sortDesc = NSSortDescriptor(key: "orderIndex", ascending: true)
+            toModel.phases.sortUsingDescriptors([sortDesc])
+        }
     }
 }

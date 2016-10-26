@@ -135,7 +135,10 @@ extension TrackDetailsViewController{
 
     func getPhaseCellForIndexPath(indexPath:NSIndexPath) -> UITableViewCell {
         if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackPhasesCell)) as? TrackPhasesCell {
-            return cell
+            if let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel{
+                cell.configCell(phase)
+                return cell
+            }
         }
         return UITableViewCell()
     }
@@ -150,6 +153,7 @@ extension TrackDetailsViewController{
 
     func phaseCellSelectedAtIndexPath(indexPath:NSIndexPath) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
+            viewCont.currentPhase = currentTemplate?.phases[indexPath.row] as? PhasesModel
             self.navigationController?.pushViewController(viewCont, animated: true)
         }
     }
@@ -162,7 +166,7 @@ extension TrackDetailsViewController:UITableViewDataSource{
         if isInfoSelected {
             return 2
         }
-        return 50
+        return currentTemplate?.phases.count ?? 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -211,7 +215,10 @@ extension TrackDetailsViewController{
     }
     
     func processResponse(responseObj:AnyObject?) {
-        
+        if let dict = responseObj where currentTemplate != nil {
+            TemplatesModel.addPhases(dict, toModel: currentTemplate!)
+            trackDetailsTblView.reloadData()
+        }
     }
     
     func processError(error:NSError?) {

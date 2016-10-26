@@ -13,9 +13,17 @@ protocol PhaseDetailsCellDelegate:NSObjectProtocol {
 }
 class PhaseDetailsCell: UITableViewCell {
 
+    //MARK:- Outlets
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var completedOnlabel: UILabel!
+    @IBOutlet weak var commentCountButton: UIButton!
+    @IBOutlet weak var starRatingView: HCSStarRatingView!
+    @IBOutlet weak var ratingLabel: UILabel!
+
     //MARK:- Variables
     static let statusCell = "PhaseDetailsCell_Status"
     weak var delegate:PhaseDetailsCellDelegate?
+    var currentTask:TasksModel?
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -28,7 +36,7 @@ class PhaseDetailsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }
 
 //MARK:- Button Action
@@ -39,9 +47,16 @@ extension PhaseDetailsCell{
     @IBAction func rateTaskAction(sender: AnyObject) {
         delegate?.rateTaskTapped(self.tag, obj: nil)
     }
-    
+
 }
 //MARK:- Additional methods
 extension PhaseDetailsCell{
-
+    func configureCell(obj:TasksModel) {
+        currentTask = obj
+        taskNameLabel.text = currentTask?.taskName ?? ""
+        completedOnlabel.text = "Completed on 12 Aug 2016"
+        commentCountButton.setTitle("149 Comments", forState: .Normal)
+        starRatingView.value = 3.5
+        ratingLabel.text = "3.5 Rating"
+    }
 }

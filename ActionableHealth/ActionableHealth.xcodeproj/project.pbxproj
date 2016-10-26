@@ -134,6 +134,8 @@
 		3CCF8B001DA6652600C76C64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */; };
 		3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */; };
 		3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B051DA6682300C76C64 /* Constants.swift */; };
+		3CE99F251DC06F700070FEED /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE99F241DC06F700070FEED /* TasksModel.swift */; };
+		3CE99F271DC072930070FEED /* PhasesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE99F261DC072930070FEED /* PhasesModel.swift */; };
 		3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5491DB7892000224046 /* TrackFilesCell.swift */; };
 		3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */; };
 		3CF5B54F1DB78AEC00224046 /* TrackInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */; };
@@ -308,6 +310,8 @@
 		3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
 		3CCF8B051DA6682300C76C64 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3CE99F241DC06F700070FEED /* TasksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
+		3CE99F261DC072930070FEED /* PhasesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhasesModel.swift; sourceTree = "<group>"; };
 		3CF5B5491DB7892000224046 /* TrackFilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFilesCell.swift; sourceTree = "<group>"; };
 		3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackFilesCell.xib; sourceTree = "<group>"; };
 		3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInfoCell.swift; sourceTree = "<group>"; };
@@ -380,7 +384,6 @@
 				3C1EC51C1DA3A7C0003DC2A3 /* ActionableHealth */,
 				3C1EC5341DA3A7C0003DC2A3 /* ActionableHealthTests */,
 				3C1EC53F1DA3A7C0003DC2A3 /* ActionableHealthUITests */,
-				3C1EC51B1DA3A7C0003DC2A3 /* Products */,
 				623BBCDDBBA68AEC3583C3DC /* Pods */,
 				0857FB9B26780041C4FD880B /* Frameworks */,
 			);
@@ -394,6 +397,7 @@
 				3C1EC53C1DA3A7C0003DC2A3 /* ActionableHealthUITests.xctest */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		3C1EC51C1DA3A7C0003DC2A3 /* ActionableHealth */ = {
@@ -421,6 +425,7 @@
 		3C1EC53F1DA3A7C0003DC2A3 /* ActionableHealthUITests */ = {
 			isa = PBXGroup;
 			children = (
+				3C1EC51B1DA3A7C0003DC2A3 /* Products */,
 				3C1EC5401DA3A7C0003DC2A3 /* ActionableHealthUITests.swift */,
 				3C1EC5421DA3A7C0003DC2A3 /* Info.plist */,
 			);
@@ -1050,6 +1055,7 @@
 		3CB93B051DBDD49C005E03E3 /* TemplatesModel */ = {
 			isa = PBXGroup;
 			children = (
+				3CE99F221DC06F5E0070FEED /* Phases */,
 				3CB93B061DBDD4B7005E03E3 /* TemplatesModel.swift */,
 			);
 			path = TemplatesModel;
@@ -1482,6 +1488,23 @@
 				3CCF8B051DA6682300C76C64 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		3CE99F221DC06F5E0070FEED /* Phases */ = {
+			isa = PBXGroup;
+			children = (
+				3CE99F231DC06F5E0070FEED /* Tasks */,
+				3CE99F261DC072930070FEED /* PhasesModel.swift */,
+			);
+			path = Phases;
+			sourceTree = "<group>";
+		};
+		3CE99F231DC06F5E0070FEED /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				3CE99F241DC06F700070FEED /* TasksModel.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		3CF5B5461DB7861500224046 /* TrackFilesCell */ = {
@@ -1937,6 +1960,7 @@
 				3CCF310D1DB771DD001A1E7B /* CommonHeaderButton.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
+				3CE99F271DC072930070FEED /* PhasesModel.swift in Sources */,
 				3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */,
 				3C9D132B1DA3CE5800998DA2 /* UITextField_FontSizeTextField.swift in Sources */,
 				3CCECDA21DAF61E000831242 /* FilterByObject.swift in Sources */,
@@ -2008,6 +2032,7 @@
 				3CB93B071DBDD4B7005E03E3 /* TemplatesModel.swift in Sources */,
 				3CCF8AD91DA621B300C76C64 /* LoginSignupTableView.swift in Sources */,
 				3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */,
+				3CE99F251DC06F700070FEED /* TasksModel.swift in Sources */,
 				3CACF4021DB635220034D700 /* StaggeredCollectionView.swift in Sources */,
 				3C1EC5A11DA3A864003DC2A3 /* UIFont_Common.swift in Sources */,
 				3CC9D06D1DB8854A00287068 /* CommentsViewController.swift in Sources */,

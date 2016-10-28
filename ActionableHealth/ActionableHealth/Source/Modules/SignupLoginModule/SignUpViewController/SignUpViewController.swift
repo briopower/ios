@@ -77,23 +77,23 @@ extension SignUpViewController:LoginSignupTableViewDelegate{
                 showLoaderOnWindow()
                 NetworkClass.sendRequest(URL: Constants.URLs.signup, RequestType: .POST, Parameters: currentUser.getSignupDictionary(), Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
-    
+                    
                     if let responseDictionary = responseObj as? Dictionary<String, AnyObject>{
                         
-                    if let emailExist = (responseDictionary["exists"] as? Bool){
-                            if !emailExist
-                            {
-    
+                        if let emailExist = (responseDictionary["exists"] as? Bool){
+                            if !emailExist{
+                                
+                                
                                 UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Title: "Signup Authentication", Message: "Mail sent to your emailid", OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: {UIAlertAction in
-                                    self.dismissViewControllerAnimated(true, completion: nil)})
-
+                                    self.navigationController?.popViewControllerAnimated(true)})
+                                
                             }
                                 
                             else{
                                 UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Title: "Signup Authentication", Message: "email id Already Registered With Us", OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: nil)
                                 
                             }
-
+                            
                         }
                     }
                     self.hideLoader()

@@ -11,6 +11,7 @@ enum TabBarType:Int {
     case Home, Track, Chat, Group, Settings
 }
 class UITabBarItem_Custom: UITabBarItem {
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setImages()

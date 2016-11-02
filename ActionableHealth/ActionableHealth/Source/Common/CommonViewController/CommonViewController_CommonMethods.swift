@@ -22,6 +22,7 @@ let SearchButtonImage = UIImage(named: "search")
 let NotificationButtonImage = UIImage(named: "notification")
 let CrossButtonImage = UIImage(named: "cut")
 let DoneButtonImage = UIImage(named: "tick")
+let DetailsButtonImage = UIImage(named: "action-button")
 
 //MARK: Navigation Controller Delegate
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
@@ -97,7 +98,7 @@ extension CommonViewController{
         case .Done:
             barButton = UIBarButtonItem(customView:getButtonWithImage(DoneButtonImage,Action: #selector(self.doneButtonAction(_:))))
         case .Details:
-            barButton = UIBarButtonItem(customView:getButtonWithImage(DoneButtonImage,Action: #selector(self.detailsButtonAction(_:))))
+            barButton = UIBarButtonItem(customView:getButtonWithImage(DetailsButtonImage,Action: #selector(self.detailsButtonAction(_:))))
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)

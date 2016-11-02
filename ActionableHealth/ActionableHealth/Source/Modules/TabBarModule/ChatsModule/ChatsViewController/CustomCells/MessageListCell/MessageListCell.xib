@@ -30,9 +30,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oc3-0d-sC1">
                                 <rect key="frame" x="0.0" y="0.0" width="22" height="77"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ReZ-0r-rcJ" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle-user-ic" translatesAutoresizingMaskIntoConstraints="NO" id="lTp-R8-EIg" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="22" y="18" width="41" height="41"/>
-                                <color key="backgroundColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ReZ-0r-rcJ" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="22" y="18" width="41" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ReZ-0r-rcJ" secondAttribute="height" id="n6D-Na-qjF"/>
                                 </constraints>
@@ -40,16 +42,16 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a3H-sh-4Lz">
                                 <rect key="frame" x="64" y="0.0" width="9" height="77"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QH-3E-Eev" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2QH-3E-Eev" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="73" y="23" width="193" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dHe-8l-u33">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dHe-8l-u33">
                                 <rect key="frame" x="266" y="0.0" width="48" height="77"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJz-YH-bP2" customClass="UIButton_RoundButton" customModule="BRIO" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJz-YH-bP2" customClass="UIButton_RoundButton" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="274" y="23" width="32" height="32"/>
                                 <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -61,7 +63,7 @@
                                     <color key="titleColor" red="0.96862745098039216" green="0.92156862745098034" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltd-r5-LpK" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltd-r5-LpK" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="73" y="43" width="193" height="15"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,14 +90,17 @@
                             <constraint firstItem="2QH-3E-Eev" firstAttribute="top" secondItem="ReZ-0r-rcJ" secondAttribute="top" multiplier="1.25" id="8WS-W2-43b"/>
                             <constraint firstAttribute="trailing" secondItem="dHe-8l-u33" secondAttribute="trailing" multiplier="1.02" id="Apc-ly-533"/>
                             <constraint firstItem="a3H-sh-4Lz" firstAttribute="top" secondItem="ZvL-4A-Dt8" secondAttribute="top" id="FoQ-z1-520"/>
+                            <constraint firstItem="lTp-R8-EIg" firstAttribute="height" secondItem="ReZ-0r-rcJ" secondAttribute="height" id="IWu-hv-ptq"/>
                             <constraint firstAttribute="trailing" secondItem="R3s-P4-iIW" secondAttribute="trailing" id="Kan-Xe-elf"/>
                             <constraint firstItem="ltd-r5-LpK" firstAttribute="trailing" secondItem="2QH-3E-Eev" secondAttribute="trailing" id="LD2-3U-DCe"/>
+                            <constraint firstItem="lTp-R8-EIg" firstAttribute="centerY" secondItem="ReZ-0r-rcJ" secondAttribute="centerY" id="MX5-WJ-gr7"/>
                             <constraint firstAttribute="bottom" secondItem="dHe-8l-u33" secondAttribute="bottom" id="PI8-Ro-Zei"/>
                             <constraint firstItem="ReZ-0r-rcJ" firstAttribute="centerY" secondItem="ZvL-4A-Dt8" secondAttribute="centerY" id="QU3-qh-pRq"/>
                             <constraint firstAttribute="bottom" secondItem="a3H-sh-4Lz" secondAttribute="bottom" id="RJX-TA-EdJ"/>
                             <constraint firstItem="dHe-8l-u33" firstAttribute="leading" secondItem="2QH-3E-Eev" secondAttribute="trailing" id="RoB-Xp-G5W"/>
                             <constraint firstAttribute="bottom" secondItem="R3s-P4-iIW" secondAttribute="bottom" id="SBR-Ju-Axm"/>
                             <constraint firstItem="ltd-r5-LpK" firstAttribute="bottom" secondItem="ReZ-0r-rcJ" secondAttribute="bottom" multiplier="0.975" id="TIb-eI-HGt"/>
+                            <constraint firstItem="lTp-R8-EIg" firstAttribute="width" secondItem="ReZ-0r-rcJ" secondAttribute="width" id="UBW-ST-RfB"/>
                             <constraint firstAttribute="bottom" secondItem="oc3-0d-sC1" secondAttribute="bottom" id="abX-zz-XpZ"/>
                             <constraint firstItem="a3H-sh-4Lz" firstAttribute="leading" secondItem="ReZ-0r-rcJ" secondAttribute="trailing" constant="1" id="cGZ-Kx-SXg"/>
                             <constraint firstItem="R3s-P4-iIW" firstAttribute="leading" secondItem="ltd-r5-LpK" secondAttribute="leading" id="can-dC-BSR"/>
@@ -108,6 +113,7 @@
                             <constraint firstItem="a3H-sh-4Lz" firstAttribute="width" secondItem="ZvL-4A-Dt8" secondAttribute="width" multiplier="35:1242" id="jRs-ze-0Vb"/>
                             <constraint firstItem="ltd-r5-LpK" firstAttribute="leading" secondItem="2QH-3E-Eev" secondAttribute="leading" id="oCh-cW-RBG"/>
                             <constraint firstItem="dHe-8l-u33" firstAttribute="top" secondItem="ZvL-4A-Dt8" secondAttribute="top" id="rB7-o0-vxR"/>
+                            <constraint firstItem="lTp-R8-EIg" firstAttribute="centerX" secondItem="ReZ-0r-rcJ" secondAttribute="centerX" id="sRS-w8-IG8"/>
                             <constraint firstItem="ReZ-0r-rcJ" firstAttribute="leading" secondItem="oc3-0d-sC1" secondAttribute="trailing" id="uYY-5f-O5F"/>
                             <constraint firstItem="g3H-d8-Pdu" firstAttribute="leading" secondItem="ZvL-4A-Dt8" secondAttribute="leading" id="ute-V2-F2A"/>
                             <constraint firstItem="dHe-8l-u33" firstAttribute="width" secondItem="QJz-YH-bP2" secondAttribute="width" multiplier="1.5" id="wtQ-Yw-tvf"/>
@@ -132,4 +138,7 @@
             <point key="canvasLocation" x="381" y="383"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="circle-user-ic" width="64" height="65"/>
+    </resources>
 </document>

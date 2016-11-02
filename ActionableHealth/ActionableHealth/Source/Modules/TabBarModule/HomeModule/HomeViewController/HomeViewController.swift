@@ -13,6 +13,7 @@ class HomeViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var buttonsContainer: UIView!
     @IBOutlet weak var clctView: StaggeredCollectionView!
+    @IBOutlet var titleView: UIImageView!
 
     //MARK:- Variables
     var nextUrl = ""
@@ -26,9 +27,12 @@ class HomeViewController: CommonViewController {
         super.viewWillAppear(animated)
 
         if NSUserDefaults.isLoggedIn() {
-            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
+            setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
+//            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
         }else{
-            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
+            setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
+
+//            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
         }
     }
     override func viewDidAppear(animated: Bool) {
@@ -44,6 +48,8 @@ class HomeViewController: CommonViewController {
 //MARK:- Additional methods
 extension HomeViewController{
     func setupView() {
+        let width = (235/1242) * UIDevice.width()
+        titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
         CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
         CommonMethods.addShadowToView(buttonsContainer)
 

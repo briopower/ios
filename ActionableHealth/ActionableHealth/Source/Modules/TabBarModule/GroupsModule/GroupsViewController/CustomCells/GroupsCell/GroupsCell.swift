@@ -15,6 +15,7 @@ class GroupsCell: UITableViewCell {
     @IBOutlet weak var titleDescLabel: UILabel!
     @IBOutlet weak var subTitleDescLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var placeholderImageView: UIImageView!
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -33,12 +34,14 @@ class GroupsCell: UITableViewCell {
 //MARK:- Additional methods
 extension GroupsCell{
     func configureForGroupCell() {
+        placeholderImageView.image = UIImage(named: "circle-group-ic")
         titleDescLabel.text = "Fitness Group"
         subTitleDescLabel.text = "999 Members"
         dateLabel.hidden = false
     }
 
     func configureForGroupMemberCell() {
+        placeholderImageView.image = UIImage(named: "circle-user-ic")
         titleDescLabel.text = "Alexandra Xan"
         subTitleDescLabel.text = "Tamha, Istanbul"
         dateLabel.hidden = true

@@ -203,7 +203,7 @@
                                         <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                         <state key="normal" image="send"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                         <rect key="frame" x="21" y="16" width="144" height="14"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -378,8 +378,8 @@
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="rating-icon"/>
-                                        <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="rating-fill-icon"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="star-black-ic"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="star-yellow-ic"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="spacing">
                                             <real key="value" value="3"/>
                                         </userDefinedRuntimeAttribute>
@@ -425,8 +425,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rating-fill-icon" width="11" height="10"/>
-        <image name="rating-icon" width="11" height="11"/>
         <image name="send" width="28" height="28"/>
+        <image name="star-black-ic" width="45" height="44"/>
+        <image name="star-yellow-ic" width="45" height="44"/>
     </resources>
 </document>

@@ -126,7 +126,7 @@
                                     <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROUPS YOU ARE MEMBER OF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2B-U2-aym" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GROUPS YOU ARE MEMBER OF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2B-U2-aym" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                             <rect key="frame" x="41" y="20" width="228" height="16"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                             <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,7 +245,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caM-Zp-3gQ" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
                                                 <rect key="frame" x="169" y="0.0" width="169" height="89"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
-                                                <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="FILTER" image="filter"/>
                                                 <userDefinedRuntimeAttributes>
@@ -258,7 +258,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnQ-A2-SeL" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="169" height="89"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
-                                                <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="SORT" image="sort"/>
                                                 <userDefinedRuntimeAttributes>
@@ -320,9 +320,14 @@
                     <connections>
                         <outlet property="buttonsContainer" destination="qQP-kR-Pb0" id="DuO-cF-sB4"/>
                         <outlet property="clctView" destination="k6A-O7-zxG" id="ScA-D0-QZH"/>
+                        <outlet property="titleView" destination="cJP-Ia-gAb" id="kDv-rR-oEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N7-ou-kQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" id="cJP-Ia-gAb">
+                    <rect key="frame" x="0.0" y="0.0" width="230" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
             <point key="canvasLocation" x="-1384" y="-819"/>
         </scene>
@@ -353,6 +358,7 @@
     </scenes>
     <resources>
         <image name="filter" width="14" height="13"/>
+        <image name="logo" width="265" height="80"/>
         <image name="sort" width="14" height="11"/>
         <image name="tabBarBG" width="37" height="42"/>
         <image name="xyz" width="11" height="11"/>

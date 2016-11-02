@@ -24,20 +24,20 @@ class UITabBarItem_Custom: UITabBarItem {
             var selectedStateImage:UIImage?
             switch type {
             case .Home:
-                normalImage = UIImage(named: "home\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "home_s\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Home-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Home-Yellow\(getImageNamePostFix())")
             case .Track:
-                normalImage = UIImage(named: "Track\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Track_s\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Track-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Track-yellow\(getImageNamePostFix())")
             case .Chat:
-                normalImage = UIImage(named: "chat\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "chat_s\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Chat-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Chat-yellow\(getImageNamePostFix())")
             case .Group:
-                normalImage = UIImage(named: "group\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "group_s\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Group-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Group-yellow\(getImageNamePostFix())")
             case .Settings:
-                normalImage = UIImage(named: "settings\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "settings_s\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Setting-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Setting-yellow\(getImageNamePostFix())")
             }
             super.selectedImage = selectedStateImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
             super.image = normalImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
@@ -47,13 +47,13 @@ class UITabBarItem_Custom: UITabBarItem {
     func getImageNamePostFix() -> String {
         switch UIDevice.getDeviceType() {
         case .AppleIphone6P, .AppleIphone6SP, .AppleIphone7P:
-            return "_3x.png"
+            return "-3x.png"
         case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
-            return "_x.png"
+            return "-2x.png"
         case .Simulator:
-            return "_x.png"
+            return "-1x.png"
         default:
-            return "_2x.png"
+            return "-1x.png"
         }
     }
 }

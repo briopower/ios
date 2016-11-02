@@ -126,7 +126,7 @@
                                     <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GROUPS YOU ARE MEMBER OF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2B-U2-aym" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROUPS YOU ARE MEMBER OF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2B-U2-aym" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                             <rect key="frame" x="41" y="20" width="228" height="16"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                             <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
@@ -339,9 +339,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabBarBG" shadowImage="xyz" itemPositioning="fill" id="Atu-D4-5Yh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Z2f-Jx-dhb" kind="relationship" relationship="viewControllers" id="9QP-oN-Bwi"/>
@@ -360,7 +357,7 @@
         <image name="filter" width="14" height="13"/>
         <image name="logo" width="265" height="80"/>
         <image name="sort" width="14" height="11"/>
-        <image name="tabBarBG" width="37" height="42"/>
+        <image name="tabBarBG" width="62" height="48"/>
         <image name="xyz" width="11" height="11"/>
     </resources>
 </document>

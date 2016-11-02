@@ -14,9 +14,9 @@
         },
         "cap-insets" : {
           "bottom" : 32,
-          "top" : 23,
+          "top" : 27,
           "right" : 26,
-          "left" : 46
+          "left" : 55
         }
       },
       "idiom" : "universal",

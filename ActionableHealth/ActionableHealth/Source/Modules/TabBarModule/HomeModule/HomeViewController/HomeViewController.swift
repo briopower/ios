@@ -26,9 +26,9 @@ class HomeViewController: CommonViewController {
         super.viewWillAppear(animated)
 
         if NSUserDefaults.isLoggedIn() {
-            self.setNavigationBarWithTitle("HOME", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
+            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
         }else{
-            self.setNavigationBarWithTitle("HOME", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
+            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
         }
     }
     override func viewDidAppear(animated: Bool) {

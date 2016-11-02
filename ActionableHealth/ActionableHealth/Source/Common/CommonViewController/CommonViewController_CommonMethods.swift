@@ -21,9 +21,7 @@ let BackButtonImage = UIImage(named: "back-btn")
 let SearchButtonImage = UIImage(named: "search")
 let NotificationButtonImage = UIImage(named: "notification")
 let CrossButtonImage = UIImage(named: "cut")
-let DoneButtonImage = UIImage(named: "cut")
-let DetailsButtonImage = UIImage(named: "cut")
-
+let DoneButtonImage = UIImage(named: "tick")
 
 //MARK: Navigation Controller Delegate
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
@@ -71,7 +69,7 @@ extension CommonViewController{
         getNavigationItem()?.titleView = nil
         getNavigationController()?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.getAppThemeColor(),
-            NSFontAttributeName: UIFont.getAppTitleFontWithSize(20)!.getDynamicSizeFont()]
+            NSFontAttributeName: UIFont.getAppRegularFontWithSize(20)?.getDynamicSizeFont() ?? UIFont.systemFontOfSize(20).getDynamicSizeFont()]
         getNavigationItem()?.title = title
         setBarButtonAt(.Left, Type: leftButtonType)
         setBarButtonAt(.Right, Type: rightButtonType)

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -13,7 +12,7 @@
         <!--Messaging View Controller-->
         <scene sceneID="5Ke-Fd-Owg">
             <objects>
-                <viewController storyboardIdentifier="messagingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="43b-bR-qhj" customClass="MessagingViewController" customModule="ActionableHealth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="messagingView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="43b-bR-qhj" customClass="MessagingViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pAW-UD-mDD"/>
                         <viewControllerLayoutGuide type="bottom" id="PGH-lW-BBM"/>
@@ -37,7 +36,7 @@
                                         <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                         <state key="normal" image="send"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4e-9s-UBU" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4e-9s-UBU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                         <rect key="frame" x="21" y="16" width="144" height="14"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

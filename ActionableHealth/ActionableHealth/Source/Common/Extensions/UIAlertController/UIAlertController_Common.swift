@@ -18,8 +18,7 @@ extension UIAlertController{
         UIApplication.sharedApplication().windows.first?.endEditing(true)
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
-        alertController.view.tintColor=UIColor.blackColor()
-        
+
         if otherButtonTitles != nil {
             for count in 0..<otherButtonTitles!.count {
                 let  alertAction = UIAlertAction(title: otherButtonTitles![count],
@@ -45,7 +44,9 @@ extension UIAlertController{
         alertController.addAction(alertAction)
 
         UIViewController.getTopMostViewController()?.presentViewController(alertController, animated: true, completion: nil)
-        
+
+        alertController.view.tintColor = UIColor.getAppThemeColor()
+
     }
 
 }

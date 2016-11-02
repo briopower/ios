@@ -72,6 +72,7 @@ extension TemplatesModel{
     }
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {
+        toModel.phases = NSMutableArray()
         if let phases = dict as? NSMutableArray {
             for phase in phases {
                 let phaseObj = PhasesModel.getPhaseUsingObj(phase)

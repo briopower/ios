@@ -64,6 +64,11 @@ extension SignUpViewController{
             return false
         }
 
+        if currentUser.password.length() < 6 {
+            UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Password must contain atleast 6 characters", completion: nil)
+            return false
+        }
+
         return true
     }
 }

@@ -30,7 +30,7 @@ class HomeViewController: CommonViewController {
         }else{
             setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
         }
-        clctView.reloadContent()
+        getData(clctView.dataArray.count)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -54,7 +54,6 @@ extension HomeViewController{
         clctView.dataArray = NSMutableArray()
         clctView.type = CollectionViewType.HomeView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
-        getData(clctView.dataArray.count)
     }
 
     func reset() {

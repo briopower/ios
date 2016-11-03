@@ -27,4 +27,9 @@ extension UIColor{
     class func getAppSeperatorColor() -> UIColor {
         return self.getColorFromHexValue(0xDDE0E0, Alpha: 1)
     }
+    
+    class func getAppSelectedTextColor() -> UIColor{
+        return self.getColorFromHexValue(0xFBEE00, Alpha: 1)
+        //1587CC
+    }
 }

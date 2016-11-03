@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3C1EC5191DA3A7BF003DC2A3"
-               BuildableName = "ActionableHealth.app"
+               BuildableName = "BRIO.app"
                BlueprintName = "ActionableHealth"
                ReferencedContainer = "container:ActionableHealth.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3C1EC5191DA3A7BF003DC2A3"
-            BuildableName = "ActionableHealth.app"
+            BuildableName = "BRIO.app"
             BlueprintName = "ActionableHealth"
             ReferencedContainer = "container:ActionableHealth.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3C1EC5191DA3A7BF003DC2A3"
-            BuildableName = "ActionableHealth.app"
+            BuildableName = "BRIO.app"
             BlueprintName = "ActionableHealth"
             ReferencedContainer = "container:ActionableHealth.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3C1EC5191DA3A7BF003DC2A3"
-            BuildableName = "ActionableHealth.app"
+            BuildableName = "BRIO.app"
             BlueprintName = "ActionableHealth"
             ReferencedContainer = "container:ActionableHealth.xcodeproj">
          </BuildableReference>

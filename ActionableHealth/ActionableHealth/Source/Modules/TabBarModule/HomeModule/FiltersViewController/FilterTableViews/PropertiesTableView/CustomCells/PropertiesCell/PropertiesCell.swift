@@ -41,8 +41,8 @@ class PropertiesCell: UITableViewCell {
     func setupForSelectedState(isSelcted:Bool) {
         if isSelcted {
             bgSelectedImageView.backgroundColor = UIColor.getAppThemeColor()
-            nameLabel.textColor = UIColor.whiteColor()
-            countLabel.textColor = UIColor.whiteColor()
+            nameLabel.textColor = UIColor.getAppSelectedTextColor()
+            countLabel.textColor = UIColor.getAppSelectedTextColor()
         }else{
             bgSelectedImageView.backgroundColor = UIColor.clearColor()
             nameLabel.textColor = UIColor.getAppTextColor()

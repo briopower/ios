@@ -70,31 +70,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ActionableHealth.ForgotPasswordViewController.buttonPressed (ActionableHealth.ButtonCellType) -&gt; ()"
-                  moduleName = "ActionableHealth"
+                  symbolName = "BRIO.ForgotPasswordViewController.buttonPressed (BRIO.ButtonCellType) -&gt; ()"
+                  moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499083520.062525"
+                  timestampString = "499864290.443261"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
                   endingLineNumber = "68"
-                  offsetFromSymbolStart = "639">
+                  offsetFromSymbolStart = "666">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ActionableHealth.ForgotPasswordViewController.(buttonPressed (ActionableHealth.ButtonCellType) -&gt; ()).(closure #1)"
-                  moduleName = "ActionableHealth"
+                  symbolName = "BRIO.ForgotPasswordViewController.(buttonPressed (BRIO.ButtonCellType) -&gt; ()).(closure #1)"
+                  moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499083520.062756"
+                  timestampString = "499864290.4434"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"
                   endingLineNumber = "70"
-                  offsetFromSymbolStart = "79">
+                  offsetFromSymbolStart = "110">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -161,6 +161,38 @@
             endingLineNumber = "74"
             landmarkName = "buttonPressed(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.SignUpViewController.buttonPressed (BRIO.ButtonCellType) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
+                  timestampString = "499864290.446013"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for BRIO.LoginSignupTableViewDelegate.buttonPressed (BRIO.ButtonCellType) -&gt; () in conformance BRIO.SignUpViewController : BRIO.LoginSignupTableViewDelegate in BRIO"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
+                  timestampString = "499864290.446155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -193,6 +225,38 @@
             endingLineNumber = "77"
             landmarkName = "buttonPressed(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.SignUpViewController.buttonPressed (BRIO.ButtonCellType) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
+                  timestampString = "499864290.447745"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for BRIO.LoginSignupTableViewDelegate.buttonPressed (BRIO.ButtonCellType) -&gt; () in conformance BRIO.SignUpViewController : BRIO.LoginSignupTableViewDelegate in BRIO"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
+                  timestampString = "499864290.448056"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

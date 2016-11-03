@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details
+    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details,Add
 }
 
 enum BarButtonPosition {
@@ -23,7 +23,7 @@ let NotificationButtonImage = UIImage(named: "notification")
 let CrossButtonImage = UIImage(named: "cut")
 let DoneButtonImage = UIImage(named: "tick")
 let DetailsButtonImage = UIImage(named: "action-button")
-
+let AddButtonImage = UIImage(named: "add-button")
 //MARK: Navigation Controller Delegate
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
 
@@ -99,6 +99,8 @@ extension CommonViewController{
             barButton = UIBarButtonItem(customView:getButtonWithImage(DoneButtonImage,Action: #selector(self.doneButtonAction(_:))))
         case .Details:
             barButton = UIBarButtonItem(customView:getButtonWithImage(DetailsButtonImage,Action: #selector(self.detailsButtonAction(_:))))
+        case .Add:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(AddButtonImage,Action: #selector(self.addButtonAction(_:))))
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -195,6 +197,9 @@ extension CommonViewController{
     }
     @IBAction func detailsButtonAction(sender:UIButton?){
         UIApplication.dismissKeyboard()
+    }
+    @IBAction func addButtonAction(sender:UIButton?){
+        
     }
 
 }

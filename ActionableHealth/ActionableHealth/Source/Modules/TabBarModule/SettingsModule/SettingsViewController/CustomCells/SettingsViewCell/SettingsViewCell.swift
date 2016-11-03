@@ -10,22 +10,22 @@ import UIKit
 enum SettingsCellType:Int {
     case Edit_Profile, Notification, Separator1, Terms_Conditions, Privacy_Policy, About_Us, Separator2, LogOut, Count
 
-    func getTitleAndImageName() -> (title:String , imageName:String) {
+    func getConfig() -> (title:String , imageName:String, hideSideArrow:Bool) {
         switch self {
         case .Edit_Profile:
-            return ("Edit Profile", "message")
+            return ("Edit Profile", "message", false)
         case .Notification:
-            return ("Notification", "notificationSettings")
+            return ("Notification", "notificationSettings", false)
         case .Terms_Conditions:
-            return ("Terms & Conditions", "t&c")
+            return ("Terms & Conditions", "t&c", false)
         case .Privacy_Policy:
-            return ("Privacy Policy", "password")
+            return ("Privacy Policy", "password", false)
         case .About_Us:
-            return ("About Us", "about-us")
+            return ("About Us", "about-us", false)
         case .LogOut:
-            return ("Log Out", "logout")
+            return ("Log Out", "logout", true)
         default:
-            return ("","")
+            return ("", "", false)
         }
     }
 }
@@ -34,6 +34,7 @@ class SettingsViewCell: UITableViewCell {
     //MARK:- Outlets
     @IBOutlet weak var titleDescLabel: UILabel!
     @IBOutlet weak var detailsImageView: UIImageView!
+    @IBOutlet weak var sideArrow: UIImageView!
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -51,8 +52,9 @@ class SettingsViewCell: UITableViewCell {
 //MARK:- Additional methods
 extension SettingsViewCell{
     func configureCellForType(type:SettingsCellType) {
-        let (title, imageName ) = type.getTitleAndImageName()
+        let (title, imageName, hideSideArrow) = type.getConfig()
         titleDescLabel.text = title
         detailsImageView.image = UIImage(named: imageName)
+        sideArrow.hidden = hideSideArrow
     }
 }

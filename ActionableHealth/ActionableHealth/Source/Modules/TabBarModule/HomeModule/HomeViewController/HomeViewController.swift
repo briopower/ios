@@ -25,15 +25,12 @@ class HomeViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
         if NSUserDefaults.isLoggedIn() {
             setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
-//            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
         }else{
             setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
-
-//            self.setNavigationBarWithTitle("BRIO", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
         }
+        clctView.reloadContent()
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

@@ -2196,7 +2196,7 @@
 			baseConfigurationReference = C3346372087476E9DB865E13 /* Pods-ActionableHealth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

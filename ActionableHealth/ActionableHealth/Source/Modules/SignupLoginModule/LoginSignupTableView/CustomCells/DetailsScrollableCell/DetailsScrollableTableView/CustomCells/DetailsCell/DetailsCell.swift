@@ -8,7 +8,7 @@
 
 import UIKit
 enum DetailsScrollableTableViewCellType:Int {
-    case Email, Password, ConfirmPassword, Count
+    case Email,Phone,Password, ConfirmPassword, Count
     func forgotPasswordAddon() -> String {
         return "DetailsCell_AdditionalImageView"
     }
@@ -17,6 +17,8 @@ enum DetailsScrollableTableViewCellType:Int {
         switch self {
         case .Email:
             return ("Email", UIImage(named: "message"), "Enter email", user?.email, false, UIKeyboardType.EmailAddress)
+        case .Phone:
+            return ("Phone Number", UIImage(named: "message"), "Enter Phone Number", user?.phoneNumber, false, UIKeyboardType.PhonePad)
         case .Password:
             return ("Password", UIImage(named: "password"), "Enter password", user?.password, true, UIKeyboardType.Default)
         case .ConfirmPassword:
@@ -90,6 +92,8 @@ extension DetailsCell{
             currentUser?.password = text
         case .ConfirmPassword:
             currentUser?.confirmPassword = text
+        case .Phone:
+            currentUser?.phoneNumber = text
         default:
             break
         }

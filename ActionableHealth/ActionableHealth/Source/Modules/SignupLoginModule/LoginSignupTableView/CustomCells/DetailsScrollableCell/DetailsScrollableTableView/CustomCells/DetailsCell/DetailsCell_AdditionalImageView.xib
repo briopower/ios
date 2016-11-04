@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="66" id="Fty-c7-dJb" customClass="DetailsCell" customModule="ActionableHealth" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="66" id="Fty-c7-dJb" customClass="DetailsCell" customModule="BRIO" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fty-c7-dJb" id="Kww-Qj-c6r">
@@ -39,7 +39,7 @@
                                     <constraint firstAttribute="width" secondItem="VzW-tv-Sog" secondAttribute="height" multiplier="145:200" id="Gxk-qg-LVj"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-8M-Ncq" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-8M-Ncq" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="47" y="25" width="61" height="14"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,13 +59,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cO2-re-aeL">
-                                <rect key="frame" x="207" y="0.0" width="1" height="65"/>
+                                <rect key="frame" x="144" y="0.0" width="1" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="ttu-8K-GK3"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGO-Xy-OCw" customClass="UITextField_FontSizeTextField" customModule="ActionableHealth" customModuleProvider="target">
-                                <rect key="frame" x="208" y="0.0" width="160" height="64"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGO-Xy-OCw" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="145" y="0.0" width="223" height="64"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
@@ -84,8 +84,9 @@
                             <constraint firstAttribute="trailing" secondItem="biF-zd-K5O" secondAttribute="trailing" id="Dhb-7q-jXQ"/>
                             <constraint firstItem="ot7-Pg-J5V" firstAttribute="top" secondItem="EGO-Xy-OCw" secondAttribute="bottom" id="Fop-TD-Ail"/>
                             <constraint firstItem="cO2-re-aeL" firstAttribute="centerY" secondItem="Xbl-Rd-R01" secondAttribute="centerY" id="Q5O-Wz-Dz8"/>
-                            <constraint firstItem="cO2-re-aeL" firstAttribute="centerX" secondItem="Xbl-Rd-R01" secondAttribute="centerX" id="U5z-fU-ZQI"/>
+                            <constraint firstItem="cO2-re-aeL" firstAttribute="centerX" secondItem="Xbl-Rd-R01" secondAttribute="centerX" multiplier="0.7" priority="999" id="U5z-fU-ZQI"/>
                             <constraint firstItem="33a-8M-Ncq" firstAttribute="centerY" secondItem="VzW-tv-Sog" secondAttribute="centerY" id="VL4-v6-lyv"/>
+                            <constraint firstItem="cO2-re-aeL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="33a-8M-Ncq" secondAttribute="trailing" constant="20" id="bSK-es-rxF"/>
                             <constraint firstItem="joG-7L-KFf" firstAttribute="leading" secondItem="EGO-Xy-OCw" secondAttribute="trailing" multiplier="1.01" id="dcr-HG-63a"/>
                             <constraint firstItem="VzW-tv-Sog" firstAttribute="top" secondItem="Xbl-Rd-R01" secondAttribute="top" id="eSN-Yu-UVI"/>
                             <constraint firstItem="33a-8M-Ncq" firstAttribute="leading" secondItem="VzW-tv-Sog" secondAttribute="trailing" constant="1" id="gsS-zz-84Z"/>

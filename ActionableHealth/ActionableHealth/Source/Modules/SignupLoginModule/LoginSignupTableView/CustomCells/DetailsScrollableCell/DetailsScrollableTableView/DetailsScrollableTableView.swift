@@ -58,7 +58,12 @@ extension DetailsScrollableTableView:UITableViewDataSource{
             if let cell = tableView.dequeueReusableCellWithIdentifier(String(DetailsCell)) as? DetailsCell {
                 cell.configureCellForType(type, user: currentUser)
                 switch type {
-                case .Email:
+                case .Email, .ConfirmPassword:
+                    return cell
+                case .Phone:
+                    if sourceType == LoginSignupTableViewSourceType.Login {
+                        cell.configureCellForType(.Password, user: currentUser)
+                    }
                     return cell
                 case .Password:
                     if let newCell = tableView.dequeueReusableCellWithIdentifier(DetailsScrollableTableViewCellType.Password.forgotPasswordAddon()) as? DetailsCell where sourceType == LoginSignupTableViewSourceType.Login{
@@ -67,8 +72,6 @@ extension DetailsScrollableTableView:UITableViewDataSource{
                     }else{
                         return cell
                     }
-                case .ConfirmPassword:
-                    return cell
                 default:
                     break
                 }

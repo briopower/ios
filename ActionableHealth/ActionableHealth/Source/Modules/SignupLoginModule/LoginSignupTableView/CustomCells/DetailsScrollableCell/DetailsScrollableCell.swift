@@ -41,12 +41,12 @@ extension DetailsScrollableCell{
         tblView.setupTableView(sourceType, user: currentUser)
     }
     class func getHeight(sourceType:LoginSignupTableViewSourceType) -> CGFloat {
-        let cellHeight = (195 * UIDevice.width()) / 1155
+        let cellHeight = (200 * UIDevice.width()) / 1155
         switch sourceType {
         case .Login:
             return 2 * cellHeight
         case .Signup:
-            return 3 * cellHeight
+            return 4 * cellHeight
         case .ForgotPassword:
             return cellHeight
         default:

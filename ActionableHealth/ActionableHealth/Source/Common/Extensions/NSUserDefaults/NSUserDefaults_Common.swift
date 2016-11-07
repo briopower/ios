@@ -38,6 +38,7 @@ extension NSUserDefaults{
 
     class func isLoggedIn() -> Bool {
         return userDefault.boolForKey("userLoggedIn")
+        
     }
 
     class func setLoggedIn(loggedIn:Bool) {
@@ -54,4 +55,13 @@ extension NSUserDefaults{
             }
         }
     }
+   class func getUser() -> AnyObject? {
+    
+    if let data = userDefault.objectForKey("currentUser") as? NSData {
+        let returnObj = NSKeyedUnarchiver.unarchiveObjectWithData(data)
+        return returnObj
+    }
+    return false
+}
+    
 }

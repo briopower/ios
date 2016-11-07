@@ -41,4 +41,14 @@ extension UserModel{
         dict["password"] = self.password
         return dict
     }
+    
+    func getUpdatePasswordDictionary() -> [String : String] {
+        var dict:[String : String] = [:]
+        dict["newPassword"] = self.password
+        dict["oldPassword"] = self.oldPassword
+        if let userDict = NSUserDefaults.getUser() as? [String : AnyObject]  {
+            dict["userId"] = userDict["email"] as? String
+        }
+        return dict
+    }
 }

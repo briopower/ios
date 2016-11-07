@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nr1-Gh-tUm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgw-jc-D4N">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ts0-uc-U1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2128" y="1137"/>
+            <point key="canvasLocation" x="-2128" y="1257"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eyU-CV-aI9">
@@ -144,6 +144,18 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFU-Kb-aJU">
+                                <rect key="frame" x="555" y="30" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Mjb-4N-WG5"/>
+                                    <constraint firstAttribute="height" constant="30" id="XFf-Q2-DYi"/>
+                                </constraints>
+                                <state key="normal" image="cut"/>
+                                <connections>
+                                    <action selector="crossButton:" destination="HrQ-JT-YIb" eventType="touchUpInside" id="O25-6U-jkp"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efi-4Z-W7B">
                                 <rect key="frame" x="0.0" y="82" width="600" height="518"/>
                                 <subviews>
@@ -170,8 +182,8 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="2Te-W6-RsQ">
                                                 <rect key="frame" x="562" y="15" width="8" height="15"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIy-N8-axr" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="0.0" width="502" height="45"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIy-N8-axr" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                                <rect key="frame" x="39" y="0.0" width="502" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                 <state key="normal" title="Verify your phone number">
@@ -296,6 +308,7 @@ Didn't receive any mail? </string>
                             <constraint firstItem="fek-NX-aIF" firstAttribute="leading" secondItem="aav-Ye-c7w" secondAttribute="leading" id="Cst-dE-P8G"/>
                             <constraint firstItem="fek-NX-aIF" firstAttribute="top" secondItem="wBh-yk-CUO" secondAttribute="bottom" id="FIm-r7-y30"/>
                             <constraint firstAttribute="trailing" secondItem="1im-rI-Ngd" secondAttribute="trailing" id="G0l-gB-zoG"/>
+                            <constraint firstItem="qFU-Kb-aJU" firstAttribute="top" secondItem="aav-Ye-c7w" secondAttribute="top" constant="30" id="GFo-p5-zrp"/>
                             <constraint firstItem="1im-rI-Ngd" firstAttribute="bottom" secondItem="zDY-9l-mjh" secondAttribute="top" id="Kzb-ZS-YPj"/>
                             <constraint firstItem="wBh-yk-CUO" firstAttribute="leading" secondItem="aav-Ye-c7w" secondAttribute="leading" id="ODs-MD-qzp"/>
                             <constraint firstItem="wBh-yk-CUO" firstAttribute="height" secondItem="1im-rI-Ngd" secondAttribute="height" multiplier="3:22" id="Qpc-fk-TIO"/>
@@ -305,6 +318,7 @@ Didn't receive any mail? </string>
                             <constraint firstItem="1im-rI-Ngd" firstAttribute="leading" secondItem="aav-Ye-c7w" secondAttribute="leading" id="d85-5H-gQD"/>
                             <constraint firstAttribute="trailing" secondItem="wBh-yk-CUO" secondAttribute="trailing" id="gMP-Dk-hKj"/>
                             <constraint firstItem="1im-rI-Ngd" firstAttribute="top" secondItem="aav-Ye-c7w" secondAttribute="top" id="mcp-MT-T9e"/>
+                            <constraint firstAttribute="trailing" secondItem="qFU-Kb-aJU" secondAttribute="trailing" constant="15" id="sdQ-wp-yXc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="r3E-Zs-Vct"/>
@@ -317,7 +331,7 @@ Didn't receive any mail? </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="097-B0-lfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1088" y="416"/>
+            <point key="canvasLocation" x="-782" y="428"/>
         </scene>
         <!--Enter Otp View Controller-->
         <scene sceneID="qcQ-1c-3Ps">
@@ -403,7 +417,7 @@ Didn't receive any mail? </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77M-rz-8Gy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-788" y="1137"/>
+            <point key="canvasLocation" x="-782" y="1257"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="B8x-GL-0Nf">
@@ -489,7 +503,7 @@ Didn't receive any mail? </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRc-Y8-vXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2114" y="393"/>
+            <point key="canvasLocation" x="-2128" y="465"/>
         </scene>
         <!--Forgot Password View Controller-->
         <scene sceneID="pr0-tX-DlC">
@@ -543,7 +557,7 @@ Didn't receive any mail? </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5A-GM-c8l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1472" y="1137"/>
+            <point key="canvasLocation" x="-1432" y="1257"/>
         </scene>
     </scenes>
     <resources>

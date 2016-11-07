@@ -47,6 +47,14 @@ class VerifyPhoneNumberViewController: UIViewController {
     }
     
     
+   
+}
+
+extension VerifyPhoneNumberViewController{
+    
+    @IBAction func crossButton(sender: AnyObject) {
+    }
+    
     @IBAction func verifyPhoneNumber(sender: AnyObject) {
         self.performSegueWithIdentifier("enterOtp", sender: self)
     }

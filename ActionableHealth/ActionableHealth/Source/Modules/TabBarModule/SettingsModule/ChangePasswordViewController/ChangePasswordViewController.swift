@@ -50,8 +50,50 @@ extension ChangePasswordViewController{
 extension ChangePasswordViewController:ChangePasswordCellDelegate{
     func submitTapped() {
 
+        UIApplication.dismissKeyboard()
+      
+            if NetworkClass.isConnected(true) {
+                
+                showLoaderOnWindow()
+                
+                NetworkClass.sendRequest(URL: Constants.URLs.updateDetails, RequestType: .POST, Parameters: currnetUser.getUpdatePasswordDictionary() , Headers: nil, CompletionHandler: {
+                    (status, responseObj, error, statusCode) in
+                   
+                    
+                    if status == true {
+                        if let responseDictionary = responseObj as? Dictionary<String, AnyObject>{
+                            
+                            if let invalidPassword = responseDictionary["invalidPassword"] as? Bool{
+                                
+                                if !invalidPassword
+                                {
+//                                    self.dismissViewControllerAnimated(true, completion: nil)
+//                                    UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: responseDictionary["message"] as? String, completion: nil)
+                                    
+                                    UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Title: "Change Password", Message: responseDictionary["message"] as? String, OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: {UIAlertAction in
+                                        self.navigationController?.popViewControllerAnimated(true)})
+                                
+                                }
+                                else{
+                                    UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Title: "Change Password", Message: responseDictionary["message"] as? String, OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: {UIAlertAction in
+                                        self.dismissViewControllerAnimated(true, completion: nil)})
+                                }
+                            }
+                        }
+                    }
+                   
+                    else {
+                        UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Something went wrong! Please try again", OtherButtonTitles: nil, CancelButtonTitle: "ok", completion: nil)
+                    }
+                    self.hideLoader()
+                })
+            }
+        }
+    
+
+        
     }
-}
+
 //MARK:- UITableViewDataSource
 extension ChangePasswordViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

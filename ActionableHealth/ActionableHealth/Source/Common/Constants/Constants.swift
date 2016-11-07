@@ -70,5 +70,6 @@ class Constants: NSObject {
         static let forgotPasswordNotification = "\(base)\(mid)resetPasswordNotification/"
         static let allTemplates = "\(base)\(mid)getAllTemplates/"
         static let templateDetails = "\(base)\(mid)getTemplateDetails/"
+        static let updateDetails = "https://actionablehealth.appspot.com/auth/updatePassword"
     }
 }

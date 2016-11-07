@@ -21,6 +21,9 @@ class ForgotPasswordViewController: CommonViewController {
         super.viewDidLoad()
         setupView()
     }
+    
+   
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

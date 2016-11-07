@@ -33,6 +33,38 @@
             endingLineNumber = "71"
             landmarkName = "buttonPressed(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.ForgotPasswordViewController.(buttonPressed (BRIO.ButtonCellType) -&gt; ()).(closure #1)"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
+                  timestampString = "500032140.514763"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.ForgotPasswordViewController.(buttonPressed (BRIO.ButtonCellType) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
+                  timestampString = "500032140.514973"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,12 +106,12 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499864290.443261"
+                  timestampString = "500032140.515758"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
                   endingLineNumber = "68"
-                  offsetFromSymbolStart = "666">
+                  offsetFromSymbolStart = "724">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,12 +121,12 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/ForgotPasswordViewController/ForgotPasswordViewController.swift"
-                  timestampString = "499864290.4434"
+                  timestampString = "500032140.515891"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"
                   endingLineNumber = "70"
-                  offsetFromSymbolStart = "110">
+                  offsetFromSymbolStart = "104">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -159,8 +191,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "buttonPressed(_:)"
-            landmarkType = "5">
+            landmarkName = "SignUpViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -170,12 +202,12 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
-                  timestampString = "499864290.446013"
+                  timestampString = "500032140.518516"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
                   endingLineNumber = "79"
-                  offsetFromSymbolStart = "33">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -185,12 +217,12 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
-                  timestampString = "499864290.446155"
+                  timestampString = "500032140.518685"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"
                   endingLineNumber = "78"
-                  offsetFromSymbolStart = "14">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -223,8 +255,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "buttonPressed(_:)"
-            landmarkType = "5">
+            landmarkName = "SignUpViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -234,12 +266,12 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
-                  timestampString = "499864290.447745"
+                  timestampString = "500032140.520229"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "79"
                   endingLineNumber = "79"
-                  offsetFromSymbolStart = "33">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -249,14 +281,46 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/SignUpViewController/SignUpViewController.swift"
-                  timestampString = "499864290.448056"
+                  timestampString = "500032140.520373"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "78"
                   endingLineNumber = "78"
-                  offsetFromSymbolStart = "14">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Common/Extensions/UIFont/UIFont_Common.swift"
+            timestampString = "500031071.529681"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "getDynamicSizeFont()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Common/Extensions/UIDevice/UIDevice_Common.swift"
+            timestampString = "500031296.814818"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "getDeviceType()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

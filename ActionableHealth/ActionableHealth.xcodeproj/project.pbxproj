@@ -160,6 +160,8 @@
 		3CFE3BCC1DD04077003EE7A2 /* ChangePasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFE3BCA1DD04077003EE7A2 /* ChangePasswordCell.xib */; };
 		3CFE3BCE1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFE3BCD1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib */; };
 		3DADFB9880771B64955ED386 /* Pods_ActionableHealthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */; };
+		40114FD51DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40114FD41DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift */; };
+		40A849861DCDF58900FD13FE /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A849851DCDF58900FD13FE /* EnterOtpViewController.swift */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -340,6 +342,8 @@
 		3CFE3BC91DD04077003EE7A2 /* ChangePasswordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordCell.swift; sourceTree = "<group>"; };
 		3CFE3BCA1DD04077003EE7A2 /* ChangePasswordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordCell.xib; sourceTree = "<group>"; };
 		3CFE3BCD1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordCell_Submit.xib; sourceTree = "<group>"; };
+		40114FD41DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerifyPhoneNumberViewController.swift; path = SignUpViewController/VerifyPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		40A849851DCDF58900FD13FE /* EnterOtpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterOtpViewController.swift; sourceTree = "<group>"; };
 		448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E175286D6CB4870D551118E /* Pods-ActionableHealthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthTests/Pods-ActionableHealthTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1407,7 +1411,9 @@
 				3CCF8AD71DA6219800C76C64 /* LoginSignupTableView */,
 				3CC9D08E1DB8D52300287068 /* ForgotPasswordViewController */,
 				3CCF8AD51DA6217B00C76C64 /* LoginViewController */,
+				40A849841DCDF4F100FD13FE /* EnterOtpController */,
 				3CCF8AF31DA6360300C76C64 /* SignUpViewController */,
+				40114FD71DCDBAFC003659AB /* VerifyPhoneNumber */,
 			);
 			path = SignupLoginModule;
 			sourceTree = "<group>";
@@ -1667,6 +1673,22 @@
 				3CA95D461DCCB9CD009BC629 /* EditProfileDetailsCell_ChangePassword.xib */,
 			);
 			path = EditProfileDetailsCell;
+			sourceTree = "<group>";
+		};
+		40114FD71DCDBAFC003659AB /* VerifyPhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				40114FD41DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift */,
+			);
+			name = VerifyPhoneNumber;
+			sourceTree = "<group>";
+		};
+		40A849841DCDF4F100FD13FE /* EnterOtpController */ = {
+			isa = PBXGroup;
+			children = (
+				40A849851DCDF58900FD13FE /* EnterOtpViewController.swift */,
+			);
+			name = EnterOtpController;
 			sourceTree = "<group>";
 		};
 		623BBCDDBBA68AEC3583C3DC /* Pods */ = {
@@ -2079,6 +2101,8 @@
 				3CE99F251DC06F700070FEED /* TasksModel.swift in Sources */,
 				3CACF4021DB635220034D700 /* StaggeredCollectionView.swift in Sources */,
 				3C1EC5A11DA3A864003DC2A3 /* UIFont_Common.swift in Sources */,
+				40114FD51DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift in Sources */,
+				40A849861DCDF58900FD13FE /* EnterOtpViewController.swift in Sources */,
 				3CC9D06D1DB8854A00287068 /* CommentsViewController.swift in Sources */,
 				3C9D132A1DA3CE5800998DA2 /* UILabel_Localizable.swift in Sources */,
 				3C1EC59A1DA3A864003DC2A3 /* UIAlertController_Common.swift in Sources */,
@@ -2227,7 +2251,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
@@ -2242,7 +2266,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;

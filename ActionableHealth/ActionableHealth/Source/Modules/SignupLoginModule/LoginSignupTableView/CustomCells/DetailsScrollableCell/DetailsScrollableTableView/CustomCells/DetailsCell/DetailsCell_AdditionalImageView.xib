@@ -40,11 +40,7 @@
                                     <constraint firstAttribute="width" secondItem="VzW-tv-Sog" secondAttribute="height" multiplier="145:200" id="Gxk-qg-LVj"/>
                                 </constraints>
                             </imageView>
-<<<<<<< b7c6e2c8d9099abce8558234343ada97ee4ca05d
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-8M-Ncq" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-=======
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33a-8M-Ncq" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
->>>>>>> Ui updated (thank you page and enter Otp)
                                 <rect key="frame" x="47" y="25" width="61" height="14"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="14"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,11 +66,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGO-Xy-OCw" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-<<<<<<< b7c6e2c8d9099abce8558234343ada97ee4ca05d
                                 <rect key="frame" x="145" y="0.0" width="223" height="64"/>
-=======
-                                <rect key="frame" x="208" y="0.0" width="160" height="64"/>
->>>>>>> Ui updated (thank you page and enter Otp)
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>

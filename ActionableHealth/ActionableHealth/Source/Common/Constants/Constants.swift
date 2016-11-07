@@ -41,6 +41,7 @@ class Constants: NSObject {
         struct SettingsStoryboard {
             static let storyboardName = "Settings"
             static let editProfileView = "editProfileView"
+            static let changePasswordView = "changePasswordView"
         }
 
         struct MessagingStoryboard {

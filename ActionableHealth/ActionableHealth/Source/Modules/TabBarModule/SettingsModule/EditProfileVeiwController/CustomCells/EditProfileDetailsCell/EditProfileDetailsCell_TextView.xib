@@ -14,7 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="92" id="pId-s3-FPm" customClass="EditProfileDetailsCell" customModule="ActionableHealth" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="92" id="pId-s3-FPm" customClass="EditProfileDetailsCell" customModule="BRIO" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pId-s3-FPm" id="hZp-8b-6bm">
@@ -36,7 +36,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m4l-L3-u7K">
                         <rect key="frame" x="0.0" y="21" width="19" height="70"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLT-b0-5GR" customClass="UILabel_FontSizeLabel" customModule="ActionableHealth" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLT-b0-5GR" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="19" y="21" width="42" height="0.0"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                         <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,14 +51,20 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="flD-53-fVe" secondAttribute="height" multiplier="1100:300" priority="999" id="Bte-Ma-bO4"/>
                         </constraints>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, </string>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-LB-W3S" customClass="UIImageView_SepratorImageView" customModule="ActionableHealth" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-LB-W3S" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="19" y="90" width="282" height="1"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="M64-W2-7Zy"/>
+                        </constraints>
+                    </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jCR-x4-NPA" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="90" width="320" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="jwI-9r-zsA"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -75,7 +81,10 @@
                     <constraint firstItem="flD-53-fVe" firstAttribute="leading" secondItem="m4l-L3-u7K" secondAttribute="trailing" id="fUQ-qP-o5t"/>
                     <constraint firstItem="e3u-LB-W3S" firstAttribute="leading" secondItem="m4l-L3-u7K" secondAttribute="trailing" id="hqR-sK-IaX"/>
                     <constraint firstItem="m4l-L3-u7K" firstAttribute="width" secondItem="hZp-8b-6bm" secondAttribute="width" multiplier="75:1242" id="lrF-9k-Wj6"/>
+                    <constraint firstItem="jCR-x4-NPA" firstAttribute="leading" secondItem="hZp-8b-6bm" secondAttribute="leading" id="nkZ-cv-TCr"/>
                     <constraint firstAttribute="bottom" secondItem="e3u-LB-W3S" secondAttribute="bottom" id="oZM-Mc-fXj"/>
+                    <constraint firstAttribute="trailing" secondItem="jCR-x4-NPA" secondAttribute="trailing" id="q7c-Y2-QiG"/>
+                    <constraint firstAttribute="bottom" secondItem="jCR-x4-NPA" secondAttribute="bottom" id="qR7-2p-wuI"/>
                     <constraint firstAttribute="bottom" secondItem="slW-ba-3e8" secondAttribute="bottom" id="qbT-zA-2i6"/>
                     <constraint firstItem="nTL-nO-MQh" firstAttribute="leading" secondItem="hZp-8b-6bm" secondAttribute="leading" id="vbn-c4-HLh"/>
                     <constraint firstItem="m4l-L3-u7K" firstAttribute="leading" secondItem="hZp-8b-6bm" secondAttribute="leading" id="vlN-kr-koz"/>
@@ -86,6 +95,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="completeSeprator" destination="jCR-x4-NPA" id="fhD-5I-o5r"/>
                 <outlet property="detailsTextView" destination="flD-53-fVe" id="RjK-wl-y8L"/>
                 <outlet property="titleDescLabel" destination="NLT-b0-5GR" id="ECv-ef-Axq"/>
             </connections>

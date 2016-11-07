@@ -8,7 +8,7 @@
 
 import UIKit
 enum EditProfileDetailsCellType:Int {
-    case Image,NameCell, Email, Phone, Title, Interest, Hobbies, Count
+    case Image,NameCell, Email, Phone, Title, Interest, Hobbies, ChangePassword,Count
 
     func getTitle() -> String {
         switch self {
@@ -24,6 +24,8 @@ enum EditProfileDetailsCellType:Int {
             return "INTEREST"
         case .Hobbies:
             return "HOBBIES"
+        case .ChangePassword:
+            return "CHANGE PASSWORD"
         default:
             return ""
         }
@@ -35,6 +37,7 @@ class EditProfileDetailsCell: UITableViewCell {
     //MARK:- Outlets
     @IBOutlet weak var titleDescLabel: UILabel?
     @IBOutlet weak var detailsTextView: UITextView?
+    @IBOutlet weak var completeSeprator: UIImageView_SepratorImageView?
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -53,6 +56,7 @@ class EditProfileDetailsCell: UITableViewCell {
 //MARK:- Additional methods
 extension EditProfileDetailsCell{
     func configureCellForCellType(type:EditProfileDetailsCellType) {
+        completeSeprator?.hidden = type != .Hobbies
         titleDescLabel?.text = type.getTitle()
         detailsTextView?.contentOffset = CGPoint(x: 0, y: -20)
     }

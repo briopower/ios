@@ -56,6 +56,8 @@
 		3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13221DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift */; };
 		3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */; };
 		3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */; };
+		3CA95D471DCCB9CD009BC629 /* EditProfileDetailsCell_ChangePassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CA95D461DCCB9CD009BC629 /* EditProfileDetailsCell_ChangePassword.xib */; };
+		3CA95D4C1DCCC161009BC629 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA95D4B1DCCC161009BC629 /* ChangePasswordViewController.swift */; };
 		3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */; };
 		3CAB0F981DB0BA090090BEF3 /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAB0F961DB0BA090090BEF3 /* GroupsCell.swift */; };
 		3CAB0F991DB0BA090090BEF3 /* GroupsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0F971DB0BA090090BEF3 /* GroupsCell.xib */; };
@@ -154,6 +156,9 @@
 		3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAF11DB4A4F80067387F /* EditProfileDetailsCell.xib */; };
 		3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */; };
 		3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */; };
+		3CFE3BCB1DD04077003EE7A2 /* ChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFE3BC91DD04077003EE7A2 /* ChangePasswordCell.swift */; };
+		3CFE3BCC1DD04077003EE7A2 /* ChangePasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFE3BCA1DD04077003EE7A2 /* ChangePasswordCell.xib */; };
+		3CFE3BCE1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFE3BCD1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib */; };
 		3DADFB9880771B64955ED386 /* Pods_ActionableHealthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
 /* End PBXBuildFile section */
@@ -231,6 +236,8 @@
 		3C9D13221DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_FontSizeTextView.swift; sourceTree = "<group>"; };
 		3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_Localizable.swift; sourceTree = "<group>"; };
 		3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarItem_Custom.swift; sourceTree = "<group>"; };
+		3CA95D461DCCB9CD009BC629 /* EditProfileDetailsCell_ChangePassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_ChangePassword.xib; sourceTree = "<group>"; };
+		3CA95D4B1DCCC161009BC629 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Medium.ttf"; sourceTree = "<group>"; };
 		3CAB0F961DB0BA090090BEF3 /* GroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
 		3CAB0F971DB0BA090090BEF3 /* GroupsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupsCell.xib; sourceTree = "<group>"; };
@@ -330,6 +337,9 @@
 		3CF6AAF11DB4A4F80067387F /* EditProfileDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell.xib; sourceTree = "<group>"; };
 		3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_TextView.xib; sourceTree = "<group>"; };
 		3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_Name.xib; sourceTree = "<group>"; };
+		3CFE3BC91DD04077003EE7A2 /* ChangePasswordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordCell.swift; sourceTree = "<group>"; };
+		3CFE3BCA1DD04077003EE7A2 /* ChangePasswordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordCell.xib; sourceTree = "<group>"; };
+		3CFE3BCD1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordCell_Submit.xib; sourceTree = "<group>"; };
 		448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E175286D6CB4870D551118E /* Pods-ActionableHealthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthTests/Pods-ActionableHealthTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -881,6 +891,33 @@
 			path = UITextView;
 			sourceTree = "<group>";
 		};
+		3CA95D481DCCC14B009BC629 /* ChangePasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CA95D491DCCC14B009BC629 /* CustomCells */,
+				3CA95D4B1DCCC161009BC629 /* ChangePasswordViewController.swift */,
+			);
+			path = ChangePasswordViewController;
+			sourceTree = "<group>";
+		};
+		3CA95D491DCCC14B009BC629 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CA95D4A1DCCC14B009BC629 /* ChangePasswordCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CA95D4A1DCCC14B009BC629 /* ChangePasswordCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CFE3BC91DD04077003EE7A2 /* ChangePasswordCell.swift */,
+				3CFE3BCA1DD04077003EE7A2 /* ChangePasswordCell.xib */,
+				3CFE3BCD1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib */,
+			);
+			path = ChangePasswordCell;
+			sourceTree = "<group>";
+		};
 		3CAB0F941DB0B9C10090BEF3 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1103,6 +1140,7 @@
 		3CBD5C6F1DA7AF71004BCAE0 /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CA95D481DCCC14B009BC629 /* ChangePasswordViewController */,
 				3CF6AAE71DB4A0810067387F /* EditProfileVeiwController */,
 				3CF6AAE81DB4A0810067387F /* Storyboard */,
 				3CBD5C701DA7AF71004BCAE0 /* SettingsViewController */,
@@ -1626,6 +1664,7 @@
 				3CF6AAF11DB4A4F80067387F /* EditProfileDetailsCell.xib */,
 				3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */,
 				3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */,
+				3CA95D461DCCB9CD009BC629 /* EditProfileDetailsCell_ChangePassword.xib */,
 			);
 			path = EditProfileDetailsCell;
 			sourceTree = "<group>";
@@ -1762,6 +1801,7 @@
 				3CAB0FA81DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib in Resources */,
 				3CCF8AFE1DA65F5F00C76C64 /* DetailsCell_AdditionalImageView.xib in Resources */,
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
+				3CFE3BCE1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib in Resources */,
 				3CC9D0851DB8AAB600287068 /* AllTaskCompletedHeaderView.xib in Resources */,
 				3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */,
 				3CAB0FAD1DB0D8900090BEF3 /* ProfileImageCell.xib in Resources */,
@@ -1788,7 +1828,9 @@
 				3CCF8AE51DA6247800C76C64 /* ButtonCell.xib in Resources */,
 				3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */,
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
+				3CFE3BCC1DD04077003EE7A2 /* ChangePasswordCell.xib in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
+				3CA95D471DCCB9CD009BC629 /* EditProfileDetailsCell_ChangePassword.xib in Resources */,
 				3CCECDB31DAF6AA200831242 /* PropertiesCell.xib in Resources */,
 				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
@@ -1977,6 +2019,7 @@
 				3CACF3F71DB634920034D700 /* CommonCollectionReusableView.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
 				3CC9D0901DB8D59C00287068 /* ForgotPasswordViewController.swift in Sources */,
+				3CFE3BCB1DD04077003EE7A2 /* ChangePasswordCell.swift in Sources */,
 				3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
@@ -2015,6 +2058,7 @@
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
 				3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */,
 				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
+				3CA95D4C1DCCC161009BC629 /* ChangePasswordViewController.swift in Sources */,
 				3CC9D0771DB897D600287068 /* TrackFilesViewController.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,

@@ -17,6 +17,7 @@ class UserModel: NSObject {
     var lastName = ""
     var phoneNumber = ""
     var profileImage = ""
+    var oldPassword = ""
     var password = ""
     var confirmPassword = ""
 }

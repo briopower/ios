@@ -79,5 +79,8 @@ extension TrackDetailsHeaderView{
 
     func setupView() {
         templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.imageUrl ?? ""))
+        commentsCountButton.setTitle("\(currentTemplate?.commentsCount ?? 0) Comments", forState: .Normal)
+        tracksCount.text = "\(currentTemplate?.activeTrackCount ?? 0) Active Tracks"
+        ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
     }
 }

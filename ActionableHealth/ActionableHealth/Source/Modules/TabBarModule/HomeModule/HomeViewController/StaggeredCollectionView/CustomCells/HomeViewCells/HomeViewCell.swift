@@ -33,5 +33,6 @@ extension HomeViewCell{
         currentTemplate = template
         nameLabel.text = currentTemplate?.name
         templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.imageUrl ?? ""))
+        ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
     }
 }

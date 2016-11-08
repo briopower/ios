@@ -24,6 +24,9 @@ class TemplatesModel: NSObject {
     var createDate = 0
     var sharedWith = []
     var key = ""
+    var rating = 0
+    var commentsCount = 0
+    var activeTrackCount = 0
     var phases = NSMutableArray()
 }
 
@@ -60,7 +63,7 @@ extension TemplatesModel{
         obj.name = dict["name"] as? String ?? ""
         obj.type = dict["type"] as? String ?? ""
         obj.code = dict["code"] as? String ?? ""
-        obj.details = dict["description"] as? String ?? ""
+        obj.details = dict["descriptionText"] as? String ?? ""
         obj.status = dict["status"] as? String ?? ""
         obj.url = dict["url"] as? String ?? ""
         obj.imageUrl = dict["profileURL"] as? String ?? ""
@@ -69,6 +72,10 @@ extension TemplatesModel{
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.sharedWith = dict["sharedWith"] as? NSArray ?? []
         obj.key = dict["key"] as? String ?? ""
+        obj.rating = dict["rating"] as? Int ?? 0
+        obj.commentsCount = dict["comments"] as? Int ?? 0
+        obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
+
     }
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {

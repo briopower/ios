@@ -32,12 +32,12 @@ extension String{
     
     //MARK: Validation
     func getValidObject() -> String? {
-        
-        if self == "" || self.isEmpty{
+        let text = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+
+        if text == "" || text.isEmpty{
             return nil
         }
-
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return text
     }
 
     func isValidEmail() -> Bool {

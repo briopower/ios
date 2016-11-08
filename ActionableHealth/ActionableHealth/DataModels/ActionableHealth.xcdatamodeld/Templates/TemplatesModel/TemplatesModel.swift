@@ -30,11 +30,11 @@ class TemplatesModel: NSObject {
 //MARK:- Additional methods
 extension TemplatesModel{
 
-    class func getPayloadDict(withShift:Int) -> [String:AnyObject] {
+    class func getPayloadDict(withShift:Int, query:String = "") -> [String:AnyObject] {
         if withShift == 0 {
-            return ["cursor":"", "pageSize": 20, "query": ""]
+            return ["cursor":"", "pageSize": 20, "query": query]
         }
-        return ["cursor":"\(withShift)", "pageSize": 20, "query": ""]
+        return ["cursor":"\(withShift)", "pageSize": 20, "query": query]
     }
 
     class func getResponseArray(dict:AnyObject) -> NSArray {

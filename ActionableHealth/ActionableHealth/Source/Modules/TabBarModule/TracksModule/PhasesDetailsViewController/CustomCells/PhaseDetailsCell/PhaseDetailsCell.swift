@@ -55,8 +55,8 @@ extension PhaseDetailsCell{
         currentTask = obj
         taskNameLabel.text = currentTask?.taskName ?? ""
         completedOnlabel.text = "Completed on 12 Aug 2016"
-        commentCountButton.setTitle("149 Comments", forState: .Normal)
-        starRatingView.value = 3.5
-        ratingLabel.text = "3.5 Rating"
+        commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comments", forState: .Normal)
+        starRatingView.value = CGFloat(currentTask?.rating ?? 0)
+        ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
     }
 }

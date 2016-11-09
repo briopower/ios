@@ -12,11 +12,13 @@ class TasksModel: NSObject {
 
     //MARK:- Variables
     var taskId = ""
-    var postIds = ""
+    var postIds:[String] = []
     var orderIndex = 0
     var taskName = ""
     var prompt = ""
     var key = ""
+    var rating = 0.0
+    var commentsCount = 0
     var parentPhase = PhasesModel()
 }
 
@@ -25,11 +27,13 @@ extension TasksModel{
     class func getTasksUsingObj(dict:AnyObject) -> TasksModel {
         let model = TasksModel()
         model.taskId = dict["id"] as? String ?? ""
-        model.postIds = dict["postIds"] as? String ?? ""
+        model.postIds = dict["postIds"] as? [String] ?? []
         model.orderIndex = dict["orderIndex"] as? Int ?? 0
         model.taskName = dict["name"] as? String ?? ""
         model.prompt = dict["prompt"] as? String ?? ""
         model.key = dict["key"] as? String ?? ""
+        model.rating = dict["rating"] as? Double ?? 0
+        model.commentsCount = dict["comments"] as? Int ?? 0
         return model
     }
 }

@@ -38,7 +38,7 @@ extension TrackPhasesCell{
     func configCell(phase:PhasesModel) {
         currentPhase = phase
         nameLabel.text = currentPhase?.phaseName ?? ""
-        ratingLabel.text = "3.5 Rating"
+        ratingLabel.text = "\(currentPhase?.rating ?? 0) Rating"
         if let count = currentPhase?.tasks.count{
             if count == 1 {
                 numberOfTaskLabel.text = "Overall \(count) task"

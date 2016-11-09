@@ -24,7 +24,7 @@ class TemplatesModel: NSObject {
     var createDate = 0
     var sharedWith = []
     var key = ""
-    var rating = 0
+    var rating = 0.0
     var commentsCount = 0
     var activeTrackCount = 0
     var phases = NSMutableArray()
@@ -72,7 +72,7 @@ extension TemplatesModel{
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.sharedWith = dict["sharedWith"] as? NSArray ?? []
         obj.key = dict["key"] as? String ?? ""
-        obj.rating = dict["rating"] as? Int ?? 0
+        obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["comments"] as? Int ?? 0
         obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
 
@@ -80,7 +80,7 @@ extension TemplatesModel{
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {
         toModel.phases = NSMutableArray()
-        if let phases = dict as? NSMutableArray {
+        if let phases = dict["details"] as? NSMutableArray {
             for phase in phases {
                 let phaseObj = PhasesModel.getPhaseUsingObj(phase)
                 phaseObj.parentTemplate = toModel

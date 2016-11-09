@@ -52,7 +52,7 @@ class UITabBarItem_Custom: UITabBarItem {
         case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
             return "-2x.png"
         case .Simulator:
-            return "-1x.png"
+            return "-2x.png"
         default:
             return "-1x.png"
         }

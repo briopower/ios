@@ -12,7 +12,7 @@ class PhasesModel: NSObject {
 
     //MARK:- Variables
     var phsaeId = ""
-    var postIds:[String] = []
+    var postIds:[Int] = []
     var orderIndex = 0
     var phaseName = ""
     var prompt = ""
@@ -30,7 +30,7 @@ extension PhasesModel{
     class func getPhaseUsingObj(dict:AnyObject) -> PhasesModel {
         let model = PhasesModel()
         model.phsaeId = dict["id"] as? String ?? ""
-        model.postIds = dict["postIds"] as? [String] ?? []
+        model.postIds = dict["postIds"] as? [Int] ?? []
         model.orderIndex = dict["orderIndex"] as? Int ?? 0
         model.phaseName = dict["name"] as? String ?? ""
         model.prompt = dict["prompt"] as? String ?? ""

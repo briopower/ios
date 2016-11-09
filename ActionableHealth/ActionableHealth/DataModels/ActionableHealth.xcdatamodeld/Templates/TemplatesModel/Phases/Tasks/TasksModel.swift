@@ -12,7 +12,7 @@ class TasksModel: NSObject {
 
     //MARK:- Variables
     var taskId = ""
-    var postIds:[String] = []
+    var postIds:[Int] = []
     var orderIndex = 0
     var taskName = ""
     var prompt = ""
@@ -27,7 +27,7 @@ extension TasksModel{
     class func getTasksUsingObj(dict:AnyObject) -> TasksModel {
         let model = TasksModel()
         model.taskId = dict["id"] as? String ?? ""
-        model.postIds = dict["postIds"] as? [String] ?? []
+        model.postIds = dict["postIds"] as? [Int] ?? []
         model.orderIndex = dict["orderIndex"] as? Int ?? 0
         model.taskName = dict["name"] as? String ?? ""
         model.prompt = dict["prompt"] as? String ?? ""

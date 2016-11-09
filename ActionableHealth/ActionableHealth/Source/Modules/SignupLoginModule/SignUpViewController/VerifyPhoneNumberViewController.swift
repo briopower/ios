@@ -25,22 +25,35 @@ class VerifyPhoneNumberViewController: UIViewController, UIGestureRecognizerDele
         verifyPhoneNumber.contentHorizontalAlignment = .Left
         
         
-        let attributedString = clickHereTextView.attributedText.mutableCopy()
-        
-         clickHereTextView.font = UIFont.getAppRegularFontWithSize(15.5)?.getDynamicSizeFont()
-        let myRange = NSRange(location: 129, length: 10)
-        let myCustomAttribute = [ "MyCustomAttributeName": "some value"]
-        attributedString.addAttributes(myCustomAttribute, range: myRange)
-        
-        clickHereTextView.attributedText = attributedString as! NSAttributedString
-        
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(resendOtp(_:)))
-        tap.delegate = self
-        clickHereTextView.addGestureRecognizer(tap)
-        
-        
-        
+        if let attributedString = clickHereTextView.attributedText.mutableCopy() as? NSMutableAttributedString{
+            let myRange = NSRange(location: 129, length: 10)
+            let myCustomAttribute = [ "MyCustomAttributeName": "some value"]
+            attributedString.addAttributes(myCustomAttribute, range: myRange)
+
+            let mutAttrString = NSMutableAttributedString()
+
+            attributedString.enumerateAttributesInRange(NSMakeRange(0, attributedString.string.characters.count), options: NSAttributedStringEnumerationOptions.LongestEffectiveRangeNotRequired) { (attributes:[String : AnyObject], range:NSRange, obj:UnsafeMutablePointer<ObjCBool>) in
+                var att:[String : AnyObject] = attributes
+
+                if range.location == 129{
+                    att[NSFontAttributeName] = UIFont.boldSystemFontOfSize(16).getDynamicSizeFont()
+                }else{
+                    att[NSFontAttributeName] = (UIFont.getAppRegularFontWithSize(15.5) ?? UIFont.systemFontOfSize(15.5)).getDynamicSizeFont()
+                }
+
+                let temp = attributedString.attributedSubstringFromRange(range)
+
+                let attr = NSAttributedString(string: temp.string.localized, attributes: att)
+
+                mutAttrString.appendAttributedString(attr)
+            }
+
+            clickHereTextView.attributedText = mutAttrString
+
+            let tap = UITapGestureRecognizer(target: self, action: #selector(resendOtp(_:)))
+            tap.delegate = self
+            clickHereTextView.addGestureRecognizer(tap)
+        }
         
     }
 

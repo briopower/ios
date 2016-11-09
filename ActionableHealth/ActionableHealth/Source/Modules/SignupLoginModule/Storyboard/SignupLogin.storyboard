@@ -8,6 +8,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
+        </mutableArray>
         <mutableArray key="ProximaNova-Semibold.otf">
             <string>ProximaNova-Semibold</string>
             <string>ProximaNova-Semibold</string>
@@ -165,26 +169,26 @@
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for signing up." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWD-1H-dnl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="39" width="308" height="35"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="31"/>
+                                        <rect key="frame" x="15" y="39" width="300" height="35"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="31"/>
                                         <color key="textColor" red="0.2196078431372549" green="0.22352941176470589" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qV1-fy-jIp" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="183" width="600" height="1"/>
+                                        <rect key="frame" x="0.0" y="179" width="600" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="GmN-bz-qYJ"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kct-n5-CcS">
-                                        <rect key="frame" x="0.0" y="184" width="600" height="45"/>
+                                        <rect key="frame" x="0.0" y="180" width="600" height="45"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="2Te-W6-RsQ">
                                                 <rect key="frame" x="562" y="15" width="8" height="15"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIy-N8-axr" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="0.0" width="502" height="45"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <rect key="frame" x="15" y="0.0" width="517" height="45"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="23"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                 <state key="normal" title="Verify your phone number">
                                                     <color key="titleColor" red="0.21176470588235294" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -205,13 +209,13 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6U-JE-Xff" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="229" width="600" height="1"/>
+                                        <rect key="frame" x="0.0" y="225" width="600" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Syb-hu-vQC"/>
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj5-zp-mp8">
-                                        <rect key="frame" x="15" y="79" width="565" height="95"/>
+                                        <rect key="frame" x="15" y="79" width="585" height="91"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <attributedString key="attributedText">
                                             <fragment>
@@ -296,9 +300,8 @@ Didn't receive any mail?</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="oj5-zp-mp8" secondAttribute="trailing" constant="20" id="2Ij-8d-H42"/>
+                                    <constraint firstAttribute="trailing" secondItem="oj5-zp-mp8" secondAttribute="trailing" id="2Ij-8d-H42"/>
                                     <constraint firstAttribute="trailing" secondItem="a6U-JE-Xff" secondAttribute="trailing" id="44y-Mb-cTF"/>
-                                    <constraint firstItem="oj5-zp-mp8" firstAttribute="height" secondItem="Efi-4Z-W7B" secondAttribute="height" multiplier="350:1900" id="CPx-Uh-Ubo"/>
                                     <constraint firstItem="pWD-1H-dnl" firstAttribute="top" secondItem="XnL-oX-342" secondAttribute="bottom" id="HIE-3c-Gon"/>
                                     <constraint firstAttribute="trailing" secondItem="XnL-oX-342" secondAttribute="trailing" id="JxV-Ge-ki0"/>
                                     <constraint firstItem="a6U-JE-Xff" firstAttribute="top" secondItem="Kct-n5-CcS" secondAttribute="bottom" id="M84-Y8-Sbs"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VerifyPhoneNumberViewController: UIViewController {
+class VerifyPhoneNumberViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headingLabel: UILabel_FontSizeLabel!
     
 
@@ -23,13 +23,51 @@ class VerifyPhoneNumberViewController: UIViewController {
         
        
         verifyPhoneNumber.contentHorizontalAlignment = .Left
+        
+        
         let attributedString = clickHereTextView.attributedText.mutableCopy()
-        attributedString.addAttribute(NSLinkAttributeName, value: "", range: NSRange(location: 128, length: 10))
+        
+         clickHereTextView.font = UIFont.getAppRegularFontWithSize(15.5)?.getDynamicSizeFont()
+        let myRange = NSRange(location: 129, length: 10)
+        let myCustomAttribute = [ "MyCustomAttributeName": "some value"]
+        attributedString.addAttributes(myCustomAttribute, range: myRange)
+        
+        clickHereTextView.attributedText = attributedString as! NSAttributedString
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(resendOtp(_:)))
+        tap.delegate = self
+        clickHereTextView.addGestureRecognizer(tap)
+        
         
         
         
     }
 
+    func resendOtp(sender: UITapGestureRecognizer) {
+        let myTextView = sender.view as! UITextView
+        let layoutManager = myTextView.layoutManager
+        
+        // location of tap in myTextView coordinates and taking the inset into account
+        var location = sender.locationInView(myTextView)
+        location.x -= myTextView.textContainerInset.left;
+        location.y -= myTextView.textContainerInset.top;
+        
+        // character index at tap location
+        let characterIndex = layoutManager.characterIndexForPoint(location, inTextContainer: myTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        
+        // if index is valid then do something.
+        if characterIndex < myTextView.textStorage.length {
+            
+            // check if the tap location has a certain attribute
+            let attributeName = "MyCustomAttributeName"
+            if myTextView.attributedText.attribute(attributeName, atIndex: characterIndex, effectiveRange: nil) != nil{
+                // call api here
+            }
+            
+            
+        }
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         

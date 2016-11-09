@@ -167,7 +167,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for signing up." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWD-1H-dnl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                         <rect key="frame" x="15" y="39" width="308" height="35"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="31"/>
-                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.2196078431372549" green="0.22352941176470589" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qV1-fy-jIp" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
@@ -187,7 +187,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <inset key="titleEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                                 <state key="normal" title="Verify your phone number">
-                                                    <color key="titleColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" red="0.21176470588235294" green="0.21568627450980393" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="verifyPhoneNumber:" destination="HrQ-JT-YIb" eventType="touchUpInside" id="eS9-be-geq"/>
@@ -197,11 +197,10 @@
                                         <color key="backgroundColor" red="0.89411764705882357" green="0.89803921568627454" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="2Te-W6-RsQ" secondAttribute="trailing" constant="30" id="HvS-lM-uvf"/>
-                                            <constraint firstItem="2Te-W6-RsQ" firstAttribute="leading" secondItem="CIy-N8-axr" secondAttribute="trailing" constant="30" id="IM2-ll-yrT"/>
-                                            <constraint firstItem="2Te-W6-RsQ" firstAttribute="top" secondItem="Kct-n5-CcS" secondAttribute="top" constant="15" id="bLG-Rh-lo1"/>
+                                            <constraint firstItem="2Te-W6-RsQ" firstAttribute="centerY" secondItem="Kct-n5-CcS" secondAttribute="centerY" id="QRX-al-weF"/>
+                                            <constraint firstAttribute="trailing" secondItem="CIy-N8-axr" secondAttribute="trailing" constant="68" id="QwS-Co-3K4"/>
                                             <constraint firstAttribute="bottom" secondItem="CIy-N8-axr" secondAttribute="bottom" id="hgW-57-f9j"/>
-                                            <constraint firstItem="CIy-N8-axr" firstAttribute="leading" secondItem="Kct-n5-CcS" secondAttribute="leading" constant="30" id="pTP-eZ-Sp9"/>
-                                            <constraint firstAttribute="bottom" secondItem="2Te-W6-RsQ" secondAttribute="bottom" constant="15" id="qGw-Gn-Bkt"/>
+                                            <constraint firstItem="CIy-N8-axr" firstAttribute="leading" secondItem="Kct-n5-CcS" secondAttribute="leading" constant="15" id="pTP-eZ-Sp9"/>
                                             <constraint firstItem="CIy-N8-axr" firstAttribute="top" secondItem="Kct-n5-CcS" secondAttribute="top" id="xya-I5-q6k"/>
                                         </constraints>
                                     </view>
@@ -211,7 +210,7 @@
                                             <constraint firstAttribute="height" constant="1" id="Syb-hu-vQC"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oj5-zp-mp8">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj5-zp-mp8">
                                         <rect key="frame" x="15" y="79" width="565" height="95"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <attributedString key="attributedText">
@@ -219,10 +218,24 @@
                                                 <string key="content">A verification link has been sent to your email id.
 Please click on the link to activate your account.
 
-Didn't receive any mail? </string>
+Didn't receive any mail?</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.2196078431372549" green="0.22352941176470589" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="15.5" name="HelveticaNeue"/>
+                                                    <integer key="NSLigature" value="0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="43.299999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="43.299999237060547">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
                                                 <attributes>
                                                     <color key="NSColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                                    <font key="NSFont" size="15.5" name="HelveticaNeue"/>
                                                     <integer key="NSLigature" value="0"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="43.299999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                         <tabStops>
@@ -237,7 +250,7 @@ Didn't receive any mail? </string>
                                                 <attributes>
                                                     <color key="NSBackgroundColor" red="0.0" green="0.062745098039215685" blue="0.062745098039215685" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                                    <font key="NSFont" size="15.5" name="HelveticaNeue-Bold"/>
                                                     <integer key="NSLigature" value="0"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="43.299999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                         <tabStops>
@@ -248,10 +261,24 @@ Didn't receive any mail? </string>
                                                     </paragraphStyle>
                                                 </attributes>
                                             </fragment>
-                                            <fragment content=" to resend the verification mail.">
+                                            <fragment content=" ">
                                                 <attributes>
                                                     <color key="NSColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                                    <font key="NSFont" size="15.5" name="HelveticaNeue"/>
+                                                    <integer key="NSLigature" value="0"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="43.299999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="43.299999237060547">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="to resend the verification mail.">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.21176470588235294" green="0.21568627450980393" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="15.5" name="HelveticaNeue"/>
                                                     <integer key="NSLigature" value="0"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="43.299999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                         <tabStops>
@@ -331,7 +358,7 @@ Didn't receive any mail? </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="097-B0-lfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-782" y="428"/>
+            <point key="canvasLocation" x="-1350" y="297"/>
         </scene>
         <!--Enter Otp View Controller-->
         <scene sceneID="qcQ-1c-3Ps">

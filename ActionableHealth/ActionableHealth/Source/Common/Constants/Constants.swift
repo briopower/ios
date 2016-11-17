@@ -62,14 +62,18 @@ class Constants: NSObject {
 
     //MARK:- URLs
     struct URLs {
-        static let base = "https://actionablehealth.appspot.com/"
-        static let mid = "auth/"
-        static let signup = "\(base)\(mid)create/"
-        static let login = "\(base)\(mid)authenticate/"
-        static let logOut="\(base)\(mid)logout/"
-        static let forgotPasswordNotification = "\(base)\(mid)resetPasswordNotification/"
-        static let allTemplates = "\(base)\(mid)getAllTemplates/"
-        static let templateDetails = "\(base)\(mid)getTemplateDetails/"
-        static let updateDetails = "https://actionablehealth.appspot.com/auth/updatePassword"
+        static let base = "https://briopower-qa.appspot.com/"
+
+        static let authAPIs = "auth/"
+        static let signup = "\(base)\(authAPIs)create/"
+        static let login = "\(base)\(authAPIs)authenticate/"
+        static let logOut="\(base)\(authAPIs)logout/"
+        static let forgotPasswordNotification = "\(base)\(authAPIs)resetPasswordNotification/"
+        static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
+        static let templateDetails = "\(base)\(authAPIs)getTemplateDetails/"
+        static let updateDetails = "\(base)\(authAPIs)updatePassword"
+
+        static let trackAPIs = "track/"
+        static let myTracks = "\(base)\(trackAPIs)getMyTracks"
     }
 }

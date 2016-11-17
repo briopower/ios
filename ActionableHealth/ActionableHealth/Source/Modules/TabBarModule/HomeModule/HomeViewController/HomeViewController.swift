@@ -16,7 +16,7 @@ class HomeViewController: CommonViewController {
     @IBOutlet var titleView: UIImageView!
 
     //MARK:- Variables
-    var nextUrl = ""
+    var cursor = ""
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class HomeViewController: CommonViewController {
         }else{
             setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search)
         }
-        getData(clctView.dataArray.count)
+        getData(cursor)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -59,18 +59,17 @@ extension HomeViewController{
     func reset() {
         clctView.dataArray.removeAllObjects()
         clctView.reloadContent()
-        nextUrl = ""
-        getData(0)
+        cursor = ""
     }
 }
 //MARK:- CommonCollectionViewDelegate
 extension HomeViewController:CommonCollectionViewDelegate{
     func topElements(view: UIView) {
-        getData(0)
+        getData("")
     }
 
     func bottomElements(view: UIView) {
-        getData(clctView.dataArray.count, url: nextUrl)
+        getData(cursor)
     }
 
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
@@ -112,15 +111,15 @@ extension HomeViewController{
 //MARK:- Network Methods
 extension HomeViewController{
 
-    func getData(withShift:Int, url:String = Constants.URLs.allTemplates) {
+    func getData(cursorVal:String) {
         if NetworkClass.isConnected(true){
             if clctView.dataArray.count == 0 {
                 showLoader()
             }
-            NetworkClass.sendRequest(URL:url, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(withShift), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL:Constants.URLs.allTemplates, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(cursorVal), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
-                    self.processResponse(responseObj, withShift: withShift)
+                    self.processResponse(responseObj, cursorVal: cursorVal)
                 }else{
                     self.processError(error)
                 }
@@ -129,10 +128,10 @@ extension HomeViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?, withShift:Int) {
+    func processResponse(responseObj:AnyObject?, cursorVal:String) {
 
         if let dict = responseObj {
-            if withShift == 0 {
+            if cursorVal == "" {
                 clctView.dataArray.removeAllObjects()
             }
             let templatesArr = TemplatesModel.getResponseArray(dict)
@@ -140,11 +139,11 @@ extension HomeViewController{
                 let template = TemplatesModel.getTemplateObj(obj)
                 clctView.dataArray.addObject(template)
             }
-            if let url = TemplatesModel.getNextUrl(dict){
-                nextUrl = url
+            if let cursorVal = TemplatesModel.getCursor(dict){
+                cursor = cursorVal
                 clctView.hasMoreData = true
             }else{
-                nextUrl = ""
+                cursor = ""
                 clctView.hasMoreData = false
             }
             clctView.removeTopLoader()

@@ -15,7 +15,7 @@ class SearchViewController: CommonViewController {
     @IBOutlet weak var srchBar: UISearchBar!
 
     //MARK:- Variables
-    var nextUrl = ""
+    var cursor = ""
     var searchString = ""
 
     //MARK:- LifeCycle
@@ -50,8 +50,7 @@ extension SearchViewController{
     func reset() {
         clctView.dataArray.removeAllObjects()
         clctView.reloadContent()
-        nextUrl = ""
-        getData(0)
+        cursor = ""
     }
 }
 
@@ -66,11 +65,11 @@ extension SearchViewController{
 //MARK:- CommonCollectionViewDelegate
 extension SearchViewController:CommonCollectionViewDelegate{
     func topElements(view: UIView) {
-        getData(0)
+        getData("")
     }
 
     func bottomElements(view: UIView) {
-        getData(clctView.dataArray.count, url: nextUrl)
+        getData(cursor)
     }
 
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
@@ -90,22 +89,22 @@ extension SearchViewController:UISearchBarDelegate{
         if let text = searchBar.text?.getValidObject() where NetworkClass.isConnected(false) {
             showLoader()
             searchString = text
-            getData(0)
+            getData("")
         }
     }
 }
 //MARK:- Network Methods
 extension SearchViewController{
 
-    func getData(withShift:Int, url:String = Constants.URLs.allTemplates) {
+    func getData(cursorVal:String) {
         if NetworkClass.isConnected(true){
 //            if clctView.dataArray.count == 0 {
 //                showLoader()
 //            }
-            NetworkClass.sendRequest(URL:url, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(withShift,query: searchString), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL:Constants.URLs.allTemplates, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(cursor,query: searchString), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
-                    self.processResponse(responseObj, withShift: withShift)
+                    self.processResponse(responseObj, cursorVal: cursorVal)
                 }else{
                     self.processError(error)
                 }
@@ -114,10 +113,10 @@ extension SearchViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?, withShift:Int) {
+    func processResponse(responseObj:AnyObject?, cursorVal:String) {
 
         if let dict = responseObj {
-            if withShift == 0 {
+            if cursorVal == "" {
                 clctView.dataArray.removeAllObjects()
             }
             let templatesArr = TemplatesModel.getResponseArray(dict)
@@ -125,11 +124,11 @@ extension SearchViewController{
                 let template = TemplatesModel.getTemplateObj(obj)
                 clctView.dataArray.addObject(template)
             }
-            if let url = TemplatesModel.getNextUrl(dict){
-                nextUrl = url
+            if let cursorVal = TemplatesModel.getCursor(dict){
+                cursor = cursorVal
                 clctView.hasMoreData = true
             }else{
-                nextUrl = ""
+                cursor = ""
                 clctView.hasMoreData = false
             }
             clctView.removeTopLoader()

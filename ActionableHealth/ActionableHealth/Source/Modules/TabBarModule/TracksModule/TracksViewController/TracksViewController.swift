@@ -14,6 +14,7 @@ class TracksViewController: CommonViewController {
     @IBOutlet weak var clctView: StaggeredCollectionView!
 
     //MARK:- Variables
+    var cursor = ""
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class TracksViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarWithTitle("TRACKS", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        getData("")
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -43,15 +45,20 @@ extension TracksViewController{
         clctView.type = CollectionViewType.HomeView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
     }
+    func reset() {
+        clctView.dataArray.removeAllObjects()
+        clctView.reloadContent()
+        cursor = ""
+    }
 }
 //MARK:- CommonCollectionViewDelegate
 extension TracksViewController:CommonCollectionViewDelegate{
     func topElements(view: UIView) {
-
+        getData("")
     }
 
     func bottomElements(view: UIView) {
-
+        getData(cursor)
     }
 
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
@@ -62,4 +69,56 @@ extension TracksViewController:CommonCollectionViewDelegate{
             })
         }
     }
+}
+
+//MARK:- Network Methods
+extension TracksViewController{
+
+    func getData(cursorVal:String) {
+        if NetworkClass.isConnected(true){
+            if clctView.dataArray.count == 0 {
+                showLoader()
+            }
+            NetworkClass.sendRequest(URL:Constants.URLs.myTracks, RequestType: .GET, Parameters: nil, Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status{
+                    self.processResponse(responseObj, cursorVal: cursorVal)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func processResponse(responseObj:AnyObject?, cursorVal:String) {
+
+        if let dict = responseObj {
+            if cursorVal == "" {
+                clctView.dataArray.removeAllObjects()
+            }
+            let templatesArr = TemplatesModel.getResponseArray(dict)
+            for obj in templatesArr {
+                let template = TemplatesModel.getTemplateObj(obj)
+                clctView.dataArray.addObject(template)
+            }
+            if let cursorVal = TemplatesModel.getCursor(dict){
+                cursor = cursorVal
+                clctView.hasMoreData = true
+            }else{
+                cursor = ""
+                clctView.hasMoreData = false
+            }
+            clctView.removeTopLoader()
+            if clctView.dataArray.count > 0 {
+                clctView.addTopLoader()
+            }
+        }
+        clctView.reloadContent()
+    }
+
+    func processError(error:NSError?) {
+        
+    }
+    
 }

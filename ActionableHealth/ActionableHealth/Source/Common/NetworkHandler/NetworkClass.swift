@@ -155,7 +155,7 @@ class NetworkClass:NSObject  {
     private class func getUpdatedHeader(header: [String: String]?) -> [String: String] {
         var updatedHeader = ["Accept":"application/json", "Content-Type" : "application/json"]
         if NSUserDefaults.isLoggedIn(){
-            updatedHeader["ahwToken"] = NSUserDefaults.getUserToken()
+            updatedHeader["ahw-token"] = NSUserDefaults.getUserToken()
         }
 
         if let arr = header?.keys {

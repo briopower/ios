@@ -33,18 +33,15 @@ class TemplatesModel: NSObject {
 //MARK:- Additional methods
 extension TemplatesModel{
 
-    class func getPayloadDict(withShift:Int, query:String = "") -> [String:AnyObject] {
-        if withShift == 0 {
-            return ["cursor":"", "pageSize": 20, "query": query]
-        }
-        return ["cursor":"\(withShift)", "pageSize": 20, "query": query]
+    class func getPayloadDict(cursor:String, query:String = "") -> [String:AnyObject] {
+        return ["cursor":cursor, "pageSize": 20, "query": query]
     }
 
     class func getResponseArray(dict:AnyObject) -> NSArray {
         return dict["templateResultSet"] as? NSArray ?? []
     }
 
-    class func getNextUrl(dict:AnyObject) -> String? {
+    class func getCursor(dict:AnyObject) -> String? {
         return dict["cursor"] as? String
     }
 

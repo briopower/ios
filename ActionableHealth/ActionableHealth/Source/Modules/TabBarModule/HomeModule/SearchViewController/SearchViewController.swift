@@ -119,7 +119,7 @@ extension SearchViewController{
             if cursorVal == "" {
                 clctView.dataArray.removeAllObjects()
             }
-            let templatesArr = TemplatesModel.getResponseArray(dict)
+            let templatesArr = TemplatesModel.getTemplateResponseArray(dict)
             for obj in templatesArr {
                 let template = TemplatesModel.getTemplateObj(obj)
                 clctView.dataArray.addObject(template)

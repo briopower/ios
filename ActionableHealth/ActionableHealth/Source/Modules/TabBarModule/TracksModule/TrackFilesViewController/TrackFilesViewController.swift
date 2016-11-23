@@ -13,6 +13,9 @@ class TrackFilesViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var trackFilesTblView: UITableView!
 
+    //MARK:- Variables
+    var currentTemplate:TemplatesModel?
+    
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +39,14 @@ extension TrackFilesViewController{
         trackFilesTblView.registerNib(UINib(nibName: String(TrackFileCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFileCell))
         trackFilesTblView.rowHeight = UITableViewAutomaticDimension
         trackFilesTblView.estimatedRowHeight = 100
+        getFiles()
     }
 }
 
 //MARK:- UITableViewDataSource
 extension TrackFilesViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -51,5 +55,34 @@ extension TrackFilesViewController:UITableViewDataSource{
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+//MARK:- Network methods
+extension TrackFilesViewController{
+    func getFiles() {
+
+        if let blobKey = currentTemplate?.blobKey where NetworkClass.isConnected(true){
+            showLoader()
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackFiles)\(blobKey)", RequestType: .GET, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status{
+                    self.processResponse(responseObj)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func processResponse(responseObj:AnyObject?) {
+        if let dict = responseObj where currentTemplate != nil {
+            print(dict)
+        }
+    }
+
+    func processError(error:NSError?) {
+
     }
 }

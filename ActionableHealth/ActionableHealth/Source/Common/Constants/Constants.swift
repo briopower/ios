@@ -75,5 +75,7 @@ class Constants: NSObject {
 
         static let trackAPIs = "track/"
         static let myTracks = "\(base)\(trackAPIs)getMyTracks"
+        static let trackDetails = "\(base)\(trackAPIs)getTrackDetails/"
+        static let trackFiles = "\(base)\(trackAPIs)downloadAttachment/"
     }
 }

@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+enum InfoSectionCellTypes:Int {
+    case Details, Files, Count
+}
 class TrackDetailsViewController: CommonViewController {
 
     //MARK:- Outlets
@@ -120,14 +122,19 @@ extension TrackDetailsViewController{
 
     func getInfoCellForIndexPath(indexPath:NSIndexPath) -> UITableViewCell {
 
-        if indexPath.row == 0 {
-            if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackInfoCell)) as? TrackInfoCell {
-                cell.configCell(currentTemplate)
-                return cell
-            }
-        }else{
-            if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
-                return cell
+        if let type = InfoSectionCellTypes(rawValue: indexPath.row) {
+            switch type {
+            case .Details:
+                if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackInfoCell)) as? TrackInfoCell {
+                    cell.configCell(currentTemplate)
+                    return cell
+                }
+            case .Files:
+                if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
+                    return cell
+                }
+            default:
+                break
             }
         }
         return UITableViewCell()
@@ -144,8 +151,9 @@ extension TrackDetailsViewController{
     }
 
     func infoCellSelectedAtIndexPath(indexPath:NSIndexPath) {
-        if indexPath.row == 1{
+        if indexPath.row == InfoSectionCellTypes.Files.rawValue{
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
+                viewCont.currentTemplate = currentTemplate
                 self.navigationController?.pushViewController(viewCont, animated: true)
             }
         }
@@ -164,7 +172,7 @@ extension TrackDetailsViewController{
 extension TrackDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if isInfoSelected {
-            return 2
+            return sourceType == .Home ? InfoSectionCellTypes.Files.rawValue : InfoSectionCellTypes.Count.rawValue
         }
         return currentTemplate?.phases.count ?? 0
     }
@@ -200,9 +208,11 @@ extension TrackDetailsViewController:UITableViewDelegate{
 //MARK:- Network methods
 extension TrackDetailsViewController{
     func updateTemplate() {
-        if let templateID = currentTemplate?.templateId where NetworkClass.isConnected(true){
+
+        if let id = sourceType == .Home ? currentTemplate?.templateId : currentTemplate?.trackId where NetworkClass.isConnected(true){
             showLoader()
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.templateDetails)\(templateID)", RequestType: .GET, CompletionHandler: {
+            let url = sourceType == .Home ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
+            NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.processResponse(responseObj)
@@ -216,7 +226,14 @@ extension TrackDetailsViewController{
     
     func processResponse(responseObj:AnyObject?) {
         if let dict = responseObj where currentTemplate != nil {
-            TemplatesModel.addPhases(dict, toModel: currentTemplate!)
+            switch sourceType {
+            case .Home:
+                TemplatesModel.addPhases(dict, toModel: currentTemplate!)
+            case .Tracks:
+                TemplatesModel.updateTrackObj(currentTemplate!, dict: dict)
+            default:
+                break
+            }
             trackDetailsTblView.reloadData()
         }
     }

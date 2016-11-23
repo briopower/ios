@@ -11,14 +11,14 @@ import UIKit
 class TemplatesModel: NSObject {
 
     //MARK:- Variables
-    var templateId = ""
+    var templateId:String?
     var name = ""
     var type = ""
     var code = ""
     var details = ""
     var status = ""
     var url = ""
-    var imageUrl = ""
+    var templateImageUrl = ""
     var createdBy = ""
     var fileName = ""
     var createDate = 0
@@ -28,6 +28,12 @@ class TemplatesModel: NSObject {
     var commentsCount = 0
     var activeTrackCount = 0
     var phases = NSMutableArray()
+
+    //MARK: Additional for tracks
+    var trackId:String?
+    var members = NSMutableArray()
+    var trackImageUrl = ""
+    var blobKey:String?
 }
 
 //MARK:- Additional methods
@@ -37,10 +43,14 @@ extension TemplatesModel{
         return ["cursor":cursor, "pageSize": 20, "query": query]
     }
 
-    class func getResponseArray(dict:AnyObject) -> NSArray {
+    class func getTemplateResponseArray(dict:AnyObject) -> NSArray {
         return dict["templateResultSet"] as? NSArray ?? []
     }
 
+    class func getTrackResponseArray(dict:AnyObject) -> NSArray {
+        return dict["myTracksResultSet"] as? NSArray ?? []
+    }
+    
     class func getCursor(dict:AnyObject) -> String? {
         return dict["cursor"] as? String
     }
@@ -51,19 +61,25 @@ extension TemplatesModel{
 
     class func getTemplateObj(dict:AnyObject) -> TemplatesModel {
         let model = TemplatesModel()
-        updateObj(model, dict: dict)
+        updateTemplateObj(model, dict: dict)
         return model
     }
 
-    class func updateObj(obj:TemplatesModel, dict:AnyObject) {
-        obj.templateId = dict["id"] as? String ?? ""
+    class func getTrackObj(dict:AnyObject) -> TemplatesModel {
+        let model = TemplatesModel()
+        updateTrackObj(model, dict: dict)
+        return model
+    }
+
+    class func updateTemplateObj(obj:TemplatesModel, dict:AnyObject) {
+        obj.templateId = dict["id"] as? String
         obj.name = dict["name"] as? String ?? ""
         obj.type = dict["type"] as? String ?? ""
         obj.code = dict["code"] as? String ?? ""
         obj.details = dict["descriptionText"] as? String ?? ""
         obj.status = dict["status"] as? String ?? ""
         obj.url = dict["url"] as? String ?? ""
-        obj.imageUrl = dict["profileURL"] as? String ?? ""
+        obj.templateImageUrl = dict["profileURL"] as? String ?? ""
         obj.createdBy = dict["createdBy"] as? String ?? ""
         obj.fileName = dict["fileName"] as? String ?? ""
         obj.createDate = dict["createdDate"] as? Int ?? 0
@@ -72,6 +88,22 @@ extension TemplatesModel{
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["comments"] as? Int ?? 0
         obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
+    }
+
+    class func updateTrackObj(obj:TemplatesModel, dict:AnyObject) {
+        obj.trackId = dict["id"] as? String
+        obj.templateId = dict["templateId"] as? String
+        obj.name = dict["name"] as? String ?? ""
+        obj.details = dict["description"] as? String ?? ""
+        obj.templateImageUrl = dict["templateURL"] as? String ?? ""
+        obj.trackImageUrl = dict["trackURL"] as? String ?? ""
+        obj.createdBy = dict["createdBy"] as? String ?? ""
+        obj.fileName = dict["fileName"] as? String ?? ""
+        obj.createDate = dict["createdDate"] as? Int ?? 0
+        obj.rating = dict["rating"] as? Double ?? 0
+        obj.commentsCount = dict["comments"] as? Int ?? 0
+        obj.sharedWith = dict["members"] as? NSArray ?? []
+        obj.blobKey = dict["blobKey"] as? String
 
     }
 

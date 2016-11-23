@@ -17,7 +17,7 @@ extension UIFont{
         case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
             return self.fontWithSize(self.pointSize * 0.91)
         case .Simulator:
-            return self.fontWithSize(self.pointSize * 1)
+            return self.fontWithSize(self.pointSize * 0.82)
         default:
             return self.fontWithSize(self.pointSize * 0.82)
 

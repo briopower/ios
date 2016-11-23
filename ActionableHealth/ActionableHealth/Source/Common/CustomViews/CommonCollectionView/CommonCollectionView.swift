@@ -9,7 +9,7 @@
 import UIKit
 
 enum CollectionViewType:Int {
-    case Default, HomeView,  Count
+    case Default, HomeView, TrackView,Count
 }
 protocol CommonCollectionViewDelegate:NSObjectProtocol {
     func topElements(view:UIView)
@@ -49,7 +49,7 @@ class CommonCollectionView: UICollectionView {
 extension CommonCollectionView{
     func registerCells() {
         switch type {
-        case .HomeView:
+        case .HomeView, .TrackView:
         registerNib(UINib(nibName: String(HomeViewCell), bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: String(HomeViewCell))
         default:
             break
@@ -81,9 +81,9 @@ extension CommonCollectionView{
 
     func cellForIndexPath(indexPath:NSIndexPath) -> UICollectionViewCell {
         switch type {
-        case .HomeView:
+        case .HomeView, .TrackView:
             if let cell = self.dequeueReusableCellWithReuseIdentifier(String(HomeViewCell), forIndexPath: indexPath) as? HomeViewCell {
-                cell.configCell(dataArray[indexPath.row] as? TemplatesModel)
+                cell.configCell(dataArray[indexPath.row] as? TemplatesModel, type: type)
                 return cell
             }
         default:
@@ -159,7 +159,7 @@ extension CommonCollectionView:UICollectionViewDataSource{
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         switch type {
-        case .HomeView:
+        case .HomeView , .TrackView:
             return dataArray.count
         default:
             return 0

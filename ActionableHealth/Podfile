@@ -1,9 +1,9 @@
-platform :ios, ‘8.0’
+platform :ios, ‘8.4’
 
 target 'ActionableHealth' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-    pod 'Alamofire'
+    pod 'Alamofire' , '3.5.1'
     pod 'TPKeyboardAvoiding'
     pod 'HCSStarRatingView'
     pod 'DAKeyboardControl'

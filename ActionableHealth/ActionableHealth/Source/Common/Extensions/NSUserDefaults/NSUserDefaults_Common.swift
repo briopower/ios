@@ -8,7 +8,7 @@
 
 import UIKit
 
-let userDefault = NSUserDefaults.standardUserDefaults()
+private let userDefault = NSUserDefaults.standardUserDefaults()
 
 //MARK:- Additional methods
 extension NSUserDefaults{

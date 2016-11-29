@@ -1,8 +1,8 @@
 PODS:
   - Alamofire (3.5.1)
-  - APAddressBook (0.2.3):
-    - APAddressBook/Core (= 0.2.3)
-  - APAddressBook/Core (0.2.3)
+  - APAddressBook (0.3.0):
+    - APAddressBook/Core (= 0.3.0)
+  - APAddressBook/Core (0.3.0)
   - DAKeyboardControl (2.4.0)
   - HCSStarRatingView (1.4.5)
   - SDWebImage (3.8.2):
@@ -11,7 +11,7 @@ PODS:
   - TPKeyboardAvoiding (1.3)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (= 3.5.1)
   - APAddressBook
   - DAKeyboardControl
   - HCSStarRatingView
@@ -20,12 +20,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
-  APAddressBook: 2a91bf05999548bea210ec9d1a68073f4dc8bfce
+  APAddressBook: 36cf22eb78d57dc53eb7f03d3d4a10af7e6b015d
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: 84cce51feb2a9d2a38abe32bea9cece884bbf40f
+PODFILE CHECKSUM: 871506c676e249ae2f4ccc179d820d27b52b3447
 
 COCOAPODS: 1.1.1

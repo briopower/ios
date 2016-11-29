@@ -8,6 +8,7 @@
 
 #ifndef ActionableHealth_Bridging_Header_h
 #define ActionableHealth_Bridging_Header_h
+#import "APAddressBook/APAddressBook-umbrella.h"
 #import "DAKeyboardControl/DAKeyboardControl-umbrella.h"
 #import "TPKeyboardAvoiding/TPKeyboardAvoiding-umbrella.h"
 #import "HCSStarRatingView/HCSStarRatingView-umbrella.h"

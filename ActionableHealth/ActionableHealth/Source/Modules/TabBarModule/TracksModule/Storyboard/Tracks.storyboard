@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -203,7 +204,7 @@
                                         <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                         <state key="normal" image="send"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                         <rect key="frame" x="21" y="16" width="144" height="14"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -263,25 +264,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x8N-uf-kgR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <webView clipsSubviews="YES" contentMode="scaleToFill" scalesPageToFit="YES" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X86-7v-bNM">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="2co-Fs-LRg" id="fz9-Gm-CkN"/>
-                                    <outlet property="delegate" destination="2co-Fs-LRg" id="lx4-Np-lXq"/>
+                                    <outlet property="delegate" destination="2co-Fs-LRg" id="qnr-Tz-yVi"/>
                                 </connections>
-                            </tableView>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DPZ-hL-AeP" firstAttribute="top" secondItem="x8N-uf-kgR" secondAttribute="bottom" id="Gl2-LZ-PM4"/>
-                            <constraint firstItem="x8N-uf-kgR" firstAttribute="top" secondItem="PhF-0q-izl" secondAttribute="top" id="JmL-Js-yFp"/>
-                            <constraint firstAttribute="trailing" secondItem="x8N-uf-kgR" secondAttribute="trailing" id="UUd-fD-vxq"/>
-                            <constraint firstItem="x8N-uf-kgR" firstAttribute="leading" secondItem="PhF-0q-izl" secondAttribute="leading" id="V4u-t3-NoF"/>
+                            <constraint firstItem="DPZ-hL-AeP" firstAttribute="top" secondItem="X86-7v-bNM" secondAttribute="bottom" id="7ef-Eu-Oof"/>
+                            <constraint firstItem="X86-7v-bNM" firstAttribute="leading" secondItem="PhF-0q-izl" secondAttribute="leading" id="FwJ-x8-mfo"/>
+                            <constraint firstItem="X86-7v-bNM" firstAttribute="top" secondItem="ye9-lj-aVb" secondAttribute="bottom" id="Tj6-nB-AgX"/>
+                            <constraint firstAttribute="trailing" secondItem="X86-7v-bNM" secondAttribute="trailing" id="UJT-W8-o8D"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="trackFilesTblView" destination="x8N-uf-kgR" id="TPX-oQ-glT"/>
+                        <outlet property="webView" destination="X86-7v-bNM" id="n38-og-G27"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAO-tA-fsc" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+enum ObjectType:Int {
+    case Template, Track, Count
+}
 class TemplatesModel: NSObject {
 
     //MARK:- Variables
+    var objectType = ObjectType.Template
     var templateId:String?
     var name = ""
     var type = ""
@@ -72,6 +75,7 @@ extension TemplatesModel{
     }
 
     class func updateTemplateObj(obj:TemplatesModel, dict:AnyObject) {
+        obj.objectType = ObjectType.Template
         obj.templateId = dict["id"] as? String
         obj.name = dict["name"] as? String ?? ""
         obj.type = dict["type"] as? String ?? ""
@@ -91,6 +95,7 @@ extension TemplatesModel{
     }
 
     class func updateTrackObj(obj:TemplatesModel, dict:AnyObject) {
+        obj.objectType = ObjectType.Track
         obj.trackId = dict["id"] as? String
         obj.templateId = dict["templateId"] as? String
         obj.name = dict["name"] as? String ?? ""
@@ -109,7 +114,8 @@ extension TemplatesModel{
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {
         toModel.phases = NSMutableArray()
-        if let phases = dict["details"] as? NSMutableArray {
+        let obj = toModel.objectType == .Template ? dict["details"] : dict["phasesAndTasks"]
+        if let phases = obj as? NSArray {
             for phase in phases {
                 let phaseObj = PhasesModel.getPhaseUsingObj(phase)
                 phaseObj.parentTemplate = toModel

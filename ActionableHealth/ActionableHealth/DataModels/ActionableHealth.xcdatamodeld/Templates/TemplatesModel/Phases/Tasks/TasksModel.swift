@@ -11,7 +11,7 @@ import UIKit
 class TasksModel: NSObject {
 
     //MARK:- Variables
-    var taskId = ""
+    var taskId:String?
     var postIds:[Int] = []
     var orderIndex = 0
     var taskName = ""
@@ -20,13 +20,18 @@ class TasksModel: NSObject {
     var rating = 0.0
     var commentsCount = 0
     var parentPhase = PhasesModel()
+
+    //MARK: Additional for tracks
+    var status = ""
+    var templateTaskId:String?
+
 }
 
 //MARK:- Additional methods
 extension TasksModel{
     class func getTasksUsingObj(dict:AnyObject) -> TasksModel {
         let model = TasksModel()
-        model.taskId = dict["id"] as? String ?? ""
+        model.taskId = dict["id"] as? String
         model.postIds = dict["postIds"] as? [Int] ?? []
         model.orderIndex = dict["orderIndex"] as? Int ?? 0
         model.taskName = dict["name"] as? String ?? ""
@@ -34,6 +39,8 @@ extension TasksModel{
         model.key = dict["key"] as? String ?? ""
         model.rating = dict["rating"] as? Double ?? 0
         model.commentsCount = dict["comments"] as? Int ?? 0
+        model.templateTaskId = dict["templateTaskId"] as? String
+        model.status = dict["status"] as? String ?? ""
         return model
     }
 }

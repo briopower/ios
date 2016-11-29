@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>APAddressBook.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>138782AAC1DC3F31F4683ABED81EABA4</key>
+		<key>0C4D6D21E61953B565EFACC9FEC3713A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B30E0D0DC10819F641913818FA1B4CC</key>
+		<key>1772560CBF63516BD50D5771ADFB1736</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>504C4C794C34A6369584552F80525ED7</key>
+		<key>45FF4A7AFE5D8E17D01023C53AED87FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>5F88B0884C4424AAFDBCD858B2DEB824</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97E5D28D3DA6F0CA23C263B2B5833B9F</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B08F69D886A5188869DAF9C302FD3F1F</key>
+		<key>8B20CAEEA320DAD747BB08D1128BDD90</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CDA8C8BC0C30738318D15941E9F455AC</key>
+		<key>915B569F1A4E9A851AB438C36C566DA2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D340EC4FB2416F3F7EB0FDC23C3AF80C</key>
+		<key>EFBC25DB104C5AFB5174BAD6BC435BFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF56545C2890B2285CEB71A8E8C1845B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -172,7 +172,7 @@ extension TrackDetailsViewController{
 extension TrackDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if isInfoSelected {
-            return sourceType == .Home ? InfoSectionCellTypes.Files.rawValue : InfoSectionCellTypes.Count.rawValue
+            return currentTemplate?.blobKey == nil ? InfoSectionCellTypes.Files.rawValue : InfoSectionCellTypes.Count.rawValue
         }
         return currentTemplate?.phases.count ?? 0
     }
@@ -227,10 +227,8 @@ extension TrackDetailsViewController{
     func processResponse(responseObj:AnyObject?) {
         if let dict = responseObj where currentTemplate != nil {
             switch sourceType {
-            case .Home:
+            case .Home, .Tracks:
                 TemplatesModel.addPhases(dict, toModel: currentTemplate!)
-            case .Tracks:
-                TemplatesModel.updateTrackObj(currentTemplate!, dict: dict)
             default:
                 break
             }

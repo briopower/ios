@@ -13,12 +13,13 @@ typealias ProgressHandler = (totalBytesSent:Int64, totalBytesExpectedToSend:Int6
 import Alamofire
 
 class NetworkClass:NSObject  {
-    class func sendRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?){
+    class func sendRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?) -> Request{
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 
-        Alamofire.request(type, url, parameters: parameters, encoding: .JSON, headers: self.getUpdatedHeader(headers))
+        return Alamofire.request(type, url, parameters: parameters, encoding: .JSON, headers: self.getUpdatedHeader(headers))
             .validate()
             .responseJSON { response in
+                print(response.debugDescription)
                 switch response.result {
                 case .Success:
                     if completion != nil{
@@ -36,7 +37,7 @@ class NetworkClass:NSObject  {
 
     class func sendImageRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil,ImageName imageName:String?, ImageData imageData:NSData?, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Alamofire.upload(type, url, headers: self.getUpdatedHeader(headers), multipartFormData:
+        Alamofire.upload(type, url, headers: headers, multipartFormData:
             {(multipartFormData) in
                 if imageData != nil{
                     multipartFormData.appendBodyPart(data: imageData!, name: imageName! , fileName: "image.png", mimeType: "image/png")
@@ -86,7 +87,7 @@ class NetworkClass:NSObject  {
 
         let videoData = NSData(contentsOfURL: videoUrl)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Alamofire.upload(type, url, headers: self.getUpdatedHeader(headers), multipartFormData:
+        Alamofire.upload(type, url, headers: headers, multipartFormData:
             {(multipartFormData) in
                 if videoData != nil{
                     multipartFormData.appendBodyPart(data: videoData!, name: videoName , fileName: videoName, mimeType: "video/quicktime")
@@ -152,8 +153,8 @@ class NetworkClass:NSObject  {
         return val
     }
 
-    private class func getUpdatedHeader(header: [String: String]?) -> [String: String] {
-        var updatedHeader = ["Accept":"application/json", "Content-Type" : "application/json"]
+    class func getUpdatedHeader(header: [String: String]?) -> [String: String] {
+        var updatedHeader:[String: String] = [:]
         if NSUserDefaults.isLoggedIn(){
             updatedHeader["ahw-token"] = NSUserDefaults.getUserToken()
         }

@@ -11,7 +11,7 @@ import UIKit
 class PhasesModel: NSObject {
 
     //MARK:- Variables
-    var phsaeId = ""
+    var phsaeId:String?
     var postIds:[Int] = []
     var orderIndex = 0
     var phaseName = ""
@@ -21,6 +21,10 @@ class PhasesModel: NSObject {
     var commentsCount = 0
     var tasks = NSMutableArray()
     var parentTemplate = TemplatesModel()
+
+    //MARK: Additional for tracks
+    var status = ""
+    var templatePhaseId:String?
 }
 
 
@@ -29,7 +33,7 @@ extension PhasesModel{
 
     class func getPhaseUsingObj(dict:AnyObject) -> PhasesModel {
         let model = PhasesModel()
-        model.phsaeId = dict["id"] as? String ?? ""
+        model.phsaeId = dict["id"] as? String
         model.postIds = dict["postIds"] as? [Int] ?? []
         model.orderIndex = dict["orderIndex"] as? Int ?? 0
         model.phaseName = dict["name"] as? String ?? ""
@@ -37,6 +41,8 @@ extension PhasesModel{
         model.key = dict["key"] as? String ?? ""
         model.rating = dict["rating"] as? Double ?? 0
         model.commentsCount = dict["comments"] as? Int ?? 0
+        model.templatePhaseId = dict["templatePhaseId"] as? String
+        model.status = dict["status"] as? String ?? ""
 
         if let tasks = dict["tasks"] as? NSMutableArray {
             for temp in tasks {

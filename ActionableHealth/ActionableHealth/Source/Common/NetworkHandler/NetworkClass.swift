@@ -12,14 +12,15 @@ typealias ProgressHandler = (totalBytesSent:Int64, totalBytesExpectedToSend:Int6
 
 import Alamofire
 
+//MARK:- Request Methods
 class NetworkClass:NSObject  {
-    class func sendRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?) -> Request{
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 
-        return Alamofire.request(type, url, parameters: parameters, encoding: .JSON, headers: self.getUpdatedHeader(headers))
+    class func sendRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: AnyObject? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?){
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        let request = getRequest(type, url, headers:getUpdatedHeader(headers) , parameters: parameters)
+        Alamofire.request(request)
             .validate()
             .responseJSON { response in
-                print(response.debugDescription)
                 switch response.result {
                 case .Success:
                     if completion != nil{
@@ -132,6 +133,10 @@ class NetworkClass:NSObject  {
 
         }
     }
+}
+
+//MARK:- Reachablity Method
+extension NetworkClass{
     class func isConnected(showAlert:Bool)->Bool{
         var val = false
         let reachability: Reachability
@@ -152,9 +157,12 @@ class NetworkClass:NSObject  {
         }
         return val
     }
+}
 
+//MARK:- Additional Methods
+extension NetworkClass{
     class func getUpdatedHeader(header: [String: String]?) -> [String: String] {
-        var updatedHeader:[String: String] = [:]
+        var updatedHeader = ["Content-Type":"application/json"]
         if NSUserDefaults.isLoggedIn(){
             updatedHeader["ahw-token"] = NSUserDefaults.getUserToken()
         }
@@ -166,4 +174,44 @@ class NetworkClass:NSObject  {
         }
         return updatedHeader
     }
+
+    private class func getRequest(
+        method: Alamofire.Method,
+        _ URLString: URLStringConvertible,
+          headers: [String: String]? = nil,
+          parameters:AnyObject?)
+        -> NSMutableURLRequest
+    {
+        let mutableURLRequest: NSMutableURLRequest
+
+        if URLString.dynamicType == NSMutableURLRequest.self {
+            mutableURLRequest = URLString as! NSMutableURLRequest
+        } else if URLString.dynamicType == NSURLRequest.self {
+            mutableURLRequest = (URLString as! NSURLRequest).URLRequest
+        } else {
+            mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URLString.URLString)!)
+        }
+
+        mutableURLRequest.HTTPMethod = method.rawValue
+
+        if let headers = headers {
+            for (headerField, headerValue) in headers {
+                mutableURLRequest.setValue(headerValue, forHTTPHeaderField: headerField)
+            }
+        }
+        if let parameters = parameters {
+            do{
+                if NSJSONSerialization.isValidJSONObject(parameters) {
+                    mutableURLRequest.HTTPBody =  try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+                }else{
+                    print("Problem in Parameters")
+                }
+            }catch{
+                print("Problem in Parameters")
+            }
+        }
+        mutableURLRequest.timeoutInterval = 500
+        return mutableURLRequest
+    }
+    
 }

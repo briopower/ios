@@ -86,8 +86,6 @@
 		3CB8A2981DEDAE0C009B9AE9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A2941DEDAE0C009B9AE9 /* UserModel.swift */; };
 		3CB8A29B1DEDAE28009B9AE9 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A2991DEDAE28009B9AE9 /* Contact+CoreDataProperties.swift */; };
 		3CB8A29C1DEDAE28009B9AE9 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A29A1DEDAE28009B9AE9 /* Contact.swift */; };
-		3CB8A29F1DEDAF94009B9AE9 /* AddressBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A29D1DEDAF94009B9AE9 /* AddressBook+CoreDataProperties.swift */; };
-		3CB8A2A01DEDAF94009B9AE9 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A29E1DEDAF94009B9AE9 /* AddressBook.swift */; };
 		3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */; };
 		3CBD5C781DA7AFAD004BCAE0 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */; };
 		3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */; };
@@ -142,6 +140,7 @@
 		3CCF8B001DA6652600C76C64 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */; };
 		3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */; };
 		3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B051DA6682300C76C64 /* Constants.swift */; };
+		3CD2653B1DEE9355008CE1E4 /* CoreDataOperationsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */; };
 		3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5491DB7892000224046 /* TrackFilesCell.swift */; };
 		3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */; };
 		3CF5B54F1DB78AEC00224046 /* TrackInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */; };
@@ -273,8 +272,6 @@
 		3CB8A2941DEDAE0C009B9AE9 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		3CB8A2991DEDAE28009B9AE9 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3CB8A29A1DEDAE28009B9AE9 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		3CB8A29D1DEDAF94009B9AE9 /* AddressBook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddressBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		3CB8A29E1DEDAF94009B9AE9 /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
 		3CBD5C731DA7AF86004BCAE0 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		3CBD5C771DA7AFAD004BCAE0 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		3CBD5C791DA7AFB6004BCAE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -329,6 +326,7 @@
 		3CCF8AFF1DA6652600C76C64 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
 		3CCF8B051DA6682300C76C64 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperationsClass.swift; sourceTree = "<group>"; };
 		3CF5B5491DB7892000224046 /* TrackFilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFilesCell.swift; sourceTree = "<group>"; };
 		3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackFilesCell.xib; sourceTree = "<group>"; };
 		3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInfoCell.swift; sourceTree = "<group>"; };
@@ -465,7 +463,6 @@
 		3C1EC5501DA3A864003DC2A3 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				3CB8A2891DEDAE0C009B9AE9 /* AddressBook */,
 				3CB8A28A1DEDAE0C009B9AE9 /* Contacts */,
 				3CB8A28B1DEDAE0C009B9AE9 /* Templates */,
 				3CB8A2921DEDAE0C009B9AE9 /* Users */,
@@ -521,6 +518,7 @@
 		3C1EC5591DA3A864003DC2A3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				3CD265391DEE9355008CE1E4 /* CoreDataOperationsClass */,
 				3CACF3A01DB5E6C40034D700 /* BridgingHeader */,
 				3CCF8B041DA6681500C76C64 /* Constants */,
 				3CCF8B011DA6678C00C76C64 /* GlobalEnums */,
@@ -1077,15 +1075,6 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		3CB8A2891DEDAE0C009B9AE9 /* AddressBook */ = {
-			isa = PBXGroup;
-			children = (
-				3CB8A29D1DEDAF94009B9AE9 /* AddressBook+CoreDataProperties.swift */,
-				3CB8A29E1DEDAF94009B9AE9 /* AddressBook.swift */,
-			);
-			path = AddressBook;
-			sourceTree = "<group>";
-		};
 		3CB8A28A1DEDAE0C009B9AE9 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1577,6 +1566,14 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		3CD265391DEE9355008CE1E4 /* CoreDataOperationsClass */ = {
+			isa = PBXGroup;
+			children = (
+				3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */,
+			);
+			path = CoreDataOperationsClass;
+			sourceTree = "<group>";
+		};
 		3CF5B5461DB7861500224046 /* TrackFilesCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2058,7 +2055,6 @@
 				3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */,
 				3CCF30FE1DB7327C001A1E7B /* MessagingViewController.swift in Sources */,
 				3CC9D08D1DB8B68F00287068 /* PhaseDetailsViewController.swift in Sources */,
-				3CB8A2A01DEDAF94009B9AE9 /* AddressBook.swift in Sources */,
 				3CCECDAC1DAF69EB00831242 /* PropertiesTableView.swift in Sources */,
 				3C9D13281DA3CE5800998DA2 /* UIImageView_RoundImageView.swift in Sources */,
 				3CC9D0701DB886FC00287068 /* CommonTableView.swift in Sources */,
@@ -2066,7 +2062,6 @@
 				3CAB0F9F1DB0C2B40090BEF3 /* GroupMembersViewController.swift in Sources */,
 				3CCF310D1DB771DD001A1E7B /* CommonHeaderButton.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
-				3CB8A29F1DEDAF94009B9AE9 /* AddressBook+CoreDataProperties.swift in Sources */,
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
 				3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */,
 				3C9D132B1DA3CE5800998DA2 /* UITextField_FontSizeTextField.swift in Sources */,
@@ -2158,6 +2153,7 @@
 				3CB8A2951DEDAE0C009B9AE9 /* PhasesModel.swift in Sources */,
 				3CC9D0831DB8AAAE00287068 /* AllTaskCompletedHeaderView.swift in Sources */,
 				3CC9D0881DB8AE7100287068 /* PhaseDetailsCell.swift in Sources */,
+				3CD2653B1DEE9355008CE1E4 /* CoreDataOperationsClass.swift in Sources */,
 				3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */,
 				3CCF8AF51DA6362700C76C64 /* SignUpViewController.swift in Sources */,
 				3CCECD9C1DAF54B300831242 /* UIImageView_SepratorImageView.swift in Sources */,

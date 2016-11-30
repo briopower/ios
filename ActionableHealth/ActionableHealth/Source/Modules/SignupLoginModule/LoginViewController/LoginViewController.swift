@@ -23,7 +23,7 @@ class LoginViewController: CommonViewController {
         super.viewDidLoad()
         setupView()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
@@ -32,7 +32,7 @@ class LoginViewController: CommonViewController {
 
 //MARK:- Additional Methods
 extension LoginViewController{
-    
+
     func setupView() {
         tblView.setupTableView(LoginSignupTableViewSourceType.Login, user: currentUser)
         tblView.loginSignupTblViewDelegate = self
@@ -73,19 +73,20 @@ extension LoginViewController:LoginSignupTableViewDelegate{
                     NSUserDefaults.saveUser(responseObj)
                     if statusCode == 200
                     {
-                    if let responseDictionary = responseObj as? Dictionary<String, AnyObject>{
-                        
-                        if let isAuthenticated = (responseDictionary["isAuthenticated"] as? Bool){
-                            
-                            if isAuthenticated
-                            {
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                            }
-                            else{
-                                UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "emailid or Password Incorrect", completion: nil)
+                        if let responseDictionary = responseObj as? Dictionary<String, AnyObject>{
+
+                            if let isAuthenticated = (responseDictionary["isAuthenticated"] as? Bool){
+
+                                if isAuthenticated
+                                {
+                                    AppDelegate.getAppDelegateObject()?.startSyncing()
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                }
+                                else{
+                                    UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "emailid or Password Incorrect", completion: nil)
+                                }
                             }
                         }
-                    }
                     }
                     else
                     {
@@ -96,7 +97,7 @@ extension LoginViewController:LoginSignupTableViewDelegate{
             }
         }
     }
-    
+
     @IBAction func closeLoginScreen(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -9,6 +9,7 @@ target 'ActionableHealth' do
     pod 'DAKeyboardControl'
     pod 'SDWebImage'
     pod 'APAddressBook'
+    pod 'PhoneNumberKit', '0.8.5'
   target 'ActionableHealthTests' do
     inherit! :search_paths
     # Pods for testing

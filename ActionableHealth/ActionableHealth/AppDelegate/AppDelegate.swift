@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         forEasyLoading()
+        print(applicationDocumentsDirectory.absoluteURL)
         return true
     }
 
@@ -40,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if NSUserDefaults.isLoggedIn() {
+        if !NSUserDefaults.isLoggedIn() {
             startSyncing()
         }
     }
@@ -127,6 +128,7 @@ extension AppDelegate{
     }
 
     func startSyncing(){
+        Contact.syncCoreDataContacts()
         Contact.syncContacts()
     }
 }

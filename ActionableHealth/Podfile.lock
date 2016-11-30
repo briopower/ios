@@ -5,6 +5,12 @@ PODS:
   - APAddressBook/Core (0.3.0)
   - DAKeyboardControl (2.4.0)
   - HCSStarRatingView (1.4.5)
+  - PhoneNumberKit (0.8.5):
+    - PhoneNumberKit/PhoneNumberKitCore (= 0.8.5)
+    - PhoneNumberKit/UIKit (= 0.8.5)
+  - PhoneNumberKit/PhoneNumberKitCore (0.8.5)
+  - PhoneNumberKit/UIKit (0.8.5):
+    - PhoneNumberKit/PhoneNumberKitCore
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -15,6 +21,7 @@ DEPENDENCIES:
   - APAddressBook
   - DAKeyboardControl
   - HCSStarRatingView
+  - PhoneNumberKit (= 0.8.5)
   - SDWebImage
   - TPKeyboardAvoiding
 
@@ -23,9 +30,10 @@ SPEC CHECKSUMS:
   APAddressBook: 36cf22eb78d57dc53eb7f03d3d4a10af7e6b015d
   DAKeyboardControl: 9d9bca22a5cc3c1d3cc61e24fbd208c3e84a3d2d
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
+  PhoneNumberKit: 5668a7af19d2e566d92831a632ee80f5047eff75
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
 
-PODFILE CHECKSUM: 871506c676e249ae2f4ccc179d820d27b52b3447
+PODFILE CHECKSUM: da0e8f934305c75e404f7e499bd1ce3f2b183b87
 
 COCOAPODS: 1.1.1

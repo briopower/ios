@@ -534,8 +534,8 @@ extension VNProgreessHUD{
         let allRect = self.bounds
 
         // Draw rounded HUD backgroud rect
-        let boxRect = CGRectMake(round((allRect.size.width - size!.width) / 2) + self.xOffset,
-                                 round((allRect.size.height - size!.height) / 2) + self.yOffset, size!.width, size!.height)
+        let boxRect = CGRectMake(round((allRect.size.width - (size?.width ?? 0)) / 2) + self.xOffset,
+                                 round((allRect.size.height - (size?.height ?? 0)) / 2) + self.yOffset, (size?.width ?? 0), (size?.height ?? 0))
         let radius = self.cornerRadius
         CGContextBeginPath(context)
         CGContextMoveToPoint(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect))

@@ -48,8 +48,6 @@ extension TrackFilesViewController{
                 let request = NSMutableURLRequest(URL:url)
                 let headers = NetworkClass.getUpdatedHeader(nil)
                 for (key,value) in headers {
-                    print(key)
-                    print(value)
                     request.setValue(value, forHTTPHeaderField: key)
                 }
                 webView.loadRequest(request)

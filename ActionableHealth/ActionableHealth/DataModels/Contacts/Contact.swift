@@ -11,9 +11,10 @@ import CoreData
 import APAddressBook
 import PhoneNumberKit
 
+
 private let lastSyncedDate = "lastSyncedDate"
-private let apAddressBook = APAddressBook()
 private let emailOrPhone = "emailOrPhone"
+
 //MARK:- NSUserDefaults for last sync date
 extension NSUserDefaults{
     class func setLastSyncDate(date:NSDate) -> Bool {
@@ -26,10 +27,15 @@ extension NSUserDefaults{
     }
 }
 
+//MARK:- Private Methods
 class Contact: NSManagedObject {
+    //MARK:- Variables
+    static let apAddressBook = APAddressBook()
+    static let phoneNumberKit = PhoneNumberKit()
 
-    class func saveContactObj(addressBook:APContact, forId: String, contextRef:NSManagedObjectContext? = nil) {
-        if let context = contextRef ?? AppDelegate.getAppDelegateObject()?.managedObjectContext{
+    //MARK:- Methods
+    private class func saveContactObj(addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+        if let context = contextRef{
             var contact:Contact?
 
             if let temp = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", forId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context).first as? Contact {
@@ -38,26 +44,159 @@ class Contact: NSManagedObject {
                 contact = Contact(entity: NSEntityDescription.entityForName(String(Contact), inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
                 contact?.isAppUser = NSNumber(bool: false)
                 contact?.id = forId
-                contact?.recordId = "\(addressBook.recordID)"
             }
-            contact?.name = addressBook.name?.compositeName
+
+            if let temp = contact {
+                let set = NSMutableSet(set: addressBook.contacts ?? NSSet())
+                set.addObject(temp)
+                addressBook.contacts = set
+            }
+
         }
     }
+
+    private class func loadContacts()
+    {
+        apAddressBook.loadContacts { (contacts:[APContact]?, error:NSError?) in
+            if let contacts = contacts{
+                performSelectorInBackground(#selector(self.addContacts(_:)), withObject: contacts)
+            }else if let desc = error?.localizedDescription{
+                UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
+            }
+        }
+    }
+
+    @objc private class func addContacts(contacts:[APContact]) {
+
+        if let delegate = AppDelegate.getAppDelegateObject() {
+
+            //            let hud = showHud()
+            let prntCxt = delegate.managedObjectContext
+            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+            bgCxt.parentContext = prntCxt
+
+            bgCxt.performBlock({
+
+                for contact in contacts {
+                    //                    let progress = CGFloat(contacts.indexOf(contact) ?? 0)/CGFloat(contacts.count)
+                    //                    dispatch_async(dispatch_get_main_queue(), {
+                    //                        hud?.progress = progress
+                    //                    })
+                    if let addBkObj = AddressBook.saveAddressBookObj(contact, contextRef: bgCxt){
+
+                        if let phoneNumbers = contact.phones {
+                            for phone in phoneNumbers {
+                                if let actualNumber = phone.number {
+                                    if let phNum = phoneNumberKit.parseMultiple([actualNumber]).first{
+                                        saveContactObj(addBkObj, forId: "\(phNum.nationalNumber)", contextRef: bgCxt)
+                                    }
+                                }
+                            }
+                        }
+
+                        if let emails = contact.emails {
+                            for email in emails {
+                                if let em  = email.address?.getValidObject() {
+                                    if em.isValidEmail(){
+                                        saveContactObj(addBkObj, forId: "\(em)", contextRef: bgCxt)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                do{
+                    try bgCxt.save()
+                    prntCxt.performBlock({
+                        do{
+                            try prntCxt.save()
+                            NSUserDefaults.setLastSyncDate(NSDate())
+                            if contacts.count > 0 {
+                                syncCoreDataContacts()
+                            }
+                            hideHud()
+                        }catch{
+                            hideHud()
+                            debugPrint("Error saving data")
+                        }
+                    })
+                }catch{
+                    hideHud()
+                    debugPrint("Error saving data")
+                }
+            })
+        }
+
+    }
+
+    private class func processResponse(response:AnyObject?) {
+        if let delegate = AppDelegate.getAppDelegateObject() {
+            let prntCxt = delegate.managedObjectContext
+            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+            bgCxt.parentContext = prntCxt
+
+            bgCxt.performBlock({
+                if let arr = response as? NSArray {
+                    for obj in arr {
+                        if let tempId = (obj as? NSDictionary)?[emailOrPhone] as? String {
+                            setAppUserWithId(tempId)
+                        }
+                    }
+                }
+                do{
+                    try bgCxt.save()
+                    prntCxt.performBlock({
+                        do{
+                            try prntCxt.save()
+                        }catch{
+                            debugPrint("Error saving data")
+                        }
+                    })
+                }catch{
+                    debugPrint("Error saving data")
+                }
+            })
+        }
+
+    }
+
+    private class func setAppUserWithId(id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+        if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
+            for obj in arr {
+                obj.isAppUser = NSNumber(bool: true)
+            }
+        }
+    }
+
+    private class func showHud() -> VNProgreessHUD? {
+        if let view = UIApplication.sharedApplication().keyWindow {
+            debugPrint(view)
+            let hud = VNProgreessHUD.showHUDAddedToView(view, Animated: true)
+            dispatch_async(dispatch_get_main_queue(), {
+                hud.mode = VNProgressHUDMode.AnnularDeterminate
+                hud.labelText = "Syncing Contacts\nPlease wait..."
+                hud.progress = 0
+            })
+            return hud
+        }
+        return nil
+    }
+
+    private class func hideHud() {
+        if let view = UIApplication.sharedApplication().keyWindow {
+            VNProgreessHUD.hideAllHudsFromView(view, Animated: true)
+        }
+    }
+
 }
 
 
 //MARK:- Contacts Syncing Methods
 extension Contact{
 
-    class func checkAccess() {
-        switch APAddressBook.access() {
-        case .Denied:
-            print("Denied")
-        case .Granted:
-            print("Granted")
-        case .Unknown:
-            print("Unknown")
-        }
+    class func checkAccess() -> APAddressBookAccess{
+        return APAddressBook.access()
     }
 
     class func syncContacts() {
@@ -94,82 +233,6 @@ extension Contact{
         loadContacts()
     }
 
-    class func loadContacts()
-    {
-        apAddressBook.loadContacts { (contacts:[APContact]?, error:NSError?) in
-            if let contacts = contacts{
-                performSelectorInBackground(#selector(self.addContacts(_:)), withObject: contacts)
-            }else if let desc = error?.localizedDescription{
-                UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
-            }
-        }
-    }
-
-    class func addContacts(contacts:[APContact]) {
-
-        if let delegate = AppDelegate.getAppDelegateObject() {
-            let hud = VNProgreessHUD.showHUDAddedToView(UIApplication.sharedApplication().keyWindow ?? UIView(), Animated: true)
-            dispatch_async(dispatch_get_main_queue(), {
-                hud.mode = VNProgressHUDMode.AnnularDeterminate
-                hud.labelText = "Syncing Contacts\nPlease wait..."
-                hud.progress = 0
-            })
-
-            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-            let prntCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-
-            prntCxt.persistentStoreCoordinator = delegate.persistentStoreCoordinator
-            bgCxt.parentContext = prntCxt
-
-            bgCxt.performBlock({
-                let phoneNumberKit = PhoneNumberKit()
-
-                for contact in contacts {
-                    let progress = CGFloat(contacts.indexOf(contact) ?? 0)/CGFloat(contacts.count)
-                    dispatch_async(dispatch_get_main_queue(), {
-                        hud.progress = progress
-                    })
-                    if let phoneNumbers = contact.phones {
-                        for phone in phoneNumbers {
-                            if let actualNumber = phone.number {
-                                if let phNum = phoneNumberKit.parseMultiple([actualNumber]).first{
-                                    saveContactObj(contact, forId: "\(phNum.nationalNumber)", contextRef: bgCxt)
-                                }
-                            }
-                        }
-                    }
-
-                    if let emails = contact.emails {
-                        for email in emails {
-                            if let em  = email.address {
-                                saveContactObj(contact, forId: "\(em)", contextRef: bgCxt)
-                            }
-                        }
-                    }
-                }
-
-                do{
-                    try bgCxt.save()
-                    prntCxt.performBlock({
-                        do{
-                            try prntCxt.save()
-                            //                            NSUserDefaults.setLastSyncDate(NSDate())
-                            syncCoreDataContacts()
-                            hud.hide(true)
-                        }catch{
-                            hud.hide(true)
-                            print("Error saving data")
-                        }
-                    })
-                }catch{
-                    hud.hide(true)
-                    print("Error saving data")
-                }
-            })
-        }
-
-    }
-
     class func syncCoreDataContacts() {
         if let contacts = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@", NSNumber(bool: false)), sortingKey: nil, fetchLimit: nil) as? [Contact] {
             let arr = NSMutableArray()
@@ -183,14 +246,18 @@ extension Contact{
             }
         }
     }
-    
-    //MARK: Network Methods
-    class func syncContactFromServer(array:NSMutableArray) {
-        print(array)
-        NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
+}
 
-
-            print(responseObj)
+//MARK: Network Methods
+extension Contact{
+    private class func syncContactFromServer(array:NSMutableArray) {
+        if NSUserDefaults.isLoggedIn() {
+            NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
+                if status{
+                    processResponse(responseObj)
+                }
+                debugPrint("\(statusCode),\(responseObj)")
+            }
         }
     }
 }

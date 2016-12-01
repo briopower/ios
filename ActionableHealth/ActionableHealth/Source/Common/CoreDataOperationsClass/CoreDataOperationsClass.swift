@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataOperationsClass: NSObject {
     //MARK:  data fetching methods via NSFetchRequest
-    class  func fetchObjectsOfClassWithName(className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false , fetchLimit :Int?, context:NSManagedObjectContext? = nil) -> Array<AnyObject>{
+    class  func fetchObjectsOfClassWithName(className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false , fetchLimit :Int?, context:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Array<AnyObject>{
         let fetchRequest = NSFetchRequest(entityName: className)
         fetchRequest.predicate = predicate
         
@@ -32,10 +32,8 @@ class CoreDataOperationsClass: NSObject {
         }
         
         do{
-            let managedObjectContext = context ?? AppDelegate.getAppDelegateObject()?.managedObjectContext
-
+            let managedObjectContext = context
             let fetchedObjects = try managedObjectContext?.executeFetchRequest(fetchRequest)
-            print("-----------------------------------\(fetchedObjects?.count)")
             return fetchedObjects ?? []
         }
         catch

@@ -39,7 +39,7 @@ extension UIImage{
     class func printAllImages(){
         let imageArray = NSBundle.mainBundle().pathsForResourcesOfType("png", inDirectory: nil)
         for image in imageArray {
-            print(image)
+            debugPrint(image)
         }
     }
 
@@ -75,7 +75,7 @@ extension UIImage {
     public class func gifWithData(data: NSData) -> UIImage? {
         // Create source from data
         guard let source = CGImageSourceCreateWithData(data, nil) else {
-            print("SwiftGif: Source for the image does not exist")
+            debugPrint("SwiftGif: Source for the image does not exist")
             return nil
         }
 
@@ -86,13 +86,13 @@ extension UIImage {
         // Validate URL
         guard let bundleURL:NSURL? = NSURL(string: gifUrl)
             else {
-                print("SwiftGif: This image named \"\(gifUrl)\" does not exist")
+                debugPrint("SwiftGif: This image named \"\(gifUrl)\" does not exist")
                 return nil
         }
 
         // Validate data
         guard let imageData = NSData(contentsOfURL: bundleURL!) else {
-            print("SwiftGif: Cannot turn image named \"\(gifUrl)\" into NSData")
+            debugPrint("SwiftGif: Cannot turn image named \"\(gifUrl)\" into NSData")
             return nil
         }
 
@@ -103,13 +103,13 @@ extension UIImage {
         // Check for existance of gif
         guard let bundleURL = NSBundle.mainBundle()
             .URLForResource(name, withExtension: "gif") else {
-                print("SwiftGif: This image named \"\(name)\" does not exist")
+                debugPrint("SwiftGif: This image named \"\(name)\" does not exist")
                 return nil
         }
 
         // Validate data
         guard let imageData = NSData(contentsOfURL: bundleURL) else {
-            print("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
+            debugPrint("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
             return nil
         }
 

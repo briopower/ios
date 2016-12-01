@@ -68,7 +68,7 @@ extension CommentsViewController{
 //MARK:- ReverseTableViewDelegate
 extension CommentsViewController:ReverseTableViewDelegate{
     func topElements(view: UIView) {
-        print("Get Top Elemets")
+        debugPrint("Get Top Elemets")
     }
 
     func clickedAtIndexPath(indexPath: NSIndexPath, obj: AnyObject) {

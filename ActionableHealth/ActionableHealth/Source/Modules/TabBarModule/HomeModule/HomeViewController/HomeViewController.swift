@@ -103,7 +103,7 @@ extension HomeViewController{
     }
     @IBAction func sortAction(sender: UIButton) {
         UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["NEAR BY LOCATION", "RATING (HIGH TO LOW)"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
-            print("Clicked at index \(tappedAtIndex)")
+            debugPrint("Clicked at index \(tappedAtIndex)")
         }
     }
 }

@@ -204,13 +204,13 @@ extension NetworkClass{
                 if NSJSONSerialization.isValidJSONObject(parameters) {
                     mutableURLRequest.HTTPBody =  try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
                 }else{
-                    print("Problem in Parameters")
+                    debugPrint("Problem in Parameters")
                 }
             }catch{
-                print("Problem in Parameters")
+                debugPrint("Problem in Parameters")
             }
         }
-        mutableURLRequest.timeoutInterval = 500
+        mutableURLRequest.timeoutInterval = 360
         return mutableURLRequest
     }
     

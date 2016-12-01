@@ -29,9 +29,9 @@ extension UIFont {
 
     class func printAvailableFonts(){
         for family in UIFont.familyNames() {
-            print(family)
+            debugPrint(family)
             for fontName in UIFont.fontNamesForFamilyName(family) {
-                print(fontName)
+                debugPrint(fontName)
             }
         }
     }

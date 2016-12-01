@@ -80,6 +80,8 @@
 		3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */; };
 		3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B51DB0A02B00D733C2 /* TabBar.storyboard */; };
 		3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B81DB0A03A00D733C2 /* Home.storyboard */; };
+		3CB2B8421DEFE46D006DC4E9 /* AddressBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2B8401DEFE46D006DC4E9 /* AddressBook+CoreDataProperties.swift */; };
+		3CB2B8431DEFE46D006DC4E9 /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB2B8411DEFE46D006DC4E9 /* AddressBook.swift */; };
 		3CB8A2951DEDAE0C009B9AE9 /* PhasesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A28E1DEDAE0C009B9AE9 /* PhasesModel.swift */; };
 		3CB8A2961DEDAE0C009B9AE9 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A2901DEDAE0C009B9AE9 /* TasksModel.swift */; };
 		3CB8A2971DEDAE0C009B9AE9 /* TemplatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A2911DEDAE0C009B9AE9 /* TemplatesModel.swift */; };
@@ -266,6 +268,8 @@
 		3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignupLogin.storyboard; sourceTree = "<group>"; };
 		3CAE70B51DB0A02B00D733C2 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		3CAE70B81DB0A03A00D733C2 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		3CB2B8401DEFE46D006DC4E9 /* AddressBook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddressBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3CB2B8411DEFE46D006DC4E9 /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
 		3CB8A28E1DEDAE0C009B9AE9 /* PhasesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhasesModel.swift; sourceTree = "<group>"; };
 		3CB8A2901DEDAE0C009B9AE9 /* TasksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		3CB8A2911DEDAE0C009B9AE9 /* TemplatesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplatesModel.swift; sourceTree = "<group>"; };
@@ -463,6 +467,7 @@
 		3C1EC5501DA3A864003DC2A3 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				3CB2B83F1DEFE44F006DC4E9 /* AddressBook */,
 				3CB8A28A1DEDAE0C009B9AE9 /* Contacts */,
 				3CB8A28B1DEDAE0C009B9AE9 /* Templates */,
 				3CB8A2921DEDAE0C009B9AE9 /* Users */,
@@ -1073,6 +1078,15 @@
 				3CAE70B81DB0A03A00D733C2 /* Home.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3CB2B83F1DEFE44F006DC4E9 /* AddressBook */ = {
+			isa = PBXGroup;
+			children = (
+				3CB2B8401DEFE46D006DC4E9 /* AddressBook+CoreDataProperties.swift */,
+				3CB2B8411DEFE46D006DC4E9 /* AddressBook.swift */,
+			);
+			path = AddressBook;
 			sourceTree = "<group>";
 		};
 		3CB8A28A1DEDAE0C009B9AE9 /* Contacts */ = {
@@ -2073,6 +2087,7 @@
 				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
 				3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */,
 				3C1EC5AA1DA3A864003DC2A3 /* UIViewController_Common.swift in Sources */,
+				3CB2B8431DEFE46D006DC4E9 /* AddressBook.swift in Sources */,
 				3CCF8AED1DA62A9900C76C64 /* DetailsScrollableTableView.swift in Sources */,
 				3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */,
 				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
@@ -2111,6 +2126,7 @@
 				3CCF8AF11DA62B2D00C76C64 /* DetailsCell.swift in Sources */,
 				3CAB0FAC1DB0D8900090BEF3 /* ProfileImageCell.swift in Sources */,
 				3C1EC5AB1DA3A864003DC2A3 /* VNProgreessHUD.swift in Sources */,
+				3CB2B8421DEFE46D006DC4E9 /* AddressBook+CoreDataProperties.swift in Sources */,
 				3CF5B55F1DB79E6900224046 /* InviteForTrackCell.swift in Sources */,
 				3C1EC59F1DA3A864003DC2A3 /* UIColor_Common.swift in Sources */,
 				3CAB0F981DB0BA090090BEF3 /* GroupsCell.swift in Sources */,

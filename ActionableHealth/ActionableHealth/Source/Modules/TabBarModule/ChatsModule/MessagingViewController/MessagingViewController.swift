@@ -58,7 +58,7 @@ extension MessagingViewController{
     override func detailsButtonAction(sender: UIButton?) {
         super.detailsButtonAction(sender)
         UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["VIEW PROFILE", "CLEAR CHAT"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
-            print("CLicked at index\(tappedAtIndex)")
+            debugPrint("CLicked at index\(tappedAtIndex)")
         }
     }
 }

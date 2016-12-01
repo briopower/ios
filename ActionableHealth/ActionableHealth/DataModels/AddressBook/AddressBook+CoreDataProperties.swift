@@ -1,5 +1,5 @@
 //
-//  Contact+CoreDataProperties.swift
+//  AddressBook+CoreDataProperties.swift
 //  ActionableHealth
 //
 //  Created by Vidhan Nandi on 01/12/16.
@@ -12,10 +12,10 @@
 import Foundation
 import CoreData
 
-extension Contact {
+extension AddressBook {
 
-    @NSManaged var id: String?
-    @NSManaged var isAppUser: NSNumber?
-    @NSManaged var addressBook: AddressBook?
+    @NSManaged var recordId: NSNumber?
+    @NSManaged var name: String?
+    @NSManaged var contacts: NSSet?
 
 }

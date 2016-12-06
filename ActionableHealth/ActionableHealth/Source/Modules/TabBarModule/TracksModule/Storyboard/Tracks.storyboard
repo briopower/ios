@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -118,7 +118,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NcZ-JQ-vgq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NcZ-JQ-vgq">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -126,16 +126,33 @@
                                     <outlet property="delegate" destination="W1e-xu-ApW" id="8gZ-b6-f0V"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Icq-nE-eQ1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="DwU-5G-6nd"/>
+                                </constraints>
+                                <color key="tintColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="W1e-xu-ApW" id="wMR-iP-zOV"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Icq-nE-eQ1" firstAttribute="leading" secondItem="NcZ-JQ-vgq" secondAttribute="leading" id="NDQ-xY-cfP"/>
+                            <constraint firstItem="NcZ-JQ-vgq" firstAttribute="top" secondItem="Icq-nE-eQ1" secondAttribute="bottom" id="QSI-53-wkZ"/>
                             <constraint firstItem="NcZ-JQ-vgq" firstAttribute="leading" secondItem="b4r-0G-kpV" secondAttribute="leading" id="S5L-Tf-apL"/>
-                            <constraint firstItem="NcZ-JQ-vgq" firstAttribute="top" secondItem="b4r-0G-kpV" secondAttribute="top" id="SID-Dn-lFS"/>
+                            <constraint firstItem="Icq-nE-eQ1" firstAttribute="trailing" secondItem="NcZ-JQ-vgq" secondAttribute="trailing" id="a5d-Vc-ckK"/>
+                            <constraint firstItem="Icq-nE-eQ1" firstAttribute="top" secondItem="b4r-0G-kpV" secondAttribute="top" id="mx1-uK-WKT"/>
                             <constraint firstAttribute="trailing" secondItem="NcZ-JQ-vgq" secondAttribute="trailing" id="n2Z-vu-bpi"/>
                             <constraint firstItem="Hsv-Xj-XU6" firstAttribute="top" secondItem="NcZ-JQ-vgq" secondAttribute="bottom" id="zzZ-7U-JHW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="constraintBottomSpace" destination="zzZ-7U-JHW" id="uJI-UL-MMW"/>
+                        <outlet property="searchBar" destination="Icq-nE-eQ1" id="MMC-wJ-TTY"/>
+                        <outlet property="searchBarHeight" destination="DwU-5G-6nd" id="P25-iM-o84"/>
                         <outlet property="tblView" destination="NcZ-JQ-vgq" id="2jv-sj-t6M"/>
                     </connections>
                 </viewController>

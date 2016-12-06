@@ -12,6 +12,7 @@ class CommonViewController: UIViewController {
     //MARK:- variables
     var nullCaseView:NullCaseView?
     var showLoading = true
+    var showLoginModule = true
 
     //MARK:- Life cycle
     override func viewDidLoad() {
@@ -39,6 +40,9 @@ class CommonViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        if !NSUserDefaults.isLoggedIn() && showLoginModule {
+            UIViewController.presentLoginViewController(true, animated: false)
+        }
     }
 
     //MARK:  Delegate

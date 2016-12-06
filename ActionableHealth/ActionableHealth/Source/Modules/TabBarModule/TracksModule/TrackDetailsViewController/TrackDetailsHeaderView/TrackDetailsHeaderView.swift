@@ -69,7 +69,7 @@ extension TrackDetailsHeaderView{
         case .Home:
             requestButton.setTitle("JOIN TRACK", forState: .Normal)
         case .Tracks:
-            requestButton.setTitle("INVITE MEMBERS", forState: .Normal)
+            requestButton.setTitle("INVITE", forState: .Normal)
         default:
             break
         }

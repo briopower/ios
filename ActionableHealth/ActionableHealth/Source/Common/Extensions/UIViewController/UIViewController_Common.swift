@@ -27,11 +27,11 @@ extension UIViewController{
         }
     }
 
-    class func presentLoginViewController(shouldResetData:Bool = false){
+    class func presentLoginViewController(shouldResetData:Bool = false, animated:Bool = true){
         if let viewCont = getTopMostViewController() as? UINavigationController {
             if viewCont.viewControllers.count > 0{
                 if let viewCont1 = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateInitialViewController() as? UINavigationController {
-                    viewCont.presentViewController(viewCont1, animated: true, completion: {
+                    viewCont.presentViewController(viewCont1, animated: animated, completion: {
                         if shouldResetData{
                             NSUserDefaults.clear()
                             if let tabBarCont = viewCont.viewControllers[0] as? UITabBarController{

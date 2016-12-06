@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
 class LoginViewController: CommonViewController {
 
@@ -17,11 +18,13 @@ class LoginViewController: CommonViewController {
 
     //MARK:- Variables
     let currentUser = UserModel()
+    let phoneNumberKit = PhoneNumberKit()
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        phoneNumberKit
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +37,7 @@ class LoginViewController: CommonViewController {
 extension LoginViewController{
 
     func setupView() {
+        showLoginModule = false
         tblView.setupTableView(LoginSignupTableViewSourceType.Login, user: currentUser)
         tblView.loginSignupTblViewDelegate = self
         CommonMethods.addShadowToView(container)

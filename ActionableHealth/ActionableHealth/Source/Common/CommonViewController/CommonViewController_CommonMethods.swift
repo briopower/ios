@@ -52,10 +52,13 @@ extension CommonViewController{
     }
     
     func setNavigationBarBackgroundColor(color:UIColor?) -> Void {
-        if color != nil {
-            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color!), forBarMetrics: UIBarMetrics.Default)
+        if let color = color {
+            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), forBarMetrics: UIBarMetrics.Default)
+            self.navigationController?.view.backgroundColor = color
         }else{
-            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(UIColor.getColorFromHexValue(0xF5F5F5, Alpha: 1)), forBarMetrics: UIBarMetrics.Default)
+            let color = UIColor.getColorFromHexValue(0xF5F5F5, Alpha: 1)
+            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), forBarMetrics: UIBarMetrics.Default)
+            self.navigationController?.view.backgroundColor = color
         }
         getNavigationController()?.navigationBar.setNeedsDisplay()
     }

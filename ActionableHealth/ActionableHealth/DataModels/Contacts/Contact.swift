@@ -94,15 +94,15 @@ class Contact: NSManagedObject {
                             }
                         }
 
-                        if let emails = contact.emails {
-                            for email in emails {
-                                if let em  = email.address?.getValidObject() {
-                                    if em.isValidEmail(){
-                                        saveContactObj(addBkObj, forId: "\(em)", contextRef: bgCxt)
-                                    }
-                                }
-                            }
-                        }
+//                        if let emails = contact.emails {
+//                            for email in emails {
+//                                if let em  = email.address?.getValidObject() {
+//                                    if em.isValidEmail(){
+//                                        saveContactObj(addBkObj, forId: "\(em)", contextRef: bgCxt)
+//                                    }
+//                                }
+//                            }
+//                        }
                     }
                 }
 
@@ -201,7 +201,7 @@ extension Contact{
 
     class func syncContacts() {
 
-        apAddressBook.fieldsMask = [.Name, .PhonesOnly, .EmailsOnly, .Dates, .RecordDate]
+        apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
         apAddressBook.sortDescriptors = [NSSortDescriptor(key: "name.firstName", ascending: true), NSSortDescriptor(key: "name.lastName", ascending: true)]
 
         apAddressBook.filterBlock =
@@ -217,14 +217,9 @@ extension Contact{
                         shouldProcess = true
                     }
                     if shouldProcess {
-                        if let phones = contact.phones, let emails = contact.emails {
-                            return phones.count > 0 || emails.count > 0
-                        }else if let phones = contact.phones
+                        if let phones = contact.phones
                         {
                             return phones.count > 0
-                        }else if let emails = contact.emails
-                        {
-                            return emails.count > 0
                         }
                     }
                 }
@@ -241,8 +236,10 @@ extension Contact{
                     arr.addObject([emailOrPhone:uniqueId])
                 }
             }
-            if arr.count > 0{
-                syncContactFromServer(arr)
+            if let splitedArray = arr.splitArrayWithSize(500) as? [NSArray]{
+                for obj in splitedArray {
+                    syncContactFromServer(NSMutableArray(array: obj))
+                }
             }
         }
     }
@@ -255,6 +252,8 @@ extension Contact{
             NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
                 if status{
                     processResponse(responseObj)
+                }else{
+                    syncContactFromServer(array)
                 }
                 debugPrint("\(statusCode),\(responseObj)")
             }

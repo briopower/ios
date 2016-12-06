@@ -31,7 +31,7 @@ class CommonCollectionView: UICollectionView {
 
     private var bottomViewVisible = false
     private var topViewVisible = false
-    private var refreshControl = UIRefreshControl()
+    var topIndicator = UIRefreshControl()
 
     //MARK:- Init Methods
     required init?(coder aDecoder: NSCoder) {
@@ -67,7 +67,7 @@ extension CommonCollectionView{
     func setupView() {
         delegate = self
         dataSource = self
-        refreshControl.addTarget(self, action: #selector(self.topReached), forControlEvents: UIControlEvents.ValueChanged)
+        topIndicator.addTarget(self, action: #selector(self.topReached), forControlEvents: UIControlEvents.ValueChanged)
         registerNib(UINib(nibName: String(CommonCollectionReusableView), bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(CommonCollectionReusableView))
     }
 
@@ -96,21 +96,21 @@ extension CommonCollectionView{
 //MARK:- TOP LOADER
 extension CommonCollectionView{
     func addTopLoader() {
-        addSubview(refreshControl)
+        addSubview(topIndicator)
     }
 
     func removeTopLoader() {
-        refreshControl.removeFromSuperview()
+        topIndicator.removeFromSuperview()
     }
 
     func startTopLoader() {
         topViewVisible = true
-        refreshControl.beginRefreshing()
+        topIndicator.beginRefreshing()
     }
 
     func stopTopLoader() {
         topViewVisible = false
-        refreshControl.endRefreshing()
+        topIndicator.endRefreshing()
     }
 
     func topReached() {

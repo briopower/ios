@@ -111,7 +111,7 @@
         <!--Verify Phone Number View Controller-->
         <scene sceneID="7yA-Za-hWt">
             <objects>
-                <viewController id="HrQ-JT-YIb" customClass="VerifyPhoneNumberViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyPhoneNumberViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HrQ-JT-YIb" customClass="VerifyPhoneNumberViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Krh-I6-RuD"/>
                         <viewControllerLayoutGuide type="bottom" id="zDY-9l-mjh"/>
@@ -350,7 +350,7 @@ Didn't receive any mail?</string>
         <!--Enter Otp View Controller-->
         <scene sceneID="qcQ-1c-3Ps">
             <objects>
-                <viewController id="baA-EG-QDb" customClass="EnterOtpViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterOtpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="baA-EG-QDb" customClass="EnterOtpViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NaA-Ab-BkI"/>
                         <viewControllerLayoutGuide type="bottom" id="IDq-rn-H0Y"/>

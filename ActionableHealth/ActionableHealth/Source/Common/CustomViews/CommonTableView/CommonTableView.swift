@@ -23,7 +23,7 @@ class CommonTableView: UITableView {
     //MARK:- Variables
     weak var commonTableViewDelegate:CommonTableViewDelegate?
     var dataArray:NSMutableArray = []
-    var refreshControl = UIRefreshControl()
+    var topIndicator = UIRefreshControl()
     var animatedFooter = UIView()
     var tableViewType = TableViewType.Default{
         didSet{
@@ -53,7 +53,7 @@ extension CommonTableView{
         self.rowHeight = UITableViewAutomaticDimension
         self.tableFooterView = nil
 
-        refreshControl.addTarget(self, action: #selector(self.topElements(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        topIndicator.addTarget(self, action: #selector(self.topElements(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
         animatedFooter.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width, height: 44)
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
@@ -128,18 +128,18 @@ extension CommonTableView{
 
     //MARK: Top loader
     func addTopLoader(text:String?, tintColor:UIColor = UIColor.darkGrayColor()) {
-        refreshControl.removeFromSuperview()
+        topIndicator.removeFromSuperview()
         if let title = text {
-            refreshControl.attributedTitle = NSAttributedString(string: title)
+            topIndicator.attributedTitle = NSAttributedString(string: title)
         }
-        refreshControl.tintColor = tintColor
-        self.addSubview(refreshControl)
+        topIndicator.tintColor = tintColor
+        self.addSubview(topIndicator)
     }
     func removeTopLoader() {
-        refreshControl.removeFromSuperview()
+        topIndicator.removeFromSuperview()
     }
     func stopTopLoader() {
-        refreshControl.endRefreshing()
+        topIndicator.endRefreshing()
     }
     @IBAction func topElements(sender:UIRefreshControl) {
         commonTableViewDelegate?.topElements(self)

@@ -29,6 +29,12 @@ extension String{
     func length() -> Int {
         return self.characters.count
     }
+
+    //MARK: Numbers Only
+    func getNumbers() -> String {
+        let okayChars : Set<Character> = Set("1234567890".characters)
+        return String(self.characters.filter {okayChars.contains($0) })
+    }
     
     //MARK: Validation
     func getValidObject() -> String? {

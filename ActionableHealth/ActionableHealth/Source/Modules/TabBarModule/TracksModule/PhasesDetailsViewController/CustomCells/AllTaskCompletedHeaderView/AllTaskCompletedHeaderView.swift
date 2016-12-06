@@ -17,15 +17,17 @@ class AllTaskCompletedHeaderView: UIView {
 //MARK:- Additional methods
 extension AllTaskCompletedHeaderView{
     class func getView() -> AllTaskCompletedHeaderView? {
-        let nibArr = NSBundle.mainBundle().loadNibNamed(String(AllTaskCompletedHeaderView), owner: nil, options: nil)
-
-        for view in nibArr {
-            if let headerView = view as? AllTaskCompletedHeaderView
-            {
-                headerView.setupFrame()
-                return headerView
+        if let nibArr = NSBundle.mainBundle().loadNibNamed(String(AllTaskCompletedHeaderView), owner: nil, options: nil){
+            for view in nibArr {
+                if let headerView = view as? AllTaskCompletedHeaderView
+                {
+                    headerView.setupFrame()
+                    return headerView
+                }
             }
         }
+
+
         return nil
     }
 

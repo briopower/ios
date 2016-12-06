@@ -62,6 +62,9 @@ class Constants: NSObject {
 
     //MARK:- URLs
     struct URLs {
+        static let countryCodes = "http://country.io/phone.json"
+        static let countryNames = "http://country.io/names.json"
+        
         static let base = "https://briopower-qa.appspot.com/"
 
         static let authAPIs = "auth/"

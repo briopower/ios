@@ -13,7 +13,7 @@ import ImageIO
 
 //MARK:- Instance methods
 extension UIImage{
-    func resizeImage(newWidth: CGFloat, newHeight: CGFloat) -> UIImage {
+    func resizeImage(newWidth: CGFloat, newHeight: CGFloat) -> UIImage? {
 
         UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
         self.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
@@ -29,9 +29,9 @@ extension UIImage{
         let frame:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(frame.size)
         let  context:CGContextRef = UIGraphicsGetCurrentContext()!
-        CGContextSetFillColorWithColor(context, color?.CGColor)
+        CGContextSetFillColorWithColor(context, (color?.CGColor)!)
         CGContextFillRect(context, frame)
-        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }

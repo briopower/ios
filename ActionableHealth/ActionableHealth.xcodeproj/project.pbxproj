@@ -50,6 +50,10 @@
 		3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */; };
 		3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */; };
 		3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C9641331DB4D73500EE9676 /* Chats.storyboard */; };
+		3C966DBF1DF6C8DE00E299BF /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C966DBE1DF6C8DE00E299BF /* CountryListViewController.swift */; };
+		3C966DC21DF6CAFB00E299BF /* CountryCodeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C966DC01DF6CAFB00E299BF /* CountryCodeListCell.swift */; };
+		3C966DC31DF6CAFB00E299BF /* CountryCodeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C966DC11DF6CAFB00E299BF /* CountryCodeListCell.xib */; };
+		3C966DC51DF6E98D00E299BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C966DC41DF6E98D00E299BF /* GoogleService-Info.plist */; };
 		3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */; };
 		3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */; };
 		3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */; };
@@ -244,6 +248,10 @@
 		3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListCell.swift; sourceTree = "<group>"; };
 		3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
 		3C9641331DB4D73500EE9676 /* Chats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
+		3C966DBE1DF6C8DE00E299BF /* CountryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
+		3C966DC01DF6CAFB00E299BF /* CountryCodeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeListCell.swift; sourceTree = "<group>"; };
+		3C966DC11DF6CAFB00E299BF /* CountryCodeListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryCodeListCell.xib; sourceTree = "<group>"; };
+		3C966DC41DF6E98D00E299BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_CenterAllign.swift; sourceTree = "<group>"; };
 		3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_FontSizeButton.swift; sourceTree = "<group>"; };
 		3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Localizable.swift; sourceTree = "<group>"; };
@@ -474,6 +482,7 @@
 				3C1EC5581DA3A864003DC2A3 /* Source */,
 				3C1EC5291DA3A7C0003DC2A3 /* LaunchScreen.storyboard */,
 				3C1EC52C1DA3A7C0003DC2A3 /* Info.plist */,
+				3C966DC41DF6E98D00E299BF /* GoogleService-Info.plist */,
 			);
 			path = ActionableHealth;
 			sourceTree = "<group>";
@@ -878,6 +887,32 @@
 				3C9641331DB4D73500EE9676 /* Chats.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3C966DBB1DF6C8A500E299BF /* CountryCodeListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C966DBE1DF6C8DE00E299BF /* CountryListViewController.swift */,
+				3C966DBC1DF6C8A500E299BF /* CustomCells */,
+			);
+			path = CountryCodeListViewController;
+			sourceTree = "<group>";
+		};
+		3C966DBC1DF6C8A500E299BF /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3C966DBD1DF6C8A500E299BF /* CountryCodeListCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3C966DBD1DF6C8A500E299BF /* CountryCodeListCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C966DC01DF6CAFB00E299BF /* CountryCodeListCell.swift */,
+				3C966DC11DF6CAFB00E299BF /* CountryCodeListCell.xib */,
+			);
+			path = CountryCodeListCell;
 			sourceTree = "<group>";
 		};
 		3C9D13121DA3CE5800998DA2 /* CustomViews */ = {
@@ -1495,6 +1530,7 @@
 		3CCF8ACE1DA61A9500C76C64 /* SignupLoginModule */ = {
 			isa = PBXGroup;
 			children = (
+				3C966DBB1DF6C8A500E299BF /* CountryCodeListViewController */,
 				3CAE70B11DB0A01D00D733C2 /* Storyboard */,
 				3CCF8AD71DA6219800C76C64 /* LoginSignupTableView */,
 				3CC9D08E1DB8D52300287068 /* ForgotPasswordViewController */,
@@ -1866,19 +1902,27 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Finoit Technologies";
 				TargetAttributes = {
 					3C1EC5191DA3A7BF003DC2A3 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = M8HBL5W4VV;
+						DevelopmentTeam = 4F7SW76LL6;
+						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					3C1EC5301DA3A7C0003DC2A3 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 3C1EC5191DA3A7BF003DC2A3;
 					};
 					3C1EC53B1DA3A7C0003DC2A3 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 3C1EC5191DA3A7BF003DC2A3;
 					};
 				};
@@ -1919,9 +1963,11 @@
 				3CC9D0851DB8AAB600287068 /* AllTaskCompletedHeaderView.xib in Resources */,
 				3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */,
 				3CAB0FAD1DB0D8900090BEF3 /* ProfileImageCell.xib in Resources */,
+				3C966DC51DF6E98D00E299BF /* GoogleService-Info.plist in Resources */,
 				3CACF4001DB635060034D700 /* HomeViewCell.xib in Resources */,
 				3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */,
 				3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */,
+				3C966DC31DF6CAFB00E299BF /* CountryCodeListCell.xib in Resources */,
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
@@ -2131,6 +2177,7 @@
 				3CC9D0701DB886FC00287068 /* CommonTableView.swift in Sources */,
 				3CAB0FA21DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift in Sources */,
 				3CAB0F9F1DB0C2B40090BEF3 /* GroupMembersViewController.swift in Sources */,
+				3C966DBF1DF6C8DE00E299BF /* CountryListViewController.swift in Sources */,
 				3CCF310D1DB771DD001A1E7B /* CommonHeaderButton.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
@@ -2174,6 +2221,7 @@
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,
 				3CCF30F71DB731CF001A1E7B /* RecievedMessageCell.swift in Sources */,
+				3C966DC21DF6CAFB00E299BF /* CountryCodeListCell.swift in Sources */,
 				3CC9D07A1DB897EF00287068 /* TrackFileCell.swift in Sources */,
 				3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */,
 				3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */,
@@ -2293,8 +2341,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2338,8 +2388,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2358,6 +2410,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2366,14 +2419,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BCF5EE8FE3931530E8332FB /* Pods-ActionableHealth.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: vidhan nandi (W6T8TLY7B9)";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
+				PROVISIONING_PROFILE = "df7cf10b-663b-4ed0-a51f-8fe1e180ce91";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -2381,6 +2437,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C3346372087476E9DB865E13 /* Pods-ActionableHealth.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
@@ -2390,6 +2447,7 @@
 				PRODUCT_NAME = BRIO;
 				PROVISIONING_PROFILE = "00c78739-51ea-4c99-a957-1c57b8c86756";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -2402,7 +2460,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealthTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ActionableHealth.app/ActionableHealth";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BRIO.app/BRIO";
 			};
 			name = Debug;
 		};
@@ -2415,7 +2474,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealthTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ActionableHealth.app/ActionableHealth";
+				SWIFT_VERSION = 2.3;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BRIO.app/BRIO";
 			};
 			name = Release;
 		};
@@ -2427,6 +2487,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealthUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = ActionableHealth;
 			};
 			name = Debug;
@@ -2439,6 +2500,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealthUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = ActionableHealth;
 			};
 			name = Release;

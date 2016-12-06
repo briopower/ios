@@ -45,13 +45,13 @@ extension TrackDetailsHeaderView{
 //MARK:- Additional methods
 extension TrackDetailsHeaderView{
     class func getView() -> TrackDetailsHeaderView? {
-        let nibArr = NSBundle.mainBundle().loadNibNamed(String(TrackDetailsHeaderView), owner: nil, options: nil)
-
-        for view in nibArr {
-            if let headerView = view as? TrackDetailsHeaderView
-            {
-                headerView.setupFrame()
-                return headerView
+        if let nibArr = NSBundle.mainBundle().loadNibNamed(String(TrackDetailsHeaderView), owner: nil, options: nil){
+            for view in nibArr {
+                if let headerView = view as? TrackDetailsHeaderView
+                {
+                    headerView.setupFrame()
+                    return headerView
+                }
             }
         }
         return nil

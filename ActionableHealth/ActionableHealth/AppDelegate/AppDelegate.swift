@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import CoreLocation
+import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,9 +21,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentPlacemark:CLPlacemark?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        FIRApp.configure()
+
         forEasyLoading()
         debugPrint(applicationDocumentsDirectory.absoluteURL)
+
+        if #available(iOS 10.0, *) {
+            let authOptions: UNAuthorizationOptions = [.Alert, .Badge, .Sound]
+            UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions(authOptions, completionHandler: { (val, error) in
+
+                })
+
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.currentNotificationCenter().delegate = self
+            // For iOS 10 data message (sent via FCM)
+            FIRMessaging.messaging().remoteMessageDelegate = self
+
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+
         return true
     }
 
@@ -132,3 +156,13 @@ extension AppDelegate{
     }
 }
 
+//MARK:- UNUserNotificationCenterDelegate
+extension AppDelegate:UNUserNotificationCenterDelegate{
+
+}
+//MARK:- FIRMessagingDelegate
+extension AppDelegate:FIRMessagingDelegate{
+    func applicationReceivedRemoteMessage(remoteMessage: FIRMessagingRemoteMessage){
+
+    }
+}

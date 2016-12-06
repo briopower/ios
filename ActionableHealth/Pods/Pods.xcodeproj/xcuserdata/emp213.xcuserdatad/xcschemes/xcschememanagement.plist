@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HCSStarRatingView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -72,17 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60EF48CB96827B75B292420BF02D5D17</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>68CE17C48729AC7DC455AD83D9E5241F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>76EFEA8096F473C750584612AD69515E</key>
+		<key>72781BD8830E26376E47ACB18E7D5097</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -98,6 +93,21 @@
 			<true/>
 		</dict>
 		<key>915B569F1A4E9A851AB438C36C566DA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9BFD72EC0CA7397CF936BC06127764D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5B80060FE8C664DF08841000F41D515</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD6A2DEBDCE43038C546FE6708DCC196</key>
 		<dict>
 			<key>primary</key>
 			<true/>

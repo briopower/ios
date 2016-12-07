@@ -1,15 +1,17 @@
 //
-//  LogoHeaderCell.swift
+//  PhoneNoCell.swift
 //  ActionableHealth
 //
-//  Created by Vidhan Nandi on 06/10/16.
+//  Created by Shubhanshu Tibrewal on 06/12/16.
 //  Copyright © 2016 Finoit Technologies. All rights reserved.
 //
 
 import UIKit
 
-class LogoHeaderCell: UITableViewCell {
+class PhoneNoCell: UITableViewCell {
+    @IBOutlet weak var countryCode: UILabel!
 
+    @IBOutlet weak var phoneNoTxtFld: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

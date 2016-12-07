@@ -13,6 +13,7 @@ class EnterOtpViewController: CommonViewController {
     @IBOutlet weak var otpTextField: UITextField_FontSizeTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoginModule = false
         //self.navigationController?.setNavigationBarHidden(false, animated: false)
         // Do any additional setup after loading the view.
     }

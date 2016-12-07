@@ -17,31 +17,6 @@ extension AppDelegate{
     }
 }
 
-//MARK: - Notification Methods
-extension AppDelegate{
-
-    func registerForPushNotifications() {
-        let notificationSettings = UIUserNotificationSettings(
-            forTypes: [.Badge, .Sound, .Alert], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-    }
-
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
-    {
-        NSUserDefaults.setDeviceToken(deviceToken)
-
-    }
-
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-    }
-
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
-    {
-        
-    }
-}
-
 //MARK:- Location Manager Methods
 extension AppDelegate: CLLocationManagerDelegate{
 

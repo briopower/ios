@@ -44,7 +44,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - TPKeyboardAvoiding (1.3)
+  - TPKeyboardAvoiding (1.3.1)
 
 DEPENDENCIES:
   - Alamofire (= 3.5.1)
@@ -72,8 +72,8 @@ SPEC CHECKSUMS:
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   PhoneNumberKit: 5668a7af19d2e566d92831a632ee80f5047eff75
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  TPKeyboardAvoiding: a5138f318c06fb3e151f886e18ce4a72695d9cbe
+  TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: f3d9be49edce2255ca3ba175707b67fe72d9c451
+PODFILE CHECKSUM: 32e462546c57415e7fb4e10de2c4c3f9b9c2c9af
 
 COCOAPODS: 1.1.1

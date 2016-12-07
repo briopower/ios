@@ -115,9 +115,10 @@ extension CountryListViewController{
         if NetworkClass.isConnected(true) {
             showLoader()
             NetworkClass.sendRequest(URL: Constants.URLs.countryNames, RequestType: .GET) { (status, responseObj, error, statusCode) in
+                print(status)
                 if status{
-                    if let dict = responseObj as? NSMutableDictionary{
-                        self.namesDict = dict
+                    if let dict = responseObj as? NSDictionary{
+                        self.namesDict = NSMutableDictionary(dictionary: dict)
                         self.getCodesJson()
                     }
                 }
@@ -129,8 +130,8 @@ extension CountryListViewController{
         if NetworkClass.isConnected(true) {
             NetworkClass.sendRequest(URL: Constants.URLs.countryCodes, RequestType: .GET) { (status, responseObj, error, statusCode) in
                 if status{
-                    if let dict = responseObj as? NSMutableDictionary{
-                        self.codesDict = dict
+                    if let dict = responseObj as? NSDictionary{
+                        self.codesDict = NSMutableDictionary(dictionary: dict)
                         self.createDataSet()
                     }
                 }
@@ -163,7 +164,7 @@ extension CountryListViewController:UITableViewDelegate{
         if let dict = countryArray[indexPath.row] as? NSDictionary{
             delegate?.selectedCountryObject(dict)
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }
 

@@ -9,7 +9,11 @@
 import UIKit
 
 class ChooseCountryCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
+    @IBOutlet weak var countryName: UITextField!
+    
+    //MARK:- ----------------
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,13 @@ class ChooseCountryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+//MARK:- Additional Functions
+extension ChooseCountryCell{
+    func setUpCell(countryDict:NSDictionary?){
+        if let dict = countryDict{
+            countryName.text = dict[countryName_key] as? String ?? ""
+        }
+    }
 }

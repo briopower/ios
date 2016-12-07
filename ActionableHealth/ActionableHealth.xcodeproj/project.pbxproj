@@ -160,15 +160,14 @@
 		3CFE3BCC1DD04077003EE7A2 /* ChangePasswordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFE3BCA1DD04077003EE7A2 /* ChangePasswordCell.xib */; };
 		3CFE3BCE1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFE3BCD1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib */; };
 		3DADFB9880771B64955ED386 /* Pods_ActionableHealthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */; };
-		40114FD51DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40114FD41DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift */; };
-		407B0EC41DF6C9BB00913D70 /* WelcomeToBrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B0EC31DF6C9BB00913D70 /* WelcomeToBrio.swift */; };
-		407B0EC81DF6CFBC00913D70 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B0EC61DF6CFBC00913D70 /* DetailViewCell.swift */; };
-		407B0EC91DF6CFBC00913D70 /* DetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407B0EC71DF6CFBC00913D70 /* DetailViewCell.xib */; };
-		407B0ECE1DF6D50600913D70 /* ChooseCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B0ECC1DF6D50600913D70 /* ChooseCountryCell.swift */; };
-		407B0ECF1DF6D50600913D70 /* ChooseCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407B0ECD1DF6D50600913D70 /* ChooseCountryCell.xib */; };
-		407B0ED31DF6DFE100913D70 /* PhoneNoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407B0ED11DF6DFE100913D70 /* PhoneNoCell.swift */; };
-		407B0ED41DF6DFE100913D70 /* PhoneNoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 407B0ED21DF6DFE100913D70 /* PhoneNoCell.xib */; };
-		40A849861DCDF58900FD13FE /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A849851DCDF58900FD13FE /* EnterOtpViewController.swift */; };
+		40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED01DF8071500605397 /* ChooseCountryCell.swift */; };
+		40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EBFED11DF8071500605397 /* ChooseCountryCell.xib */; };
+		40EBFEDB1DF8071500605397 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED31DF8071500605397 /* DetailViewCell.swift */; };
+		40EBFEDC1DF8071500605397 /* DetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EBFED41DF8071500605397 /* DetailViewCell.xib */; };
+		40EBFEDD1DF8071500605397 /* PhoneNoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED61DF8071500605397 /* PhoneNoCell.swift */; };
+		40EBFEDE1DF8071500605397 /* PhoneNoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EBFED71DF8071500605397 /* PhoneNoCell.xib */; };
+		40EBFEDF1DF8071500605397 /* WelcomeToBrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED81DF8071500605397 /* WelcomeToBrio.swift */; };
+		40EBFEE21DF8078F00605397 /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -349,15 +348,14 @@
 		3CFE3BC91DD04077003EE7A2 /* ChangePasswordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordCell.swift; sourceTree = "<group>"; };
 		3CFE3BCA1DD04077003EE7A2 /* ChangePasswordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordCell.xib; sourceTree = "<group>"; };
 		3CFE3BCD1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordCell_Submit.xib; sourceTree = "<group>"; };
-		40114FD41DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerifyPhoneNumberViewController.swift; path = SignUpViewController/VerifyPhoneNumberViewController.swift; sourceTree = "<group>"; };
-		407B0EC31DF6C9BB00913D70 /* WelcomeToBrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToBrio.swift; sourceTree = "<group>"; };
-		407B0EC61DF6CFBC00913D70 /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
-		407B0EC71DF6CFBC00913D70 /* DetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewCell.xib; sourceTree = "<group>"; };
-		407B0ECC1DF6D50600913D70 /* ChooseCountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountryCell.swift; sourceTree = "<group>"; };
-		407B0ECD1DF6D50600913D70 /* ChooseCountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCountryCell.xib; sourceTree = "<group>"; };
-		407B0ED11DF6DFE100913D70 /* PhoneNoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNoCell.swift; sourceTree = "<group>"; };
-		407B0ED21DF6DFE100913D70 /* PhoneNoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneNoCell.xib; sourceTree = "<group>"; };
-		40A849851DCDF58900FD13FE /* EnterOtpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterOtpViewController.swift; sourceTree = "<group>"; };
+		40EBFED01DF8071500605397 /* ChooseCountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountryCell.swift; sourceTree = "<group>"; };
+		40EBFED11DF8071500605397 /* ChooseCountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCountryCell.xib; sourceTree = "<group>"; };
+		40EBFED31DF8071500605397 /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
+		40EBFED41DF8071500605397 /* DetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewCell.xib; sourceTree = "<group>"; };
+		40EBFED61DF8071500605397 /* PhoneNoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNoCell.swift; sourceTree = "<group>"; };
+		40EBFED71DF8071500605397 /* PhoneNoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhoneNoCell.xib; sourceTree = "<group>"; };
+		40EBFED81DF8071500605397 /* WelcomeToBrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToBrio.swift; sourceTree = "<group>"; };
+		40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterOtpViewController.swift; sourceTree = "<group>"; };
 		448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E175286D6CB4870D551118E /* Pods-ActionableHealthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthTests/Pods-ActionableHealthTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1504,11 +1502,10 @@
 		3CCF8ACE1DA61A9500C76C64 /* SignupLoginModule */ = {
 			isa = PBXGroup;
 			children = (
-				3C966DBB1DF6C8A500E299BF /* CountryCodeListViewController */,
 				3CAE70B11DB0A01D00D733C2 /* Storyboard */,
-				407B0EC01DF6C71000913D70 /* welcomeToBrio */,
-				40A849841DCDF4F100FD13FE /* EnterOtpController */,
-				40114FD71DCDBAFC003659AB /* VerifyPhoneNumber */,
+				40EBFECD1DF8071500605397 /* WelcomeToBrio */,
+				40EBFEE01DF8078F00605397 /* EnterOtpController */,
+				3C966DBB1DF6C8A500E299BF /* CountryCodeListViewController */,
 			);
 			path = SignupLoginModule;
 			sourceTree = "<group>";
@@ -1680,69 +1677,58 @@
 			path = EditProfileDetailsCell;
 			sourceTree = "<group>";
 		};
-		40114FD71DCDBAFC003659AB /* VerifyPhoneNumber */ = {
+		40EBFECD1DF8071500605397 /* WelcomeToBrio */ = {
 			isa = PBXGroup;
 			children = (
-				40114FD41DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift */,
+				40EBFECE1DF8071500605397 /* CustomCells */,
+				40EBFED81DF8071500605397 /* WelcomeToBrio.swift */,
 			);
-			name = VerifyPhoneNumber;
+			path = WelcomeToBrio;
 			sourceTree = "<group>";
 		};
-		407B0EC01DF6C71000913D70 /* welcomeToBrio */ = {
+		40EBFECE1DF8071500605397 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
-				407B0EC51DF6CF6D00913D70 /* customCells */,
-				407B0EC31DF6C9BB00913D70 /* WelcomeToBrio.swift */,
+				40EBFECF1DF8071500605397 /* ChooseCountry */,
+				40EBFED21DF8071500605397 /* DetailsCell */,
+				40EBFED51DF8071500605397 /* PhoneNoCell */,
 			);
-			name = welcomeToBrio;
-			path = LoginSignupTableView;
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
-		407B0EC51DF6CF6D00913D70 /* customCells */ = {
+		40EBFECF1DF8071500605397 /* ChooseCountry */ = {
 			isa = PBXGroup;
 			children = (
-				407B0ED01DF6DFA100913D70 /* PhoneNoCell */,
-				407B0ECB1DF6D4C400913D70 /* ChooseCountry */,
-				407B0ECA1DF6D4B500913D70 /* DetailsCell */,
+				40EBFED01DF8071500605397 /* ChooseCountryCell.swift */,
+				40EBFED11DF8071500605397 /* ChooseCountryCell.xib */,
 			);
-			name = customCells;
-			path = ../ForgotPasswordViewController;
+			path = ChooseCountry;
 			sourceTree = "<group>";
 		};
-		407B0ECA1DF6D4B500913D70 /* DetailsCell */ = {
+		40EBFED21DF8071500605397 /* DetailsCell */ = {
 			isa = PBXGroup;
 			children = (
-				407B0EC61DF6CFBC00913D70 /* DetailViewCell.swift */,
-				407B0EC71DF6CFBC00913D70 /* DetailViewCell.xib */,
+				40EBFED31DF8071500605397 /* DetailViewCell.swift */,
+				40EBFED41DF8071500605397 /* DetailViewCell.xib */,
 			);
-			name = DetailsCell;
+			path = DetailsCell;
 			sourceTree = "<group>";
 		};
-		407B0ECB1DF6D4C400913D70 /* ChooseCountry */ = {
+		40EBFED51DF8071500605397 /* PhoneNoCell */ = {
 			isa = PBXGroup;
 			children = (
-				407B0ECC1DF6D50600913D70 /* ChooseCountryCell.swift */,
-				407B0ECD1DF6D50600913D70 /* ChooseCountryCell.xib */,
+				40EBFED61DF8071500605397 /* PhoneNoCell.swift */,
+				40EBFED71DF8071500605397 /* PhoneNoCell.xib */,
 			);
-			name = ChooseCountry;
+			path = PhoneNoCell;
 			sourceTree = "<group>";
 		};
-		407B0ED01DF6DFA100913D70 /* PhoneNoCell */ = {
+		40EBFEE01DF8078F00605397 /* EnterOtpController */ = {
 			isa = PBXGroup;
 			children = (
-				407B0ED11DF6DFE100913D70 /* PhoneNoCell.swift */,
-				407B0ED21DF6DFE100913D70 /* PhoneNoCell.xib */,
+				40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */,
 			);
-			name = PhoneNoCell;
-			path = ../../TabBarModule/SettingsModule/SettingsViewController/CustomCells;
-			sourceTree = "<group>";
-		};
-		40A849841DCDF4F100FD13FE /* EnterOtpController */ = {
-			isa = PBXGroup;
-			children = (
-				40A849851DCDF58900FD13FE /* EnterOtpViewController.swift */,
-			);
-			name = EnterOtpController;
+			path = EnterOtpController;
 			sourceTree = "<group>";
 		};
 		623BBCDDBBA68AEC3583C3DC /* Pods */ = {
@@ -1881,11 +1867,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CC9D07B1DB897EF00287068 /* TrackFileCell.xib in Resources */,
+				40EBFEDC1DF8071500605397 /* DetailViewCell.xib in Resources */,
 				3C0FDF411DF5695200710764 /* ContactDetailsCell.xib in Resources */,
 				3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */,
 				3CCF30F81DB731CF001A1E7B /* RecievedMessageCell.xib in Resources */,
 				3CAB0FA81DB0D7AE0090BEF3 /* GroupMemberDetailsCell.xib in Resources */,
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
+				40EBFEDE1DF8071500605397 /* PhoneNoCell.xib in Resources */,
 				3CFE3BCE1DD0495D003EE7A2 /* ChangePasswordCell_Submit.xib in Resources */,
 				3CC9D0851DB8AAB600287068 /* AllTaskCompletedHeaderView.xib in Resources */,
 				3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */,
@@ -1910,8 +1898,6 @@
 				3CC9D08B1DB8B44D00287068 /* PhaseDetailsCell_Status.xib in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
 				3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */,
-				407B0ECF1DF6D50600913D70 /* ChooseCountryCell.xib in Resources */,
-				407B0EC91DF6CFBC00913D70 /* DetailViewCell.xib in Resources */,
 				3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */,
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
 				3CFE3BCC1DD04077003EE7A2 /* ChangePasswordCell.xib in Resources */,
@@ -1923,11 +1909,11 @@
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
 				3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */,
 				3CCF31031DB7349B001A1E7B /* SentMessageCell.xib in Resources */,
-				407B0ED41DF6DFE100913D70 /* PhoneNoCell.xib in Resources */,
 				3CACF3F81DB634920034D700 /* CommonCollectionReusableView.xib in Resources */,
 				3CAB0F9C1DB0C0260090BEF3 /* Groups.storyboard in Resources */,
 				3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */,
 				3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */,
+				40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */,
 				3CC9D0891DB8AE7100287068 /* PhaseDetailsCell.xib in Resources */,
 				3CF5B5501DB78AEC00224046 /* TrackInfoCell.xib in Resources */,
 			);
@@ -2114,11 +2100,11 @@
 				3CCECDB81DAF872300831242 /* SubPropertiesCell.swift in Sources */,
 				3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */,
 				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
-				407B0ECE1DF6D50600913D70 /* ChooseCountryCell.swift in Sources */,
 				3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */,
 				3C1EC5AA1DA3A864003DC2A3 /* UIViewController_Common.swift in Sources */,
 				3CB2B8431DEFE46D006DC4E9 /* AddressBook.swift in Sources */,
 				3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */,
+				40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */,
 				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
 				3CACF3F71DB634920034D700 /* CommonCollectionReusableView.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
@@ -2135,15 +2121,16 @@
 				3CCF31021DB7349B001A1E7B /* SentMessageCell.swift in Sources */,
 				3C1EC5941DA3A864003DC2A3 /* CommonViewController.swift in Sources */,
 				3CCECD9F1DAF55E800831242 /* FiltersViewController.swift in Sources */,
+				40EBFEE21DF8078F00605397 /* EnterOtpViewController.swift in Sources */,
 				3C9D13291DA3CE5800998DA2 /* UILabel_FontSizeLabel.swift in Sources */,
 				3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */,
 				3CBD5C781DA7AFAD004BCAE0 /* GroupsViewController.swift in Sources */,
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
-				407B0ED31DF6DFE100913D70 /* PhoneNoCell.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,
 				3CCF30F71DB731CF001A1E7B /* RecievedMessageCell.swift in Sources */,
 				3C966DC21DF6CAFB00E299BF /* CountryCodeListCell.swift in Sources */,
+				40EBFEDB1DF8071500605397 /* DetailViewCell.swift in Sources */,
 				3CC9D07A1DB897EF00287068 /* TrackFileCell.swift in Sources */,
 				3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */,
 				3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */,
@@ -2156,6 +2143,7 @@
 				3C1EC5AB1DA3A864003DC2A3 /* VNProgreessHUD.swift in Sources */,
 				3CB2B8421DEFE46D006DC4E9 /* AddressBook+CoreDataProperties.swift in Sources */,
 				3CF5B55F1DB79E6900224046 /* InviteForTrackCell.swift in Sources */,
+				40EBFEDF1DF8071500605397 /* WelcomeToBrio.swift in Sources */,
 				3C1EC59F1DA3A864003DC2A3 /* UIColor_Common.swift in Sources */,
 				3CAB0F981DB0BA090090BEF3 /* GroupsCell.swift in Sources */,
 				3C9D13271DA3CE5800998DA2 /* UIButton_RoundButton.swift in Sources */,
@@ -2164,7 +2152,6 @@
 				3CB8A2971DEDAE0C009B9AE9 /* TemplatesModel.swift in Sources */,
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
 				3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */,
-				407B0EC41DF6C9BB00913D70 /* WelcomeToBrio.swift in Sources */,
 				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
 				3CA95D4C1DCCC161009BC629 /* ChangePasswordViewController.swift in Sources */,
 				3CC9D0771DB897D600287068 /* TrackFilesViewController.swift in Sources */,
@@ -2181,16 +2168,14 @@
 				3CACF3F91DB634920034D700 /* CommonCollectionView.swift in Sources */,
 				3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */,
 				3C1EC5991DA3A864003DC2A3 /* String_Common.swift in Sources */,
+				40EBFEDD1DF8071500605397 /* PhoneNoCell.swift in Sources */,
 				3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */,
 				3CACF4021DB635220034D700 /* StaggeredCollectionView.swift in Sources */,
 				3C1EC5A11DA3A864003DC2A3 /* UIFont_Common.swift in Sources */,
-				40114FD51DCDBAD3003659AB /* VerifyPhoneNumberViewController.swift in Sources */,
-				40A849861DCDF58900FD13FE /* EnterOtpViewController.swift in Sources */,
 				3CC9D06D1DB8854A00287068 /* CommentsViewController.swift in Sources */,
 				3C9D132A1DA3CE5800998DA2 /* UILabel_Localizable.swift in Sources */,
 				3C1EC59A1DA3A864003DC2A3 /* UIAlertController_Common.swift in Sources */,
 				3C1EC5921DA3A864003DC2A3 /* ActionableHealth.xcdatamodeld in Sources */,
-				407B0EC81DF6CFBC00913D70 /* DetailViewCell.swift in Sources */,
 				3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */,
 				3C1EC5951DA3A864003DC2A3 /* CommonViewController_CommonMethods.swift in Sources */,
 				3CB8A2951DEDAE0C009B9AE9 /* PhasesModel.swift in Sources */,

@@ -20,7 +20,7 @@
         <scene sceneID="0Ya-zY-ioI">
             <objects>
                 <navigationController id="9KZ-hV-bXi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rtf-Ad-QRC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rtf-Ad-QRC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -130,13 +130,13 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROUPS YOU ARE MEMBER OF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2B-U2-aym" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                            <rect key="frame" x="41" y="20" width="228" height="16"/>
+                                            <rect key="frame" x="25.5" y="20" width="227.5" height="16"/>
                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                             <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FZ3-Qg-hoC">
-                                            <rect key="frame" x="0.0" y="0.0" width="41" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="25.5" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="FZ3-Qg-hoC" secondAttribute="height" multiplier="90:150" priority="999" id="okb-3p-mdx"/>
                                             </constraints>

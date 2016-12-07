@@ -9,9 +9,13 @@
 import UIKit
 
 class PhoneNoCell: UITableViewCell {
+    
+    //MARK:- Outlets
     @IBOutlet weak var countryCode: UILabel!
-
     @IBOutlet weak var phoneNoTxtFld: UITextField!
+    
+    
+    //MARK:- ------------------
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,4 +27,21 @@ class PhoneNoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+//MARK:- Additional Functions
+extension PhoneNoCell{
+    func setUPCell(countryDict:NSDictionary?){
+        if let dict = countryDict{
+            countryCode.text = dict[normalizedISDCode_key] as? String ?? ""
+        }
+    }
+}
+
+//MARK:- Textfield Delegates
+extension PhoneNoCell:UITextFieldDelegate{
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{
+        
+        return true
+    }
 }

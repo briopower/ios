@@ -10,12 +10,14 @@ import UIKit
 
 class EnterOtpViewController: CommonViewController {
     
+    //MARK:- Outlets
     @IBOutlet weak var otpTextField: UITextField_FontSizeTextField!
+    
+    @IBOutlet weak var containerOtpView: UIView!
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoginModule = false
-        //self.navigationController?.setNavigationBarHidden(false, animated: false)
-        // Do any additional setup after loading the view.
+        self.setUpView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -30,6 +32,13 @@ class EnterOtpViewController: CommonViewController {
     }
 }
 
+extension EnterOtpViewController{
+    func setUpView(){
+        showLoginModule = false
+        containerOtpView.layer.borderWidth = 0.5
+        containerOtpView.layer.borderColor = UIColor.getAppSeperatorColor().CGColor
+    }
+}
 extension EnterOtpViewController{
     @IBAction func verifyButton(sender: AnyObject) {
     }

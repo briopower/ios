@@ -15,6 +15,9 @@ class WelcomeToBrio: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var tblView: UITableView!
+    
+    //MARK:- Variables
+    var countryDict:NSDictionary?
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +61,12 @@ extension WelcomeToBrio:UITableViewDataSource{
                 }
             case .ChooseCountry:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(ChooseCountryCell)) as? ChooseCountryCell {
+                    cell.setUpCell(countryDict)
                     return cell
                 }
             case .PhoneNo:
                 if let cell = tblView.dequeueReusableCellWithIdentifier(String(PhoneNoCell)) as? PhoneNoCell{
+                    cell.setUPCell(countryDict)
                     return cell
                 }
 
@@ -75,7 +80,28 @@ extension WelcomeToBrio:UITableViewDataSource{
 
 //MARK:- Delegate
 extension WelcomeToBrio:UITableViewDelegate{
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let type = WelcomeViewCellType(rawValue: indexPath.row) {
+            switch type {
+            case .ChooseCountry:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.countryList) as? CountryListViewController {
+                    viewCont.delegate = self
+                    self.navigationController?.pushViewController(viewCont, animated: true)
+                }
+
+            default:
+                break
+            }
+        }
+    }
+}
+
+//MARK:- CountryListDelegates
+extension WelcomeToBrio:CountryListViewControllerDelegate{
+    func selectedCountryObject(dict:NSDictionary){
+        countryDict = dict
+        self.tblView.reloadData()
+    }
 }
 
 //MARK:- ActionButton

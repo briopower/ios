@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgw-jc-D4N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Mgw-jc-D4N">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -12,7 +16,7 @@
             <objects>
                 <navigationController id="Mgw-jc-D4N" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b7t-me-nf2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="b7t-me-nf2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -33,30 +37,30 @@
                         <viewControllerLayoutGuide type="bottom" id="p1K-J0-vWv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FTS-K8-O3E">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJC-n2-Ejk">
-                                <rect key="frame" x="0.0" y="547" width="600" height="53"/>
-                                <color key="backgroundColor" red="0.13274577260017395" green="0.14382240176200867" blue="0.20602190494537354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJC-n2-Ejk" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="608" width="375" height="59"/>
+                                <color key="backgroundColor" red="0.10017777979373932" green="0.10629464685916901" blue="0.15517653524875641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <state key="normal" title="NEXT">
-                                    <color key="titleColor" red="1" green="0.98394197225570679" blue="0.13037535548210144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="0.99752539396286011" blue="0.10908816009759903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="nextBtnAction:" destination="jUS-AJ-wLe" eventType="touchUpInside" id="kPk-dk-8yX"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="52o-x9-KWe">
-                                <rect key="frame" x="0.0" y="64" width="600" height="483"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="544"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jUS-AJ-wLe" id="odk-Iq-l7u"/>
                                     <outlet property="delegate" destination="jUS-AJ-wLe" id="5Dx-Zx-da5"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SJC-n2-Ejk" firstAttribute="height" secondItem="FTS-K8-O3E" secondAttribute="height" multiplier="195:2207" id="49c-kJ-mi8"/>
                             <constraint firstItem="p1K-J0-vWv" firstAttribute="top" secondItem="SJC-n2-Ejk" secondAttribute="bottom" id="CWt-f3-Cz8"/>
@@ -87,56 +91,56 @@
                         <viewControllerLayoutGuide type="bottom" id="IDq-rn-H0Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DhH-t4-dBn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter the OTP received on your phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-TC-pmk" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="20" y="30" width="560" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the OTP received on your phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-TC-pmk" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="16" y="74" width="343" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.33721464872360229" green="0.3372780978679657" blue="0.33721065521240234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ziJ-Lb-tY9">
-                                <rect key="frame" x="20" y="83" width="560" height="51"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziJ-Lb-tY9">
+                                <rect key="frame" x="16" y="132" width="343" height="56.5"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your One time password (OTP)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5G-0F-Xqg" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="0.0" width="552" height="51"/>
+                                        <rect key="frame" x="16" y="0.0" width="327" height="56.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.83137254901960789" green="0.83529411764705885" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.88996976613998413" green="0.89404284954071045" blue="0.90221935510635376" alpha="0.75666202910958902" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="f5G-0F-Xqg" firstAttribute="top" secondItem="ziJ-Lb-tY9" secondAttribute="top" id="drS-AL-9Du"/>
                                     <constraint firstAttribute="bottom" secondItem="f5G-0F-Xqg" secondAttribute="bottom" id="kL6-uN-CHG"/>
-                                    <constraint firstItem="f5G-0F-Xqg" firstAttribute="leading" secondItem="ziJ-Lb-tY9" secondAttribute="leading" constant="8" id="ku8-OZ-AGA"/>
+                                    <constraint firstItem="f5G-0F-Xqg" firstAttribute="leading" secondItem="ziJ-Lb-tY9" secondAttribute="leading" constant="16" id="ku8-OZ-AGA"/>
                                     <constraint firstAttribute="trailing" secondItem="f5G-0F-Xqg" secondAttribute="trailing" id="r4Q-76-eQn"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-8U-Kzy" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="20" y="154" width="560" height="51"/>
-                                <color key="backgroundColor" red="0.10980392156862745" green="0.11764705882352941" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-8U-Kzy" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="16" y="208.5" width="343" height="56.5"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.11764705882352941" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="VERIFY">
-                                    <color key="titleColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="verifyButton:" destination="baA-EG-QDb" eventType="touchUpInside" id="PuW-ZY-kNM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-uw-T5g" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="20" y="225" width="560" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-uw-T5g" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="16" y="285" width="343" height="56.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                                 <state key="normal" title="RESEND CODE">
-                                    <color key="titleColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resendCodeButton:" destination="baA-EG-QDb" eventType="touchUpInside" id="Jdk-U5-00r"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dGJ-8U-Kzy" firstAttribute="top" secondItem="f5G-0F-Xqg" secondAttribute="bottom" constant="20" id="3F5-UK-GXR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Ls-TC-pmk" secondAttribute="trailing" id="92o-p5-Ovp"/>
@@ -157,12 +161,58 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerOtpView" destination="ziJ-Lb-tY9" id="B5k-o8-7nB"/>
                         <outlet property="otpTextField" destination="f5G-0F-Xqg" id="7Q0-wi-6RU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="77M-rz-8Gy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-672" y="-303"/>
+            <point key="canvasLocation" x="-482" y="-231"/>
+        </scene>
+        <!--Country List View Controller-->
+        <scene sceneID="fgp-EL-YLD">
+            <objects>
+                <viewController storyboardIdentifier="countryListView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z6G-co-xn9" customClass="CountryListViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zd1-0Q-PSL"/>
+                        <viewControllerLayoutGuide type="bottom" id="DpL-Fk-zdv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6DP-GL-26m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Typ-LN-5Rh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Z6G-co-xn9" id="THo-mr-aPY"/>
+                                    <outlet property="delegate" destination="Z6G-co-xn9" id="GFV-gF-OOz"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DpL-Fk-zdv" firstAttribute="top" secondItem="Typ-LN-5Rh" secondAttribute="bottom" id="1jo-Dc-XR4"/>
+                            <constraint firstItem="Typ-LN-5Rh" firstAttribute="leading" secondItem="6DP-GL-26m" secondAttribute="leading" id="CNh-G5-4HK"/>
+                            <constraint firstAttribute="trailing" secondItem="Typ-LN-5Rh" secondAttribute="trailing" id="PbZ-tw-xIA"/>
+                            <constraint firstItem="Typ-LN-5Rh" firstAttribute="top" secondItem="6DP-GL-26m" secondAttribute="top" id="Zsz-AP-5Wg"/>
+                            <constraint firstItem="Typ-LN-5Rh" firstAttribute="top" secondItem="zd1-0Q-PSL" secondAttribute="bottom" id="kAa-1e-NZ6"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kAa-1e-NZ6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="sWj-Ax-ua9"/>
+                    <connections>
+                        <outlet property="tblView" destination="Typ-LN-5Rh" id="a4M-UU-2aq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CTy-1u-3Ip" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1438" y="430"/>
         </scene>
     </scenes>
 </document>

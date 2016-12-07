@@ -11,7 +11,7 @@ import UIKit
 class PhoneNoCell: UITableViewCell {
     
     //MARK:- Outlets
-    @IBOutlet weak var countryCode: UILabel!
+    @IBOutlet weak var countryCode: UITextField!
     @IBOutlet weak var phoneNoTxtFld: UITextField!
     
     //MARK:- Variables

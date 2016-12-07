@@ -16,7 +16,6 @@ class EditProfileViewController: CommonViewController {
     //MARK:- Variables
     let textViewCellName = "EditProfileDetailsCell_TextView"
     let nameViewCellName = "EditProfileDetailsCell_Name"
-    let changePasswordCellName = "EditProfileDetailsCell_ChangePassword"
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -46,8 +45,8 @@ extension EditProfileViewController{
 
         editProfileTblView.registerNib(UINib(nibName: nameViewCellName, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: nameViewCellName)
         editProfileTblView.registerNib(UINib(nibName: textViewCellName, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: textViewCellName)
-        editProfileTblView.registerNib(UINib(nibName: changePasswordCellName, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: changePasswordCellName)
 
+        editProfileTblView.contentInset = UIEdgeInsetsMake(0, 0, 8, 0)
     }
 }
 
@@ -86,11 +85,6 @@ extension EditProfileViewController:UITableViewDataSource{
                     cell.configureCellForCellType(type)
                     return cell
                 }
-            case .ChangePassword:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(changePasswordCellName) as? EditProfileDetailsCell {
-                    cell.configureCellForCellType(type)
-                    return cell
-                }
             default:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(EditProfileDetailsCell)) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type)
@@ -105,10 +99,6 @@ extension EditProfileViewController:UITableViewDataSource{
 //MARK:- UITableViewDelegate
 extension EditProfileViewController:UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == EditProfileDetailsCellType.ChangePassword.rawValue {
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.changePasswordView) as? ChangePasswordViewController {
-                self.navigationController?.pushViewController(viewCont, animated: true)
-            }
-        }
+
     }
 }

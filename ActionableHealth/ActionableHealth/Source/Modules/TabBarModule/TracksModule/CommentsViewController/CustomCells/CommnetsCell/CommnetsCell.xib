@@ -1,15 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="ProximaNova-Regular.otf">
+        <array key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
-            <string>ProximaNova-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -25,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="18" height="337"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="258" verticalHuggingPriority="257" horizontalCompressionResistancePriority="756" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="cgr-Xa-RIL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="15.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="cgr-Xa-RIL" secondAttribute="height" multiplier="1242:60" id="6Cz-lN-vvg"/>
                         </constraints>
@@ -34,7 +38,7 @@
                         <rect key="frame" x="302" y="0.0" width="18" height="337"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="258" verticalHuggingPriority="257" horizontalCompressionResistancePriority="756" verticalCompressionResistancePriority="756" translatesAutoresizingMaskIntoConstraints="NO" id="pZd-EX-dq4">
-                        <rect key="frame" x="0.0" y="322" width="320" height="15"/>
+                        <rect key="frame" x="0.0" y="321.5" width="320" height="15.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="pZd-EX-dq4" secondAttribute="height" multiplier="1242:50" id="Hpe-HA-iVk"/>
                         </constraints>
@@ -45,22 +49,22 @@
                         </variation>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle-user-ic" translatesAutoresizingMaskIntoConstraints="NO" id="cVd-Kc-kZB" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="18" y="15" width="32" height="32"/>
+                        <rect key="frame" x="18" y="15.5" width="32" height="32"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vYw-JK-kcN" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="18" y="15" width="32" height="32"/>
+                        <rect key="frame" x="18" y="15.5" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="vYw-JK-kcN" secondAttribute="height" id="rir-nX-QeH"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sam Jolian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7W-Gd-nZK" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="63" y="15" width="77" height="16"/>
-                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sam Jolian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7W-Gd-nZK" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="63" y="15.5" width="89.5" height="21"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="100" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-jW-RXl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="63" y="39" width="239" height="283"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="100" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ly-jW-RXl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="63" y="44" width="239" height="277.5"/>
                         <string key="text">"userNamespaceKeyProxy": [
     {
       "active": true,
@@ -69,8 +73,8 @@
     }
   ],
   "voiceToken": "strin</string>
-                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
-                        <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                        <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CaF-6U-9NK" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">

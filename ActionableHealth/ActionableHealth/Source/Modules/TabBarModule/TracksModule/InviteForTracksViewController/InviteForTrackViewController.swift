@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 enum TrackInviteSectionType:Int {
     case Details, Contacts, Count
 }
@@ -15,18 +17,13 @@ enum TrackInviteDetailsSectionCellType:Int {
     case Search, AddFromPhone, Count
 }
 
-enum TrackInviteDataSourceType:Int {
-    case PhoneBook, Search, Count
-}
 class InviteForTrackViewController: KeyboardAvoidingViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var tblView: UITableView!
-    @IBOutlet weak var searchBarHeight: NSLayoutConstraint!
-    @IBOutlet weak var searchBar: UISearchBar!
 
     //MARK:- Variables
-    var dataSourceType = TrackInviteDataSourceType.PhoneBook
+    var frc:NSFetchedResultsController?
 
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -49,37 +46,16 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
 //MARK:- Additional methods
 extension InviteForTrackViewController{
     func setupView() {
-        edgesForExtendedLayout = .None
+//        edgesForExtendedLayout = .None
         tblView.registerNib(UINib(nibName: String(SearchByIdCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SearchByIdCell))
         tblView.registerNib(UINib(nibName: String(AddFromPhoneCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(AddFromPhoneCell))
         tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
 
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80
-    }
 
-    func reloadAllSections(forType:TrackInviteDataSourceType) {
-        
-        dataSourceType = forType
-        tblView.reloadSections(NSIndexSet(indexesInRange: NSRange(location: 0, length: TrackInviteDetailsSectionCellType.Count.rawValue)), withRowAnimation: .Automatic)
-        if dataSourceType == .PhoneBook {
-            searchBarHeight.constant = 0
-
-            UIView.animateWithDuration(0.3, animations: {
-                self.view.layoutIfNeeded()
-            }) { (finished:Bool) in
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.searchBar.resignFirstResponder()
-                })
-            }
-
-        }else{
-            searchBar.becomeFirstResponder()
-            searchBarHeight.constant = 44
-            UIView.animateWithDuration(0.3) {
-                self.view.layoutIfNeeded()
-            }
-        }
+        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@", NSNumber(bool: true)), sectionNameKeyPath: nil, sortingKey: ["addressBook.name"], isAcendingSort: true)
+        frc?.delegate = self
     }
 }
 
@@ -94,9 +70,9 @@ extension InviteForTrackViewController:UITableViewDataSource{
         if let type = TrackInviteSectionType(rawValue: section) {
             switch type {
             case .Details:
-                return dataSourceType == .PhoneBook ? TrackInviteDetailsSectionCellType.Count.rawValue : 0
+                return TrackInviteDetailsSectionCellType.Count.rawValue
             default:
-                return dataSourceType == .PhoneBook ? 10 : 5
+                return frc?.fetchedObjects?.count ?? 0
             }
         }
         return 0
@@ -124,12 +100,13 @@ extension InviteForTrackViewController:UITableViewDataSource{
                 }
             default:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
-                    return cell
+                    if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact{
+                        cell.configCell(obj)
+                        return cell
+                    }
                 }
             }
         }
-
-
         return UITableViewCell()
     }
 }
@@ -154,25 +131,52 @@ extension InviteForTrackViewController:UITableViewDelegate{
     }
 }
 
-//MARK:- UISearchBarDelegate
-extension InviteForTrackViewController:UISearchBarDelegate{
 
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
-        debugPrint(searchText)
-    }
-
-    func searchBarSearchButtonClicked(searchBar: UISearchBar){
-        searchBar.resignFirstResponder()
-    }
-
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        reloadAllSections(.PhoneBook)
-    }
-
-}
-
+//MARK:- SearchByIdCellDelegate
 extension InviteForTrackViewController:SearchByIdCellDelegate{
     func searchTapped() {
-        reloadAllSections(.Search)
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.searchUserView) as? SearchUserViewController {
+            UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: Fetched Results Controller Delegate Methods
+extension InviteForTrackViewController:NSFetchedResultsControllerDelegate{
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tblView.beginUpdates()
+    }
+
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tblView.endUpdates()
+    }
+
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch (type) {
+        case .Insert:
+            if let indexPath = newIndexPath {
+                tblView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Delete:
+            if let indexPath = indexPath {
+                tblView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Update:
+            if let indexPath = indexPath {
+                tblView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+            break;
+        case .Move:
+            if let indexPath = indexPath {
+                tblView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+
+            if let newIndexPath = newIndexPath {
+                tblView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+        }
     }
 }

@@ -22,3 +22,11 @@ class ContactDetailsCell: UITableViewCell {
     }
     
 }
+
+
+//MARK:- Additional methods
+extension ContactDetailsCell{
+    func configCell(obj:AnyObject) {
+        
+    }
+}

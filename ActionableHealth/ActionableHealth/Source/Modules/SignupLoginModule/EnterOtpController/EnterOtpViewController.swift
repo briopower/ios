@@ -20,6 +20,7 @@ class EnterOtpViewController: CommonViewController {
     
     //MARK:- Life Cycle
     override func viewDidLoad() {
+        showLoginModule = false
         super.viewDidLoad()
         self.setUpView()
     }
@@ -39,7 +40,6 @@ class EnterOtpViewController: CommonViewController {
 //MARK:- Additional functions
 extension EnterOtpViewController{
     func setUpView(){
-        showLoginModule = false
         containerOtpView.layer.borderWidth = 0.5
         containerOtpView.layer.borderColor = UIColor.getAppSeperatorColor().CGColor
     }

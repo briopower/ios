@@ -21,8 +21,8 @@ class WelcomeToBrio: CommonViewController {
     var phoneDetail:NSMutableDictionary = [:]
     //MARK:- Life Cycle
     override func viewDidLoad() {
+        showLoginModule = false
         super.viewDidLoad()
-        
         self.setUpView()
     }
     override func viewWillAppear(animated: Bool) {
@@ -39,7 +39,6 @@ extension WelcomeToBrio{
     func setUpView(){
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 70
-        showLoginModule = false
         tblView.registerNib(UINib.init(nibName: String(DetailViewCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(DetailViewCell))
         tblView.registerNib(UINib.init(nibName: String(ChooseCountryCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ChooseCountryCell))
         tblView.registerNib(UINib.init(nibName: String(PhoneNoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhoneNoCell))
@@ -96,6 +95,7 @@ extension WelcomeToBrio:UITableViewDelegate{
                 break
             }
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
 }
 

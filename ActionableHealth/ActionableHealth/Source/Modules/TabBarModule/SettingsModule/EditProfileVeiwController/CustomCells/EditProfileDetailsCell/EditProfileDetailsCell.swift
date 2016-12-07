@@ -8,14 +8,12 @@
 
 import UIKit
 enum EditProfileDetailsCellType:Int {
-    case Image,NameCell, Email, Phone, Title, Interest, Hobbies, ChangePassword,Count
+    case Image,NameCell, Phone, Title, Interest, Hobbies,Count
 
     func getTitle() -> String {
         switch self {
         case .NameCell:
             return "NAME"
-        case .Email:
-            return "EMAIL ADDRESS"
         case .Phone:
             return "PHONE NUMBER"
         case .Title:
@@ -24,8 +22,6 @@ enum EditProfileDetailsCellType:Int {
             return "INTEREST"
         case .Hobbies:
             return "HOBBIES"
-        case .ChangePassword:
-            return "CHANGE PASSWORD"
         default:
             return ""
         }
@@ -42,7 +38,7 @@ class EditProfileDetailsCell: UITableViewCell {
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
-        detailsTextView?.font = UIFont.getAppRegularFontWithSize(15)?.getDynamicSizeFont()
+        detailsTextView?.font = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

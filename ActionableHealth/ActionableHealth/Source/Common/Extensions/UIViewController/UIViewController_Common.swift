@@ -27,7 +27,7 @@ extension UIViewController{
         }
     }
 
-    class func presentLoginViewController(shouldResetData:Bool = false, animated:Bool = true){
+    class func presentLoginViewController(shouldResetData:Bool = false, animated:Bool = true, Completion complete:(()-> Void)? = nil){
         if let viewCont = getTopMostViewController() as? UINavigationController {
             if viewCont.viewControllers.count > 0{
                 if let viewCont1 = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateInitialViewController() as? UINavigationController {
@@ -42,6 +42,7 @@ extension UIViewController{
                                 }
                             }
                         }
+                        complete?()
                     })
                 }
             }

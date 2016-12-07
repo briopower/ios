@@ -10,6 +10,11 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,6 +34,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nSK-0x-3r0">
                         <rect key="frame" x="0.0" y="0.0" width="33" height="218"/>
                     </imageView>
+<<<<<<< 8092adae031aff2315101795b681777e987c8a37
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQ9-xo-J9s">
                         <rect key="frame" x="33" y="100" width="17.5" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -43,6 +49,12 @@
                             <action selector="textChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="FaB-cd-l1c"/>
                             <outlet property="delegate" destination="-1" id="55y-aM-Y4D"/>
                         </connections>
+=======
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yl9-Tf-wQf" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="63" y="0.0" width="531" height="218.5"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+>>>>>>> Email, Password section removed, font issues resolved, Search user section added
                     </textField>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vG1-NB-K2l" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="217" width="594" height="1"/>
@@ -51,30 +63,42 @@
                             <constraint firstAttribute="height" constant="1" id="Zff-xG-ZGt"/>
                         </constraints>
                     </imageView>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="249" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Arg-bE-sxx" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="33" y="0.0" width="24" height="218"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="yl9-Tf-wQf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0fK-72-wki"/>
                     <constraint firstAttribute="bottom" secondItem="nSK-0x-3r0" secondAttribute="bottom" id="0uq-ZF-jeW"/>
                     <constraint firstAttribute="trailing" secondItem="2l7-MR-Kwt" secondAttribute="trailing" id="BV3-x7-jDK"/>
+                    <constraint firstItem="Arg-bE-sxx" firstAttribute="leading" secondItem="nSK-0x-3r0" secondAttribute="trailing" id="Ddz-Bm-SHT"/>
                     <constraint firstAttribute="trailing" secondItem="vG1-NB-K2l" secondAttribute="trailing" id="Eoj-dL-sUm"/>
                     <constraint firstItem="vG1-NB-K2l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NYc-J8-2Rq"/>
                     <constraint firstItem="2l7-MR-Kwt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="T0J-53-0JT"/>
+                    <constraint firstItem="Arg-bE-sxx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xyt-yc-Qh2"/>
                     <constraint firstItem="2l7-MR-Kwt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YxM-JX-I0l"/>
-                    <constraint firstItem="zQ9-xo-J9s" firstAttribute="leading" secondItem="nSK-0x-3r0" secondAttribute="trailing" id="aU6-eQ-GW7"/>
-                    <constraint firstItem="yl9-Tf-wQf" firstAttribute="leading" secondItem="zQ9-xo-J9s" secondAttribute="trailing" constant="8" id="cgC-mt-RcL"/>
+                    <constraint firstAttribute="bottom" secondItem="yl9-Tf-wQf" secondAttribute="bottom" id="bxH-3q-4HI"/>
                     <constraint firstAttribute="bottom" secondItem="2l7-MR-Kwt" secondAttribute="bottom" id="egh-t0-1Wh"/>
                     <constraint firstItem="nSK-0x-3r0" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="69:1241" id="inM-En-ZbI"/>
+                    <constraint firstItem="yl9-Tf-wQf" firstAttribute="leading" secondItem="Arg-bE-sxx" secondAttribute="trailing" constant="6" id="l6C-YO-uqM"/>
+                    <constraint firstAttribute="bottom" secondItem="Arg-bE-sxx" secondAttribute="bottom" id="llC-UW-rBz"/>
                     <constraint firstAttribute="bottom" secondItem="vG1-NB-K2l" secondAttribute="bottom" id="pp2-z2-8zn"/>
-                    <constraint firstItem="zQ9-xo-J9s" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sId-2z-QOD"/>
                     <constraint firstItem="nSK-0x-3r0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sgE-5K-q3z"/>
-                    <constraint firstItem="yl9-Tf-wQf" firstAttribute="centerY" secondItem="zQ9-xo-J9s" secondAttribute="centerY" id="wtQ-9t-uFB"/>
+                    <constraint firstAttribute="trailing" secondItem="yl9-Tf-wQf" secondAttribute="trailing" id="tK3-FG-mtc"/>
                     <constraint firstItem="nSK-0x-3r0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="z54-m8-9Zc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="countryCode" destination="zQ9-xo-J9s" id="SLl-YB-OeC"/>
+                <outlet property="countryCode" destination="Arg-bE-sxx" id="G12-sJ-pEU"/>
                 <outlet property="phoneNoTxtFld" destination="yl9-Tf-wQf" id="u86-ct-hvj"/>
             </connections>
+<<<<<<< 8092adae031aff2315101795b681777e987c8a37
             <point key="canvasLocation" x="-489" y="34"/>
+=======
+            <point key="canvasLocation" x="102" y="69"/>
+>>>>>>> Email, Password section removed, font issues resolved, Search user section added
         </tableViewCell>
     </objects>
 </document>

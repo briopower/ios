@@ -44,6 +44,7 @@ extension UIImage{
     }
 
     class func getLaunchImage() -> UIImage?{
+        printAllImages()
         switch UIDevice.getDeviceType() {
         case .AppleIphone4, .AppleIphone4S:
             return UIImage(named: "Brand Assets-700@2x.png") // 640 960

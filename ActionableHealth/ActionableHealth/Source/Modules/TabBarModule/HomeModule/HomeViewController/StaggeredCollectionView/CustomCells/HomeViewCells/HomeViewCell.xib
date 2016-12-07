@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="ProximaNova-Regular.otf">
+        <array key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,34 +23,35 @@
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRA-3F-c7K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="363"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMd-zb-0Yx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="286"/>
-                                <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="274.5"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnK-8o-Haq">
-                                <rect key="frame" x="0.0" y="286" width="320" height="77"/>
+                                <rect key="frame" x="0.0" y="274.5" width="320" height="88.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sv2-Pj-bfV">
-                                        <rect key="frame" x="19" y="11" width="55" height="55"/>
+                                        <rect key="frame" x="19" y="17" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Sv2-Pj-bfV" secondAttribute="height" multiplier="1:1" id="Bl8-tH-kfn"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZBl-LL-1pY">
-                                        <rect key="frame" x="0.0" y="0.0" width="19" height="77"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="19" height="88.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-LU-7eF" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="85" y="12" width="52" height="14"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
-                                        <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="85" y="15.5" width="60.5" height="19"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                        <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8m-Ui-gwT" customClass="HCSStarRatingView">
-                                        <rect key="frame" x="85" y="29" width="138" height="28"/>
+                                        <rect key="frame" x="85" y="34.5" width="138" height="32"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                                 <integer key="value" value="5"/>
@@ -66,14 +72,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="d8m-Ui-gwT" firstAttribute="top" secondItem="Ccb-LU-7eF" secondAttribute="bottom" multiplier="1.1" id="0Sv-Gp-5JR"/>
+                                    <constraint firstItem="d8m-Ui-gwT" firstAttribute="top" secondItem="Ccb-LU-7eF" secondAttribute="bottom" id="0Sv-Gp-5JR"/>
                                     <constraint firstItem="ZBl-LL-1pY" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="35:580" id="4Yg-iM-3Nr"/>
                                     <constraint firstAttribute="bottom" secondItem="ZBl-LL-1pY" secondAttribute="bottom" id="4dv-hL-kAj"/>
                                     <constraint firstItem="Sv2-Pj-bfV" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="100:580" id="CYD-Rk-ASA"/>
-                                    <constraint firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="height" multiplier="580:140" id="Di7-8R-f74"/>
-                                    <constraint firstItem="Ccb-LU-7eF" firstAttribute="top" secondItem="Sv2-Pj-bfV" secondAttribute="top" multiplier="1.1" id="OCu-Kd-R2g"/>
+                                    <constraint firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="height" multiplier="580:160" id="Di7-8R-f74"/>
+                                    <constraint firstItem="Ccb-LU-7eF" firstAttribute="top" secondItem="Sv2-Pj-bfV" secondAttribute="top" multiplier="0.9" id="OCu-Kd-R2g"/>
                                     <constraint firstItem="d8m-Ui-gwT" firstAttribute="height" secondItem="tnK-8o-Haq" secondAttribute="height" multiplier="50:140" id="Onm-dm-7EZ"/>
                                     <constraint firstItem="ZBl-LL-1pY" firstAttribute="leading" secondItem="tnK-8o-Haq" secondAttribute="leading" id="ifH-3u-KxY"/>
                                     <constraint firstItem="ZBl-LL-1pY" firstAttribute="top" secondItem="tnK-8o-Haq" secondAttribute="top" id="ipA-kH-DdH"/>
@@ -85,7 +91,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VMd-zb-0Yx" firstAttribute="leading" secondItem="kRA-3F-c7K" secondAttribute="leading" id="DeE-5C-sVJ"/>
                             <constraint firstItem="tnK-8o-Haq" firstAttribute="leading" secondItem="kRA-3F-c7K" secondAttribute="leading" id="Lyx-pc-faT"/>
@@ -97,7 +103,6 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstItem="kRA-3F-c7K" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="AKq-lb-fTR"/>

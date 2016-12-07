@@ -102,6 +102,8 @@ extension SettingsViewController:UITableViewDelegate{
             default:
                 break
             }
+
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
         }
     }
 }

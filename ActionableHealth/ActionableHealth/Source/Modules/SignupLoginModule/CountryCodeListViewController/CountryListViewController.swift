@@ -36,6 +36,7 @@ class CountryListViewController: CommonViewController {
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
+        showLoginModule = false
         super.viewDidLoad()
         setupView()
 
@@ -57,7 +58,6 @@ class CountryListViewController: CommonViewController {
 extension CountryListViewController{
 
     func setupView() {
-        showLoginModule = false
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         path = documentDirectory.stringByAppendingString("/\(fileName).\(fileType)")
         if fileManager.fileExistsAtPath(path) {

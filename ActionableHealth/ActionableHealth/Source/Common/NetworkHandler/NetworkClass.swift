@@ -21,6 +21,7 @@ class NetworkClass:NSObject  {
         Alamofire.request(request)
             .validate()
             .responseJSON { response in
+                debugPrint(response.result)
                 switch response.result {
                 case .Success:
                     if completion != nil{

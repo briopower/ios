@@ -140,7 +140,7 @@ extension InviteForTrackViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
             if type == .Contacts {
-                print("Selected")
+                debugPrint("Selected")
             }
         }
     }
@@ -148,7 +148,7 @@ extension InviteForTrackViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
             if type == .Contacts {
-                print("Deselected")
+                debugPrint("Deselected")
             }
         }
     }
@@ -158,7 +158,7 @@ extension InviteForTrackViewController:UITableViewDelegate{
 extension InviteForTrackViewController:UISearchBarDelegate{
 
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
-        print(searchText)
+        debugPrint(searchText)
     }
 
     func searchBarSearchButtonClicked(searchBar: UISearchBar){

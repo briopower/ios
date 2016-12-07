@@ -19,6 +19,7 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var commentCountButton: UIButton!
     @IBOutlet weak var starRatingView: HCSStarRatingView!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var rateTaskButton: UIButton!
 
     //MARK:- Variables
     static let statusCell = "PhaseDetailsCell_Status"
@@ -54,9 +55,16 @@ extension PhaseDetailsCell{
     func configureCell(obj:TasksModel) {
         currentTask = obj
         taskNameLabel.text = currentTask?.taskName ?? ""
-        completedOnlabel.text = "Completed on 12 Aug 2016"
         commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comments", forState: .Normal)
         starRatingView.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
+
+        if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
+            completedOnlabel.text = "Completed on 12 Aug 2016"
+            rateTaskButton.hidden = false
+        }else{
+            completedOnlabel.text = nil
+            rateTaskButton.hidden = true
+        }
     }
 }

@@ -44,7 +44,7 @@ extension PhasesModel{
         model.templatePhaseId = dict["templatePhaseId"] as? String
         model.status = dict["status"] as? String ?? ""
 
-        if let tasks = dict["tasks"] as? NSMutableArray {
+        if let tasks = dict["tasks"] as? NSArray {
             for temp in tasks {
                 let task = TasksModel.getTasksUsingObj(temp)
                 task.parentPhase = model

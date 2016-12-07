@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         FIRMessaging.messaging().disconnect()
-        print("Disconnected from FCM.")
+        debugPrint("Disconnected from FCM.")
 
     }
 
@@ -55,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         startSyncing()
+        if !NSUserDefaults.isLoggedIn() {
+            UIViewController.presentLoginViewController(true, animated: false)
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -166,11 +169,11 @@ extension AppDelegate{
 
         // Print message ID.
         if let messageID = userInfo["gcm.message_id"] {
-            print("Message ID: \(messageID)")
+            debugPrint("Message ID: \(messageID)")
         }
 
         // Print full message.
-        print(userInfo)
+        debugPrint(userInfo)
     }
 }
 
@@ -195,9 +198,9 @@ extension AppDelegate{
     func connectToFcm() {
         FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
             if error != nil {
-                print("Unable to connect with FCM. \(error)")
+                debugPrint("Unable to connect with FCM. \(error)")
             } else {
-                print("Connected to FCM.")
+                debugPrint("Connected to FCM.")
             }
         }
     }
@@ -222,7 +225,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
 //MARK:- FIRMessagingDelegate
 extension AppDelegate:FIRMessagingDelegate{
     func applicationReceivedRemoteMessage(remoteMessage: FIRMessagingRemoteMessage){
-        print(remoteMessage.appData)
+        debugPrint(remoteMessage.appData)
     }
 }
 
@@ -230,7 +233,7 @@ extension AppDelegate:FIRMessagingDelegate{
 extension AppDelegate{
     func tokenRefreshNotification(not:NSNotification) {
         if let refreshedToken = FIRInstanceID.instanceID().token() {
-            print("InstanceID token: \(refreshedToken)")
+            debugPrint("InstanceID token: \(refreshedToken)")
         }
 
         // Connect to FCM since connection may have failed when attempted before having a token.

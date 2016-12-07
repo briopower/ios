@@ -208,27 +208,28 @@ extension TrackDetailsViewController:UITableViewDelegate{
 //MARK:- Network methods
 extension TrackDetailsViewController{
     func updateTemplate() {
-
-        if let id = sourceType == .Home ? currentTemplate?.templateId : currentTemplate?.trackId where NetworkClass.isConnected(true){
-            showLoader()
-            let url = sourceType == .Home ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
-            NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
-                (status, responseObj, error, statusCode) in
-                if status{
-                    self.processResponse(responseObj)
-                }else{
-                    self.processError(error)
-                }
-                self.hideLoader()
-            })
+        if NetworkClass.isConnected(true) {
+            if let id = sourceType == .Home ? currentTemplate?.templateId : currentTemplate?.trackId  {
+                showLoader()
+                let url = sourceType == .Home ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
+                NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
+                    (status, responseObj, error, statusCode) in
+                    if status{
+                        self.processResponse(responseObj)
+                    }else{
+                        self.processError(error)
+                    }
+                    self.hideLoader()
+                })
+            }
         }
     }
     
     func processResponse(responseObj:AnyObject?) {
-        if let dict = responseObj where currentTemplate != nil {
+        if let dict = responseObj, let temp = currentTemplate {
             switch sourceType {
             case .Home, .Tracks:
-                TemplatesModel.addPhases(dict, toModel: currentTemplate!)
+                TemplatesModel.addPhases(dict, toModel: temp)
             default:
                 break
             }

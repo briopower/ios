@@ -18,7 +18,6 @@ class CommonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNavigationController()?.delegate = self
-//        self.edgesForExtendedLayout = UIRectEdge.None
         setNavigationBarBackgroundColor(UIColor.whiteColor())
     }
 
@@ -40,9 +39,9 @@ class CommonViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if !NSUserDefaults.isLoggedIn() && showLoginModule {
-            UIViewController.presentLoginViewController(true, animated: false)
-        }
+//        if !NSUserDefaults.isLoggedIn() && showLoginModule {
+//            UIViewController.presentLoginViewController(true, animated: false)
+//        }
     }
 
     //MARK:  Delegate

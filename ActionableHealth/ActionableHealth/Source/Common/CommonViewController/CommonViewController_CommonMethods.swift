@@ -140,8 +140,9 @@ extension CommonViewController{
         button.clipsToBounds = true
         button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
         button.setTitle(title, forState: UIControlState.Normal)
-        button.titleLabel?.font = UIFont.getAppRegularFontWithSize(14.66)?.getDynamicSizeFont()
-        button.setTitleColor(button.titleLabel?.textColor.colorWithAlphaComponent(0.2), forState: .Highlighted)
+        button.titleLabel?.font = UIFont.getAppRegularFontWithSize(18)?.getDynamicSizeFont()
+        button.setTitleColor(UIColor.getAppThemeColor(), forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.getAppThemeColor().colorWithAlphaComponent(0.2), forState: .Highlighted)
         button.sizeToFit()
         return button
     }

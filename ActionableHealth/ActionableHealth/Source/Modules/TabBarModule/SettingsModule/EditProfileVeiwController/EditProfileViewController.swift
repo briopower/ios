@@ -54,10 +54,11 @@ extension EditProfileViewController{
 extension EditProfileViewController{
     override func skipButtonAction(sender: UIButton?) {
         super.skipButtonAction(sender)
+         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
-    
     @IBAction func updateAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 //MARK:- EditProfileViewController

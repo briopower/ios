@@ -31,7 +31,7 @@ class TrackDetailsViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("TRACK DETAILS", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("TRACK DETAILS", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Add)
 
     }
     override func viewDidLayoutSubviews() {
@@ -57,7 +57,11 @@ extension TrackDetailsViewController{
     @IBAction func sectionButtonActions(sender: UIButton) {
         setSelectedButton(false)
     }
+    
+    override func addButtonAction(sender: UIButton?) {
+        super.addButtonAction(sender)
 
+    }
 }
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{

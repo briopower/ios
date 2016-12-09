@@ -161,38 +161,6 @@
             endingLineNumber = "59"
             landmarkName = "submitTapped()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.submitTapped () -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.453125"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "178">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.(submitTapped () -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.455078"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "53">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -209,38 +177,6 @@
             endingLineNumber = "64"
             landmarkName = "submitTapped()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.(submitTapped () -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.459258"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "85">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.(submitTapped () -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.461065"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "335">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -257,38 +193,6 @@
             endingLineNumber = "66"
             landmarkName = "submitTapped()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.(submitTapped () -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.465272"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "373">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.(submitTapped () -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.467189"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "648">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -321,38 +225,6 @@
             endingLineNumber = "78"
             landmarkName = "submitTapped()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.(submitTapped () -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.474711"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "1634">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.ChangePasswordViewController.(submitTapped () -&gt; ()).(closure #1).(closure #2)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/SettingsModule/ChangePasswordViewController/ChangePasswordViewController.swift"
-                  timestampString = "502963278.477063"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

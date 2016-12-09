@@ -44,6 +44,7 @@
 		3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */; };
 		3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6763141DB0F1F8001F7A4A /* SeparatorCell.swift */; };
 		3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763151DB0F1F8001F7A4A /* SeparatorCell.xib */; };
+		3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */; };
 		3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */; };
 		3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */; };
 		3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */; };
@@ -228,6 +229,7 @@
 		3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewCell.xib; sourceTree = "<group>"; };
 		3C6763141DB0F1F8001F7A4A /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		3C6763151DB0F1F8001F7A4A /* SeparatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorCell.xib; sourceTree = "<group>"; };
+		3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackMemberListViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidingViewController.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 		3C39DAA91DB64A7400D86D24 /* TrackDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3C707DA01DFAB76E00B9177E /* TrackMemberListViewController */,
 				3CCF31041DB74B60001A1E7B /* TrackDetailsHeaderView */,
 				3C39DAAA1DB64A7400D86D24 /* CustomCell */,
 				3CCF31091DB75B24001A1E7B /* TrackDetailsViewController.swift */,
@@ -817,6 +820,14 @@
 				3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */,
 			);
 			path = SettingsViewCell;
+			sourceTree = "<group>";
+		};
+		3C707DA01DFAB76E00B9177E /* TrackMemberListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */,
+			);
+			path = TrackMemberListViewController;
 			sourceTree = "<group>";
 		};
 		3C7DA1D91DB0A5BA002C9A50 /* NotificationViewController */ = {
@@ -2114,6 +2125,7 @@
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
 				3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */,
 				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
+				3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */,
 				3CC9D0771DB897D600287068 /* TrackFilesViewController.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,

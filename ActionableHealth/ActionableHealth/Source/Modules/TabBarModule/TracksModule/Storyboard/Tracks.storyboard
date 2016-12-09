@@ -206,7 +206,7 @@
                                         <state key="normal" image="send"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="155" height="15"/>
+                                        <rect key="frame" x="21" y="16" width="155" height="17.666666666666629"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -425,10 +425,10 @@
             </objects>
             <point key="canvasLocation" x="3775" y="419"/>
         </scene>
-        <!--View Controller-->
+        <!--Search User View Controller-->
         <scene sceneID="OCn-nN-aFq">
             <objects>
-                <viewController storyboardIdentifier="searchUserView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Fv-d4-EsE" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchUserView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Fv-d4-EsE" customClass="SearchUserViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="haY-BQ-dTb"/>
                         <viewControllerLayoutGuide type="bottom" id="3U3-mf-Kzc"/>
@@ -462,6 +462,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xzd-0Z-GQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4520" y="418"/>
+        </scene>
+        <!--Track Member List View Controller-->
+        <scene sceneID="je2-yk-JUX">
+            <objects>
+                <viewController storyboardIdentifier="trackMemberListView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D3k-ff-min" customClass="TrackMemberListViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Drk-ol-u2d"/>
+                        <viewControllerLayoutGuide type="bottom" id="6W4-43-ZQX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LeF-Mt-y0V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zu8-7p-7gD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="D3k-ff-min" id="vk6-t9-gP0"/>
+                                    <outlet property="delegate" destination="D3k-ff-min" id="Eac-sv-Hq0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zu8-7p-7gD" firstAttribute="leading" secondItem="LeF-Mt-y0V" secondAttribute="leading" id="3WO-XT-b8r"/>
+                            <constraint firstAttribute="trailing" secondItem="zu8-7p-7gD" secondAttribute="trailing" id="eJk-cO-KhB"/>
+                            <constraint firstItem="zu8-7p-7gD" firstAttribute="top" secondItem="LeF-Mt-y0V" secondAttribute="top" id="fXu-WK-613"/>
+                            <constraint firstItem="6W4-43-ZQX" firstAttribute="top" secondItem="zu8-7p-7gD" secondAttribute="bottom" id="uv9-hR-aH2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tblVIew" destination="zu8-7p-7gD" id="F8u-eL-AcR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0nC-LD-PK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5185.507246376812" y="416.57608695652175"/>
         </scene>
     </scenes>
     <resources>

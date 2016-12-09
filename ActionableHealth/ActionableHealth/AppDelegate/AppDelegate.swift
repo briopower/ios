@@ -231,9 +231,9 @@ extension AppDelegate{
     func tokenRefreshNotification(not:NSNotification) {
         if let refreshedToken = FIRInstanceID.instanceID().token() {
             debugPrint("InstanceID token: \(refreshedToken)")
+            // Connect to FCM since connection may have failed when attempted before having a token.
+            connectToFcm()
         }
 
-        // Connect to FCM since connection may have failed when attempted before having a token.
-        connectToFcm()
     }
 }

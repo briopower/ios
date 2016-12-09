@@ -31,8 +31,14 @@ class TrackDetailsViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("TRACK DETAILS", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Add)
-
+        switch sourceType {
+        case .Home:
+            setNavigationBarWithTitle("Template Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        case .Tracks:
+            setNavigationBarWithTitle("Track Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Add)
+        default:
+            break
+        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -60,7 +66,10 @@ extension TrackDetailsViewController{
     
     override func addButtonAction(sender: UIButton?) {
         super.addButtonAction(sender)
-
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
+            viewCont.currentTemplate = currentTemplate
+            getNavigationController()?.pushViewController(viewCont, animated: true)
+        }
     }
 }
 //MARK:- TrackDetailsHeaderViewDelegate
@@ -69,7 +78,7 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
         if NSUserDefaults.isLoggedIn() {
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.navigationController?.pushViewController(viewCont, animated: true)
+                    self.getNavigationController()?.pushViewController(viewCont, animated: true)
                 })
             }
         }else{
@@ -83,11 +92,11 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
             switch type {
             case .Home:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.joinTracksView) as? JoinTrackViewController {
-                    self.navigationController?.pushViewController(viewCont, animated: true)
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
             case .Tracks:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
-                    self.navigationController?.pushViewController(viewCont, animated: true)
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
             default:
                 break
@@ -158,7 +167,7 @@ extension TrackDetailsViewController{
         if indexPath.row == InfoSectionCellTypes.Files.rawValue{
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
                 viewCont.currentTemplate = currentTemplate
-                self.navigationController?.pushViewController(viewCont, animated: true)
+                getNavigationController()?.pushViewController(viewCont, animated: true)
             }
         }
     }
@@ -166,7 +175,7 @@ extension TrackDetailsViewController{
     func phaseCellSelectedAtIndexPath(indexPath:NSIndexPath) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
             viewCont.currentPhase = currentTemplate?.phases[indexPath.row] as? PhasesModel
-            self.navigationController?.pushViewController(viewCont, animated: true)
+            getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }
 

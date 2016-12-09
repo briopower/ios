@@ -77,7 +77,7 @@ extension HomeViewController:CommonCollectionViewDelegate{
             dispatch_async(dispatch_get_main_queue(), {
                 viewCont.sourceType = TrackDetailsSourceType.Home
                 viewCont.currentTemplate = object as? TemplatesModel
-                self.navigationController?.pushViewController(viewCont, animated: true)
+                self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
         }
     }

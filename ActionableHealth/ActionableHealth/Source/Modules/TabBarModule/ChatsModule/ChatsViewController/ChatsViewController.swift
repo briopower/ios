@@ -63,7 +63,7 @@ extension ChatsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController {
             dispatch_async(dispatch_get_main_queue(), { 
-                self.navigationController?.pushViewController(viewCont, animated: true)
+                self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
         }
     }

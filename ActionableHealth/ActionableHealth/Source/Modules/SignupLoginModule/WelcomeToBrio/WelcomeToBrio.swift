@@ -88,7 +88,7 @@ extension WelcomeToBrio:UITableViewDelegate{
             case .ChooseCountry:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.countryList) as? CountryListViewController {
                     viewCont.delegate = self
-                    self.navigationController?.pushViewController(viewCont, animated: true)
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
 
             default:

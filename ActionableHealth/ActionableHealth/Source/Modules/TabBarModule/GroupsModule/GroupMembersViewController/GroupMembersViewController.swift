@@ -63,7 +63,7 @@ extension GroupMembersViewController:UITableViewDataSource{
 extension GroupMembersViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.GroupsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.GroupsStoryboard.memberDetailsView) as? GroupMemberDetailsViewController {
-            self.navigationController?.pushViewController(viewCont, animated: true)
+            getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }
 }

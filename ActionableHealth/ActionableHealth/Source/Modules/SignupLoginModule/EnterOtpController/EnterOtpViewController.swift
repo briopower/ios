@@ -59,7 +59,7 @@ extension EnterOtpViewController{
                             if dict["isAuthenticated"] as? Bool == true {
                                 NSUserDefaults.saveUser(dict)
                                if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
-                                    self.navigationController?.pushViewController(vc, animated: true)
+                                    self.getNavigationController()?.pushViewController(vc, animated: true)
                                 }
 
                             }

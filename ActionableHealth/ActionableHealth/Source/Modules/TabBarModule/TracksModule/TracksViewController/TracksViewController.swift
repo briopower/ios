@@ -65,7 +65,7 @@ extension TracksViewController:CommonCollectionViewDelegate{
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
                 viewCont.sourceType = TrackDetailsSourceType.Tracks
                 viewCont.currentTemplate = object as? TemplatesModel
-                self.navigationController?.pushViewController(viewCont, animated: true)
+                getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }
 }

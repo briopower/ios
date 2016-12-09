@@ -91,7 +91,7 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
         if NSUserDefaults.isLoggedIn() {
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.navigationController?.pushViewController(viewCont, animated: true)
+                    self.getNavigationController()?.pushViewController(viewCont, animated: true)
                 })
             }
         }else{

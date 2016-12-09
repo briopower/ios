@@ -164,7 +164,7 @@ extension CountryListViewController:UITableViewDelegate{
         if let dict = countryArray[indexPath.row] as? NSDictionary{
             delegate?.selectedCountryObject(dict)
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        getNavigationController()?.popViewControllerAnimated(true)
     }
 }
 

@@ -34,28 +34,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nSK-0x-3r0">
                         <rect key="frame" x="0.0" y="0.0" width="33" height="218"/>
                     </imageView>
-<<<<<<< 8092adae031aff2315101795b681777e987c8a37
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQ9-xo-J9s">
-                        <rect key="frame" x="33" y="100" width="17.5" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yl9-Tf-wQf">
-                        <rect key="frame" x="58.5" y="99.5" width="155" height="20"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <textInputTraits key="textInputTraits"/>
-                        <connections>
-                            <action selector="textChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="FaB-cd-l1c"/>
-                            <outlet property="delegate" destination="-1" id="55y-aM-Y4D"/>
-                        </connections>
-=======
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yl9-Tf-wQf" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="63" y="0.0" width="531" height="218.5"/>
-                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
-                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
->>>>>>> Email, Password section removed, font issues resolved, Search user section added
-                    </textField>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vG1-NB-K2l" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="217" width="594" height="1"/>
                         <color key="backgroundColor" red="0.99987119436264038" green="0.99998223781585693" blue="0.99984109401702881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,9 +42,18 @@
                         </constraints>
                     </imageView>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="249" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Arg-bE-sxx" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="33" y="0.0" width="24" height="218"/>
+                        <rect key="frame" x="33" y="0.0" width="18.5" height="218"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    </textField>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yl9-Tf-wQf" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="57" y="0.0" width="536.5" height="218.5"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        <connections>
+                            <action selector="textChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="FaB-cd-l1c"/>
+                            <outlet property="delegate" destination="-1" id="55y-aM-Y4D"/>
+                        </connections>
                     </textField>
                 </subviews>
                 <constraints>
@@ -94,11 +81,7 @@
                 <outlet property="countryCode" destination="Arg-bE-sxx" id="G12-sJ-pEU"/>
                 <outlet property="phoneNoTxtFld" destination="yl9-Tf-wQf" id="u86-ct-hvj"/>
             </connections>
-<<<<<<< 8092adae031aff2315101795b681777e987c8a37
-            <point key="canvasLocation" x="-489" y="34"/>
-=======
-            <point key="canvasLocation" x="102" y="69"/>
->>>>>>> Email, Password section removed, font issues resolved, Search user section added
+            <point key="canvasLocation" x="0.0" y="12"/>
         </tableViewCell>
     </objects>
 </document>

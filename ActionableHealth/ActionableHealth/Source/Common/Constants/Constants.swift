@@ -67,10 +67,6 @@ class Constants: NSObject {
         static let base = "https://briopower-qa.appspot.com/"
 
         static let authAPIs = "auth/"
-        static let signup = "\(base)\(authAPIs)create/"
-        static let login = "\(base)\(authAPIs)authenticate/"
-        static let logOut="\(base)\(authAPIs)logout/"
-        static let forgotPasswordNotification = "\(base)\(authAPIs)resetPasswordNotification/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
         static let templateDetails = "\(base)\(authAPIs)getTemplateDetails/"
         static let updateDetails = "\(base)\(authAPIs)updatePassword"

@@ -51,7 +51,7 @@ extension SettingsViewController:UITableViewDataSource{
 
         if let type = SettingsCellType(rawValue: indexPath.row) {
             switch type {
-            case .Separator1, .Separator2:
+            case .Separator1:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(SeparatorCell)) as? SeparatorCell {
                     return cell
                 }
@@ -73,36 +73,16 @@ extension SettingsViewController:UITableViewDelegate{
             switch type {
             case .Edit_Profile:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
-                    getNavigationController()?.pushViewController(viewCont, animated: true)
+                    viewCont.type = .EditProfile
+                    self.navigationController?.pushViewController(viewCont, animated: true)
                 }
             case .Notification:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.notificationView) as? NotificationsViewController {
                     getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
-            case .LogOut:
-                if NetworkClass.isConnected(true) {
-                    showLoaderOnWindow()
-                    NetworkClass.sendRequest(URL: Constants.URLs.logOut, RequestType: .GET, Parameters: nil, Headers: nil, CompletionHandler: {
-                        (status, responseObj, error, statusCode) in
-                        if statusCode == 200
-                        {
-                            dispatch_async(dispatch_get_main_queue(), {
-                                UIViewController.presentLoginViewController(true)
-                            })
-                        }
-                        else
-                        {
-                            UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Something went wrong! please try again", completion: nil)
-                        }
-                        self.hideLoader()
-                    })
-                }
-                
-
             default:
                 break
             }
-
             tableView.deselectRowAtIndexPath(indexPath, animated: false)
         }
     }

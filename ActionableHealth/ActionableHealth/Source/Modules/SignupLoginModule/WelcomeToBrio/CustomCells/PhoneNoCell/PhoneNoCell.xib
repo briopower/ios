@@ -42,12 +42,12 @@
                         </constraints>
                     </imageView>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="249" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Arg-bE-sxx" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="33" y="0.0" width="18.5" height="218"/>
+                        <rect key="frame" x="33" y="0.0" width="24" height="218"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     </textField>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yl9-Tf-wQf" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="57" y="0.0" width="536.5" height="218.5"/>
+                        <rect key="frame" x="62.5" y="0.0" width="531" height="218.5"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         <connections>
@@ -81,7 +81,7 @@
                 <outlet property="countryCode" destination="Arg-bE-sxx" id="G12-sJ-pEU"/>
                 <outlet property="phoneNoTxtFld" destination="yl9-Tf-wQf" id="u86-ct-hvj"/>
             </connections>
-            <point key="canvasLocation" x="0.0" y="12"/>
+            <point key="canvasLocation" x="-425" y="3"/>
         </tableViewCell>
     </objects>
 </document>

@@ -1815,6 +1815,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4F7SW76LL6;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2318,12 +2319,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: vidhan nandi (W6T8TLY7B9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "df7cf10b-663b-4ed0-a51f-8fe1e180ce91";
+				PROVISIONING_PROFILE = "99c040f0-9846-499c-be19-20f2cd701f18";
+				PROVISIONING_PROFILE_SPECIFIER = "Super Wildcard";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
@@ -2336,12 +2340,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "00c78739-51ea-4c99-a957-1c57b8c86756";
+				PROVISIONING_PROFILE = "99c040f0-9846-499c-be19-20f2cd701f18";
+				PROVISIONING_PROFILE_SPECIFIER = "Super Wildcard";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};

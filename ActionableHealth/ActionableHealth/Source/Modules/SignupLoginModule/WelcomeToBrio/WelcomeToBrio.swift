@@ -18,6 +18,7 @@ class WelcomeToBrio: CommonViewController {
     
     //MARK:- Variables
     var countryDict:NSDictionary?
+    var phoneDetail:NSMutableDictionary = [:]
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,8 @@ extension WelcomeToBrio{
         tblView.registerNib(UINib.init(nibName: String(PhoneNoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhoneNoCell))
         tblView.reloadData()
     }
+    
+
 }
 
 //MARK:- DataSource
@@ -66,7 +69,7 @@ extension WelcomeToBrio:UITableViewDataSource{
                 }
             case .PhoneNo:
                 if let cell = tblView.dequeueReusableCellWithIdentifier(String(PhoneNoCell)) as? PhoneNoCell{
-                    cell.setUPCell(countryDict)
+                    cell.setUPCell(countryDict , phoneDict:phoneDetail)
                     return cell
                 }
 
@@ -100,14 +103,42 @@ extension WelcomeToBrio:UITableViewDelegate{
 extension WelcomeToBrio:CountryListViewControllerDelegate{
     func selectedCountryObject(dict:NSDictionary){
         countryDict = dict
+        phoneDetail["isdCode"] = dict[normalizedISDCode_key] as? String ?? ""
         self.tblView.reloadData()
     }
 }
 
 //MARK:- ActionButton
 extension WelcomeToBrio{
-    @IBAction func nextBtnAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("enterOtp", sender: self)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "enterOtp"{
+            if let vc = segue.destinationViewController as? EnterOtpViewController{
+                vc.phoneDetail = phoneDetail
+            }
+            
+        }
     }
     
-}
+    @IBAction func nextBtnAction(sender: AnyObject) {
+        
+        if NetworkClass.isConnected(true) {
+            showLoader()
+            NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .POST, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if let dict = responseObj as? NSDictionary{
+                    if dict["created"] as? Bool == true {
+                            self.performSegueWithIdentifier("enterOtp", sender: self)
+                    }
+                    else if dict["exists"] as? Bool == true{
+                            self.performSegueWithIdentifier("enterOtp", sender: self)
+                    }
+                    else{
+                        print("some error occured")
+                    }
+                }
+                self.hideLoader()
+                })
+            }
+        }
+    }
+

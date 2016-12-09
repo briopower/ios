@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="ProximaNova-Regular.otf">
+        <array key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
-            <string>ProximaNova-Regular</string>
-        </mutableArray>
-        <mutableArray key="ProximaNova-Semibold.otf">
+        </array>
+        <array key="ProximaNova-Semibold.otf">
             <string>ProximaNova-Semibold</string>
-            <string>ProximaNova-Semibold</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -22,11 +25,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9ff-hd-GZW" id="F7P-lh-2Vy">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b6V-Rx-i3i">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="b6V-Rx-i3i" secondAttribute="height" multiplier="1242:80" priority="999" id="VrD-SA-9UO"/>
                             <constraint firstAttribute="width" secondItem="b6V-Rx-i3i" secondAttribute="height" multiplier="1242:80" id="d6G-si-1tB"/>
@@ -38,37 +41,37 @@
                         </variation>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a3o-J8-b2X">
-                        <rect key="frame" x="0.0" y="21" width="19" height="43"/>
+                        <rect key="frame" x="0.0" y="20.5" width="19" height="43.5"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Onm-xv-BXO">
-                        <rect key="frame" x="301" y="21" width="19" height="43"/>
+                        <rect key="frame" x="301" y="20.5" width="19" height="43.5"/>
                     </imageView>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogz-Up-fBw">
-                        <rect key="frame" x="19" y="21" width="117" height="43"/>
+                        <rect key="frame" x="19" y="20.5" width="117" height="43.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfq-fE-CnZ" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="84" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="21"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
-                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CUt-xx-aG9" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="21" width="117" height="22"/>
+                                <rect key="frame" x="0.0" y="21" width="117" height="22.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CUt-xx-aG9" secondAttribute="height" multiplier="365:70" id="adL-YE-Ujx"/>
                                 </constraints>
-                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xGY-a1-1zv" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="42" width="117" height="1"/>
+                                <rect key="frame" x="0.0" y="42.5" width="117" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="x9b-t8-nUN"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Nfq-fE-CnZ" firstAttribute="top" secondItem="ogz-Up-fBw" secondAttribute="top" id="3dZ-3g-hGe"/>
                             <constraint firstItem="CUt-xx-aG9" firstAttribute="leading" secondItem="ogz-Up-fBw" secondAttribute="leading" id="9hJ-uR-hQw"/>
@@ -82,34 +85,34 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="62U-jz-WbM">
-                        <rect key="frame" x="136" y="21" width="48" height="43"/>
+                        <rect key="frame" x="136" y="20.5" width="48" height="43.5"/>
                     </imageView>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXI-lv-e5n">
-                        <rect key="frame" x="184" y="21" width="117" height="43"/>
+                        <rect key="frame" x="184" y="20.5" width="117" height="43.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaX-ts-MtU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="21"/>
+                                <rect key="frame" x="0.0" y="0.0" width="79.5" height="21"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
-                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ADx-Pc-lD4" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="21" width="117" height="22"/>
+                                <rect key="frame" x="0.0" y="21" width="117" height="22.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ADx-Pc-lD4" secondAttribute="height" multiplier="365:70" id="QtZ-f5-Ry1"/>
                                 </constraints>
-                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HdE-RR-i7v" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="42" width="117" height="1"/>
+                                <rect key="frame" x="0.0" y="42.5" width="117" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="BLw-oN-GJQ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RaX-ts-MtU" firstAttribute="leading" secondItem="eXI-lv-e5n" secondAttribute="leading" id="3z6-UL-WmP"/>
                             <constraint firstAttribute="trailing" secondItem="HdE-RR-i7v" secondAttribute="trailing" id="7wj-6c-TOC"/>

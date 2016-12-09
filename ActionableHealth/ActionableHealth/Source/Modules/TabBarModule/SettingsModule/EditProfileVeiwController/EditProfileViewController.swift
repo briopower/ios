@@ -26,12 +26,13 @@ class EditProfileViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("EDIT PROFILE", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Done)
+        setNavigationBarWithTitle("EDIT PROFILE", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.skip)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+   
 }
 
 //MARK:- Additional methods
@@ -52,9 +53,12 @@ extension EditProfileViewController{
 
 //MARK:- ButtonActions
 extension EditProfileViewController{
-    override func doneButtonAction(sender: UIButton?) {
-        super.doneButtonAction(sender)
+    override func skipButtonAction(sender: UIButton?) {
+        super.skipButtonAction(sender)
         
+    }
+    
+    @IBAction func updateAction(sender: AnyObject) {
     }
 }
 //MARK:- EditProfileViewController

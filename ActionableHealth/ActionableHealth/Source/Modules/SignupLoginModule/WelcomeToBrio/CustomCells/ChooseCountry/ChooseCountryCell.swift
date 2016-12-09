@@ -31,7 +31,7 @@ class ChooseCountryCell: UITableViewCell {
 extension ChooseCountryCell{
     func setUpCell(countryDict:NSDictionary?){
         if let dict = countryDict{
-            countryName.text = dict[countryName_key] as? String ?? ""
+            countryName.text = dict[countryName_key] as? String ?? ""            
         }
     }
 }

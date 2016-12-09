@@ -21,6 +21,7 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var rateTaskButton: UIButton!
 
+    @IBOutlet weak var overFlow: UIButton!
     //MARK:- Variables
     static let statusCell = "PhaseDetailsCell_Status"
     weak var delegate:PhaseDetailsCellDelegate?
@@ -38,6 +39,7 @@ class PhaseDetailsCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+  
 }
 
 //MARK:- Button Action
@@ -47,6 +49,9 @@ extension PhaseDetailsCell{
     }
     @IBAction func rateTaskAction(sender: AnyObject) {
         delegate?.rateTaskTapped(self.tag, obj: nil)
+    }
+    @IBAction func overFlowAction(sender: AnyObject) {
+//        var frame = self.view.convert(overFlow.frame, from:self.view.superview)
     }
 
 }

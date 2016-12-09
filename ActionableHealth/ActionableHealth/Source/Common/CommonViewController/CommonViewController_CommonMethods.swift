@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details,Add
+    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details,Add,skip
 }
 
 enum BarButtonPosition {
@@ -104,6 +104,8 @@ extension CommonViewController{
             barButton = UIBarButtonItem(customView:getButtonWithImage(DetailsButtonImage,Action: #selector(self.detailsButtonAction(_:))))
         case .Add:
             barButton = UIBarButtonItem(customView:getButtonWithImage(AddButtonImage,Action: #selector(self.addButtonAction(_:))))
+        case .skip:
+            barButton = UIBarButtonItem(customView:getButtonWithTitle("SKIP",Action: #selector(self.skipButtonAction(_:))))
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -202,6 +204,9 @@ extension CommonViewController{
         UIApplication.dismissKeyboard()
     }
     @IBAction func addButtonAction(sender:UIButton?){
+        
+    }
+    @IBAction func skipButtonAction(sender:UIButton?){
         
     }
 

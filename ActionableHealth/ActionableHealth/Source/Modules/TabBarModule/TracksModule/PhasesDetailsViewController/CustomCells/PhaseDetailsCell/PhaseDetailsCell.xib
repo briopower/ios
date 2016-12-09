@@ -174,7 +174,7 @@
                 <outlet property="starRatingView" destination="BE8-SJ-Jvp" id="nLW-Nc-F5t"/>
                 <outlet property="taskNameLabel" destination="juG-Px-5VZ" id="mab-u0-lSp"/>
             </connections>
-            <point key="canvasLocation" x="294" y="483"/>
+            <point key="canvasLocation" x="592" y="249"/>
         </tableViewCell>
     </objects>
     <resources>

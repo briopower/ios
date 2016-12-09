@@ -14,6 +14,8 @@ class PhoneNoCell: UITableViewCell {
     @IBOutlet weak var countryCode: UILabel!
     @IBOutlet weak var phoneNoTxtFld: UITextField!
     
+    //MARK:- Variables
+    var phoneDetail:NSMutableDictionary?
     
     //MARK:- ------------------
     override func awakeFromNib() {
@@ -26,22 +28,24 @@ class PhoneNoCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func textChanged(sender: AnyObject) {
+        if let dict = phoneDetail{
+                        dict["phone"] = phoneNoTxtFld.text
+                    }
+    }
     
 }
 
 //MARK:- Additional Functions
 extension PhoneNoCell{
-    func setUPCell(countryDict:NSDictionary?){
+    func setUPCell(countryDict:NSDictionary? , phoneDict:NSMutableDictionary){
+        phoneDetail = phoneDict
         if let dict = countryDict{
             countryCode.text = dict[normalizedISDCode_key] as? String ?? ""
         }
     }
-}
-
-//MARK:- Textfield Delegates
-extension PhoneNoCell:UITextFieldDelegate{
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool{
+    
+    func textChanged(){
         
-        return true
     }
 }

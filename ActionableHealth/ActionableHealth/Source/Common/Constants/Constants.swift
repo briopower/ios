@@ -79,5 +79,7 @@ class Constants: NSObject {
         static let trackDetails = "\(base)\(trackAPIs)getTrackDetails/"
         static let trackFiles = "\(base)\(trackAPIs)downloadAttachment/"
         static let appUsers = "\(base)\(trackAPIs)appUsers/"
+        static let requestOtp = "\(base)\(authAPIs)requestOTP/"
+        static let verifyOtp = "\(base)\(authAPIs)/validateOTP/"
     }
 }

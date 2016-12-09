@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+enum viewType{
+    case EditProfile , UpdateProfile
+}
 class EditProfileViewController: CommonViewController {
 
     //MARK:- Outlets
@@ -16,7 +18,7 @@ class EditProfileViewController: CommonViewController {
     //MARK:- Variables
     let textViewCellName = "EditProfileDetailsCell_TextView"
     let nameViewCellName = "EditProfileDetailsCell_Name"
-
+    var type:viewType = .EditProfile
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,13 @@ class EditProfileViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("EDIT PROFILE", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.skip)
+        switch type {
+        case .EditProfile:
+            setNavigationBarWithTitle("EDIT PROFILE", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        case .UpdateProfile:
+            setNavigationBarWithTitle("UPDATE PROFILE", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.skip)
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,12 +63,12 @@ extension EditProfileViewController{
     override func skipButtonAction(sender: UIButton?) {
         super.skipButtonAction(sender)
          self.dismissViewControllerAnimated(true, completion: nil)
-        
     }
     @IBAction func updateAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
+
 //MARK:- EditProfileViewController
 extension EditProfileViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

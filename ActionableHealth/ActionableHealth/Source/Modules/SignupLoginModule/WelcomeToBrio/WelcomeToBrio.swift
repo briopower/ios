@@ -34,19 +34,7 @@ class WelcomeToBrio: CommonViewController {
     }
 }
 
-//MARK:- Additional Functions
-extension WelcomeToBrio{
-    func setUpView(){
-        tblView.rowHeight = UITableViewAutomaticDimension
-        tblView.estimatedRowHeight = 70
-        tblView.registerNib(UINib.init(nibName: String(DetailViewCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(DetailViewCell))
-        tblView.registerNib(UINib.init(nibName: String(ChooseCountryCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ChooseCountryCell))
-        tblView.registerNib(UINib.init(nibName: String(PhoneNoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhoneNoCell))
-        tblView.reloadData()
-    }
-    
 
-}
 
 //MARK:- DataSource
 extension WelcomeToBrio:UITableViewDataSource{
@@ -108,8 +96,17 @@ extension WelcomeToBrio:CountryListViewControllerDelegate{
     }
 }
 
-//MARK:- ActionButton
+//MARK:- Additional Functions
 extension WelcomeToBrio{
+    func setUpView(){
+        tblView.rowHeight = UITableViewAutomaticDimension
+        tblView.estimatedRowHeight = 70
+        tblView.registerNib(UINib.init(nibName: String(DetailViewCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(DetailViewCell))
+        tblView.registerNib(UINib.init(nibName: String(ChooseCountryCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ChooseCountryCell))
+        tblView.registerNib(UINib.init(nibName: String(PhoneNoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhoneNoCell))
+        tblView.reloadData()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "enterOtp"{
             if let vc = segue.destinationViewController as? EnterOtpViewController{
@@ -119,26 +116,51 @@ extension WelcomeToBrio{
         }
     }
     
+    func processResponse(responseObj:AnyObject?) {
+        if let dict = responseObj as? NSDictionary{
+            if dict["created"] as? Bool == true {
+                self.performSegueWithIdentifier("enterOtp", sender: self)
+            }
+            else if dict["exists"] as? Bool == true{
+                self.performSegueWithIdentifier("enterOtp", sender: self)
+            }
+            else{
+                print("some error occured")
+            }
+        }
+    }
+    
+    func checkPhoneDetails() -> Bool{
+        if phoneDetail["isdCode"] != nil{
+            if phoneDetail["phone"] != nil{
+            }
+            else{
+                UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Enter Phone Number", completion: nil)
+                return false
+            }
+        }
+        else{
+            UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Select Your Country", completion: nil)
+            return false
+        }
+        return true
+    }
+}
+
+//MARK:- ActionButton
+extension WelcomeToBrio{
     @IBAction func nextBtnAction(sender: AnyObject) {
-        
-        if NetworkClass.isConnected(true) {
-            showLoader()
-            NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .POST, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
-                (status, responseObj, error, statusCode) in
-                if let dict = responseObj as? NSDictionary{
-                    if dict["created"] as? Bool == true {
-                            self.performSegueWithIdentifier("enterOtp", sender: self)
-                    }
-                    else if dict["exists"] as? Bool == true{
-                            self.performSegueWithIdentifier("enterOtp", sender: self)
-                    }
-                    else{
-                        print("some error occured")
-                    }
-                }
-                self.hideLoader()
+        if checkPhoneDetails(){
+            if NetworkClass.isConnected(true) {
+                
+                showLoader()
+                NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .POST, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
+                    (status, responseObj, error, statusCode) in
+                    self.processResponse(responseObj)
+                    self.hideLoader()
                 })
             }
         }
     }
+}
 

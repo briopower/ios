@@ -24,7 +24,7 @@ class EnterOtpViewController: CommonViewController {
         super.viewDidLoad()
         self.setUpView()
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -43,6 +43,33 @@ extension EnterOtpViewController{
         containerOtpView.layer.borderWidth = 0.5
         containerOtpView.layer.borderColor = UIColor.getAppSeperatorColor().CGColor
     }
+    
+    func processResponse(responseObj:AnyObject?) {
+        if let dict = responseObj as? NSDictionary{
+            if dict["isAuthenticated"] as? Bool == true {
+                NSUserDefaults.saveUser(dict)
+                if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
+                    vc.type = .UpdateProfile
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            else{
+                UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Invalid OTP !", completion: nil)
+            }
+        }
+    }
+    
+    func processError(error:NSError?) {
+        
+    }
+    
+    func checkFields() -> Bool {
+        if otpTextField.text?.getValidObject() == nil {
+            UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Enter OTP", completion: nil)
+            return false
+        }
+        return true
+    }
 }
 
 //MARK:- Button actions
@@ -50,26 +77,18 @@ extension EnterOtpViewController{
     @IBAction func verifyButton(sender: AnyObject) {
         if NetworkClass.isConnected(true) {
             showLoader()
-            if let localDict = phoneDetail{
-                if let phone = localDict["phone"], let otp = otpTextField.text{
-                    let verifyUrl = "\(Constants.URLs.verifyOtp)\(phone)/\(otp)"
-                    NetworkClass.sendRequest(URL: verifyUrl, RequestType: .GET, Parameters: nil , Headers: nil, CompletionHandler: {
-                        (status, responseObj, error, statusCode) in
-                        if let dict = responseObj as? NSDictionary{
-                            if dict["isAuthenticated"] as? Bool == true {
-                                NSUserDefaults.saveUser(dict)
-                               if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
-                                    self.navigationController?.pushViewController(vc, animated: true)
-                                }
-
-                            }
-                            else{
-                                print("Wrong Otp")
-                            }
-                        }
-                        self.hideLoader()
-                    })
-                }
+            if checkFields() {
+                NetworkClass.sendRequest(URL: "\(Constants.URLs.verifyOtp)\(phoneDetail!["phone"]!)/\(otpTextField.text ?? "")", RequestType: .GET, Parameters: nil , Headers: nil, CompletionHandler: {
+                    (status, responseObj, error, statusCode) in
+                    
+                    if status{
+                        self.processResponse(responseObj)
+                    }else{
+                        self.processError(error)
+                    }
+                    
+                    self.hideLoader()
+                })
             }
         }
     }
@@ -81,10 +100,10 @@ extension EnterOtpViewController{
                 (status, responseObj, error, statusCode) in
                 if let dict = responseObj as? NSDictionary{
                     if dict["exists"] as? Bool == true{
-                        print("OTP sent")
+                        debugPrint("OTP sent")
                     }
                     else{
-                        print("some error occured")
+                        debugPrint("some error occured")
                     }
                 }
                 self.hideLoader()

@@ -39,6 +39,8 @@
 		3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */; };
 		3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */; };
 		3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C39DAAB1DB64A8400D86D24 /* Tracks.storyboard */; };
+		3C4088411DFE6EE3003F3F88 /* InviteForTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C40883F1DFE6EE3003F3F88 /* InviteForTrackCell.swift */; };
+		3C4088421DFE6EE3003F3F88 /* InviteForTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4088401DFE6EE3003F3F88 /* InviteForTrackCell.xib */; };
 		3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4387F11DA7835500F68125 /* HomeViewController.swift */; };
 		3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */; };
 		3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */; };
@@ -145,8 +147,6 @@
 		3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */; };
 		3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */; };
 		3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */; };
-		3CF5B55F1DB79E6900224046 /* InviteForTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B55D1DB79E6900224046 /* InviteForTrackCell.swift */; };
-		3CF5B5601DB79E6900224046 /* InviteForTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B55E1DB79E6900224046 /* InviteForTrackCell.xib */; };
 		3CF5B5661DB7A56700224046 /* CommnetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5641DB7A56700224046 /* CommnetsCell.swift */; };
 		3CF5B5671DB7A56700224046 /* CommnetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5651DB7A56700224046 /* CommnetsCell.xib */; };
 		3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAE91DB4A08E0067387F /* Settings.storyboard */; };
@@ -228,6 +228,8 @@
 		3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NullCaseView.xib; sourceTree = "<group>"; };
 		3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		3C39DAAB1DB64A8400D86D24 /* Tracks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracks.storyboard; sourceTree = "<group>"; };
+		3C40883F1DFE6EE3003F3F88 /* InviteForTrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackCell.swift; sourceTree = "<group>"; };
+		3C4088401DFE6EE3003F3F88 /* InviteForTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteForTrackCell.xib; sourceTree = "<group>"; };
 		3C4387F11DA7835500F68125 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewCell.xib; sourceTree = "<group>"; };
@@ -335,8 +337,6 @@
 		3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell.xib; sourceTree = "<group>"; };
 		3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackViewController.swift; sourceTree = "<group>"; };
 		3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinTrackViewController.swift; sourceTree = "<group>"; };
-		3CF5B55D1DB79E6900224046 /* InviteForTrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackCell.swift; sourceTree = "<group>"; };
-		3CF5B55E1DB79E6900224046 /* InviteForTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteForTrackCell.xib; sourceTree = "<group>"; };
 		3CF5B5641DB7A56700224046 /* CommnetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommnetsCell.swift; sourceTree = "<group>"; };
 		3CF5B5651DB7A56700224046 /* CommnetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommnetsCell.xib; sourceTree = "<group>"; };
 		3CF6AAE91DB4A08E0067387F /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -767,6 +767,23 @@
 				3CF5B5481DB7861500224046 /* TrackPhasesCell */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		3C40883D1DFE6EE3003F3F88 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C40883E1DFE6EE3003F3F88 /* InviteForTrackCell */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		3C40883E1DFE6EE3003F3F88 /* InviteForTrackCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C40883F1DFE6EE3003F3F88 /* InviteForTrackCell.swift */,
+				3C4088401DFE6EE3003F3F88 /* InviteForTrackCell.xib */,
+			);
+			path = InviteForTrackCell;
 			sourceTree = "<group>";
 		};
 		3C4387EC1DA7823B00F68125 /* TabBarModule */ = {
@@ -1566,6 +1583,7 @@
 		3CF5B5561DB79DE600224046 /* JoinTrackViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3C40883D1DFE6EE3003F3F88 /* CustomCell */,
 				3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */,
 			);
 			path = JoinTrackViewController;
@@ -1577,18 +1595,8 @@
 				3C0FDF331DF5658D00710764 /* SearchByIdCell */,
 				3C0FDF341DF5658D00710764 /* AddFromPhoneCell */,
 				3C0FDF351DF5658D00710764 /* ContactDetailsCell */,
-				3CF5B55C1DB79E3100224046 /* InviteForTrackCell */,
 			);
 			path = CustomCells;
-			sourceTree = "<group>";
-		};
-		3CF5B55C1DB79E3100224046 /* InviteForTrackCell */ = {
-			isa = PBXGroup;
-			children = (
-				3CF5B55D1DB79E6900224046 /* InviteForTrackCell.swift */,
-				3CF5B55E1DB79E6900224046 /* InviteForTrackCell.xib */,
-			);
-			path = InviteForTrackCell;
 			sourceTree = "<group>";
 		};
 		3CF5B5611DB7A55000224046 /* CommentsViewController */ = {
@@ -1889,7 +1897,6 @@
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
-				3CF5B5601DB79E6900224046 /* InviteForTrackCell.xib in Resources */,
 				3CF5B5671DB7A56700224046 /* CommnetsCell.xib in Resources */,
 				3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */,
 				3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */,
@@ -1900,6 +1907,7 @@
 				3CAB0F991DB0BA090090BEF3 /* GroupsCell.xib in Resources */,
 				3CC9D08B1DB8B44D00287068 /* PhaseDetailsCell_Status.xib in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
+				3C4088421DFE6EE3003F3F88 /* InviteForTrackCell.xib in Resources */,
 				3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */,
 				3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */,
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
@@ -2146,7 +2154,6 @@
 				3CAB0FAC1DB0D8900090BEF3 /* ProfileImageCell.swift in Sources */,
 				3C1EC5AB1DA3A864003DC2A3 /* VNProgreessHUD.swift in Sources */,
 				3CB2B8421DEFE46D006DC4E9 /* AddressBook+CoreDataProperties.swift in Sources */,
-				3CF5B55F1DB79E6900224046 /* InviteForTrackCell.swift in Sources */,
 				40EBFEDF1DF8071500605397 /* WelcomeToBrio.swift in Sources */,
 				3C1EC59F1DA3A864003DC2A3 /* UIColor_Common.swift in Sources */,
 				3CAB0F981DB0BA090090BEF3 /* GroupsCell.swift in Sources */,
@@ -2156,6 +2163,7 @@
 				3CB8A2971DEDAE0C009B9AE9 /* TemplatesModel.swift in Sources */,
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
 				3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */,
+				3C4088411DFE6EE3003F3F88 /* InviteForTrackCell.swift in Sources */,
 				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
 				3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */,
 				3CC9D0771DB897D600287068 /* TrackFilesViewController.swift in Sources */,
@@ -2352,15 +2360,15 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "99c040f0-9846-499c-be19-20f2cd701f18";
-				PROVISIONING_PROFILE_SPECIFIER = "Super Wildcard";
+				PROVISIONING_PROFILE = "00c78739-51ea-4c99-a957-1c57b8c86756";
+				PROVISIONING_PROFILE_SPECIFIER = ActionableHealthInHouse;
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};

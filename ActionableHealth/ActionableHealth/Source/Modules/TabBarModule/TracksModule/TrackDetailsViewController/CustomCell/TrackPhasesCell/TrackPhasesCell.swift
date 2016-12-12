@@ -49,7 +49,7 @@ extension TrackPhasesCell{
             numberOfTaskLabel.text = ""
         }
         if phase.parentTemplate.objectType == ObjectType.Track{
-            allTaskStatusLabel.text = "All Task Completed"
+            allTaskStatusLabel.text = phase.status
         }else{
             allTaskStatusLabel.text = ""
         }

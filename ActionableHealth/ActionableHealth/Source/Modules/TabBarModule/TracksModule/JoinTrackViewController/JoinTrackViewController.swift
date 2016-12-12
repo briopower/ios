@@ -13,6 +13,9 @@ class JoinTrackViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var tblView: UITableView!
 
+    //MARK:- Variables
+    var currentTemplate:TemplatesModel?
+
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +24,7 @@ class JoinTrackViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("JOIN TRACK", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Join Track", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +42,18 @@ extension JoinTrackViewController{
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80
     }
+
+    func createYourOwn() {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
+            viewCont.sourceType = .Home
+            viewCont.currentTemplate = currentTemplate
+            getNavigationController()?.pushViewController(viewCont, animated: true)
+        }
+    }
+
+    func requestAdmin(){
+
+    }
 }
 
 //MARK:- UITableViewDataSource
@@ -48,9 +63,17 @@ extension JoinTrackViewController:UITableViewDataSource{
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(InviteForTrackCell)) as? InviteForTrackCell {
-            return cell
+        if let type = InviteForTrackCellType(rawValue: indexPath.row) {
+            switch type {
+            case .RequestAdmin, .CreateYourOwn:
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(InviteForTrackCell)) as? InviteForTrackCell {
+                    cell.configCell(type, template:currentTemplate)
+                    cell.delegate = self
+                    return cell
+                }
+            default:
+                break
+            }
         }
         return UITableViewCell()
     }
@@ -60,5 +83,19 @@ extension JoinTrackViewController:UITableViewDataSource{
 extension JoinTrackViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+    }
+}
+
+//MARK:- InviteForTrackCellDelegate
+extension JoinTrackViewController:InviteForTrackCellDelegate{
+    func actionButtonClicked(type: InviteForTrackCellType) {
+        switch type {
+        case .CreateYourOwn:
+            createYourOwn()
+        case .RequestAdmin:
+            requestAdmin()
+        default:
+            break
+        }
     }
 }

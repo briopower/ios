@@ -29,9 +29,9 @@ class EditProfileViewController: CommonViewController {
         super.viewWillAppear(animated)
         switch type {
         case .EditProfile:
-            setNavigationBarWithTitle("EDIT PROFILE", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+            setNavigationBarWithTitle("Edit Profile", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
         case .UpdateProfile:
-            setNavigationBarWithTitle("UPDATE PROFILE", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.skip)
+            setNavigationBarWithTitle("Update Profile", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.skip)
         }
         
     }

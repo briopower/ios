@@ -33,6 +33,11 @@ extension PhasesModel{
 
     class func getPhaseUsingObj(dict:AnyObject) -> PhasesModel {
         let model = PhasesModel()
+        updateObj(model, dict:dict)
+        return model
+    }
+
+    class func updateObj(model:PhasesModel, dict:AnyObject) {
         model.phsaeId = dict["id"] as? String
         model.postIds = dict["postIds"] as? [Int] ?? []
         model.orderIndex = dict["orderIndex"] as? Int ?? 0
@@ -44,6 +49,7 @@ extension PhasesModel{
         model.templatePhaseId = dict["templatePhaseId"] as? String
         model.status = dict["status"] as? String ?? ""
 
+        model.tasks = NSMutableArray()
         if let tasks = dict["tasks"] as? NSArray {
             for temp in tasks {
                 let task = TasksModel.getTasksUsingObj(temp)
@@ -53,6 +59,5 @@ extension PhasesModel{
             let sortDesc = NSSortDescriptor(key: "orderIndex", ascending: true)
             model.tasks.sortUsingDescriptors([sortDesc])
         }
-        return model
     }
 }

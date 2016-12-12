@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="19" height="77"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Files" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYY-47-3G9" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="19" y="29" width="81" height="20"/>
+                                <rect key="frame" x="19" y="28.5" width="81" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -71,6 +71,9 @@
                     <constraint firstItem="XKs-no-EnS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vVB-nD-Ekq"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="detailsLabel" destination="RYY-47-3G9" id="oGI-HB-gVM"/>
+            </connections>
             <point key="canvasLocation" x="318" y="377"/>
         </tableViewCell>
     </objects>

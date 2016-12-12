@@ -26,7 +26,7 @@ class TemplatesModel: NSObject {
     var fileName = ""
     var createDate = 0
     var sharedWith = []
-    var key = ""
+    var key:String?
     var rating = 0.0
     var commentsCount = 0
     var activeTrackCount = 0
@@ -42,6 +42,32 @@ class TemplatesModel: NSObject {
 //MARK:- Additional methods
 extension TemplatesModel{
 
+    func getCreateTrackDict(array:NSMutableArray) -> [String:AnyObject] {
+        var dict:[String:AnyObject] = [:]
+        dict["templateID"] = templateId ?? ""
+        dict["teamName"] = name
+        var arrOfMembers:[[String: String]] = []
+        for obj in array {
+            if let id = obj as? String {
+                arrOfMembers.append(["emailOrPhone":id])
+            }
+        }
+        dict["members"] = arrOfMembers
+        return dict
+    }
+
+    func getInviteMemberDict(array:NSMutableArray) -> [String:AnyObject] {
+        var dict:[String:AnyObject] = [:]
+        dict["trackID"] = trackId ?? ""
+        var arrOfMembers:[[String: String]] = []
+        for obj in array {
+            if let id = obj as? String {
+                arrOfMembers.append(["emailOrPhone":id])
+            }
+        }
+        dict["members"] = arrOfMembers
+        return dict
+    }
     class func getPayloadDict(cursor:String, query:String = "") -> [String:AnyObject] {
         return ["cursor":cursor, "pageSize": 20, "query": query]
     }
@@ -53,7 +79,7 @@ extension TemplatesModel{
     class func getTrackResponseArray(dict:AnyObject) -> NSArray {
         return dict["myTracksResultSet"] as? NSArray ?? []
     }
-    
+
     class func getCursor(dict:AnyObject) -> String? {
         return dict["cursor"] as? String
     }
@@ -88,7 +114,7 @@ extension TemplatesModel{
         obj.fileName = dict["fileName"] as? String ?? ""
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.sharedWith = dict["sharedWith"] as? NSArray ?? []
-        obj.key = dict["key"] as? String ?? ""
+        obj.key = dict["key"] as? String
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["comments"] as? Int ?? 0
         obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
@@ -107,12 +133,15 @@ extension TemplatesModel{
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["comments"] as? Int ?? 0
-        obj.sharedWith = dict["members"] as? NSArray ?? []
+        obj.members = NSMutableArray(array: dict["members"] as? NSArray ?? [])
         obj.blobKey = dict["blobKey"] as? String
+        obj.key = dict["key"] as? String
 
     }
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {
+        toModel.key = dict["key"] as? String ?? toModel.key
+        
         toModel.phases = NSMutableArray()
         let obj = toModel.objectType == .Template ? dict["details"] : dict["phasesAndTasks"]
         if let phases = obj as? NSArray {

@@ -10,6 +10,10 @@ import UIKit
 
 class TrackFilesCell: UITableViewCell {
 
+    //MARK:- Outlets
+    @IBOutlet weak var detailsLabel: UILabel!
+
+    //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +25,18 @@ class TrackFilesCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+//MARK:- Additional methods
+extension TrackFilesCell{
+    func configCell(type:InfoSectionCellTypes) {
+        switch type {
+        case .Files:
+            detailsLabel.text = "Track Files"
+        case .Members:
+            detailsLabel.text = "Track Members"
+        default:
+            break
+        }
+    }
 }

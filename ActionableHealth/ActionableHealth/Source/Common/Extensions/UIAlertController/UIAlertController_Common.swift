@@ -13,7 +13,7 @@ typealias ActionHandler = (tappedAtIndex:Int?) -> Void
 //MARK:- Additional methods
 extension UIAlertController{
 
-    class func showAlertOfStyle(alertStyle:UIAlertControllerStyle, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?){
+    class func showAlertOfStyle(alertStyle:UIAlertControllerStyle = .Alert, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?){
 
         UIApplication.sharedApplication().windows.first?.endEditing(true)
 

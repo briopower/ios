@@ -13,7 +13,8 @@ class TrackMemberListViewController: CommonViewController {
     @IBOutlet weak var tblVIew: UITableView!
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
-    
+    var membersArray = NSMutableArray()
+
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,20 @@ extension TrackMemberListViewController{
         tblVIew.estimatedRowHeight = 100
         tblVIew.rowHeight = UITableViewAutomaticDimension
         tblVIew.registerNib(UINib(nibName: String(GroupsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(GroupsCell))
+        getMembers()
+    }
+
+    func processResponse(response:AnyObject?) {
+        if let arr = response as? NSArray {
+            for obj in arr {
+                membersArray.addObject(obj)
+            }
+        }
+        tblVIew.reloadData()
+    }
+
+    func processError(error:NSError?) {
+
     }
 }
 
@@ -42,7 +57,7 @@ extension TrackMemberListViewController{
 //MARK:- UITableViewDataSource
 extension TrackMemberListViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return membersArray.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -60,6 +75,25 @@ extension TrackMemberListViewController:UITableViewDelegate{
         if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
+            })
+        }
+    }
+}
+
+
+//MARK:- Network Methods
+extension TrackMemberListViewController{
+    func getMembers() {
+        if NetworkClass.isConnected(true), let id = currentTemplate?.trackId {
+            showLoader()
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackMembers)\(id)", RequestType: .GET, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status{
+                    self.processResponse(responseObj)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
             })
         }
     }

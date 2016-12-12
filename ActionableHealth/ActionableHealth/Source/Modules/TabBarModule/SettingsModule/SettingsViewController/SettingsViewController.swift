@@ -21,7 +21,7 @@ class SettingsViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("SETTINGS", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Settings", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

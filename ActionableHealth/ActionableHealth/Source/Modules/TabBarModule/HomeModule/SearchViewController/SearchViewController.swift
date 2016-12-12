@@ -25,7 +25,7 @@ class SearchViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("SEARCH", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Cross)
+        self.setNavigationBarWithTitle("Search", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Cross)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -24,7 +24,7 @@ class TrackFilesViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("TRACK FILES", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Track Files", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
     override func didReceiveMemoryWarning() {

@@ -35,6 +35,16 @@
                             <constraint firstAttribute="height" constant="1" id="5t0-HV-vYi"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8N-Qa-bhB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="a8N-Qa-bhB" secondAttribute="height" multiplier="1242:224" priority="999" id="pAe-nL-3bF"/>
+                        </constraints>
+                    </imageView>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GL-L1-aaL">
+                        <rect key="frame" x="0.0" y="-1" width="320" height="95"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addam Sid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGy-eG-ieU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="26" y="23.5" width="84.5" height="20"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
@@ -47,11 +57,8 @@
                         <color key="textColor" red="0.43464314937591553" green="0.44299530982971191" blue="0.44278115034103394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a8N-Qa-bhB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="a8N-Qa-bhB" secondAttribute="height" multiplier="1242:224" priority="999" id="pAe-nL-3bF"/>
-                        </constraints>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="cQG-Zu-ZJz">
+                        <rect key="frame" x="275" y="38" width="25" height="18"/>
                     </imageView>
                 </subviews>
                 <constraints>
@@ -59,10 +66,14 @@
                     <constraint firstAttribute="bottom" secondItem="YUU-lS-x0U" secondAttribute="bottom" id="4i8-8P-WBO"/>
                     <constraint firstItem="HGy-eG-ieU" firstAttribute="centerY" secondItem="r9r-yH-UvV" secondAttribute="centerY" multiplier="80:112" id="4rz-D6-Tli"/>
                     <constraint firstAttribute="trailing" secondItem="YUU-lS-x0U" secondAttribute="trailing" id="6Wb-oa-qKZ"/>
+                    <constraint firstItem="8GL-L1-aaL" firstAttribute="centerY" secondItem="r9r-yH-UvV" secondAttribute="centerY" id="7or-3j-q3P"/>
+                    <constraint firstItem="8GL-L1-aaL" firstAttribute="width" secondItem="r9r-yH-UvV" secondAttribute="width" id="8ZE-6I-vPl"/>
                     <constraint firstItem="mO6-nf-E9P" firstAttribute="leading" secondItem="gco-yr-wdM" secondAttribute="trailing" id="BDj-D2-h7S"/>
+                    <constraint firstItem="8GL-L1-aaL" firstAttribute="height" secondItem="r9r-yH-UvV" secondAttribute="height" id="CkU-m6-OM9"/>
                     <constraint firstItem="gco-yr-wdM" firstAttribute="leading" secondItem="r9r-yH-UvV" secondAttribute="leadingMargin" constant="-8" id="Fe4-NE-Z0K"/>
                     <constraint firstItem="HGy-eG-ieU" firstAttribute="leading" secondItem="gco-yr-wdM" secondAttribute="trailing" id="GMU-fb-DwG"/>
                     <constraint firstItem="YUU-lS-x0U" firstAttribute="leading" secondItem="r9r-yH-UvV" secondAttribute="leading" id="Idt-r2-lpL"/>
+                    <constraint firstItem="cQG-Zu-ZJz" firstAttribute="centerX" secondItem="r9r-yH-UvV" secondAttribute="centerX" multiplier="1.8" id="Ydb-r9-m1L"/>
                     <constraint firstItem="gco-yr-wdM" firstAttribute="top" secondItem="r9r-yH-UvV" secondAttribute="topMargin" constant="-8" id="dvq-lu-eMT"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gco-yr-wdM" secondAttribute="bottom" constant="-8" id="f4l-Y6-6TD"/>
                     <constraint firstItem="a8N-Qa-bhB" firstAttribute="top" secondItem="r9r-yH-UvV" secondAttribute="top" id="ivJ-hS-UcS"/>
@@ -70,9 +81,20 @@
                     <constraint firstItem="a8N-Qa-bhB" firstAttribute="leading" secondItem="r9r-yH-UvV" secondAttribute="leading" id="krk-Ih-8HQ"/>
                     <constraint firstAttribute="bottom" secondItem="a8N-Qa-bhB" secondAttribute="bottom" id="qfd-lZ-Cyy"/>
                     <constraint firstItem="gco-yr-wdM" firstAttribute="width" secondItem="r9r-yH-UvV" secondAttribute="width" multiplier="100:1242" id="wF9-mT-64F"/>
+                    <constraint firstItem="8GL-L1-aaL" firstAttribute="centerX" secondItem="r9r-yH-UvV" secondAttribute="centerX" id="zIy-VV-gEZ"/>
+                    <constraint firstItem="cQG-Zu-ZJz" firstAttribute="centerY" secondItem="r9r-yH-UvV" secondAttribute="centerY" id="zmx-Q6-FFd"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="HGy-eG-ieU" id="gR9-tU-NY0"/>
+                <outlet property="numberLabel" destination="mO6-nf-E9P" id="BU5-pi-XPG"/>
+                <outlet property="shadowLayer" destination="8GL-L1-aaL" id="XjB-5L-Hkh"/>
+                <outlet property="tickImage" destination="cQG-Zu-ZJz" id="ACp-fq-CEJ"/>
+            </connections>
             <point key="canvasLocation" x="319" y="229.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="tick" width="25" height="18"/>
+    </resources>
 </document>

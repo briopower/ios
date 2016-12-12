@@ -8,7 +8,7 @@
 
 import UIKit
 enum InfoSectionCellTypes:Int {
-    case Details, Files, Count
+    case Details, Members, Files, Count
 }
 class TrackDetailsViewController: CommonViewController {
 
@@ -31,14 +31,8 @@ class TrackDetailsViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        switch sourceType {
-        case .Home:
-            setNavigationBarWithTitle("Template Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
-        case .Tracks:
-            setNavigationBarWithTitle("Track Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Add)
-        default:
-            break
-        }
+        setNavigationBarWithTitle("Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -63,14 +57,6 @@ extension TrackDetailsViewController{
     @IBAction func sectionButtonActions(sender: UIButton) {
         setSelectedButton(false)
     }
-    
-    override func addButtonAction(sender: UIButton?) {
-        super.addButtonAction(sender)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
-            viewCont.currentTemplate = currentTemplate
-            getNavigationController()?.pushViewController(viewCont, animated: true)
-        }
-    }
 }
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
@@ -78,6 +64,8 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
         if NSUserDefaults.isLoggedIn() {
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
                 dispatch_async(dispatch_get_main_queue(), {
+                    viewCont.sourceType = .Track
+                    viewCont.commentSourceObj = self.currentTemplate
                     self.getNavigationController()?.pushViewController(viewCont, animated: true)
                 })
             }
@@ -92,10 +80,13 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
             switch type {
             case .Home:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.joinTracksView) as? JoinTrackViewController {
+                    viewCont.currentTemplate = currentTemplate
                     getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
             case .Tracks:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
+                    viewCont.sourceType = .Tracks
+                    viewCont.currentTemplate = currentTemplate
                     getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
             default:
@@ -142,8 +133,9 @@ extension TrackDetailsViewController{
                     cell.configCell(currentTemplate)
                     return cell
                 }
-            case .Files:
+            case .Files, .Members:
                 if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
+                    cell.configCell(type)
                     return cell
                 }
             default:
@@ -164,10 +156,20 @@ extension TrackDetailsViewController{
     }
 
     func infoCellSelectedAtIndexPath(indexPath:NSIndexPath) {
-        if indexPath.row == InfoSectionCellTypes.Files.rawValue{
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
-                viewCont.currentTemplate = currentTemplate
-                getNavigationController()?.pushViewController(viewCont, animated: true)
+        if let type = InfoSectionCellTypes(rawValue: indexPath.row) {
+            switch type {
+            case .Files:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
+                    viewCont.currentTemplate = currentTemplate
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
+                }
+            case .Members:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
+                    viewCont.currentTemplate = currentTemplate
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
+                }
+            default:
+                break
             }
         }
     }
@@ -185,7 +187,14 @@ extension TrackDetailsViewController{
 extension TrackDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if isInfoSelected {
-            return currentTemplate?.blobKey == nil ? InfoSectionCellTypes.Files.rawValue : InfoSectionCellTypes.Count.rawValue
+            switch sourceType {
+            case .Home:
+                return InfoSectionCellTypes.Members.rawValue
+            case .Tracks:
+                return currentTemplate?.blobKey == nil ?  InfoSectionCellTypes.Files.rawValue : InfoSectionCellTypes.Count.rawValue
+            default:
+                break
+            }
         }
         return currentTemplate?.phases.count ?? 0
     }

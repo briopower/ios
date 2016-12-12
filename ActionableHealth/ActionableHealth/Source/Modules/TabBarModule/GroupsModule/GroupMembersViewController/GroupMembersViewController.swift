@@ -22,7 +22,7 @@ class GroupMembersViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("FITNESS GROUP", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        self.setNavigationBarWithTitle("Fitness Groups", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

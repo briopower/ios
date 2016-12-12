@@ -28,7 +28,7 @@ class EnterOtpViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationBarWithTitle("ENTER OTP", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Enter OTP", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,6 +48,8 @@ extension EnterOtpViewController{
         if let dict = responseObj as? NSDictionary{
             if dict["isAuthenticated"] as? Bool == true {
                 NSUserDefaults.saveUser(dict)
+                AppDelegate.getAppDelegateObject()?.setupOnAppLauch()
+                Contact.syncCoreDataContacts()
                 if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
                     vc.type = .UpdateProfile
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -78,6 +80,7 @@ extension EnterOtpViewController{
         if NetworkClass.isConnected(true) {
             showLoader()
             if checkFields() {
+                UIApplication.dismissKeyboard()
                 NetworkClass.sendRequest(URL: "\(Constants.URLs.verifyOtp)\(phoneDetail!["phone"]!)/\(otpTextField.text ?? "")", RequestType: .GET, Parameters: nil , Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     

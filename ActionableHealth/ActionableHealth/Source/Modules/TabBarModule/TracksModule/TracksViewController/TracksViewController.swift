@@ -23,7 +23,7 @@ class TracksViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("TRACKS", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        self.setNavigationBarWithTitle("Tracks", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
         getData("")
     }
     override func viewDidAppear(animated: Bool) {

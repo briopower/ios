@@ -18,9 +18,9 @@ class NotificationsViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if getNavigationController()?.viewControllers.count ?? 0 > 1{
-            self.setNavigationBarWithTitle("NOTIFICATIONS", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+            self.setNavigationBarWithTitle("Notifications", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
         }else{
-            self.setNavigationBarWithTitle("NOTIFICATIONS", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Cross)
+            self.setNavigationBarWithTitle("Notifications", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Cross)
         }
     }
     override func didReceiveMemoryWarning() {

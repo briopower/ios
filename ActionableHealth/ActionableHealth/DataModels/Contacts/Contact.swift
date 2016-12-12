@@ -163,7 +163,9 @@ class Contact: NSManagedObject {
 
     private class func setAppUserWithId(id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
+            print(id)
             for obj in arr {
+                print(obj.id)
                 obj.isAppUser = NSNumber(bool: true)
             }
         }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+let initialHeight:CGFloat = 48.0
+let lineHeight:CGFloat = 19.09375
 
 class MessagingViewController: KeyboardAvoidingViewController {
 
@@ -18,8 +20,6 @@ class MessagingViewController: KeyboardAvoidingViewController {
     @IBOutlet weak var placeholderLabel: UILabel!
 
     //MARK:- Variables
-    let initialHeight:CGFloat = 48.0
-    let lineHeight:CGFloat = 19.09375
     var shouldScrollToBottom = true
 
     //MARK:- Life Cycle
@@ -29,7 +29,7 @@ class MessagingViewController: KeyboardAvoidingViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("NEW CHAT", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
+        setNavigationBarWithTitle("New Chat", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
     }
 
     override func viewDidLayoutSubviews() {

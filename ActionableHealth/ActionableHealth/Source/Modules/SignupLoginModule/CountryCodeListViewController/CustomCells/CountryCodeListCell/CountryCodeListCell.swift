@@ -29,6 +29,6 @@ class CountryCodeListCell: UITableViewCell {
 extension CountryCodeListCell{
     func configCell(dict:NSDictionary) {
         majorLable.text = dict[countryName_key] as? String
-        minorLabel.text = "\(dict[countryCode_key] as? String ?? ""), (\(dict[isdCode_key] as? String ?? ""))"
+        minorLabel.text = "\(dict[countryCode_key] as? String ?? ""), (+\(dict[normalizedISDCode_key] as? String ?? ""))"
     }
 }

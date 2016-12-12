@@ -51,7 +51,7 @@ class PhaseDetailsCell: UITableViewCell {
 //MARK:- Button Action
 extension PhaseDetailsCell{
     @IBAction func commentsAction(sender: AnyObject) {
-        delegate?.commentsTapped(self.tag, obj: nil)
+        delegate?.commentsTapped(self.tag, obj: currentTask?.key)
     }
     @IBAction func rateTaskAction(sender: AnyObject) {
         delegate?.rateTaskTapped(self.tag, obj: nil)
@@ -129,10 +129,9 @@ extension PhaseDetailsCell{
         commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comments", forState: .Normal)
         starRatingView.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
-        
-
+        commentCountButton.hidden = currentTask?.key.getValidObject() == nil
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            completedOnlabel.text = "Completed on 12 Aug 2016"
+            completedOnlabel.text = obj.status
             rateTaskButton.hidden = false
         }else{
             completedOnlabel.text = nil

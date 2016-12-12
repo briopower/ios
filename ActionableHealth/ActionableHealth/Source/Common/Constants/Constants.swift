@@ -69,14 +69,16 @@ class Constants: NSObject {
         static let authAPIs = "auth/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
         static let templateDetails = "\(base)\(authAPIs)getTemplateDetails/"
-        static let updateDetails = "\(base)\(authAPIs)updatePassword"
+        static let requestOtp = "\(base)\(authAPIs)requestOTP/"
+        static let verifyOtp = "\(base)\(authAPIs)/validateOTP/"
 
         static let trackAPIs = "track/"
-        static let myTracks = "\(base)\(trackAPIs)getMyTracks"
+        static let myTracks = "\(base)\(trackAPIs)getMyTracks/"
         static let trackDetails = "\(base)\(trackAPIs)getTrackDetails/"
         static let trackFiles = "\(base)\(trackAPIs)downloadAttachment/"
         static let appUsers = "\(base)\(trackAPIs)appUsers/"
-        static let requestOtp = "\(base)\(authAPIs)requestOTP/"
-        static let verifyOtp = "\(base)\(authAPIs)/validateOTP/"
+        static let createTrack = "\(base)\(trackAPIs)createTrack/"
+        static let inviteMember = "\(base)\(trackAPIs)invite/"
+        static let trackMembers = "\(base)\(trackAPIs)getAllTrackMembers/"
     }
 }

@@ -157,6 +157,10 @@
 		3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */; };
 		3CFB48E21DFA7E110022F3B6 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFB48E11DFA7E110022F3B6 /* SearchUserViewController.swift */; };
 		3DADFB9880771B64955ED386 /* Pods_ActionableHealthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */; };
+		403468771DFBE23A00C1AD87 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403468761DFBE23A00C1AD87 /* SelectionView.swift */; };
+		403468791DFBE24A00C1AD87 /* SelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 403468781DFBE24A00C1AD87 /* SelectionView.xib */; };
+		4034687D1DFBE46E00C1AD87 /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4034687B1DFBE46E00C1AD87 /* SelectionTableViewCell.swift */; };
+		4034687E1DFBE46E00C1AD87 /* SelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4034687C1DFBE46E00C1AD87 /* SelectionTableViewCell.xib */; };
 		40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED01DF8071500605397 /* ChooseCountryCell.swift */; };
 		40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EBFED11DF8071500605397 /* ChooseCountryCell.xib */; };
 		40EBFEDB1DF8071500605397 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED31DF8071500605397 /* DetailViewCell.swift */; };
@@ -342,6 +346,10 @@
 		3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_TextView.xib; sourceTree = "<group>"; };
 		3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_Name.xib; sourceTree = "<group>"; };
 		3CFB48E11DFA7E110022F3B6 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
+		403468761DFBE23A00C1AD87 /* SelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		403468781DFBE24A00C1AD87 /* SelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectionView.xib; sourceTree = "<group>"; };
+		4034687B1DFBE46E00C1AD87 /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
+		4034687C1DFBE46E00C1AD87 /* SelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectionTableViewCell.xib; sourceTree = "<group>"; };
 		40EBFED01DF8071500605397 /* ChooseCountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountryCell.swift; sourceTree = "<group>"; };
 		40EBFED11DF8071500605397 /* ChooseCountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCountryCell.xib; sourceTree = "<group>"; };
 		40EBFED31DF8071500605397 /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
@@ -1335,6 +1343,7 @@
 		3CC9D0801DB8AA9700287068 /* PhaseDetailsCell */ = {
 			isa = PBXGroup;
 			children = (
+				403468751DFBE21900C1AD87 /* SelectionView */,
 				3CC9D0861DB8AE7100287068 /* PhaseDetailsCell.swift */,
 				3CC9D0871DB8AE7100287068 /* PhaseDetailsCell.xib */,
 				3CC9D08A1DB8B44D00287068 /* PhaseDetailsCell_Status.xib */,
@@ -1652,6 +1661,25 @@
 			path = SearchUserViewController;
 			sourceTree = "<group>";
 		};
+		403468751DFBE21900C1AD87 /* SelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4034687A1DFBE45000C1AD87 /* SelectionCell */,
+				403468761DFBE23A00C1AD87 /* SelectionView.swift */,
+				403468781DFBE24A00C1AD87 /* SelectionView.xib */,
+			);
+			path = SelectionView;
+			sourceTree = "<group>";
+		};
+		4034687A1DFBE45000C1AD87 /* SelectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				4034687B1DFBE46E00C1AD87 /* SelectionTableViewCell.swift */,
+				4034687C1DFBE46E00C1AD87 /* SelectionTableViewCell.xib */,
+			);
+			path = SelectionCell;
+			sourceTree = "<group>";
+		};
 		40EBFECD1DF8071500605397 /* WelcomeToBrio */ = {
 			isa = PBXGroup;
 			children = (
@@ -1877,6 +1905,8 @@
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
 				3CCECDB31DAF6AA200831242 /* PropertiesCell.xib in Resources */,
+				4034687E1DFBE46E00C1AD87 /* SelectionTableViewCell.xib in Resources */,
+				403468791DFBE24A00C1AD87 /* SelectionView.xib in Resources */,
 				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */,
 				3C0FDF3D1DF5664800710764 /* AddFromPhoneCell.xib in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
@@ -2074,10 +2104,12 @@
 				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
 				3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */,
 				3C1EC5AA1DA3A864003DC2A3 /* UIViewController_Common.swift in Sources */,
+				403468771DFBE23A00C1AD87 /* SelectionView.swift in Sources */,
 				3CB2B8431DEFE46D006DC4E9 /* AddressBook.swift in Sources */,
 				3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */,
 				40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */,
 				3CBD5C7A1DA7AFB6004BCAE0 /* SettingsViewController.swift in Sources */,
+				4034687D1DFBE46E00C1AD87 /* SelectionTableViewCell.swift in Sources */,
 				3CACF3F71DB634920034D700 /* CommonCollectionReusableView.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
 				3CB8A2961DEDAE0C009B9AE9 /* TasksModel.swift in Sources */,

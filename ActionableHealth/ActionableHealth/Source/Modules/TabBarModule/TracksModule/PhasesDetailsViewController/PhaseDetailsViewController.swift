@@ -67,13 +67,15 @@ extension PhaseDetailsViewController{
 //MARK:- UITableViewDataSource
 extension PhaseDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentPhase?.tasks.count ?? 0
+//        return currentPhase?.tasks.count ?? 0
+        return 4
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell)) as? PhaseDetailsCell {
-            if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+        if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell.statusCell)) as? PhaseDetailsCell {
+            //indexPath.row
+            if let task = currentPhase?.tasks[0] as? TasksModel {
                 cell.tag = indexPath.row
                 cell.delegate = self
                 cell.configureCell(task)

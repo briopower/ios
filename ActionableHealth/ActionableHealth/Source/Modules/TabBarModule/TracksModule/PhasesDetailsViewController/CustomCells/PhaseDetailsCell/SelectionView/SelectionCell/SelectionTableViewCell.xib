@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectionTableViewCell" rowHeight="92" id="KGk-i7-Jjw" customClass="SelectionTableViewCell" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="351" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="351" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bX-V1-keg" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="81.5" y="0.0" width="269.5" height="91.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DDI-49-zaf">
+                        <rect key="frame" x="0.0" y="0.0" width="21" height="91.5"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saq-4e-d33" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="90" width="351" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="AK9-gW-B7H"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="New" translatesAutoresizingMaskIntoConstraints="NO" id="jkc-O5-BvL">
+                        <rect key="frame" x="21" y="0.0" width="60.5" height="91.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="jkc-O5-BvL" secondAttribute="height" multiplier="100:152" id="XCb-n6-pU7"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="saq-4e-d33" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2fR-eP-hTa"/>
+                    <constraint firstAttribute="trailing" secondItem="saq-4e-d33" secondAttribute="trailing" id="39r-zX-Y5b"/>
+                    <constraint firstItem="DDI-49-zaf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5eg-Ht-gOB"/>
+                    <constraint firstItem="jkc-O5-BvL" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="100:518" priority="999" id="CrE-Kr-sla"/>
+                    <constraint firstItem="0bX-V1-keg" firstAttribute="height" secondItem="jkc-O5-BvL" secondAttribute="height" id="GHw-Gq-oMN"/>
+                    <constraint firstItem="DDI-49-zaf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GZr-NU-cuH"/>
+                    <constraint firstItem="DDI-49-zaf" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="31:518" id="NIn-CG-E36"/>
+                    <constraint firstAttribute="bottom" secondItem="jkc-O5-BvL" secondAttribute="bottom" id="QCI-9B-HxT"/>
+                    <constraint firstItem="0bX-V1-keg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZF4-on-5sy"/>
+                    <constraint firstAttribute="bottom" secondItem="saq-4e-d33" secondAttribute="bottom" id="dBq-Uc-Prk"/>
+                    <constraint firstItem="0bX-V1-keg" firstAttribute="leading" secondItem="jkc-O5-BvL" secondAttribute="trailing" id="eEo-FT-XzY"/>
+                    <constraint firstItem="jkc-O5-BvL" firstAttribute="leading" secondItem="DDI-49-zaf" secondAttribute="trailing" id="iiR-Om-2td"/>
+                    <constraint firstItem="jkc-O5-BvL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lbK-4Y-ZZ0"/>
+                    <constraint firstAttribute="bottom" secondItem="DDI-49-zaf" secondAttribute="bottom" id="nmh-gq-ViX"/>
+                    <constraint firstItem="DDI-49-zaf" firstAttribute="height" secondItem="jkc-O5-BvL" secondAttribute="height" id="pVV-WI-0vP"/>
+                    <constraint firstAttribute="trailing" secondItem="0bX-V1-keg" secondAttribute="trailing" id="vSM-Cy-Rcp"/>
+                    <constraint firstAttribute="bottom" secondItem="0bX-V1-keg" secondAttribute="bottom" id="wmH-Bh-tzH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLbl" destination="0bX-V1-keg" id="5pc-lo-gjz"/>
+                <outlet property="icon" destination="jkc-O5-BvL" id="bXE-YX-bXI"/>
+            </connections>
+            <point key="canvasLocation" x="-189.5" y="-78"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="New" width="20" height="17"/>
+    </resources>
+</document>

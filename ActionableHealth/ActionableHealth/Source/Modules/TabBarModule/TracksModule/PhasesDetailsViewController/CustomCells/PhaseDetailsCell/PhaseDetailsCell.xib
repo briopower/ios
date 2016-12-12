@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="246" verticalHuggingPriority="246" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Completed on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8p-6N-148" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="22" y="68" width="209.5" height="48.5"/>
+                                <rect key="frame" x="22" y="67.5" width="209.5" height="49"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="BE8-SJ-Jvp" customClass="HCSStarRatingView">
-                                <rect key="frame" x="22" y="42.5" width="79" height="19"/>
+                                <rect key="frame" x="22" y="42" width="79" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BE8-SJ-Jvp" secondAttribute="height" multiplier="250:60" id="x9s-4I-6Ti"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                                 <rect key="frame" x="368" y="0.0" width="22" height="183"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="285-1t-wPl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="111" y="45.5" width="73" height="19"/>
+                                <rect key="frame" x="111" y="45" width="73" height="19"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -174,7 +174,7 @@
                 <outlet property="starRatingView" destination="BE8-SJ-Jvp" id="nLW-Nc-F5t"/>
                 <outlet property="taskNameLabel" destination="juG-Px-5VZ" id="mab-u0-lSp"/>
             </connections>
-            <point key="canvasLocation" x="592" y="249"/>
+            <point key="canvasLocation" x="93" y="207"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -82,6 +82,7 @@ extension PhaseDetailsCell{
             let width = (516/1242)*(table.frame.width)
             let height = (600/2204)*(table.frame.height)
             let btnFrame =  self.convertRect(overFlow.frame, toView: self.superview)
+            //apply cases
             if (table.contentSize.height > frame.origin.y + topView.frame.height + height){
             view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height, width: width, height: height)
             }

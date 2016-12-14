@@ -69,7 +69,6 @@ extension PhaseDetailsViewController{
 extension PhaseDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentPhase?.tasks.count ?? 0
-//        return 4
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -72,6 +72,9 @@ extension TemplatesModel{
         return ["cursor":cursor, "pageSize": 20, "query": query]
     }
 
+    class func getSearchUserDict(cursor:String, query:String = "" , id:String) -> [String:AnyObject] {
+        return ["cursor":cursor, "pageSize": 20, "query": query , "trackid":id]
+    }
     class func getTemplateResponseArray(dict:AnyObject) -> NSArray {
         return dict["templateResultSet"] as? NSArray ?? []
     }

@@ -68,6 +68,7 @@ class Constants: NSObject {
 
         static let authAPIs = "auth/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
+        static let searchUser = "\(base)\(authAPIs)seachUser/"
         static let templateDetails = "\(base)\(authAPIs)getTemplateDetails/"
         static let requestOtp = "\(base)\(authAPIs)requestOTP/"
         static let verifyOtp = "\(base)\(authAPIs)/validateOTP/"

@@ -39,20 +39,6 @@ extension TrackMemberListViewController{
         getMembers()
     }
 
-    func processResponse(response:AnyObject?) {
-        if let arr = response as? NSArray {
-            for obj in arr {
-                if let dict = obj as? [String: AnyObject] {
-                    membersArray.addObject(UserModel.getUserObject(dict))
-                }
-            }
-        }
-        tblVIew.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
-    }
-
-    func processError(error:NSError?) {
-
-    }
 }
 
 
@@ -98,5 +84,20 @@ extension TrackMemberListViewController{
                 self.hideLoader()
             })
         }
+    }
+
+    func processResponse(response:AnyObject?) {
+        if let arr = response as? NSArray {
+            for obj in arr {
+                if let dict = obj as? [String: AnyObject] {
+                    membersArray.addObject(UserModel.getUserObject(dict))
+                }
+            }
+        }
+        tblVIew.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+    }
+
+    func processError(error:NSError?) {
+
     }
 }

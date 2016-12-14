@@ -29,7 +29,7 @@ extension CommentsModel{
         return dict["commentResultSet"] as? NSArray ?? []
     }
     class func getCommentsCount(dict:AnyObject) -> Int {
-        return dict["totalCount"] as? Int ?? 0
+        return Int(dict["totalCount"] as? String ?? "") ?? 0
     }
 
     class func getCommentObj(dict:AnyObject) -> CommentsModel {

@@ -116,20 +116,6 @@ extension WelcomeToBrio{
         }
     }
     
-    func processResponse(responseObj:AnyObject?) {
-        if let dict = responseObj as? NSDictionary{
-            if dict["created"] as? Bool == true {
-                self.performSegueWithIdentifier("enterOtp", sender: self)
-            }
-            else if dict["exists"] as? Bool == true{
-                self.performSegueWithIdentifier("enterOtp", sender: self)
-            }
-            else{
-                print("some error occured")
-            }
-        }
-    }
-    
     func checkPhoneDetails() -> Bool{
         if phoneDetail["isdCode"] != nil{
             if phoneDetail["phone"] != nil{
@@ -159,6 +145,21 @@ extension WelcomeToBrio{
                     self.processResponse(responseObj)
                     self.hideLoader()
                 })
+            }
+        }
+    }
+
+
+    func processResponse(responseObj:AnyObject?) {
+        if let dict = responseObj as? NSDictionary{
+            if dict["created"] as? Bool == true {
+                self.performSegueWithIdentifier("enterOtp", sender: self)
+            }
+            else if dict["exists"] as? Bool == true{
+                self.performSegueWithIdentifier("enterOtp", sender: self)
+            }
+            else{
+                print("some error occured")
             }
         }
     }

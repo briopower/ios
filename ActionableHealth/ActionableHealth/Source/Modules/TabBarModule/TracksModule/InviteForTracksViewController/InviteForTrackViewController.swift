@@ -52,6 +52,8 @@ extension InviteForTrackViewController{
         switch sourceType {
         case .Home:
             createTrack()
+        case .Tracks:
+            inviteMembers()
         default:
             break
         }
@@ -74,6 +76,39 @@ extension InviteForTrackViewController{
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
     }
+}
+
+//MARK:- Network Methods
+extension InviteForTrackViewController{
+    func createTrack() {
+        if NetworkClass.isConnected(true) && selectedUsers.count > 0 {
+            showLoaderOnWindow()
+            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(selectedUsers), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status {
+                    self.processResponse(responseObj)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func inviteMembers() {
+        if NetworkClass.isConnected(true) && selectedUsers.count > 0 {
+            showLoaderOnWindow()
+            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status {
+                    self.processResponse(responseObj)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
+            })
+        }
+    }
 
     func processResponse(response:AnyObject?) {
         switch sourceType {
@@ -90,39 +125,6 @@ extension InviteForTrackViewController{
             UIAlertController.showAlertOfStyle(Message: "Something went wrong.", completion: nil)
         default:
             break
-        }
-    }
-}
-
-//MARK:- Network Methods
-extension InviteForTrackViewController{
-    func createTrack() {
-        if NetworkClass.isConnected(true) {
-            showLoaderOnWindow()
-            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(selectedUsers), Headers: nil, CompletionHandler: {
-                (status, responseObj, error, statusCode) in
-                if status {
-                    self.processResponse(responseObj)
-                }else{
-                    self.processError(error)
-                }
-                self.hideLoader()
-            })
-        }
-    }
-
-    func inviteMembers() {
-        if NetworkClass.isConnected(true) {
-            showLoaderOnWindow()
-            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers), Headers: nil, CompletionHandler: {
-                (status, responseObj, error, statusCode) in
-                if status {
-                    self.processResponse(responseObj)
-                }else{
-                    self.processError(error)
-                }
-                self.hideLoader()
-            })
         }
     }
 }

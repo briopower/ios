@@ -332,6 +332,7 @@
                     <connections>
                         <outlet property="phaseDetailsTblView" destination="eJx-U2-zaf" id="aDp-XN-Nrk"/>
                         <outlet property="ratingView" destination="fZe-4W-8iC" id="MLS-k8-oP8"/>
+                        <outlet property="starRatingView" destination="mF4-zR-gpw" id="mIB-Vb-Xhm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seU-Nr-PyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,6 +340,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbT-1l-3Oy">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <connections>
+                                <action selector="hideRatingActtion:" destination="Np4-Hx-sqP" eventType="touchUpInside" id="GYH-tB-Fde"/>
+                            </connections>
+                        </button>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oax-xd-UcQ">
                             <rect key="frame" x="11" y="197" width="298" height="175"/>
                             <subviews>
@@ -427,9 +434,13 @@
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.39784482758620687" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="jbT-1l-3Oy" firstAttribute="centerX" secondItem="fZe-4W-8iC" secondAttribute="centerX" id="2l3-br-vOj"/>
                         <constraint firstItem="oax-xd-UcQ" firstAttribute="centerX" secondItem="fZe-4W-8iC" secondAttribute="centerX" id="Esk-8L-jzC"/>
+                        <constraint firstItem="jbT-1l-3Oy" firstAttribute="height" secondItem="fZe-4W-8iC" secondAttribute="height" id="NeW-Vr-GdU"/>
                         <constraint firstItem="oax-xd-UcQ" firstAttribute="width" secondItem="fZe-4W-8iC" secondAttribute="width" multiplier="1160:1242" id="RCO-zx-cSr"/>
                         <constraint firstItem="oax-xd-UcQ" firstAttribute="centerY" secondItem="fZe-4W-8iC" secondAttribute="centerY" id="d2p-qo-D2e"/>
+                        <constraint firstItem="jbT-1l-3Oy" firstAttribute="width" secondItem="fZe-4W-8iC" secondAttribute="width" id="ofn-vU-OPm"/>
+                        <constraint firstItem="jbT-1l-3Oy" firstAttribute="centerY" secondItem="fZe-4W-8iC" secondAttribute="centerY" id="smq-Ok-8vO"/>
                     </constraints>
                 </view>
             </objects>

@@ -64,43 +64,6 @@ extension CommentsViewController{
         getComments("")
     }
 
-    func processResponse(responseObj:AnyObject?, cursorVal:String) {
-        txtView.text = ""
-        textViewDidChange(txtView)
-        if let dict = responseObj {
-            delegate?.updatedCommentCount(CommentsModel.getCommentsCount(dict))
-
-            if cursorVal == "" {
-                commentsTblView.dataArray.removeAllObjects()
-                commentsTblView.reloadData()
-            }
-
-            let commentsArr = CommentsModel.getCommentsResponseArray(dict)
-
-            let arr = NSMutableArray()
-
-            for obj in commentsArr {
-                let comment = CommentsModel.getCommentObj(obj)
-                arr.addObject(comment)
-            }
-
-            commentsTblView.insertElements(arr)
-
-            if let cursorVal = TemplatesModel.getCursor(dict){
-                cursor = cursorVal
-                commentsTblView.hasMoreActivity = true
-            }else{
-                cursor = ""
-                commentsTblView.hasMoreActivity = false
-            }
-
-        }
-        commentsTblView.removeBottomLoader()
-    }
-
-    func processError(error:NSError?) {
-
-    }
 }
 
 //MARK:- ReverseTableViewDelegate
@@ -172,5 +135,43 @@ extension CommentsViewController{
                 }
             })
         }
+    }
+
+    func processResponse(responseObj:AnyObject?, cursorVal:String) {
+        txtView.text = ""
+        textViewDidChange(txtView)
+        if let dict = responseObj {
+            delegate?.updatedCommentCount(CommentsModel.getCommentsCount(dict))
+
+            if cursorVal == "" {
+                commentsTblView.dataArray.removeAllObjects()
+                commentsTblView.reloadData()
+            }
+
+            let commentsArr = CommentsModel.getCommentsResponseArray(dict)
+
+            let arr = NSMutableArray()
+
+            for obj in commentsArr {
+                let comment = CommentsModel.getCommentObj(obj)
+                arr.addObject(comment)
+            }
+
+            commentsTblView.insertElements(arr)
+
+            if let cursorVal = TemplatesModel.getCursor(dict){
+                cursor = cursorVal
+                commentsTblView.hasMoreActivity = true
+            }else{
+                cursor = ""
+                commentsTblView.hasMoreActivity = false
+            }
+
+        }
+        commentsTblView.removeBottomLoader()
+    }
+    
+    func processError(error:NSError?) {
+        
     }
 }

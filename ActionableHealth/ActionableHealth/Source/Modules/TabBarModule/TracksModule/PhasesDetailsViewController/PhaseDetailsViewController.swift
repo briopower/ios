@@ -13,6 +13,7 @@ class PhaseDetailsViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var phaseDetailsTblView: UITableView!
     @IBOutlet var ratingView: UIView!
+    @IBOutlet weak var starRatingView: HCSStarRatingView!
 
     //MARK:- Varibales
     var currentPhase:PhasesModel?
@@ -26,6 +27,7 @@ class PhaseDetailsViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        phaseDetailsTblView.reloadData()
         setNavigationBarWithTitle(currentPhase?.phaseName ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
@@ -42,18 +44,22 @@ class PhaseDetailsViewController: CommonViewController {
         // Dispose of any resources that can be recreated.
     }
 
+
+
 }
 //MARK:- Button Actions
 extension PhaseDetailsViewController{
     @IBAction func rateTaskAction(sender: UIButton) {
+        submitRating()
+    }
+    @IBAction func hideRatingActtion(sender: AnyObject) {
         hideRatingView()
     }
-    
 }
 //MARK:- Additional methods
 extension PhaseDetailsViewController{
     func setupView(){
-
+        
 //        if let headerView = AllTaskCompletedHeaderView.getView() {
 //            phaseDetailsTblView.tableHeaderView = headerView
 //        }
@@ -72,16 +78,30 @@ extension PhaseDetailsViewController:UITableViewDataSource{
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell.statusCell)) as? PhaseDetailsCell {
-            if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
-                cell.tag = indexPath.row
-                cell.delegate = self
-                cell.configureCell(task)
-                return cell
+        if let type = currentPhase?.parentTemplate.objectType {
+            switch type {
+            case .Template:
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell)) as? PhaseDetailsCell {
+                    if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                        cell.tag = indexPath.row
+                        cell.delegate = self
+                        cell.configureCell(task)
+                        return cell
+                    }
+                }
+            case .Track:
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell.statusCell)) as? PhaseDetailsCell {
+                    if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                        cell.tag = indexPath.row
+                        cell.delegate = self
+                        cell.configureCell(task)
+                        return cell
+                    }
+                }
+            default:
+                break
             }
         }
-
         return UITableViewCell()
     }
 }
@@ -112,19 +132,21 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
     }
 
     func rateTaskTapped(tag: Int, obj: AnyObject?) {
-        if NSUserDefaults.isLoggedIn() {
-            showRatingView()
+        if NSUserDefaults.isLoggedIn(), let task = obj as? TasksModel {
+            showRatingView(task)
         }else{
             UIViewController.presentLoginViewController()
         }
     }
 
-    func showRatingView() {
+    func showRatingView(task:TasksModel) {
         if let view = getNavigationController()?.view {
             ratingView.alpha = 0
             ratingView.frame = view.frame
             ratingView.userInteractionEnabled = false
+            starRatingView.value = CGFloat(task.rating)
             view.addSubview(ratingView)
+            selectedTask = task
             UIView.animateWithDuration(0.3, animations: { 
                 self.ratingView.alpha = 1
                 }, completion: { (completed:Bool) in
@@ -143,4 +165,23 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
     }
 }
 
+//MARK:- NetworkMethodse
+extension PhaseDetailsViewController{
+    func submitRating() {
+        if NetworkClass.isConnected(true), let key = selectedTask?.key.getValidObject(){
+            showLoaderOnWindow()
+            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .POST, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if statusCode == 200{
+                    self.processResponse(responseObj)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func processResponse(response:AnyObject?) {
+        hideRatingView()
+    }
+}
 

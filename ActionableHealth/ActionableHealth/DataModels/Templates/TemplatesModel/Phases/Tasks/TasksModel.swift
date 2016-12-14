@@ -29,6 +29,11 @@ class TasksModel: NSObject {
 
 //MARK:- Additional methods
 extension TasksModel{
+   class func getDictForRating(key:String, rating:CGFloat) -> [String : AnyObject] {
+    let val = Double(Int(rating * 10))
+        return ["key":key, "rating":"\(Double(val/10))"];
+    }
+
     class func getTasksUsingObj(dict:AnyObject) -> TasksModel {
         let model = TasksModel()
         model.taskId = dict["id"] as? String

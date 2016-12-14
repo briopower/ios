@@ -44,13 +44,13 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="165 Active Tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP2-Mj-Gwj" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="116" y="41" width="134.5" height="20"/>
+                                    <rect key="frame" x="116" y="42.5" width="129" height="17"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                     <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-wE-Ch1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="113" y="65.5" width="142" height="20"/>
+                                    <rect key="frame" x="113" y="64.5" width="136" height="17"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -64,7 +64,7 @@
                                     <rect key="frame" x="402" y="0.0" width="22" height="102.5"/>
                                 </imageView>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="286" y="33" width="116" height="36"/>
+                                    <rect key="frame" x="290" y="34.5" width="112" height="33"/>
                                     <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,7 +82,7 @@
                                     </connections>
                                 </button>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-Vt-fO7" customClass="HCSStarRatingView">
-                                    <rect key="frame" x="116" y="12" width="95" height="24"/>
+                                    <rect key="frame" x="116" y="14" width="95" height="23.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4Gb-Vt-fO7" secondAttribute="height" multiplier="280:70" id="2bJ-gi-JnH"/>
                                     </constraints>
@@ -116,9 +116,10 @@
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="leading" secondItem="sP2-Mj-Gwj" secondAttribute="leading" id="Mhz-A7-Q1w"/>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="SnZ-3g-whC"/>
                                 <constraint firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="height" multiplier="1242:300" id="TLp-DX-vVt"/>
+                                <constraint firstItem="sP2-Mj-Gwj" firstAttribute="top" secondItem="4Gb-Vt-fO7" secondAttribute="bottom" constant="5" id="TcB-Q1-FGA"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="sP2-Mj-Gwj" secondAttribute="centerY" id="VQC-nv-XZ0"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="asV-i3-XmE"/>
-                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="bottom" secondItem="cnB-D5-yTp" secondAttribute="bottom" id="h1m-hv-FHQ"/>
+                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="top" secondItem="sP2-Mj-Gwj" secondAttribute="bottom" constant="5" id="hg3-4V-dFR"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="leading" secondItem="bbE-Yn-hVM" secondAttribute="trailing" id="iui-3t-H9r"/>
                                 <constraint firstItem="sP2-Mj-Gwj" firstAttribute="leading" secondItem="cnB-D5-yTp" secondAttribute="trailing" multiplier="330:275" id="jNT-z2-SyK"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="200:1242" id="lK6-wM-BKa"/>
@@ -128,7 +129,6 @@
                                 <constraint firstItem="dh5-wE-Ch1" firstAttribute="leading" secondItem="sP2-Mj-Gwj" secondAttribute="leading" constant="-3" id="uEm-QC-2m6"/>
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="280:1242" id="vgZ-2K-RRo"/>
                                 <constraint firstAttribute="bottom" secondItem="K79-jk-Xnz" secondAttribute="bottom" id="vrt-7Y-dIQ"/>
-                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="top" secondItem="cnB-D5-yTp" secondAttribute="top" constant="-5" id="wAM-43-Zk4"/>
                             </constraints>
                         </view>
                     </subviews>

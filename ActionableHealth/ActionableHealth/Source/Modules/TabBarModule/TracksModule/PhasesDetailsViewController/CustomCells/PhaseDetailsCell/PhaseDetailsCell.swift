@@ -23,7 +23,7 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var rateTaskButton: UIButton!
     @IBOutlet weak var overFlow: UIButton!
     @IBOutlet weak var statusLabel: UILabel_FontSizeLabel!
-    
+
     //MARK:- Variables
 
     static let statusCell = "PhaseDetailsCell_Status"
@@ -31,7 +31,7 @@ class PhaseDetailsCell: UITableViewCell {
     var currentTask:TasksModel?
     let backView = UIView()
     var selectionView : SelectionView?
-    
+
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,8 +44,8 @@ class PhaseDetailsCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-  
-  
+
+
 }
 
 //MARK:- Button Action
@@ -54,14 +54,14 @@ extension PhaseDetailsCell{
         delegate?.commentsTapped(self.tag, obj: currentTask?.key)
     }
     @IBAction func rateTaskAction(sender: AnyObject) {
-        delegate?.rateTaskTapped(self.tag, obj: nil)
+        delegate?.rateTaskTapped(self.tag, obj: currentTask)
     }
     @IBAction func overFlowBtnAction(sender: AnyObject) {
         selectionView = SelectionView.getInstance() as? SelectionView
         if let localView = selectionView{
             localView.setUpCell()
             self.setFrameForSelectionView(localView)
-           localView.delegate = self
+            localView.delegate = self
             CommonMethods.addShadowToView(localView)
             self.superview?.addSubview(backView)
             localView.alpha = 0
@@ -70,7 +70,7 @@ extension PhaseDetailsCell{
                 localView.alpha = 1
             })
         }
-        
+
     }
 
 }
@@ -84,27 +84,27 @@ extension PhaseDetailsCell{
             let btnFrame =  self.convertRect(overFlow.frame, toView: self.superview)
             //apply cases
             if (table.contentSize.height > frame.origin.y + topView.frame.height + height){
-            view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height, width: width, height: height)
+                view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height, width: width, height: height)
             }
             else{
                 view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height - height, width: width, height: height)
             }
-           let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(PhaseDetailsCell.handleTap(_:)))
+            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(PhaseDetailsCell.handleTap(_:)))
             tapGesture.numberOfTapsRequired = 1
             backView.addGestureRecognizer(tapGesture)
             backView.frame = CGRect.init(origin: table.frame.origin, size: table.contentSize)
         }
     }
-    
+
     func handleTap(sender: UITapGestureRecognizer? = nil){
         selectionView?.alpha = 1
         UIView.animateWithDuration(0.5, animations: {
-        self.selectionView?.removeFromSuperview()
+            self.selectionView?.removeFromSuperview()
             self.selectionView?.alpha = 0
         })
         backView.removeFromSuperview()
-        }
-    
+    }
+
     func getSelectedRow(type:cellName){
         switch type {
         case .New:
@@ -120,22 +120,21 @@ extension PhaseDetailsCell{
         }
         self.handleTap()
     }
-    }
+}
 
 //MARK:- Additional methods
 extension PhaseDetailsCell{
     func configureCell(obj:TasksModel) {
         currentTask = obj
         taskNameLabel.text = currentTask?.taskName ?? ""
-        commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comments", forState: .Normal)
+        commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
         starRatingView.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
         commentCountButton.hidden = currentTask?.key.getValidObject() == nil
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            completedOnlabel.text = obj.status
+            statusLabel.text = obj.status
             rateTaskButton.hidden = false
         }else{
-            completedOnlabel.text = nil
             rateTaskButton.hidden = true
         }
     }

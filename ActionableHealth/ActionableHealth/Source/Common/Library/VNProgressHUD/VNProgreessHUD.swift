@@ -791,11 +791,16 @@ extension VNProgreessHUD{
 extension VNProgreessHUD{
 
     class func showHUDAddedToView(view:UIView, Animated animated:Bool) -> VNProgreessHUD {
-        let hud:VNProgreessHUD = VNProgreessHUD(View: view)
-        hud.removeFromSuperViewOnHide = true
-        view.addSubview(hud)
-        hud.show(animated)
-        return hud
+        if let hud = allHUDsForView(view).firstObject as? VNProgreessHUD {
+            return hud
+
+        }else{
+            let hud:VNProgreessHUD = VNProgreessHUD(View: view)
+            hud.removeFromSuperViewOnHide = true
+            view.addSubview(hud)
+            hud.show(animated)
+            return hud
+        }
     }
 
     class func hideHUDForView(view:UIView, Animated animated:Bool) -> Bool {

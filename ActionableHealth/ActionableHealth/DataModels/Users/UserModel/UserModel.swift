@@ -11,6 +11,7 @@ import UIKit
 class UserModel: NSObject {
 
     //MARK:- Variables
+    var id = ""
     var userID = ""
     var email = ""
     var firstName = ""
@@ -54,9 +55,10 @@ extension UserModel{
 
     class func getUserObject(dict:[String : AnyObject]) -> UserModel {
         let model = UserModel()
+        model.id = dict["id"] as? String ?? ""
         model.phoneNumber = dict["email"] as? String ?? ""
         model.firstName = dict["firstName"] as? String ?? ""
-        model.userID = dict["id"] as? String ?? ""
+        model.userID = dict["userId"] as? String ?? ""
         model.lastName = dict["lastName"] as? String ?? ""
         model.profileImage = dict["userProfileURL"] as? String ?? ""
         return model

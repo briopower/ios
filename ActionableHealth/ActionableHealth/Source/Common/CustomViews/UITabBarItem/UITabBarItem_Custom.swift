@@ -8,7 +8,7 @@
 
 import UIKit
 enum TabBarType:Int {
-    case Home, Track, Chat, Group, Settings
+    case Home, Track, Chat, Settings
 }
 class UITabBarItem_Custom: UITabBarItem {
 
@@ -33,9 +33,6 @@ class UITabBarItem_Custom: UITabBarItem {
             case .Chat:
                 normalImage = UIImage(named: "Chat-white\(getImageNamePostFix())")
                 selectedStateImage = UIImage(named: "Chat-yellow\(getImageNamePostFix())")
-            case .Group:
-                normalImage = UIImage(named: "Group-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Group-yellow\(getImageNamePostFix())")
             case .Settings:
                 normalImage = UIImage(named: "Setting-white\(getImageNamePostFix())")
                 selectedStateImage = UIImage(named: "Setting-yellow\(getImageNamePostFix())")

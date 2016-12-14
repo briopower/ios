@@ -12,6 +12,7 @@ class TracksViewController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var clctView: StaggeredCollectionView!
+    @IBOutlet weak var nullCaseLabel: UILabel!
 
     //MARK:- Variables
     var cursor = ""
@@ -112,6 +113,9 @@ extension TracksViewController{
             clctView.removeTopLoader()
             if clctView.dataArray.count > 0 {
                 clctView.addTopLoader()
+                nullCaseLabel.hidden = true
+            }else{
+                nullCaseLabel.hidden = false
             }
         }
         clctView.reloadContent()

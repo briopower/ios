@@ -70,7 +70,6 @@ class Contact: NSManagedObject {
 
         if let delegate = AppDelegate.getAppDelegateObject() {
 
-            //            let hud = showHud()
             let prntCxt = delegate.managedObjectContext
             let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
             bgCxt.parentContext = prntCxt
@@ -78,10 +77,6 @@ class Contact: NSManagedObject {
             bgCxt.performBlock({
 
                 for contact in contacts {
-                    //                    let progress = CGFloat(contacts.indexOf(contact) ?? 0)/CGFloat(contacts.count)
-                    //                    dispatch_async(dispatch_get_main_queue(), {
-                    //                        hud?.progress = progress
-                    //                    })
                     if let addBkObj = AddressBook.saveAddressBookObj(contact, contextRef: bgCxt){
 
                         if let phoneNumbers = contact.phones {
@@ -93,16 +88,6 @@ class Contact: NSManagedObject {
                                 }
                             }
                         }
-
-//                        if let emails = contact.emails {
-//                            for email in emails {
-//                                if let em  = email.address?.getValidObject() {
-//                                    if em.isValidEmail(){
-//                                        saveContactObj(addBkObj, forId: "\(em)", contextRef: bgCxt)
-//                                    }
-//                                }
-//                            }
-//                        }
                     }
                 }
 
@@ -115,14 +100,11 @@ class Contact: NSManagedObject {
                             if contacts.count > 0 {
                                 syncCoreDataContacts()
                             }
-                            hideHud()
                         }catch{
-                            hideHud()
                             debugPrint("Error saving data")
                         }
                     })
                 }catch{
-                    hideHud()
                     debugPrint("Error saving data")
                 }
             })
@@ -163,34 +145,11 @@ class Contact: NSManagedObject {
 
     private class func setAppUserWithId(id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
-            print(id)
             for obj in arr {
-                print(obj.id)
                 obj.isAppUser = NSNumber(bool: true)
             }
         }
     }
-
-    private class func showHud() -> VNProgreessHUD? {
-        if let view = UIApplication.sharedApplication().keyWindow {
-            debugPrint(view)
-            let hud = VNProgreessHUD.showHUDAddedToView(view, Animated: true)
-            dispatch_async(dispatch_get_main_queue(), {
-                hud.mode = VNProgressHUDMode.AnnularDeterminate
-                hud.labelText = "Syncing Contacts\nPlease wait..."
-                hud.progress = 0
-            })
-            return hud
-        }
-        return nil
-    }
-
-    private class func hideHud() {
-        if let view = UIApplication.sharedApplication().keyWindow {
-            VNProgreessHUD.hideAllHudsFromView(view, Animated: true)
-        }
-    }
-
 }
 
 
@@ -245,6 +204,14 @@ extension Contact{
             }
         }
     }
+
+    class func getNameForContact(number:String) -> String? {
+
+        if let temp = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, fetchLimit: nil).first as? Contact {
+        return temp.addressBook?.name
+        }
+        return nil
+    }
 }
 
 //MARK: Network Methods
@@ -257,7 +224,7 @@ extension Contact{
                 }else{
                     syncContactFromServer(array)
                 }
-                debugPrint("\(statusCode),\(responseObj)")
+                
             }
         }
     }

@@ -44,12 +44,12 @@
                         <rect key="frame" x="0.0" y="20.666666666666671" width="19" height="56"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PB8-Ce-yVE" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="19" y="20.666666666666671" width="48.666666666666671" height="25.333333333333329"/>
+                        <rect key="frame" x="19" y="20.666666666666671" width="46.666666666666671" height="25.333333333333329"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                         <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-jf-C9p" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hsO-jf-C9p" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="19" y="46" width="282" height="30.666666666666671"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="hsO-jf-C9p" secondAttribute="height" multiplier="1100:120" id="Gno-rm-LpM"/>

@@ -58,13 +58,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Sam Jolian" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdu-Kr-P5c">
-                        <rect key="frame" x="63" y="15.5" width="86" height="18"/>
+                        <rect key="frame" x="63" y="15.5" width="89.5" height="21"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="100" text="32" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaD-KF-hiK">
-                        <rect key="frame" x="63" y="40.5" width="240" height="20"/>
+                        <rect key="frame" x="63" y="44" width="240" height="16.5"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                         <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -75,16 +75,25 @@
                             <constraint firstAttribute="height" constant="1" id="Q5P-l7-XTz"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="25 Aug 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eps-Os-Uas" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="229" y="19" width="74" height="15.5"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="13"/>
+                        <color key="textColor" red="0.60392156860000001" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="IVn-2i-NXW" firstAttribute="width" secondItem="mCb-B6-69U" secondAttribute="width" multiplier="70:1242" id="2VJ-0Q-Fnd"/>
                     <constraint firstItem="rDg-jk-ELC" firstAttribute="top" secondItem="Sky-f5-Z6y" secondAttribute="bottom" id="3Et-ut-ZMq"/>
+                    <constraint firstItem="Eps-Os-Uas" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xdu-Kr-P5c" secondAttribute="trailing" constant="8" id="4Y9-hP-prU"/>
                     <constraint firstAttribute="bottom" secondItem="L4v-dd-9Ci" secondAttribute="bottom" id="5nf-f3-QwV"/>
                     <constraint firstItem="lNa-qQ-mng" firstAttribute="centerY" secondItem="rDg-jk-ELC" secondAttribute="centerY" id="67s-kx-Ydi"/>
                     <constraint firstAttribute="trailing" secondItem="G6s-hB-Bbc" secondAttribute="trailing" id="6Ze-CZ-XFr"/>
                     <constraint firstItem="lNa-qQ-mng" firstAttribute="width" secondItem="rDg-jk-ELC" secondAttribute="width" id="7bX-zo-HFq"/>
+                    <constraint firstItem="Eps-Os-Uas" firstAttribute="centerY" secondItem="xdu-Kr-P5c" secondAttribute="centerY" id="AHb-A9-2De"/>
                     <constraint firstAttribute="bottom" secondItem="VYB-Wa-XzA" secondAttribute="bottom" id="DDU-bz-5hl"/>
                     <constraint firstItem="lNa-qQ-mng" firstAttribute="height" secondItem="rDg-jk-ELC" secondAttribute="height" id="EzN-7J-Q9y"/>
+                    <constraint firstItem="IVn-2i-NXW" firstAttribute="leading" secondItem="Eps-Os-Uas" secondAttribute="trailing" id="Fjt-PZ-8lb"/>
                     <constraint firstAttribute="trailing" secondItem="L4v-dd-9Ci" secondAttribute="trailing" id="Ii5-Ux-9yu"/>
                     <constraint firstItem="VYB-Wa-XzA" firstAttribute="top" secondItem="mCb-B6-69U" secondAttribute="top" id="J3a-0o-oQ9"/>
                     <constraint firstItem="VYB-Wa-XzA" firstAttribute="leading" secondItem="mCb-B6-69U" secondAttribute="leading" id="KCy-Ay-8X2"/>
@@ -98,7 +107,6 @@
                     <constraint firstItem="L4v-dd-9Ci" firstAttribute="leading" secondItem="mCb-B6-69U" secondAttribute="leading" id="Xcd-Wn-hQO"/>
                     <constraint firstItem="Sky-f5-Z6y" firstAttribute="top" secondItem="mCb-B6-69U" secondAttribute="top" id="aUx-bQ-pCm"/>
                     <constraint firstItem="L4v-dd-9Ci" firstAttribute="height" secondItem="Sky-f5-Z6y" secondAttribute="height" id="bA1-sr-O4A"/>
-                    <constraint firstItem="IVn-2i-NXW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xdu-Kr-P5c" secondAttribute="trailing" constant="8" id="bOL-AM-VWY"/>
                     <constraint firstItem="IVn-2i-NXW" firstAttribute="leading" secondItem="HaD-KF-hiK" secondAttribute="trailing" id="bWd-c6-ERI"/>
                     <constraint firstItem="HaD-KF-hiK" firstAttribute="leading" secondItem="xdu-Kr-P5c" secondAttribute="leading" id="gVy-a5-2Ba"/>
                     <constraint firstItem="VYB-Wa-XzA" firstAttribute="width" secondItem="mCb-B6-69U" secondAttribute="width" multiplier="70:1242" id="i9e-8M-V9O"/>
@@ -113,6 +121,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentLabel" destination="HaD-KF-hiK" id="oLq-34-zY1"/>
+                <outlet property="dateLabel" destination="Eps-Os-Uas" id="eja-Lh-oTm"/>
                 <outlet property="personImageView" destination="rDg-jk-ELC" id="hzJ-oO-igp"/>
                 <outlet property="personNameLabel" destination="xdu-Kr-P5c" id="hyS-7Z-N5h"/>
             </connections>

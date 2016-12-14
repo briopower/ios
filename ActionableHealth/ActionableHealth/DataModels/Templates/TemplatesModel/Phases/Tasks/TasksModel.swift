@@ -29,8 +29,15 @@ class TasksModel: NSObject {
 
 //MARK:- Additional methods
 extension TasksModel{
-   class func getDictForRating(key:String, rating:CGFloat) -> [String : AnyObject] {
-    let val = Double(Int(rating * 10))
+
+    func updateRating(response:AnyObject?) {
+        if let ratingVal  = response?["rating"] as? String {
+            rating = Double(ratingVal) ?? 0.0
+        }
+    }
+
+    class func getDictForRating(key:String, rating:CGFloat) -> [String : AnyObject] {
+        let val = Double(Int(rating * 10))
         return ["key":key, "rating":"\(Double(val/10))"];
     }
 

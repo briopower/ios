@@ -63,40 +63,34 @@ extension TrackDetailsViewController{
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
     func commentsTapped(type: TrackDetailsSourceType) {
-        if NSUserDefaults.isLoggedIn() {
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
-                dispatch_async(dispatch_get_main_queue(), {
-                    viewCont.delegate = self
-                    viewCont.commentSourceKey = self.currentTemplate?.key
-                    self.getNavigationController()?.pushViewController(viewCont, animated: true)
-                })
-            }
-        }else{
-            UIViewController.presentLoginViewController()
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+            dispatch_async(dispatch_get_main_queue(), {
+                viewCont.delegate = self
+                viewCont.commentSourceKey = self.currentTemplate?.key
+                self.getNavigationController()?.pushViewController(viewCont, animated: true)
+            })
         }
+
 
     }
 
     func requestButtonTapped(type: TrackDetailsSourceType) {
-        if NSUserDefaults.isLoggedIn() {
-            switch type {
-            case .Home:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.joinTracksView) as? JoinTrackViewController {
-                    viewCont.currentTemplate = currentTemplate
-                    getNavigationController()?.pushViewController(viewCont, animated: true)
-                }
-            case .Tracks:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
-                    viewCont.sourceType = .Tracks
-                    viewCont.currentTemplate = currentTemplate
-                    getNavigationController()?.pushViewController(viewCont, animated: true)
-                }
-            default:
-                break
+        switch type {
+        case .Home:
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.joinTracksView) as? JoinTrackViewController {
+                viewCont.currentTemplate = currentTemplate
+                getNavigationController()?.pushViewController(viewCont, animated: true)
             }
-        }else{
-            UIViewController.presentLoginViewController()
+        case .Tracks:
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
+                viewCont.sourceType = .Tracks
+                viewCont.currentTemplate = currentTemplate
+                getNavigationController()?.pushViewController(viewCont, animated: true)
+            }
+        default:
+            break
         }
+
     }
 }
 
@@ -271,7 +265,7 @@ extension TrackDetailsViewController{
             updateHeader()
         }
     }
-    
+
     func processError(error:NSError?) {
         
     }

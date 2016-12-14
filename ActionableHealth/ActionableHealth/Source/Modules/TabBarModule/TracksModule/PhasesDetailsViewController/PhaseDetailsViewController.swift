@@ -59,10 +59,10 @@ extension PhaseDetailsViewController{
 //MARK:- Additional methods
 extension PhaseDetailsViewController{
     func setupView(){
-        
-//        if let headerView = AllTaskCompletedHeaderView.getView() {
-//            phaseDetailsTblView.tableHeaderView = headerView
-//        }
+
+        //        if let headerView = AllTaskCompletedHeaderView.getView() {
+        //            phaseDetailsTblView.tableHeaderView = headerView
+        //        }
 
         phaseDetailsTblView.rowHeight = UITableViewAutomaticDimension
         phaseDetailsTblView.estimatedRowHeight = 100
@@ -106,36 +106,32 @@ extension PhaseDetailsViewController:UITableViewDataSource{
     }
 }
 
+//MARK:- CommentsViewControllerDelegate
 extension PhaseDetailsViewController:CommentsViewControllerDelegate{
     func updatedCommentCount(count: Int) {
         selectedTask?.commentsCount = count
     }
 }
 
-//MARK:- RatingView Methods
+//MARK:- RatingView Methods / PhaseDetailsCellDelegate
 extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
     func commentsTapped(tag: Int, obj: AnyObject?) {
-        if NSUserDefaults.isLoggedIn() {
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
-                dispatch_async(dispatch_get_main_queue(), {
-                    if let task = self.currentPhase?.tasks[tag] as? TasksModel {
-                        self.selectedTask = task
-                    }
-                    viewCont.delegate = self
-                    viewCont.commentSourceKey = obj as? String
-                    self.getNavigationController()?.pushViewController(viewCont, animated: true)
-                })
-            }
-        }else{
-            UIViewController.presentLoginViewController()
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let task = self.currentPhase?.tasks[tag] as? TasksModel {
+                    self.selectedTask = task
+                }
+                viewCont.delegate = self
+                viewCont.commentSourceKey = obj as? String
+                self.getNavigationController()?.pushViewController(viewCont, animated: true)
+            })
         }
+
     }
 
     func rateTaskTapped(tag: Int, obj: AnyObject?) {
-        if NSUserDefaults.isLoggedIn(), let task = obj as? TasksModel {
+        if let task = obj as? TasksModel {
             showRatingView(task)
-        }else{
-            UIViewController.presentLoginViewController()
         }
     }
 
@@ -147,7 +143,7 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
             starRatingView.value = CGFloat(task.rating)
             view.addSubview(ratingView)
             selectedTask = task
-            UIView.animateWithDuration(0.3, animations: { 
+            UIView.animateWithDuration(0.3, animations: {
                 self.ratingView.alpha = 1
                 }, completion: { (completed:Bool) in
                     self.ratingView.userInteractionEnabled = true
@@ -156,7 +152,7 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
     }
 
     func hideRatingView() {
-        UIView.animateWithDuration(0.3, animations: { 
+        UIView.animateWithDuration(0.3, animations: {
             self.ratingView.alpha = 0
             self.ratingView.userInteractionEnabled = false
         }) { (completed:Bool) in
@@ -181,6 +177,8 @@ extension PhaseDetailsViewController{
     }
 
     func processResponse(response:AnyObject?) {
+        selectedTask?.updateRating(response)
+        phaseDetailsTblView.reloadData()
         hideRatingView()
     }
 }

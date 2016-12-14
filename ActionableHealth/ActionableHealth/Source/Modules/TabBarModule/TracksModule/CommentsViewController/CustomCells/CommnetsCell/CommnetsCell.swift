@@ -14,6 +14,7 @@ class CommnetsCell: UITableViewCell {
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var personNameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 
 
     //MARK:- -------------------
@@ -33,7 +34,8 @@ class CommnetsCell: UITableViewCell {
 //MARK:- Addtional Methods
 extension CommnetsCell{
     func configCell(comment:CommentsModel) {
-//        personNameLabel.text = comment.commentedOn?.longString
+        personNameLabel.text = comment.commentedByUserName ?? comment.commentedByUserId
         commentLabel.text = comment.comment
+        dateLabel.text = comment.commentedOn?.mediumDateString
     }
 }

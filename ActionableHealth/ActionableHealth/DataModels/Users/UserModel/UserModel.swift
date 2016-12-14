@@ -16,6 +16,7 @@ class UserModel: NSObject {
     var email = ""
     var firstName = ""
     var lastName = ""
+    var name:String?
     var phoneNumber = ""
     var profileImage = ""
     var oldPassword = ""
@@ -60,6 +61,7 @@ extension UserModel{
         model.firstName = dict["firstName"] as? String ?? ""
         model.userID = dict["userId"] as? String ?? ""
         model.lastName = dict["lastName"] as? String ?? ""
+        model.name = Contact.getNameForContact(model.userID)
         model.profileImage = dict["userProfileURL"] as? String ?? ""
         return model
     }

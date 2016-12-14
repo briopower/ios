@@ -84,7 +84,7 @@ extension CommentsViewController:UITextViewDelegate{
         placeHolderLabel.hidden = !(textView.text.length() == 0)
         if textView.text.getValidObject() != nil  {
             sendButton.enabled = true
-            
+
         }else{
             sendButton.enabled = false
         }

@@ -50,7 +50,7 @@ extension TrackMemberListViewController:UITableViewDataSource{
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier(String(GroupsCell)) as? GroupsCell, let obj = membersArray[indexPath.row] as? UserModel {
-            cell.configureForGroupMemberCell(obj)
+            cell.configureForTrackMemberCell(obj)
             return cell
         }
         return UITableViewCell()

@@ -190,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Typ-LN-5Rh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -198,14 +198,24 @@
                                     <outlet property="delegate" destination="Z6G-co-xn9" id="GFV-gF-OOz"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="VkP-iD-8Mo">
+                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Z6G-co-xn9" id="8v7-dD-sJM"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DpL-Fk-zdv" firstAttribute="top" secondItem="Typ-LN-5Rh" secondAttribute="bottom" id="1jo-Dc-XR4"/>
                             <constraint firstItem="Typ-LN-5Rh" firstAttribute="leading" secondItem="6DP-GL-26m" secondAttribute="leading" id="CNh-G5-4HK"/>
                             <constraint firstAttribute="trailing" secondItem="Typ-LN-5Rh" secondAttribute="trailing" id="PbZ-tw-xIA"/>
-                            <constraint firstItem="Typ-LN-5Rh" firstAttribute="top" secondItem="6DP-GL-26m" secondAttribute="top" id="Zsz-AP-5Wg"/>
+                            <constraint firstItem="VkP-iD-8Mo" firstAttribute="top" secondItem="6DP-GL-26m" secondAttribute="top" constant="64" id="akp-wC-8aF"/>
+                            <constraint firstItem="VkP-iD-8Mo" firstAttribute="leading" secondItem="6DP-GL-26m" secondAttribute="leading" id="dy4-K7-ROi"/>
                             <constraint firstItem="Typ-LN-5Rh" firstAttribute="top" secondItem="zd1-0Q-PSL" secondAttribute="bottom" id="kAa-1e-NZ6"/>
+                            <constraint firstItem="Typ-LN-5Rh" firstAttribute="top" secondItem="6DP-GL-26m" secondAttribute="top" constant="44" id="oJb-ef-ujO"/>
+                            <constraint firstAttribute="trailing" secondItem="VkP-iD-8Mo" secondAttribute="trailing" id="z5J-DO-0yN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -215,12 +225,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="sWj-Ax-ua9"/>
                     <connections>
+                        <outlet property="srchBar" destination="VkP-iD-8Mo" id="s9v-BY-UMK"/>
                         <outlet property="tblView" destination="Typ-LN-5Rh" id="a4M-UU-2aq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTy-1u-3Ip" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1438" y="430"/>
+            <point key="canvasLocation" x="-1439.1304347826087" y="429.61956521739131"/>
         </scene>
     </scenes>
 </document>

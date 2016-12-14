@@ -132,11 +132,12 @@ extension PhaseDetailsCell{
         starRatingView.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
         commentCountButton.hidden = currentTask?.key.getValidObject() == nil
+        rateTaskButton.hidden = commentCountButton.hidden
+
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
             statusLabel.text = obj.status
-            rateTaskButton.hidden = false
         }else{
-            rateTaskButton.hidden = true
+            statusLabel.text = ""
         }
     }
 }

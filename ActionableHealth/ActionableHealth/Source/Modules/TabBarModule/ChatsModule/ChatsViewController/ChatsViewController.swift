@@ -20,7 +20,7 @@ class ChatsViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("Chats", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Add)
+        self.setNavigationBarWithTitle("Chats", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -47,7 +47,7 @@ extension ChatsViewController{
 //MARK:- UITableViewDataSource
 extension ChatsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -22,6 +22,7 @@ class CountryListViewController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var srchBar: UISearchBar!
 
     //MARK:- Variables
     weak var delegate :CountryListViewControllerDelegate?
@@ -33,6 +34,7 @@ class CountryListViewController: CommonViewController {
     var codesDict = NSMutableDictionary()
     var dataSet = NSMutableArray()
     var countryArray = NSArray()
+    var allCountriesArray = NSArray()
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -65,7 +67,8 @@ extension CountryListViewController{
         }else{
             getNamesJson()
         }
-
+        srchBar.returnKeyType = .Done
+        
         tblView.registerNib(UINib(nibName: String(CountryCodeListCell), bundle: nil), forCellReuseIdentifier: String(CountryCodeListCell))
         tblView.tableFooterView = UIView(frame: CGRectZero)
     }
@@ -83,7 +86,10 @@ extension CountryListViewController{
                         if let isdCodeText = (codesDict.valueForKey(countryCode) as? String)?.getValidObject() {
                             let isdCode = isdCodeText.characters.split{$0 == " "}.map(String.init).first
                             if isdCode != nil {
-                                let obj = [countryName_key:countryName, countryCode_key: countryCode, isdCode_key:isdCode!, normalizedISDCode_key:isdCode!.getNumbers()]
+                                let obj = [countryName_key : countryName,
+                                           countryCode_key : countryCode,
+                                           isdCode_key : isdCode!,
+                                           normalizedISDCode_key : isdCode!.getNumbers()]
                                 dataSet.addObject(obj)
                             }
                         }
@@ -97,6 +103,7 @@ extension CountryListViewController{
     func createCountryArray() {
         if let arr = NSArray(contentsOfFile: path) {
             countryArray = arr
+            allCountriesArray = NSArray(array: countryArray)
         }
     }
 
@@ -107,6 +114,23 @@ extension CountryListViewController{
             tblView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
             hideLoader()
         }
+    }
+}
+
+//MARK:- UISearchBarDelegate
+extension CountryListViewController:UISearchBarDelegate{
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        if let text = searchText.getValidObject() {
+            let predicate = NSPredicate(format: "%K contains[cd] %@ OR %K contains[cd] %@ OR %K contains[cd] %@", countryName_key, text, countryCode_key, text, normalizedISDCode_key, text)
+            countryArray = allCountriesArray.filteredArrayUsingPredicate(predicate)
+        }else{
+            countryArray = allCountriesArray
+        }
+        tblView.reloadData()
+    }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
 }
 //MARK:- Network methods

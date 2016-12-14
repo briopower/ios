@@ -167,6 +167,7 @@ extension CommonViewController{
         if let window = UIApplication.sharedApplication().keyWindow {
             VNProgreessHUD.hideAllHudsFromView(window, Animated: true)
         }
+        UIApplication.enableInteraction()
     }
 }
 

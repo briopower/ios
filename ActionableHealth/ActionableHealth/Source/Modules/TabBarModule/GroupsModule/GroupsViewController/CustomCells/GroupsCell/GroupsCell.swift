@@ -40,10 +40,10 @@ extension GroupsCell{
         dateLabel.hidden = false
     }
 
-    func configureForGroupMemberCell() {
+    func configureForGroupMemberCell(obj:UserModel) {
         placeholderImageView.image = UIImage(named: "circle-user-ic")
-        titleDescLabel.text = "Alexandra Xan"
-        subTitleDescLabel.text = "Tamha, Istanbul"
+        titleDescLabel.text = "\(obj.firstName) \(obj.lastName)"
+        subTitleDescLabel.text = obj.phoneNumber
         dateLabel.hidden = true
     }
 }

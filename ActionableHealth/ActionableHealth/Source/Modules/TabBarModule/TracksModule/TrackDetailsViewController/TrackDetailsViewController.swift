@@ -31,6 +31,8 @@ class TrackDetailsViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        updateHeader()
+        updateTemplate()
         setNavigationBarWithTitle("Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
 
     }
@@ -64,8 +66,8 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
         if NSUserDefaults.isLoggedIn() {
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
                 dispatch_async(dispatch_get_main_queue(), {
-                    viewCont.sourceType = .Track
-                    viewCont.commentSourceObj = self.currentTemplate
+                    viewCont.delegate = self
+                    viewCont.commentSourceKey = self.currentTemplate?.key
                     self.getNavigationController()?.pushViewController(viewCont, animated: true)
                 })
             }
@@ -97,14 +99,20 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
         }
     }
 }
+
+extension TrackDetailsViewController:CommentsViewControllerDelegate{
+    func updatedCommentCount(count: Int) {
+        currentTemplate?.commentsCount = count
+    }
+}
 //MARK:- Additional methods
 extension TrackDetailsViewController{
     func setupView() {
         infoButtonAction(infoButton)
         if let headerView = TrackDetailsHeaderView.getView() {
-            headerView.setupForType(sourceType, template: currentTemplate)
             trackDetailsTblView.tableHeaderView = headerView
         }
+        updateHeader()
 
         trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
 
@@ -114,9 +122,13 @@ extension TrackDetailsViewController{
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackPhasesCell))
 
-        updateTemplate()
     }
 
+    func updateHeader() {
+        if let headerView = trackDetailsTblView.tableHeaderView as? TrackDetailsHeaderView {
+            headerView.setupForType(sourceType, template: currentTemplate)
+        }
+    }
     func setSelectedButton(infoSelected:Bool) {
         infoButton.selected = infoSelected
         phaseButton.selected = !infoSelected
@@ -232,7 +244,6 @@ extension TrackDetailsViewController{
     func updateTemplate() {
         if NetworkClass.isConnected(true) {
             if let id = sourceType == .Home ? currentTemplate?.templateId : currentTemplate?.trackId  {
-                showLoader()
                 let url = sourceType == .Home ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
                 NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
@@ -241,21 +252,23 @@ extension TrackDetailsViewController{
                     }else{
                         self.processError(error)
                     }
-                    self.hideLoader()
                 })
             }
         }
     }
-    
+
     func processResponse(responseObj:AnyObject?) {
         if let dict = responseObj, let temp = currentTemplate {
             switch sourceType {
-            case .Home, .Tracks:
+            case .Home:
                 TemplatesModel.addPhases(dict, toModel: temp)
+            case .Tracks:
+                TemplatesModel.updateTrackObj(temp, dict: dict)
             default:
                 break
             }
             trackDetailsTblView.reloadData()
+            updateHeader()
         }
     }
     

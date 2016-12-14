@@ -17,21 +17,7 @@ class KeyboardAvoidingViewController: CommonViewController {
     //LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        weak var view = self.view
-        weak var constraint = self.constraintBottomSpace
 
-        self.view.addKeyboardPanningWithFrameBasedActionHandler({ (keyboardFrameInView:CGRect, opening:Bool, closing:Bool) in
-            if !opening{
-                constraint?.constant = (self.view.frame.size.height - keyboardFrameInView.origin.y)
-                view?.layoutIfNeeded()
-            }
-        }) { (keyboardFrameInView:CGRect, opening:Bool, closing:Bool) in
-
-            if !opening{
-                constraint?.constant = (self.view.frame.size.height - keyboardFrameInView.origin.y)
-                view?.layoutIfNeeded()
-            }
-        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -39,7 +25,7 @@ class KeyboardAvoidingViewController: CommonViewController {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillAppear(_:)), name: UIKeyboardWillShowNotification, object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillDisappear(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.keyboardWillDisappear(_:)), name: UIKeyboardDidHideNotification, object: nil)
 
     }
 
@@ -72,6 +58,7 @@ extension KeyboardAvoidingViewController{
         self.view.layoutIfNeeded()
         UIView.commitAnimations()
         self.performSelector(#selector(self.moveToBottom), withObject: nil, afterDelay: duration.doubleValue)
+
     }
 
     func keyboardWillDisappear(notification:NSNotification) {
@@ -84,6 +71,7 @@ extension KeyboardAvoidingViewController{
         constraintBottomSpace?.constant = 0
         self.view.layoutIfNeeded()
         UIView.commitAnimations()
+        self.performSelector(#selector(self.moveToBottom), withObject: nil, afterDelay: duration.doubleValue)
     }
 
     func moveToBottom() {

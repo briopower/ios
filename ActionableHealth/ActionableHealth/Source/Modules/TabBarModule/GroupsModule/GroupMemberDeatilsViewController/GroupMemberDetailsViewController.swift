@@ -35,7 +35,7 @@ class GroupMemberDetailsViewController: CommonViewController {
 //MARK:- Additional methods
 extension GroupMemberDetailsViewController{
     func setupView() {
-        memberDeatilsTblView.estimatedRowHeight = 200
+        memberDeatilsTblView.estimatedRowHeight = 80
         memberDeatilsTblView.rowHeight = UITableViewAutomaticDimension
         memberDeatilsTblView.registerNib(UINib(nibName: String(ProfileImageCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ProfileImageCell))
         memberDeatilsTblView.registerNib(UINib(nibName: String(GroupMemberDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(GroupMemberDetailsCell))

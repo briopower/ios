@@ -10,6 +10,13 @@ import UIKit
 
 class CommnetsCell: UITableViewCell {
 
+    //MARK:- Outlets
+    @IBOutlet weak var personImageView: UIImageView!
+    @IBOutlet weak var personNameLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+
+
+    //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +28,12 @@ class CommnetsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+//MARK:- Addtional Methods
+extension CommnetsCell{
+    func configCell(comment:CommentsModel) {
+//        personNameLabel.text = comment.commentedOn?.longString
+        commentLabel.text = comment.comment
+    }
 }

@@ -136,7 +136,7 @@ extension TemplatesModel{
         obj.members = NSMutableArray(array: dict["members"] as? NSArray ?? [])
         obj.blobKey = dict["blobKey"] as? String
         obj.key = dict["key"] as? String
-
+        addPhases(dict, toModel: obj)
     }
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {

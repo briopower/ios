@@ -42,10 +42,12 @@ extension TrackMemberListViewController{
     func processResponse(response:AnyObject?) {
         if let arr = response as? NSArray {
             for obj in arr {
-                membersArray.addObject(obj)
+                if let dict = obj as? [String: AnyObject] {
+                    membersArray.addObject(UserModel.getUserObject(dict))
+                }
             }
         }
-        tblVIew.reloadData()
+        tblVIew.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
     }
 
     func processError(error:NSError?) {
@@ -61,8 +63,8 @@ extension TrackMemberListViewController:UITableViewDataSource{
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(GroupsCell)) as? GroupsCell {
-            cell.configureForGroupMemberCell()
+        if let cell = tableView.dequeueReusableCellWithIdentifier(String(GroupsCell)) as? GroupsCell, let obj = membersArray[indexPath.row] as? UserModel {
+            cell.configureForGroupMemberCell(obj)
             return cell
         }
         return UITableViewCell()

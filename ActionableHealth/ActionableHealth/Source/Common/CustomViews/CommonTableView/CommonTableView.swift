@@ -8,7 +8,7 @@
 
 import UIKit
 enum TableViewType:Int {
-    case Default, Count
+    case Default, Comments, Count
 }
 enum InsertAt:Int {
     case Top, Bottom, Middle
@@ -66,36 +66,25 @@ extension CommonTableView{
 
     func registerCells() {
         switch tableViewType {
+        case .Comments:
+            self.registerNib(UINib(nibName: String(CommnetsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(CommnetsCell))
         default:
             break
         }
     }
-}
-
-//MARK:- UIScrollViewDelegate
-extension CommonTableView:UIScrollViewDelegate{
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset
-        let bounds = scrollView.bounds
-        let size = scrollView.contentSize
-        let inset = scrollView.contentInset
-
-        let yTemp = offset.y + bounds.size.height - inset.bottom
-
-        let h = size.height
-
-        let reload_distance = UIScreen.mainScreen().bounds.size.height
-
-        if h > reload_distance && yTemp > (h - reload_distance) && hasMoreActivity && self.tableFooterView == nil
-        {
+    func checkForLastCell(indexPath:NSIndexPath) {
+        if self.tableFooterView == nil && hasMoreActivity && tableView(self, numberOfRowsInSection: indexPath.section) - 1 == indexPath.row{
             if self.respondsToSelector(#selector(self.bottomElements(_:)))
             {
                 addBottomLoader()
-                bottomElements(scrollView)
+                bottomElements(self)
             }
         }
     }
+
 }
+
+
 //MARK:- UITableViewDataSource
 extension CommonTableView:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,7 +96,13 @@ extension CommonTableView:UITableViewDataSource{
 
 
     func getCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        checkForLastCell(indexPath)
         switch tableViewType {
+        case .Comments:
+            if let cell = tableView.dequeueReusableCellWithIdentifier(String(CommnetsCell)) as? CommnetsCell, let obj = dataArray[indexPath.row] as? CommentsModel{
+                cell.configCell(obj)
+                return cell
+            }
         default:
             break
         }
@@ -120,6 +115,20 @@ extension CommonTableView:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         commonTableViewDelegate?.clickedAtIndexPath(indexPath, obj: dataArray[indexPath.row])
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch tableViewType {
+        case .Comments:
+            if let estimate = (dataArray[indexPath.row] as? CommentsModel)?.comment.getHeight(UIFont.getAppRegularFontWithSize(16), maxWidth: Double(UIDevice.width()) * 240/320) {
+                return estimate + 60
+            }
+        default:
+            break
+        }
+
+        return self.estimatedRowHeight
+
     }
 }
 
@@ -167,17 +176,16 @@ extension CommonTableView{
             switch insertAt {
             case .Top:
                 dataArray.insertObjects(array as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSRange.init(location: startIndex, length: array.count)))
-                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Top)
+                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: .Top)
 
             case  .Middle:
                 dataArray.insertObjects(array as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSRange.init(location: startIndex, length: array.count)))
-                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Middle)
+                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: .Middle)
 
             case .Bottom:
                 dataArray.addObjectsFromArray(array as [AnyObject])
-                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: UITableViewRowAnimation.Automatic)
+                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: .Automatic)
             }
-
             self.endUpdates()
         }else{
             hasMoreActivity = false
@@ -202,6 +210,7 @@ extension CommonTableView{
         }
         return indexPathsArr
     }
+
 }
 
 //MARK:- Deletion Methods

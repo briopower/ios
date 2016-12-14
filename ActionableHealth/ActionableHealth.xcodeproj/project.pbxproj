@@ -49,6 +49,7 @@
 		3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */; };
 		3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */; };
 		3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */; };
+		3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C91DFFE1DFED4B30074BCB6 /* CommentsModel.swift */; };
 		3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */; };
 		3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */; };
 		3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */; };
@@ -238,6 +239,7 @@
 		3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackMemberListViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		3C91DFFE1DFED4B30074BCB6 /* CommentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
 		3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidingViewController.swift; sourceTree = "<group>"; };
 		3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListCell.swift; sourceTree = "<group>"; };
 		3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 		3C1EC5501DA3A864003DC2A3 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				3C91DFFC1DFED31B0074BCB6 /* Comments */,
 				3CB2B83F1DEFE44F006DC4E9 /* AddressBook */,
 				3CB8A28A1DEDAE0C009B9AE9 /* Contacts */,
 				3CB8A28B1DEDAE0C009B9AE9 /* Templates */,
@@ -869,6 +872,22 @@
 				3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */,
 			);
 			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		3C91DFFC1DFED31B0074BCB6 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				3C91DFFD1DFED31B0074BCB6 /* CommnetsModel */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		3C91DFFD1DFED31B0074BCB6 /* CommnetsModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C91DFFE1DFED4B30074BCB6 /* CommentsModel.swift */,
+			);
+			path = CommnetsModel;
 			sourceTree = "<group>";
 		};
 		3C96412C1DB4CD6100EE9676 /* CustomCells */ = {
@@ -2098,6 +2117,7 @@
 				3CC9D0701DB886FC00287068 /* CommonTableView.swift in Sources */,
 				3CAB0FA21DB0D7240090BEF3 /* GroupMemberDetailsViewController.swift in Sources */,
 				3CAB0F9F1DB0C2B40090BEF3 /* GroupMembersViewController.swift in Sources */,
+				3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */,
 				3C966DBF1DF6C8DE00E299BF /* CountryListViewController.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,

@@ -16,6 +16,7 @@ class PhaseDetailsViewController: CommonViewController {
 
     //MARK:- Varibales
     var currentPhase:PhasesModel?
+    var selectedTask:TasksModel?
 
     //MARK:- Life cycle
     override func viewDidLoad() {
@@ -67,15 +68,14 @@ extension PhaseDetailsViewController{
 //MARK:- UITableViewDataSource
 extension PhaseDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return currentPhase?.tasks.count ?? 0
-        return 4
+        return currentPhase?.tasks.count ?? 0
+//        return 4
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell.statusCell)) as? PhaseDetailsCell {
-            //indexPath.row
-            if let task = currentPhase?.tasks[0] as? TasksModel {
+            if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
                 cell.tag = indexPath.row
                 cell.delegate = self
                 cell.configureCell(task)
@@ -87,14 +87,23 @@ extension PhaseDetailsViewController:UITableViewDataSource{
     }
 }
 
+extension PhaseDetailsViewController:CommentsViewControllerDelegate{
+    func updatedCommentCount(count: Int) {
+        selectedTask?.commentsCount = count
+    }
+}
+
 //MARK:- RatingView Methods
 extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
     func commentsTapped(tag: Int, obj: AnyObject?) {
         if NSUserDefaults.isLoggedIn() {
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
                 dispatch_async(dispatch_get_main_queue(), {
-                    viewCont.sourceType = .Task
-                    viewCont.commentSourceObj = self.currentPhase
+                    if let task = self.currentPhase?.tasks[tag] as? TasksModel {
+                        self.selectedTask = task
+                    }
+                    viewCont.delegate = self
+                    viewCont.commentSourceKey = obj as? String
                     self.getNavigationController()?.pushViewController(viewCont, animated: true)
                 })
             }
@@ -134,3 +143,5 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
         }
     }
 }
+
+

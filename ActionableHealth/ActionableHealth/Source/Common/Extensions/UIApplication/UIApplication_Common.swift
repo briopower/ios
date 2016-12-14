@@ -13,5 +13,17 @@ extension UIApplication{
     class func dismissKeyboard() {
         UIApplication.sharedApplication().windows.first?.endEditing(true)
     }
+
+    class func disableInteraction() {
+        if !UIApplication.sharedApplication().isIgnoringInteractionEvents(){
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        }
+    }
+
+    class func enableInteraction() {
+        if UIApplication.sharedApplication().isIgnoringInteractionEvents(){
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        }
+    }
 }
 

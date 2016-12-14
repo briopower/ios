@@ -21,7 +21,6 @@ class NetworkClass:NSObject  {
         Alamofire.request(request)
             .validate()
             .responseJSON { response in
-                debugPrint(response.result)
                 switch response.result {
                 case .Success:
                     if completion != nil{
@@ -34,7 +33,7 @@ class NetworkClass:NSObject  {
                         completion!(status: false, responseObj: response.result.value, error: response.result.error, statusCode: response.response?.statusCode)
                     }
                 }
-        }
+            }
     }
 
     class func sendImageRequest(URL url:String, RequestType type:Alamofire.Method, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil,ImageName imageName:String?, ImageData imageData:NSData?, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){

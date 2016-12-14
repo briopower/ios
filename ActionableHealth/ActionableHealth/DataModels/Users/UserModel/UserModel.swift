@@ -51,4 +51,14 @@ extension UserModel{
         }
         return dict
     }
+
+    class func getUserObject(dict:[String : AnyObject]) -> UserModel {
+        let model = UserModel()
+        model.phoneNumber = dict["email"] as? String ?? ""
+        model.firstName = dict["firstName"] as? String ?? ""
+        model.userID = dict["id"] as? String ?? ""
+        model.lastName = dict["lastName"] as? String ?? ""
+        model.profileImage = dict["userProfileURL"] as? String ?? ""
+        return model
+    }
 }

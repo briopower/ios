@@ -42,7 +42,7 @@
                                         <state key="normal" image="send"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type yor message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4e-9s-UBU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="155" height="17.666666666666629"/>
+                                        <rect key="frame" x="21" y="16" width="155" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

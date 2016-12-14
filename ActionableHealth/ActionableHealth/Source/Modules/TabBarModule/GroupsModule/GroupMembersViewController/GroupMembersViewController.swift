@@ -52,7 +52,7 @@ extension GroupMembersViewController:UITableViewDataSource{
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier(String(GroupsCell)) as? GroupsCell {
-            cell.configureForGroupMemberCell()
+//            cell.configureForGroupMemberCell()
             return cell
         }
         return UITableViewCell()

@@ -9,7 +9,24 @@
 import UIKit
 
 enum cellName:Int{
-    case New , InProgress , incomplete , Complete , count
+    case New , InProgress , Incomplete , Complete , Count
+    
+    func getStatus(type:cellName) -> String{
+        switch type {
+        case .New:
+            return "NEW"
+        case .Complete:
+            return "COMPLETE"
+        case .InProgress:
+            return "IN PROGRESS"
+        case .Incomplete:
+            return "INCOMPLETE"
+        default:
+            break
+        }
+        return ""
+    }
+    
 }
 
 //Protocol SelectionViewProtocol {
@@ -44,7 +61,7 @@ extension SelectionView {
 extension SelectionView : UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return cellName.count.rawValue
+        return cellName.Count.rawValue
         
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{

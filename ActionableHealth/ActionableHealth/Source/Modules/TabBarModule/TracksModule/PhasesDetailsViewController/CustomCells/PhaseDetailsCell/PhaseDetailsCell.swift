@@ -106,19 +106,20 @@ extension PhaseDetailsCell{
     }
 
     func getSelectedRow(type:cellName){
-        switch type {
-        case .New:
-            statusLabel.text = "NEW"
-        case .Complete:
-            statusLabel.text = "COMPLETE"
-        case .InProgress:
-            statusLabel.text = "IN PROGRESS"
-        case .incomplete:
-            statusLabel.text = "INCOMPLETE"
-        default:
-            break
-        }
-        self.handleTap()
+            if NetworkClass.isConnected(true), let key = currentTask?.key{
+                let dict = ["key" : key , "status": type.getStatus(type)]
+                UIApplication.sharedApplication().keyWindow?.showLaoder(true)
+                NetworkClass.sendRequest(URL:Constants.URLs.postStatus, RequestType: .POST, Parameters: dict, Headers: nil, CompletionHandler: {
+                    (status, responseObj, error, statusCode) in
+                    if status{
+                        self.statusLabel.text = type.getStatus(type)
+                    }else{
+
+                    }
+                    UIApplication.sharedApplication().keyWindow?.hideLoader(true)
+                })
+            }
+                self.handleTap()
     }
 }
 

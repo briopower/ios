@@ -34,7 +34,7 @@ extension SelectionTableViewCell{
         case .Complete:
             icon.image = UIImage.init(imageLiteral: "Completed")
             descriptionLbl.text = "COMPLETE"
-        case .incomplete:
+        case .Incomplete:
             icon.image = UIImage.init(imageLiteral: "In-Complete")
             descriptionLbl.text = "INCOMPLETE"
         case .InProgress:

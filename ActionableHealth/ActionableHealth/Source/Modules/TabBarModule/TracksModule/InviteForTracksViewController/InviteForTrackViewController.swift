@@ -81,7 +81,7 @@ extension InviteForTrackViewController{
 //MARK:- Network Methods
 extension InviteForTrackViewController{
     func createTrack() {
-        if NetworkClass.isConnected(true) && selectedUsers.count > 0 {
+        if NetworkClass.isConnected(true)/* && selectedUsers.count > 0*/ {
             showLoaderOnWindow()
             NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(selectedUsers), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
@@ -96,7 +96,7 @@ extension InviteForTrackViewController{
     }
 
     func inviteMembers() {
-        if NetworkClass.isConnected(true) && selectedUsers.count > 0 {
+        if NetworkClass.isConnected(true)/* && selectedUsers.count > 0*/ {
             showLoaderOnWindow()
             NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in

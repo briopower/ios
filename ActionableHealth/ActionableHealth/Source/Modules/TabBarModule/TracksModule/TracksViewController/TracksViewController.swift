@@ -51,6 +51,7 @@ extension TracksViewController{
         cursor = ""
     }
 }
+
 //MARK:- CommonCollectionViewDelegate
 extension TracksViewController:CommonCollectionViewDelegate{
     func topElements(view: UIView) {

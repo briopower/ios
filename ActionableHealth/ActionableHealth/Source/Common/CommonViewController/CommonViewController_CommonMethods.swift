@@ -152,21 +152,19 @@ extension CommonViewController{
 extension CommonViewController{
     func showLoader() {
         if showLoading {
-            VNProgreessHUD.showHUDAddedToView(self.view, Animated: true)
+            self.view.showLaoder(true)
         }
     }
 
     func showLoaderOnWindow() {
         if let window = UIApplication.sharedApplication().keyWindow where showLoading {
-            VNProgreessHUD.showHUDAddedToView(window, Animated: true)
+            window.showLaoder(true)
         }
     }
 
     func hideLoader() {
-        VNProgreessHUD.hideAllHudsFromView(self.view, Animated: true)
-        if let window = UIApplication.sharedApplication().keyWindow {
-            VNProgreessHUD.hideAllHudsFromView(window, Animated: true)
-        }
+        self.view.hideLoader(true)
+        UIApplication.sharedApplication().keyWindow?.hideLoader(true)
         UIApplication.enableInteraction()
     }
 }

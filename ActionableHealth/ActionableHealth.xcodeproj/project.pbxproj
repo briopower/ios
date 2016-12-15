@@ -162,6 +162,7 @@
 		403468791DFBE24A00C1AD87 /* SelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 403468781DFBE24A00C1AD87 /* SelectionView.xib */; };
 		4034687D1DFBE46E00C1AD87 /* SelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4034687B1DFBE46E00C1AD87 /* SelectionTableViewCell.swift */; };
 		4034687E1DFBE46E00C1AD87 /* SelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4034687C1DFBE46E00C1AD87 /* SelectionTableViewCell.xib */; };
+		409414981E02740B00057EFD /* UIView_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409414971E02740B00057EFD /* UIView_Common.swift */; };
 		40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED01DF8071500605397 /* ChooseCountryCell.swift */; };
 		40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EBFED11DF8071500605397 /* ChooseCountryCell.xib */; };
 		40EBFEDB1DF8071500605397 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED31DF8071500605397 /* DetailViewCell.swift */; };
@@ -352,6 +353,7 @@
 		403468781DFBE24A00C1AD87 /* SelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectionView.xib; sourceTree = "<group>"; };
 		4034687B1DFBE46E00C1AD87 /* SelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionTableViewCell.swift; sourceTree = "<group>"; };
 		4034687C1DFBE46E00C1AD87 /* SelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectionTableViewCell.xib; sourceTree = "<group>"; };
+		409414971E02740B00057EFD /* UIView_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Common.swift; sourceTree = "<group>"; };
 		40EBFED01DF8071500605397 /* ChooseCountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountryCell.swift; sourceTree = "<group>"; };
 		40EBFED11DF8071500605397 /* ChooseCountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCountryCell.xib; sourceTree = "<group>"; };
 		40EBFED31DF8071500605397 /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 		3C1EC55D1DA3A864003DC2A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				409414961E0273F200057EFD /* UIView */,
 				3CEFA95E1DF6812200185459 /* NSArray */,
 				3C1EC55E1DA3A864003DC2A3 /* AppDelegate */,
 				3C1EC5601DA3A864003DC2A3 /* NSDate */,
@@ -1707,6 +1710,14 @@
 			path = SelectionCell;
 			sourceTree = "<group>";
 		};
+		409414961E0273F200057EFD /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				409414971E02740B00057EFD /* UIView_Common.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		40EBFECD1DF8071500605397 /* WelcomeToBrio */ = {
 			isa = PBXGroup;
 			children = (
@@ -2132,6 +2143,7 @@
 				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
 				3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */,
 				3C1EC5AA1DA3A864003DC2A3 /* UIViewController_Common.swift in Sources */,
+				409414981E02740B00057EFD /* UIView_Common.swift in Sources */,
 				403468771DFBE23A00C1AD87 /* SelectionView.swift in Sources */,
 				3CB2B8431DEFE46D006DC4E9 /* AddressBook.swift in Sources */,
 				3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */,

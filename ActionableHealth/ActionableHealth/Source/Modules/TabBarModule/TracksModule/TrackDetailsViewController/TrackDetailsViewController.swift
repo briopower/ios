@@ -22,6 +22,8 @@ class TrackDetailsViewController: CommonViewController {
     var currentTemplate:TemplatesModel?
     var isInfoSelected = true
     var sourceType = TrackDetailsSourceType.Home
+    var alertController:UIAlertController?
+    var trackName:String?
 
     //MARK:- Life cycle
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class TrackDetailsViewController: CommonViewController {
         super.viewWillAppear(animated)
         updateHeader()
         updateTemplate()
-        setNavigationBarWithTitle("Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(currentTemplate?.name ?? "Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
 
     }
     override func viewDidLayoutSubviews() {
@@ -70,17 +72,12 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
         }
-
-
     }
 
     func requestButtonTapped(type: TrackDetailsSourceType) {
         switch type {
         case .Home:
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.joinTracksView) as? JoinTrackViewController {
-                viewCont.currentTemplate = currentTemplate
-                getNavigationController()?.pushViewController(viewCont, animated: true)
-            }
+            getTrackName()
         case .Tracks:
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
                 viewCont.sourceType = .Tracks
@@ -123,6 +120,7 @@ extension TrackDetailsViewController{
             headerView.setupForType(sourceType, template: currentTemplate)
         }
     }
+
     func setSelectedButton(infoSelected:Bool) {
         infoButton.selected = infoSelected
         phaseButton.selected = !infoSelected
@@ -233,6 +231,39 @@ extension TrackDetailsViewController:UITableViewDelegate{
     }
 }
 
+//MARK:- Get Track Name methods
+extension TrackDetailsViewController{
+    func getTrackName() {
+        alertController = UIAlertController.getAlertController(.Alert, Title: "Enter Track Name", Message: nil,OtherButtonTitles: ["Done"], CancelButtonTitle: "Cancel", completion: { (tappedAtIndex) in
+            if tappedAtIndex == 0{
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
+                    viewCont.sourceType = .Home
+                    viewCont.currentTemplate = self.currentTemplate
+                    viewCont.trackName = self.trackName
+                    self.getNavigationController()?.pushViewController(viewCont, animated: true)
+                }
+            }
+        })
+
+        alertController?.addTextFieldWithConfigurationHandler({ (textField:UITextField) in
+            textField.placeholder = "Name"
+            textField.text = nil
+            textField.font = UIFont.getAppRegularFontWithSize(16)?.getDynamicSizeFont()
+            textField.addTarget(self, action: #selector(TrackDetailsViewController.textDidChange(_:)), forControlEvents: .EditingChanged)
+        })
+
+        UIViewController.getTopMostViewController()?.presentViewController(alertController!, animated: true, completion: nil)
+
+        alertController?.view.tintColor = UIColor.getAppThemeColor()
+        alertController?.actions[0].enabled = false
+
+    }
+
+    func textDidChange(textField:UITextField) {
+        trackName = textField.text?.getValidObject()
+        alertController?.actions[0].enabled = !(trackName?.isEmpty ?? true)
+    }
+}
 //MARK:- Network methods
 extension TrackDetailsViewController{
     func updateTemplate() {
@@ -255,7 +286,7 @@ extension TrackDetailsViewController{
         if let dict = responseObj, let temp = currentTemplate {
             switch sourceType {
             case .Home:
-                TemplatesModel.addPhases(dict, toModel: temp)
+                TemplatesModel.updateTemplateObj(temp, dict: dict)
             case .Tracks:
                 TemplatesModel.updateTrackObj(temp, dict: dict)
             default:
@@ -265,7 +296,7 @@ extension TrackDetailsViewController{
             updateHeader()
         }
     }
-
+    
     func processError(error:NSError?) {
         
     }

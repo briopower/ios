@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -126,23 +126,55 @@
                                     <outlet property="delegate" destination="W1e-xu-ApW" id="8gZ-b6-f0V"/>
                                 </connections>
                             </tableView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTD-Ks-I3n">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Jhi-NC-fHL">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="je4-pw-Q45">
+                                            <rect key="frame" x="197" y="302.66666666666669" width="20" height="20"/>
+                                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </activityIndicatorView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please wait while we are syncing your contacts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ik-4V-gyK">
+                                            <rect key="frame" x="20" y="357" width="374" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9ik-4V-gyK" firstAttribute="centerY" secondItem="Jhi-NC-fHL" secondAttribute="centerY" id="9Vn-qa-m0N"/>
+                                        <constraint firstItem="9ik-4V-gyK" firstAttribute="centerX" secondItem="Jhi-NC-fHL" secondAttribute="centerX" id="QVX-fD-cFp"/>
+                                        <constraint firstItem="9ik-4V-gyK" firstAttribute="leading" secondItem="Jhi-NC-fHL" secondAttribute="leading" constant="20" id="idV-V9-n3x"/>
+                                        <constraint firstItem="je4-pw-Q45" firstAttribute="centerX" secondItem="Jhi-NC-fHL" secondAttribute="centerX" id="j5A-bG-CGt"/>
+                                        <constraint firstItem="je4-pw-Q45" firstAttribute="centerY" secondItem="Jhi-NC-fHL" secondAttribute="centerY" multiplier="0.85" id="osF-E4-P1h"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="WTD-Ks-I3n" firstAttribute="top" secondItem="b4r-0G-kpV" secondAttribute="top" id="5Fd-cU-zge"/>
                             <constraint firstItem="NcZ-JQ-vgq" firstAttribute="top" secondItem="b4r-0G-kpV" secondAttribute="top" id="AFF-zj-WpK"/>
                             <constraint firstItem="NcZ-JQ-vgq" firstAttribute="leading" secondItem="b4r-0G-kpV" secondAttribute="leading" id="S5L-Tf-apL"/>
+                            <constraint firstItem="Hsv-Xj-XU6" firstAttribute="top" secondItem="WTD-Ks-I3n" secondAttribute="bottom" id="Sl3-7e-sVS"/>
+                            <constraint firstItem="WTD-Ks-I3n" firstAttribute="leading" secondItem="b4r-0G-kpV" secondAttribute="leading" id="eRo-cV-1Qz"/>
+                            <constraint firstAttribute="trailing" secondItem="WTD-Ks-I3n" secondAttribute="trailing" id="l0l-PX-Ys5"/>
                             <constraint firstAttribute="trailing" secondItem="NcZ-JQ-vgq" secondAttribute="trailing" id="n2Z-vu-bpi"/>
                             <constraint firstItem="Hsv-Xj-XU6" firstAttribute="top" secondItem="NcZ-JQ-vgq" secondAttribute="bottom" id="zzZ-7U-JHW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="constraintBottomSpace" destination="zzZ-7U-JHW" id="uJI-UL-MMW"/>
+                        <outlet property="contactSyncingView" destination="WTD-Ks-I3n" id="poa-K6-ZNu"/>
                         <outlet property="tblView" destination="NcZ-JQ-vgq" id="2jv-sj-t6M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qId-Iy-hQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1251" y="419"/>
+            <point key="canvasLocation" x="1250.7246376811595" y="418.20652173913049"/>
         </scene>
         <!--Join Track View Controller-->
         <scene sceneID="FiE-oi-Njj">
@@ -201,7 +233,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write you comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="131" height="17.666666666666629"/>
+                                        <rect key="frame" x="21" y="16" width="127.66666666666666" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

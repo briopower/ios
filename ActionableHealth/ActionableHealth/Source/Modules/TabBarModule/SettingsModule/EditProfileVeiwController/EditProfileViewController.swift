@@ -19,6 +19,9 @@ class EditProfileViewController: CommonViewController {
     let textViewCellName = "EditProfileDetailsCell_TextView"
     let nameViewCellName = "EditProfileDetailsCell_Name"
     var type:viewType = .EditProfile
+    var imageUploadURL:String?
+    var user = UserModel.getCurrentUser()
+
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +34,29 @@ class EditProfileViewController: CommonViewController {
         case .EditProfile:
             setNavigationBarWithTitle("Edit Profile", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
         case .UpdateProfile:
-            setNavigationBarWithTitle("Update Profile", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.skip)
+            setNavigationBarWithTitle("Update Profile", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.skip)
         }
-        
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        switch type {
+        case .UpdateProfile:
+            getNavigationController()?.viewControllers = [self]
+        default:
+            break
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-   
+
 }
 
 //MARK:- Additional methods
 extension EditProfileViewController{
     func setupView() {
+        createImageUploadUrl(false)
         editProfileTblView.estimatedRowHeight = 200
         editProfileTblView.rowHeight = UITableViewAutomaticDimension
 
@@ -62,10 +74,10 @@ extension EditProfileViewController{
 extension EditProfileViewController{
     override func skipButtonAction(sender: UIButton?) {
         super.skipButtonAction(sender)
-         self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func updateAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        uploadImage()
     }
 }
 
@@ -81,22 +93,22 @@ extension EditProfileViewController:UITableViewDataSource{
             switch type {
             case .Image:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(ProfileImageCell)) as? ProfileImageCell {
-                    cell.configureForEditProfileCell()
+                    cell.configureForEditProfileCell(user)
                     return cell
                 }
             case .NameCell:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(nameViewCellName) as? EditProfileDetailsCell {
-                    cell.configureCellForCellType(type)
+                    cell.configureCellForCellType(type, user: user)
                     return cell
                 }
-            case .Interest, .Hobbies:
+            case .Hobbies:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(textViewCellName) as? EditProfileDetailsCell {
-                    cell.configureCellForCellType(type)
+                    cell.configureCellForCellType(type, user: user)
                     return cell
                 }
             default:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(EditProfileDetailsCell)) as? EditProfileDetailsCell {
-                    cell.configureCellForCellType(type)
+                    cell.configureCellForCellType(type, user: user)
                     return cell
                 }
             }
@@ -108,6 +120,78 @@ extension EditProfileViewController:UITableViewDataSource{
 //MARK:- UITableViewDelegate
 extension EditProfileViewController:UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+    }
+}
+
+//MARK:- Network Methods
+extension EditProfileViewController{
+    func createImageUploadUrl(shouldUploadImage:Bool = true){
+        if NetworkClass.isConnected(true) {
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.createUploadURL)\(NSUserDefaults.getUserId())", RequestType: .GET, ResponseType: .STRING,CompletionHandler: { (status, responseObj, error, statusCode) in
+                if let str = responseObj as? String{
+                    self.imageUploadURL = str
+                    if shouldUploadImage{
+                        self.uploadImage()
+                    }
+                }
+            })
+        }
+    }
+
+    func uploadImage() {
+        if NetworkClass.isConnected(true) {
+            if let url = imageUploadURL{
+                if let image = user.image {
+                    self.showProgressLoader()
+                    NetworkClass.sendImageRequest(URL: url, RequestType: .POST, ResponseType: .NONE, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+
+                        let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
+                        self.loader?.progress = progress
+
+                        }, CompletionHandler: { (status, responseObj, error, statusCode) in
+                            if status{
+                                self.loader?.progress = 1
+                                self.updateProfile()
+                            }else{
+                                self.processError(error)
+                                self.hideLoader()
+                            }
+                    })
+                }else{
+                    self.showLoader()
+                    self.updateProfile()
+                }
+            }else{
+                createImageUploadUrl(true)
+            }
+        }
+    }
+
+    func updateProfile() {
+        if NetworkClass.isConnected(true) {
+            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .POST, ResponseType: .JSON, Parameters: user.getUpdateProfileDictionary(), CompletionHandler: { (status, responseObj, error, statusCode) in
+                if status{
+                    self.processSuccess(responseObj)
+                }else{
+                    self.processError(error)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func processSuccess(response:AnyObject?) {
+        NSUserDefaults.saveUser(response)
+        switch type {
+        case .UpdateProfile:
+            self.dismissViewControllerAnimated(true, completion: nil)
+        case .EditProfile:
+            getNavigationController()?.popViewControllerAnimated(true)
+        }
+    }
+    
+    func processError(error:NSError?) {
 
     }
 }

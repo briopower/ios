@@ -51,8 +51,8 @@ extension NSUserDefaults{
             if let token = dict["ahwToken"] as? String {
                 setLoggedIn(true)
                 setUserToken(token)
-                userDefault.setObject(NSKeyedArchiver.archivedDataWithRootObject(dict), forKey: "currentUser")
             }
+            userDefault.setObject(NSKeyedArchiver.archivedDataWithRootObject(dict), forKey: "currentUser")
         }
     }
     class func getUser() -> AnyObject? {
@@ -70,5 +70,22 @@ extension NSUserDefaults{
         }
         return ""
     }
-    
+
+    class func setMessagingToken(token:String?) {
+        userDefault.setValue(token, forKey: "messagingToken")
+        userDefault.synchronize()
+    }
+
+    class func getMessagingToken() -> String? {
+        return userDefault.valueForKey("messagingToken") as? String
+    }
+
+    class func setChatId(chatId:String?) {
+        userDefault.setValue(chatId, forKey: "setChatIdsetChatId")
+        userDefault.synchronize()
+    }
+
+    class func getChatId() -> String? {
+        return userDefault.valueForKey("setChatIdsetChatId") as? String
+    }
 }

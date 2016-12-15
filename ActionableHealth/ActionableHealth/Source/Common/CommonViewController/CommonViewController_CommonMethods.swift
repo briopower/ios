@@ -152,20 +152,26 @@ extension CommonViewController{
 extension CommonViewController{
     func showLoader() {
         if showLoading {
-            self.view.showLaoder(true)
+           loader = self.view.showLaoder(true)
         }
     }
 
     func showLoaderOnWindow() {
         if let window = UIApplication.sharedApplication().keyWindow where showLoading {
-            window.showLaoder(true)
+            loader = window.showLaoder(true)
         }
     }
 
     func hideLoader() {
+        loader = nil
         self.view.hideLoader(true)
         UIApplication.sharedApplication().keyWindow?.hideLoader(true)
         UIApplication.enableInteraction()
+    }
+
+    func showProgressLoader() {
+        showLoader()
+        loader?.mode = .AnnularDeterminate
     }
 }
 

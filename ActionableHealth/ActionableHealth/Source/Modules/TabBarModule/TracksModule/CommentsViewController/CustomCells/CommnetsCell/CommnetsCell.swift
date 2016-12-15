@@ -34,7 +34,7 @@ class CommnetsCell: UITableViewCell {
 //MARK:- Addtional Methods
 extension CommnetsCell{
     func configCell(comment:CommentsModel) {
-        personNameLabel.text = comment.commentedByUserName ?? comment.commentedByUserId
+        personNameLabel.text = comment.commentedBy?.name ?? comment.commentedBy?.userID
         commentLabel.text = comment.comment
         dateLabel.text = comment.commentedOn?.mediumDateString
     }

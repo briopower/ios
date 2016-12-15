@@ -14,7 +14,7 @@ import PhoneNumberKit
 
 private let lastSyncedDate = "lastSyncedDate"
 private let emailOrPhone = "emailOrPhone"
-
+private let userId = "userId"
 //MARK:- NSUserDefaults for last sync date
 extension NSUserDefaults{
     class func setLastSyncDate(date:NSDate) -> Bool {
@@ -97,9 +97,7 @@ class Contact: NSManagedObject {
                         do{
                             try prntCxt.save()
                             NSUserDefaults.setLastSyncDate(NSDate())
-                            if contacts.count > 0 {
-                                syncCoreDataContacts()
-                            }
+                            syncCoreDataContacts()
                         }catch{
                             debugPrint("Error saving data")
                         }
@@ -121,7 +119,7 @@ class Contact: NSManagedObject {
             bgCxt.performBlock({
                 if let arr = response as? NSArray {
                     for obj in arr {
-                        if let tempId = (obj as? NSDictionary)?[emailOrPhone] as? String {
+                        if let tempId = (obj as? NSDictionary)?[userId] as? String {
                             setAppUserWithId(tempId)
                         }
                     }
@@ -163,7 +161,6 @@ extension Contact{
     class func syncContacts() {
 
         apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
-        apAddressBook.sortDescriptors = [NSSortDescriptor(key: "name.firstName", ascending: true), NSSortDescriptor(key: "name.lastName", ascending: true)]
 
         apAddressBook.filterBlock =
             {
@@ -190,6 +187,23 @@ extension Contact{
     }
 
     class func syncCoreDataContacts() {
+        if NSUserDefaults.isLoggedIn() {
+            performSelectorInBackground(#selector(Contact.fetchContactsAndStartSyncing), withObject: nil)
+        }
+    }
+
+    class func getNameForContact(number:String) -> String? {
+
+        if let temp = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, fetchLimit: nil).first as? Contact {
+            return temp.addressBook?.name
+        }
+        return nil
+    }
+}
+
+//MARK: Network Methods
+extension Contact{
+    @objc private class func fetchContactsAndStartSyncing() {
         if let contacts = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@", NSNumber(bool: false)), sortingKey: nil, fetchLimit: nil) as? [Contact] {
             let arr = NSMutableArray()
             for contact in contacts {
@@ -204,27 +218,12 @@ extension Contact{
             }
         }
     }
-
-    class func getNameForContact(number:String) -> String? {
-
-        if let temp = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, fetchLimit: nil).first as? Contact {
-        return temp.addressBook?.name
-        }
-        return nil
-    }
-}
-
-//MARK: Network Methods
-extension Contact{
     private class func syncContactFromServer(array:NSMutableArray) {
-        if NSUserDefaults.isLoggedIn() {
-            NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
-                if status{
-                    processResponse(responseObj)
-                }else{
-                    syncContactFromServer(array)
-                }
-                
+        NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
+            if status{
+                processResponse(responseObj)
+            }else{
+                syncContactFromServer(array)
             }
         }
     }

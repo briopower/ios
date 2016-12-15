@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        FIRApp.configure()
+
         forEasyLoading()
 
         setupOnAppLauch()
@@ -42,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-//        FIRMessaging.messaging().disconnect()
-//        debugPrint("Disconnected from FCM.")
+        //        FIRMessaging.messaging().disconnect()
+        //        debugPrint("Disconnected from FCM.")
 
     }
 
@@ -154,6 +156,7 @@ extension AppDelegate{
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
     {
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Sandbox)
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Prod)
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -188,29 +191,25 @@ extension AppDelegate{
 
     func startSyncing(){
         AddressBook.checkForDeletedContacts()
-        Contact.syncCoreDataContacts()
         Contact.syncContacts()
     }
 
     func connectToFcm() {
-//        FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
-//            if error != nil {
-//                debugPrint("Unable to connect with FCM. \(error)")
-//            } else {
-//                debugPrint("Connected to FCM.")
-//            }
-//        }
+        FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
+            if error != nil {
+                debugPrint("Unable to connect with FCM. \(error)")
+            } else {
+                debugPrint("Connected to FCM.")
+            }
+        }
     }
 
     func setupOnAppLauch() {
         if NSUserDefaults.isLoggedIn() {
-            //            registerForPushNotifications()
-            //
-            //            FIRApp.configure()
-            //
-            //            // Add observer for InstanceID token refresh callback.
-            //            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: kFIRInstanceIDTokenRefreshNotification, object: nil)
-
+            // Add observer for InstanceID token refresh callback.
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: kFIRInstanceIDTokenRefreshNotification, object: nil)
+            registerForPushNotifications()
+            Messaging.openChatSession()
         }
     }
 }

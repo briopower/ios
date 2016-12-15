@@ -14,7 +14,6 @@ class GroupsCell: UITableViewCell {
     @IBOutlet weak var circularImageView: UIImageView!
     @IBOutlet weak var titleDescLabel: UILabel!
     @IBOutlet weak var subTitleDescLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var placeholderImageView: UIImageView!
 
     //MARK:- -------------------
@@ -33,23 +32,16 @@ class GroupsCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension GroupsCell{
-    func configureForGroupCell() {
-        placeholderImageView.image = UIImage(named: "circle-group-ic")
-        titleDescLabel.text = "Fitness Group"
-        subTitleDescLabel.text = "999 Members"
-        dateLabel.hidden = false
-    }
 
     func configureForTrackMemberCell(obj:UserModel) {
         placeholderImageView.image = UIImage(named: "circle-user-ic")
         if let name = obj.name {
             titleDescLabel.text = name
-            subTitleDescLabel.text = obj.phoneNumber
+            subTitleDescLabel.text = obj.userID
         }else{
-            titleDescLabel.text = obj.phoneNumber
+            titleDescLabel.text = obj.userID
             subTitleDescLabel.text = nil
         }
-        dateLabel.hidden = true
     }
 
 }

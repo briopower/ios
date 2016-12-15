@@ -15,17 +15,13 @@ class TemplatesModel: NSObject {
     //MARK:- Variables
     var objectType = ObjectType.Template
     var templateId:String?
-    var name = ""
-    var type = ""
-    var code = ""
+    var name:String?
     var details = ""
     var status = ""
-    var url = ""
     var templateImageUrl = ""
     var createdBy = ""
     var fileName = ""
     var createDate = 0
-    var sharedWith = []
     var key:String?
     var rating = 0.0
     var commentsCount = 0
@@ -42,10 +38,10 @@ class TemplatesModel: NSObject {
 //MARK:- Additional methods
 extension TemplatesModel{
 
-    func getCreateTrackDict(array:NSMutableArray) -> [String:AnyObject] {
+    func getCreateTrackDict(trackName:String?, array:NSMutableArray) -> [String:AnyObject] {
         var dict:[String:AnyObject] = [:]
         dict["templateID"] = templateId ?? ""
-        dict["teamName"] = name
+        dict["teamName"] = trackName ?? name
         var arrOfMembers:[[String: String]] = []
         for obj in array {
             if let id = obj as? String {
@@ -73,7 +69,7 @@ extension TemplatesModel{
     }
 
     class func getSearchUserDict(cursor:String, query:String = "" , id:String) -> [String:AnyObject] {
-        return ["cursor":cursor, "pageSize": 20, "query": query , "trackid":id]
+        return ["cursor":cursor, "pageSize": 100, "query": query , "trackid":id]
     }
     class func getTemplateResponseArray(dict:AnyObject) -> NSArray {
         return dict["templateResultSet"] as? NSArray ?? []
@@ -104,47 +100,54 @@ extension TemplatesModel{
     }
 
     class func updateTemplateObj(obj:TemplatesModel, dict:AnyObject) {
+
         obj.objectType = ObjectType.Template
         obj.templateId = dict["id"] as? String
-        obj.name = dict["name"] as? String ?? ""
-        obj.type = dict["type"] as? String ?? ""
-        obj.code = dict["code"] as? String ?? ""
-        obj.details = dict["descriptionText"] as? String ?? ""
-        obj.status = dict["status"] as? String ?? ""
-        obj.url = dict["url"] as? String ?? ""
-        obj.templateImageUrl = dict["profileURL"] as? String ?? ""
-        obj.createdBy = dict["createdBy"] as? String ?? ""
+        obj.name = dict["name"] as? String
+        obj.details = dict["descriptionText"] as? String ?? obj.details
+        obj.templateImageUrl = dict["profileURL"] as? String ?? obj.templateImageUrl
+        obj.createdBy = dict["createdBy"] as? String ?? obj.createdBy
         obj.fileName = dict["fileName"] as? String ?? ""
-        obj.createDate = dict["createdDate"] as? Int ?? 0
-        obj.sharedWith = dict["sharedWith"] as? NSArray ?? []
-        obj.key = dict["key"] as? String
+        obj.createDate = dict["createdDate"] as? Int ?? obj.createDate
         obj.rating = dict["rating"] as? Double ?? 0
-        obj.commentsCount = dict["comments"] as? Int ?? 0
+        obj.commentsCount = dict["reviewCount"] as? Int ?? 0
         obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
+
+        addPhases(dict, toModel: obj)
     }
 
     class func updateTrackObj(obj:TemplatesModel, dict:AnyObject) {
+
         obj.objectType = ObjectType.Track
         obj.trackId = dict["id"] as? String
         obj.templateId = dict["templateId"] as? String
-        obj.name = dict["name"] as? String ?? ""
-        obj.details = dict["description"] as? String ?? ""
-        obj.templateImageUrl = dict["templateURL"] as? String ?? ""
+        obj.name = dict["name"] as? String
+        obj.details = dict["descriptionText"] as? String ?? dict["description"] as? String ?? ""
+        obj.templateImageUrl = dict["templateURL"] as? String ?? obj.templateImageUrl
         obj.trackImageUrl = dict["trackURL"] as? String ?? ""
         obj.createdBy = dict["createdBy"] as? String ?? ""
         obj.fileName = dict["fileName"] as? String ?? ""
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["comments"] as? Int ?? 0
-        obj.members = NSMutableArray(array: dict["members"] as? NSArray ?? [])
         obj.blobKey = dict["blobKey"] as? String
         obj.key = dict["key"] as? String
+        obj.status = dict["status"] as? String ?? ""
+
+        obj.members = NSMutableArray()
+        if let arr = dict["members"] as? NSArray{
+            for userObject in arr {
+                if let userDict = userObject as? [String:AnyObject]{
+                    obj.members.addObject(UserModel.getUserObject(userDict))
+                }
+            }
+        }
+
         addPhases(dict, toModel: obj)
     }
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {
-        toModel.key = dict["key"] as? String ?? toModel.key
-        
+
         toModel.phases = NSMutableArray()
         let obj = toModel.objectType == .Template ? dict["details"] : dict["phasesAndTasks"]
         if let phases = obj as? NSArray {

@@ -11,17 +11,20 @@ import UIKit
 class UserModel: NSObject {
 
     //MARK:- Variables
-    var id = ""
-    var userID = ""
-    var email = ""
-    var firstName = ""
-    var lastName = ""
+    var id:String?
+    var userID:String?
+    var email:String?
+    var firstName:String?
+    var lastName:String?
     var name:String?
-    var phoneNumber = ""
-    var profileImage = ""
-    var oldPassword = ""
-    var password = ""
-    var confirmPassword = ""
+    var phoneNumber:String?
+    var profileImage:String?
+    var oldPassword:String?
+    var password:String?
+    var confirmPassword:String?
+    var awhToken:String?
+    var hobbies:String?
+    var image:UIImage?
 }
 
 //MARK:- Additional methods
@@ -43,7 +46,7 @@ extension UserModel{
         dict["password"] = self.password
         return dict
     }
-    
+
     func getUpdatePasswordDictionary() -> [String : String] {
         var dict:[String : String] = [:]
         dict["newPassword"] = self.password
@@ -54,15 +57,44 @@ extension UserModel{
         return dict
     }
 
+    func getUpdateProfileDictionary() -> [String : AnyObject] {
+        var dict:[String : AnyObject] = [:]
+        dict["email"] = email
+        dict["enableNotifications"] = NSNumber(bool: true)
+        dict["firstName"] = firstName
+        dict["hobbies"] = hobbies
+        dict["lastName"] = lastName
+        dict["phone"] = phoneNumber
+        dict["userId"] = userID
+        return dict
+    }
+
     class func getUserObject(dict:[String : AnyObject]) -> UserModel {
         let model = UserModel()
-        model.id = dict["id"] as? String ?? ""
-        model.phoneNumber = dict["email"] as? String ?? ""
-        model.firstName = dict["firstName"] as? String ?? ""
-        model.userID = dict["userId"] as? String ?? ""
-        model.lastName = dict["lastName"] as? String ?? ""
-        model.name = Contact.getNameForContact(model.userID)
-        model.profileImage = dict["userProfileURL"] as? String ?? ""
+        model.id = dict["id"] as? String
+        model.email = dict["email"] as? String
+        model.phoneNumber = dict["phone"] as? String
+        model.firstName = dict["firstName"] as? String
+        model.userID = dict["userId"] as? String
+        model.lastName = dict["lastName"] as? String
+        model.profileImage = dict["userProfileURL"] as? String
+        model.name = Contact.getNameForContact(model.userID ?? "")
+        return model
+    }
+
+    class func getCurrentUser() -> UserModel {
+        let model = UserModel()
+        if let userDict = NSUserDefaults.getUser() as? [String : AnyObject] {
+            let dict = userDict["user"] as? [String : AnyObject] ?? userDict
+            model.id = dict["id"] as? String
+            model.email = dict["email"] as? String
+            model.phoneNumber = dict["phone"] as? String
+            model.firstName = dict["firstName"] as? String
+            model.lastName = dict["lastName"] as? String
+            model.hobbies = dict["hobbies"] as? String
+            model.userID = dict["userId"] as? String
+            model.profileImage = dict["userProfileURL"] as? String
+        }
         return model
     }
 }

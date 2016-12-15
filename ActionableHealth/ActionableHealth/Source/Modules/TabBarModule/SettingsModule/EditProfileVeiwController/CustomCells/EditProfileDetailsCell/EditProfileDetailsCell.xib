@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -57,6 +57,9 @@
                         <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="textDidChange:" destination="so3-GU-dA2" eventType="editingChanged" id="bvU-QR-UoV"/>
+                        </connections>
                     </textField>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-pj-JDF">
                         <rect key="frame" x="301" y="20.666666666666671" width="19" height="56"/>
@@ -92,6 +95,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="firstField" destination="hsO-jf-C9p" id="ohX-1m-XEE"/>
                 <outlet property="titleDescLabel" destination="PB8-Ce-yVE" id="dRL-cn-lOu"/>
             </connections>
             <point key="canvasLocation" x="480" y="368.5"/>

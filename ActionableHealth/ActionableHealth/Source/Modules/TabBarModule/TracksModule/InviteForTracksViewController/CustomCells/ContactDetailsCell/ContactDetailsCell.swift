@@ -15,6 +15,7 @@ class ContactDetailsCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var tickImage: UIImageView!
     @IBOutlet weak var shadowLayer: UIButton!
+    @IBOutlet weak var alreadyMemberLabel: UILabel_FontSizeLabel!
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -38,7 +39,8 @@ extension ContactDetailsCell{
             nameLabel.text = contact.addressBook?.name
             numberLabel.text = contact.id
         }
-        tickImage.hidden = !shouldSelect
+        tickImage.hidden = isMember ? true : !shouldSelect
         shadowLayer.hidden = !isMember
+        alreadyMemberLabel.hidden = !isMember
     }
 }

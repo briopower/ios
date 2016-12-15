@@ -86,5 +86,19 @@ class Constants: NSObject {
         static let getComments = "\(base)\(trackAPIs)getComments/"
         static let postStatus = "\(base)\(trackAPIs)setStatus/"
         static let rating = "\(base)\(trackAPIs)setRating/"
+        static let createUploadURL = "\(base)\(trackAPIs)createUploadURL/"
+        static let uploadProfileImage = "\(base)\(trackAPIs)uploadProfileImage/"
+        static let profileImageURL = "\(base)\(trackAPIs)profileImageURL/"
+        static let updateMyProfile = "\(base)\(trackAPIs)updateMyProfile/"
+        static let openChatSession = "\(base)\(trackAPIs)openChatSession/"
+        static let closeChatSession = "\(base)\(trackAPIs)closeChatSession/"
+        static let broadCastPresence = "\(base)\(trackAPIs)broadCastPresence/"
+        static let postMessage = "\(base)\(trackAPIs)postMessage/"
+        
+    }
+
+    //MARK:- APPData
+    struct AppData {
+        static let fcmServerKey = "AAAAWVIWpp0:APA91bHGTA7hySZIRcYamA8PXVAmvsIY2aWhlcDVj4MjsInfKXhNN0Gi8iwUI7dpcnU8y1xW3h_pSfQK2ndwfhxJYUIukggCbY0kTGjY871fUPb1SU_wj-klZYWYM5eL11CgpPtNE4guLc0h9dHdWOdfSzxZyWvxLQ"
     }
 }

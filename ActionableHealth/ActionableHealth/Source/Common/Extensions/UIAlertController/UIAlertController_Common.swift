@@ -15,6 +15,15 @@ extension UIAlertController{
 
     class func showAlertOfStyle(alertStyle:UIAlertControllerStyle = .Alert, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?){
 
+        let alertController = getAlertController(alertStyle, Title: title, Message: message, OtherButtonTitles: otherButtonTitles, CancelButtonTitle: cancelTitle, completion: completion)
+
+        UIViewController.getTopMostViewController()?.presentViewController(alertController, animated: true, completion: nil)
+
+        alertController.view.tintColor = UIColor.getAppThemeColor()
+    }
+
+    class func getAlertController(alertStyle:UIAlertControllerStyle = .Alert, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?) -> UIAlertController {
+
         UIApplication.sharedApplication().windows.first?.endEditing(true)
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
@@ -42,12 +51,9 @@ extension UIAlertController{
             })
         })
         alertController.addAction(alertAction)
-
-        UIViewController.getTopMostViewController()?.presentViewController(alertController, animated: true, completion: nil)
-
-        alertController.view.tintColor = UIColor.getAppThemeColor()
-
+        
+        return alertController
     }
-
+    
 }
 

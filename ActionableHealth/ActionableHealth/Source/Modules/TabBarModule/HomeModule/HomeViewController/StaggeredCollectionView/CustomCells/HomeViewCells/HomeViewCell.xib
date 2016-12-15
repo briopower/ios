@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -85,6 +85,7 @@
                                     <constraint firstItem="ZBl-LL-1pY" firstAttribute="top" secondItem="tnK-8o-Haq" secondAttribute="top" id="ipA-kH-DdH"/>
                                     <constraint firstItem="Ccb-LU-7eF" firstAttribute="leading" secondItem="Sv2-Pj-bfV" secondAttribute="trailing" multiplier="1.15" id="mrP-EO-4Ab"/>
                                     <constraint firstItem="d8m-Ui-gwT" firstAttribute="leading" secondItem="Ccb-LU-7eF" secondAttribute="leading" id="pqX-o9-LuJ"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ccb-LU-7eF" secondAttribute="trailing" constant="8" id="qCp-oy-x2H"/>
                                     <constraint firstItem="Sv2-Pj-bfV" firstAttribute="centerY" secondItem="tnK-8o-Haq" secondAttribute="centerY" id="sUl-Ha-ian"/>
                                     <constraint firstItem="Sv2-Pj-bfV" firstAttribute="leading" secondItem="ZBl-LL-1pY" secondAttribute="trailing" id="wLv-V8-OvA"/>
                                     <constraint firstItem="d8m-Ui-gwT" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="250:580" id="yso-mb-fxW"/>

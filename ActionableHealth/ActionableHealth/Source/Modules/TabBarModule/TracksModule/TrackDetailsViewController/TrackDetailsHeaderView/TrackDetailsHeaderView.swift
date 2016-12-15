@@ -65,21 +65,22 @@ extension TrackDetailsHeaderView{
 
     func setupForType(type:TrackDetailsSourceType, template:TemplatesModel?) {
         self.type = type
+        currentTemplate = template
         switch self.type {
         case .Home:
-            requestButton.setTitle("JOIN TRACK", forState: .Normal)
+            requestButton.setTitle("Create Track", forState: .Normal)
+            templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
         case .Tracks:
-            requestButton.setTitle("INVITE", forState: .Normal)
+            requestButton.setTitle("Invite", forState: .Normal)
+            templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
         default:
             break
         }
-        currentTemplate = template
         setupView()
     }
 
     func setupView() {
         commentsCountButton.hidden = currentTemplate?.key?.getValidObject() == nil
-        templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
         commentsCountButton.setTitle("\(currentTemplate?.commentsCount ?? 0) Comment(s)", forState: .Normal)
         tracksCount.text = "\(currentTemplate?.activeTrackCount ?? 0) Active Track(s)"
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)

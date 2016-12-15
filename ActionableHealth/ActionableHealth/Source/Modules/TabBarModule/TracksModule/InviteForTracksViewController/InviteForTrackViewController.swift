@@ -21,12 +21,14 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var contactSyncingView: UIVisualEffectView!
 
     //MARK:- Variables
     var frc:NSFetchedResultsController?
     var sourceType = TrackDetailsSourceType.Home
     var selectedUsers = NSMutableArray()
     var currentTemplate:TemplatesModel?
+    var trackName:String?
 
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -36,6 +38,7 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        Contact.syncCoreDataContacts()
         setNavigationBarWithTitle("Invite", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Done)
     }
 
@@ -76,14 +79,23 @@ extension InviteForTrackViewController{
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
     }
+
+    func checkIfAlreadyMember(contact:Contact) -> Bool {
+        if let id = contact.id{
+            if let _ = currentTemplate?.members.filteredArrayUsingPredicate(NSPredicate(format: "userID = %@", id)).first {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 //MARK:- Network Methods
 extension InviteForTrackViewController{
     func createTrack() {
-        if NetworkClass.isConnected(true)/* && selectedUsers.count > 0*/ {
+        if NetworkClass.isConnected(true) && selectedUsers.count > 0 {
             showLoaderOnWindow()
-            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(selectedUsers), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(trackName, array: selectedUsers), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status {
                     self.processResponse(responseObj)
@@ -96,7 +108,7 @@ extension InviteForTrackViewController{
     }
 
     func inviteMembers() {
-        if NetworkClass.isConnected(true)/* && selectedUsers.count > 0*/ {
+        if NetworkClass.isConnected(true) && selectedUsers.count > 0 {
             showLoaderOnWindow()
             NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
@@ -141,7 +153,13 @@ extension InviteForTrackViewController:UITableViewDataSource{
             case .Details:
                 return TrackInviteDetailsSectionCellType.Count.rawValue
             default:
-                return frc?.fetchedObjects?.count ?? 0
+                let rows = frc?.fetchedObjects?.count ?? 0
+                if rows == 0 && NSUserDefaults.getLastSyncDate() == nil {
+                    contactSyncingView.hidden = false
+                }else{
+                    contactSyncingView.hidden = true
+                }
+                return rows
             }
         }
         return 0
@@ -170,7 +188,7 @@ extension InviteForTrackViewController:UITableViewDataSource{
             default:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
                     if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact{
-                        cell.configCell(obj, shouldSelect: selectedUsers.containsObject(obj.id ?? ""),isMember: currentTemplate?.members.containsObject(obj.id ?? "") ?? false)
+                        cell.configCell(obj, shouldSelect: selectedUsers.containsObject(obj.id ?? ""),isMember:checkIfAlreadyMember(obj))
                         return cell
                     }
                 }
@@ -229,7 +247,7 @@ extension InviteForTrackViewController:NSFetchedResultsControllerDelegate{
             break;
         case .Update:
             if let indexPath = indexPath {
-                tblView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                tblView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             }
             break;
         case .Move:

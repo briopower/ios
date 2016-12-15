@@ -22,7 +22,7 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var rateTaskButton: UIButton!
     @IBOutlet weak var overFlow: UIButton!
-    @IBOutlet weak var statusLabel: UILabel_FontSizeLabel!
+    @IBOutlet weak var statusLabel: UILabel!
 
     //MARK:- Variables
 
@@ -135,9 +135,9 @@ extension PhaseDetailsCell{
         rateTaskButton.hidden = commentCountButton.hidden
 
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            statusLabel.text = obj.status
+            statusLabel?.text = obj.status
         }else{
-            statusLabel.text = ""
+            statusLabel?.text = ""
         }
     }
 }

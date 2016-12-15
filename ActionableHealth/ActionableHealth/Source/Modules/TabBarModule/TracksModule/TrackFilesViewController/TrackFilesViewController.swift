@@ -15,7 +15,7 @@ class TrackFilesViewController: CommonViewController {
 
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
-    
+
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +44,7 @@ extension TrackFilesViewController{
 extension TrackFilesViewController{
     func loadFileInWebView() {
         if let blobKey = currentTemplate?.blobKey where NetworkClass.isConnected(true){
-            if let url = NSURL(string: "\(Constants.URLs.trackFiles)\(blobKey)/true")  {
-                let request = NSMutableURLRequest(URL:url)
-                let headers = NetworkClass.getUpdatedHeader(nil)
-                for (key,value) in headers {
-                    request.setValue(value, forHTTPHeaderField: key)
-                }
-                webView.loadRequest(request)
-            }
+            webView.loadRequest(NetworkClass.getRequest(.GET, responseType: .DATA, URLString: "\(Constants.URLs.trackFiles)\(blobKey)/true"))
         }
     }
 }

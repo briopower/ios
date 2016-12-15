@@ -39,8 +39,6 @@
 		3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */; };
 		3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */; };
 		3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C39DAAB1DB64A8400D86D24 /* Tracks.storyboard */; };
-		3C4088411DFE6EE3003F3F88 /* InviteForTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C40883F1DFE6EE3003F3F88 /* InviteForTrackCell.swift */; };
-		3C4088421DFE6EE3003F3F88 /* InviteForTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4088401DFE6EE3003F3F88 /* InviteForTrackCell.xib */; };
 		3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4387F11DA7835500F68125 /* HomeViewController.swift */; };
 		3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */; };
 		3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */; };
@@ -53,6 +51,7 @@
 		3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */; };
 		3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */; };
 		3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */; };
+		3C907F311E080A7100FD4892 /* Messaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C907F301E080A7100FD4892 /* Messaging.swift */; };
 		3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C91DFFE1DFED4B30074BCB6 /* CommentsModel.swift */; };
 		3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */; };
 		3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */; };
@@ -133,6 +132,7 @@
 		3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B051DA6682300C76C64 /* Constants.swift */; };
 		3CD2653B1DEE9355008CE1E4 /* CoreDataOperationsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */; };
 		3CD382281DF7E74A00B1B7A3 /* CommonHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD382271DF7E74A00B1B7A3 /* CommonHeaderButton.swift */; };
+		3CDD48AB1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */; };
 		3CEFA9601DF6816B00185459 /* NSArray_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */; };
 		3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5491DB7892000224046 /* TrackFilesCell.swift */; };
 		3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */; };
@@ -141,7 +141,6 @@
 		3CF5B5531DB78E4500224046 /* TrackPhasesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */; };
 		3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */; };
 		3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */; };
-		3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */; };
 		3CF5B5661DB7A56700224046 /* CommnetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5641DB7A56700224046 /* CommnetsCell.swift */; };
 		3CF5B5671DB7A56700224046 /* CommnetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5651DB7A56700224046 /* CommnetsCell.xib */; };
 		3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAE91DB4A08E0067387F /* Settings.storyboard */; };
@@ -224,8 +223,6 @@
 		3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NullCaseView.xib; sourceTree = "<group>"; };
 		3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		3C39DAAB1DB64A8400D86D24 /* Tracks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracks.storyboard; sourceTree = "<group>"; };
-		3C40883F1DFE6EE3003F3F88 /* InviteForTrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackCell.swift; sourceTree = "<group>"; };
-		3C4088401DFE6EE3003F3F88 /* InviteForTrackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteForTrackCell.xib; sourceTree = "<group>"; };
 		3C4387F11DA7835500F68125 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewCell.xib; sourceTree = "<group>"; };
@@ -238,6 +235,8 @@
 		3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackMemberListViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		3C907F301E080A7100FD4892 /* Messaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messaging.swift; sourceTree = "<group>"; };
+		3C907F321E0813FA00FD4892 /* BRIO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BRIO.entitlements; sourceTree = "<group>"; };
 		3C91DFFE1DFED4B30074BCB6 /* CommentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
 		3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidingViewController.swift; sourceTree = "<group>"; };
 		3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListCell.swift; sourceTree = "<group>"; };
@@ -319,6 +318,7 @@
 		3CCF8B051DA6682300C76C64 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperationsClass.swift; sourceTree = "<group>"; };
 		3CD382271DF7E74A00B1B7A3 /* CommonHeaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderButton.swift; sourceTree = "<group>"; };
+		3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerController_Common.swift; sourceTree = "<group>"; };
 		3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArray_Common.swift; sourceTree = "<group>"; };
 		3CF5B5491DB7892000224046 /* TrackFilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFilesCell.swift; sourceTree = "<group>"; };
 		3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackFilesCell.xib; sourceTree = "<group>"; };
@@ -327,7 +327,6 @@
 		3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPhasesCell.swift; sourceTree = "<group>"; };
 		3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell.xib; sourceTree = "<group>"; };
 		3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackViewController.swift; sourceTree = "<group>"; };
-		3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinTrackViewController.swift; sourceTree = "<group>"; };
 		3CF5B5641DB7A56700224046 /* CommnetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommnetsCell.swift; sourceTree = "<group>"; };
 		3CF5B5651DB7A56700224046 /* CommnetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommnetsCell.xib; sourceTree = "<group>"; };
 		3CF6AAE91DB4A08E0067387F /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -450,6 +449,7 @@
 		3C1EC51C1DA3A7C0003DC2A3 /* ActionableHealth */ = {
 			isa = PBXGroup;
 			children = (
+				3C907F321E0813FA00FD4892 /* BRIO.entitlements */,
 				3C1EC54E1DA3A864003DC2A3 /* AppDelegate */,
 				3C1EC5501DA3A864003DC2A3 /* DataModels */,
 				3C1EC5531DA3A864003DC2A3 /* Resources */,
@@ -491,6 +491,7 @@
 		3C1EC5501DA3A864003DC2A3 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				3C907F2F1E080A3E00FD4892 /* Messaging */,
 				3C91DFFC1DFED31B0074BCB6 /* Comments */,
 				3CB2B83F1DEFE44F006DC4E9 /* AddressBook */,
 				3CB8A28A1DEDAE0C009B9AE9 /* Contacts */,
@@ -577,6 +578,7 @@
 		3C1EC55D1DA3A864003DC2A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3CDD48A91E03E6BB00ACAFB4 /* UIImagePickerController */,
 				409414961E0273F200057EFD /* UIView */,
 				3CEFA95E1DF6812200185459 /* NSArray */,
 				3C1EC55E1DA3A864003DC2A3 /* AppDelegate */,
@@ -763,23 +765,6 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
-		3C40883D1DFE6EE3003F3F88 /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C40883E1DFE6EE3003F3F88 /* InviteForTrackCell */,
-			);
-			path = CustomCell;
-			sourceTree = "<group>";
-		};
-		3C40883E1DFE6EE3003F3F88 /* InviteForTrackCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C40883F1DFE6EE3003F3F88 /* InviteForTrackCell.swift */,
-				3C4088401DFE6EE3003F3F88 /* InviteForTrackCell.xib */,
-			);
-			path = InviteForTrackCell;
-			sourceTree = "<group>";
-		};
 		3C4387EC1DA7823B00F68125 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -889,6 +874,14 @@
 				3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */,
 			);
 			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		3C907F2F1E080A3E00FD4892 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				3C907F301E080A7100FD4892 /* Messaging.swift */,
+			);
+			path = Messaging;
 			sourceTree = "<group>";
 		};
 		3C91DFFC1DFED31B0074BCB6 /* Comments */ = {
@@ -1219,7 +1212,6 @@
 				3CC9D0731DB897BD00287068 /* TrackFilesViewController */,
 				3CF5B5611DB7A55000224046 /* CommentsViewController */,
 				3CF5B5551DB79DE600224046 /* InviteForTracksViewController */,
-				3CF5B5561DB79DE600224046 /* JoinTrackViewController */,
 				3C39DAA91DB64A7400D86D24 /* TrackDetailsViewController */,
 				3CBD5C721DA7AF71004BCAE0 /* TracksViewController */,
 			);
@@ -1482,6 +1474,14 @@
 			path = CoreDataOperationsClass;
 			sourceTree = "<group>";
 		};
+		3CDD48A91E03E6BB00ACAFB4 /* UIImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */,
+			);
+			path = UIImagePickerController;
+			sourceTree = "<group>";
+		};
 		3CEFA95E1DF6812200185459 /* NSArray */ = {
 			isa = PBXGroup;
 			children = (
@@ -1525,15 +1525,6 @@
 				3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */,
 			);
 			path = InviteForTracksViewController;
-			sourceTree = "<group>";
-		};
-		3CF5B5561DB79DE600224046 /* JoinTrackViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3C40883D1DFE6EE3003F3F88 /* CustomCell */,
-				3CF5B5591DB79E1300224046 /* JoinTrackViewController.swift */,
-			);
-			path = JoinTrackViewController;
 			sourceTree = "<group>";
 		};
 		3CF5B55B1DB79E3100224046 /* CustomCells */ = {
@@ -1862,7 +1853,6 @@
 				3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */,
 				3CC9D08B1DB8B44D00287068 /* PhaseDetailsCell_Status.xib in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
-				3C4088421DFE6EE3003F3F88 /* InviteForTrackCell.xib in Resources */,
 				3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */,
 				3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */,
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
@@ -2083,6 +2073,7 @@
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
 				3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */,
 				3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */,
+				3C907F311E080A7100FD4892 /* Messaging.swift in Sources */,
 				3CFB48E21DFA7E110022F3B6 /* SearchUserViewController.swift in Sources */,
 				3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */,
 				3CCF31021DB7349B001A1E7B /* SentMessageCell.swift in Sources */,
@@ -2095,6 +2086,7 @@
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,
 				3CCF30F71DB731CF001A1E7B /* RecievedMessageCell.swift in Sources */,
+				3CDD48AB1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift in Sources */,
 				3C966DC21DF6CAFB00E299BF /* CountryCodeListCell.swift in Sources */,
 				40EBFEDB1DF8071500605397 /* DetailViewCell.swift in Sources */,
 				3CC9D07A1DB897EF00287068 /* TrackFileCell.swift in Sources */,
@@ -2114,8 +2106,6 @@
 				3CC9D0721DB8887F00287068 /* CommonReverseTableView.swift in Sources */,
 				3CB8A2971DEDAE0C009B9AE9 /* TemplatesModel.swift in Sources */,
 				3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */,
-				3CF5B55A1DB79E1300224046 /* JoinTrackViewController.swift in Sources */,
-				3C4088411DFE6EE3003F3F88 /* InviteForTrackCell.swift in Sources */,
 				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
 				3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */,
 				3CC9D0771DB897D600287068 /* TrackFilesViewController.swift in Sources */,
@@ -2290,6 +2280,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: vidhan nandi (W6T8TLY7B9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4F7SW76LL6;
@@ -2298,8 +2289,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "99c040f0-9846-499c-be19-20f2cd701f18";
-				PROVISIONING_PROFILE_SPECIFIER = "Super Wildcard";
+				PROVISIONING_PROFILE = "df7cf10b-663b-4ed0-a51f-8fe1e180ce91";
+				PROVISIONING_PROFILE_SPECIFIER = ActionableHealthDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
@@ -2311,6 +2302,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4F7SW76LL6;

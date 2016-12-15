@@ -14,7 +14,8 @@ class CommonViewController: UIViewController {
     var showLoading = true
     var showLoginModule = true
     var imageView = UIImageView(frame: UIScreen.mainScreen().bounds)
-
+    var loader:VNProgreessHUD?
+    
     //MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

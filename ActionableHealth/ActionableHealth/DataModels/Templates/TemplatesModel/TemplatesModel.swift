@@ -45,7 +45,7 @@ extension TemplatesModel{
         var arrOfMembers:[[String: String]] = []
         for obj in array {
             if let id = obj as? String {
-                arrOfMembers.append(["emailOrPhone":id])
+                arrOfMembers.append(["emailOrPhone":id , "isdCode": "91"])
             }
         }
         dict["members"] = arrOfMembers

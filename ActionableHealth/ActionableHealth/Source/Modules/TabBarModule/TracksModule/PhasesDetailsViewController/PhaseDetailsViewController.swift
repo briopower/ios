@@ -69,6 +69,16 @@ extension PhaseDetailsViewController{
         phaseDetailsTblView.registerNib(UINib(nibName: String(PhaseDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhaseDetailsCell))
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
     }
+    
+    func statusSelected(cell:PhaseDetailsCell , status:String) ->(){
+        if let indexPath = phaseDetailsTblView.indexPathForCell(cell){
+            if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                task.status = status
+            }
+        phaseDetailsTblView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        }
+        
+    }
 }
 
 //MARK:- UITableViewDataSource
@@ -94,6 +104,7 @@ extension PhaseDetailsViewController:UITableViewDataSource{
                     if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
                         cell.tag = indexPath.row
                         cell.delegate = self
+                        cell.statusSelected = statusSelected
                         cell.configureCell(task)
                         return cell
                     }

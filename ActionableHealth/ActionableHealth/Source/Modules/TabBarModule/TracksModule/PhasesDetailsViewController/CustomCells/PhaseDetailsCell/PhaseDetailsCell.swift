@@ -26,12 +26,13 @@ class PhaseDetailsCell: UITableViewCell {
 
     //MARK:- Variables
 
-    static let statusCell = "PhaseDetailsCell_Status"
+    static var statusCell = "PhaseDetailsCell_Status"
     weak var delegate:PhaseDetailsCellDelegate?
     var currentTask:TasksModel?
     let backView = UIView()
     var selectionView : SelectionView?
-
+    var statusSelected : ((cell:PhaseDetailsCell , status:String) ->Void)?
+    
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,12 +41,8 @@ class PhaseDetailsCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
-
-
 }
 
 //MARK:- Button Action
@@ -59,7 +56,7 @@ extension PhaseDetailsCell{
     @IBAction func overFlowBtnAction(sender: AnyObject) {
         selectionView = SelectionView.getInstance() as? SelectionView
         if let localView = selectionView{
-            localView.setUpCell()
+            localView.setUpCell(currentTask?.status ?? "")
             self.setFrameForSelectionView(localView)
             localView.delegate = self
             CommonMethods.addShadowToView(localView)
@@ -72,22 +69,32 @@ extension PhaseDetailsCell{
         }
 
     }
-
 }
 
 //MARK:- SelectionView Functions
 extension PhaseDetailsCell{
     func setFrameForSelectionView(view:UIView) -> (){
         if let table = self.superview?.superview as? UITableView{
+          let rowCount = selectionView?.getRowCount((selectionView?.getCellNameForStatus(currentTask?.status ?? "")) ?? CellName.New)
             let width = (516/1242)*(table.frame.width)
-            let height = (600/2204)*(table.frame.height)
+            let height = ((600/2204)*(table.frame.height) * CGFloat(rowCount ?? 3)) / CGFloat(CellName.Count.rawValue)
             let btnFrame =  self.convertRect(overFlow.frame, toView: self.superview)
             //apply cases
+            if (table.contentSize.height > table.frame.height){
             if (table.contentSize.height > frame.origin.y + topView.frame.height + height){
                 view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height, width: width, height: height)
             }
             else{
                 view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height - height, width: width, height: height)
+            }
+            }
+            else{
+                if (table.frame.height > frame.origin.y + topView.frame.height + height){
+                    view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height, width: width, height: height)
+                }
+                else{
+                    view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height - height, width: width, height: height)
+                }
             }
             let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(PhaseDetailsCell.handleTap(_:)))
             tapGesture.numberOfTapsRequired = 1
@@ -105,14 +112,15 @@ extension PhaseDetailsCell{
         backView.removeFromSuperview()
     }
 
-    func getSelectedRow(type:cellName){
+    func setStatus(type:CellName){
             if NetworkClass.isConnected(true), let key = currentTask?.key{
-                let dict = ["key" : key , "status": type.getStatus(type)]
+                let dict = ["key" : key , "status": type.getApiStatus(type)]
                 UIApplication.sharedApplication().keyWindow?.showLaoder(true)
                 NetworkClass.sendRequest(URL:Constants.URLs.postStatus, RequestType: .POST, Parameters: dict, Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     if status{
                         self.statusLabel.text = type.getStatus(type)
+                        self.statusSelected?(cell:self , status: type.getApiStatus(type))
                     }else{
 
                     }
@@ -135,9 +143,24 @@ extension PhaseDetailsCell{
         rateTaskButton.hidden = commentCountButton.hidden
 
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            statusLabel?.text = obj.status
-        }else{
-            statusLabel?.text = ""
+            self.setStatuslabel(obj.status)
+        }
+    }
+    
+    func setStatuslabel(status:String){
+        switch status {
+        case "New":
+            statusLabel.text = "NEW"
+        case "Complete":
+            statusLabel.text = "COMPLETE"
+//            statusCell = "PhaseDetailsCell"
+            
+        case "In progress":
+            statusLabel.text = "IN PROGRESS"
+        case "Assigned":
+            statusLabel.text = "ASSIGNED"
+        default:
+            statusLabel.text = ""
         }
     }
 }

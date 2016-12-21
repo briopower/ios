@@ -15,6 +15,7 @@ class HomeViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingView: HCSStarRatingView!
     @IBOutlet weak var templateImage: UIImageView!
+    @IBOutlet weak var logoImageView: UIImageView!
 
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
@@ -31,16 +32,17 @@ class HomeViewCell: UICollectionViewCell {
 extension HomeViewCell{
     func configCell(template:TemplatesModel?, type:CollectionViewType) {
         currentTemplate = template
+        ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
 
         switch type {
         case .HomeView:
             nameLabel.text = currentTemplate?.name
+            logoImageView.image = UIImage(named: "logo-1")
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
-            ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
         case .TrackView:
             nameLabel.text = currentTemplate?.name
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
-            ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
+            logoImageView.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
         default:
             break
         }

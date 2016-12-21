@@ -66,7 +66,7 @@ extension NSUserDefaults{
 
     class func getUserId() -> String {
         if let userDict = NSUserDefaults.getUser() as? [String : AnyObject]  {
-            return userDict["id"] as? String ?? ""
+            return  userDict["user"]?["userId"] as? String ?? userDict["userId"] as? String ?? ""
         }
         return ""
     }

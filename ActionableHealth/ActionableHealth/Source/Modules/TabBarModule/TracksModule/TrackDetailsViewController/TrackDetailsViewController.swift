@@ -24,6 +24,8 @@ class TrackDetailsViewController: CommonViewController {
     var sourceType = TrackDetailsSourceType.Home
     var alertController:UIAlertController?
     var trackName:String?
+    var imageUploadURL:String?
+    var selectedImage:UIImage?
 
     //MARK:- Life cycle
     override func viewDidLoad() {
@@ -89,6 +91,9 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
         }
 
     }
+    func showImagePicker() {
+        UIImagePickerController.showPickerWithDelegate(self)
+    }
 }
 
 extension TrackDetailsViewController:CommentsViewControllerDelegate{
@@ -112,7 +117,7 @@ extension TrackDetailsViewController{
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackInfoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackInfoCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackPhasesCell))
-
+        createImageUploadUrl(false)
     }
 
     func updateHeader() {
@@ -264,8 +269,62 @@ extension TrackDetailsViewController{
         alertController?.actions[0].enabled = !(trackName?.isEmpty ?? true)
     }
 }
+
+//MARK:- UIImagePickerControllerDelegate
+extension TrackDetailsViewController:UIImagePickerControllerDelegate{
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.selectedImage = image
+            self.uploadImage()
+        }
+        imagePickerControllerDidCancel(picker)
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController){
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
 //MARK:- Network methods
 extension TrackDetailsViewController{
+    func uploadImage() {
+        if NetworkClass.isConnected(true) {
+            if let url = imageUploadURL{
+                if let image = selectedImage {
+                    showProgressLoader()
+                    NetworkClass.sendImageRequest(URL: url, RequestType: .POST, ResponseType: .NONE, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+
+                        let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
+                        self.loader?.progress = progress
+
+                        }, CompletionHandler: { (status, responseObj, error, statusCode) in
+                            if status{
+                                self.loader?.progress = 1
+                                self.updateTemplate()
+                            }
+                            self.hideLoader()
+                    })
+                }
+            }else{
+                createImageUploadUrl(true)
+            }
+        }
+    }
+
+    func createImageUploadUrl(shouldUploadImage:Bool = true){
+        if NetworkClass.isConnected(true) {
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.createTrackUploadURL)\(currentTemplate?.trackId ?? "")", RequestType: .GET, ResponseType: .STRING,CompletionHandler: { (status, responseObj, error, statusCode) in
+                if let str = responseObj as? String{
+                    self.imageUploadURL = str
+                    if shouldUploadImage{
+                        self.uploadImage()
+                    }
+                }
+            })
+        }
+    }
+
+
     func updateTemplate() {
         if NetworkClass.isConnected(true) {
             if let id = sourceType == .Home ? currentTemplate?.templateId : currentTemplate?.trackId  {
@@ -295,6 +354,7 @@ extension TrackDetailsViewController{
             trackDetailsTblView.reloadData()
             updateHeader()
         }
+
     }
     
     func processError(error:NSError?) {

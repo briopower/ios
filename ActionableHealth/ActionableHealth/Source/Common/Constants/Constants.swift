@@ -94,7 +94,7 @@ class Constants: NSObject {
         static let closeChatSession = "\(base)\(trackAPIs)closeChatSession/"
         static let broadCastPresence = "\(base)\(trackAPIs)broadCastPresence/"
         static let postMessage = "\(base)\(trackAPIs)postMessage/"
-        
+        static let createTrackUploadURL = "\(base)\(trackAPIs)createTrackUploadURL/"
     }
 
     //MARK:- APPData

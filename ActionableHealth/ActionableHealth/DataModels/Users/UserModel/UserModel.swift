@@ -60,7 +60,6 @@ extension UserModel{
     func getUpdateProfileDictionary() -> [String : AnyObject] {
         var dict:[String : AnyObject] = [:]
         dict["email"] = email
-        dict["enableNotifications"] = NSNumber(bool: true)
         dict["firstName"] = firstName
         dict["hobbies"] = hobbies
         dict["lastName"] = lastName

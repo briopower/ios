@@ -50,7 +50,7 @@
                         <rect key="frame" x="19" y="20.666666666666671" width="117" height="65"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nfq-fE-CnZ" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="36"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="36"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textDidChange:" destination="9ff-hd-GZW" eventType="editingDidEnd" id="13Y-iz-lL5"/>
+                                    <action selector="textDidChange:" destination="9ff-hd-GZW" eventType="editingChanged" id="RgR-1i-qvx"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -94,7 +94,7 @@
                         <rect key="frame" x="184" y="20.666666666666671" width="117" height="65"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaX-ts-MtU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="90" height="36"/>
+                                <rect key="frame" x="0.0" y="0.0" width="94.666666666666686" height="36"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="textDidChange:" destination="9ff-hd-GZW" eventType="editingDidEnd" id="viv-ee-tIj"/>
+                                    <action selector="textDidChange:" destination="9ff-hd-GZW" eventType="editingChanged" id="J6w-PT-iC5"/>
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HdE-RR-i7v" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
@@ -159,8 +159,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="firstField" destination="CUt-xx-aG9" id="WRQ-P1-p5m"/>
-                <outlet property="secondField" destination="ADx-Pc-lD4" id="koZ-NB-poJ"/>
+                <outlet property="firstField" destination="CUt-xx-aG9" id="fPW-4h-OXv"/>
+                <outlet property="secondField" destination="ADx-Pc-lD4" id="hjS-eo-jpK"/>
             </connections>
             <point key="canvasLocation" x="480" y="363"/>
         </tableViewCell>

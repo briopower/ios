@@ -14,7 +14,7 @@ enum TrackDetailsSourceType:Int {
 protocol TrackDetailsHeaderViewDelegate:NSObjectProtocol {
     func commentsTapped(type:TrackDetailsSourceType)
     func requestButtonTapped(type:TrackDetailsSourceType)
-
+    func showImagePicker()
 }
 class TrackDetailsHeaderView: UIView {
 
@@ -25,13 +25,16 @@ class TrackDetailsHeaderView: UIView {
     @IBOutlet weak var ratingView: HCSStarRatingView!
     @IBOutlet weak var tracksCount: UILabel!
     @IBOutlet weak var commentsCountButton: UIButton!
-    
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var editButton: UIButton!
+
     //MARK:- Variables
     static let heightOf1PxlWidth:CGFloat = 1.0628019324
     weak var delegate:TrackDetailsHeaderViewDelegate?
     var type:TrackDetailsSourceType = TrackDetailsSourceType.Home
     var currentTemplate:TemplatesModel?
 }
+
 //MARK:- Button Action
 extension TrackDetailsHeaderView{
     @IBAction func requestButtonAction(sender: AnyObject) {
@@ -40,7 +43,9 @@ extension TrackDetailsHeaderView{
     @IBAction func commentsButtonAction(sender: AnyObject) {
         delegate?.commentsTapped(type)
     }
-
+    @IBAction func editButtonAction(sender: AnyObject) {
+        delegate?.showImagePicker()
+    }
 }
 //MARK:- Additional methods
 extension TrackDetailsHeaderView{
@@ -69,10 +74,16 @@ extension TrackDetailsHeaderView{
         switch self.type {
         case .Home:
             requestButton.setTitle("Create Track", forState: .Normal)
+            logoImageView.image = UIImage(named: "logo-1")
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
         case .Tracks:
             requestButton.setTitle("Invite", forState: .Normal)
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
+            logoImageView.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
+
+            if NSUserDefaults.getUserId() == currentTemplate?.createdBy {
+                editButton.hidden = false
+            }
         default:
             break
         }
@@ -86,3 +97,4 @@ extension TrackDetailsHeaderView{
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
     }
 }
+

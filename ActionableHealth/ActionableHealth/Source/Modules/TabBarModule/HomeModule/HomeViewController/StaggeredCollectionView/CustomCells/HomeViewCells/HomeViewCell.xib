@@ -35,7 +35,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnK-8o-Haq">
                                 <rect key="frame" x="0.0" y="274.5" width="320" height="88.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sv2-Pj-bfV">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sv2-Pj-bfV" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
                                         <rect key="frame" x="19" y="17" width="55" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Sv2-Pj-bfV" secondAttribute="height" multiplier="1:1" id="Bl8-tH-kfn"/>
@@ -114,6 +114,7 @@
             <size key="customSize" width="320" height="363"/>
             <connections>
                 <outlet property="container" destination="kRA-3F-c7K" id="ABp-H9-laT"/>
+                <outlet property="logoImageView" destination="Sv2-Pj-bfV" id="2lK-ze-SeI"/>
                 <outlet property="nameLabel" destination="Ccb-LU-7eF" id="rEt-Ug-DDc"/>
                 <outlet property="ratingView" destination="d8m-Ui-gwT" id="SYb-9H-9zO"/>
                 <outlet property="templateImage" destination="VMd-zb-0Yx" id="5Cu-m5-I0c"/>

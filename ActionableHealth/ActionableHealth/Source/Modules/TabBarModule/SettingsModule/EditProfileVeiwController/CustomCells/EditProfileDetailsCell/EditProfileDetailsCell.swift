@@ -50,7 +50,6 @@ class EditProfileDetailsCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-
 }
 
 //MARK:- TextChangeMethods

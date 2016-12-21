@@ -31,26 +31,33 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-zR-LgI">
                             <rect key="frame" x="0.0" y="0.0" width="424" height="250.5"/>
                         </imageView>
+                        <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-mJ-3hB">
+                            <rect key="frame" x="368.5" y="199" width="40" height="40"/>
+                            <state key="normal" image="edit"/>
+                            <connections>
+                                <action selector="editButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="vdv-Yb-fbW"/>
+                            </connections>
+                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCG-ZG-W60">
                             <rect key="frame" x="0.0" y="250.5" width="424" height="102.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-Yn-hVM">
                                     <rect key="frame" x="0.0" y="0.0" width="27.5" height="102.5"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="cnB-D5-yTp">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="cnB-D5-yTp" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
                                     <rect key="frame" x="27.5" y="17" width="69" height="68.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="cnB-D5-yTp" secondAttribute="height" id="P2c-DP-bKb"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="165 Active Tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP2-Mj-Gwj" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="116" y="41" width="134.5" height="20"/>
+                                    <rect key="frame" x="116" y="42.5" width="129" height="17"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                     <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-wE-Ch1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="113" y="66" width="142" height="20"/>
+                                    <rect key="frame" x="113" y="64.5" width="136" height="17"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -64,7 +71,7 @@
                                     <rect key="frame" x="402" y="0.0" width="22" height="102.5"/>
                                 </imageView>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="286" y="33" width="116" height="36"/>
+                                    <rect key="frame" x="290" y="34.5" width="112" height="33"/>
                                     <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,7 +89,7 @@
                                     </connections>
                                 </button>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-Vt-fO7" customClass="HCSStarRatingView">
-                                    <rect key="frame" x="116" y="12.5" width="95" height="23.5"/>
+                                    <rect key="frame" x="116" y="14" width="95" height="23.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4Gb-Vt-fO7" secondAttribute="height" multiplier="280:70" id="2bJ-gi-JnH"/>
                                     </constraints>
@@ -137,7 +144,9 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="wCG-ZG-W60" secondAttribute="bottom" id="Fav-ER-VbC"/>
                         <constraint firstAttribute="width" secondItem="6zP-CV-mYu" secondAttribute="height" multiplier="1242:1320" priority="999" id="Hfw-zA-Tqc"/>
+                        <constraint firstItem="HZI-mJ-3hB" firstAttribute="centerX" secondItem="I1O-zR-LgI" secondAttribute="centerX" multiplier="1100:600" id="QoI-ru-3Rr"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="Ste-DA-WBG"/>
+                        <constraint firstItem="HZI-mJ-3hB" firstAttribute="centerY" secondItem="I1O-zR-LgI" secondAttribute="centerY" multiplier="630:360" id="Zdh-rs-Jht"/>
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="top" secondItem="6zP-CV-mYu" secondAttribute="top" id="a0m-sm-qZ4"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="top" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="naK-Gn-URU"/>
                         <constraint firstAttribute="trailing" secondItem="wCG-ZG-W60" secondAttribute="trailing" id="paD-eT-ESN"/>
@@ -157,6 +166,8 @@
             <connections>
                 <outlet property="bottomContainer" destination="wCG-ZG-W60" id="nNb-tI-jQh"/>
                 <outlet property="commentsCountButton" destination="dh5-wE-Ch1" id="rMR-yz-2ex"/>
+                <outlet property="editButton" destination="HZI-mJ-3hB" id="0lG-JS-Qxt"/>
+                <outlet property="logoImageView" destination="cnB-D5-yTp" id="mHq-OD-gZh"/>
                 <outlet property="ratingView" destination="4Gb-Vt-fO7" id="bee-yr-rxT"/>
                 <outlet property="requestButton" destination="f5O-3a-9u1" id="I6s-hg-9lb"/>
                 <outlet property="templateImage" destination="I1O-zR-LgI" id="ysy-uK-etL"/>
@@ -167,6 +178,7 @@
     </objects>
     <resources>
         <image name="comment-ic" width="17" height="17"/>
+        <image name="edit" width="40" height="40"/>
         <image name="logo-1" width="70" height="70"/>
         <image name="rating-fill-icon" width="11" height="10"/>
         <image name="rating-icon" width="11" height="11"/>

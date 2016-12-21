@@ -197,7 +197,7 @@ extension NetworkClass{
                                 multipartFormData.appendBodyPart(
                                     data: imageData,
                                     name: "profileImage",
-                                    fileName: "profileImage.png",
+                                    fileName: "profileImage",
                                     mimeType: "image/png")
                             }
                             if let parameters = parameters{

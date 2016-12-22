@@ -1774,7 +1774,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Finoit Technologies";
 				TargetAttributes = {
 					3C1EC5191DA3A7BF003DC2A3 = {

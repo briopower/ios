@@ -129,7 +129,7 @@ extension TemplatesModel{
         obj.fileName = dict["fileName"] as? String ?? ""
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.rating = dict["rating"] as? Double ?? 0
-        obj.commentsCount = dict["comments"] as? Int ?? 0
+        obj.commentsCount = dict["commentCount"] as? Int ?? 0
         obj.blobKey = dict["blobKey"] as? String
         obj.key = dict["key"] as? String
         obj.status = dict["status"] as? String ?? ""

@@ -45,7 +45,7 @@ extension PhasesModel{
         model.prompt = dict["prompt"] as? String ?? ""
         model.key = dict["key"] as? String ?? ""
         model.rating = dict["rating"] as? Double ?? 0
-        model.commentsCount = dict["comments"] as? Int ?? 0
+        model.commentsCount = dict["commentCount"] as? Int ?? 0
         model.templatePhaseId = dict["templatePhaseId"] as? String
         model.status = dict["status"] as? String ?? ""
 

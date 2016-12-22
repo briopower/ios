@@ -69,6 +69,23 @@ class FilterByObject: NSObject {
             }
         }
     }
+    
+    func getAllSelectedSubproperties() -> NSArray{
+        var arr = [String]()
+        for obj in properties {
+            if let prop = obj as? Properties {
+                for temp in prop.subProperties {
+                    if let subProp = temp as? SubProperties {
+                        if subProp.isSelected == true{
+                            arr.append(subProp.name)
+                            
+                        }
+                    }
+                }
+            }
+        }
+        return arr
+    }
 }
 
 

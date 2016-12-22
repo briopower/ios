@@ -52,6 +52,13 @@ extension TemplatesModel{
         return dict
     }
 
+    func isMemberOfTemplate(id:String) -> Bool{
+        if let _ = self.members.filteredArrayUsingPredicate(NSPredicate(format: "userID = %@", id)).first {
+            return true
+        }
+        return false
+    }
+    
     func getInviteMemberDict(array:NSMutableArray) -> [String:AnyObject] {
         var dict:[String:AnyObject] = [:]
         dict["trackID"] = trackId ?? ""
@@ -64,12 +71,12 @@ extension TemplatesModel{
         dict["members"] = arrOfMembers
         return dict
     }
-    class func getPayloadDict(cursor:String, query:String = "") -> [String:AnyObject] {
-        return ["cursor":cursor, "pageSize": 20, "query": query]
+    class func getPayloadDict(cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = [""]) -> [String:AnyObject] {
+        return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType.firstObject ?? ""]
     }
 
-    class func getSearchUserDict(cursor:String, query:String = "" , id:String) -> [String:AnyObject] {
-        return ["cursor":cursor, "pageSize": 100, "query": query , "trackid":id]
+    class func getSearchUserDict(cursor:String, query:String = "") -> [String:AnyObject] {
+        return ["cursor":cursor, "pageSize": 100, "query": query]
     }
     class func getTemplateResponseArray(dict:AnyObject) -> NSArray {
         return dict["templateResultSet"] as? NSArray ?? []

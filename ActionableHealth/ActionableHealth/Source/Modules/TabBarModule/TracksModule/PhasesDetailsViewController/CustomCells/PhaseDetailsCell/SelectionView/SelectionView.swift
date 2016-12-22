@@ -36,7 +36,7 @@ enum CellName:Int{
         case .InProgress:
             return "In progress"
         case .Incomplete:
-            return "INCOMPLETE"
+            return "Assigned"
         default:
             break
         }

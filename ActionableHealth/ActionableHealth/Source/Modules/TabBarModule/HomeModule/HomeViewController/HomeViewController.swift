@@ -8,6 +8,21 @@
 
 import UIKit
 
+enum SortTypes:Int{
+    case createdDate ,type ,rating ,activeTracks
+    func getStringValue() -> String {
+        switch  self {
+        case .activeTracks:
+            return "activeTracks"
+        case .createdDate:
+            return "createdDate"
+        case .rating:
+            return "rating"
+        case .type:
+            return "type"
+        }
+    }
+}
 class HomeViewController: CommonViewController {
 
     //MARK:- Outlets
@@ -17,7 +32,8 @@ class HomeViewController: CommonViewController {
 
     //MARK:- Variables
     var cursor = ""
-
+    var sortingKey = ""
+    var filterArray = []
     //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,12 +110,18 @@ extension HomeViewController{
     }
     @IBAction func filterAction(sender: UIButton) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.filtersView) as? FiltersViewController {
+            viewCont.delegate = self
+            viewCont.selectedFilters = filterArray
             UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
         }
     }
     @IBAction func sortAction(sender: UIButton) {
-        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["NEAR BY LOCATION", "RATING (HIGH TO LOW)"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
+        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["ORDER BY DATE", "TYPE" , "RATINGS" , "ACTIVE TRACKS"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
             debugPrint("Clicked at index \(tappedAtIndex)")
+            if let key = SortTypes(rawValue: tappedAtIndex ?? 0)?.getStringValue(){
+                self.sortingKey = key
+            }
+            self.getData(self.cursor)
         }
     }
 }
@@ -112,7 +134,7 @@ extension HomeViewController{
             if clctView.dataArray.count == 0 {
                 showLoader()
             }
-            NetworkClass.sendRequest(URL:Constants.URLs.allTemplates, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(cursorVal), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL:Constants.URLs.allTemplates, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(cursorVal ,orderBy:sortingKey , filterByType: filterArray), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.processResponse(responseObj, cursorVal: cursorVal)

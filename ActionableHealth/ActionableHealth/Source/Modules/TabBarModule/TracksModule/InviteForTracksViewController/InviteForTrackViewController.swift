@@ -79,15 +79,6 @@ extension InviteForTrackViewController{
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
     }
-
-    func checkIfAlreadyMember(contact:Contact) -> Bool {
-        if let id = contact.id{
-            if let _ = currentTemplate?.members.filteredArrayUsingPredicate(NSPredicate(format: "userID = %@", id)).first {
-                return true
-            }
-        }
-        return false
-    }
 }
 
 //MARK:- Network Methods
@@ -188,7 +179,7 @@ extension InviteForTrackViewController:UITableViewDataSource{
             default:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
                     if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact{
-                        cell.configCell(obj, shouldSelect: selectedUsers.containsObject(obj.id ?? ""),isMember:checkIfAlreadyMember(obj))
+                        cell.configCell(obj, shouldSelect: selectedUsers.containsObject(obj.id ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.id ?? "") ?? false)
                         return cell
                     }
                 }
@@ -218,7 +209,10 @@ extension InviteForTrackViewController:UITableViewDelegate{
 extension InviteForTrackViewController:SearchByIdCellDelegate{
     func searchTapped() {
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.searchUserView) as? SearchUserViewController {
-                    UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
+                    viewCont.contactsSelected = selectedUsers
+                    viewCont.currentTemplate = currentTemplate
+                    viewCont.delegate = self
+                UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
                 }
     }
 }

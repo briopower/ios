@@ -47,6 +47,7 @@ class PhaseDetailsViewController: CommonViewController {
 
 
 }
+
 //MARK:- Button Actions
 extension PhaseDetailsViewController{
     @IBAction func rateTaskAction(sender: UIButton) {
@@ -56,6 +57,7 @@ extension PhaseDetailsViewController{
         hideRatingView()
     }
 }
+
 //MARK:- Additional methods
 extension PhaseDetailsViewController{
     func setupView(){

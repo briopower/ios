@@ -28,9 +28,7 @@ class ContactDetailsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
-
 
 //MARK:- Additional methods
 extension ContactDetailsCell{
@@ -38,6 +36,23 @@ extension ContactDetailsCell{
         if let contact = obj as? Contact {
             nameLabel.text = contact.addressBook?.name
             numberLabel.text = contact.id
+        }
+        tickImage.hidden = isMember ? true : !shouldSelect
+        shadowLayer.hidden = !isMember
+        alreadyMemberLabel.hidden = !isMember
+    }
+    
+    func configCellForSearch(obj:AnyObject, shouldSelect:Bool = false, isMember:Bool = false) {
+        if let model = obj as? UserModel {
+            if model.name != nil{
+                nameLabel.text = model.name
+                numberLabel.text = model.userID
+            }
+            else{
+                nameLabel.text = model.userID
+                numberLabel.text = ""
+            }
+            
         }
         tickImage.hidden = isMember ? true : !shouldSelect
         shadowLayer.hidden = !isMember

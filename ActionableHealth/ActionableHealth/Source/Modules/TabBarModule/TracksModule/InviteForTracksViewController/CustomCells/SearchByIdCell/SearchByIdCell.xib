@@ -43,7 +43,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="26" height="83"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEARCH BY PHONE NO." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy9-6T-aYv" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="26" y="31.5" width="194.5" height="20"/>
+                        <rect key="frame" x="26" y="33" width="187.5" height="17"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                         <color key="textColor" red="0.084022149443626404" green="0.082385703921318054" blue="0.12626601755619049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>

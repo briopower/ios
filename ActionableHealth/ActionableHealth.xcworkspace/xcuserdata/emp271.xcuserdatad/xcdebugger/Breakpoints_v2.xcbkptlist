@@ -276,19 +276,173 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/InviteForTrackViewController.swift"
+            timestampString = "503930766.454211"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "tableView(tableView:cellForRowAtIndexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
-            timestampString = "503328802.4373"
+            timestampString = "503993290.721307"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.SearchUserViewController.tableView (__ObjC.UITableView, didSelectRowAtIndexPath : __ObjC.NSIndexPath) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
+                  timestampString = "504094192.587355"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "30">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.SearchUserViewController.tableView (__ObjC.UITableView, didSelectRowAtIndexPath : __ObjC.NSIndexPath) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
+                  timestampString = "504094192.590225"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "480">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
+            timestampString = "504096282.399454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "getData(cursorVal:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.HomeViewController.getData (Swift.String) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
+                  timestampString = "504094192.596297"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "379">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.HomeViewController.(getData (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
+                  timestampString = "504094192.59956"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "78">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
+            timestampString = "504096282.399454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "processResponse(responseObj:cursorVal:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.HomeViewController.processResponse (Swift.Optional&lt;Swift.AnyObject&gt;, cursorVal : Swift.String) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
+                  timestampString = "504094192.606044"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.HomeViewController.processResponse (Swift.Optional&lt;Swift.AnyObject&gt;, cursorVal : Swift.String) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
+                  timestampString = "504094192.609224"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "150"
+                  endingLineNumber = "150"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -297,13 +451,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
-            timestampString = "503328803.381095"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/FiltersViewController/FiltersViewController.swift"
+            timestampString = "504096838.43153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "processError(error:)"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "applyButtonActions(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -313,94 +467,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
-            timestampString = "503328805.536138"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/FiltersViewController/FilterByObject/FilterByObject.swift"
+            timestampString = "504093565.954425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "getData(cursorVal:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "getAllSelectedSubproperties()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
-            timestampString = "503328920.808591"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "getData(cursorVal:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/CustomCells/PhaseDetailsCell/SelectionView/SelectionView.swift"
-            timestampString = "503655417.251734"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "setUpCell(status:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
-            timestampString = "503500246.602947"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/FiltersViewController/FilterByObject/FilterByObject.swift"
+            timestampString = "504093566.530343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
-            landmarkName = "statusSelected(cell:status:)"
+            landmarkName = "getAllSelectedSubproperties()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.PhaseDetailsViewController.statusSelected (BRIO.PhaseDetailsCell, status : Swift.String) -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
-                  timestampString = "503903647.249859"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "340">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.PhaseDetailsViewController.statusSelected (BRIO.PhaseDetailsCell, status : Swift.String) -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
-                  timestampString = "503903647.252036"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "731">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -409,46 +499,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/InviteForTrackViewController.swift"
-            timestampString = "503904627.654543"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/FiltersViewController/FilterByObject/FilterByObject.swift"
+            timestampString = "504094192.16087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "createTrack()"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "getAllSelectedSubproperties()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.InviteForTrackViewController.createTrack () -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/InviteForTrackViewController.swift"
-                  timestampString = "503904627.664479"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "125">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.InviteForTrackViewController.(createTrack () -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/InviteForTrackViewController.swift"
-                  timestampString = "503904627.666333"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "46">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -457,13 +515,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/InviteForTrackViewController.swift"
-            timestampString = "503904691.580873"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/FiltersViewController/FilterByObject/FilterByObject.swift"
+            timestampString = "504094192.16087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "createTrack()"
+            landmarkName = "getAllSelectedSubproperties()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -473,13 +531,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/InviteForTrackViewController.swift"
-            timestampString = "503904694.524749"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/HomeModule/FiltersViewController/FilterByObject/FilterByObject.swift"
+            timestampString = "504094192.16087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "createTrack()"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "getAllSelectedSubproperties()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

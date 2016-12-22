@@ -119,7 +119,6 @@ extension PhaseDetailsCell{
                 NetworkClass.sendRequest(URL:Constants.URLs.postStatus, RequestType: .POST, Parameters: dict, Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     if status{
-                        self.statusLabel.text = type.getStatus(type)
                         self.statusSelected?(cell:self , status: type.getApiStatus(type))
                     }else{
 
@@ -136,14 +135,14 @@ extension PhaseDetailsCell{
     func configureCell(obj:TasksModel) {
         currentTask = obj
         taskNameLabel.text = currentTask?.taskName ?? ""
-        commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
         starRatingView.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
-        commentCountButton.hidden = currentTask?.key.getValidObject() == nil
-        rateTaskButton.hidden = commentCountButton.hidden
 
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
             self.setStatuslabel(obj.status)
+             commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
+            commentCountButton.hidden = currentTask?.key.getValidObject() == nil
+            rateTaskButton.hidden = commentCountButton.hidden
         }
     }
     
@@ -153,14 +152,13 @@ extension PhaseDetailsCell{
             statusLabel.text = "NEW"
         case "Complete":
             statusLabel.text = "COMPLETE"
-//            statusCell = "PhaseDetailsCell"
-            
+            overFlow.hidden = true
         case "In progress":
             statusLabel.text = "IN PROGRESS"
         case "Assigned":
-            statusLabel.text = "ASSIGNED"
+            statusLabel.text = "IN COMPLETE"
         default:
-            statusLabel.text = ""
+            statusLabel.text = "NEW"
         }
     }
 }

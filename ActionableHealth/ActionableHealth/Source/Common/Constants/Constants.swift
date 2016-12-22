@@ -68,7 +68,6 @@ class Constants: NSObject {
 
         static let authAPIs = "auth/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
-        static let searchUser = "\(base)\(authAPIs)seachUser/"
         static let templateDetails = "\(base)\(authAPIs)getTemplateDetails/"
         static let requestOtp = "\(base)\(authAPIs)requestOTP/"
         static let verifyOtp = "\(base)\(authAPIs)/validateOTP/"
@@ -95,6 +94,8 @@ class Constants: NSObject {
         static let broadCastPresence = "\(base)\(trackAPIs)broadCastPresence/"
         static let postMessage = "\(base)\(trackAPIs)postMessage/"
         static let createTrackUploadURL = "\(base)\(trackAPIs)createTrackUploadURL/"
+        static let searchUser = "\(base)\(trackAPIs)searchAppUsers/"
+
     }
 
     //MARK:- APPData

@@ -25,6 +25,7 @@ class UserModel: NSObject {
     var awhToken:String?
     var hobbies:String?
     var image:UIImage?
+    var enableNotifications = true
 }
 
 //MARK:- Additional methods
@@ -59,6 +60,7 @@ extension UserModel{
 
     func getUpdateProfileDictionary() -> [String : AnyObject] {
         var dict:[String : AnyObject] = [:]
+        dict["enableNotifications"] = enableNotifications
         dict["email"] = email
         dict["firstName"] = firstName
         dict["hobbies"] = hobbies
@@ -93,6 +95,7 @@ extension UserModel{
             model.hobbies = dict["hobbies"] as? String
             model.userID = dict["userId"] as? String
             model.profileImage = dict["userProfileURL"] as? String
+            model.enableNotifications = dict["enableNotifications"] as? Bool ?? false
         }
         return model
     }

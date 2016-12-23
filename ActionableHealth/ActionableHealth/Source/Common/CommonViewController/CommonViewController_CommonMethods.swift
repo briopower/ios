@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, skip, Download
+    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, skip, Download, Toggle
 }
 
 enum BarButtonPosition {
@@ -52,7 +52,7 @@ extension CommonViewController{
         }
         return self.navigationItem
     }
-    
+
     func setNavigationBarBackgroundColor(color:UIColor?) -> Void {
         if let color = color {
             getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), forBarMetrics: UIBarMetrics.Default)
@@ -110,7 +110,12 @@ extension CommonViewController{
             barButton = UIBarButtonItem(customView:getButtonWithTitle("SKIP",Action: #selector(self.skipButtonAction(_:))))
         case .Download:
             barButton = UIBarButtonItem(customView:getButtonWithImage(DownloadButtonImage,Action: #selector(self.downloadButtonAction(_:))))
-
+        case .Toggle:
+            let toggleSwitch = UISwitch()
+            toggleSwitch.addTarget(self, action: #selector(self.toggleButtonAction(_:)), forControlEvents: .ValueChanged)
+            toggleSwitch.tintColor = UIColor.getAppThemeColor()
+            toggleSwitch.onTintColor = UIColor.getAppThemeColor()
+            barButton = UIBarButtonItem(customView:toggleSwitch)
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -157,7 +162,7 @@ extension CommonViewController{
 extension CommonViewController{
     func showLoader() {
         if showLoading {
-           loader = self.view.showLaoder(true)
+            loader = self.view.showLaoder(true)
         }
     }
 
@@ -215,14 +220,18 @@ extension CommonViewController{
         UIApplication.dismissKeyboard()
     }
     @IBAction func addButtonAction(sender:UIButton?){
-        
+
     }
     @IBAction func skipButtonAction(sender:UIButton?){
-        
+
     }
     @IBAction func downloadButtonAction(sender:UIButton?){
 
     }
 
+    @IBAction func toggleButtonAction(sender:UISwitch?){
+        
+    }
+    
 }
 

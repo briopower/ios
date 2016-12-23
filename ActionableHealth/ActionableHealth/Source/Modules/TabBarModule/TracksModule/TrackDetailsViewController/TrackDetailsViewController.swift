@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 enum InfoSectionCellTypes:Int {
     case Details, Members, Files, Count
 }

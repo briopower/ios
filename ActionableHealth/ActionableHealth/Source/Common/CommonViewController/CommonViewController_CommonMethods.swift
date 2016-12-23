@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details,Add,skip
+    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, skip, Download
 }
 
 enum BarButtonPosition {
@@ -24,6 +24,8 @@ let CrossButtonImage = UIImage(named: "cut")
 let DoneButtonImage = UIImage(named: "tick")
 let DetailsButtonImage = UIImage(named: "action-button")
 let AddButtonImage = UIImage(named: "add-button")
+let DownloadButtonImage = UIImage(named: "add-button")
+
 //MARK: Navigation Controller Delegate
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
 
@@ -106,6 +108,9 @@ extension CommonViewController{
             barButton = UIBarButtonItem(customView:getButtonWithImage(AddButtonImage,Action: #selector(self.addButtonAction(_:))))
         case .skip:
             barButton = UIBarButtonItem(customView:getButtonWithTitle("SKIP",Action: #selector(self.skipButtonAction(_:))))
+        case .Download:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(DownloadButtonImage,Action: #selector(self.downloadButtonAction(_:))))
+
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -214,6 +219,9 @@ extension CommonViewController{
     }
     @IBAction func skipButtonAction(sender:UIButton?){
         
+    }
+    @IBAction func downloadButtonAction(sender:UIButton?){
+
     }
 
 }

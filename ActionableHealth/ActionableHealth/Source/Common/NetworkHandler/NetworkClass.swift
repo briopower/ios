@@ -118,7 +118,7 @@ class NetworkClass:NSObject  {
                 error = temp.result.error
                 statusCode = temp.response?.statusCode
             }else if let temp = response as? (NSURLRequest?, NSHTTPURLResponse?, NSData?, NSError?) {
-                responseObj = temp.2
+                responseObj = NSArray(objects: temp.1 ?? NSHTTPURLResponse(), temp.2 ?? NSData())
                 error = temp.3
                 statusCode = temp.1?.statusCode
             }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -96,7 +96,7 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="uIU-Tf-dca" customClass="HCSStarRatingView">
-                                <rect key="frame" x="25" y="43" width="90" height="21.5"/>
+                                <rect key="frame" x="25" y="42.5" width="90" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uIU-Tf-dca" secondAttribute="height" multiplier="250:60" id="ZyN-HS-QDY"/>
                                 </constraints>
@@ -132,7 +132,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me7-Yr-gfL" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="337" y="150.5" width="86" height="29"/>
+                                <rect key="frame" x="337" y="286" width="86" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="RATE TASK"/>
@@ -169,7 +169,6 @@
                             <constraint firstItem="ePr-SL-Hu5" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="FhW-Xw-5Nw"/>
                             <constraint firstItem="Qhd-Hm-pHQ" firstAttribute="leading" secondItem="Me7-Yr-gfL" secondAttribute="trailing" id="HW5-lR-xrD"/>
                             <constraint firstAttribute="trailing" secondItem="LOY-Fi-nbz" secondAttribute="trailing" id="K86-yv-tMo"/>
-                            <constraint firstItem="Me7-Yr-gfL" firstAttribute="centerY" secondItem="Qhd-Hm-pHQ" secondAttribute="centerY" id="N3W-3e-Icc"/>
                             <constraint firstItem="bU3-JV-iRK" firstAttribute="height" secondItem="uIU-Tf-dca" secondAttribute="height" id="NVC-hA-HB0"/>
                             <constraint firstItem="uIU-Tf-dca" firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="width" multiplier="250:1242" id="Nmb-yz-4Ka"/>
                             <constraint firstItem="ePr-SL-Hu5" firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="width" multiplier="70:1242" id="PIh-rn-OrB"/>
@@ -190,6 +189,7 @@
                             <constraint firstItem="Qhd-Hm-pHQ" firstAttribute="width" secondItem="ePr-SL-Hu5" secondAttribute="width" id="kFg-5P-xJw"/>
                             <constraint firstAttribute="trailing" secondItem="4sT-TD-qIz" secondAttribute="trailing" id="lZT-hh-seM"/>
                             <constraint firstItem="LOY-Fi-nbz" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="m1U-cB-sBm"/>
+                            <constraint firstItem="Me7-Yr-gfL" firstAttribute="centerY" secondItem="QBZ-BU-34K" secondAttribute="centerY" id="mZ7-H9-QQF"/>
                             <constraint firstItem="E1n-wz-FgI" firstAttribute="top" secondItem="QBZ-BU-34K" secondAttribute="bottom" id="n8c-vx-xns"/>
                             <constraint firstAttribute="trailing" secondItem="Frk-Qh-MyG" secondAttribute="trailing" id="oFn-Mu-u1A"/>
                             <constraint firstAttribute="bottom" secondItem="ePr-SL-Hu5" secondAttribute="bottom" id="pE9-KE-22P"/>

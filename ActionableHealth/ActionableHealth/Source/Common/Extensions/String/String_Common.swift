@@ -51,6 +51,15 @@ extension String{
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluateWithObject(self.getValidObject())
     }
+
+    //MARK:- Split
+    func sliceFrom(start: String, to: String) -> String? {
+        return (rangeOfString(start)?.endIndex).flatMap { sInd in
+            (rangeOfString(to, range: sInd..<endIndex)?.startIndex).map { eInd in
+                substringWithRange(sInd..<eInd)
+            }
+        }
+    }
 }
 
 //MARK:- Additional methods NSAttributedString

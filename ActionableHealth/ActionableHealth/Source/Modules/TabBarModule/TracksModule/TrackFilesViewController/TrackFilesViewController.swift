@@ -15,6 +15,9 @@ class TrackFilesViewController: CommonViewController {
 
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
+    var responseData:NSData?
+    var httpResponse:NSHTTPURLResponse?
+    var docController:UIDocumentInteractionController?
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -24,7 +27,7 @@ class TrackFilesViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Track Files", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Track Files", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Download)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,15 +39,63 @@ class TrackFilesViewController: CommonViewController {
 //MARK:- Additional methods
 extension TrackFilesViewController{
     func setupView() {
-        loadFileInWebView()
+        getFile()
+    }
+
+    func loadFileInWebView() {
+        if let data = responseData, let mimeType = httpResponse?.MIMEType{
+            webView.loadData(data, MIMEType: mimeType, textEncodingName: "utf-8", baseURL: NSURL())
+        }
     }
 }
 
+//MARK:- Action
+extension TrackFilesViewController{
+    override func downloadButtonAction(sender: UIButton?) {
+        super.downloadButtonAction(sender)
+        if let data = responseData, let mimeType = httpResponse?.MIMEType{
+            if let path = NSFileManager.save(data, fileName: (httpResponse?.allHeaderFields["Content-Disposition"] as? String)?.sliceFrom("\"", to: ".") ?? "", mimeType: mimeType){
+                let targetURL = NSURL(fileURLWithPath: path)
+                docController = UIDocumentInteractionController(URL: targetURL)
+                docController?.delegate = self
+                docController?.presentOptionsMenuFromRect(CGRect.zero, inView: self.view, animated: true)
+            }
+        }
+
+    }
+}
+
+//MARK:- UIDocumentInteractionControllerDelegate
+extension TrackFilesViewController:UIDocumentInteractionControllerDelegate{
+    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController{
+        return self
+    }
+
+}
+
+
 //MARK:- Network methods
 extension TrackFilesViewController{
-    func loadFileInWebView() {
+    func getFile() {
         if let blobKey = currentTemplate?.blobKey where NetworkClass.isConnected(true){
-            webView.loadRequest(NetworkClass.getRequest(.GET, responseType: .DATA, URLString: "\(Constants.URLs.trackFiles)\(blobKey)/true"))
+            showLoader()
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackFiles)\(blobKey)/true", RequestType: .GET, ResponseType: .NONE, CompletionHandler: { (status, responseObj, error, statusCode) in
+                self.processResponse(responseObj)
+                self.hideLoader()
+            })
         }
+    }
+
+    func processResponse(responseObj:AnyObject?)  {
+        if let arr = responseObj as? NSArray {
+            if let urlResponse = arr.firstObject as? NSHTTPURLResponse {
+                httpResponse = urlResponse
+            }
+
+            if let data = arr[1] as? NSData {
+                responseData = data
+            }
+        }
+        loadFileInWebView()
     }
 }

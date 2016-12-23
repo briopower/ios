@@ -15,12 +15,12 @@ class Messaging: NSObject {
 
     class func openChatSession() {
         NetworkClass.sendRequest(URL: Constants.URLs.openChatSession, RequestType: .GET) { (status, responseObj, error, statusCode) in
-            if let token = responseObj?["token"] as? String, let chatId = responseObj?["chatId"] as? String {
-                NSUserDefaults.setMessagingToken(token)
-                NSUserDefaults.setChatId(chatId)
-            }else{
-                self.openChatSession()
-            }
+//            if let token = responseObj?["token"] as? String, let chatId = responseObj?["chatId"] as? String {
+//                NSUserDefaults.setMessagingToken(token)
+//                NSUserDefaults.setChatId(chatId)
+//            }else{
+//                self.openChatSession()
+//            }
         }
     }
 

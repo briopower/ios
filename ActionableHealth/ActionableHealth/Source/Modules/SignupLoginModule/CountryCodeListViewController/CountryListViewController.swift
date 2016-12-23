@@ -60,8 +60,8 @@ class CountryListViewController: CommonViewController {
 extension CountryListViewController{
 
     func setupView() {
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        path = documentDirectory.stringByAppendingString("/\(fileName).\(fileType)")
+        let libraryDirectory = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String
+        path = libraryDirectory.stringByAppendingString("/\(fileName).\(fileType)")
         if fileManager.fileExistsAtPath(path) {
             createCountryArray()
         }else{

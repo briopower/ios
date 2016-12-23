@@ -130,6 +130,7 @@
 		3CD2653B1DEE9355008CE1E4 /* CoreDataOperationsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */; };
 		3CD382281DF7E74A00B1B7A3 /* CommonHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD382271DF7E74A00B1B7A3 /* CommonHeaderButton.swift */; };
 		3CDD48AB1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */; };
+		3CEDA2361E0D281700EF6919 /* NSFileManager_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDA2351E0D281700EF6919 /* NSFileManager_Common.swift */; };
 		3CEFA9601DF6816B00185459 /* NSArray_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */; };
 		3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5491DB7892000224046 /* TrackFilesCell.swift */; };
 		3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */; };
@@ -313,6 +314,7 @@
 		3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperationsClass.swift; sourceTree = "<group>"; };
 		3CD382271DF7E74A00B1B7A3 /* CommonHeaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderButton.swift; sourceTree = "<group>"; };
 		3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerController_Common.swift; sourceTree = "<group>"; };
+		3CEDA2351E0D281700EF6919 /* NSFileManager_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager_Common.swift; sourceTree = "<group>"; };
 		3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArray_Common.swift; sourceTree = "<group>"; };
 		3CF5B5491DB7892000224046 /* TrackFilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFilesCell.swift; sourceTree = "<group>"; };
 		3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackFilesCell.xib; sourceTree = "<group>"; };
@@ -572,6 +574,7 @@
 		3C1EC55D1DA3A864003DC2A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3CEDA2341E0D27F400EF6919 /* NSFileManager */,
 				3CDD48A91E03E6BB00ACAFB4 /* UIImagePickerController */,
 				409414961E0273F200057EFD /* UIView */,
 				3CEFA95E1DF6812200185459 /* NSArray */,
@@ -1449,6 +1452,14 @@
 			path = UIImagePickerController;
 			sourceTree = "<group>";
 		};
+		3CEDA2341E0D27F400EF6919 /* NSFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				3CEDA2351E0D281700EF6919 /* NSFileManager_Common.swift */,
+			);
+			path = NSFileManager;
+			sourceTree = "<group>";
+		};
 		3CEFA95E1DF6812200185459 /* NSArray */ = {
 			isa = PBXGroup;
 			children = (
@@ -2007,6 +2018,7 @@
 				3CC9D0701DB886FC00287068 /* CommonTableView.swift in Sources */,
 				3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */,
 				3C966DBF1DF6C8DE00E299BF /* CountryListViewController.swift in Sources */,
+				3CEDA2361E0D281700EF6919 /* NSFileManager_Common.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
 				3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */,

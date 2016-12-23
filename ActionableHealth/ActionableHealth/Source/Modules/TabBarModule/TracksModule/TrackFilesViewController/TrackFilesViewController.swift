@@ -27,7 +27,7 @@ class TrackFilesViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Track Files", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Download)
+        setNavigationBarWithTitle("Track Files", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,8 +51,8 @@ extension TrackFilesViewController{
 
 //MARK:- Action
 extension TrackFilesViewController{
-    override func downloadButtonAction(sender: UIButton?) {
-        super.downloadButtonAction(sender)
+    override func detailsButtonAction(sender: UIButton?) {
+        super.detailsButtonAction(sender)
         if let data = responseData, let mimeType = httpResponse?.MIMEType{
             if let path = NSFileManager.save(data, fileName: (httpResponse?.allHeaderFields["Content-Disposition"] as? String)?.sliceFrom("\"", to: ".") ?? "", mimeType: mimeType){
                 let targetURL = NSURL(fileURLWithPath: path)

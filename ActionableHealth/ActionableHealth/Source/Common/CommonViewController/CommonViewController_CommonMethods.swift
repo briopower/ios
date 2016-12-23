@@ -7,7 +7,7 @@
 //
 
 enum BarButtontype {
-    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, skip, Download, Toggle
+    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, skip, Toggle
 }
 
 enum BarButtonPosition {
@@ -108,12 +108,10 @@ extension CommonViewController{
             barButton = UIBarButtonItem(customView:getButtonWithImage(AddButtonImage,Action: #selector(self.addButtonAction(_:))))
         case .skip:
             barButton = UIBarButtonItem(customView:getButtonWithTitle("SKIP",Action: #selector(self.skipButtonAction(_:))))
-        case .Download:
-            barButton = UIBarButtonItem(customView:getButtonWithImage(DownloadButtonImage,Action: #selector(self.downloadButtonAction(_:))))
         case .Toggle:
             let toggleSwitch = UISwitch()
             toggleSwitch.addTarget(self, action: #selector(self.toggleButtonAction(_:)), forControlEvents: .ValueChanged)
-            toggleSwitch.tintColor = UIColor.getAppThemeColor()
+//            toggleSwitch.tintColor = UIColor.getAppThemeColor()
             toggleSwitch.onTintColor = UIColor.getAppThemeColor()
             barButton = UIBarButtonItem(customView:toggleSwitch)
         }
@@ -223,9 +221,6 @@ extension CommonViewController{
 
     }
     @IBAction func skipButtonAction(sender:UIButton?){
-
-    }
-    @IBAction func downloadButtonAction(sender:UIButton?){
 
     }
 

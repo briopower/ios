@@ -11,8 +11,6 @@ import CoreData
 import CoreLocation
 
 import Firebase
-import FirebaseInstanceID
-import FirebaseMessaging
 import UserNotifications
 
 @UIApplicationMain
@@ -195,8 +193,8 @@ extension AppDelegate{
     }
 
     func startSyncing(){
-        AddressBook.checkForDeletedContacts()
-        Contact.syncContacts()
+        ContactSyncManager.sharedInstance.checkForDeletedContacts()
+        ContactSyncManager.sharedInstance.syncContacts()
     }
 
     func connectToFcm() {
@@ -214,7 +212,7 @@ extension AppDelegate{
             // Add observer for InstanceID token refresh callback.
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: kFIRInstanceIDTokenRefreshNotification, object: nil)
             registerForPushNotifications()
-            Messaging.openChatSession()
+            MessagingManager.sharedInstance.openChatSession()
         }
     }
 }

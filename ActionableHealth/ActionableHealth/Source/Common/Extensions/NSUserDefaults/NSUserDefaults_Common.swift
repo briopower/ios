@@ -36,6 +36,16 @@ extension NSUserDefaults{
         userDefault.synchronize()
     }
 
+    class func getFirebaseToken() -> String {
+        return userDefault.valueForKey("UserFirebaseToken_Key") as? String ?? ""
+    }
+
+    class func setFirebaseToken(token:String) {
+        userDefault.setValue(token, forKey: "UserFirebaseToken_Key")
+        userDefault.synchronize()
+    }
+
+
     class func isLoggedIn() -> Bool {
         return userDefault.boolForKey("userLoggedIn")
 
@@ -51,6 +61,9 @@ extension NSUserDefaults{
             if let token = dict["ahwToken"] as? String {
                 setLoggedIn(true)
                 setUserToken(token)
+            }
+            if let token = dict["firebaseToken"] as? String {
+                setFirebaseToken(token)
             }
             userDefault.setObject(NSKeyedArchiver.archivedDataWithRootObject(dict), forKey: "currentUser")
         }
@@ -69,23 +82,5 @@ extension NSUserDefaults{
             return  userDict["user"]?["userId"] as? String ?? userDict["userId"] as? String ?? ""
         }
         return ""
-    }
-
-    class func setMessagingToken(token:String?) {
-        userDefault.setValue(token, forKey: "messagingToken")
-        userDefault.synchronize()
-    }
-
-    class func getMessagingToken() -> String? {
-        return userDefault.valueForKey("messagingToken") as? String
-    }
-
-    class func setChatId(chatId:String?) {
-        userDefault.setValue(chatId, forKey: "setChatIdsetChatId")
-        userDefault.synchronize()
-    }
-
-    class func getChatId() -> String? {
-        return userDefault.valueForKey("setChatIdsetChatId") as? String
     }
 }

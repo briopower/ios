@@ -49,7 +49,7 @@ extension EnterOtpViewController{
             if dict["isAuthenticated"] as? Bool == true {
                 NSUserDefaults.saveUser(dict)
                 AppDelegate.getAppDelegateObject()?.setupOnAppLauch()
-                Contact.syncCoreDataContacts()
+                ContactSyncManager.sharedInstance.syncCoreDataContacts()
                 if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
                     vc.type = .UpdateProfile
                     self.navigationController?.pushViewController(vc, animated: true)

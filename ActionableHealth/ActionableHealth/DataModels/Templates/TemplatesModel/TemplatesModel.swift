@@ -72,7 +72,7 @@ extension TemplatesModel{
         return dict
     }
     class func getPayloadDict(cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = [""]) -> [String:AnyObject] {
-        return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType.firstObject ?? ""]
+        return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType]
     }
 
     class func getSearchUserDict(cursor:String, query:String = "") -> [String:AnyObject] {

@@ -8,38 +8,24 @@
 
 import Foundation
 import CoreData
-import APAddressBook
-import PhoneNumberKit
 
 
-private let lastSyncedDate = "lastSyncedDate"
-private let emailOrPhone = "emailOrPhone"
-private let userId = "userId"
-//MARK:- NSUserDefaults for last sync date
-extension NSUserDefaults{
-    class func setLastSyncDate(date:NSDate) -> Bool {
-        NSUserDefaults.standardUserDefaults().setObject(date, forKey: lastSyncedDate)
-        return NSUserDefaults.standardUserDefaults().synchronize()
-    }
-
-    class func getLastSyncDate() -> NSDate? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(lastSyncedDate) as? NSDate
-    }
-}
-
-//MARK:- Private Methods
+//MARK:- Public Methods
 class Contact: NSManagedObject {
-    //MARK:- Variables
-    static let apAddressBook = APAddressBook()
-    static let phoneNumberKit = PhoneNumberKit()
 
-    //MARK:- Methods
-    private class func saveContactObj(addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    class func saveContactObj(addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let context = contextRef{
             var contact:Contact?
 
-            if let temp = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", forId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context).first as? Contact {
+            let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", forId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Contact]
+
+            if let temp = contactsArr?.first {
                 contact = temp
+                for obj in contactsArr ?? [] {
+                    if obj != contact {
+                        contextRef?.deleteObject(obj)
+                    }
+                }
             }else{
                 contact = Contact(entity: NSEntityDescription.entityForName(String(Contact), inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
                 contact?.isAppUser = NSNumber(bool: false)
@@ -55,176 +41,18 @@ class Contact: NSManagedObject {
         }
     }
 
-    private class func loadContacts()
-    {
-        apAddressBook.loadContacts { (contacts:[APContact]?, error:NSError?) in
-            if let contacts = contacts{
-                performSelectorInBackground(#selector(self.addContacts(_:)), withObject: contacts)
-            }else if let desc = error?.localizedDescription{
-                UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
-            }
-        }
-    }
-
-    @objc private class func addContacts(contacts:[APContact]) {
-
-        if let delegate = AppDelegate.getAppDelegateObject() {
-
-            let prntCxt = delegate.managedObjectContext
-            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-            bgCxt.parentContext = prntCxt
-
-            bgCxt.performBlock({
-
-                for contact in contacts {
-                    if let addBkObj = AddressBook.saveAddressBookObj(contact, contextRef: bgCxt){
-
-                        if let phoneNumbers = contact.phones {
-                            for phone in phoneNumbers {
-                                if let actualNumber = phone.number {
-                                    if let phNum = phoneNumberKit.parseMultiple([actualNumber]).first{
-                                        saveContactObj(addBkObj, forId: "\(phNum.nationalNumber)", contextRef: bgCxt)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                do{
-                    try bgCxt.save()
-                    prntCxt.performBlock({
-                        do{
-                            try prntCxt.save()
-                            NSUserDefaults.setLastSyncDate(NSDate())
-                            syncCoreDataContacts()
-                        }catch{
-                            debugPrint("Error saving data")
-                        }
-                    })
-                }catch{
-                    debugPrint("Error saving data")
-                }
-            })
-        }
-
-    }
-
-    private class func processResponse(response:AnyObject?) {
-        if let delegate = AppDelegate.getAppDelegateObject() {
-            let prntCxt = delegate.managedObjectContext
-            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-            bgCxt.parentContext = prntCxt
-
-            bgCxt.performBlock({
-                if let arr = response as? NSArray {
-                    for obj in arr {
-                        if let tempId = (obj as? NSDictionary)?[userId] as? String {
-                            setAppUserWithId(tempId)
-                        }
-                    }
-                }
-                do{
-                    try bgCxt.save()
-                    prntCxt.performBlock({
-                        do{
-                            try prntCxt.save()
-                        }catch{
-                            debugPrint("Error saving data")
-                        }
-                    })
-                }catch{
-                    debugPrint("Error saving data")
-                }
-            })
-        }
-
-    }
-
-    private class func setAppUserWithId(id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
-        if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
-            for obj in arr {
-                obj.isAppUser = NSNumber(bool: true)
-            }
-        }
-    }
-}
-
-
-//MARK:- Contacts Syncing Methods
-extension Contact{
-
-    class func checkAccess() -> APAddressBookAccess{
-        return APAddressBook.access()
-    }
-
-    class func syncContacts() {
-
-        apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
-
-        apAddressBook.filterBlock =
-            {
-                (contact: APContact) -> Bool in
-                if let modificationDate = contact.recordDate?.modificationDate {
-                    var shouldProcess = false
-                    if let lastSycned = NSUserDefaults.getLastSyncDate() {
-                        if modificationDate.compare(lastSycned) == NSComparisonResult.OrderedDescending  {
-                            shouldProcess = true
-                        }
-                    }else{
-                        shouldProcess = true
-                    }
-                    if shouldProcess {
-                        if let phones = contact.phones
-                        {
-                            return phones.count > 0
-                        }
-                    }
-                }
-                return false
-        }
-        loadContacts()
-    }
-
-    class func syncCoreDataContacts() {
-        if NSUserDefaults.isLoggedIn() {
-            performSelectorInBackground(#selector(Contact.fetchContactsAndStartSyncing), withObject: nil)
-        }
-    }
-
     class func getNameForContact(number:String) -> String? {
 
-        if let temp = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, fetchLimit: nil).first as? Contact {
+        let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, isAcendingSort: true, fetchLimit: nil) as? [Contact]
+
+        if let temp = contactsArr?.first {
+            for obj in contactsArr ?? [] {
+                if obj != temp {
+                    AppDelegate.getAppDelegateObject()?.managedObjectContext.deleteObject(obj)
+                }
+            }
             return temp.addressBook?.name
         }
         return nil
-    }
-}
-
-//MARK: Network Methods
-extension Contact{
-    @objc private class func fetchContactsAndStartSyncing() {
-        if let contacts = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@", NSNumber(bool: false)), sortingKey: nil, fetchLimit: nil) as? [Contact] {
-            let arr = NSMutableArray()
-            for contact in contacts {
-                if let uniqueId = contact.id {
-                    arr.addObject([emailOrPhone:uniqueId])
-                }
-            }
-            if let splitedArray = arr.splitArrayWithSize(500) as? [NSArray]{
-                for obj in splitedArray {
-                    syncContactFromServer(NSMutableArray(array: obj))
-                }
-            }
-        }
-    }
-    private class func syncContactFromServer(array:NSMutableArray) {
-        NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
-            if status{
-                processResponse(responseObj)
-            }else{
-                syncContactFromServer(array)
-            }
-        }
     }
 }

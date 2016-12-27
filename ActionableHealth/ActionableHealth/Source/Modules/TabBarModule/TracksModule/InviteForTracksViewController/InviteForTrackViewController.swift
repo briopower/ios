@@ -38,7 +38,7 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        Contact.syncCoreDataContacts()
+        ContactSyncManager.sharedInstance.syncCoreDataContacts()
         setNavigationBarWithTitle("Invite", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Done)
     }
 

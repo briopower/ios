@@ -28,20 +28,20 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pm1-HW-E1u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Pm1-HW-E1u" secondAttribute="height" multiplier="680:200" priority="999" id="4bb-4Z-0kN"/>
+                            <constraint firstAttribute="width" secondItem="Pm1-HW-E1u" secondAttribute="height" multiplier="680:100" priority="999" id="4bb-4Z-0kN"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ci0-Eo-GcH">
                         <rect key="frame" x="0.0" y="0.0" width="28" height="73"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ma-wC-cKq">
-                        <rect key="frame" x="28" y="19" width="35" height="35"/>
+                        <rect key="frame" x="28" y="26" width="21" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="4ma-wC-cKq" secondAttribute="height" id="c8Q-mU-3OC"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSX-4r-lgq" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="76" y="27" width="42" height="20"/>
+                        <rect key="frame" x="59.5" y="28.5" width="40.5" height="17"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                         <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                     <constraint firstItem="4ma-wC-cKq" firstAttribute="leading" secondItem="Ci0-Eo-GcH" secondAttribute="trailing" id="Zro-U5-gSF"/>
                     <constraint firstItem="Ci0-Eo-GcH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mYb-hb-wkO"/>
                     <constraint firstItem="eSX-4r-lgq" firstAttribute="centerY" secondItem="4ma-wC-cKq" secondAttribute="centerY" id="mgZ-dJ-Kii"/>
-                    <constraint firstItem="4ma-wC-cKq" firstAttribute="width" secondItem="Pm1-HW-E1u" secondAttribute="width" multiplier="75:680" id="n4s-q7-kDU"/>
+                    <constraint firstItem="4ma-wC-cKq" firstAttribute="width" secondItem="Pm1-HW-E1u" secondAttribute="width" multiplier="45:680" id="n4s-q7-kDU"/>
                     <constraint firstItem="4ma-wC-cKq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nEt-27-v3U"/>
                     <constraint firstItem="eSX-4r-lgq" firstAttribute="leading" secondItem="4ma-wC-cKq" secondAttribute="trailing" multiplier="180:150" id="p9o-8J-B4y"/>
                     <constraint firstAttribute="bottom" secondItem="Pm1-HW-E1u" secondAttribute="bottom" id="ueK-Rd-w9A"/>

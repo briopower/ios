@@ -113,10 +113,7 @@
 		3CCECD9C1DAF54B300831242 /* UIImageView_SepratorImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECD9B1DAF54B300831242 /* UIImageView_SepratorImageView.swift */; };
 		3CCECD9F1DAF55E800831242 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECD9E1DAF55E800831242 /* FiltersViewController.swift */; };
 		3CCECDA21DAF61E000831242 /* FilterByObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECDA11DAF61E000831242 /* FilterByObject.swift */; };
-		3CCECDAC1DAF69EB00831242 /* PropertiesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECDA91DAF69EB00831242 /* PropertiesTableView.swift */; };
 		3CCECDAD1DAF69EB00831242 /* SubPropertiesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECDAB1DAF69EB00831242 /* SubPropertiesTableView.swift */; };
-		3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECDB01DAF6AA200831242 /* PropertiesCell.swift */; };
-		3CCECDB31DAF6AA200831242 /* PropertiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCECDB11DAF6AA200831242 /* PropertiesCell.xib */; };
 		3CCECDB81DAF872300831242 /* SubPropertiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCECDB61DAF872300831242 /* SubPropertiesCell.swift */; };
 		3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCECDB71DAF872300831242 /* SubPropertiesCell.xib */; };
 		3CCF30F71DB731CF001A1E7B /* RecievedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF30F51DB731CF001A1E7B /* RecievedMessageCell.swift */; };
@@ -299,10 +296,7 @@
 		3CCECD9B1DAF54B300831242 /* UIImageView_SepratorImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView_SepratorImageView.swift; sourceTree = "<group>"; };
 		3CCECD9E1DAF55E800831242 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		3CCECDA11DAF61E000831242 /* FilterByObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterByObject.swift; sourceTree = "<group>"; };
-		3CCECDA91DAF69EB00831242 /* PropertiesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesTableView.swift; sourceTree = "<group>"; };
 		3CCECDAB1DAF69EB00831242 /* SubPropertiesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubPropertiesTableView.swift; sourceTree = "<group>"; };
-		3CCECDB01DAF6AA200831242 /* PropertiesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesCell.swift; sourceTree = "<group>"; };
-		3CCECDB11DAF6AA200831242 /* PropertiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertiesCell.xib; sourceTree = "<group>"; };
 		3CCECDB61DAF872300831242 /* SubPropertiesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubPropertiesCell.swift; sourceTree = "<group>"; };
 		3CCECDB71DAF872300831242 /* SubPropertiesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubPropertiesCell.xib; sourceTree = "<group>"; };
 		3CCF30F51DB731CF001A1E7B /* RecievedMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecievedMessageCell.swift; sourceTree = "<group>"; };
@@ -1328,19 +1322,9 @@
 		3CCECDA31DAF676B00831242 /* FilterTableViews */ = {
 			isa = PBXGroup;
 			children = (
-				3CCECDA81DAF69EB00831242 /* PropertiesTableView */,
 				3CCECDAA1DAF69EB00831242 /* SubPropertiesTableView */,
 			);
 			path = FilterTableViews;
-			sourceTree = "<group>";
-		};
-		3CCECDA81DAF69EB00831242 /* PropertiesTableView */ = {
-			isa = PBXGroup;
-			children = (
-				3CCECDAE1DAF6A6700831242 /* CustomCells */,
-				3CCECDA91DAF69EB00831242 /* PropertiesTableView.swift */,
-			);
-			path = PropertiesTableView;
 			sourceTree = "<group>";
 		};
 		3CCECDAA1DAF69EB00831242 /* SubPropertiesTableView */ = {
@@ -1350,23 +1334,6 @@
 				3CCECDAB1DAF69EB00831242 /* SubPropertiesTableView.swift */,
 			);
 			path = SubPropertiesTableView;
-			sourceTree = "<group>";
-		};
-		3CCECDAE1DAF6A6700831242 /* CustomCells */ = {
-			isa = PBXGroup;
-			children = (
-				3CCECDAF1DAF6A6700831242 /* PropertiesCell */,
-			);
-			path = CustomCells;
-			sourceTree = "<group>";
-		};
-		3CCECDAF1DAF6A6700831242 /* PropertiesCell */ = {
-			isa = PBXGroup;
-			children = (
-				3CCECDB01DAF6AA200831242 /* PropertiesCell.swift */,
-				3CCECDB11DAF6AA200831242 /* PropertiesCell.xib */,
-			);
-			path = PropertiesCell;
 			sourceTree = "<group>";
 		};
 		3CCECDB41DAF870900831242 /* CustomCells */ = {
@@ -1857,7 +1824,6 @@
 				3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */,
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
-				3CCECDB31DAF6AA200831242 /* PropertiesCell.xib in Resources */,
 				4034687E1DFBE46E00C1AD87 /* SelectionTableViewCell.xib in Resources */,
 				403468791DFBE24A00C1AD87 /* SelectionView.xib in Resources */,
 				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */,
@@ -2037,7 +2003,6 @@
 				3CCF30FE1DB7327C001A1E7B /* MessagingViewController.swift in Sources */,
 				3C0FDF3C1DF5664800710764 /* AddFromPhoneCell.swift in Sources */,
 				3CC9D08D1DB8B68F00287068 /* PhaseDetailsViewController.swift in Sources */,
-				3CCECDAC1DAF69EB00831242 /* PropertiesTableView.swift in Sources */,
 				3C9D13281DA3CE5800998DA2 /* UIImageView_RoundImageView.swift in Sources */,
 				3CC9D0701DB886FC00287068 /* CommonTableView.swift in Sources */,
 				3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */,
@@ -2091,7 +2056,6 @@
 				40EBFEDB1DF8071500605397 /* DetailViewCell.swift in Sources */,
 				3CC9D07A1DB897EF00287068 /* TrackFileCell.swift in Sources */,
 				3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */,
-				3CCECDB21DAF6AA200831242 /* PropertiesCell.swift in Sources */,
 				3CF5B5661DB7A56700224046 /* CommnetsCell.swift in Sources */,
 				3CB8A29C1DEDAE28009B9AE9 /* Contact.swift in Sources */,
 				3C1EC5971DA3A864003DC2A3 /* NSDate_Common.swift in Sources */,

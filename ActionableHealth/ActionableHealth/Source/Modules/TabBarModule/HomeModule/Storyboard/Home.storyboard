@@ -28,18 +28,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="srU-XT-wbY" customClass="PropertiesTableView" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="90" width="188.33333333333334" height="646"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEX-oY-z6N" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="188.33333333333334" y="90" width="1" height="646"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1" id="x3A-ia-1NT"/>
-                                </constraints>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1En-6U-VG3" customClass="SubPropertiesTableView" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="189.33333333333337" y="90" width="224.66666666666663" height="646"/>
+                                <rect key="frame" x="0.0" y="90" width="414" height="646"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nco-Mf-nX8">
@@ -95,7 +85,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTER BY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-Xg-ehV" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="57.666666666666657" y="44.666666666666657" width="91" height="22.333333333333343"/>
+                                        <rect key="frame" x="57.666666666666657" y="46.333333333333329" width="84" height="18.999999999999986"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="19"/>
                                         <color key="textColor" red="0.12941176470588237" green="0.13333333333333333" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -136,35 +126,27 @@
                         <constraints>
                             <constraint firstItem="1En-6U-VG3" firstAttribute="top" secondItem="nco-Mf-nX8" secondAttribute="bottom" id="46l-ou-IyQ"/>
                             <constraint firstItem="nco-Mf-nX8" firstAttribute="top" secondItem="nhD-cq-y00" secondAttribute="top" id="5Wg-5L-hvg"/>
-                            <constraint firstItem="q0o-iB-988" firstAttribute="top" secondItem="srU-XT-wbY" secondAttribute="bottom" id="7Lz-Fu-W03"/>
-                            <constraint firstItem="1En-6U-VG3" firstAttribute="leading" secondItem="uEX-oY-z6N" secondAttribute="trailing" id="BoR-ri-Ous"/>
                             <constraint firstItem="nco-Mf-nX8" firstAttribute="height" secondItem="nhD-cq-y00" secondAttribute="height" multiplier="270:2207" id="C0O-Nf-jQq"/>
                             <constraint firstAttribute="trailing" secondItem="1En-6U-VG3" secondAttribute="trailing" id="JpQ-La-Kjh"/>
-                            <constraint firstItem="uEX-oY-z6N" firstAttribute="leading" secondItem="srU-XT-wbY" secondAttribute="trailing" id="Tb0-bF-jhq"/>
-                            <constraint firstItem="srU-XT-wbY" firstAttribute="leading" secondItem="nhD-cq-y00" secondAttribute="leading" id="Wpd-eb-mqL"/>
-                            <constraint firstItem="srU-XT-wbY" firstAttribute="width" secondItem="nhD-cq-y00" secondAttribute="width" multiplier="565:1242" id="cZ9-zY-ieM"/>
-                            <constraint firstItem="srU-XT-wbY" firstAttribute="top" secondItem="nco-Mf-nX8" secondAttribute="bottom" id="dT1-Ld-3UW"/>
+                            <constraint firstItem="1En-6U-VG3" firstAttribute="leading" secondItem="nhD-cq-y00" secondAttribute="leading" id="Pkv-mE-cO9"/>
                             <constraint firstItem="nco-Mf-nX8" firstAttribute="leading" secondItem="nhD-cq-y00" secondAttribute="leading" id="dYp-iI-Poa"/>
                             <constraint firstItem="q0o-iB-988" firstAttribute="top" secondItem="1En-6U-VG3" secondAttribute="bottom" id="iam-j8-krD"/>
                             <constraint firstAttribute="trailing" secondItem="nco-Mf-nX8" secondAttribute="trailing" id="kA4-rJ-IpK"/>
-                            <constraint firstItem="uEX-oY-z6N" firstAttribute="top" secondItem="nco-Mf-nX8" secondAttribute="bottom" id="mIR-R1-JkO"/>
-                            <constraint firstItem="q0o-iB-988" firstAttribute="top" secondItem="uEX-oY-z6N" secondAttribute="bottom" id="wRW-cr-0v1"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="propertiesTblView" destination="srU-XT-wbY" id="qjU-XU-ZNE"/>
                         <outlet property="subPropertiesTblView" destination="1En-6U-VG3" id="Hgt-xc-kSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeK-qM-BYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1163" y="-1080"/>
+            <point key="canvasLocation" x="-1342" y="-1088"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aNr-FH-mX1">
             <objects>
                 <navigationController storyboardIdentifier="searchView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Q0-Nv-dWP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6oj-kU-u1L">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6oj-kU-u1L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -228,7 +210,7 @@
         <scene sceneID="qlu-uS-xYf">
             <objects>
                 <navigationController storyboardIdentifier="notificationNavigationView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QjP-eT-zip" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4oT-9i-7Ss">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4oT-9i-7Ss">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

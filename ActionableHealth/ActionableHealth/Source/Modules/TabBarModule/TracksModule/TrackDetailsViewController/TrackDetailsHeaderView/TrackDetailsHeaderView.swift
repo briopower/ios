@@ -81,9 +81,8 @@ extension TrackDetailsHeaderView{
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
             logoImageView.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
 
-            if NSUserDefaults.getUserId() == currentTemplate?.createdBy {
-                editButton.hidden = false
-            }
+            editButton.hidden = !(NSUserDefaults.getUserId() == currentTemplate?.createdBy)
+            requestButton.hidden = editButton.hidden
         default:
             break
         }

@@ -15,7 +15,7 @@ enum SettingsCellType:Int {
         case .Edit_Profile:
             return ("Edit Profile", "message", false)
         case .Notification:
-            return ("Notification", "notificationSettings", false)
+            return ("Notification", "notificationSettings", true)
         case .Terms_Conditions:
             return ("Terms & Conditions", "t&c", false)
         case .Privacy_Policy:
@@ -33,6 +33,11 @@ class SettingsViewCell: UITableViewCell {
     @IBOutlet weak var titleDescLabel: UILabel!
     @IBOutlet weak var detailsImageView: UIImageView!
     @IBOutlet weak var sideArrow: UIImageView!
+    @IBOutlet weak var toggleSwitch: UISwitch!
+
+    //MARK:- Variables
+    var user = UserModel.getCurrentUser()
+    var previousState = false
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -49,10 +54,39 @@ class SettingsViewCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension SettingsViewCell{
+    @IBAction func toggled(sender: UISwitch) {
+        user.enableNotifications = sender.on ?? false
+        updateProfile()
+    }
+    
     func configureCellForType(type:SettingsCellType) {
         let (title, imageName, hideSideArrow) = type.getConfig()
         titleDescLabel.text = title
         detailsImageView.image = UIImage(named: imageName)
         sideArrow.hidden = hideSideArrow
+        toggleSwitch.hidden = !hideSideArrow
+        updateCurrentStatus()
+    }
+
+    func updateCurrentStatus() {
+        user = UserModel.getCurrentUser()
+        toggleSwitch.on = user.enableNotifications
+        previousState = user.enableNotifications
+    }
+}
+
+//MARK:- Network Methods
+extension SettingsViewCell{
+    func updateProfile() {
+        if NetworkClass.isConnected(true) {
+            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .POST, ResponseType: .JSON, Parameters: user.getUpdateProfileDictionary(), CompletionHandler: { (status, responseObj, error, statusCode) in
+                if !status{
+                    self.toggleSwitch.on = self.previousState
+                }else{
+                    NSUserDefaults.saveUser(responseObj)
+                    self.updateCurrentStatus()
+                }
+            })
+        }
     }
 }

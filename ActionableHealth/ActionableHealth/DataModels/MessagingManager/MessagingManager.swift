@@ -19,11 +19,14 @@ class MessagingManager: NSObject {
     static let sharedInstance = MessagingManager()
     var ref: FIRDatabaseReference?
     private var _refHandle: FIRDatabaseHandle?
+    var chanelToObserve:String{
+        get{
+            return "channels/\(NSUserDefaults.getUserId())"
+        }
+    }
 
     deinit {
-        if let handler = _refHandle{
-            self.ref?.child("channels").removeObserverWithHandle(handler)
-        }
+        self.ref?.child(chanelToObserve).removeAllObservers()
     }
 }
 
@@ -47,9 +50,26 @@ extension MessagingManager{
         if ref == nil{
             ref = FIRDatabase.database().reference()
         }
+
         // Listen for new messages in the Firebase database
-        self.ref?.child("channels").observeSingleEventOfType(.Value, withBlock: { (snapshot:FIRDataSnapshot) in
-            print(snapshot)
+        self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
+            { (snapshot:FIRDataSnapshot) in
+                print(snapshot.valueInExportFormat())
+            }, withCancelBlock:
+            { (error:NSError) in
+                print(error)
         })
+
+        self.ref?.child(chanelToObserve).observeEventType(.ChildChanged, withBlock:
+            { (snapshot:FIRDataSnapshot) in
+                print(snapshot.valueInExportFormat())
+            }, withCancelBlock:
+            { (error:NSError) in
+                print(error)
+        })
+    }
+
+    func send(message:String, userId:String) {
+        self.ref?.child("channels/\(userId)").child("8882345715").child("\(Int(NSDate().timeIntervalInMilliSecs()))").updateChildValues(["message":NSDate().longString])
     }
 }

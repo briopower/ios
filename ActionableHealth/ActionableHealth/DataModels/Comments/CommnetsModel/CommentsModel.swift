@@ -41,8 +41,8 @@ extension CommentsModel{
 
     class func updateCommentObj(commObj:CommentsModel, dict:AnyObject) {
         commObj.comment = dict["comment"] as? String ?? ""
-         let timeInterval = (dict["commentDate"] as? NSTimeInterval ?? 0)/1000
-        commObj.commentedOn = NSDate(timeIntervalSince1970: timeInterval)
+        let timeInterval = (dict["commentDate"] as? NSTimeInterval ?? 0)
+        commObj.commentedOn = NSDate.dateWithTimeIntervalInMilliSecs(timeInterval)
 
         if let userDict = dict["commentedBy"] as? [String:AnyObject] {
             commObj.commentedBy = UserModel.getUserObject(userDict)

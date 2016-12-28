@@ -13,7 +13,7 @@ let D_DAY = 86400.0
 let D_WEEK = 604800.0
 let D_MONTH = 2629743.83
 let D_YEAR = 31556926.0
-let MICRO_SECOND = 100000000.0
+let MILLI_SECOND = 1000.0
 
 let componentFlags:NSCalendarUnit = [.Era, .Year, .Month, .Day, .Hour, .Minute, .Second, .Weekday, .WeekdayOrdinal, .Quarter, .WeekOfMonth, .WeekOfYear, .YearForWeekOfYear, .Nanosecond, .Calendar, .TimeZone]
 
@@ -698,6 +698,10 @@ extension NSDate{
 //MARK:- Retrieving intervals
 extension NSDate{
 
+    func timeIntervalInMilliSecs() -> NSTimeInterval {
+        return timeIntervalSince1970 * MILLI_SECOND
+    }
+
     func minutesAfterDate(aDate:NSDate) -> Int {
         let interval = self.timeIntervalSinceDate(aDate)
         return Int(interval/D_MINUTE)
@@ -797,6 +801,9 @@ extension NSDate{
 //MARK:- Relative Dates
 extension NSDate{
 
+    class func dateWithTimeIntervalInMilliSecs(interval:NSTimeInterval) -> NSDate {
+        return NSDate(timeIntervalSince1970: interval/MILLI_SECOND)
+    }
     class func dateWithDaysFromNow(days:Int) -> NSDate? {
         return NSDate().dateByAddingDays(days)
     }

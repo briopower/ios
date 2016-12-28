@@ -22,6 +22,7 @@ class SettingsViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarWithTitle("Settings", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        settingsTblView.reloadData()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -75,10 +76,6 @@ extension SettingsViewController:UITableViewDelegate{
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
                     viewCont.type = .EditProfile
                     self.navigationController?.pushViewController(viewCont, animated: true)
-                }
-            case .Notification:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.notificationView) as? NotificationsViewController {
-                    getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
             default:
                 break

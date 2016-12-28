@@ -34,6 +34,10 @@ class CommnetsCell: UITableViewCell {
 //MARK:- Addtional Methods
 extension CommnetsCell{
     func configCell(comment:CommentsModel) {
+        personImageView.image = nil
+        if let url = NSURL(string: comment.commentedBy?.profileImage ?? "") {
+            personImageView.sd_setImageWithURL(url)
+        }
         personNameLabel.text = comment.commentedBy?.name ?? comment.commentedBy?.userID
         commentLabel.text = comment.comment
         dateLabel.text = comment.commentedOn?.mediumDateString

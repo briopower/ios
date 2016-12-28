@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
 
         forEasyLoading()
+//        performSelectorInBackground(#selector(AppDelegate.forEasyLoading), withObject: nil)
 
         setupOnAppLauch()
 
@@ -188,6 +189,10 @@ extension AppDelegate{
         }
 
         if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController {
+            viewCont.view.userInteractionEnabled = true
+        }
+
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
             viewCont.view.userInteractionEnabled = true
         }
     }

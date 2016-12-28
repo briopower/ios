@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="127.66666666666667"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBY-ER-tPf">
@@ -44,16 +44,26 @@
                                 <rect key="frame" x="3" y="0.0" width="39" height="127"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsd-5t-22T" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="41.999999999999993" y="53.666666666666671" width="82.333333333333314" height="20.000000000000014"/>
+                                <rect key="frame" x="41.999999999999993" y="54.333333333333329" width="82.333333333333314" height="19.999999999999986"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Bh-FO-76y">
+                                <rect key="frame" x="251" y="48" width="51" height="31"/>
+                                <color key="tintColor" red="0.8666666666666667" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="onTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="toggled:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Fg0-lR-N8Q"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="yBY-ER-tPf" secondAttribute="height" multiplier="1242:235" priority="999" id="1Yg-SX-JmH"/>
+                            <constraint firstItem="6Bh-FO-76y" firstAttribute="centerY" secondItem="6yd-zV-hcU" secondAttribute="centerY" id="2nm-Sy-rD1"/>
                             <constraint firstItem="fRX-gC-frJ" firstAttribute="leading" secondItem="yBY-ER-tPf" secondAttribute="leading" id="4Zi-Dz-AC9"/>
+                            <constraint firstItem="6Bh-FO-76y" firstAttribute="trailing" secondItem="6yd-zV-hcU" secondAttribute="trailing" id="6Fy-cw-yST"/>
                             <constraint firstItem="fRX-gC-frJ" firstAttribute="top" secondItem="yBY-ER-tPf" secondAttribute="top" id="6XH-Kx-y0V"/>
                             <constraint firstAttribute="bottom" secondItem="eeK-Iu-UOI" secondAttribute="bottom" id="6aP-NG-DiG"/>
                             <constraint firstItem="6yd-zV-hcU" firstAttribute="centerY" secondItem="yBY-ER-tPf" secondAttribute="centerY" id="6hq-rv-sWe"/>
@@ -82,6 +92,7 @@
                 <outlet property="detailsImageView" destination="eeK-Iu-UOI" id="NXf-he-alf"/>
                 <outlet property="sideArrow" destination="6yd-zV-hcU" id="Ko6-bZ-G0m"/>
                 <outlet property="titleDescLabel" destination="Gsd-5t-22T" id="xoK-hh-zdx"/>
+                <outlet property="toggleSwitch" destination="6Bh-FO-76y" id="SgR-5b-kvc"/>
             </connections>
             <point key="canvasLocation" x="381" y="524"/>
         </tableViewCell>

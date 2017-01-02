@@ -30,12 +30,15 @@
                                     <outlet property="delegate" destination="WTN-eA-h89" id="6uh-UJ-Wuo"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-D2-0m3" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjG-D2-0m3" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="608" width="375" height="59"/>
                                 <color key="backgroundColor" red="0.14439323544502258" green="0.15954238176345825" blue="0.22175970673561096" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <state key="normal" title="UPDATE">
-                                    <color key="titleColor" red="0.98679894208908081" green="0.93239861726760864" blue="0.13981038331985474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.9882352941176471" green="0.93333333333333335" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.9882352941176471" green="0.93333333333333335" blue="0.14117647058823529" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="updateAction:" destination="WTN-eA-h89" eventType="touchUpInside" id="BT6-aY-X7L"/>
@@ -56,6 +59,7 @@
                     </view>
                     <connections>
                         <outlet property="editProfileTblView" destination="D0J-5N-82h" id="uXu-UM-Gea"/>
+                        <outlet property="updateButton" destination="OjG-D2-0m3" id="vkf-Em-seI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mC6-8O-yS3" userLabel="First Responder" sceneMemberID="firstResponder"/>

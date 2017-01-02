@@ -19,7 +19,8 @@ class FilterByObject: NSObject {
             if let prop = obj as? SubProperties {
                 if prop == subProperty {
                     prop.isSelected = !(prop.isSelected)
-                }            }
+                }
+            }
         }
     }
 

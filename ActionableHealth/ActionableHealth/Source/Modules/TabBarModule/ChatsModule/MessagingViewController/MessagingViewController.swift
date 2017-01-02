@@ -7,50 +7,77 @@
 //
 
 import UIKit
-let initialHeight:CGFloat = 48.0
-let lineHeight:CGFloat = 19.09375
+import CoreData
 
-class MessagingViewController: KeyboardAvoidingViewController {
-
-    //MARK:- Outlets
-    @IBOutlet weak var msgTblView: UITableView!
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var chatTextView: UITextView!
-    @IBOutlet weak var placeholderLabel: UILabel!
+class MessagingViewController: JSQMessagesViewController {
 
     //MARK:- Variables
-    var shouldScrollToBottom = true
+    var _fetchedResultsController: NSFetchedResultsController?
+    var personObj:Person?
+
+    let outgoingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"sentMessage")!, highlightedImage: UIImage(named:"sentMessage")!)
+    let incomingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"recievedMessage")!, highlightedImage: UIImage(named:"recievedMessage")!)
+    let dummAvtarIcon = JSQMessagesAvatarImage(placeholder: UIImage(named:"circle-user-ic")!)
 
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpView()
+        setuView()
     }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("New Chat", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
+        setNavigationBarWithTitle(personObj?.personName ?? personObj?.personId ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if shouldScrollToBottom {
-            moveToBottom()
-        }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        personObj?.markAllAsRead()
+        AppDelegate.getAppDelegateObject()?.saveContext()
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if shouldScrollToBottom {
-            moveToBottom()
-            shouldScrollToBottom = false
-        }
+        finishReceivingMessage()
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+//MARK:- Additional methods
+extension MessagingViewController{
+    func setuView() {
+        if let id = personObj?.personId {
+            personObj?.updateProfileImage()
+            _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Messages), predicate: NSPredicate(format: "person.personId = %@", id), sectionNameKeyPath: nil, sortingKey: ["timestamp"], isAcendingSort: true)
+            _fetchedResultsController?.delegate = self
+        }
+        setupMessagingView()
+    }
+
+    func setupMessagingView() {
+        self.senderId = NSUserDefaults.getUserId()
+        self.senderDisplayName = ""
+
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        collectionView.backgroundColor = UIColor.clearColor()
+        collectionView.collectionViewLayout.messageBubbleFont = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
+        collectionView.collectionViewLayout.messageBubbleTextViewFrameInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 9)
+
+        inputToolbar.contentView.leftBarButtonItem = nil
+        let sendButton = UIButton(frame: CGRect.zero)
+        sendButton.setImage(UIImage(named:"send"), forState: .Normal)
+        sendButton.sizeToFit()
+        inputToolbar.contentView.rightBarButtonItem = sendButton
+        inputToolbar.contentView.textView.placeHolder = "Type your message here"
+        inputToolbar.contentView.textView.font = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
+        inputToolbar.preferredDefaultHeight = 50
+        inputToolbar.maximumHeight = 100
+    }
 }
 
 //MARK:- Button action
@@ -62,83 +89,81 @@ extension MessagingViewController{
         }
     }
 }
-//MARK:- Additional methods
+
+// MARK: Collection view data source methods
 extension MessagingViewController{
-    func setUpView()
-    {
-        msgTblView.registerNib(UINib(nibName: String(SentMessageCell), bundle: nil), forCellReuseIdentifier: String(SentMessageCell))
-        msgTblView.registerNib(UINib(nibName: String(RecievedMessageCell), bundle: nil), forCellReuseIdentifier: String(RecievedMessageCell))
-        msgTblView.estimatedRowHeight = 60
-        msgTblView.rowHeight = UITableViewAutomaticDimension
-        msgTblView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+
+    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
+        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+        if messageObj?.status == MessageStatus.Sent.rawValue {
+            return JSQMessage(senderId: senderId, displayName: "", text: messageObj?.message ?? "")
+        }else{
+            return JSQMessage(senderId: personObj?.personId ?? "", displayName: "", text: messageObj?.message ?? "")
+        }
     }
 
-    override func moveToBottom() {
-        if (msgTblView.contentSize.height > msgTblView.frame.size.height){
-            let point = CGPoint(x: 0, y: msgTblView.contentSize.height - msgTblView.frame.size.height)
-            msgTblView.contentOffset = point
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return _fetchedResultsController?.fetchedObjects?.count ?? 0
+    }
+
+    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+        if messageObj?.status == MessageStatus.Sent.rawValue { // 2
+            return outgoingBubbleImageView
+        } else { // 3
+            return incomingBubbleImageView
         }
+    }
+    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return dummAvtarIcon
+    }
+
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+        let date = NSDate.dateWithTimeIntervalInMilliSecs(messageObj?.timestamp?.doubleValue ?? 0)
+        return NSAttributedString(string: date.shortTimeString)
+    }
+
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
+        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+
+        if messageObj?.status == MessageStatus.Sent.rawValue {
+            cell.textView?.textColor = UIColor.whiteColor()
+        } else {
+            cell.textView?.textColor = UIColor.blackColor()
+        }
+
+        if let str = personObj?.personImage {
+            cell.avatarImageView.sd_setImageWithURL(NSURL(string: str))
+        }
+        return cell
+    }
+
+    override func collectionView(collectionView: JSQMessagesCollectionView!, didTapAvatarImageView avatarImageView: UIImageView!, atIndexPath indexPath: NSIndexPath!) {
+
+    }
+
+    override func collectionView(collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
+
+    }
+}
+//MARK:- NSFetchedResultsControllerDelegate
+extension MessagingViewController:NSFetchedResultsControllerDelegate{
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        collectionView.reloadData()
+        finishReceivingMessage()
     }
 }
 
-//MARK:- UITableViewDatasource
-extension MessagingViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
+// MARK:- Firebase related methods
+extension MessagingViewController{
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row % 2 == 0 {
-            if let cell = tableView.dequeueReusableCellWithIdentifier(String(RecievedMessageCell)) as? RecievedMessageCell {
-                return cell
-            }
-        }else{
-            if let cell = tableView.dequeueReusableCellWithIdentifier(String(SentMessageCell)) as? SentMessageCell {
-                return cell
-            }
+    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        if let id = personObj?.personId{
+            MessagingManager.sharedInstance.send(text, userId: id)
         }
-        return UITableViewCell()
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        finishSendingMessage()
     }
 }
-
-// MARK: - UITextViewDelegate
-extension MessagingViewController :UITextViewDelegate{
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        if textView.text.getValidObject() != nil {
-            sendButton.enabled = true
-            placeholderLabel.hidden = true
-        }else{
-            sendButton.enabled = false
-            placeholderLabel.hidden = false
-        }
-        return true
-    }
-    func textViewDidChange(textView: UITextView) {
-        if textView.text.getValidObject() != nil {
-            sendButton.enabled = true
-            placeholderLabel.hidden = true
-        }else{
-            sendButton.enabled = false
-            placeholderLabel.hidden = false
-        }
-
-
-        let height = textView.text.getHeight(textView.font, maxWidth: Double(textView.frame.size.width))
-        if height == 0 {
-            heightConstraint.constant = initialHeight
-        }else{
-            let numberOfLines = height/lineHeight
-            if numberOfLines <= 4 {
-                let temp = initialHeight - lineHeight + (numberOfLines * lineHeight)
-                if temp > initialHeight + 8 {
-                    heightConstraint.constant = temp
-                }else{
-                    heightConstraint.constant = initialHeight
-                }
-            }
-        }
-        self.view.layoutIfNeeded()
-        moveToBottom()
-    }
-}
-

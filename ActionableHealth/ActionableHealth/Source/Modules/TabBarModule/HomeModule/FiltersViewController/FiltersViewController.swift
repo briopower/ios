@@ -12,11 +12,14 @@ class FiltersViewController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var subPropertiesTblView: SubPropertiesTableView!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var applyButton: UIButton!
     
     //MARK:- Variables
     var filterObj:FilterByObject!
-    var delegate:HomeViewController?
+    weak var delegate:HomeViewController?
     var selectedFilters = []
+
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ extension FiltersViewController{
         if filterObj == nil {
             filterObj = getFilterObject()
         }
+
         for obj in filterObj.subProperties {
             if let localobj = obj as? SubProperties{
                 for names in selectedFilters {
@@ -47,8 +51,9 @@ extension FiltersViewController{
         subPropertiesTblView.subPropertiesTableViewDelegate = self
         subPropertiesTblView.dataArray = filterObj.subProperties
         subPropertiesTblView.setupTableView()
+        applyButton.enabled = false
+        clearButton.enabled = false
     }
-
     func getFilterObject() -> FilterByObject {
         
         let filterObj = FilterByObject()
@@ -81,6 +86,8 @@ extension FiltersViewController: SubPropertiesTableViewDelagate{
     func subPropertySelected(selectedSubProperty: SubProperties, index: Int) {
         filterObj.selectSubProperty(selectedSubProperty)
         subPropertiesTblView.reloadData()
+        applyButton.enabled = true
+        clearButton.enabled = true
     }
 }
 //MARK:- Actions

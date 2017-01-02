@@ -33,7 +33,15 @@ class MessageListCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension MessageListCell{
-    func configureCell(isLastCell:Bool) {
+    func configureCell(isLastCell:Bool, personObj:Person) {
+        userNameLabel.text = personObj.personName ?? personObj.personId
+        messageLabel.text = personObj.lastMessage?.message
+        let count = personObj.getUnreadMessageCount()
+        unreadMessageCountButton.setTitle("\(count)", forState: .Normal)
+        unreadMessageCountButton.hidden = count == 0
+        if let url = NSURL(string: personObj.personImage ?? "") {
+            profileImageView.sd_setImageWithURL(url)
+        }
         bottomLine.hidden = !isLastCell
     }
 }

@@ -1,21 +1,40 @@
 //
 //  AddressBook+CoreDataProperties.swift
-//  ActionableHealth
+//  
 //
-//  Created by Vidhan Nandi on 01/12/16.
-//  Copyright © 2016 Finoit Technologies. All rights reserved.
+//  Created by Vidhan Nandi on 02/01/17.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
 import Foundation
 import CoreData
 
+
 extension AddressBook {
 
-    @NSManaged var recordId: NSNumber?
-    @NSManaged var name: String?
-    @NSManaged var contacts: NSSet?
+    @nonobjc public override class func fetchRequest() -> NSFetchRequest {
+        return NSFetchRequest(entityName: "AddressBook");
+    }
+
+    @NSManaged public var name: String?
+    @NSManaged public var recordId: NSNumber?
+    @NSManaged public var contacts: NSSet?
+
+}
+
+// MARK: Generated accessors for contacts
+extension AddressBook {
+
+    @objc(addContactsObject:)
+    @NSManaged public func addToContacts(value: Contact)
+
+    @objc(removeContactsObject:)
+    @NSManaged public func removeFromContacts(value: Contact)
+
+    @objc(addContacts:)
+    @NSManaged public func addToContacts(values: NSSet)
+
+    @objc(removeContacts:)
+    @NSManaged public func removeFromContacts(values: NSSet)
 
 }

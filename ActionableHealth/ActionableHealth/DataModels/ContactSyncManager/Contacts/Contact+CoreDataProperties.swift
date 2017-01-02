@@ -1,21 +1,23 @@
 //
 //  Contact+CoreDataProperties.swift
-//  ActionableHealth
+//  
 //
-//  Created by Vidhan Nandi on 01/12/16.
-//  Copyright © 2016 Finoit Technologies. All rights reserved.
+//  Created by Vidhan Nandi on 02/01/17.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
 //
 
 import Foundation
 import CoreData
 
+
 extension Contact {
 
-    @NSManaged var id: String?
-    @NSManaged var isAppUser: NSNumber?
-    @NSManaged var addressBook: AddressBook?
+    @nonobjc public override class func fetchRequest() -> NSFetchRequest {
+        return NSFetchRequest(entityName: "Contact");
+    }
+
+    @NSManaged public var id: String?
+    @NSManaged public var isAppUser: NSNumber?
+    @NSManaged public var addressBook: AddressBook?
 
 }

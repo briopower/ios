@@ -14,7 +14,7 @@ class EditProfileViewController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var editProfileTblView: UITableView!
-
+    @IBOutlet weak var updateButton: UIButton!
     //MARK:- Variables
     let textViewCellName = "EditProfileDetailsCell_TextView"
     let nameViewCellName = "EditProfileDetailsCell_Name"
@@ -94,21 +94,25 @@ extension EditProfileViewController:UITableViewDataSource{
             case .Image:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(ProfileImageCell)) as? ProfileImageCell {
                     cell.configureForEditProfileCell(user)
+                    cell.delegate = self
                     return cell
                 }
             case .NameCell:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(nameViewCellName) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type, user: user)
+                    cell.delegate = self
                     return cell
                 }
             case .Hobbies:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(textViewCellName) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type, user: user)
+                    cell.delegate = self
                     return cell
                 }
             default:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(EditProfileDetailsCell)) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type, user: user)
+                    cell.delegate = self
                     return cell
                 }
             }
@@ -117,6 +121,12 @@ extension EditProfileViewController:UITableViewDataSource{
     }
 }
 
+//MARK:- EditProfileDetailsCellDelegate ProfileImageCellDelegate
+extension EditProfileViewController:EditProfileDetailsCellDelegate, ProfileImageCellDelegate{
+    func dataUpdated() {
+        updateButton.enabled = true
+    }
+}
 //MARK:- UITableViewDelegate
 extension EditProfileViewController:UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

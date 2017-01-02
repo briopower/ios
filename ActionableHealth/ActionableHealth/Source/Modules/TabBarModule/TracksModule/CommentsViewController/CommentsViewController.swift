@@ -7,6 +7,10 @@
 //
 
 import UIKit
+
+let initialHeight:CGFloat = 48.0
+let lineHeight:CGFloat = 19.09375
+
 protocol CommentsViewControllerDelegate:NSObjectProtocol {
     func updatedCommentCount(count:Int)
 }

@@ -52,11 +52,7 @@ class ContactSyncManager: NSObject {
 
     @objc private func addContacts(contacts:[APContact]) {
 
-        if let delegate = AppDelegate.getAppDelegateObject() where !isSyncing {
-
-            let prntCxt = delegate.managedObjectContext
-            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-            bgCxt.parentContext = prntCxt
+        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext where !isSyncing {
 
             bgCxt.performBlock({
                 self.isSyncing = true
@@ -98,11 +94,7 @@ class ContactSyncManager: NSObject {
     }
 
     private func processResponse(response:AnyObject?) {
-        if let delegate = AppDelegate.getAppDelegateObject() {
-            let prntCxt = delegate.managedObjectContext
-            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-            bgCxt.parentContext = prntCxt
-
+        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext {
             bgCxt.performBlock({
                 if let arr = response as? NSArray {
                     for obj in arr {
@@ -225,11 +217,8 @@ extension ContactSyncManager{
     }
 
     func checkForDeletedContacts() {
-        if let delegate = AppDelegate.getAppDelegateObject() where !isDeleting {
+        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext where !isDeleting {
             self.isDeleting = true
-            let prntCxt = delegate.managedObjectContext
-            let bgCxt = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
-            bgCxt.parentContext = prntCxt
 
             bgCxt.performBlock({
                 if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: nil, sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [AddressBook] {

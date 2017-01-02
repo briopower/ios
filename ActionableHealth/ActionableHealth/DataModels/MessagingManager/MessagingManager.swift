@@ -42,7 +42,7 @@ extension MessagingManager{
         do {
             try FIRAuth.auth()?.signOut()
         } catch let signOutError as NSError {
-            print ("Error signing out: \(signOutError.localizedDescription)")
+            debugPrint("Error signing out: \(signOutError.localizedDescription)")
         }
     }
 
@@ -54,22 +54,23 @@ extension MessagingManager{
         // Listen for new messages in the Firebase database
         self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
             { (snapshot:FIRDataSnapshot) in
-                print(snapshot.valueInExportFormat())
+                if let data = snapshot.valueInExportFormat() as? [String:AnyObject]{
+                    Messages.saveMessageFor(snapshot.key, value: data)
+                }
             }, withCancelBlock:
             { (error:NSError) in
-                print(error)
-        })
-
-        self.ref?.child(chanelToObserve).observeEventType(.ChildChanged, withBlock:
-            { (snapshot:FIRDataSnapshot) in
-                print(snapshot.valueInExportFormat())
-            }, withCancelBlock:
-            { (error:NSError) in
-                print(error)
+                debugPrint(error)
         })
     }
 
     func send(message:String, userId:String) {
-        self.ref?.child("channels/\(userId)").child("8882345715").child("\(Int(NSDate().timeIntervalInMilliSecs()))").updateChildValues(["message":NSDate().longString])
+        let objToSend = ["data":["key":userId, "message":message, "type": "chat"],
+                         "from": NSUserDefaults.getUserId(),
+                         "priority": "high",
+                         "toUserIds":[userId, NSUserDefaults.getUserId()]]
+
+        NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .POST, ResponseType: .JSON, Parameters: objToSend, Headers: nil) {
+            (status, responseObj, error, statusCode) in
+        }
     }
 }

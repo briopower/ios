@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol ProfileImageCellDelegate:NSObjectProtocol {
+    func dataUpdated()
+}
 
 class ProfileImageCell: UITableViewCell {
 
@@ -15,6 +18,7 @@ class ProfileImageCell: UITableViewCell {
     @IBOutlet weak var editButton: UIButton!
 
     //MARK:- Variables
+    weak var delegate:ProfileImageCellDelegate?
     var currentUser:UserModel?
 
     //MARK:- -------------------
@@ -53,6 +57,7 @@ extension ProfileImageCell{
 //MARK:- UIImagePickerControllerDelegate
 extension ProfileImageCell:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+        delegate?.dataUpdated()
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             profileImage.image = image
             currentUser?.image = image

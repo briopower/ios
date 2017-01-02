@@ -51,7 +51,7 @@
                                 <cells/>
                             </collectionView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO TRACKS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-qR-Ovl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="150.66666666666663" y="356.33333333333331" width="114.33333333333337" height="23.333333333333371"/>
+                                <rect key="frame" x="150.33333333333331" y="356.33333333333331" width="114.33333333333331" height="23.333333333333371"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,7 +100,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO CHATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-R0-lFL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="158.33333333333337" y="356.33333333333331" width="99.666666666666629" height="23.333333333333371"/>
+                                <rect key="frame" x="157.66666666666669" y="356.33333333333331" width="99.666666666666686" height="23.333333333333371"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -121,6 +121,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="messagesListTblView" destination="uxY-UU-0UW" id="fU5-Ny-6X5"/>
+                        <outlet property="nullCaseLabel" destination="vYa-R0-lFL" id="OtI-Fa-gv4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIh-UO-Tzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -130,7 +131,7 @@
         <!--Settings-->
         <scene sceneID="tor-WR-usg">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="VJW-rc-AcC" customClass="SettingsViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VJW-rc-AcC" customClass="SettingsViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2So-iy-pxV"/>
                         <viewControllerLayoutGuide type="bottom" id="21z-lU-rhV"/>
@@ -152,15 +153,9 @@
                         <constraints>
                             <constraint firstItem="71B-bD-SaJ" firstAttribute="leading" secondItem="Mzs-9j-vwG" secondAttribute="leading" id="5ex-kL-UAg"/>
                             <constraint firstAttribute="trailing" secondItem="71B-bD-SaJ" secondAttribute="trailing" id="98C-ab-gRD"/>
-                            <constraint firstItem="71B-bD-SaJ" firstAttribute="top" secondItem="2So-iy-pxV" secondAttribute="bottom" id="C0y-e4-iJU"/>
                             <constraint firstItem="21z-lU-rhV" firstAttribute="top" secondItem="71B-bD-SaJ" secondAttribute="bottom" id="KQw-LP-Tdr"/>
                             <constraint firstItem="71B-bD-SaJ" firstAttribute="top" secondItem="Mzs-9j-vwG" secondAttribute="top" id="yRH-tF-wl8"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="C0y-e4-iJU"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" tag="3" title="Settings" id="iz9-Yo-ocf" customClass="UITabBarItem_Custom" customModule="BRIO" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
@@ -189,14 +184,14 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="61.666666666666671"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opK-Ds-AJH">
-                                        <rect key="frame" x="206.33333333333334" y="25" width="2.3333333333333144" height="11.333333333333329"/>
+                                        <rect key="frame" x="206.33333333333334" y="25" width="2.3333333333333144" height="11.666666666666671"/>
                                         <color key="backgroundColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kp-31-erY">
-                                        <rect key="frame" x="90.666666666666686" y="0.0" width="232.66666666666663" height="61.666666666666671"/>
+                                        <rect key="frame" x="90.333333333333314" y="0.0" width="233.33333333333337" height="61.666666666666671"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caM-Zp-3gQ" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                                <rect key="frame" x="116.66666666666667" y="0.0" width="115.99999999999996" height="61.666666666666671"/>
+                                                <rect key="frame" x="116.66666666666666" y="0.0" width="116.66666666666669" height="61.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                                 <color key="tintColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>

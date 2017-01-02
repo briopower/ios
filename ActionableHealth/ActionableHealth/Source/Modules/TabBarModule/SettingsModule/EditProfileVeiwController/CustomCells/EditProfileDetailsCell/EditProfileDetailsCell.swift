@@ -24,6 +24,10 @@ enum EditProfileDetailsCellType:Int {
     }
 }
 
+protocol EditProfileDetailsCellDelegate:NSObjectProtocol {
+    func dataUpdated()
+}
+
 class EditProfileDetailsCell: UITableViewCell {
 
     //MARK:- Outlets
@@ -34,6 +38,7 @@ class EditProfileDetailsCell: UITableViewCell {
     @IBOutlet weak var completeSeprator: UIImageView?
 
     //MARK:- Variables
+    weak var delegate:EditProfileDetailsCellDelegate?
     var currentUser:UserModel?
     var currentType = EditProfileDetailsCellType.Count
 
@@ -61,6 +66,7 @@ extension EditProfileDetailsCell:UITextViewDelegate{
         default:
             break
         }
+        delegate?.dataUpdated()
     }
 
     @IBAction func textDidChange(sender: UITextField) {
@@ -74,6 +80,7 @@ extension EditProfileDetailsCell:UITextViewDelegate{
         default:
             break
         }
+        delegate?.dataUpdated()
     }
 }
 

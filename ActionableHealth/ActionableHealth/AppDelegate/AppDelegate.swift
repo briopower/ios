@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
 
         forEasyLoading()
-//        performSelectorInBackground(#selector(AppDelegate.forEasyLoading), withObject: nil)
 
         setupOnAppLauch()
 
@@ -116,6 +115,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return managedObjectContext
     }()
 
+    lazy var bgManagedObjectContext: NSManagedObjectContext = {
+        var bgContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        bgContext.parentContext = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        return bgContext
+    }()
+
+    lazy var abManagedObjectContext: NSManagedObjectContext = {
+        var bgContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        bgContext.parentContext = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        return bgContext
+    }()
+
     // MARK: - Core Data Saving support
     func saveContext () {
         if managedObjectContext.hasChanges {
@@ -185,10 +196,6 @@ extension AppDelegate{
 extension AppDelegate{
     func forEasyLoading() {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
-            viewCont.view.userInteractionEnabled = true
-        }
-
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController {
             viewCont.view.userInteractionEnabled = true
         }
 

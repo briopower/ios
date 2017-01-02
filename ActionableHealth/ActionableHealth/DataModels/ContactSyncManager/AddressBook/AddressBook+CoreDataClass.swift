@@ -1,28 +1,28 @@
 //
-//  AddressBook.swift
-//  ActionableHealth
+//  AddressBook+CoreDataClass.swift
 //
-//  Created by Vidhan Nandi on 29/11/16.
-//  Copyright © 2016 Finoit Technologies. All rights reserved.
+//
+//  Created by Vidhan Nandi on 02/01/17.
+//
 //
 
 import Foundation
 import CoreData
 
-//MARK:- Public methods
-class AddressBook: NSManagedObject {
+//MARK:- Public Methods
+public class AddressBook: NSManagedObject {
 
     class func saveAddressBookObj(contact:APContact, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> AddressBook? {
         if let context = contextRef{
 
             var addBook:AddressBook?
-            let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: NSPredicate(format: "recordId = %@", contact.recordID), sortingKey: ["name"], isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [AddressBook]
+            let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: NSPredicate(format: "recordId = %@", contact.recordID), sortingKey: ["name"], isAcendingSort: true, fetchLimit: nil, context: context) as? [AddressBook]
 
             if let temp = addBookArr?.first{
                 addBook = temp
                 for obj in addBookArr ?? [] {
                     if obj != addBook {
-                        contextRef?.deleteObject(obj)
+                        context.deleteObject(obj)
                     }
                 }
             }else{
@@ -35,8 +35,5 @@ class AddressBook: NSManagedObject {
         }
         return nil
     }
-
     
 }
-
-

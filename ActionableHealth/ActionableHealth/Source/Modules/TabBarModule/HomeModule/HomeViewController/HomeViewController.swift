@@ -9,7 +9,7 @@
 import UIKit
 
 enum SortTypes:Int{
-    case createdDate ,type ,rating ,activeTracks
+    case createdDate, rating, activeTracks
     func getStringValue() -> String {
         switch  self {
         case .activeTracks:
@@ -18,8 +18,6 @@ enum SortTypes:Int{
             return "createdDate"
         case .rating:
             return "rating"
-        case .type:
-            return "type"
         }
     }
 }
@@ -34,6 +32,7 @@ class HomeViewController: CommonViewController {
     var cursor = ""
     var sortingKey = ""
     var filterArray = []
+
     //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +115,7 @@ extension HomeViewController{
         }
     }
     @IBAction func sortAction(sender: UIButton) {
-        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["ORDER BY DATE", "TYPE" , "RATINGS" , "ACTIVE TRACKS"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
+        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["ORDER BY DATE", "RATINGS" , "ACTIVE TRACKS"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
             debugPrint("Clicked at index \(tappedAtIndex)")
             if let key = SortTypes(rawValue: tappedAtIndex ?? 0)?.getStringValue(){
                 self.sortingKey = key

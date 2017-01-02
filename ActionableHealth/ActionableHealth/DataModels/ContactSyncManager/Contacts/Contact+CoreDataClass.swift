@@ -1,17 +1,16 @@
 //
-//  Contact.swift
-//  ActionableHealth
+//  Contact+CoreDataClass.swift
 //
-//  Created by Vidhan Nandi on 29/11/16.
-//  Copyright © 2016 Finoit Technologies. All rights reserved.
+//
+//  Created by Vidhan Nandi on 02/01/17.
+//
 //
 
 import Foundation
 import CoreData
 
-
 //MARK:- Public Methods
-class Contact: NSManagedObject {
+public class Contact: NSManagedObject {
 
     class func saveContactObj(addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let context = contextRef{
@@ -55,4 +54,5 @@ class Contact: NSManagedObject {
         }
         return nil
     }
+    
 }

@@ -11,6 +11,29 @@ protocol PhaseDetailsCellDelegate:NSObjectProtocol {
     func commentsTapped(tag:Int, obj:AnyObject?)
     func rateTaskTapped(tag:Int, obj:AnyObject?)
 }
+enum TaskStatus:String {
+    case New, InProgress, Paused, Complete, InComplete
+
+    static func getNibName(status:String) -> String{
+        switch status {
+        case "Complete", "In Complete":
+            return PhaseDetailsCell.completedCell
+        default:
+            return PhaseDetailsCell.statusCell
+        }
+    }
+    static func getStatus(status:String) -> String {
+        switch status {
+        case "Complete":
+            return TaskStatus.Complete.rawValue.uppercaseString
+        case "In progress":
+            return "IN PROGRESS"
+        default:
+            return TaskStatus.New.rawValue.uppercaseString
+        }
+    }
+}
+
 class PhaseDetailsCell: UITableViewCell {
 
     //MARK:- Outlets
@@ -21,18 +44,17 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var starRatingView: HCSStarRatingView!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var rateTaskButton: UIButton!
-    @IBOutlet weak var overFlow: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var taskCompleted: UITextField!
 
     //MARK:- Variables
-
     static var statusCell = "PhaseDetailsCell_Status"
+    static var completedCell = "PhaseDetailsCell_Completed"
+
     weak var delegate:PhaseDetailsCellDelegate?
     var currentTask:TasksModel?
-    let backView = UIView()
-    var selectionView : SelectionView?
-    var statusSelected : ((cell:PhaseDetailsCell , status:String) ->Void)?
-    
+
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,80 +75,14 @@ extension PhaseDetailsCell{
     @IBAction func rateTaskAction(sender: AnyObject) {
         delegate?.rateTaskTapped(self.tag, obj: currentTask)
     }
-    @IBAction func overFlowBtnAction(sender: AnyObject) {
-        selectionView = SelectionView.getInstance() as? SelectionView
-        if let localView = selectionView{
-            localView.setUpCell(currentTask?.status ?? "")
-            self.setFrameForSelectionView(localView)
-            localView.delegate = self
-            CommonMethods.addShadowToView(localView)
-            self.superview?.addSubview(backView)
-            localView.alpha = 0
-            UIView.animateWithDuration(0.5, animations: {
-                self.superview?.addSubview(localView)
-                localView.alpha = 1
-            })
-        }
-
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        updateCompleted()
     }
-}
-
-//MARK:- SelectionView Functions
-extension PhaseDetailsCell{
-    func setFrameForSelectionView(view:UIView) -> (){
-        if let table = self.superview?.superview as? UITableView{
-          let rowCount = selectionView?.getRowCount((selectionView?.getCellNameForStatus(currentTask?.status ?? "")) ?? CellName.New)
-            let width = (516/1242)*(table.frame.width)
-            let height = ((600/2204)*(table.frame.height) * CGFloat(rowCount ?? 3)) / CGFloat(CellName.Count.rawValue)
-            let btnFrame =  self.convertRect(overFlow.frame, toView: self.superview)
-            //apply cases
-            if (table.contentSize.height > table.frame.height){
-            if (table.contentSize.height > frame.origin.y + topView.frame.height + height){
-                view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height, width: width, height: height)
-            }
-            else{
-                view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height - height, width: width, height: height)
-            }
-            }
-            else{
-                if (table.frame.height > frame.origin.y + topView.frame.height + height){
-                    view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height, width: width, height: height)
-                }
-                else{
-                    view.frame = CGRect.init(x:btnFrame.origin.x - width + btnFrame.size.width , y:btnFrame.origin.y + topView.frame.height - height, width: width, height: height)
-                }
-            }
-            let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(PhaseDetailsCell.handleTap(_:)))
-            tapGesture.numberOfTapsRequired = 1
-            backView.addGestureRecognizer(tapGesture)
-            backView.frame = CGRect.init(origin: table.frame.origin, size: table.contentSize)
-        }
+    @IBAction func sliderTouchUpInside(sender: UISlider) {
+        updateCompleted()
     }
-
-    func handleTap(sender: UITapGestureRecognizer? = nil){
-        selectionView?.alpha = 1
-        UIView.animateWithDuration(0.5, animations: {
-            self.selectionView?.removeFromSuperview()
-            self.selectionView?.alpha = 0
-        })
-        backView.removeFromSuperview()
-    }
-
-    func setStatus(type:CellName){
-            if NetworkClass.isConnected(true), let key = currentTask?.key{
-                let dict = ["key" : key , "status": type.getApiStatus(type)]
-                UIApplication.sharedApplication().keyWindow?.showLaoder(true)
-                NetworkClass.sendRequest(URL:Constants.URLs.postStatus, RequestType: .POST, Parameters: dict, Headers: nil, CompletionHandler: {
-                    (status, responseObj, error, statusCode) in
-                    if status{
-                        self.statusSelected?(cell:self , status: type.getApiStatus(type))
-                    }else{
-
-                    }
-                    UIApplication.sharedApplication().keyWindow?.hideLoader(true)
-                })
-            }
-                self.handleTap()
+    @IBAction func sliderTouchUpOutside(sender: UISlider) {
+        updateCompleted()
     }
 }
 
@@ -134,31 +90,20 @@ extension PhaseDetailsCell{
 extension PhaseDetailsCell{
     func configureCell(obj:TasksModel) {
         currentTask = obj
-        taskNameLabel.text = currentTask?.taskName ?? ""
+        taskNameLabel.text = currentTask?.taskName.uppercaseString ?? ""
         starRatingView.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
 
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            self.setStatuslabel(obj.status)
-             commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
+            commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
             commentCountButton.hidden = currentTask?.key.getValidObject() == nil
             rateTaskButton.hidden = commentCountButton.hidden
+
+            statusLabel.text = TaskStatus.getStatus(obj.status)
         }
     }
-    
-    func setStatuslabel(status:String){
-        switch status {
-        case "New":
-            statusLabel.text = "NEW"
-        case "Complete":
-            statusLabel.text = "COMPLETE"
-            overFlow.hidden = true
-        case "In progress":
-            statusLabel.text = "IN PROGRESS"
-        case "Assigned":
-            statusLabel.text = "IN COMPLETE"
-        default:
-            statusLabel.text = "NEW"
-        }
+
+    func updateCompleted() {
+        taskCompleted.text = "\(Int(round(slider.value)))%"
     }
 }

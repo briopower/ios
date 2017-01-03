@@ -52,7 +52,7 @@ extension FiltersViewController{
         subPropertiesTblView.dataArray = filterObj.subProperties
         subPropertiesTblView.setupTableView()
         applyButton.enabled = false
-        clearButton.enabled = false
+        clearButton.enabled = filterObj.getAllSelectedSubproperties().count != 0
     }
     func getFilterObject() -> FilterByObject {
         
@@ -98,6 +98,7 @@ extension FiltersViewController{
     @IBAction func clearButtonActions(sender: UIButton) {
         filterObj.deselectAllSubProperties()
         subPropertiesTblView.reloadData()
+        applyButton.enabled = true
     }
     @IBAction func applyButtonActions(sender: UIButton) {
         if let obj = delegate{

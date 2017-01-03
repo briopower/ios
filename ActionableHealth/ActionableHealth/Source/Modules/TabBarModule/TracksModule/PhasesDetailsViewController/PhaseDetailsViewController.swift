@@ -70,16 +70,8 @@ extension PhaseDetailsViewController{
         phaseDetailsTblView.estimatedRowHeight = 100
         phaseDetailsTblView.registerNib(UINib(nibName: String(PhaseDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhaseDetailsCell))
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
-    }
-    
-    func statusSelected(cell:PhaseDetailsCell , status:String) ->(){
-        if let indexPath = phaseDetailsTblView.indexPathForCell(cell){
-            if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
-                task.status = status
-            }
-        phaseDetailsTblView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-        }
-        
+        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedCell)
+
     }
 }
 
@@ -102,11 +94,10 @@ extension PhaseDetailsViewController:UITableViewDataSource{
                     }
                 }
             case .Track:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell.statusCell)) as? PhaseDetailsCell {
-                    if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                    if let cell = tableView.dequeueReusableCellWithIdentifier(TaskStatus.getNibName(task.status)) as? PhaseDetailsCell {
                         cell.tag = indexPath.row
                         cell.delegate = self
-                        cell.statusSelected = statusSelected
                         cell.configureCell(task)
                         return cell
                     }

@@ -21,7 +21,8 @@ class SearchUserViewController: CommonViewController {
     var searchResult:NSMutableArray = []
     var currentTemplate:TemplatesModel?
     var delegate:InviteForTrackViewController?
-    
+    var cancelButton:UIButton?
+
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +63,32 @@ extension SearchUserViewController{
         tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80
+
+        if let subViews = srchBar.subviews.first?.subviews{
+            for sub in subViews {
+                print(sub)
+                if let cancelButton = sub as? UIButton{
+                    self.cancelButton = cancelButton
+                    self.cancelButton?.enabled = false
+                    self.cancelButton?.setTitle("Search", forState: .Normal)
+                }
+            }
+        }
     }
 }
 
 //MARK:- UISearchBarDelegate
 extension SearchUserViewController:UISearchBarDelegate{
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if let _ = searchText.getValidObject() {
+            cancelButton?.enabled = true
+        }else{
+            cancelButton?.enabled = false
+        }
+    }
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         if let text = searchBar.text?.getValidObject() where NetworkClass.isConnected(false) {
+            searchBar.resignFirstResponder()
             showLoader()
             searchString = text
             searchResult.removeAllObjects()

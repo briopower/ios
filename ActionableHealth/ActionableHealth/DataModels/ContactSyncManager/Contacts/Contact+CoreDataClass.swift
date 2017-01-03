@@ -41,7 +41,9 @@ public class Contact: NSManagedObject {
     }
 
     class func getNameForContact(number:String) -> String? {
-
+        if number == NSUserDefaults.getUserId() {
+            return "You"
+        }
         let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, isAcendingSort: true, fetchLimit: nil) as? [Contact]
 
         if let temp = contactsArr?.first {

@@ -23,17 +23,8 @@ class SettingsViewController: CommonViewController {
         super.viewWillAppear(animated)
         setNavigationBarWithTitle("Settings", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
         settingsTblView.reloadData()
-        self.view.layoutSubviews()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        adjustInset()
-    }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        adjustInset()
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,10 +40,6 @@ extension SettingsViewController{
         settingsTblView.registerNib(UINib(nibName: String(SeparatorCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SeparatorCell))
         settingsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
 
-    }
-    func adjustInset() {
-        settingsTblView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
-        settingsTblView.contentOffset = CGPoint(x: 0, y: -64)
     }
 }
 

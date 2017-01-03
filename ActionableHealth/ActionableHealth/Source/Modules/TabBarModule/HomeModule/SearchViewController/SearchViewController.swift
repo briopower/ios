@@ -87,6 +87,7 @@ extension SearchViewController:CommonCollectionViewDelegate{
 extension SearchViewController:UISearchBarDelegate{
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if let text = searchBar.text?.getValidObject() where NetworkClass.isConnected(false) {
+            searchBar.resignFirstResponder()
             showLoader()
             searchString = text
             getData("")

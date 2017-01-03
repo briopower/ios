@@ -115,7 +115,13 @@ extension InviteForTrackViewController{
 
     func processResponse(response:AnyObject?) {
         switch sourceType {
-        case .Home, .Tracks:
+        case .Home:
+            getNavigationController()
+            if let tbCont = getNavigationController()?.viewControllers[0] as? UITabBarController{
+                tbCont.selectedIndex = TrackDetailsSourceType.Tracks.rawValue
+                getNavigationController()?.popToRootViewControllerAnimated(true)
+            }
+        case .Tracks:
             getNavigationController()?.popToRootViewControllerAnimated(true)
         default:
             break

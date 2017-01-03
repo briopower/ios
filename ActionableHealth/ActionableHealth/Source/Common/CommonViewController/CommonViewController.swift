@@ -36,13 +36,10 @@ class CommonViewController: UIViewController {
  
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.dismissKeyboard()
-        self.tabBarController?.tabBar.hidden = !NSUserDefaults.isLoggedIn()
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        UIApplication.dismissKeyboard()
     }
 
     override func viewDidAppear(animated: Bool) {

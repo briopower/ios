@@ -39,6 +39,10 @@ class CommentsViewController: KeyboardAvoidingViewController {
         super.viewWillAppear(animated)
         setNavigationBarWithTitle("Comments", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,6 +63,7 @@ extension CommentsViewController{
 //MARK:- Additonal methods
 extension CommentsViewController{
     func setupView() {
+        txtView.font = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
         commentsTblView.tableViewType = TableViewType.Comments
         commentsTblView.commonTableViewDelegate = self
         getComments("")

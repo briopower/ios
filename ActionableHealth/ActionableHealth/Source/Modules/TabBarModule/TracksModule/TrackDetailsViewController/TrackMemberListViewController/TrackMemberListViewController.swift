@@ -60,10 +60,14 @@ extension TrackMemberListViewController:UITableViewDataSource{
 //MARK:- UITableViewDelegate
 extension TrackMemberListViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.getNavigationController()?.pushViewController(viewCont, animated: true)
-            })
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let userId = (membersArray[indexPath.row] as? UserModel)?.userID {
+            if userId != NSUserDefaults.getUserId() {
+                dispatch_async(dispatch_get_main_queue(), {
+                    viewCont.personObj = Person.getPersonWith(userId)
+                    AppDelegate.getAppDelegateObject()?.saveContext()
+                    self.getNavigationController()?.pushViewController(viewCont, animated: true)
+                })
+            }
         }
     }
 }
@@ -98,6 +102,6 @@ extension TrackMemberListViewController{
     }
 
     func processError(error:NSError?) {
-
+        
     }
 }

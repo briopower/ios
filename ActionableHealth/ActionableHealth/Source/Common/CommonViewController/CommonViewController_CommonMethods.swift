@@ -12,8 +12,6 @@ import UIKit
 extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
 
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        UIApplication.dismissKeyboard()
-        viewController.view?.endEditing(true)
         navigationController.interactivePopGestureRecognizer?.enabled = true
         navigationController.interactivePopGestureRecognizer?.delegate = self
     }
@@ -43,7 +41,7 @@ extension CommonViewController{
 
     func showProgressLoader() {
         showLoader()
-        loader?.mode = .AnnularDeterminate
+        loader?.mode = .Determinate
     }
 }
 

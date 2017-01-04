@@ -18,6 +18,7 @@ class MessagingViewController: JSQMessagesViewController {
     let outgoingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"sentMessage")!, highlightedImage: UIImage(named:"sentMessage")!)
     let incomingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"recievedMessage")!, highlightedImage: UIImage(named:"recievedMessage")!)
     let dummAvtarIcon = JSQMessagesAvatarImage(placeholder: UIImage(named:"circle-user-ic")!)
+    var shouldScroll = true
 
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -35,15 +36,19 @@ class MessagingViewController: JSQMessagesViewController {
         personObj?.markAllAsRead()
         AppDelegate.getAppDelegateObject()?.saveContext()
     }
-    
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        finishReceivingMessage()
+        shouldScroll = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    deinit {
+        collectionView.removeObserver(self, forKeyPath: "contentSize")
     }
 
 }
@@ -68,15 +73,24 @@ extension MessagingViewController{
         collectionView.collectionViewLayout.messageBubbleFont = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
         collectionView.collectionViewLayout.messageBubbleTextViewFrameInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 9)
 
+        collectionView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
         inputToolbar.contentView.leftBarButtonItem = nil
         let sendButton = UIButton(frame: CGRect.zero)
         sendButton.setImage(UIImage(named:"send"), forState: .Normal)
+        sendButton.imageView?.contentMode = .ScaleAspectFit
         sendButton.sizeToFit()
         inputToolbar.contentView.rightBarButtonItem = sendButton
         inputToolbar.contentView.textView.placeHolder = "Type your message here"
         inputToolbar.contentView.textView.font = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
-        inputToolbar.preferredDefaultHeight = 50
         inputToolbar.maximumHeight = 100
+        inputToolbar.preferredDefaultHeight = 50
+    }
+
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        if shouldScroll && keyPath == "contentSize" {
+            scrollToBottomAnimated(false)
+        }
     }
 }
 
@@ -160,10 +174,12 @@ extension MessagingViewController:NSFetchedResultsControllerDelegate{
 extension MessagingViewController{
 
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        if let id = personObj?.personId{
-            MessagingManager.sharedInstance.send(text, userId: id)
+        if NetworkClass.isConnected(true) {
+            if let id = personObj?.personId{
+                MessagingManager.sharedInstance.send(text, userId: id)
+            }
+            finishSendingMessage()
         }
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
-        finishSendingMessage()
+
     }
 }

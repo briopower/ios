@@ -41,6 +41,10 @@ extension TasksModel{
         return ["key":key, "rating":"\(Double(val/10))"];
     }
 
+    class func getDictForStatus(key:String, status:String) -> [String : AnyObject] {
+        return ["key":key, "status":status];
+    }
+
     class func getTasksUsingObj(dict:AnyObject) -> TasksModel {
         let model = TasksModel()
         model.taskId = dict["id"] as? String

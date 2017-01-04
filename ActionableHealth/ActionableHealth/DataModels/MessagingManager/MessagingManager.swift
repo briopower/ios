@@ -26,7 +26,7 @@ class MessagingManager: NSObject {
     }
 
     deinit {
-        self.ref?.child(chanelToObserve).removeAllObservers()
+        removeObservers()
     }
 }
 
@@ -34,7 +34,20 @@ class MessagingManager: NSObject {
 extension MessagingManager{
     func openChatSession() {
         FIRAuth.auth()?.signInWithCustomToken(NSUserDefaults.getFirebaseToken(), completion: { (user:FIRUser?, error:NSError?) in
-            self.configureDatabase()
+            if let code = error?.code{
+                debugPrint(error)
+                if let type = FIRAuthErrorCode(rawValue: code){
+                    switch type{
+                    case .ErrorCodeNetworkError:
+                        self.openChatSession()
+                    default:
+                        break
+                    }
+                }
+            }else{
+                self.configureDatabase()
+
+            }
         })
     }
 
@@ -55,14 +68,23 @@ extension MessagingManager{
         self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
             { (snapshot:FIRDataSnapshot) in
                 if let data = snapshot.valueInExportFormat() as? [String:AnyObject]{
-                    Messages.saveMessageFor(snapshot.key, value: data)
+                    if let type = data["data"]?["type"] as? String{
+                        switch type{
+                        case "chat":
+                            Messages.saveMessageFor(snapshot.key, value: data)
+                        default:
+                            break
+                        }
+                    }
                 }
             }, withCancelBlock:
             { (error:NSError) in
                 debugPrint(error)
         })
     }
-
+    func removeObservers() {
+        self.ref?.child(chanelToObserve).removeAllObservers()
+    }
     func send(message:String, userId:String) {
         let objToSend = ["data":["key":userId, "message":message, "type": "chat"],
                          "from": NSUserDefaults.getUserId(),

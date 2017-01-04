@@ -26,9 +26,10 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
     //MARK:- Variables
     var frc:NSFetchedResultsController?
     var sourceType = TrackDetailsSourceType.Home
-    var selectedUsers = NSMutableArray()
     var currentTemplate:TemplatesModel?
     var trackName:String?
+    var selectedUsers = NSMutableArray()
+    var searchedUsers = NSMutableArray()
 
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -66,12 +67,13 @@ extension InviteForTrackViewController{
 //MARK:- Additional methods
 extension InviteForTrackViewController{
     func setupView() {
-
-        tblView.registerNib(UINib(nibName: String(SearchByIdCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SearchByIdCell))
-        tblView.registerNib(UINib(nibName: String(AddFromPhoneCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(AddFromPhoneCell))
         tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
+        tblView.registerNib(UINib(nibName: String(SearchByIdHeader), bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: String(SearchByIdHeader))
+        tblView.registerNib(UINib(nibName: String(AddFromPhoneHeader), bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: String(AddFromPhoneHeader))
 
         tblView.rowHeight = UITableViewAutomaticDimension
+        tblView.sectionHeaderHeight = UITableViewAutomaticDimension
+        tblView.estimatedSectionHeaderHeight = 80
         tblView.estimatedRowHeight = 80
 
         frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@ AND id !=%@", NSNumber(bool: true), NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sortingKey: ["addressBook.name"], isAcendingSort: true)
@@ -148,7 +150,7 @@ extension InviteForTrackViewController:UITableViewDataSource{
         if let type = TrackInviteSectionType(rawValue: section) {
             switch type {
             case .Details:
-                return TrackInviteDetailsSectionCellType.Count.rawValue
+                return searchedUsers.count
             default:
                 let rows = frc?.fetchedObjects?.count ?? 0
                 if rows == 0 && NSUserDefaults.getLastSyncDate() == nil {
@@ -167,19 +169,10 @@ extension InviteForTrackViewController:UITableViewDataSource{
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
             switch type {
             case .Details:
-                if let cellType = TrackInviteDetailsSectionCellType(rawValue: indexPath.row) {
-                    switch cellType {
-                    case .Search:
-                        if let cell = tableView.dequeueReusableCellWithIdentifier(String(SearchByIdCell)) as? SearchByIdCell {
-                            cell.delegate = self
-                            return cell
-                        }
-                    case .AddFromPhone:
-                        if let cell = tableView.dequeueReusableCellWithIdentifier(String(AddFromPhoneCell)) as? AddFromPhoneCell {
-                            return cell
-                        }
-                    default:
-                        break
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
+                    if let obj = searchedUsers[indexPath.row] as? UserModel{
+                        cell.configCell(obj, shouldSelect: selectedUsers.containsObject(obj.userID ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.userID ?? "") ?? false)
+                        return cell
                     }
                 }
             default:
@@ -197,25 +190,57 @@ extension InviteForTrackViewController:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension InviteForTrackViewController:UITableViewDelegate{
-
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let type = TrackInviteSectionType(rawValue: section) {
+            switch type {
+            case .Details:
+                if let headerView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(String(SearchByIdHeader)) as? SearchByIdHeader {
+                    headerView.delegate = self
+                    return headerView
+                }
+            case .Contacts:
+                if let headerView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(String(AddFromPhoneHeader)) as? AddFromPhoneHeader {
+                    return headerView
+                }
+            default:
+               break
+            }
+        }
+        return nil
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
-            if type == .Contacts {
-                if let obj = (frc?.fetchedObjects?[indexPath.row] as? Contact)?.id {
+            switch type {
+            case .Details:
+                if let obj = (searchedUsers[indexPath.row] as? UserModel)?.userID {
+                    if NSUserDefaults.getUserId() == obj {
+                        return
+                    }
                     selectedUsers.containsObject(obj) ? selectedUsers.removeObject(obj) :selectedUsers.addObject(obj)
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
                 }
+            case .Contacts:
+                if let obj = (frc?.fetchedObjects?[indexPath.row] as? Contact)?.id {
+                    if NSUserDefaults.getUserId() == obj {
+                        return
+                    }
+                    selectedUsers.containsObject(obj) ? selectedUsers.removeObject(obj) :selectedUsers.addObject(obj)
+                }
+            default:
+                break
             }
+            tableView.reloadData()
         }
     }
 }
 
 
 //MARK:- SearchByIdCellDelegate
-extension InviteForTrackViewController:SearchByIdCellDelegate{
+extension InviteForTrackViewController:SearchByIdHeaderDelegate{
     func searchTapped() {
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.searchUserView) as? SearchUserViewController {
-                    viewCont.contactsSelected = selectedUsers
+                    viewCont.contactsSelected = NSMutableArray(array: selectedUsers)
+                    viewCont.searchedUsers = NSMutableArray(array: searchedUsers)
                     viewCont.currentTemplate = currentTemplate
                     viewCont.delegate = self
                 UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)

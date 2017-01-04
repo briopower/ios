@@ -15,38 +15,50 @@ enum TaskStatus:String {
     case New, InProgress, Paused, Complete, InComplete
 
     static func getNibName(status:String) -> String{
-        switch status {
-        case "Complete", "In Complete":
-            return PhaseDetailsCell.completedCell
-        default:
-            return PhaseDetailsCell.statusCell
+        if let currentStatus = TaskStatus(rawValue: status) {
+            switch currentStatus{
+            case .Complete, .InComplete:
+                return PhaseDetailsCell.completedCell
+            default:
+                return PhaseDetailsCell.statusCell
+            }
         }
+        return ""
     }
-    static func getStatus(status:String) -> String {
-        switch status {
-        case "Complete":
-            return TaskStatus.Complete.rawValue.uppercaseString
-        case "In progress":
-            return "IN PROGRESS"
-        default:
-            return TaskStatus.New.rawValue.uppercaseString
+
+    static func getConfig(currentTask:TasksModel) -> (status:String, sliderEnabled:Bool, sliderValue:String, startStopImage:UIImage?, detailsString:String) {
+        if  let status = TaskStatus(rawValue: currentTask.status) {
+            switch status {
+            case .New:
+                return (status.rawValue.uppercaseString, false, "0", UIImage(named: "Start"), "")
+            case .Paused:
+                return (status.rawValue.uppercaseString, false, "0", UIImage(named: "Start"), "")
+            case .InProgress:
+                return ("IN PROGRESS", true, "0", UIImage(named: "Pause"), "In Progress as on \(NSDate().shortDateString)")
+            case .Complete:
+                return (status.rawValue.uppercaseString, false, "0", nil, "Completed on ---")
+            case .InComplete:
+                return (status.rawValue.uppercaseString, false, "0", nil, "Incomplete on ---")
+            }
         }
+        return ("", false, "0", nil, "")
     }
 }
 
 class PhaseDetailsCell: UITableViewCell {
 
     //MARK:- Outlets
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var taskNameLabel: UILabel!
-    @IBOutlet weak var completedOnlabel: UILabel!
-    @IBOutlet weak var commentCountButton: UIButton!
-    @IBOutlet weak var starRatingView: HCSStarRatingView!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var rateTaskButton: UIButton!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var slider: UISlider!
-    @IBOutlet weak var taskCompleted: UITextField!
+    @IBOutlet weak var topView: UIView?
+    @IBOutlet weak var taskNameLabel: UILabel?
+    @IBOutlet weak var completedOnlabel: UILabel?
+    @IBOutlet weak var commentCountButton: UIButton?
+    @IBOutlet weak var starRatingView: HCSStarRatingView?
+    @IBOutlet weak var ratingLabel: UILabel?
+    @IBOutlet weak var rateTaskButton: UIButton?
+    @IBOutlet weak var statusLabel: UILabel?
+    @IBOutlet weak var slider: UISlider?
+    @IBOutlet weak var taskCompleted: UITextField?
+    @IBOutlet weak var startStopButton: UIButton?
 
     //MARK:- Variables
     static var statusCell = "PhaseDetailsCell_Status"
@@ -65,6 +77,7 @@ class PhaseDetailsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+
 }
 
 //MARK:- Button Action
@@ -84,26 +97,59 @@ extension PhaseDetailsCell{
     @IBAction func sliderTouchUpOutside(sender: UISlider) {
         updateCompleted()
     }
+    @IBAction func startStopAction(sender: UIButton) {
+        if let status = TaskStatus(rawValue: currentTask?.status ?? ""){
+            switch status {
+            case .New, .Paused:
+                setStatus(TaskStatus.InProgress)
+            case .InProgress:
+                setStatus(TaskStatus.Paused)
+            default:
+                break
+            }
+        }
+    }
 }
 
 //MARK:- Additional methods
 extension PhaseDetailsCell{
     func configureCell(obj:TasksModel) {
         currentTask = obj
-        taskNameLabel.text = currentTask?.taskName.uppercaseString ?? ""
-        starRatingView.value = CGFloat(currentTask?.rating ?? 0)
-        ratingLabel.text = "\(currentTask?.rating ?? 0) Rating"
+        taskNameLabel?.text = currentTask?.taskName.uppercaseString ?? ""
+        starRatingView?.value = CGFloat(currentTask?.rating ?? 0)
+        ratingLabel?.text = "\(currentTask?.rating ?? 0) Rating"
 
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            commentCountButton.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
-            commentCountButton.hidden = currentTask?.key.getValidObject() == nil
-            rateTaskButton.hidden = commentCountButton.hidden
+            commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
+            commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
+            rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
 
-            statusLabel.text = TaskStatus.getStatus(obj.status)
+            let (status, sliderEnabled, sliderValue, startStopImage, details) = TaskStatus.getConfig(obj)
+            statusLabel?.text = status
+            slider?.enabled = sliderEnabled
+            startStopButton?.setImage(startStopImage, forState: .Normal)
+            slider?.value = Float(sliderValue) ?? 0
+            completedOnlabel?.text = details
         }
     }
 
     func updateCompleted() {
-        taskCompleted.text = "\(Int(round(slider.value)))%"
+        taskCompleted?.text = "\(Int(round(slider?.value ?? 0)))%"
+    }
+
+    func setStatus(taskStatus:TaskStatus) {
+        if NetworkClass.isConnected(true), let key = currentTask?.key {
+            startStopButton?.enabled = false
+            NetworkClass.sendRequest(URL: Constants.URLs.postStatus, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForStatus(key, status: taskStatus.rawValue), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status{
+                    self.currentTask?.status = taskStatus.rawValue
+                    if let task = self.currentTask{
+                        self.configureCell(task)
+                    }
+                }
+                self.startStopButton?.enabled = true
+            })
+        }
     }
 }

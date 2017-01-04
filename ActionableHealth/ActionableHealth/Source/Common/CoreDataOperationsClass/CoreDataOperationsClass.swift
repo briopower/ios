@@ -56,7 +56,6 @@ class CoreDataOperationsClass: NSObject {
         let fetchRequest = NSFetchRequest()
         let entityDesc = NSEntityDescription.entityForName(className, inManagedObjectContext: managedObjectContext)
         fetchRequest.entity = entityDesc
-        
         //if there is sort key
         if let sortKey = sortingKey
         {
@@ -69,6 +68,7 @@ class CoreDataOperationsClass: NSObject {
         
         // if predicate exists
         fetchRequest.predicate = predicate
+        fetchRequest.fetchBatchSize = 50
         fetchRequest.returnsObjectsAsFaults = false
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: sectionNameKeyPath, cacheName: nil)
         

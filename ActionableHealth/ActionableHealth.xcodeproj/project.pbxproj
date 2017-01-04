@@ -8,12 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		08CF9E2E7FFA212F25CF8611 /* Pods_ActionableHealth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E67BE2C7A1ADBED4FE95728 /* Pods_ActionableHealth.framework */; };
-		3C0FDF381DF5662700710764 /* SearchByIdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0FDF361DF5662700710764 /* SearchByIdCell.swift */; };
-		3C0FDF391DF5662700710764 /* SearchByIdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C0FDF371DF5662700710764 /* SearchByIdCell.xib */; };
-		3C0FDF3C1DF5664800710764 /* AddFromPhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0FDF3A1DF5664800710764 /* AddFromPhoneCell.swift */; };
-		3C0FDF3D1DF5664800710764 /* AddFromPhoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C0FDF3B1DF5664800710764 /* AddFromPhoneCell.xib */; };
-		3C0FDF401DF5695200710764 /* ContactDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0FDF3E1DF5695200710764 /* ContactDetailsCell.swift */; };
-		3C0FDF411DF5695200710764 /* ContactDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C0FDF3F1DF5695200710764 /* ContactDetailsCell.xib */; };
 		3C1577C11E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */; };
 		3C1577C31E13CB54004FFAB1 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */; };
 		3C1577C51E13CB54004FFAB1 /* ContactSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */; };
@@ -59,6 +53,12 @@
 		3C6BF4C91E0155F800F6DC70 /* GroupsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6BF4C71E0155F800F6DC70 /* GroupsCell.swift */; };
 		3C6BF4CA1E0155F800F6DC70 /* GroupsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6BF4C81E0155F800F6DC70 /* GroupsCell.xib */; };
 		3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */; };
+		3C71C40E1E1D2BEA00468E43 /* AddFromPhoneHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C71C4061E1D2BEA00468E43 /* AddFromPhoneHeader.swift */; };
+		3C71C40F1E1D2BEA00468E43 /* AddFromPhoneHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C71C4071E1D2BEA00468E43 /* AddFromPhoneHeader.xib */; };
+		3C71C4101E1D2BEA00468E43 /* ContactDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C71C4091E1D2BEA00468E43 /* ContactDetailsCell.swift */; };
+		3C71C4111E1D2BEA00468E43 /* ContactDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C71C40A1E1D2BEA00468E43 /* ContactDetailsCell.xib */; };
+		3C71C4121E1D2BEA00468E43 /* SearchByIdHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C71C40C1E1D2BEA00468E43 /* SearchByIdHeader.swift */; };
+		3C71C4131E1D2BEA00468E43 /* SearchByIdHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C71C40D1E1D2BEA00468E43 /* SearchByIdHeader.xib */; };
 		3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */; };
 		3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */; };
 		3C8E47761E165CAE0019C261 /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C8E470A1E165CAE0019C261 /* JSQMessagesAssets.bundle */; };
@@ -238,12 +238,6 @@
 
 /* Begin PBXFileReference section */
 		0BCF5EE8FE3931530E8332FB /* Pods-ActionableHealth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealth/Pods-ActionableHealth.debug.xcconfig"; sourceTree = "<group>"; };
-		3C0FDF361DF5662700710764 /* SearchByIdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchByIdCell.swift; sourceTree = "<group>"; };
-		3C0FDF371DF5662700710764 /* SearchByIdCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchByIdCell.xib; sourceTree = "<group>"; };
-		3C0FDF3A1DF5664800710764 /* AddFromPhoneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFromPhoneCell.swift; sourceTree = "<group>"; };
-		3C0FDF3B1DF5664800710764 /* AddFromPhoneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFromPhoneCell.xib; sourceTree = "<group>"; };
-		3C0FDF3E1DF5695200710764 /* ContactDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailsCell.swift; sourceTree = "<group>"; };
-		3C0FDF3F1DF5695200710764 /* ContactDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactDetailsCell.xib; sourceTree = "<group>"; };
 		3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddressBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSyncManager.swift; sourceTree = "<group>"; };
@@ -295,6 +289,12 @@
 		3C6BF4C71E0155F800F6DC70 /* GroupsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCell.swift; sourceTree = "<group>"; };
 		3C6BF4C81E0155F800F6DC70 /* GroupsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupsCell.xib; sourceTree = "<group>"; };
 		3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackMemberListViewController.swift; sourceTree = "<group>"; };
+		3C71C4061E1D2BEA00468E43 /* AddFromPhoneHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFromPhoneHeader.swift; sourceTree = "<group>"; };
+		3C71C4071E1D2BEA00468E43 /* AddFromPhoneHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddFromPhoneHeader.xib; sourceTree = "<group>"; };
+		3C71C4091E1D2BEA00468E43 /* ContactDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailsCell.swift; sourceTree = "<group>"; };
+		3C71C40A1E1D2BEA00468E43 /* ContactDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactDetailsCell.xib; sourceTree = "<group>"; };
+		3C71C40C1E1D2BEA00468E43 /* SearchByIdHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchByIdHeader.swift; sourceTree = "<group>"; };
+		3C71C40D1E1D2BEA00468E43 /* SearchByIdHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchByIdHeader.xib; sourceTree = "<group>"; };
 		3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		3C8E470A1E165CAE0019C261 /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
@@ -547,33 +547,6 @@
 				C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3C0FDF331DF5658D00710764 /* SearchByIdCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C0FDF361DF5662700710764 /* SearchByIdCell.swift */,
-				3C0FDF371DF5662700710764 /* SearchByIdCell.xib */,
-			);
-			path = SearchByIdCell;
-			sourceTree = "<group>";
-		};
-		3C0FDF341DF5658D00710764 /* AddFromPhoneCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C0FDF3A1DF5664800710764 /* AddFromPhoneCell.swift */,
-				3C0FDF3B1DF5664800710764 /* AddFromPhoneCell.xib */,
-			);
-			path = AddFromPhoneCell;
-			sourceTree = "<group>";
-		};
-		3C0FDF351DF5658D00710764 /* ContactDetailsCell */ = {
-			isa = PBXGroup;
-			children = (
-				3C0FDF3E1DF5695200710764 /* ContactDetailsCell.swift */,
-				3C0FDF3F1DF5695200710764 /* ContactDetailsCell.xib */,
-			);
-			path = ContactDetailsCell;
 			sourceTree = "<group>";
 		};
 		3C1577B51E13CB54004FFAB1 /* ContactSyncManager */ = {
@@ -1068,6 +1041,43 @@
 				3C707DA11DFAB77D00B9177E /* TrackMemberListViewController.swift */,
 			);
 			path = TrackMemberListViewController;
+			sourceTree = "<group>";
+		};
+		3C71C4041E1D2BEA00468E43 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3C71C4051E1D2BEA00468E43 /* AddFromPhoneHeader */,
+				3C71C4081E1D2BEA00468E43 /* ContactDetailsCell */,
+				3C71C40B1E1D2BEA00468E43 /* SearchByIdHeader */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3C71C4051E1D2BEA00468E43 /* AddFromPhoneHeader */ = {
+			isa = PBXGroup;
+			children = (
+				3C71C4061E1D2BEA00468E43 /* AddFromPhoneHeader.swift */,
+				3C71C4071E1D2BEA00468E43 /* AddFromPhoneHeader.xib */,
+			);
+			path = AddFromPhoneHeader;
+			sourceTree = "<group>";
+		};
+		3C71C4081E1D2BEA00468E43 /* ContactDetailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C71C4091E1D2BEA00468E43 /* ContactDetailsCell.swift */,
+				3C71C40A1E1D2BEA00468E43 /* ContactDetailsCell.xib */,
+			);
+			path = ContactDetailsCell;
+			sourceTree = "<group>";
+		};
+		3C71C40B1E1D2BEA00468E43 /* SearchByIdHeader */ = {
+			isa = PBXGroup;
+			children = (
+				3C71C40C1E1D2BEA00468E43 /* SearchByIdHeader.swift */,
+				3C71C40D1E1D2BEA00468E43 /* SearchByIdHeader.xib */,
+			);
+			path = SearchByIdHeader;
 			sourceTree = "<group>";
 		};
 		3C7DA1D91DB0A5BA002C9A50 /* NotificationViewController */ = {
@@ -1888,20 +1898,9 @@
 			isa = PBXGroup;
 			children = (
 				3CFB48E01DFA7DF00022F3B6 /* SearchUserViewController */,
-				3CF5B55B1DB79E3100224046 /* CustomCells */,
 				3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */,
 			);
 			path = InviteForTracksViewController;
-			sourceTree = "<group>";
-		};
-		3CF5B55B1DB79E3100224046 /* CustomCells */ = {
-			isa = PBXGroup;
-			children = (
-				3C0FDF331DF5658D00710764 /* SearchByIdCell */,
-				3C0FDF341DF5658D00710764 /* AddFromPhoneCell */,
-				3C0FDF351DF5658D00710764 /* ContactDetailsCell */,
-			);
-			path = CustomCells;
 			sourceTree = "<group>";
 		};
 		3CF5B5611DB7A55000224046 /* CommentsViewController */ = {
@@ -1970,6 +1969,7 @@
 		3CFB48E01DFA7DF00022F3B6 /* SearchUserViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3C71C4041E1D2BEA00468E43 /* CustomCells */,
 				3CFB48E11DFA7E110022F3B6 /* SearchUserViewController.swift */,
 			);
 			path = SearchUserViewController;
@@ -2174,11 +2174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CC9D07B1DB897EF00287068 /* TrackFileCell.xib in Resources */,
+				3C71C4111E1D2BEA00468E43 /* ContactDetailsCell.xib in Resources */,
 				3C8E47801E165CAE0019C261 /* JSQMessagesViewController.xib in Resources */,
 				3C6BF4C41E01559100F6DC70 /* ProfileImageCell.xib in Resources */,
 				3C8E47991E165CAE0019C261 /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				40EBFEDC1DF8071500605397 /* DetailViewCell.xib in Resources */,
-				3C0FDF411DF5695200710764 /* ContactDetailsCell.xib in Resources */,
 				3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */,
 				3CCF30F81DB731CF001A1E7B /* RecievedMessageCell.xib in Resources */,
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
@@ -2193,6 +2193,7 @@
 				3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */,
 				3C8E47A11E165CAE0019C261 /* JSQMessagesToolbarContentView.xib in Resources */,
 				3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */,
+				3C71C4131E1D2BEA00468E43 /* SearchByIdHeader.xib in Resources */,
 				3C966DC31DF6CAFB00E299BF /* CountryCodeListCell.xib in Resources */,
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
@@ -2201,7 +2202,7 @@
 				3C8E479E1E165CAE0019C261 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */,
 				3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */,
-				3C0FDF391DF5662700710764 /* SearchByIdCell.xib in Resources */,
+				3C71C40F1E1D2BEA00468E43 /* AddFromPhoneHeader.xib in Resources */,
 				3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */,
 				3C8E47A31E165CAE0019C261 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
@@ -2215,7 +2216,6 @@
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
 				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */,
 				3C8E47A71E165CAE0019C261 /* LICENSE in Resources */,
-				3C0FDF3D1DF5664800710764 /* AddFromPhoneCell.xib in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
 				3C8E47761E165CAE0019C261 /* JSQMessagesAssets.bundle in Resources */,
 				3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */,
@@ -2388,11 +2388,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C71C4121E1D2BEA00468E43 /* SearchByIdHeader.swift in Sources */,
 				3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */,
 				3CCF30FE1DB7327C001A1E7B /* MessagingViewController.swift in Sources */,
 				3C8E478E1E165CAE0019C261 /* JSQMessage.m in Sources */,
 				3C3B886C1E1A1EAC005DA7B4 /* Messages+CoreDataClass.swift in Sources */,
-				3C0FDF3C1DF5664800710764 /* AddFromPhoneCell.swift in Sources */,
 				3C3B886F1E1A1F34005DA7B4 /* AddressBook+CoreDataClass.swift in Sources */,
 				3CC9D08D1DB8B68F00287068 /* PhaseDetailsViewController.swift in Sources */,
 				3C9D13281DA3CE5800998DA2 /* UIImageView_RoundImageView.swift in Sources */,
@@ -2407,7 +2407,6 @@
 				3CBD5C7C1DA7AFC0004BCAE0 /* TracksViewController.swift in Sources */,
 				3C9D132D1DA3CE5800998DA2 /* UITextView_FontSizeTextView.swift in Sources */,
 				3C9D132B1DA3CE5800998DA2 /* UITextField_FontSizeTextField.swift in Sources */,
-				3C0FDF381DF5662700710764 /* SearchByIdCell.swift in Sources */,
 				3CCECDA21DAF61E000831242 /* FilterByObject.swift in Sources */,
 				3CBD5C7F1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout.swift in Sources */,
 				3C1577C51E13CB54004FFAB1 /* ContactSyncManager.swift in Sources */,
@@ -2444,7 +2443,6 @@
 				3C8E47961E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
 				3CB8A2961DEDAE0C009B9AE9 /* TasksModel.swift in Sources */,
-				3C0FDF401DF5695200710764 /* ContactDetailsCell.swift in Sources */,
 				3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */,
 				3C1EC5AC1DA3A864003DC2A3 /* NetworkClass.swift in Sources */,
 				3C8E47771E165CAE0019C261 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
@@ -2466,6 +2464,7 @@
 				3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */,
 				3C8E47941E165CAE0019C261 /* JSQMessagesCollectionView.m in Sources */,
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
+				3C71C40E1E1D2BEA00468E43 /* AddFromPhoneHeader.swift in Sources */,
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
 				3C1EC5AE1DA3A864003DC2A3 /* NullCaseView.swift in Sources */,
 				3C8E47A81E165CAE0019C261 /* README.md in Sources */,
@@ -2510,6 +2509,7 @@
 				3C8E477A1E165CAE0019C261 /* UIColor+JSQMessages.m in Sources */,
 				3C1EC5981DA3A864003DC2A3 /* NSUserDefaults_Common.swift in Sources */,
 				3CCF31061DB74B7E001A1E7B /* TrackDetailsHeaderView.swift in Sources */,
+				3C71C4101E1D2BEA00468E43 /* ContactDetailsCell.swift in Sources */,
 				3CACF3F91DB634920034D700 /* CommonCollectionView.swift in Sources */,
 				3C8E479D1E165CAE0019C261 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */,

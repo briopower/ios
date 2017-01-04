@@ -79,7 +79,18 @@ extension UserModel{
         model.userID = dict["userId"] as? String
         model.lastName = dict["lastName"] as? String
         model.profileImage = dict["userProfileURL"] as? String
-        model.name = Contact.getNameForContact(model.userID ?? "")
+
+        var name = "Unknown"
+        if let temp = Contact.getNameForContact(model.userID ?? "") {
+            name = temp
+        }else if let firstName = model.firstName, let lastName = model.lastName{
+            name = "\(firstName) \(lastName)"
+        }else if let firstName = model.firstName{
+            name = firstName
+        }else if let lastName = model.lastName{
+            name = lastName
+        }
+        model.name = name
         return model
     }
 

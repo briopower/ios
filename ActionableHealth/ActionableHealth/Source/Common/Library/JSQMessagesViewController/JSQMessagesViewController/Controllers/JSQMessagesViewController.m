@@ -979,7 +979,7 @@ JSQMessagesKeyboardControllerDelegate>
 
 - (BOOL)jsq_inputToolbarHasReachedMaximumHeight
 {
-    return CGRectGetMinY(self.inputToolbar.frame) == (self.topLayoutGuide.length + self.topContentAdditionalInset);
+    return self.inputToolbar.frame.size.height == self.inputToolbar.maximumHeight;
 }
 
 - (void)jsq_adjustInputToolbarForComposerTextViewContentSizeChange:(CGFloat)dy
@@ -987,6 +987,9 @@ JSQMessagesKeyboardControllerDelegate>
     BOOL contentSizeIsIncreasing = (dy > 0);
 
     if ([self jsq_inputToolbarHasReachedMaximumHeight]) {
+        if ((self.inputToolbar.contentView.textView.frame.size.height <= self.inputToolbar.contentView.textView.contentSize.height) && !contentSizeIsIncreasing )  {
+            return ;
+        }
         BOOL contentOffsetIsPositive = (self.inputToolbar.contentView.textView.contentOffset.y > 0);
 
         if (contentSizeIsIncreasing || contentOffsetIsPositive) {

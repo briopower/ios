@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -27,10 +27,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow $(PRODUCT_NAME) to use Camera</string>
 	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses contacts</string>
+	<string>Please allow $(PRODUCT_NAME) to use Contacts</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) uses photos</string>
+	<string>Please allow $(PRODUCT_NAME) to use Photos</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>ProximaNova-Medium.ttf</string>

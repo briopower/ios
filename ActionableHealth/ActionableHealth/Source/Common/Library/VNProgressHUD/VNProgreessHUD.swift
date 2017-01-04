@@ -95,7 +95,7 @@ class VNProgreessHUD: UIView {
      * the entire text. If the text is too long it will get clipped by displaying "..." at the end. If left unchanged or
      * set to @"", then no message is displayed.
      */
-    var labelText:String? = ""{
+    var labelText:String? = "Please Wait..."{
         didSet {
             dispatch_async(dispatch_get_main_queue()) {
                 self.label?.text = self.labelText
@@ -136,6 +136,7 @@ class VNProgreessHUD: UIView {
      * The color of the HUD window. If this property is set, color is set using
      * this UIColor and the opacity property is not used.
      */
+    //MARK:- Changed
     var color:UIColor?{
         didSet {
             dispatch_async(dispatch_get_main_queue()) {
@@ -307,7 +308,6 @@ class VNProgreessHUD: UIView {
         }
     }
 
-
     /**
      * The progress of the progress indicator, from 0.0 to 1.0. Defaults to 0.0.
      */
@@ -371,6 +371,7 @@ class VNProgreessHUD: UIView {
         self.autoresizingMask = [.FlexibleTopMargin, .FlexibleBottomMargin, .FlexibleLeftMargin, .FlexibleRightMargin]
         self.opaque = false
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
+
         self.alpha = 0.0
         setupLabels()
         updateIndicator()

@@ -39,13 +39,8 @@ extension GroupsCell{
         if let url = NSURL(string:obj.profileImage ?? ""){
             circularImageView.sd_setImageWithURL(url)
         }
-        if let name = obj.name {
-            titleDescLabel.text = name
-            subTitleDescLabel.text = obj.userID
-        }else{
-            titleDescLabel.text = obj.userID
-            subTitleDescLabel.text = nil
-        }
+        titleDescLabel.text = obj.name
+        subTitleDescLabel.text = obj.userID
     }
 
 }

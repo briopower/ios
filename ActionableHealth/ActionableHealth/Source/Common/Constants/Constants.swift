@@ -83,7 +83,8 @@ class Constants: NSObject {
         static let trackMembers = "\(base)\(trackAPIs)getAllTrackMembers/"
         static let comment = "\(base)\(trackAPIs)comment/"
         static let getComments = "\(base)\(trackAPIs)getComments/"
-        static let postStatus = "\(base)\(trackAPIs)setStatus/"
+        static let setStatus = "\(base)\(trackAPIs)setStatus/"
+        static let setProgress = "\(base)\(trackAPIs)setProgress/"
         static let rating = "\(base)\(trackAPIs)setRating/"
         static let createUploadURL = "\(base)\(trackAPIs)createUploadURL/"
         static let uploadProfileImage = "\(base)\(trackAPIs)uploadProfileImage/"
@@ -93,6 +94,7 @@ class Constants: NSObject {
         static let closeChatSession = "\(base)\(trackAPIs)closeChatSession/"
         static let broadCastPresence = "\(base)\(trackAPIs)broadCastPresence/"
         static let postMessage = "\(base)\(trackAPIs)postMessage/"
+        static let postNotification = "\(base)\(trackAPIs)postNotification/"
         static let createTrackUploadURL = "\(base)\(trackAPIs)createTrackUploadURL/"
         static let searchUser = "\(base)\(trackAPIs)searchAppUsers/"
 

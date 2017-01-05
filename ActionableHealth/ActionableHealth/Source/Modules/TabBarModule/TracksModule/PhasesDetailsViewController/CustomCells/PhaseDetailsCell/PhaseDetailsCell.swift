@@ -26,22 +26,22 @@ enum TaskStatus:String {
         return ""
     }
 
-    static func getConfig(currentTask:TasksModel) -> (status:String, sliderEnabled:Bool, sliderValue:String, startStopImage:UIImage?, detailsString:String) {
+    static func getConfig(currentTask:TasksModel) -> (status:String, sliderEnabled:Bool, sliderValue:Double, startStopImage:UIImage?, detailsString:String) {
         if  let status = TaskStatus(rawValue: currentTask.status) {
             switch status {
             case .New:
-                return (status.rawValue.uppercaseString, false, "0", UIImage(named: "Start"), "")
+                return (status.rawValue.uppercaseString, false, currentTask.progress, UIImage(named: "Start"), "")
             case .Paused:
-                return (status.rawValue.uppercaseString, false, "0", UIImage(named: "Start"), "")
+                return (status.rawValue.uppercaseString, false, currentTask.progress, UIImage(named: "Start"), "")
             case .InProgress:
-                return ("IN PROGRESS", true, "0", UIImage(named: "Pause"), "In Progress as on \(NSDate().shortDateString)")
+                return ("IN PROGRESS", true, currentTask.progress, UIImage(named: "Pause"), "In Progress as on \(NSDate().shortDateString)")
             case .Complete:
-                return (status.rawValue.uppercaseString, false, "0", nil, "Completed on ---")
+                return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Completed on ---")
             case .InComplete:
-                return (status.rawValue.uppercaseString, false, "0", nil, "Incomplete on ---")
+                return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Incomplete on ---")
             }
         }
-        return ("", false, "0", nil, "")
+        return ("", false, 0, nil, "")
     }
 }
 
@@ -93,10 +93,13 @@ extension PhaseDetailsCell{
     }
     @IBAction func sliderTouchUpInside(sender: UISlider) {
         updateCompleted()
+        setProgress(round(sender.value))
     }
     @IBAction func sliderTouchUpOutside(sender: UISlider) {
         updateCompleted()
+        setProgress(round(sender.value))
     }
+
     @IBAction func startStopAction(sender: UIButton) {
         if let status = TaskStatus(rawValue: currentTask?.status ?? ""){
             switch status {
@@ -130,6 +133,7 @@ extension PhaseDetailsCell{
             startStopButton?.setImage(startStopImage, forState: .Normal)
             slider?.value = Float(sliderValue) ?? 0
             completedOnlabel?.text = details
+            updateCompleted()
         }
     }
 
@@ -138,18 +142,54 @@ extension PhaseDetailsCell{
     }
 
     func setStatus(taskStatus:TaskStatus) {
+        
         if NetworkClass.isConnected(true), let key = currentTask?.key {
             startStopButton?.enabled = false
-            NetworkClass.sendRequest(URL: Constants.URLs.postStatus, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForStatus(key, status: taskStatus.rawValue), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.setStatus, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForStatus(key, status: taskStatus.rawValue), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTask?.status = taskStatus.rawValue
                     if let task = self.currentTask{
                         self.configureCell(task)
                     }
+                    self.getTableView()?.reloadData()
                 }
                 self.startStopButton?.enabled = true
             })
         }
     }
+
+    func setProgress(progress:Float) {
+        if progress == 100{
+            UIAlertController.showAlertOfStyle(.Alert, Title: "Confirm mark this as complete?", Message: nil, OtherButtonTitles: ["YES"], CancelButtonTitle: "NO", completion: { (tappedAtIndex) in
+                if tappedAtIndex == -1{
+                    if let task = self.currentTask{
+                        self.configureCell(task)
+                    }
+                }else{
+                    self.updateProgress(progress)
+                    self.setStatus(TaskStatus.Complete) 
+                }
+            })
+        }else{
+            updateProgress(progress)
+        }
+    }
+
+    func updateProgress(progress:Float) {
+        if NetworkClass.isConnected(true), let key = currentTask?.key {
+            slider?.enabled = false
+            NetworkClass.sendRequest(URL: Constants.URLs.setProgress, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForProgress(key, progress: "\(progress/100)"), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status{
+                    self.currentTask?.progress = Double(progress)
+                    if let task = self.currentTask{
+                        self.configureCell(task)
+                    }
+                }
+                self.slider?.enabled = true
+            })
+        }
+    }
+
 }

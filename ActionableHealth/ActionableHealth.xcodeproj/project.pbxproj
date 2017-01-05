@@ -146,6 +146,7 @@
 		3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */; };
 		3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B51DB0A02B00D733C2 /* TabBar.storyboard */; };
 		3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B81DB0A03A00D733C2 /* Home.storyboard */; };
+		3CB54AF41E1E2BB10026A999 /* UITableViewCell_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB54AF31E1E2BB10026A999 /* UITableViewCell_Common.swift */; };
 		3CB8A2951DEDAE0C009B9AE9 /* PhasesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A28E1DEDAE0C009B9AE9 /* PhasesModel.swift */; };
 		3CB8A2961DEDAE0C009B9AE9 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A2901DEDAE0C009B9AE9 /* TasksModel.swift */; };
 		3CB8A2971DEDAE0C009B9AE9 /* TemplatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8A2911DEDAE0C009B9AE9 /* TemplatesModel.swift */; };
@@ -432,6 +433,7 @@
 		3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignupLogin.storyboard; sourceTree = "<group>"; };
 		3CAE70B51DB0A02B00D733C2 /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		3CAE70B81DB0A03A00D733C2 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		3CB54AF31E1E2BB10026A999 /* UITableViewCell_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell_Common.swift; sourceTree = "<group>"; };
 		3CB8A28E1DEDAE0C009B9AE9 /* PhasesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhasesModel.swift; sourceTree = "<group>"; };
 		3CB8A2901DEDAE0C009B9AE9 /* TasksModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		3CB8A2911DEDAE0C009B9AE9 /* TemplatesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplatesModel.swift; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 		3C1EC55D1DA3A864003DC2A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3CB54AF21E1E2B930026A999 /* UITableViewCell */,
 				3CEDA2341E0D27F400EF6919 /* NSFileManager */,
 				3CDD48A91E03E6BB00ACAFB4 /* UIImagePickerController */,
 				409414961E0273F200057EFD /* UIView */,
@@ -1502,6 +1505,14 @@
 				3CAE70B81DB0A03A00D733C2 /* Home.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		3CB54AF21E1E2B930026A999 /* UITableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CB54AF31E1E2BB10026A999 /* UITableViewCell_Common.swift */,
+			);
+			path = UITableViewCell;
 			sourceTree = "<group>";
 		};
 		3CB8A28B1DEDAE0C009B9AE9 /* Templates */ = {
@@ -2449,6 +2460,7 @@
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
 				3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */,
 				3C1577C11E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift in Sources */,
+				3CB54AF41E1E2BB10026A999 /* UITableViewCell_Common.swift in Sources */,
 				3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */,
 				3C8E47931E165CAE0019C261 /* JSQMessagesCellTextView.m in Sources */,
 				3C1577C61E13CB54004FFAB1 /* MessagingManager.swift in Sources */,
@@ -2685,7 +2697,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
@@ -2707,7 +2719,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;

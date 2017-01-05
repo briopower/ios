@@ -42,9 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        //        FIRMessaging.messaging().disconnect()
-        //        debugPrint("Disconnected from FCM.")
-
+        FIRMessaging.messaging().disconnect()
+        debugPrint("Disconnected from FCM.")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -61,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
-        MessagingManager.sharedInstance.removeObservers()
+        MessagingManager.sharedInstance.closeChatSession()
     }
 
     // MARK: - Core Data stack
@@ -211,11 +210,14 @@ extension AppDelegate{
     }
 
     func connectToFcm() {
-        FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
-            if error != nil {
-                debugPrint("Unable to connect with FCM. \(error)")
-            } else {
-                debugPrint("Connected to FCM.")
+        if NSUserDefaults.isLoggedIn() {
+            FIRMessaging.messaging().disconnect()
+            FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
+                if error != nil {
+                    debugPrint("Unable to connect with FCM. \(error)")
+                } else {
+                    debugPrint("Connected to FCM.")
+                }
             }
         }
     }

@@ -65,7 +65,7 @@ extension UserModel{
         dict["firstName"] = firstName
         dict["hobbies"] = hobbies
         dict["lastName"] = lastName
-        dict["phone"] = phoneNumber
+        dict["phone"] = phoneNumber?.getValidObject() ?? "+91 \(userID!)"
         dict["userId"] = userID
         return dict
     }

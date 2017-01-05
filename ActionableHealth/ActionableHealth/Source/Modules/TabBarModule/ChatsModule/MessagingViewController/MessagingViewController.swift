@@ -48,7 +48,7 @@ class MessagingViewController: JSQMessagesViewController {
     }
 
     deinit {
-        collectionView.removeObserver(self, forKeyPath: "contentSize")
+        collectionView?.removeObserver(self, forKeyPath: "contentSize")
     }
 
 }

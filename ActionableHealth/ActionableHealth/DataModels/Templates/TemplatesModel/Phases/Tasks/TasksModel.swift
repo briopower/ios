@@ -18,6 +18,7 @@ class TasksModel: NSObject {
     var prompt = ""
     var key = ""
     var rating = 0.0
+    var progress = 0.0
     var commentsCount = 0
     var parentPhase = PhasesModel()
 
@@ -44,6 +45,10 @@ extension TasksModel{
     class func getDictForStatus(key:String, status:String) -> [String : AnyObject] {
         return ["key":key, "status":status];
     }
+    class func getDictForProgress(key:String, progress:String) -> [String : AnyObject] {
+        return ["key":key, "progress":progress];
+    }
+
 
     class func getTasksUsingObj(dict:AnyObject) -> TasksModel {
         let model = TasksModel()
@@ -54,6 +59,7 @@ extension TasksModel{
         model.prompt = dict["prompt"] as? String ?? ""
         model.key = dict["key"] as? String ?? ""
         model.rating = dict["rating"] as? Double ?? 0
+        model.progress = (dict["progress"] as? Double ?? 0) * 100
         model.commentsCount = dict["commentCount"] as? Int ?? 0
         model.templateTaskId = dict["templateTaskId"] as? String
         model.status = dict["status"] as? String ?? ""

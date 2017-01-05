@@ -131,7 +131,7 @@ extension TrackDetailsViewController{
         infoButton.selected = infoSelected
         phaseButton.selected = !infoSelected
         isInfoSelected = infoSelected
-        trackDetailsTblView.reloadData()
+        trackDetailsTblView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
     }
 
     func getInfoCellForIndexPath(indexPath:NSIndexPath) -> UITableViewCell {

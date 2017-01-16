@@ -30,7 +30,6 @@ class MessagingManager: NSObject {
 //MARK:- Private methods
 extension MessagingManager{
     private func signIn() {
-        closeChatSession()
         FIRAuth.auth()?.signInWithCustomToken(NSUserDefaults.getFirebaseToken(), completion: { (user:FIRUser?, error:NSError?) in
             if let error = error{
                 debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\n\(error)")
@@ -40,6 +39,8 @@ extension MessagingManager{
                     switch type{
                     case .ErrorCodeNetworkError:
                         self.openChatSession()
+                    case .ErrorCodeInvalidCustomToken:
+                        self.refreshToken()
                     default:
                         break
                     }
@@ -64,19 +65,18 @@ extension MessagingManager{
 
     private func connect() {
         self.configureDatabase()
-        AppDelegate.getAppDelegateObject()?.connectToFcm()
+        connectToFcm()
     }
 
     private func configureDatabase() {
-
+        
+        if let handler = _refHandle {
+            self.ref?.child(chanelToObserve).removeObserverWithHandle(handler)
+            self.ref?.removeAllObservers()
+        }
         if ref == nil {
             ref = FIRDatabase.database().reference()
         }
-
-        if let handler = _refHandle {
-            self.ref?.removeObserverWithHandle(handler)
-        }
-
         // Listen for new messages in the Firebase database
         _refHandle = self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
             { (snapshot:FIRDataSnapshot) in
@@ -100,13 +100,16 @@ extension MessagingManager{
 
 
     private func sendMessage(message:String, userId:String) {
-        let objToSend = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
-                         "from": NSUserDefaults.getUserId(),
-                         "priority": "high",
-                         "toUserIds":[userId, NSUserDefaults.getUserId()],
-                         "timeStamp": NSDate().timeIntervalInMilliSecs()]
+        let objToSend:[String:AnyObject] = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
+                                            "from": NSUserDefaults.getUserId(),
+                                            "priority": "high",
+                                            "toUserIds":[userId],
+                                            "timeStamp": NSDate().timeIntervalInMilliSecs()]
 
-        NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .POST, Parameters: objToSend, CompletionHandler: nil)
+        NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .POST, ResponseType: ExpectedResponseType.NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
+            debugPrint("sendMessage \(statusCode)")
+        }
+
 
         self.ref?.child(chanelToObserve).childByAutoId().setValue(objToSend)
 
@@ -114,12 +117,24 @@ extension MessagingManager{
     }
 
     private func sendNotification(message:String, userId:String) {
-        let objToSend = ["notification":["key":userId, "message":message, "type": MessageType.notification.rawValue],
-                         "from": NSUserDefaults.getUserId(),
-                         "priority": "high",
-                         "toUserIds":[userId]]
+        let objToSend:[String:AnyObject] = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
+                                            "notification":["title":"New Message", "body":message, "icon": ""],
+                                            "from": NSUserDefaults.getUserId(),
+                                            "priority": "high",
+                                            "toUserIds":[userId]]
 
-        NetworkClass.sendRequest(URL: Constants.URLs.postNotification, RequestType: .POST, Parameters: objToSend, CompletionHandler: nil)
+        NetworkClass.sendRequest(URL: Constants.URLs.postNotification, RequestType: .POST, ResponseType: ExpectedResponseType.NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
+            debugPrint("sendNotification \(statusCode)")
+        }
+
+    }
+    private func sendNotificationToken() {
+        if let refreshedToken = FIRInstanceID.instanceID().token(), let userId = FIRAuth.auth()?.currentUser?.uid{
+            let objToSend = ["deviceToken": refreshedToken, "userId":userId]
+            NetworkClass.sendRequest(URL: Constants.URLs.sendToken, RequestType: .POST, ResponseType: .NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
+                debugPrint("sendNotificationToken \(statusCode)")
+            }
+        }
     }
 }
 
@@ -128,7 +143,7 @@ extension MessagingManager{
 
     func openChatSession() {
         if FIRAuth.auth()?.currentUser?.uid == NSUserDefaults.getUserId(){
-            self.connect()
+            self.configureDatabase()
             refreshToken()
         }else{
             signIn()
@@ -138,13 +153,26 @@ extension MessagingManager{
     func closeChatSession() {
         do {
             try FIRAuth.auth()?.signOut()
-        } catch let error as NSError {
+        } catch {
             debugPrint("------------SIGN OUT ISSUE--------------\n\(error)")
         }
     }
 
     func send(message:String, userId:String) {
         sendMessage(message, userId: userId)
-//        sendNotification(message, userId: userId)
+        sendNotification(message, userId: userId)
+    }
+
+    func connectToFcm() {
+        if NSUserDefaults.isLoggedIn() {
+            FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
+                if error != nil {
+                    debugPrint("Unable to connect with FCM. \(error)")
+                } else {
+                    debugPrint("Connected to FCM with token: \(FIRInstanceID.instanceID().token())")
+                    self.sendNotificationToken()
+                }
+            }
+        }
     }
 }

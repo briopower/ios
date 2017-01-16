@@ -76,8 +76,17 @@ extension SettingsViewController:UITableViewDelegate{
             case .Edit_Profile:
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
                     viewCont.type = .EditProfile
-                    self.navigationController?.pushViewController(viewCont, animated: true)
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
+            case .Terms_Conditions:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.termsAndConditionsView) as? TermsAndConditionsViewController {
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
+                }
+            case .About_Us:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.aboutUsShortView) as? AboutUsShortViewController {
+                    getNavigationController()?.pushViewController(viewCont, animated: true)
+                }
+
             default:
                 break
             }

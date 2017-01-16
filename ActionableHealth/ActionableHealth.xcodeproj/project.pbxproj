@@ -61,6 +61,10 @@
 		3C71C4131E1D2BEA00468E43 /* SearchByIdHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C71C40D1E1D2BEA00468E43 /* SearchByIdHeader.xib */; };
 		3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */; };
 		3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */; };
+		3C7F28741E1F72BB0021D269 /* TextDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F28731E1F72BB0021D269 /* TextDetailsController.swift */; };
+		3C7F28791E1F7DE20021D269 /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F28781E1F7DE20021D269 /* TermsAndConditionsViewController.swift */; };
+		3C7F287B1E1F98820021D269 /* AboutUsShortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F287A1E1F98820021D269 /* AboutUsShortViewController.swift */; };
+		3C7F287D1E1F996E0021D269 /* AboutUsLongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F287C1E1F996E0021D269 /* AboutUsLongViewController.swift */; };
 		3C8E47761E165CAE0019C261 /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3C8E470A1E165CAE0019C261 /* JSQMessagesAssets.bundle */; };
 		3C8E47771E165CAE0019C261 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E470D1E165CAE0019C261 /* JSQSystemSoundPlayer+JSQMessages.m */; };
 		3C8E47781E165CAE0019C261 /* NSBundle+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E470F1E165CAE0019C261 /* NSBundle+JSQMessages.m */; };
@@ -298,6 +302,10 @@
 		3C71C40D1E1D2BEA00468E43 /* SearchByIdHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchByIdHeader.xib; sourceTree = "<group>"; };
 		3C7DA1DB1DB0A5D3002C9A50 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3C7DA1DD1DB0A5E3002C9A50 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		3C7F28731E1F72BB0021D269 /* TextDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDetailsController.swift; sourceTree = "<group>"; };
+		3C7F28781E1F7DE20021D269 /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
+		3C7F287A1E1F98820021D269 /* AboutUsShortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsShortViewController.swift; sourceTree = "<group>"; };
+		3C7F287C1E1F996E0021D269 /* AboutUsLongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsLongViewController.swift; sourceTree = "<group>"; };
 		3C8E470A1E165CAE0019C261 /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
 		3C8E470C1E165CAE0019C261 /* JSQSystemSoundPlayer+JSQMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSQSystemSoundPlayer+JSQMessages.h"; sourceTree = "<group>"; };
 		3C8E470D1E165CAE0019C261 /* JSQSystemSoundPlayer+JSQMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSQSystemSoundPlayer+JSQMessages.m"; sourceTree = "<group>"; };
@@ -1099,6 +1107,38 @@
 			path = SearchViewController;
 			sourceTree = "<group>";
 		};
+		3C7F28721E1F72A30021D269 /* TextDetailsController */ = {
+			isa = PBXGroup;
+			children = (
+				3C7F28731E1F72BB0021D269 /* TextDetailsController.swift */,
+			);
+			path = TextDetailsController;
+			sourceTree = "<group>";
+		};
+		3C7F28751E1F7DD60021D269 /* TermsAndConditionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C7F28781E1F7DE20021D269 /* TermsAndConditionsViewController.swift */,
+			);
+			path = TermsAndConditionsViewController;
+			sourceTree = "<group>";
+		};
+		3C7F28761E1F7DD60021D269 /* AboutUsShortViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C7F287A1E1F98820021D269 /* AboutUsShortViewController.swift */,
+			);
+			path = AboutUsShortViewController;
+			sourceTree = "<group>";
+		};
+		3C7F28771E1F7DD60021D269 /* AboutUsLongViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C7F287C1E1F996E0021D269 /* AboutUsLongViewController.swift */,
+			);
+			path = AboutUsLongViewController;
+			sourceTree = "<group>";
+		};
 		3C8E47071E165CAE0019C261 /* JSQMessagesViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1587,6 +1627,9 @@
 		3CBD5C6F1DA7AF71004BCAE0 /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
+				3C7F28751E1F7DD60021D269 /* TermsAndConditionsViewController */,
+				3C7F28761E1F7DD60021D269 /* AboutUsShortViewController */,
+				3C7F28771E1F7DD60021D269 /* AboutUsLongViewController */,
 				3CF6AAE71DB4A0810067387F /* EditProfileVeiwController */,
 				3CF6AAE81DB4A0810067387F /* Storyboard */,
 				3CBD5C701DA7AF71004BCAE0 /* SettingsViewController */,
@@ -1806,6 +1849,7 @@
 		3CCF8ACE1DA61A9500C76C64 /* SignupLoginModule */ = {
 			isa = PBXGroup;
 			children = (
+				3C7F28721E1F72A30021D269 /* TextDetailsController */,
 				3CAE70B11DB0A01D00D733C2 /* Storyboard */,
 				40EBFECD1DF8071500605397 /* WelcomeToBrio */,
 				40EBFEE01DF8078F00605397 /* EnterOtpController */,
@@ -2399,6 +2443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7F287D1E1F996E0021D269 /* AboutUsLongViewController.swift in Sources */,
 				3C71C4121E1D2BEA00468E43 /* SearchByIdHeader.swift in Sources */,
 				3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */,
 				3CCF30FE1DB7327C001A1E7B /* MessagingViewController.swift in Sources */,
@@ -2412,6 +2457,7 @@
 				3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */,
 				3C3B886D1E1A1EAC005DA7B4 /* Messages+CoreDataProperties.swift in Sources */,
 				3C966DBF1DF6C8DE00E299BF /* CountryListViewController.swift in Sources */,
+				3C7F28791E1F7DE20021D269 /* TermsAndConditionsViewController.swift in Sources */,
 				3CEDA2361E0D281700EF6919 /* NSFileManager_Common.swift in Sources */,
 				3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */,
 				3C8E47A21E165CAE0019C261 /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
@@ -2452,6 +2498,7 @@
 				3C8E47A61E165CAE0019C261 /* JSQSystemSoundPlayer.m in Sources */,
 				3C8E47921E165CAE0019C261 /* JSQVideoMediaItem.m in Sources */,
 				3C8E47961E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
+				3C7F287B1E1F98820021D269 /* AboutUsShortViewController.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
 				3CB8A2961DEDAE0C009B9AE9 /* TasksModel.swift in Sources */,
 				3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */,
@@ -2536,6 +2583,7 @@
 				3C9D132A1DA3CE5800998DA2 /* UILabel_Localizable.swift in Sources */,
 				3C8E47A01E165CAE0019C261 /* JSQMessagesToolbarContentView.m in Sources */,
 				3C1EC59A1DA3A864003DC2A3 /* UIAlertController_Common.swift in Sources */,
+				3C7F28741E1F72BB0021D269 /* TextDetailsController.swift in Sources */,
 				3C8E478D1E165CAE0019C261 /* JSQMediaItem.m in Sources */,
 				3C1EC5921DA3A864003DC2A3 /* ActionableHealth.xcdatamodeld in Sources */,
 				3C7DA1DC1DB0A5D3002C9A50 /* SearchViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 enum BarButtontype {
-    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, skip, Toggle
+    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, Skip, Next
 }
 
 enum BarButtonPosition {
@@ -47,7 +47,7 @@ extension UIViewController{
             getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), forBarMetrics: UIBarMetrics.Default)
             getNavigationController()?.view.backgroundColor = color
         }else{
-            let color = UIColor.getColorFromHexValue(0xF5F5F5, Alpha: 1)
+            let color = UIColor.getColorFromHexValue(0xF5F5F5, Alpha: 0.9)
             getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), forBarMetrics: UIBarMetrics.Default)
             getNavigationController()?.view.backgroundColor = color
         }
@@ -95,14 +95,10 @@ extension UIViewController{
             barButton = UIBarButtonItem(customView:getButtonWithImage(DetailsButtonImage,Action: #selector(self.detailsButtonAction(_:))))
         case .Add:
             barButton = UIBarButtonItem(customView:getButtonWithImage(AddButtonImage,Action: #selector(self.addButtonAction(_:))))
-        case .skip:
-            barButton = UIBarButtonItem(customView:getButtonWithTitle("SKIP",Action: #selector(self.skipButtonAction(_:))))
-        case .Toggle:
-            let toggleSwitch = UISwitch()
-            toggleSwitch.addTarget(self, action: #selector(self.toggleButtonAction(_:)), forControlEvents: .ValueChanged)
-            //            toggleSwitch.tintColor = UIColor.getAppThemeColor()
-            toggleSwitch.onTintColor = UIColor.getAppThemeColor()
-            barButton = UIBarButtonItem(customView:toggleSwitch)
+        case .Skip:
+            barButton = UIBarButtonItem(customView:getButtonWithTitle("Skip",Action: #selector(self.skipButtonAction(_:))))
+        case .Next:
+            barButton = UIBarButtonItem(customView:getButtonWithTitle("Next",Action: #selector(self.nextButtonAction(_:))))
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
@@ -130,6 +126,11 @@ extension UIViewController{
         button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
         button.setTitle("", forState: UIControlState.Normal)
         button.sizeToFit()
+        var frame = button.frame
+        if frame.size.width < 15 {
+            frame.size.width = 15
+            button.frame = frame
+        }
         return button
     }
     private func getButtonWithTitle(title:String?, Action action:Selector) -> UIButton{
@@ -171,8 +172,8 @@ extension UIViewController{
     @IBAction func skipButtonAction(sender:UIButton?){
 
     }
-    @IBAction func toggleButtonAction(sender:UISwitch?){
-        
+    @IBAction func nextButtonAction(sender:UIButton?){
+
     }
 }
 

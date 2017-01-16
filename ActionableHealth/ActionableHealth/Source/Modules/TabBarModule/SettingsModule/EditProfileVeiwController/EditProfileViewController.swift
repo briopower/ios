@@ -34,7 +34,7 @@ class EditProfileViewController: CommonViewController {
         case .EditProfile:
             setNavigationBarWithTitle("Edit Profile", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
         case .UpdateProfile:
-            setNavigationBarWithTitle("Update Profile", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.skip)
+            setNavigationBarWithTitle("Update Profile", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Skip)
         }
     }
     override func viewDidAppear(animated: Bool) {

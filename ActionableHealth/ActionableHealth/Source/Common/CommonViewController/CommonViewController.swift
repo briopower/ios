@@ -20,7 +20,7 @@ class CommonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNavigationController()?.delegate = self
-        setNavigationBarBackgroundColor(UIColor.whiteColor())
+//        setNavigationBarBackgroundColor(UIColor.whiteColor())
         if !NSUserDefaults.isLoggedIn() && showLoginModule {
             imageView.image = UIImage.getLaunchImage()
             imageView.contentMode = .ScaleToFill

@@ -14,7 +14,9 @@ class Constants: NSObject {
     struct Storyboard {
         struct LoginStoryboard {
             static let storyboardName = "SignupLogin"
-           static let countryList = "countryListView"
+            static let countryList = "countryListView"
+            static let verificationView = "welcomeToBrio"
+            static let textDetailsView = "textDetailsView"
         }
 
         struct TabBarStoryboard {
@@ -39,6 +41,9 @@ class Constants: NSObject {
         struct SettingsStoryboard {
             static let storyboardName = "Settings"
             static let editProfileView = "editProfileView"
+            static let termsAndConditionsView = "termsAndConditionsView"
+            static let aboutUsShortView = "aboutUsShortView"
+            static let aboutUsLongView = "aboutUsLongView"
         }
 
         struct MessagingStoryboard {
@@ -63,7 +68,7 @@ class Constants: NSObject {
     struct URLs {
         static let countryCodes = "http://country.io/phone.json"
         static let countryNames = "http://country.io/names.json"
-        
+
         static let base = "https://briopower-qa.appspot.com/"
 
         static let authAPIs = "auth/"
@@ -97,7 +102,7 @@ class Constants: NSObject {
         static let postNotification = "\(base)\(trackAPIs)postNotification/"
         static let createTrackUploadURL = "\(base)\(trackAPIs)createTrackUploadURL/"
         static let searchUser = "\(base)\(trackAPIs)searchAppUsers/"
-
+        static let sendToken = "\(base)\(trackAPIs)saveDeviceToken/"
     }
 
     //MARK:- APPData

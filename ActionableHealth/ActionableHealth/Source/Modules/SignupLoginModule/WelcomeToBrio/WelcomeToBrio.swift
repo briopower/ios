@@ -27,7 +27,7 @@ class WelcomeToBrio: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Welcome to BrioPOWER", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Verification", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

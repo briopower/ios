@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        connectToFcm()
+        MessagingManager.sharedInstance.connectToFcm()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -60,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
-        MessagingManager.sharedInstance.closeChatSession()
     }
 
     // MARK: - Core Data stack
@@ -96,7 +95,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
 
-            dict[NSUnderlyingErrorKey] = error as NSError
+            if let tempError = error as? NSError{
+                dict[NSUnderlyingErrorKey] = tempError
+            }
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -170,8 +171,7 @@ extension AppDelegate{
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
     {
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Sandbox)
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Prod)
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Unknown)
     }
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -209,19 +209,6 @@ extension AppDelegate{
         ContactSyncManager.sharedInstance.syncContacts()
     }
 
-    func connectToFcm() {
-        if NSUserDefaults.isLoggedIn() {
-            FIRMessaging.messaging().disconnect()
-            FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
-                if error != nil {
-                    debugPrint("Unable to connect with FCM. \(error)")
-                } else {
-                    debugPrint("Connected to FCM.")
-                }
-            }
-        }
-    }
-
     func setupOnAppLauch() {
         if NSUserDefaults.isLoggedIn() {
             // Add observer for InstanceID token refresh callback.
@@ -247,9 +234,8 @@ extension AppDelegate:FIRMessagingDelegate{
 extension AppDelegate{
     func tokenRefreshNotification(not:NSNotification) {
         if let refreshedToken = FIRInstanceID.instanceID().token() {
-            debugPrint("InstanceID token: \(refreshedToken)")
             // Connect to FCM since connection may have failed when attempted before having a token.
-            connectToFcm()
+            MessagingManager.sharedInstance.connectToFcm()
         }
         
     }

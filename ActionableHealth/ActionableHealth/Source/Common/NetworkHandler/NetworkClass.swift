@@ -7,7 +7,7 @@
 //
 
 enum ExpectedResponseType:Int {
-    case JSON, DATA, STRING, NONE,Count
+    case JSON, DATA, STRING, NONE, Count
 }
 typealias CompletionHandler = (status:Bool, responseObj:AnyObject?,error: NSError?, statusCode:Int?) -> Void
 typealias ProgressHandler = (totalBytesSent:Int64, totalBytesExpectedToSend:Int64)-> Void
@@ -161,7 +161,7 @@ extension NetworkClass{
 
             mutableURLRequest.HTTPMethod = method.rawValue
 
-            let allHeaders = getUpdatedHeader(headers,responseType: responseType)
+            let allHeaders = getUpdatedHeader(headers,requestType: method)
 
             for (headerField, headerValue) in allHeaders {
                 mutableURLRequest.setValue(headerValue, forHTTPHeaderField: headerField)
@@ -274,11 +274,11 @@ extension NetworkClass{
 
 //MARK:- Additional Methods
 extension NetworkClass{
-    class func getUpdatedHeader(header: [String: String]?, responseType:ExpectedResponseType ) -> [String: String] {
+    class func getUpdatedHeader(header: [String: String]?, requestType:Alamofire.Method) -> [String: String] {
         
         var updatedHeader:[String:String] = [:]
-        switch responseType {
-        case .JSON:
+        switch requestType {
+        case .POST:
             updatedHeader["Content-Type"] = "application/json"
         default:
             break

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -157,6 +156,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6oj-kU-u1L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="0.90006956339999999" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="bZF-pb-GdY" kind="relationship" relationship="rootViewController" id="zfC-HZ-qAb"/>
@@ -225,6 +225,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4oT-9i-7Ss">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="0.90006956339999999" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="SVV-Z1-vei" kind="relationship" relationship="rootViewController" id="bIJ-rv-mfP"/>

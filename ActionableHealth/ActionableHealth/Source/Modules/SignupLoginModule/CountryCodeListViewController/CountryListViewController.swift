@@ -108,6 +108,15 @@ extension CountryListViewController{
     }
 
     func createPlist() {
+        dataSet.sortUsingComparator { (obj1:AnyObject, obj2:AnyObject) -> NSComparisonResult in
+            if let dict1 = obj1 as? [String:String], let dict2 = obj2 as? [String:String]{
+                if let isdCode1 = dict1[normalizedISDCode_key], let isdCode2 = dict2[normalizedISDCode_key]{
+                    let result = isdCode1.compare(isdCode2, options: NSStringCompareOptions.NumericSearch)
+                    return result
+                }
+            }
+            return .OrderedAscending
+        }
         let isWritten = dataSet.writeToFile(path, atomically: true)
         if isWritten {
             createCountryArray()

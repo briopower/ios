@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="ProximaNova-Medium.ttf">
+            <string>ProximaNovaSW07-Medium</string>
+        </array>
         <array key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
         </array>
@@ -118,13 +121,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NcZ-JQ-vgq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="671"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="W1e-xu-ApW" id="fud-EN-yLx"/>
                                     <outlet property="delegate" destination="W1e-xu-ApW" id="8gZ-b6-f0V"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39g-6T-URj" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="665" width="414" height="65"/>
+                                <color key="backgroundColor" red="0.10017777980000001" green="0.1062946469" blue="0.15517653519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="23"/>
+                                <state key="normal" title="DONE">
+                                    <color key="titleColor" red="1" green="0.99752539399999995" blue="0.1090881601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneAction:" destination="W1e-xu-ApW" eventType="touchUpInside" id="pv6-e2-gE7"/>
+                                </connections>
+                            </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTD-Ks-I3n">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Jhi-NC-fHL">
@@ -155,19 +169,23 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="39g-6T-URj" secondAttribute="trailing" id="3sS-7e-Jd8"/>
                             <constraint firstItem="WTD-Ks-I3n" firstAttribute="top" secondItem="b4r-0G-kpV" secondAttribute="top" id="5Fd-cU-zge"/>
                             <constraint firstItem="NcZ-JQ-vgq" firstAttribute="top" secondItem="b4r-0G-kpV" secondAttribute="top" id="AFF-zj-WpK"/>
+                            <constraint firstItem="39g-6T-URj" firstAttribute="leading" secondItem="b4r-0G-kpV" secondAttribute="leading" id="F0Y-6p-kNF"/>
                             <constraint firstItem="NcZ-JQ-vgq" firstAttribute="leading" secondItem="b4r-0G-kpV" secondAttribute="leading" id="S5L-Tf-apL"/>
                             <constraint firstItem="Hsv-Xj-XU6" firstAttribute="top" secondItem="WTD-Ks-I3n" secondAttribute="bottom" id="Sl3-7e-sVS"/>
                             <constraint firstItem="WTD-Ks-I3n" firstAttribute="leading" secondItem="b4r-0G-kpV" secondAttribute="leading" id="eRo-cV-1Qz"/>
                             <constraint firstAttribute="trailing" secondItem="WTD-Ks-I3n" secondAttribute="trailing" id="l0l-PX-Ys5"/>
                             <constraint firstAttribute="trailing" secondItem="NcZ-JQ-vgq" secondAttribute="trailing" id="n2Z-vu-bpi"/>
-                            <constraint firstItem="Hsv-Xj-XU6" firstAttribute="top" secondItem="NcZ-JQ-vgq" secondAttribute="bottom" id="zzZ-7U-JHW"/>
+                            <constraint firstItem="39g-6T-URj" firstAttribute="height" secondItem="b4r-0G-kpV" secondAttribute="height" multiplier="195:2207" id="onW-c5-dMZ"/>
+                            <constraint firstItem="39g-6T-URj" firstAttribute="top" secondItem="NcZ-JQ-vgq" secondAttribute="bottom" id="r5w-Dc-2h9"/>
+                            <constraint firstItem="Hsv-Xj-XU6" firstAttribute="top" secondItem="39g-6T-URj" secondAttribute="bottom" id="zVc-Ls-9WA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="constraintBottomSpace" destination="zzZ-7U-JHW" id="uJI-UL-MMW"/>
                         <outlet property="contactSyncingView" destination="WTD-Ks-I3n" id="poa-K6-ZNu"/>
+                        <outlet property="doneButton" destination="39g-6T-URj" id="hhD-fu-t76"/>
                         <outlet property="tblView" destination="NcZ-JQ-vgq" id="2jv-sj-t6M"/>
                     </connections>
                 </viewController>
@@ -232,7 +250,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write you comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="127.66666666666666" height="15"/>
+                                        <rect key="frame" x="21" y="16" width="131" height="17.666666666666629"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

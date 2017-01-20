@@ -12,7 +12,7 @@ protocol PhaseDetailsCellDelegate:NSObjectProtocol {
     func rateTaskTapped(tag:Int, obj:AnyObject?)
 }
 enum TaskStatus:String {
-    case New, InProgress, Paused, Complete, InComplete
+    case New, InProgress, Paused, Complete, InComplete, Late
 
     static func getNibName(status:String) -> String{
         if let currentStatus = TaskStatus(rawValue: status) {
@@ -39,6 +39,8 @@ enum TaskStatus:String {
                 return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Completed on ---")
             case .InComplete:
                 return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Incomplete on ---")
+            default:
+                break
             }
         }
         return ("", false, 0, nil, "")

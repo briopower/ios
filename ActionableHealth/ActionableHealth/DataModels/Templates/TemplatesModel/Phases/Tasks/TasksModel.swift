@@ -21,6 +21,10 @@ class TasksModel: NSObject {
     var progress = 0.0
     var commentsCount = 0
     var parentPhase = PhasesModel()
+    var startedDate = 0.0
+    var pausedDate = 0.0
+    var completedDate = 0.0
+    var remainingTimeInMillis = 0.0
 
     //MARK: Additional for tracks
     var status = ""
@@ -63,6 +67,11 @@ extension TasksModel{
         model.commentsCount = dict["commentCount"] as? Int ?? 0
         model.templateTaskId = dict["templateTaskId"] as? String
         model.status = dict["status"] as? String ?? ""
+        model.startedDate = dict["startedDate"] as? Double ?? 0
+        model.pausedDate = dict["pausedDate"] as? Double ?? 0
+        model.completedDate = dict["completedDate"] as? Double ?? 0
+        model.remainingTimeInMillis = dict["remainingTimeInMillis"] as? Double ?? 0
+
         return model
     }
 }

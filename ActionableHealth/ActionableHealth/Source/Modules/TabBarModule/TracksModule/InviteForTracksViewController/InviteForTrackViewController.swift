@@ -22,6 +22,7 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
     //MARK:- Outlets
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var contactSyncingView: UIVisualEffectView!
+    @IBOutlet weak var doneButton: UIButton!
 
     //MARK:- Variables
     var frc:NSFetchedResultsController?
@@ -40,19 +41,20 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         ContactSyncManager.sharedInstance.syncCoreDataContacts()
-        setNavigationBarWithTitle("Invite", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Done)
+        setNavigationBarWithTitle("Invite", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        updatDoneButton()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 }
 
 //MARK:- Actions
 extension InviteForTrackViewController{
-    override func doneButtonAction(sender: UIButton?) {
-        super.doneButtonAction(sender)
+    @IBAction func doneAction(sender: UIButton) {
         switch sourceType {
         case .Home:
             createTrack()
@@ -80,6 +82,12 @@ extension InviteForTrackViewController{
         frc?.delegate = self
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
+    }
+
+    func updatDoneButton() {
+//        let shouldEnable = selectedUsers != currentTemplate?.members
+//        doneButton.enabled = shouldEnable
+//        shouldEnable ? (doneButton.alpha = 1) : (doneButton.alpha = 0.8)
     }
 }
 
@@ -229,6 +237,7 @@ extension InviteForTrackViewController:UITableViewDelegate{
             default:
                 break
             }
+            updatDoneButton()
             tableView.reloadData()
         }
     }

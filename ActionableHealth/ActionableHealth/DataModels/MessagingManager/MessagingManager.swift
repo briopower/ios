@@ -71,12 +71,15 @@ extension MessagingManager{
     private func configureDatabase() {
         
         if let handler = _refHandle {
-            self.ref?.child(chanelToObserve).removeObserverWithHandle(handler)
-            self.ref?.removeAllObservers()
+            ref?.child(chanelToObserve).removeObserverWithHandle(handler)
+            ref?.removeAllObservers()
+            ref = nil
         }
+
         if ref == nil {
             ref = FIRDatabase.database().reference()
         }
+        
         // Listen for new messages in the Firebase database
         _refHandle = self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
             { (snapshot:FIRDataSnapshot) in

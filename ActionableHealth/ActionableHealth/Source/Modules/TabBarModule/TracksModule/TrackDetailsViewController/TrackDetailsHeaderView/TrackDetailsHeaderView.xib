@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -139,15 +138,24 @@
                                 <constraint firstAttribute="bottom" secondItem="K79-jk-Xnz" secondAttribute="bottom" id="vrt-7Y-dIQ"/>
                             </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V5j-yI-oOE" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="352" width="424" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="xX4-lh-9z3"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="V5j-yI-oOE" secondAttribute="bottom" id="4wd-Pn-CyK"/>
                         <constraint firstAttribute="bottom" secondItem="wCG-ZG-W60" secondAttribute="bottom" id="Fav-ER-VbC"/>
                         <constraint firstAttribute="width" secondItem="6zP-CV-mYu" secondAttribute="height" multiplier="1242:1320" priority="999" id="Hfw-zA-Tqc"/>
                         <constraint firstItem="HZI-mJ-3hB" firstAttribute="centerX" secondItem="I1O-zR-LgI" secondAttribute="centerX" multiplier="1100:600" id="QoI-ru-3Rr"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="Ste-DA-WBG"/>
                         <constraint firstItem="HZI-mJ-3hB" firstAttribute="centerY" secondItem="I1O-zR-LgI" secondAttribute="centerY" multiplier="630:360" id="Zdh-rs-Jht"/>
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="top" secondItem="6zP-CV-mYu" secondAttribute="top" id="a0m-sm-qZ4"/>
+                        <constraint firstItem="V5j-yI-oOE" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="aS4-Hr-Uw7"/>
+                        <constraint firstAttribute="trailing" secondItem="V5j-yI-oOE" secondAttribute="trailing" id="dIu-pk-itL"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="top" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="naK-Gn-URU"/>
                         <constraint firstAttribute="trailing" secondItem="wCG-ZG-W60" secondAttribute="trailing" id="paD-eT-ESN"/>
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="q0i-du-6fD"/>
@@ -173,7 +181,7 @@
                 <outlet property="templateImage" destination="I1O-zR-LgI" id="ysy-uK-etL"/>
                 <outlet property="tracksCount" destination="sP2-Mj-Gwj" id="Dwz-qG-2IZ"/>
             </connections>
-            <point key="canvasLocation" x="200" y="-150"/>
+            <point key="canvasLocation" x="200" y="-150.5"/>
         </view>
     </objects>
     <resources>

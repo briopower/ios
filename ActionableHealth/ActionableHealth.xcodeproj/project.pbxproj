@@ -124,7 +124,6 @@
 		3C966DBF1DF6C8DE00E299BF /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C966DBE1DF6C8DE00E299BF /* CountryListViewController.swift */; };
 		3C966DC21DF6CAFB00E299BF /* CountryCodeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C966DC01DF6CAFB00E299BF /* CountryCodeListCell.swift */; };
 		3C966DC31DF6CAFB00E299BF /* CountryCodeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C966DC11DF6CAFB00E299BF /* CountryCodeListCell.xib */; };
-		3C966DC51DF6E98D00E299BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C966DC41DF6E98D00E299BF /* GoogleService-Info.plist */; };
 		3C9D13241DA3CE5800998DA2 /* UIButton_CenterAllign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */; };
 		3C9D13251DA3CE5800998DA2 /* UIButton_FontSizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */; };
 		3C9D13261DA3CE5800998DA2 /* UIButton_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */; };
@@ -138,6 +137,7 @@
 		3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */; };
 		3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */; };
 		3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */; };
+		3CABA7BD1E31E5FA00D9F986 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CABA7BC1E31E5FA00D9F986 /* GoogleService-Info.plist */; };
 		3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF3A71DB5F7550034D700 /* UIApplication_Common.swift */; };
 		3CACF3F71DB634920034D700 /* CommonCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF3F41DB634920034D700 /* CommonCollectionReusableView.swift */; };
 		3CACF3F81DB634920034D700 /* CommonCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CACF3F51DB634920034D700 /* CommonCollectionReusableView.xib */; };
@@ -414,7 +414,6 @@
 		3C966DBE1DF6C8DE00E299BF /* CountryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
 		3C966DC01DF6CAFB00E299BF /* CountryCodeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodeListCell.swift; sourceTree = "<group>"; };
 		3C966DC11DF6CAFB00E299BF /* CountryCodeListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryCodeListCell.xib; sourceTree = "<group>"; };
-		3C966DC41DF6E98D00E299BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C9D13141DA3CE5800998DA2 /* UIButton_CenterAllign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_CenterAllign.swift; sourceTree = "<group>"; };
 		3C9D13151DA3CE5800998DA2 /* UIButton_FontSizeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_FontSizeButton.swift; sourceTree = "<group>"; };
 		3C9D13161DA3CE5800998DA2 /* UIButton_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Localizable.swift; sourceTree = "<group>"; };
@@ -428,6 +427,7 @@
 		3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_Localizable.swift; sourceTree = "<group>"; };
 		3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarItem_Custom.swift; sourceTree = "<group>"; };
 		3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Medium.ttf"; sourceTree = "<group>"; };
+		3CABA7BC1E31E5FA00D9F986 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "GoogleInfoPlist/Dev/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CACF3A11DB5E6F50034D700 /* ActionableHealth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ActionableHealth-Bridging-Header.h"; sourceTree = "<group>"; };
 		3CACF3A71DB5F7550034D700 /* UIApplication_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication_Common.swift; sourceTree = "<group>"; };
 		3CACF3F41DB634920034D700 /* CommonCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -647,7 +647,7 @@
 				3C1EC5581DA3A864003DC2A3 /* Source */,
 				3C1EC5291DA3A7C0003DC2A3 /* LaunchScreen.storyboard */,
 				3C1EC52C1DA3A7C0003DC2A3 /* Info.plist */,
-				3C966DC41DF6E98D00E299BF /* GoogleService-Info.plist */,
+				3CABA7BC1E31E5FA00D9F986 /* GoogleService-Info.plist */,
 			);
 			path = ActionableHealth;
 			sourceTree = "<group>";
@@ -2239,10 +2239,10 @@
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
 				40EBFEDE1DF8071500605397 /* PhoneNoCell.xib in Resources */,
 				3CC9D0851DB8AAB600287068 /* AllTaskCompletedHeaderView.xib in Resources */,
+				3CABA7BD1E31E5FA00D9F986 /* GoogleService-Info.plist in Resources */,
 				3C6BF4CA1E0155F800F6DC70 /* GroupsCell.xib in Resources */,
 				3C8E47971E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */,
-				3C966DC51DF6E98D00E299BF /* GoogleService-Info.plist in Resources */,
 				3C8E47A41E165CAE0019C261 /* LICENSE in Resources */,
 				3CACF4001DB635060034D700 /* HomeViewCell.xib in Resources */,
 				3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */,

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -38,19 +37,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuK-yr-tuV" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="25.5" width="236" height="20"/>
+                                <rect key="frame" x="32.5" y="25.5" width="224" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="246" verticalHuggingPriority="246" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sk-DE-cPx" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="81" width="233.5" height="20"/>
+                                <rect key="frame" x="32.5" y="77" width="224.5" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbA-y1-WaX" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="128.5" width="142" height="20"/>
+                                <rect key="frame" x="32.5" y="131.5" width="136" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -61,7 +60,7 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-J2-4jN" customClass="HCSStarRatingView">
-                                <rect key="frame" x="32.5" y="52" width="90" height="21.5"/>
+                                <rect key="frame" x="32.5" y="48" width="90" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EYc-J2-4jN" secondAttribute="height" multiplier="250:60" id="hDL-Ia-MzE"/>
                                 </constraints>
@@ -88,13 +87,13 @@
                                 <rect key="frame" x="0.0" y="148" width="448" height="24.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZe-ns-YKq" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="134.5" y="54.5" width="73" height="21.5"/>
+                                <rect key="frame" x="134.5" y="50.5" width="70.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uv-Ff-LQi" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="331" y="70.5" width="88" height="32"/>
+                                <rect key="frame" x="332" y="72" width="86" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="RATE TASK"/>
@@ -123,6 +122,7 @@
                             <constraint firstAttribute="trailing" secondItem="ZzU-Ch-tua" secondAttribute="trailing" id="Hm4-kG-Y9J"/>
                             <constraint firstItem="zbA-y1-WaX" firstAttribute="leading" secondItem="0sk-DE-cPx" secondAttribute="leading" id="LM2-Wr-Kfr"/>
                             <constraint firstItem="EYc-J2-4jN" firstAttribute="leading" secondItem="MuK-yr-tuV" secondAttribute="leading" id="MdH-5W-XtI"/>
+                            <constraint firstItem="zbA-y1-WaX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0sk-DE-cPx" secondAttribute="bottom" constant="10" id="Qkm-Fl-kfZ"/>
                             <constraint firstItem="HZe-ns-YKq" firstAttribute="height" secondItem="EYc-J2-4jN" secondAttribute="height" id="RCt-5Q-mCE"/>
                             <constraint firstItem="nfx-Y4-CBr" firstAttribute="height" secondItem="ZzU-Ch-tua" secondAttribute="height" id="Sg5-tb-Wg2"/>
                             <constraint firstItem="nfx-Y4-CBr" firstAttribute="leading" secondItem="Q5N-QR-DuE" secondAttribute="leading" id="cLS-cb-pdr"/>

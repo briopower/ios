@@ -179,7 +179,7 @@ extension AppDelegate{
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
     {
-        // Let FCM know about the message for analytics etc.
+        // Let FCM know about the message for analytics etc.`
         FIRMessaging.messaging().appDidReceiveMessage(userInfo)
 
         // Print message ID.
@@ -215,6 +215,8 @@ extension AppDelegate{
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: kFIRInstanceIDTokenRefreshNotification, object: nil)
             registerForPushNotifications()
             MessagingManager.sharedInstance.openChatSession()
+        }else{
+            MessagingManager.sharedInstance.closeChatSession()
         }
     }
 }

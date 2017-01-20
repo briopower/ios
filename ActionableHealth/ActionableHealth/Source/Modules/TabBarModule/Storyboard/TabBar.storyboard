@@ -51,7 +51,7 @@
                                 <cells/>
                             </collectionView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO TRACKS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-qR-Ovl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="153.33333333333331" y="358" width="107.99999999999994" height="20"/>
+                                <rect key="frame" x="153" y="358" width="108" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,7 +100,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO CHATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-R0-lFL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="158.33333333333334" y="358" width="97.333333333333314" height="20"/>
+                                <rect key="frame" x="159" y="358" width="97.333333333333314" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -302,7 +302,7 @@
     </scenes>
     <resources>
         <image name="filter" width="14" height="13"/>
-        <image name="logo" width="265" height="80"/>
+        <image name="logo" width="251" height="38"/>
         <image name="sort" width="17" height="13"/>
         <image name="tabBarBG" width="66" height="48"/>
         <image name="xyz" width="11" height="11"/>

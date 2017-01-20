@@ -69,7 +69,8 @@ class Constants: NSObject {
         static let countryCodes = "http://country.io/phone.json"
         static let countryNames = "http://country.io/names.json"
 
-        static let base = "https://briopower-qa.appspot.com/"
+        static let base = "https://briopower-qa.appspot.com/" // Dev
+//        static let base = "https://briopower-uat.appspot.com/" // UAT
 
         static let authAPIs = "auth/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
@@ -107,6 +108,6 @@ class Constants: NSObject {
 
     //MARK:- APPData
     struct AppData {
-        static let fcmServerKey = "AAAAWVIWpp0:APA91bHGTA7hySZIRcYamA8PXVAmvsIY2aWhlcDVj4MjsInfKXhNN0Gi8iwUI7dpcnU8y1xW3h_pSfQK2ndwfhxJYUIukggCbY0kTGjY871fUPb1SU_wj-klZYWYM5eL11CgpPtNE4guLc0h9dHdWOdfSzxZyWvxLQ"
+        static let fcmServerKey = "AAAA-9jT8Og:APA91bG9hsAvHci6C7fbFizgFuM6Tp9qbliticWCUp46sL9FhIImQfxjEYaP2TfrBnHc1qJNA7NGIHCfuqqD3A-2OsgW7PuFIH9wgvKanxvD3YQERZXAAeO3w8AZ8SZjpPf5oi3AijhV"
     }
 }

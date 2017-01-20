@@ -99,7 +99,7 @@ extension EditProfileDetailsCell{
             secondField?.text = currentUser?.lastName
         case .Phone:
             firstField?.enabled = false
-            firstField?.text = currentUser?.phoneNumber
+            firstField?.text = currentUser?.phoneNumber ?? currentUser?.userID
         case .Hobbies:
             detailsTextView?.text = currentUser?.hobbies ?? ""
         default:

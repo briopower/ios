@@ -65,7 +65,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-sJ-KAf" customClass="CommonHeaderButton" customModule="BRIO" customModuleProvider="target">
                                     <rect key="frame" x="297" y="0.0" width="297" height="69"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                    <state key="normal" title="PHASE">
+                                    <state key="normal" title="PHASES">
                                         <color key="titleColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
@@ -128,12 +128,12 @@
                                     <outlet property="delegate" destination="W1e-xu-ApW" id="8gZ-b6-f0V"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39g-6T-URj" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="665" width="414" height="65"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39g-6T-URj" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="671" width="414" height="65"/>
                                 <color key="backgroundColor" red="0.10017777980000001" green="0.1062946469" blue="0.15517653519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="23"/>
                                 <state key="normal" title="DONE">
-                                    <color key="titleColor" red="1" green="0.99752539399999995" blue="0.1090881601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="0.99607843137254903" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="doneAction:" destination="W1e-xu-ApW" eventType="touchUpInside" id="pv6-e2-gE7"/>
@@ -250,7 +250,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write you comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="131" height="17.666666666666629"/>
+                                        <rect key="frame" x="21" y="16" width="127.66666666666666" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -315,7 +315,7 @@
         <!--Track Files View Controller-->
         <scene sceneID="T4f-0Q-Jt1">
             <objects>
-                <viewController storyboardIdentifier="trackFileView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2co-Fs-LRg" customClass="TrackFilesViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trackFileView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2co-Fs-LRg" customClass="TrackFilesViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ye9-lj-aVb"/>
                         <viewControllerLayoutGuide type="bottom" id="DPZ-hL-AeP"/>
@@ -325,7 +325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView clipsSubviews="YES" contentMode="scaleToFill" scalesPageToFit="YES" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X86-7v-bNM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                                 <connections>
@@ -338,7 +338,7 @@
                             <constraint firstItem="DPZ-hL-AeP" firstAttribute="top" secondItem="X86-7v-bNM" secondAttribute="bottom" id="7ef-Eu-Oof"/>
                             <constraint firstItem="X86-7v-bNM" firstAttribute="leading" secondItem="PhF-0q-izl" secondAttribute="leading" id="FwJ-x8-mfo"/>
                             <constraint firstAttribute="trailing" secondItem="X86-7v-bNM" secondAttribute="trailing" id="UJT-W8-o8D"/>
-                            <constraint firstItem="X86-7v-bNM" firstAttribute="top" secondItem="PhF-0q-izl" secondAttribute="top" id="iGs-E4-9IF"/>
+                            <constraint firstItem="X86-7v-bNM" firstAttribute="top" secondItem="ye9-lj-aVb" secondAttribute="bottom" id="Xno-3o-1aT"/>
                         </constraints>
                     </view>
                     <connections>

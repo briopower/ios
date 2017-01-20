@@ -29,7 +29,7 @@ class TrackFilesCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension TrackFilesCell{
-    func configCell(type:InfoSectionCellTypes) {
+    func configCell(type:TrackDetailsCellTypes) {
         switch type {
         case .Files:
             detailsLabel.text = "Track Files"

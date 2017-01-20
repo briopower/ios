@@ -30,15 +30,18 @@ enum TaskStatus:String {
         if  let status = TaskStatus(rawValue: currentTask.status) {
             switch status {
             case .New:
-                return (status.rawValue.uppercaseString, false, currentTask.progress, UIImage(named: "Start"), "")
+                return (status.rawValue.uppercaseString, false, 0, UIImage(named: "Start"), "New as on \(NSDate().mediumDateString)")
             case .Paused:
-                return (status.rawValue.uppercaseString, false, currentTask.progress, UIImage(named: "Start"), "")
+                let date = NSDate.dateWithTimeIntervalInMilliSecs(currentTask.pausedDate)
+                return (status.rawValue.uppercaseString, false, currentTask.progress, UIImage(named: "Start"), "Paused on \(date.mediumDateString)")
             case .InProgress:
-                return ("IN PROGRESS", true, currentTask.progress, UIImage(named: "Pause"), "In Progress as on \(NSDate().shortDateString)")
+                return ("IN PROGRESS", true, currentTask.progress, UIImage(named: "Pause"), "In Progress as on \(NSDate().mediumDateString)")
             case .Complete:
-                return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Completed on ---")
+                let date = NSDate.dateWithTimeIntervalInMilliSecs(currentTask.completedDate)
+                return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Completed on \(date.mediumDateString)")
             case .InComplete:
-                return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Incomplete on ---")
+                let date = NSDate.dateWithTimeIntervalInMilliSecs(currentTask.completedDate)
+                return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Marked Incomplete on \(date.mediumDateString)")
             default:
                 break
             }

@@ -119,6 +119,7 @@ extension SearchUserViewController:UITableViewDataSource{
 //MARK:- Delegate
 extension SearchUserViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let mod = searchResult[indexPath.row] as? UserModel
         if let obj = (searchResult[indexPath.row] as? UserModel)?.userID {
             if NSUserDefaults.getUserId() == obj {
                 return

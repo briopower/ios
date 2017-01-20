@@ -8,9 +8,13 @@
 
 import UIKit
 
-enum InfoSectionCellTypes:Int {
+enum TrackDetailsCellTypes:Int {
     case Details, Members, Files, Count
 }
+enum TrackDetailsSectionTypes:Int {
+    case MemberFiles, InfoPhase, Count
+}
+
 class TrackDetailsViewController: CommonViewController {
 
     //MARK:- Outlets
@@ -21,7 +25,7 @@ class TrackDetailsViewController: CommonViewController {
 
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
-    var isInfoSelected = true
+    var isInfoSelected = false
     var sourceType = TrackDetailsSourceType.Home
     var alertController:UIAlertController?
     var trackName:String?
@@ -59,10 +63,14 @@ class TrackDetailsViewController: CommonViewController {
 //MARK:- Button Actions
 extension TrackDetailsViewController{
     @IBAction func infoButtonAction(sender: UIButton) {
-        setSelectedButton(true)
+        if !isInfoSelected {
+            setSelectedButton(true)
+        }
     }
     @IBAction func sectionButtonActions(sender: UIButton) {
-        setSelectedButton(false)
+        if isInfoSelected {
+            setSelectedButton(false)
+        }
     }
 }
 //MARK:- TrackDetailsHeaderViewDelegate
@@ -113,8 +121,6 @@ extension TrackDetailsViewController{
 
         trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
 
-        trackDetailsTblView.estimatedRowHeight = 200
-
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackInfoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackInfoCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackPhasesCell))
@@ -131,21 +137,16 @@ extension TrackDetailsViewController{
         infoButton.selected = infoSelected
         phaseButton.selected = !infoSelected
         isInfoSelected = infoSelected
-        trackDetailsTblView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
+        trackDetailsTblView.reloadSections(NSIndexSet(index: TrackDetailsSectionTypes.InfoPhase.rawValue), withRowAnimation: .Fade)
+//        trackDetailsTblView.reloadData()
     }
 
     func getInfoCellForIndexPath(indexPath:NSIndexPath) -> UITableViewCell {
-
-        if let type = InfoSectionCellTypes(rawValue: indexPath.row) {
+        if let type = TrackDetailsCellTypes(rawValue: indexPath.row) {
             switch type {
             case .Details:
                 if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackInfoCell)) as? TrackInfoCell {
                     cell.configCell(currentTemplate)
-                    return cell
-                }
-            case .Files, .Members:
-                if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
-                    cell.configCell(type)
                     return cell
                 }
             default:
@@ -165,22 +166,20 @@ extension TrackDetailsViewController{
         return UITableViewCell()
     }
 
-    func infoCellSelectedAtIndexPath(indexPath:NSIndexPath) {
-        if let type = InfoSectionCellTypes(rawValue: indexPath.row) {
-            switch type {
-            case .Files:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
-                    viewCont.currentTemplate = currentTemplate
-                    getNavigationController()?.pushViewController(viewCont, animated: true)
-                }
-            case .Members:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
-                    viewCont.currentTemplate = currentTemplate
-                    getNavigationController()?.pushViewController(viewCont, animated: true)
-                }
-            default:
-                break
+    func infoCellSelectedAtIndexPath(type:TrackDetailsCellTypes) {
+        switch type {
+        case .Files:
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
+                viewCont.currentTemplate = currentTemplate
+                getNavigationController()?.pushViewController(viewCont, animated: true)
             }
+        case .Members:
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
+                viewCont.currentTemplate = currentTemplate
+                getNavigationController()?.pushViewController(viewCont, animated: true)
+            }
+        default:
+            break
         }
     }
 
@@ -195,36 +194,69 @@ extension TrackDetailsViewController{
 
 //MARK:- UITableViewDataSource
 extension TrackDetailsViewController:UITableViewDataSource{
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return TrackDetailsSectionTypes.Count.rawValue
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if isInfoSelected {
-            switch sourceType {
-            case .Home:
-                return InfoSectionCellTypes.Members.rawValue
-            case .Tracks:
-                return currentTemplate?.blobKey == nil ?  InfoSectionCellTypes.Files.rawValue : InfoSectionCellTypes.Count.rawValue
+        if let sectionType = TrackDetailsSectionTypes(rawValue: section) {
+            switch sectionType {
+            case .MemberFiles:
+                switch sourceType {
+                case .Tracks:
+                    return currentTemplate?.blobKey == nil ?  TrackDetailsCellTypes.Members.rawValue : TrackDetailsCellTypes.Files.rawValue
+                default:
+                    break
+                }
+            case .InfoPhase:
+                if isInfoSelected {
+                    return TrackDetailsCellTypes.Members.rawValue
+                }
+                return currentTemplate?.phases.count ?? 0
             default:
                 break
             }
         }
-        return currentTemplate?.phases.count ?? 0
+        return 0
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        if isInfoSelected {
-            return getInfoCellForIndexPath(indexPath)
-        }else{
-            return getPhaseCellForIndexPath(indexPath)
+        if let sectionType = TrackDetailsSectionTypes(rawValue: indexPath.section) {
+            switch sectionType {
+            case .MemberFiles:
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
+                    cell.configCell(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files)
+                    return cell
+                }
+            case .InfoPhase:
+                if isInfoSelected {
+                    return getInfoCellForIndexPath(indexPath)
+                }else{
+                    return getPhaseCellForIndexPath(indexPath)
+                }
+            default:
+                break
+            }
         }
+        return UITableViewCell()
     }
 }
 
 //MARK:- UITableViewDelegate
 extension TrackDetailsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if isInfoSelected {
-            infoCellSelectedAtIndexPath(indexPath)
-        }else{
-            phaseCellSelectedAtIndexPath(indexPath)
+        if let sectionType = TrackDetailsSectionTypes(rawValue: indexPath.section) {
+            switch sectionType {
+            case .MemberFiles:
+                infoCellSelectedAtIndexPath(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files)
+            case .InfoPhase:
+                if !isInfoSelected {
+                    phaseCellSelectedAtIndexPath(indexPath)
+                }
+            default:
+                break
+            }
         }
     }
 
@@ -233,7 +265,29 @@ extension TrackDetailsViewController:UITableViewDelegate{
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        if let sectionType = TrackDetailsSectionTypes(rawValue: section) {
+            switch sectionType {
+            case .InfoPhase:
+                return 44
+            default:
+                break
+            }
+        }
+        return 0
+    }
+
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let sectionType = TrackDetailsSectionTypes(rawValue: indexPath.section) {
+            switch sectionType {
+            case .InfoPhase:
+                if isInfoSelected {
+                    return CGFloat(currentTemplate?.details.getHeight(UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont(), maxWidth: Double(UIDevice.width())) ?? 200)
+                }
+            default:
+                break
+            }
+        }
+        return UITableViewAutomaticDimension
     }
 }
 
@@ -355,7 +409,7 @@ extension TrackDetailsViewController{
             trackDetailsTblView.reloadData()
             updateHeader()
         }
-
+        
     }
     
     func processError(error:NSError?) {

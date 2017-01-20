@@ -23,7 +23,7 @@
             <objects>
                 <navigationController id="Mgw-jc-D4N" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b7t-me-nf2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="b7t-me-nf2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="0.90006956339999999" colorSpace="calibratedWhite"/>
@@ -131,7 +131,7 @@
                                 <color key="backgroundColor" red="0.10980392156862745" green="0.11764705882352941" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="22"/>
                                 <state key="normal" title="VERIFY">
-                                    <color key="titleColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="1" green="0.99607843137254903" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="verifyButton:" destination="baA-EG-QDb" eventType="touchUpInside" id="PuW-ZY-kNM"/>

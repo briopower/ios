@@ -18,3 +18,10 @@ extension UIView{
         return VNProgreessHUD.hideAllHudsFromView(self, Animated: animated)
     }
 }
+
+//MARK:- Toast Methods
+extension UIView{
+    class func showToastWith(message:String) {
+        UIViewController.getTopMostViewController()?.view.makeToast(message)
+    }
+}

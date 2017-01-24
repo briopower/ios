@@ -17,38 +17,6 @@
             endingLineNumber = "100"
             landmarkName = "getCurrentUser()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static BRIO.UserModel.getCurrentUser () -&gt; BRIO.UserModel"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp213/Documents/Projects/actionablehealth_ios_project/ActionableHealth/ActionableHealth/DataModels/Users/UserModel/UserModel.swift"
-                  timestampString = "506946904.324826"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "391">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static BRIO.UserModel.getCurrentUser () -&gt; BRIO.UserModel"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp213/Documents/Projects/actionablehealth_ios_project/ActionableHealth/ActionableHealth/DataModels/Users/UserModel/UserModel.swift"
-                  timestampString = "506946904.326134"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "1118">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

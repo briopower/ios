@@ -23,7 +23,7 @@ class MessagingViewController: JSQMessagesViewController {
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setuView()
+        setupView()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -55,10 +55,10 @@ class MessagingViewController: JSQMessagesViewController {
 
 //MARK:- Additional methods
 extension MessagingViewController{
-    func setuView() {
+    func setupView() {
         if let id = personObj?.personId {
             personObj?.updateProfileImage()
-            _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Messages), predicate: NSPredicate(format: "person.personId = %@", id), sectionNameKeyPath: nil, sortingKey: ["timestamp"], isAcendingSort: true)
+            _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Messages), predicate: NSPredicate(format: "person.personId = %@", id), sectionNameKeyPath: nil, sorting: [("timestamp", true)])
             _fetchedResultsController?.delegate = self
         }
         setupMessagingView()

@@ -45,7 +45,8 @@ class ContactSyncManager: NSObject {
             if let contacts = contacts{
                 self.performSelectorInBackground(#selector(ContactSyncManager.addContacts(_:)), withObject: contacts)
             }else if let desc = error?.localizedDescription{
-                UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
+               // UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
+                UIView.showToastWith(desc)
             }
         }
     }

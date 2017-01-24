@@ -51,17 +51,17 @@ class CoreDataOperationsClass: NSObject {
     
     
     //MARK:  fetchResultsController setup method
-    class func getFectechedResultsControllerWithEntityName(className : String, predicate : NSPredicate? ,sectionNameKeyPath : String?, sortingKey : [String]? , isAcendingSort : Bool = false) -> NSFetchedResultsController{
+    class func getFectechedResultsControllerWithEntityName(className : String, predicate : NSPredicate? ,sectionNameKeyPath : String?, sorting : [(key:String, isAcending:Bool)]?) -> NSFetchedResultsController{
         let managedObjectContext = AppDelegate.getAppDelegateObject()?.managedObjectContext ?? NSManagedObjectContext()
         let fetchRequest = NSFetchRequest()
         let entityDesc = NSEntityDescription.entityForName(className, inManagedObjectContext: managedObjectContext)
         fetchRequest.entity = entityDesc
-        //if there is sort key
-        if let sortKey = sortingKey
+
+        if let sorting = sorting
         {
             fetchRequest.sortDescriptors = []
-            for key in sortKey {
-                let sortDescriptor = NSSortDescriptor(key: key, ascending: isAcendingSort)
+            for sort in sorting {
+                let sortDescriptor = NSSortDescriptor(key: sort.key, ascending: sort.isAcending)
                 fetchRequest.sortDescriptors?.append(sortDescriptor)
             }
         }

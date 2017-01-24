@@ -78,7 +78,7 @@ extension InviteForTrackViewController{
         tblView.estimatedSectionHeaderHeight = 80
         tblView.estimatedRowHeight = 80
 
-        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@ AND id !=%@", NSNumber(bool: true), NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sortingKey: ["addressBook.name"], isAcendingSort: true)
+        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         frc?.delegate = self
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
@@ -141,7 +141,8 @@ extension InviteForTrackViewController{
     func processError(error:NSError?) {
         switch sourceType {
         case .Home, .Tracks:
-            UIAlertController.showAlertOfStyle(Message: "Something went wrong.", completion: nil)
+            //UIAlertController.showAlertOfStyle(Message: "Something went wrong.", completion: nil)
+            UIView.showToastWith("Something went wrong.")
         default:
             break
         }
@@ -228,11 +229,13 @@ extension InviteForTrackViewController:UITableViewDelegate{
                     selectedUsers.containsObject(obj) ? selectedUsers.removeObject(obj) :selectedUsers.addObject(obj)
                 }
             case .Contacts:
-                if let obj = (frc?.fetchedObjects?[indexPath.row] as? Contact)?.id {
-                    if NSUserDefaults.getUserId() == obj {
-                        return
+                if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact {
+                    if let id = obj.id, let isAppUser = obj.isAppUser {
+                        if NSUserDefaults.getUserId() == id || !isAppUser.boolValue{
+                            return
+                        }
+                        selectedUsers.containsObject(id) ? selectedUsers.removeObject(id) :selectedUsers.addObject(id)
                     }
-                    selectedUsers.containsObject(obj) ? selectedUsers.removeObject(obj) :selectedUsers.addObject(obj)
                 }
             default:
                 break

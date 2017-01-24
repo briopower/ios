@@ -16,6 +16,7 @@ class ContactDetailsCell: UITableViewCell {
     @IBOutlet weak var tickImage: UIImageView!
     @IBOutlet weak var shadowLayer: UIButton!
     @IBOutlet weak var alreadyMemberLabel: UILabel_FontSizeLabel!
+    @IBOutlet weak var inviteButton: UIButton!
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -28,20 +29,27 @@ class ContactDetailsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
 }
 
 //MARK:- Additional methods
 extension ContactDetailsCell{
     func configCell(obj:AnyObject, shouldSelect:Bool = false, isMember:Bool = false) {
         if let contact = obj as? Contact {
+            inviteButton.hidden = contact.isAppUser?.boolValue ?? false
             nameLabel.text = contact.addressBook?.name
             numberLabel.text = contact.id
         }else if let model = obj as? UserModel {
+            inviteButton.hidden = true
             nameLabel.text = model.name
             numberLabel.text = model.userID
         }
         tickImage.hidden = isMember ? true : !shouldSelect
         shadowLayer.hidden = !isMember
         alreadyMemberLabel.hidden = !isMember
+    }
+
+    @IBAction func inviteAction(sender: UIButton) {
+        UIView.showToastWith("Not implemented yet.")
     }
 }

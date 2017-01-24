@@ -14,4 +14,5 @@
 #import "HCSStarRatingView/HCSStarRatingView-umbrella.h"
 #import "SDWebImage/SDWebImage-umbrella.h"
 #import "JSQMessages.h"
+#import "Toast/Toast-umbrella.h"
 #endif /* ActionableHealth_Bridging_Header_h */

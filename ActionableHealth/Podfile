@@ -15,7 +15,8 @@ target 'ActionableHealth' do
     pod 'Firebase/Messaging'
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
-    
+    pod 'Toast'
+
     target 'ActionableHealthTests' do
         inherit! :search_paths
         # Pods for testing

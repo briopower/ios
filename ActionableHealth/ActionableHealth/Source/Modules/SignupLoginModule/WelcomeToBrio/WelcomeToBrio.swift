@@ -121,12 +121,14 @@ extension WelcomeToBrio{
             if phoneDetail["phone"] != nil{
             }
             else{
-                UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Enter Phone Number", completion: nil)
+                UIView.showToastWith("Please Enter Phone Number")
+                //UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Enter Phone Number", completion: nil)
                 return false
             }
         }
         else{
-            UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Select Your Country", completion: nil)
+            UIView.showToastWith("Please Select Your Country")
+         // UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Select Your Country", completion: nil)
             return false
         }
         return true

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -45,13 +44,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addam Sid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGy-eG-ieU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="26" y="23.5" width="84.5" height="20"/>
+                        <rect key="frame" x="26" y="25" width="81.5" height="17"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
-                        <color key="textColor" red="0.084022149443626404" green="0.082385703921318054" blue="0.12626601755619049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9876543210" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mO6-nf-E9P" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="26" y="55.5" width="89" height="19"/>
+                        <rect key="frame" x="26" y="57" width="89" height="16"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                         <color key="textColor" red="0.43464314937591553" green="0.44299530982971191" blue="0.44278115034103394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -60,11 +59,20 @@
                         <rect key="frame" x="275" y="38" width="25" height="18"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Already a member)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTE-k7-gbn" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="114.5" y="25" width="130.5" height="17.5"/>
+                        <rect key="frame" x="111.5" y="26.5" width="128.5" height="15"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKF-TO-qKI" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="266.5" y="32.5" width="41" height="29"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                        <color key="tintColor" red="0.082352941176470587" green="0.082352941176470587" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" title="Invite"/>
+                        <connections>
+                            <action selector="inviteAction:" destination="3cR-CL-ilh" eventType="touchUpInside" id="yBK-at-xZP"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mO6-nf-E9P" firstAttribute="centerY" secondItem="r9r-yH-UvV" secondAttribute="centerY" multiplier="144:105" id="2CT-Q5-fBQ"/>
@@ -79,6 +87,7 @@
                     <constraint firstItem="gco-yr-wdM" firstAttribute="leading" secondItem="r9r-yH-UvV" secondAttribute="leadingMargin" constant="-8" id="Fe4-NE-Z0K"/>
                     <constraint firstItem="HGy-eG-ieU" firstAttribute="leading" secondItem="gco-yr-wdM" secondAttribute="trailing" id="GMU-fb-DwG"/>
                     <constraint firstItem="YUU-lS-x0U" firstAttribute="leading" secondItem="r9r-yH-UvV" secondAttribute="leading" id="Idt-r2-lpL"/>
+                    <constraint firstItem="cKF-TO-qKI" firstAttribute="centerY" secondItem="cQG-Zu-ZJz" secondAttribute="centerY" id="Yb0-Rh-l87"/>
                     <constraint firstItem="cQG-Zu-ZJz" firstAttribute="centerX" secondItem="r9r-yH-UvV" secondAttribute="centerX" multiplier="1.8" id="Ydb-r9-m1L"/>
                     <constraint firstItem="gco-yr-wdM" firstAttribute="top" secondItem="r9r-yH-UvV" secondAttribute="topMargin" constant="-8" id="dvq-lu-eMT"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gco-yr-wdM" secondAttribute="bottom" constant="-8" id="f4l-Y6-6TD"/>
@@ -87,6 +96,7 @@
                     <constraint firstAttribute="trailing" secondItem="a8N-Qa-bhB" secondAttribute="trailing" id="joQ-gw-eaj"/>
                     <constraint firstItem="a8N-Qa-bhB" firstAttribute="leading" secondItem="r9r-yH-UvV" secondAttribute="leading" id="krk-Ih-8HQ"/>
                     <constraint firstAttribute="bottom" secondItem="a8N-Qa-bhB" secondAttribute="bottom" id="qfd-lZ-Cyy"/>
+                    <constraint firstItem="cKF-TO-qKI" firstAttribute="centerX" secondItem="cQG-Zu-ZJz" secondAttribute="centerX" id="rH3-zE-tzg"/>
                     <constraint firstItem="gco-yr-wdM" firstAttribute="width" secondItem="r9r-yH-UvV" secondAttribute="width" multiplier="100:1242" id="wF9-mT-64F"/>
                     <constraint firstItem="8GL-L1-aaL" firstAttribute="centerX" secondItem="r9r-yH-UvV" secondAttribute="centerX" id="zIy-VV-gEZ"/>
                     <constraint firstItem="cQG-Zu-ZJz" firstAttribute="centerY" secondItem="r9r-yH-UvV" secondAttribute="centerY" id="zmx-Q6-FFd"/>
@@ -94,12 +104,13 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="alreadyMemberLabel" destination="WTE-k7-gbn" id="CPI-Vf-Uda"/>
+                <outlet property="inviteButton" destination="cKF-TO-qKI" id="2fA-YU-yTI"/>
                 <outlet property="nameLabel" destination="HGy-eG-ieU" id="gR9-tU-NY0"/>
                 <outlet property="numberLabel" destination="mO6-nf-E9P" id="BU5-pi-XPG"/>
                 <outlet property="shadowLayer" destination="8GL-L1-aaL" id="XjB-5L-Hkh"/>
                 <outlet property="tickImage" destination="cQG-Zu-ZJz" id="ACp-fq-CEJ"/>
             </connections>
-            <point key="canvasLocation" x="32" y="-45"/>
+            <point key="canvasLocation" x="-282" y="-46"/>
         </tableViewCell>
     </objects>
     <resources>

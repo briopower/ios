@@ -85,9 +85,9 @@ extension InviteForTrackViewController{
     }
 
     func updatDoneButton() {
-//        let shouldEnable = selectedUsers != currentTemplate?.members
-//        doneButton.enabled = shouldEnable
-//        shouldEnable ? (doneButton.alpha = 1) : (doneButton.alpha = 0.8)
+        //        let shouldEnable = selectedUsers != currentTemplate?.members
+        //        doneButton.enabled = shouldEnable
+        //        shouldEnable ? (doneButton.alpha = 1) : (doneButton.alpha = 0.8)
     }
 }
 
@@ -211,12 +211,12 @@ extension InviteForTrackViewController:UITableViewDelegate{
                     return headerView
                 }
             default:
-               break
+                break
             }
         }
         return nil
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
             switch type {
@@ -247,52 +247,19 @@ extension InviteForTrackViewController:UITableViewDelegate{
 //MARK:- SearchByIdCellDelegate
 extension InviteForTrackViewController:SearchByIdHeaderDelegate{
     func searchTapped() {
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.searchUserView) as? SearchUserViewController {
-                    viewCont.contactsSelected = NSMutableArray(array: selectedUsers)
-                    viewCont.searchedUsers = NSMutableArray(array: searchedUsers)
-                    viewCont.currentTemplate = currentTemplate
-                    viewCont.delegate = self
-                UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
-                }
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.searchUserView) as? SearchUserViewController {
+            viewCont.contactsSelected = NSMutableArray(array: selectedUsers)
+            viewCont.searchedUsers = NSMutableArray(array: searchedUsers)
+            viewCont.currentTemplate = currentTemplate
+            viewCont.delegate = self
+            UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
+        }
     }
 }
 
 // MARK: Fetched Results Controller Delegate Methods
 extension InviteForTrackViewController:NSFetchedResultsControllerDelegate{
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tblView.beginUpdates()
-    }
-
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tblView.endUpdates()
-    }
-
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch (type) {
-        case .Insert:
-            if let indexPath = newIndexPath {
-                tblView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            }
-            break;
-        case .Delete:
-            if let indexPath = indexPath {
-                tblView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            }
-            break;
-        case .Update:
-            if let indexPath = indexPath {
-                tblView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            }
-            break;
-        case .Move:
-            if let indexPath = indexPath {
-                tblView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            }
-
-            if let newIndexPath = newIndexPath {
-                tblView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-            }
-            break;
-        }
+        tblView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
     }
 }

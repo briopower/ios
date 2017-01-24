@@ -159,7 +159,7 @@ extension WelcomeToBrio{
                 self.performSegueWithIdentifier("enterOtp", sender: self)
             }
             else{
-                print("some error occured")
+                debugPrint("some error occured")
             }
         }
     }

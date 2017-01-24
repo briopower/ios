@@ -68,7 +68,6 @@ extension SearchUserViewController{
 
         if let subViews = srchBar.subviews.first?.subviews{
             for sub in subViews {
-                print(sub)
                 if let cancelButton = sub as? UIButton{
                     self.cancelButton = cancelButton
                     self.cancelButton?.enabled = false

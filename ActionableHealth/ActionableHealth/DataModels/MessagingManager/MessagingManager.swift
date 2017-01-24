@@ -19,7 +19,6 @@ class MessagingManager: NSObject {
     static let sharedInstance = MessagingManager()
     var ref: FIRDatabaseReference?
     private var _refHandle: FIRDatabaseHandle?
-    var isConnectedToDB = false
     var chanelToObserve:String{
         get{
             return "channels/\(NSUserDefaults.getUserId())"
@@ -33,21 +32,17 @@ extension MessagingManager{
         FIRAuth.auth()?.signInWithCustomToken(NSUserDefaults.getFirebaseToken(), completion: { (user:FIRUser?, error:NSError?) in
             if let error = error{
                 debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\n\(error)")
-            }
-            if let code = error?.code{
-                if let type = FIRAuthErrorCode(rawValue: code){
+                if let type = FIRAuthErrorCode(rawValue: error.code){
                     switch type{
                     case .ErrorCodeNetworkError:
                         self.openChatSession()
-                    case .ErrorCodeInvalidCustomToken:
-                        self.refreshToken()
                     default:
-                        break
+                        self.refreshToken()
                     }
                 }
-            }else{
-                self.connect()
             }
+
+            self.connect()
         })
     }
 
@@ -69,7 +64,7 @@ extension MessagingManager{
     }
 
     private func configureDatabase() {
-        
+
         if let handler = _refHandle {
             ref?.child(chanelToObserve).removeObserverWithHandle(handler)
             ref?.removeAllObservers()
@@ -79,11 +74,10 @@ extension MessagingManager{
         if ref == nil {
             ref = FIRDatabase.database().reference()
         }
-        
+
         // Listen for new messages in the Firebase database
         _refHandle = self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
             { (snapshot:FIRDataSnapshot) in
-                self.isConnectedToDB = true
                 if let data = snapshot.valueInExportFormat() as? [String:AnyObject]{
                     if let type = MessageType(rawValue: data["data"]?["type"] as? String ?? ""){
                         switch type{
@@ -145,6 +139,7 @@ extension MessagingManager{
 extension MessagingManager{
 
     func openChatSession() {
+        FIRApp.configure()
         if FIRAuth.auth()?.currentUser?.uid == NSUserDefaults.getUserId(){
             self.configureDatabase()
             refreshToken()
@@ -156,6 +151,15 @@ extension MessagingManager{
     func closeChatSession() {
         do {
             try FIRAuth.auth()?.signOut()
+            let secItemClasses = [kSecClassGenericPassword,
+                                  kSecClassInternetPassword,
+                                  kSecClassCertificate,
+                                  kSecClassKey,
+                                  kSecClassIdentity]
+            for secItemClass in secItemClasses {
+                let dictionary = [kSecClass as String:secItemClass]
+                SecItemDelete(dictionary)
+            }
         } catch {
             debugPrint("------------SIGN OUT ISSUE--------------\n\(error)")
         }
@@ -168,14 +172,20 @@ extension MessagingManager{
 
     func connectToFcm() {
         if NSUserDefaults.isLoggedIn() {
-            FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
-                if error != nil {
-                    debugPrint("Unable to connect with FCM. \(error)")
-                } else {
-                    debugPrint("Connected to FCM with token: \(FIRInstanceID.instanceID().token())")
-                    self.sendNotificationToken()
+            if let _ = FIRInstanceID.instanceID().token() {
+                // Connect to FCM since connection may have failed when attempted before having a token.
+                FIRMessaging.messaging().disconnect()
+                FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
+                    if error != nil {
+                        debugPrint("Unable to connect with FCM. \(error)")
+                        self.connectToFcm()
+                    } else {
+                        debugPrint("Connected to FCM with token: \(FIRInstanceID.instanceID().token())")
+                        self.sendNotificationToken()
+                    }
                 }
             }
+            
         }
     }
 }

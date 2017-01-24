@@ -8,16 +8,6 @@
 
 import UIKit
 
-//MARK: Navigation Controller Delegate
-extension CommonViewController:UINavigationControllerDelegate, UIGestureRecognizerDelegate{
-
-    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        navigationController.interactivePopGestureRecognizer?.enabled = true
-        navigationController.interactivePopGestureRecognizer?.delegate = self
-    }
-}
-
-
 //MARK:- Loader methods
 extension CommonViewController{
     func showLoader() {

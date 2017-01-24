@@ -44,6 +44,7 @@ extension TrackFilesViewController{
 
     func loadFileInWebView() {
         if let data = responseData, let mimeType = httpResponse?.MIMEType{
+            NSFileManager.save(data, fileName: "response", mimeType: mimeType)
             webView.loadData(data, MIMEType: mimeType, textEncodingName: "utf-8", baseURL: NSURL())
         }
     }

@@ -15,7 +15,7 @@ enum TrackDetailsSectionTypes:Int {
     case MemberFiles, InfoPhase, Count
 }
 
-class TrackDetailsViewController: CommonViewController {
+class TrackDetailsViewController: CommonViewController, UINavigationControllerDelegate {
 
     //MARK:- Outlets
     @IBOutlet weak var trackDetailsTblView: UITableView!

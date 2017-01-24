@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        FIRApp.configure()
-
         forEasyLoading()
 
         setupOnAppLauch()
@@ -235,10 +233,6 @@ extension AppDelegate:FIRMessagingDelegate{
 //MARK:- Notification Methods
 extension AppDelegate{
     func tokenRefreshNotification(not:NSNotification) {
-        if let refreshedToken = FIRInstanceID.instanceID().token() {
-            // Connect to FCM since connection may have failed when attempted before having a token.
-            MessagingManager.sharedInstance.connectToFcm()
-        }
-        
+        MessagingManager.sharedInstance.connectToFcm()        
     }
 }

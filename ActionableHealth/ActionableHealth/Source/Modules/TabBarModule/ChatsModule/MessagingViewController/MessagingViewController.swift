@@ -176,15 +176,10 @@ extension MessagingViewController{
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
 
         if NetworkClass.isConnected(true) {
-            if MessagingManager.sharedInstance.isConnectedToDB {
-                if let id = personObj?.personId{
-                    MessagingManager.sharedInstance.send(text, userId: id)
-                }
-                finishSendingMessage()
-            }else{
-                UIAlertController.showAlertOfStyle(.Alert, Title: "Sorry!!", Message: "Please wait while we are connecting to the server.", OtherButtonTitles: nil, CancelButtonTitle: "OK", completion: nil)
+            if let id = personObj?.personId{
+                MessagingManager.sharedInstance.send(text, userId: id)
             }
-
+            finishSendingMessage()
         }
 
     }

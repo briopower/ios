@@ -117,6 +117,7 @@
 		3C8E47A71E165CAE0019C261 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3C8E47741E165CAE0019C261 /* LICENSE */; };
 		3C8E47A81E165CAE0019C261 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3C8E47751E165CAE0019C261 /* README.md */; };
 		3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C91DFFE1DFED4B30074BCB6 /* CommentsModel.swift */; };
+		3C9443B31E37611800C2F695 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C9443B21E37611800C2F695 /* GoogleService-Info.plist */; };
 		3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */; };
 		3C9641301DB4CD7000EE9676 /* MessageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */; };
 		3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */; };
@@ -137,7 +138,6 @@
 		3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */; };
 		3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */; };
 		3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */; };
-		3CABA7BD1E31E5FA00D9F986 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CABA7BC1E31E5FA00D9F986 /* GoogleService-Info.plist */; };
 		3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF3A71DB5F7550034D700 /* UIApplication_Common.swift */; };
 		3CACF3F71DB634920034D700 /* CommonCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF3F41DB634920034D700 /* CommonCollectionReusableView.swift */; };
 		3CACF3F81DB634920034D700 /* CommonCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CACF3F51DB634920034D700 /* CommonCollectionReusableView.xib */; };
@@ -407,6 +407,7 @@
 		3C8E47751E165CAE0019C261 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C907F321E0813FA00FD4892 /* BRIO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BRIO.entitlements; sourceTree = "<group>"; };
 		3C91DFFE1DFED4B30074BCB6 /* CommentsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
+		3C9443B21E37611800C2F695 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "GoogleInfoPlist/Dev/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C96412A1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidingViewController.swift; sourceTree = "<group>"; };
 		3C96412E1DB4CD7000EE9676 /* MessageListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListCell.swift; sourceTree = "<group>"; };
 		3C96412F1DB4CD7000EE9676 /* MessageListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageListCell.xib; sourceTree = "<group>"; };
@@ -427,7 +428,6 @@
 		3C9D13231DA3CE5800998DA2 /* UITextView_Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextView_Localizable.swift; sourceTree = "<group>"; };
 		3C9D132F1DA3CE7D00998DA2 /* UITabBarItem_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarItem_Custom.swift; sourceTree = "<group>"; };
 		3CAB0F921DB0B2910090BEF3 /* ProximaNova-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Medium.ttf"; sourceTree = "<group>"; };
-		3CABA7BC1E31E5FA00D9F986 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "GoogleInfoPlist/Dev/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CACF3A11DB5E6F50034D700 /* ActionableHealth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ActionableHealth-Bridging-Header.h"; sourceTree = "<group>"; };
 		3CACF3A71DB5F7550034D700 /* UIApplication_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication_Common.swift; sourceTree = "<group>"; };
 		3CACF3F41DB634920034D700 /* CommonCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -647,7 +647,7 @@
 				3C1EC5581DA3A864003DC2A3 /* Source */,
 				3C1EC5291DA3A7C0003DC2A3 /* LaunchScreen.storyboard */,
 				3C1EC52C1DA3A7C0003DC2A3 /* Info.plist */,
-				3CABA7BC1E31E5FA00D9F986 /* GoogleService-Info.plist */,
+				3C9443B21E37611800C2F695 /* GoogleService-Info.plist */,
 			);
 			path = ActionableHealth;
 			sourceTree = "<group>";
@@ -2239,7 +2239,7 @@
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
 				40EBFEDE1DF8071500605397 /* PhoneNoCell.xib in Resources */,
 				3CC9D0851DB8AAB600287068 /* AllTaskCompletedHeaderView.xib in Resources */,
-				3CABA7BD1E31E5FA00D9F986 /* GoogleService-Info.plist in Resources */,
+				3C9443B31E37611800C2F695 /* GoogleService-Info.plist in Resources */,
 				3C6BF4CA1E0155F800F6DC70 /* GroupsCell.xib in Resources */,
 				3C8E47971E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */,

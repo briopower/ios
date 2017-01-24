@@ -69,8 +69,8 @@ class Constants: NSObject {
         static let countryCodes = "http://country.io/phone.json"
         static let countryNames = "http://country.io/names.json"
 
-        static let base = "https://briopower-qa.appspot.com/" // Dev
-//        static let base = "https://briopower-uat.appspot.com/" // UAT
+//        static let base = "https://briopower-qa.appspot.com/" // Dev
+        static let base = "https://briopower-uat.appspot.com/" // UAT
 
         static let authAPIs = "auth/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
@@ -104,10 +104,5 @@ class Constants: NSObject {
         static let createTrackUploadURL = "\(base)\(trackAPIs)createTrackUploadURL/"
         static let searchUser = "\(base)\(trackAPIs)searchAppUsers/"
         static let sendToken = "\(base)\(trackAPIs)saveDeviceToken/"
-    }
-
-    //MARK:- APPData
-    struct AppData {
-        static let fcmServerKey = "AAAA-9jT8Og:APA91bG9hsAvHci6C7fbFizgFuM6Tp9qbliticWCUp46sL9FhIImQfxjEYaP2TfrBnHc1qJNA7NGIHCfuqqD3A-2OsgW7PuFIH9wgvKanxvD3YQERZXAAeO3w8AZ8SZjpPf5oi3AijhV"
     }
 }

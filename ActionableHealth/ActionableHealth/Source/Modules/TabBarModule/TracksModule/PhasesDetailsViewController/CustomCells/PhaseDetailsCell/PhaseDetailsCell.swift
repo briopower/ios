@@ -154,6 +154,14 @@ extension PhaseDetailsCell{
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTask?.status = taskStatus.rawValue
+                    switch taskStatus{
+                    case .Complete:
+                        self.currentTask?.completedDate = NSDate().timeIntervalInMilliSecs()
+                    case .Paused:
+                        self.currentTask?.pausedDate = NSDate().timeIntervalInMilliSecs()
+                    default:
+                        break
+                    }
                     if let task = self.currentTask{
                         self.configureCell(task)
                     }

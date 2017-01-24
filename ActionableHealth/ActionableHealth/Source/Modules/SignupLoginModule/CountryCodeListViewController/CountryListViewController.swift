@@ -148,7 +148,6 @@ extension CountryListViewController{
         if NetworkClass.isConnected(true) {
             showLoader()
             NetworkClass.sendRequest(URL: Constants.URLs.countryNames, RequestType: .GET) { (status, responseObj, error, statusCode) in
-                print(status)
                 if status{
                     if let dict = responseObj as? NSDictionary{
                         self.namesDict = NSMutableDictionary(dictionary: dict)

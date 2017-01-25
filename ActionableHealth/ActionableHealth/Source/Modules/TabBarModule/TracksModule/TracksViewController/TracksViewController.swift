@@ -12,7 +12,7 @@ class TracksViewController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var clctView: StaggeredCollectionView!
-    @IBOutlet weak var nullCaseLabel: UILabel!
+    @IBOutlet weak var nullCase: UIButton!
 
     //MARK:- Variables
     var cursor = ""
@@ -35,7 +35,6 @@ class TracksViewController: CommonViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 
 //MARK:- Additional methods
@@ -50,6 +49,12 @@ extension TracksViewController{
         clctView.dataArray.removeAllObjects()
         clctView.reloadContent()
         cursor = ""
+    }
+    
+    @IBAction func nullCaseAction(sender: UIButton) {
+        if let tbCont = getNavigationController()?.viewControllers[0] as? UITabBarController{
+            tbCont.selectedIndex = 0
+        }
     }
 }
 
@@ -113,9 +118,9 @@ extension TracksViewController{
             clctView.removeTopLoader()
             if clctView.dataArray.count > 0 {
                 clctView.addTopLoader()
-                nullCaseLabel.hidden = true
+                nullCase.hidden = true
             }else{
-                nullCaseLabel.hidden = false
+                nullCase.hidden = false
             }
         }
         clctView.reloadContent()

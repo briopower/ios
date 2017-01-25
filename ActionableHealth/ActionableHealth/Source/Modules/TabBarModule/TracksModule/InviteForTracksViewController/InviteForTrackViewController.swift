@@ -35,6 +35,7 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: ContactSyncManager.contactSyncCompleted, object: nil)
         setupView()
     }
 
@@ -50,6 +51,9 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }
 
 //MARK:- Actions
@@ -63,6 +67,10 @@ extension InviteForTrackViewController{
         default:
             break
         }
+    }
+
+    func contactSyncCompleted(notification:NSNotification) {
+        tblView.reloadData()
     }
 }
 
@@ -79,9 +87,9 @@ extension InviteForTrackViewController{
         tblView.estimatedRowHeight = 80
 
         frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
-        frc?.delegate = self
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
+
     }
 
     func updatDoneButton() {
@@ -161,13 +169,8 @@ extension InviteForTrackViewController:UITableViewDataSource{
             case .Details:
                 return searchedUsers.count
             default:
-                let rows = frc?.fetchedObjects?.count ?? 0
-                if rows == 0 && NSUserDefaults.getLastSyncDate() == nil {
-                    contactSyncingView.hidden = false
-                }else{
-                    contactSyncingView.hidden = true
-                }
-                return rows
+                contactSyncingView.hidden = NSUserDefaults.getLastSyncDate() != nil
+                return frc?.fetchedObjects?.count ?? 0
             }
         }
         return 0
@@ -257,12 +260,5 @@ extension InviteForTrackViewController:SearchByIdHeaderDelegate{
             viewCont.delegate = self
             UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
         }
-    }
-}
-
-// MARK: Fetched Results Controller Delegate Methods
-extension InviteForTrackViewController:NSFetchedResultsControllerDelegate{
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tblView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
     }
 }

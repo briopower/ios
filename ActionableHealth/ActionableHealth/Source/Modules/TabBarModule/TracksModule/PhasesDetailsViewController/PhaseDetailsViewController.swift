@@ -67,7 +67,7 @@ extension PhaseDetailsViewController{
         //        }
 
         phaseDetailsTblView.rowHeight = UITableViewAutomaticDimension
-        phaseDetailsTblView.estimatedRowHeight = 100
+        phaseDetailsTblView.estimatedRowHeight = 400
         phaseDetailsTblView.registerNib(UINib(nibName: String(PhaseDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhaseDetailsCell))
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedCell)
@@ -131,6 +131,26 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
             })
         }
 
+    }
+
+    func readMoreTapped(tag: Int, obj: AnyObject?) {
+        if let task = obj as? TasksModel {
+            if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
+                showTextView.text = task.details
+                showTextView.navigationTitle = task.taskName
+                getNavigationController()?.pushViewController(showTextView, animated: true)
+            }
+        }
+    }
+
+    func taskFilesTapped(tag: Int, obj: AnyObject?) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController, let blobKey = (obj as? TasksModel)?.blobKey {
+            viewCont.blobKey = blobKey
+            viewCont.navigationTitle = "Task Files"
+            getNavigationController()?.pushViewController(viewCont, animated: true)
+        }else{
+            UIView.showToastWith("No Files Found.")
+        }
     }
 
     func rateTaskTapped(tag: Int, obj: AnyObject?) {

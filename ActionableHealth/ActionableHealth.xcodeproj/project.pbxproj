@@ -211,6 +211,7 @@
 		3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */; };
 		3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */; };
 		3CFB48E21DFA7E110022F3B6 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFB48E11DFA7E110022F3B6 /* SearchUserViewController.swift */; };
+		3CFEBC5B1E38A4BF009B029E /* ShowTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFEBC5A1E38A4BF009B029E /* ShowTextViewController.swift */; };
 		3DADFB9880771B64955ED386 /* Pods_ActionableHealthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */; };
 		409414981E02740B00057EFD /* UIView_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409414971E02740B00057EFD /* UIView_Common.swift */; };
 		40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED01DF8071500605397 /* ChooseCountryCell.swift */; };
@@ -502,6 +503,7 @@
 		3CF6AAF41DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_TextView.xib; sourceTree = "<group>"; };
 		3CF6AAFA1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileDetailsCell_Name.xib; sourceTree = "<group>"; };
 		3CFB48E11DFA7E110022F3B6 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
+		3CFEBC5A1E38A4BF009B029E /* ShowTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTextViewController.swift; sourceTree = "<group>"; };
 		409414971E02740B00057EFD /* UIView_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Common.swift; sourceTree = "<group>"; };
 		40EBFED01DF8071500605397 /* ChooseCountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountryCell.swift; sourceTree = "<group>"; };
 		40EBFED11DF8071500605397 /* ChooseCountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCountryCell.xib; sourceTree = "<group>"; };
@@ -1650,6 +1652,7 @@
 			isa = PBXGroup;
 			children = (
 				3C39DAA81DB64A7400D86D24 /* Storyboard */,
+				3CFEBC561E38A487009B029E /* ShowTextViewController */,
 				3CC9D07D1DB8A9AE00287068 /* PhasesDetailsViewController */,
 				3CC9D0731DB897BD00287068 /* TrackFilesViewController */,
 				3CF5B5611DB7A55000224046 /* CommentsViewController */,
@@ -2028,6 +2031,14 @@
 				3CFB48E11DFA7E110022F3B6 /* SearchUserViewController.swift */,
 			);
 			path = SearchUserViewController;
+			sourceTree = "<group>";
+		};
+		3CFEBC561E38A487009B029E /* ShowTextViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CFEBC5A1E38A4BF009B029E /* ShowTextViewController.swift */,
+			);
+			path = ShowTextViewController;
 			sourceTree = "<group>";
 		};
 		409414961E0273F200057EFD /* UIView */ = {
@@ -2521,6 +2532,7 @@
 				40EBFEE21DF8078F00605397 /* EnterOtpViewController.swift in Sources */,
 				3C9D13291DA3CE5800998DA2 /* UILabel_FontSizeLabel.swift in Sources */,
 				3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */,
+				3CFEBC5B1E38A4BF009B029E /* ShowTextViewController.swift in Sources */,
 				3C8E47941E165CAE0019C261 /* JSQMessagesCollectionView.m in Sources */,
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
 				3C71C40E1E1D2BEA00468E43 /* AddFromPhoneHeader.swift in Sources */,

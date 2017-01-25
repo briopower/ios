@@ -23,7 +23,6 @@ class TrackDetailsHeaderView: UIView {
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var templateImage: UIImageView!
     @IBOutlet weak var ratingView: HCSStarRatingView!
-    @IBOutlet weak var tracksCount: UILabel!
     @IBOutlet weak var commentsCountButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var editButton: UIButton!
@@ -92,7 +91,6 @@ extension TrackDetailsHeaderView{
     func setupView() {
         commentsCountButton.hidden = currentTemplate?.key?.getValidObject() == nil
         commentsCountButton.setTitle("\(currentTemplate?.commentsCount ?? 0) Comment(s)", forState: .Normal)
-        tracksCount.text = "\(currentTemplate?.activeTrackCount ?? 0) Active Track(s)"
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
     }
 }

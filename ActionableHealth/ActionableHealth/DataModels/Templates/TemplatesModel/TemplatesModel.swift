@@ -119,6 +119,7 @@ extension TemplatesModel{
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["reviewCount"] as? Int ?? 0
         obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
+        obj.blobKey = dict["blobKey"] as? String
 
         addPhases(dict, toModel: obj)
     }

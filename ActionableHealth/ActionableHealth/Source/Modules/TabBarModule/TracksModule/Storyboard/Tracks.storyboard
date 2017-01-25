@@ -250,7 +250,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write you comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="127.66666666666666" height="15"/>
+                                        <rect key="frame" x="21" y="16" width="131" height="17.666666666666629"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -582,8 +582,53 @@
             </objects>
             <point key="canvasLocation" x="5185.507246376812" y="416.57608695652175"/>
         </scene>
+        <!--Show Text View Controller-->
+        <scene sceneID="8OD-Ea-PGL">
+            <objects>
+                <viewController storyboardIdentifier="showTextView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rhf-6v-yOl" customClass="ShowTextViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cdt-Qj-lXB"/>
+                        <viewControllerLayoutGuide type="bottom" id="gEC-9f-g2j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0QB-pt-Q9q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bg" translatesAutoresizingMaskIntoConstraints="NO" id="KRK-Kn-9ih">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <textView multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzh-xg-liA">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gzh-xg-liA" firstAttribute="top" secondItem="Cdt-Qj-lXB" secondAttribute="bottom" id="6rU-Uc-gYX"/>
+                            <constraint firstItem="Gzh-xg-liA" firstAttribute="width" secondItem="0QB-pt-Q9q" secondAttribute="width" id="8Gx-zS-bLA"/>
+                            <constraint firstItem="KRK-Kn-9ih" firstAttribute="centerX" secondItem="0QB-pt-Q9q" secondAttribute="centerX" id="FOf-P7-L0h"/>
+                            <constraint firstItem="KRK-Kn-9ih" firstAttribute="centerY" secondItem="0QB-pt-Q9q" secondAttribute="centerY" id="J2y-pn-PIj"/>
+                            <constraint firstItem="KRK-Kn-9ih" firstAttribute="width" secondItem="0QB-pt-Q9q" secondAttribute="width" id="V0r-b4-SdP"/>
+                            <constraint firstItem="KRK-Kn-9ih" firstAttribute="height" secondItem="0QB-pt-Q9q" secondAttribute="height" id="cwc-hs-tHn"/>
+                            <constraint firstItem="Gzh-xg-liA" firstAttribute="centerX" secondItem="0QB-pt-Q9q" secondAttribute="centerX" id="u2M-PU-yJq"/>
+                            <constraint firstItem="gEC-9f-g2j" firstAttribute="top" secondItem="Gzh-xg-liA" secondAttribute="bottom" id="yWg-5q-mB3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HZj-ue-BoS"/>
+                    <connections>
+                        <outlet property="textView" destination="Gzh-xg-liA" id="1uM-Az-2LX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ku-iI-re5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5875" y="417"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Bg" width="414" height="736"/>
         <image name="send" width="36" height="36"/>
         <image name="star-black-ic" width="45" height="44"/>
         <image name="star-yellow-ic" width="45" height="44"/>

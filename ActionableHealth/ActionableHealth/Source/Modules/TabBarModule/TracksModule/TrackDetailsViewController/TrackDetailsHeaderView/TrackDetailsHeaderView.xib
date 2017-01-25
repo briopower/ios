@@ -49,14 +49,8 @@
                                         <constraint firstAttribute="width" secondItem="cnB-D5-yTp" secondAttribute="height" id="P2c-DP-bKb"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="165 Active Tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP2-Mj-Gwj" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="116" y="42.5" width="129" height="17"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
-                                    <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-wE-Ch1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="113" y="64.5" width="136" height="17"/>
+                                    <rect key="frame" x="113" y="59" width="142" height="20"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -70,7 +64,7 @@
                                     <rect key="frame" x="402" y="0.0" width="22" height="102.5"/>
                                 </imageView>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="290" y="34.5" width="112" height="33"/>
+                                    <rect key="frame" x="286" y="33" width="116" height="36"/>
                                     <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,7 +82,7 @@
                                     </connections>
                                 </button>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-Vt-fO7" customClass="HCSStarRatingView">
-                                    <rect key="frame" x="116" y="14" width="95" height="23.5"/>
+                                    <rect key="frame" x="116" y="21.5" width="95" height="23.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4Gb-Vt-fO7" secondAttribute="height" multiplier="280:70" id="2bJ-gi-JnH"/>
                                     </constraints>
@@ -115,25 +109,22 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="65:1242" id="18b-Oy-cib"/>
+                                <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" id="2dZ-Xr-dqP"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="centerY" secondItem="wCG-ZG-W60" secondAttribute="centerY" id="2ux-Ii-KI3"/>
-                                <constraint firstItem="sP2-Mj-Gwj" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" id="7yF-Dq-A2d"/>
                                 <constraint firstAttribute="trailing" secondItem="K79-jk-Xnz" secondAttribute="trailing" id="Au8-d5-o5v"/>
+                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="0.65" id="Gt5-e3-b4w"/>
                                 <constraint firstAttribute="bottom" secondItem="bbE-Yn-hVM" secondAttribute="bottom" id="KVq-FI-GDd"/>
-                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="leading" secondItem="sP2-Mj-Gwj" secondAttribute="leading" id="Mhz-A7-Q1w"/>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="SnZ-3g-whC"/>
+                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="1.35" id="T0p-Sh-YOY"/>
                                 <constraint firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="height" multiplier="1242:300" id="TLp-DX-vVt"/>
-                                <constraint firstItem="sP2-Mj-Gwj" firstAttribute="top" secondItem="4Gb-Vt-fO7" secondAttribute="bottom" constant="5" id="TcB-Q1-FGA"/>
-                                <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="sP2-Mj-Gwj" secondAttribute="centerY" id="VQC-nv-XZ0"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="asV-i3-XmE"/>
-                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="top" secondItem="sP2-Mj-Gwj" secondAttribute="bottom" constant="5" id="hg3-4V-dFR"/>
+                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="leading" secondItem="4Gb-Vt-fO7" secondAttribute="leading" constant="-3" id="bHx-GN-USu"/>
+                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="leading" secondItem="cnB-D5-yTp" secondAttribute="trailing" multiplier="330:275" id="edL-ag-4pg"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="leading" secondItem="bbE-Yn-hVM" secondAttribute="trailing" id="iui-3t-H9r"/>
-                                <constraint firstItem="sP2-Mj-Gwj" firstAttribute="leading" secondItem="cnB-D5-yTp" secondAttribute="trailing" multiplier="330:275" id="jNT-z2-SyK"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="200:1242" id="lK6-wM-BKa"/>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" id="mC2-ox-0em"/>
-                                <constraint firstItem="f5O-3a-9u1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sP2-Mj-Gwj" secondAttribute="trailing" constant="8" id="ssX-PZ-lG6"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="leading" secondItem="wCG-ZG-W60" secondAttribute="leading" id="sz2-QG-qd2"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="80:1242" id="tOg-5P-QL9"/>
-                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="leading" secondItem="sP2-Mj-Gwj" secondAttribute="leading" constant="-3" id="uEm-QC-2m6"/>
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="280:1242" id="vgZ-2K-RRo"/>
                                 <constraint firstAttribute="bottom" secondItem="K79-jk-Xnz" secondAttribute="bottom" id="vrt-7Y-dIQ"/>
                             </constraints>
@@ -179,9 +170,8 @@
                 <outlet property="ratingView" destination="4Gb-Vt-fO7" id="bee-yr-rxT"/>
                 <outlet property="requestButton" destination="f5O-3a-9u1" id="I6s-hg-9lb"/>
                 <outlet property="templateImage" destination="I1O-zR-LgI" id="ysy-uK-etL"/>
-                <outlet property="tracksCount" destination="sP2-Mj-Gwj" id="Dwz-qG-2IZ"/>
             </connections>
-            <point key="canvasLocation" x="200" y="-150.5"/>
+            <point key="canvasLocation" x="425" y="-107"/>
         </view>
     </objects>
     <resources>

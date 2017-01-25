@@ -25,10 +25,11 @@ class TasksModel: NSObject {
     var pausedDate = 0.0
     var completedDate = 0.0
     var remainingTimeInMillis = 0.0
-
+    var details = ""
     //MARK: Additional for tracks
     var status = ""
     var templateTaskId:String?
+    var blobKey:String?
 
 }
 
@@ -71,7 +72,8 @@ extension TasksModel{
         model.pausedDate = dict["pausedDate"] as? Double ?? 0
         model.completedDate = dict["completedDate"] as? Double ?? 0
         model.remainingTimeInMillis = dict["remainingTimeInMillis"] as? Double ?? 0
-
+        model.details = dict["description"] as? String ?? ""
+        model.blobKey = dict["blobKey"] as? String
         return model
     }
 }

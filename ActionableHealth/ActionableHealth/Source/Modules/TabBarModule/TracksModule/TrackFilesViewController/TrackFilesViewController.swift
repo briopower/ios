@@ -14,7 +14,8 @@ class TrackFilesViewController: CommonViewController {
     @IBOutlet weak var webView: UIWebView!
 
     //MARK:- Variables
-    var currentTemplate:TemplatesModel?
+    var blobKey:String?
+    var navigationTitle:String?
     var responseData:NSData?
     var httpResponse:NSHTTPURLResponse?
     var docController:UIDocumentInteractionController?
@@ -27,7 +28,7 @@ class TrackFilesViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Track Files", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
+        setNavigationBarWithTitle(navigationTitle ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +47,7 @@ extension TrackFilesViewController{
         if let data = responseData, let mimeType = httpResponse?.MIMEType{
             NSFileManager.save(data, fileName: "response", mimeType: mimeType)
             webView.loadData(data, MIMEType: mimeType, textEncodingName: "utf-8", baseURL: NSURL())
+            webView.delegate = self
         }
     }
 }
@@ -66,6 +68,16 @@ extension TrackFilesViewController{
     }
 }
 
+//MARK:- UIWebViewDelegate
+extension TrackFilesViewController:UIWebViewDelegate{
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.hideLoader()
+    }
+
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+        self.hideLoader()
+    }
+}
 //MARK:- UIDocumentInteractionControllerDelegate
 extension TrackFilesViewController:UIDocumentInteractionControllerDelegate{
     func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController{
@@ -78,11 +90,10 @@ extension TrackFilesViewController:UIDocumentInteractionControllerDelegate{
 //MARK:- Network methods
 extension TrackFilesViewController{
     func getFile() {
-        if let blobKey = currentTemplate?.blobKey where NetworkClass.isConnected(true){
+        if let blobKey = blobKey where NetworkClass.isConnected(true){
             showLoader()
             NetworkClass.sendRequest(URL: "\(Constants.URLs.trackFiles)\(blobKey)/true", RequestType: .GET, ResponseType: .NONE, CompletionHandler: { (status, responseObj, error, statusCode) in
                 self.processResponse(responseObj)
-                self.hideLoader()
             })
         }
     }
@@ -92,7 +103,6 @@ extension TrackFilesViewController{
             if let urlResponse = arr.firstObject as? NSHTTPURLResponse {
                 httpResponse = urlResponse
             }
-
             if let data = arr[1] as? NSData {
                 responseData = data
             }

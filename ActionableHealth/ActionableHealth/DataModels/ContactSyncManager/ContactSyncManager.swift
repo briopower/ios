@@ -34,6 +34,7 @@ class ContactSyncManager: NSObject {
     static let sharedInstance = ContactSyncManager()
     static let apAddressBook = APAddressBook()
     static let phoneNumberKit = PhoneNumberKit()
+    static let contactSyncCompleted = "ContactSyncCompleted"
 
     var isSyncing = false
     var isDeleting = false
@@ -80,6 +81,7 @@ class ContactSyncManager: NSObject {
                             NSUserDefaults.setLastSyncDate(NSDate())
                             self.syncCoreDataContacts()
                             self.isSyncing = false
+                            NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
                         }catch{
                             self.isSyncing = false
                             debugPrint("Error saving data")
@@ -109,6 +111,7 @@ class ContactSyncManager: NSObject {
                     prntCxt.performBlock({
                         do{
                             try prntCxt.save()
+                            NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
                         }catch{
                             debugPrint("Error saving data")
                         }
@@ -148,6 +151,7 @@ class ContactSyncManager: NSObject {
             prntCxt?.performBlock({
                 do{
                     try prntCxt?.save()
+                    NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
                 }catch{
                     debugPrint("Error saving data")
                 }
@@ -213,7 +217,7 @@ extension ContactSyncManager{
 
     func syncCoreDataContacts() {
         if NSUserDefaults.isLoggedIn() {
-            performSelectorInBackground(#selector(ContactSyncManager.fetchContactsAndStartSyncing), withObject: nil)
+        performSelectorInBackground(#selector(ContactSyncManager.fetchContactsAndStartSyncing), withObject: nil)
         }
     }
 

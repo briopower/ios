@@ -18,6 +18,9 @@ class ContactDetailsCell: UITableViewCell {
     @IBOutlet weak var alreadyMemberLabel: UILabel_FontSizeLabel!
     @IBOutlet weak var inviteButton: UIButton!
 
+    //MARK:- Variables
+    var contactObj:Contact?
+
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +39,7 @@ class ContactDetailsCell: UITableViewCell {
 extension ContactDetailsCell{
     func configCell(obj:AnyObject, shouldSelect:Bool = false, isMember:Bool = false) {
         if let contact = obj as? Contact {
+            contactObj = contact
             inviteButton.hidden = contact.isAppUser?.boolValue ?? false
             nameLabel.text = contact.addressBook?.name
             numberLabel.text = contact.id
@@ -50,6 +54,15 @@ extension ContactDetailsCell{
     }
 
     @IBAction func inviteAction(sender: UIButton) {
-        UIView.showToastWith("Not implemented yet.")
+        if NetworkClass.isConnected(true) {
+//            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: nil, Headers: nil, CompletionHandler: {
+//                (status, responseObj, error, statusCode) in
+//                if status {
+//                    UIView.showToastWith("Invitation sent to \"\(self.contactObj?.id ?? "")\"")
+//                }else{
+//                    UIView.showToastWith("Failed to invite \"\(self.contactObj?.id ?? "")\"")
+//                }
+//            })
+        }
     }
 }

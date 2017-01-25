@@ -29,10 +29,7 @@ private let DownloadButtonImage = UIImage(named: "add-button")
 extension UIViewController{
 
     func getNavigationController() -> UINavigationController? {
-        if let tabbar = self.tabBarController{
-            return tabbar.navigationController
-        }
-        return self.navigationController
+        return self as? UINavigationController ?? self.tabBarController?.navigationController ?? self.navigationController
     }
     func getNavigationItem() -> UINavigationItem? {
 

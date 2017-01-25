@@ -50,20 +50,34 @@
                                 <collectionViewLayout key="collectionViewLayout" id="684-to-x0C" customClass="CHTCollectionViewWaterfallLayout" customModule="BRIO" customModuleProvider="target"/>
                                 <cells/>
                             </collectionView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO TRACKS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-qR-Ovl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="153" y="358" width="108" height="20"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeB-XT-NrR" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="85" y="349.66666666666669" width="245" height="52"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <state key="normal">
+                                    <string key="title">You are not part of any track
+Tap here to create or join a track</string>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.numberOfLines">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.textAlignment">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nullCaseAction:" destination="oVf-5R-hYc" eventType="touchUpInside" id="wXu-ds-GZL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xzb-qR-Ovl" firstAttribute="centerY" secondItem="lC0-bM-nel" secondAttribute="centerY" id="MZ9-Vv-lgO"/>
+                            <constraint firstItem="TeB-XT-NrR" firstAttribute="centerX" secondItem="ToL-FB-Ffe" secondAttribute="centerX" id="96P-Mt-AdM"/>
                             <constraint firstAttribute="trailing" secondItem="ToL-FB-Ffe" secondAttribute="trailing" constant="5" id="RfI-Sd-748"/>
                             <constraint firstItem="ToL-FB-Ffe" firstAttribute="leading" secondItem="lC0-bM-nel" secondAttribute="leading" constant="5" id="V7b-kB-cZ6"/>
                             <constraint firstItem="ToL-FB-Ffe" firstAttribute="top" secondItem="Etd-Ss-RaR" secondAttribute="bottom" constant="5" id="cnx-s2-fqJ"/>
-                            <constraint firstItem="xzb-qR-Ovl" firstAttribute="centerX" secondItem="lC0-bM-nel" secondAttribute="centerX" id="fLv-A2-Ezb"/>
+                            <constraint firstItem="TeB-XT-NrR" firstAttribute="centerY" secondItem="ToL-FB-Ffe" secondAttribute="centerY" id="oMA-Wp-3BF"/>
                             <constraint firstItem="Uoh-yK-Aja" firstAttribute="top" secondItem="ToL-FB-Ffe" secondAttribute="bottom" constant="5" id="trM-iD-UWj"/>
                         </constraints>
                     </view>
@@ -72,7 +86,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="clctView" destination="ToL-FB-Ffe" id="jxy-hF-qgL"/>
-                        <outlet property="nullCaseLabel" destination="xzb-qR-Ovl" id="V6U-Ij-6jV"/>
+                        <outlet property="nullCase" destination="TeB-XT-NrR" id="1VJ-88-FwV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ly4-2a-cNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +114,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO CHATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-R0-lFL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="159" y="358" width="97.333333333333314" height="20"/>
+                                <rect key="frame" x="157.33333333333337" y="356.33333333333331" width="99.666666666666629" height="23.333333333333371"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

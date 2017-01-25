@@ -23,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        if let tbCont = window?.rootViewController?.getNavigationController()?.viewControllers[0] as? UITabBarController{
+            tbCont.selectedIndex = 1
+        }
+
         forEasyLoading()
 
         setupOnAppLauch()

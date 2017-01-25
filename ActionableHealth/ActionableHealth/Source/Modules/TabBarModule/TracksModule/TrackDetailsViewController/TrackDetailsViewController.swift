@@ -170,7 +170,8 @@ extension TrackDetailsViewController{
         switch type {
         case .Files:
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
-                viewCont.currentTemplate = currentTemplate
+                viewCont.blobKey = currentTemplate?.blobKey
+                viewCont.navigationTitle = sourceType == .Home ? "Template Files" : "Track Files"
                 getNavigationController()?.pushViewController(viewCont, animated: true)
             }
         case .Members:
@@ -206,6 +207,8 @@ extension TrackDetailsViewController:UITableViewDataSource{
                 switch sourceType {
                 case .Tracks:
                     return currentTemplate?.blobKey == nil ?  TrackDetailsCellTypes.Members.rawValue : TrackDetailsCellTypes.Files.rawValue
+                case .Home:
+                    return currentTemplate?.blobKey == nil ? TrackDetailsCellTypes.Details.rawValue : TrackDetailsCellTypes.Members.rawValue
                 default:
                     break
                 }
@@ -226,7 +229,12 @@ extension TrackDetailsViewController:UITableViewDataSource{
             switch sectionType {
             case .MemberFiles:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
-                    cell.configCell(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files)
+                    switch sourceType {
+                    case .Home:
+                        cell.configCell(TrackDetailsCellTypes.Files, sourceType: sourceType)
+                    default:
+                        cell.configCell(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files, sourceType: sourceType)
+                    }
                     return cell
                 }
             case .InfoPhase:
@@ -249,7 +257,12 @@ extension TrackDetailsViewController:UITableViewDelegate{
         if let sectionType = TrackDetailsSectionTypes(rawValue: indexPath.section) {
             switch sectionType {
             case .MemberFiles:
-                infoCellSelectedAtIndexPath(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files)
+                switch sourceType {
+                case .Home:
+                    infoCellSelectedAtIndexPath(TrackDetailsCellTypes.Files)
+                default:
+                    infoCellSelectedAtIndexPath(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files)
+                }
             case .InfoPhase:
                 if !isInfoSelected {
                     phaseCellSelectedAtIndexPath(indexPath)
@@ -406,7 +419,9 @@ extension TrackDetailsViewController{
             default:
                 break
             }
-            trackDetailsTblView.reloadData()
+            trackDetailsTblView.reloadSections(NSIndexSet(index: TrackDetailsSectionTypes.InfoPhase.rawValue), withRowAnimation: .Fade)
+            trackDetailsTblView.reloadSections(NSIndexSet(index: TrackDetailsSectionTypes.MemberFiles.rawValue), withRowAnimation: .None)
+
             updateHeader()
         }
         

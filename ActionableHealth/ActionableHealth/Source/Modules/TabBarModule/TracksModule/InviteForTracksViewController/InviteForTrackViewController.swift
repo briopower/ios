@@ -150,7 +150,7 @@ extension InviteForTrackViewController{
         switch sourceType {
         case .Home, .Tracks:
             //UIAlertController.showAlertOfStyle(Message: "Something went wrong.", completion: nil)
-            UIView.showToastWith("Something went wrong.")
+            UIView.showToast("Something went wrong", theme: Theme.Error)
         default:
             break
         }

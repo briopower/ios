@@ -55,14 +55,14 @@ extension ContactDetailsCell{
 
     @IBAction func inviteAction(sender: UIButton) {
         if NetworkClass.isConnected(true) {
-//            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: nil, Headers: nil, CompletionHandler: {
-//                (status, responseObj, error, statusCode) in
-//                if status {
-//                    UIView.showToastWith("Invitation sent to \"\(self.contactObj?.id ?? "")\"")
-//                }else{
-//                    UIView.showToastWith("Failed to invite \"\(self.contactObj?.id ?? "")\"")
-//                }
-//            })
+            NetworkClass.sendRequest(URL: Constants.URLs.inviteUsersToApp, RequestType: .POST, Parameters: contactObj?.getInviteMemberDict(), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if status {
+                    UIView.showToast("Invitation sent to \"\(self.contactObj?.id ?? "")\"", theme: Theme.Success)
+                }else{
+                    UIView.showToast("Failed to invite \"\(self.contactObj?.id ?? "")\"", theme: Theme.Error)
+                }
+            })
         }
     }
 }

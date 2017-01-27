@@ -64,7 +64,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
-  - Toast (3.1.0)
+  - SwiftMessages (2.0.0)
   - TPKeyboardAvoiding (1.3.1)
 
 DEPENDENCIES:
@@ -78,7 +78,7 @@ DEPENDENCIES:
   - HCSStarRatingView
   - PhoneNumberKit (= 0.8.5)
   - SDWebImage
-  - Toast
+  - SwiftMessages (~> 2.0.0)
   - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
@@ -99,9 +99,9 @@ SPEC CHECKSUMS:
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   PhoneNumberKit: 5668a7af19d2e566d92831a632ee80f5047eff75
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
-  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  SwiftMessages: 2e36405da88c6f51345d64b5e6e8f4c14853f5c7
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
 
-PODFILE CHECKSUM: 7cf53aab02b88f5a3f8e5a778e7d47b0ea97fee0
+PODFILE CHECKSUM: 55271a0ba1cae3a4597839b4c221d43e6439706d
 
 COCOAPODS: 1.1.1

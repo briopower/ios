@@ -87,6 +87,7 @@ class Constants: NSObject {
         static let appUsers = "\(base)\(trackAPIs)appUsers/"
         static let createTrack = "\(base)\(trackAPIs)createTrack/"
         static let inviteMember = "\(base)\(trackAPIs)invite/"
+        static let inviteUsersToApp = "\(base)\(trackAPIs)inviteUsersToApp/"
         static let trackMembers = "\(base)\(trackAPIs)getAllTrackMembers/"
         static let comment = "\(base)\(trackAPIs)comment/"
         static let getComments = "\(base)\(trackAPIs)getComments/"

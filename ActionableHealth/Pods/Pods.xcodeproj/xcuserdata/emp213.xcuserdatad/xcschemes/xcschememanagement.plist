@@ -59,12 +59,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TPKeyboardAvoiding.xcscheme</key>
+		<key>SwiftMessages-SwiftMessages.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Toast.xcscheme</key>
+		<key>SwiftMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TPKeyboardAvoiding.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,7 +77,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A0DFB63E788A05BB0460416E51C4860</key>
+		<key>055CE5FCADB8656F09E4542A7709489C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,17 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3497907197AD13CF50D2ED794F4F0820</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>45FF4A7AFE5D8E17D01023C53AED87FF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4BDF57C9D691BC037ED894B61B1D3738</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,7 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C273F8BF333AF8DA1C0752D7A7A7DA6</key>
+		<key>8A0E2A98F8EC6BD95D052D1863DF6CFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -128,6 +123,21 @@
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D4F46A973FA76581A4D7C5D0349FE5D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE3C56DCC736FF0E1429B62A38621D96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5B4BF384C362BAA2E569FAAFE66305B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

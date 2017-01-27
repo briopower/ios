@@ -12,13 +12,13 @@ import UIKit
 extension CommonViewController{
     func showLoader() {
         if showLoading {
-            loader = self.view.showLaoder(true)
+            loader = self.view.showLoader(true)
         }
     }
 
     func showLoaderOnWindow() {
         if let window = UIApplication.sharedApplication().keyWindow where showLoading {
-            loader = window.showLaoder(true)
+            loader = window.showLoader(true)
         }
     }
 

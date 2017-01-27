@@ -71,6 +71,7 @@ extension TemplatesModel{
         dict["members"] = arrOfMembers
         return dict
     }
+
     class func getPayloadDict(cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = []) -> [String:AnyObject] {
         return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType]
     }

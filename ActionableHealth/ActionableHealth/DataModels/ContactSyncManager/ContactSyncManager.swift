@@ -46,8 +46,8 @@ class ContactSyncManager: NSObject {
             if let contacts = contacts{
                 self.performSelectorInBackground(#selector(ContactSyncManager.addContacts(_:)), withObject: contacts)
             }else if let desc = error?.localizedDescription{
-               // UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
-                UIView.showToastWith(desc)
+                // UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
+                UIView.showToast(desc, theme: Theme.Error)
             }
         }
     }
@@ -171,6 +171,8 @@ class ContactSyncManager: NSObject {
             }
             if let splitedArray = arr.splitArrayWithSize(500) as? [NSArray]{
                 for obj in splitedArray {
+                    let arr:Array<UIColor> = []
+                    arr
                     syncContactFromServer(NSMutableArray(array: obj))
                 }
             }
@@ -187,52 +189,64 @@ extension ContactSyncManager{
 
     func syncContacts() {
 
-        if !isSyncing {
-            ContactSyncManager.apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
+        if ContactSyncManager.sharedInstance.checkAccess() == .Granted{
+            if !isSyncing {
+                ContactSyncManager.apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
 
-            ContactSyncManager.apAddressBook.filterBlock =
-                {
-                    (contact: APContact) -> Bool in
-                    if let modificationDate = contact.recordDate?.modificationDate {
-                        var shouldProcess = false
-                        if let lastSycned = NSUserDefaults.getLastSyncDate() {
-                            if modificationDate.compare(lastSycned) == NSComparisonResult.OrderedDescending  {
+                ContactSyncManager.apAddressBook.filterBlock =
+                    {
+                        (contact: APContact) -> Bool in
+                        if let modificationDate = contact.recordDate?.modificationDate {
+                            var shouldProcess = false
+                            if let lastSycned = NSUserDefaults.getLastSyncDate() {
+                                if modificationDate.compare(lastSycned) == NSComparisonResult.OrderedDescending  {
+                                    shouldProcess = true
+                                }
+                            }else{
                                 shouldProcess = true
                             }
-                        }else{
-                            shouldProcess = true
-                        }
-                        if shouldProcess {
-                            if let phones = contact.phones
-                            {
-                                return phones.count > 0
+                            if shouldProcess {
+                                if let phones = contact.phones
+                                {
+                                    return phones.count > 0
+                                }
                             }
                         }
-                    }
-                    return false
+                        return false
+                }
+                loadContacts()
             }
-            loadContacts()
+        }else{
+            ContactSyncManager.apAddressBook.requestAccess({ (request:Bool, error:NSError?) in
+                if let error = error{
+                    debugPrint("Contact request access error ----------\(error)----------")
+                }
+            })
+            NSUserDefaults.setLastSyncDate(NSDate())
         }
+
     }
 
     func syncCoreDataContacts() {
         if NSUserDefaults.isLoggedIn() {
-        performSelectorInBackground(#selector(ContactSyncManager.fetchContactsAndStartSyncing), withObject: nil)
+            performSelectorInBackground(#selector(ContactSyncManager.fetchContactsAndStartSyncing), withObject: nil)
         }
     }
 
     func checkForDeletedContacts() {
-        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext where !isDeleting {
-            self.isDeleting = true
+        if ContactSyncManager.sharedInstance.checkAccess() == .Granted{
+            if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext where !isDeleting {
+                self.isDeleting = true
 
-            bgCxt.performBlock({
-                if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: nil, sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [AddressBook] {
-                    for obj in arr {
-                        self.checkIfUserExists(obj, bgCxt: bgCxt, prntCxt: prntCxt)
+                bgCxt.performBlock({
+                    if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: nil, sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [AddressBook] {
+                        for obj in arr {
+                            self.checkIfUserExists(obj, bgCxt: bgCxt, prntCxt: prntCxt)
+                        }
                     }
-                }
-                self.isDeleting = false
-            })
+                    self.isDeleting = false
+                })
+            }
         }
     }
 }

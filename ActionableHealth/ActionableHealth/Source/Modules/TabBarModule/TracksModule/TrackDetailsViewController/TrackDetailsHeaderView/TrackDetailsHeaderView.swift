@@ -16,6 +16,7 @@ protocol TrackDetailsHeaderViewDelegate:NSObjectProtocol {
     func requestButtonTapped(type:TrackDetailsSourceType)
     func showImagePicker()
 }
+
 class TrackDetailsHeaderView: UIView {
 
     //MARK:- Outlets
@@ -26,6 +27,7 @@ class TrackDetailsHeaderView: UIView {
     @IBOutlet weak var commentsCountButton: UIButton!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var activeTracksLabel: UILabel!
 
     //MARK:- Variables
     static let heightOf1PxlWidth:CGFloat = 1.0628019324
@@ -75,6 +77,7 @@ extension TrackDetailsHeaderView{
             requestButton.setTitle("Create Track", forState: .Normal)
             logoImageView.image = UIImage(named: "logo-1")
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
+            commentsCountButton.hidden = true
         case .Tracks:
             requestButton.setTitle("Invite", forState: .Normal)
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
@@ -82,6 +85,7 @@ extension TrackDetailsHeaderView{
 
             editButton.hidden = !(NSUserDefaults.getUserId() == currentTemplate?.createdBy)
             requestButton.hidden = editButton.hidden
+            activeTracksLabel.hidden = true
         default:
             break
         }
@@ -89,8 +93,8 @@ extension TrackDetailsHeaderView{
     }
 
     func setupView() {
-        commentsCountButton.hidden = currentTemplate?.key?.getValidObject() == nil
         commentsCountButton.setTitle("\(currentTemplate?.commentsCount ?? 0) Comment(s)", forState: .Normal)
+        activeTracksLabel.text = "\(currentTemplate?.activeTrackCount ?? 0) Active Track(s)"
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
     }
 }

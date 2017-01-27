@@ -57,7 +57,7 @@ extension EnterOtpViewController{
             }
             else{
                // UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Invalid OTP !", completion: nil)
-                UIView.showToastWith("Invalid OTP !")
+                UIView.showToast("Invalid OTP !", theme: Theme.Error)
             }
         }
     }
@@ -68,7 +68,7 @@ extension EnterOtpViewController{
     
     func checkFields() -> Bool {
         if otpTextField.text?.getValidObject() == nil {
-            UIView.showToastWith("Please Enter OTP")
+            UIView.showToast("Please Enter OTP", theme: Theme.Info)
            // UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Enter OTP", completion: nil)
             return false
         }

@@ -105,6 +105,12 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Tracks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tN-uj-NNG" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="116" y="58.5" width="101.5" height="20"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
@@ -113,6 +119,7 @@
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="centerY" secondItem="wCG-ZG-W60" secondAttribute="centerY" id="2ux-Ii-KI3"/>
                                 <constraint firstAttribute="trailing" secondItem="K79-jk-Xnz" secondAttribute="trailing" id="Au8-d5-o5v"/>
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="0.65" id="Gt5-e3-b4w"/>
+                                <constraint firstItem="5tN-uj-NNG" firstAttribute="centerY" secondItem="dh5-wE-Ch1" secondAttribute="centerY" id="Hij-cp-Skm"/>
                                 <constraint firstAttribute="bottom" secondItem="bbE-Yn-hVM" secondAttribute="bottom" id="KVq-FI-GDd"/>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="SnZ-3g-whC"/>
                                 <constraint firstItem="dh5-wE-Ch1" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="1.35" id="T0p-Sh-YOY"/>
@@ -123,6 +130,7 @@
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="leading" secondItem="bbE-Yn-hVM" secondAttribute="trailing" id="iui-3t-H9r"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="200:1242" id="lK6-wM-BKa"/>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" id="mC2-ox-0em"/>
+                                <constraint firstItem="5tN-uj-NNG" firstAttribute="leading" secondItem="4Gb-Vt-fO7" secondAttribute="leading" id="o7j-SM-AF7"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="leading" secondItem="wCG-ZG-W60" secondAttribute="leading" id="sz2-QG-qd2"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="80:1242" id="tOg-5P-QL9"/>
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="280:1242" id="vgZ-2K-RRo"/>
@@ -163,6 +171,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="activeTracksLabel" destination="5tN-uj-NNG" id="Xib-Hy-GvC"/>
                 <outlet property="bottomContainer" destination="wCG-ZG-W60" id="nNb-tI-jQh"/>
                 <outlet property="commentsCountButton" destination="dh5-wE-Ch1" id="rMR-yz-2ex"/>
                 <outlet property="editButton" destination="HZI-mJ-3hB" id="0lG-JS-Qxt"/>

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,43 +20,39 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="92" id="pId-s3-FPm" customClass="EditProfileDetailsCell" customModule="BRIO" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pId-s3-FPm" id="hZp-8b-6bm">
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pId-s3-FPm" id="hZp-8b-6bm">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="91.666666666666671"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nTL-nO-MQh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="20.666666666666668"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="nTL-nO-MQh" secondAttribute="height" multiplier="1242:80" id="jdZ-3k-ERJ"/>
-                            <constraint firstAttribute="width" secondItem="nTL-nO-MQh" secondAttribute="height" multiplier="1242:80" priority="999" id="u1X-A3-Q3b"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="u1X-A3-Q3b"/>
-                            </mask>
-                        </variation>
-                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m4l-L3-u7K">
-                        <rect key="frame" x="0.0" y="20.666666666666664" width="19" height="70.333333333333343"/>
+                        <rect key="frame" x="0.0" y="15" width="19" height="76"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLT-b0-5GR" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                        <rect key="frame" x="19" y="20.666666666666664" width="46.666666666666671" height="16.999999999999993"/>
-                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
-                        <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="slW-ba-3e8">
-                        <rect key="frame" x="301" y="20.666666666666664" width="19" height="70.333333333333343"/>
+                        <rect key="frame" x="301" y="15" width="19" height="76"/>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="N" translatesAutoresizingMaskIntoConstraints="NO" id="flD-53-fVe">
-                        <rect key="frame" x="14" y="37.666666666666657" width="287" height="49.333333333333343"/>
+                    <textView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="a" translatesAutoresizingMaskIntoConstraints="NO" id="flD-53-fVe" customClass="JVFloatLabeledTextView">
+                        <rect key="frame" x="19" y="15" width="282" height="72"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="flD-53-fVe" secondAttribute="height" multiplier="1100:300" priority="999" id="Bte-Ma-bO4"/>
+                            <constraint firstAttribute="width" secondItem="flD-53-fVe" secondAttribute="height" multiplier="1100:285" priority="999" id="Bte-Ma-bO4"/>
                         </constraints>
                         <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Hobbies"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="floatingLabelShouldLockToTop" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="animateEvenIfNotFirstResponder" value="YES"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelTextColor">
+                                <color key="value" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                <color key="value" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="placeholderYPadding">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </textView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e3u-LB-W3S" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="19" y="90" width="282" height="1"/>
@@ -73,35 +68,29 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nTL-nO-MQh" firstAttribute="top" secondItem="hZp-8b-6bm" secondAttribute="top" id="DN2-Gb-PdU"/>
                     <constraint firstItem="slW-ba-3e8" firstAttribute="leading" secondItem="e3u-LB-W3S" secondAttribute="trailing" id="Hcv-2c-Gf2"/>
-                    <constraint firstAttribute="trailing" secondItem="nTL-nO-MQh" secondAttribute="trailing" id="Hrg-03-Vtf"/>
                     <constraint firstAttribute="bottom" secondItem="m4l-L3-u7K" secondAttribute="bottom" id="IoT-ox-5bP"/>
-                    <constraint firstItem="NLT-b0-5GR" firstAttribute="top" secondItem="nTL-nO-MQh" secondAttribute="bottom" id="QXz-CC-smq"/>
                     <constraint firstAttribute="bottom" secondItem="flD-53-fVe" secondAttribute="bottom" multiplier="1.05" id="Ukn-C5-uoR"/>
-                    <constraint firstItem="flD-53-fVe" firstAttribute="top" secondItem="NLT-b0-5GR" secondAttribute="bottom" id="Y3k-XF-aNM"/>
-                    <constraint firstItem="m4l-L3-u7K" firstAttribute="top" secondItem="nTL-nO-MQh" secondAttribute="bottom" id="bNl-v2-zS0"/>
-                    <constraint firstItem="slW-ba-3e8" firstAttribute="top" secondItem="nTL-nO-MQh" secondAttribute="bottom" id="bTT-It-Wp9"/>
-                    <constraint firstItem="flD-53-fVe" firstAttribute="leading" secondItem="m4l-L3-u7K" secondAttribute="trailing" constant="-5" id="fUQ-qP-o5t"/>
+                    <constraint firstItem="m4l-L3-u7K" firstAttribute="top" secondItem="flD-53-fVe" secondAttribute="top" id="aAc-Z5-WzT"/>
+                    <constraint firstItem="flD-53-fVe" firstAttribute="leading" secondItem="m4l-L3-u7K" secondAttribute="trailing" id="fUQ-qP-o5t"/>
                     <constraint firstItem="e3u-LB-W3S" firstAttribute="leading" secondItem="m4l-L3-u7K" secondAttribute="trailing" id="hqR-sK-IaX"/>
+                    <constraint firstItem="flD-53-fVe" firstAttribute="top" secondItem="hZp-8b-6bm" secondAttribute="top" constant="15" id="jDw-NE-NGI"/>
                     <constraint firstItem="m4l-L3-u7K" firstAttribute="width" secondItem="hZp-8b-6bm" secondAttribute="width" multiplier="75:1242" id="lrF-9k-Wj6"/>
                     <constraint firstItem="jCR-x4-NPA" firstAttribute="leading" secondItem="hZp-8b-6bm" secondAttribute="leading" id="nkZ-cv-TCr"/>
                     <constraint firstAttribute="bottom" secondItem="e3u-LB-W3S" secondAttribute="bottom" id="oZM-Mc-fXj"/>
                     <constraint firstAttribute="trailing" secondItem="jCR-x4-NPA" secondAttribute="trailing" id="q7c-Y2-QiG"/>
                     <constraint firstAttribute="bottom" secondItem="jCR-x4-NPA" secondAttribute="bottom" id="qR7-2p-wuI"/>
                     <constraint firstAttribute="bottom" secondItem="slW-ba-3e8" secondAttribute="bottom" id="qbT-zA-2i6"/>
-                    <constraint firstItem="nTL-nO-MQh" firstAttribute="leading" secondItem="hZp-8b-6bm" secondAttribute="leading" id="vbn-c4-HLh"/>
                     <constraint firstItem="m4l-L3-u7K" firstAttribute="leading" secondItem="hZp-8b-6bm" secondAttribute="leading" id="vlN-kr-koz"/>
                     <constraint firstAttribute="trailing" secondItem="slW-ba-3e8" secondAttribute="trailing" id="wlQ-VU-LZU"/>
+                    <constraint firstItem="slW-ba-3e8" firstAttribute="top" secondItem="flD-53-fVe" secondAttribute="top" id="wri-Vm-MVM"/>
                     <constraint firstItem="slW-ba-3e8" firstAttribute="leading" secondItem="flD-53-fVe" secondAttribute="trailing" id="xxb-2c-Ut7"/>
                     <constraint firstItem="slW-ba-3e8" firstAttribute="width" secondItem="hZp-8b-6bm" secondAttribute="width" multiplier="75:1242" id="yAv-S4-3FD"/>
-                    <constraint firstItem="NLT-b0-5GR" firstAttribute="leading" secondItem="m4l-L3-u7K" secondAttribute="trailing" id="zdq-IA-LX5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="completeSeprator" destination="jCR-x4-NPA" id="fhD-5I-o5r"/>
                 <outlet property="detailsTextView" destination="flD-53-fVe" id="RjK-wl-y8L"/>
-                <outlet property="titleDescLabel" destination="NLT-b0-5GR" id="ECv-ef-Axq"/>
             </connections>
             <point key="canvasLocation" x="480" y="388"/>
         </tableViewCell>

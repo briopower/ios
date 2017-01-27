@@ -21,7 +21,9 @@ class PhasesModel: NSObject {
     var commentsCount = 0
     var tasks = NSMutableArray()
     var parentTemplate = TemplatesModel()
-
+    var details = ""
+    var blobKey:String?
+    
     //MARK: Additional for tracks
     var status = ""
     var templatePhaseId:String?
@@ -48,6 +50,8 @@ extension PhasesModel{
         model.commentsCount = dict["commentCount"] as? Int ?? 0
         model.templatePhaseId = dict["templatePhaseId"] as? String
         model.status = dict["status"] as? String ?? ""
+        model.details = dict["description"] as? String ?? ""
+        model.blobKey = dict["blobKey"] as? String
 
         model.tasks = NSMutableArray()
         if let tasks = dict["tasks"] as? NSArray {

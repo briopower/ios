@@ -45,7 +45,10 @@ class EditProfileDetailsCell: UITableViewCell {
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
-        detailsTextView?.font = UIFont.getAppSemiboldFontWithSize(17)?.getDynamicSizeFont()
+        let font = UIFont.getAppSemiboldFontWithSize(17)?.getDynamicSizeFont()
+        detailsTextView?.font = font
+        firstField?.font = font
+        secondField?.font = font
         detailsTextView?.delegate = self
     }
 
@@ -95,10 +98,14 @@ extension EditProfileDetailsCell{
         switch currentType {
         case .NameCell:
             firstField?.enabled = true
+            firstField?.placeholder = "First Name"
             firstField?.text = currentUser?.firstName
+
+            secondField?.placeholder = "Last Name"
             secondField?.text = currentUser?.lastName
         case .Phone:
             firstField?.enabled = false
+            firstField?.placeholder = "Phone Number"
             firstField?.text = currentUser?.phoneNumber ?? currentUser?.userID
         case .Hobbies:
             detailsTextView?.text = currentUser?.hobbies ?? ""

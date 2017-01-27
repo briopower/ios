@@ -56,5 +56,16 @@ public class Contact: NSManagedObject {
         }
         return nil
     }
+
+    func getInviteMemberDict() -> [String:AnyObject] {
+        var dict:[String:AnyObject] = [:]
+        var arrOfMembers:[[String: String]] = []
+        if let id = id{
+            arrOfMembers.append(["emailOrPhone":id])
+        }
+        dict["members"] = arrOfMembers
+        return dict
+    }
+
     
 }

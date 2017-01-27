@@ -40,6 +40,11 @@ extension CommnetsCell{
         }
         personNameLabel.text = comment.commentedBy?.name ?? comment.commentedBy?.userID
         commentLabel.text = comment.comment
-        dateLabel.text = comment.commentedOn?.mediumDateString
+        
+        if comment.commentedOn?.isEqualToDateIgnoringTime(NSDate()) ?? false{
+            dateLabel.text = "\(comment.commentedOn?.shortTimeString ?? "")"
+        }else{
+            dateLabel.text = "\(comment.commentedOn?.mediumDateString ?? "")"
+        }
     }
 }

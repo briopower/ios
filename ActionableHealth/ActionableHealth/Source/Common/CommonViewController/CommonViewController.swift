@@ -27,6 +27,7 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
                 UIApplication.sharedApplication().keyWindow?.addSubview(imageView)
             }
         }
+        CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +37,7 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.enableInteraction()
     }
 
     override func viewWillDisappear(animated: Bool) {

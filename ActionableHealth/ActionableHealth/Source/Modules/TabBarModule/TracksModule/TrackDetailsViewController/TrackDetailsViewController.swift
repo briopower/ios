@@ -48,9 +48,9 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let headerView = trackDetailsTblView.tableHeaderView as? TrackDetailsHeaderView {
-            headerView.delegate = self
             headerView.setupFrame()
             trackDetailsTblView.tableHeaderView = headerView
+            headerView.delegate = self
         }
     }
 
@@ -137,8 +137,7 @@ extension TrackDetailsViewController{
         infoButton.selected = infoSelected
         phaseButton.selected = !infoSelected
         isInfoSelected = infoSelected
-        trackDetailsTblView.reloadSections(NSIndexSet(index: TrackDetailsSectionTypes.InfoPhase.rawValue), withRowAnimation: .Fade)
-//        trackDetailsTblView.reloadData()
+        reloadData(true)
     }
 
     func getInfoCellForIndexPath(indexPath:NSIndexPath) -> UITableViewCell {
@@ -160,6 +159,8 @@ extension TrackDetailsViewController{
         if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackPhasesCell)) as? TrackPhasesCell {
             if let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel{
                 cell.configCell(phase)
+                cell.tag = indexPath.row
+                cell.delegate = self
                 return cell
             }
         }
@@ -188,6 +189,15 @@ extension TrackDetailsViewController{
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
             viewCont.currentPhase = currentTemplate?.phases[indexPath.row] as? PhasesModel
             getNavigationController()?.pushViewController(viewCont, animated: true)
+        }
+    }
+
+    func reloadData(shouldScrollToTop:Bool) {
+        trackDetailsTblView.reloadData()
+        updateHeader()
+
+        if shouldScrollToTop {
+            trackDetailsTblView.scrollToRowAtIndexPath(NSIndexPath(forRow: NSNotFound, inSection: 1), atScrollPosition: .Top, animated: false)
         }
     }
 
@@ -294,13 +304,13 @@ extension TrackDetailsViewController:UITableViewDelegate{
             switch sectionType {
             case .InfoPhase:
                 if isInfoSelected {
-                    return CGFloat(currentTemplate?.details.getHeight(UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont(), maxWidth: Double(UIDevice.width())) ?? 200)
+                    return CGFloat(currentTemplate?.details.getHeight(UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont(), maxWidth: Double(UIDevice.width())) ?? 300)
                 }
             default:
                 break
             }
         }
-        return UITableViewAutomaticDimension
+        return 300
     }
 }
 
@@ -353,6 +363,28 @@ extension TrackDetailsViewController:UIImagePickerControllerDelegate{
     }
 }
 
+//MARK:- TrackPhasesCellDelegate
+extension TrackDetailsViewController:TrackPhasesCellDelegate{
+    func readMoreTapped(tag: Int, obj: AnyObject?) {
+        if let task = obj as? PhasesModel {
+            if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
+                showTextView.text = task.details
+                showTextView.navigationTitle = task.phaseName
+                getNavigationController()?.pushViewController(showTextView, animated: true)
+            }
+        }
+    }
+
+    func taskFilesTapped(tag: Int, obj: AnyObject?) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController, let blobKey = (obj as? PhasesModel)?.blobKey {
+            viewCont.blobKey = blobKey
+            viewCont.navigationTitle = "Phase Files"
+            getNavigationController()?.pushViewController(viewCont, animated: true)
+        }else{
+            UIView.showToast("No Files Found.", theme: Theme.Warning)
+        }
+    }
+}
 //MARK:- Network methods
 extension TrackDetailsViewController{
     func uploadImage() {
@@ -419,10 +451,7 @@ extension TrackDetailsViewController{
             default:
                 break
             }
-            trackDetailsTblView.reloadSections(NSIndexSet(index: TrackDetailsSectionTypes.InfoPhase.rawValue), withRowAnimation: .Fade)
-            trackDetailsTblView.reloadSections(NSIndexSet(index: TrackDetailsSectionTypes.MemberFiles.rawValue), withRowAnimation: .None)
-
-            updateHeader()
+            reloadData(false)
         }
         
     }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		08CF9E2E7FFA212F25CF8611 /* Pods_ActionableHealth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E67BE2C7A1ADBED4FE95728 /* Pods_ActionableHealth.framework */; };
+		3C03593F1E3B2F9000AE8485 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C03593A1E3B2F9000AE8485 /* JVFloatLabeledTextField.m */; };
+		3C0359401E3B2F9000AE8485 /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C03593C1E3B2F9000AE8485 /* JVFloatLabeledTextView.m */; };
+		3C0359411E3B2F9000AE8485 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C03593E1E3B2F9000AE8485 /* NSString+TextDirectionality.m */; };
 		3C1577C11E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */; };
 		3C1577C31E13CB54004FFAB1 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */; };
 		3C1577C51E13CB54004FFAB1 /* ContactSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */; };
@@ -244,6 +247,12 @@
 
 /* Begin PBXFileReference section */
 		0BCF5EE8FE3931530E8332FB /* Pods-ActionableHealth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealth/Pods-ActionableHealth.debug.xcconfig"; sourceTree = "<group>"; };
+		3C0359391E3B2F9000AE8485 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		3C03593A1E3B2F9000AE8485 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		3C03593B1E3B2F9000AE8485 /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVFloatLabeledTextView.h; sourceTree = "<group>"; };
+		3C03593C1E3B2F9000AE8485 /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextView.m; sourceTree = "<group>"; };
+		3C03593D1E3B2F9000AE8485 /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TextDirectionality.h"; sourceTree = "<group>"; };
+		3C03593E1E3B2F9000AE8485 /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextDirectionality.m"; sourceTree = "<group>"; };
 		3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddressBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSyncManager.swift; sourceTree = "<group>"; };
@@ -561,6 +570,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3C0359381E3B2F9000AE8485 /* JVFloatLabeled */ = {
+			isa = PBXGroup;
+			children = (
+				3C0359391E3B2F9000AE8485 /* JVFloatLabeledTextField.h */,
+				3C03593A1E3B2F9000AE8485 /* JVFloatLabeledTextField.m */,
+				3C03593B1E3B2F9000AE8485 /* JVFloatLabeledTextView.h */,
+				3C03593C1E3B2F9000AE8485 /* JVFloatLabeledTextView.m */,
+				3C03593D1E3B2F9000AE8485 /* NSString+TextDirectionality.h */,
+				3C03593E1E3B2F9000AE8485 /* NSString+TextDirectionality.m */,
+			);
+			path = JVFloatLabeled;
+			sourceTree = "<group>";
+		};
 		3C1577B51E13CB54004FFAB1 /* ContactSyncManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +895,7 @@
 		3C1EC5821DA3A864003DC2A3 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				3C0359381E3B2F9000AE8485 /* JVFloatLabeled */,
 				3C8E47071E165CAE0019C261 /* JSQMessagesViewController */,
 				3C8E476F1E165CAE0019C261 /* JSQSystemSoundPlayer */,
 				3CBD5C7D1DA7D71B004BCAE0 /* CHTCollectionViewWaterfallLayout */,
@@ -2517,6 +2540,7 @@
 				3C8E47771E165CAE0019C261 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				3C1EC5A01DA3A864003DC2A3 /* UIDevice_Common.swift in Sources */,
 				3C96412B1DB4CBA600EE9676 /* KeyboardAvoidingViewController.swift in Sources */,
+				3C03593F1E3B2F9000AE8485 /* JVFloatLabeledTextField.m in Sources */,
 				3C1577C11E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift in Sources */,
 				3CB54AF41E1E2BB10026A999 /* UITableViewCell_Common.swift in Sources */,
 				3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */,
@@ -2560,6 +2584,7 @@
 				3C1EC59F1DA3A864003DC2A3 /* UIColor_Common.swift in Sources */,
 				3C9D13271DA3CE5800998DA2 /* UIButton_RoundButton.swift in Sources */,
 				3C1EC5AD1DA3A864003DC2A3 /* Reachability.swift in Sources */,
+				3C0359411E3B2F9000AE8485 /* NSString+TextDirectionality.m in Sources */,
 				3C8E47911E165CAE0019C261 /* JSQPhotoMediaItem.m in Sources */,
 				3CC9D0721DB8887F00287068 /* CommonReverseTableView.swift in Sources */,
 				3CB8A2971DEDAE0C009B9AE9 /* TemplatesModel.swift in Sources */,
@@ -2567,6 +2592,7 @@
 				3C8E479B1E165CAE0019C261 /* JSQMessagesInputToolbar.m in Sources */,
 				3CACF3A81DB5F7550034D700 /* UIApplication_Common.swift in Sources */,
 				3C707DA21DFAB77D00B9177E /* TrackMemberListViewController.swift in Sources */,
+				3C0359401E3B2F9000AE8485 /* JVFloatLabeledTextView.m in Sources */,
 				3CC9D0771DB897D600287068 /* TrackFilesViewController.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,

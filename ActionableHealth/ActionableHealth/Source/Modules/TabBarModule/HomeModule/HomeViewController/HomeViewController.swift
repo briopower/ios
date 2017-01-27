@@ -40,7 +40,7 @@ class HomeViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Search_Notification)
+        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None2, RightButtonType: BarButtontype.Search_Notification)
         getData(cursor)
     }
     override func viewDidAppear(animated: Bool) {
@@ -58,7 +58,6 @@ extension HomeViewController{
     func setupView() {
         let width = (235/1242) * UIDevice.width()
         titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
-        CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
         CommonMethods.addShadowToView(buttonsContainer)
 
         clctView.commonCollectionViewDelegate = self

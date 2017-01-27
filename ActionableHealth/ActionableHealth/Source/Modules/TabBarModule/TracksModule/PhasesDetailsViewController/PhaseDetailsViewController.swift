@@ -149,7 +149,7 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
             viewCont.navigationTitle = "Task Files"
             getNavigationController()?.pushViewController(viewCont, animated: true)
         }else{
-            UIView.showToastWith("No Files Found.")
+            UIView.showToast("No Files Found.", theme: Theme.Warning)
         }
     }
 

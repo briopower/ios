@@ -10,7 +10,7 @@ import UIKit
 
 //MARK:- Loader Methods
 extension UIView{
-    func showLaoder(animated:Bool) -> VNProgreessHUD {
+    func showLoader(animated:Bool) -> VNProgreessHUD {
         return VNProgreessHUD.showHUDAddedToView(self, Animated: animated)
     }
     
@@ -21,7 +21,13 @@ extension UIView{
 
 //MARK:- Toast Methods
 extension UIView{
-    class func showToastWith(message:String) {
-        UIViewController.getTopMostViewController()?.view.makeToast(message)
+    class func showToast(message:String, theme:Theme) {
+        let messageView = MessageView.viewFromNib(layout: .StatusLine)
+        messageView.configureTheme(theme)
+        messageView.configureContent(body: message)
+        var statusConfig = SwiftMessages.defaultConfig
+        statusConfig.presentationContext = SwiftMessages.PresentationContext.Window(windowLevel:UIWindowLevelNormal)
+        statusConfig.preferredStatusBarStyle = UIStatusBarStyle.LightContent
+        SwiftMessages.show(config: statusConfig, view: messageView)
     }
 }

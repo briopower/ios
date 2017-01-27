@@ -8,7 +8,7 @@
 
 import UIKit
 enum BarButtontype {
-    case Empty, None, Back, Search ,Search_Notification, Cross, Done, Details, Add, Skip, Next
+    case Empty, None, None2, Back, Search ,Search_Notification, Cross, Done, Details, Add, Skip, Next
 }
 
 enum BarButtonPosition {
@@ -77,6 +77,10 @@ extension UIViewController{
             barButton = UIBarButtonItem(customView:getButtonWithImage(NoneButtonImage,Action: #selector(self.noneButtonAction(_:))))
             barButton1 = nil
             getNavigationItem()?.backBarButtonItem = nil
+        case .None2:
+            barButton = UIBarButtonItem(customView:getButtonWithImage(NoneButtonImage,Action: #selector(self.noneButtonAction(_:))))
+            barButton1 = UIBarButtonItem(customView:getButtonWithImage(NoneButtonImage,Action: #selector(self.noneButtonAction(_:))))
+            getNavigationItem()?.backBarButtonItem = nil
         case .Back:
             barButton = UIBarButtonItem(customView:getButtonWithImage(BackButtonImage,Action: #selector(self.backButtonAction(_:))))
         case .Search:
@@ -123,11 +127,6 @@ extension UIViewController{
         button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
         button.setTitle("", forState: UIControlState.Normal)
         button.sizeToFit()
-        var frame = button.frame
-        if frame.size.width < 15 {
-            frame.size.width = 15
-            button.frame = frame
-        }
         return button
     }
     private func getButtonWithTitle(title:String?, Action action:Selector) -> UIButton{
@@ -201,7 +200,7 @@ extension UIViewController{
                         if shouldResetData{
                             NSUserDefaults.clear()
                             if let tabBarCont = viewCont.viewControllers[0] as? UITabBarController{
-                                tabBarCont.selectedIndex = 0
+                                tabBarCont.selectedIndex = 1
                                 if let homeView = tabBarCont.selectedViewController as?
                                     HomeViewController{
                                     homeView.reset()

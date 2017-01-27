@@ -68,7 +68,7 @@ extension CountryListViewController{
             getNamesJson()
         }
         srchBar.returnKeyType = .Done
-        
+
         tblView.registerNib(UINib(nibName: String(CountryCodeListCell), bundle: nil), forCellReuseIdentifier: String(CountryCodeListCell))
         tblView.tableFooterView = UIView(frame: CGRectZero)
     }
@@ -90,6 +90,7 @@ extension CountryListViewController{
                                            countryCode_key : countryCode,
                                            isdCode_key : isdCode!,
                                            normalizedISDCode_key : isdCode!.getNumbers()]
+
                                 dataSet.addObject(obj)
                             }
                         }
@@ -110,13 +111,27 @@ extension CountryListViewController{
     func createPlist() {
         dataSet.sortUsingComparator { (obj1:AnyObject, obj2:AnyObject) -> NSComparisonResult in
             if let dict1 = obj1 as? [String:String], let dict2 = obj2 as? [String:String]{
+
+                // Fix for US at top
+                if dict1[countryCode_key] == "US"{
+                    return .OrderedAscending
+                }else if dict2[countryCode_key] == "US"{
+                    return .OrderedDescending
+                }
+
                 if let isdCode1 = dict1[normalizedISDCode_key], let isdCode2 = dict2[normalizedISDCode_key]{
                     let result = isdCode1.compare(isdCode2, options: NSStringCompareOptions.NumericSearch)
                     return result
                 }
+
+                //                if let countryName1 = dict1[countryName_key], let countryName2 = dict2[countryName_key]{
+                //                    let result = countryName1.compare(countryName2)
+                //                    return result
+                //                }
             }
             return .OrderedAscending
         }
+
         let isWritten = dataSet.writeToFile(path, atomically: true)
         if isWritten {
             createCountryArray()

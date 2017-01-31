@@ -26,7 +26,7 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
 
     //MARK:- Variables
     var frc:NSFetchedResultsController?
-    var sourceType = TrackDetailsSourceType.Home
+    var sourceType = TrackDetailsSourceType.Templates
     var currentTemplate:TemplatesModel?
     var trackName:String?
     var selectedUsers = NSMutableArray()
@@ -60,7 +60,7 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
 extension InviteForTrackViewController{
     @IBAction func doneAction(sender: UIButton) {
         switch sourceType {
-        case .Home:
+        case .Templates:
             createTrack()
         case .Tracks:
             inviteMembers()
@@ -133,7 +133,7 @@ extension InviteForTrackViewController{
 
     func processResponse(response:AnyObject?) {
         switch sourceType {
-        case .Home:
+        case .Templates:
             getNavigationController()
             if let tbCont = getNavigationController()?.viewControllers[0] as? UITabBarController{
                 tbCont.selectedIndex = TrackDetailsSourceType.Tracks.rawValue
@@ -148,7 +148,7 @@ extension InviteForTrackViewController{
 
     func processError(error:NSError?) {
         switch sourceType {
-        case .Home, .Tracks:
+        case .Templates, .Tracks:
             //UIAlertController.showAlertOfStyle(Message: "Something went wrong.", completion: nil)
             UIView.showToast("Something went wrong", theme: Theme.Error)
         default:

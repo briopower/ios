@@ -31,7 +31,6 @@ public class Person: NSManagedObject {
             (status, responseObj, error, statusCode) in
             if status, let imageUrl = responseObj?["profileURL"] as? String{
                 self.personImage = imageUrl
-                AppDelegate.getAppDelegateObject()?.saveContext()
             }
         }
     }

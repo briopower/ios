@@ -10,13 +10,14 @@ import UIKit
 import Firebase
 
 enum MessageType: String {
-    case chat,chat_attachment, notification
+    case chat,chat_attachment, notification, comment
 }
 
 class MessagingManager: NSObject {
 
     //MARK:- Variables
     static let sharedInstance = MessagingManager()
+    let messageReceived = "messageReceivedNotification"
     var ref: FIRDatabaseReference?
     private var _refHandle: FIRDatabaseHandle?
     var chanelToObserve:String{
@@ -31,7 +32,7 @@ extension MessagingManager{
     private func signIn() {
         FIRAuth.auth()?.signInWithCustomToken(NSUserDefaults.getFirebaseToken(), completion: { (user:FIRUser?, error:NSError?) in
             if let error = error{
-                debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\n\(error)")
+                debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\(error)")
                 if let type = FIRAuthErrorCode(rawValue: error.code){
                     switch type{
                     case .ErrorCodeNetworkError:
@@ -49,7 +50,7 @@ extension MessagingManager{
     private func refreshToken() {
         FIRAuth.auth()?.currentUser?.getTokenForcingRefresh(true, completion: { (token:String?, error:NSError?) in
             if let error = error{
-                debugPrint("------------FIREBASE REFRESH TOKEN ISSUE--------------\n\(error)")
+                debugPrint("------------FIREBASE REFRESH TOKEN ISSUE--------------\(error)")
                 self.signIn()
             }else if let tkn = token{
                 NSUserDefaults.setFirebaseToken(tkn)
@@ -83,6 +84,7 @@ extension MessagingManager{
                         switch type{
                         case .chat:
                             Messages.saveMessageFor(snapshot.key, value: data)
+                            NSNotificationCenter.defaultCenter().postNotificationName(self.messageReceived, object: data)
                         default:
                             break
                         }
@@ -90,7 +92,7 @@ extension MessagingManager{
                 }
             }, withCancelBlock:
             { (error:NSError) in
-                debugPrint("------------DATABASE SYNC ISSUE--------------\n\(error)")
+                debugPrint("------------DATABASE SYNC ISSUE MESSAGING--------------\(error)")
                 self.refreshToken()
         })
     }
@@ -125,6 +127,7 @@ extension MessagingManager{
         }
 
     }
+
     private func sendNotificationToken() {
         if let refreshedToken = FIRInstanceID.instanceID().token(), let userId = FIRAuth.auth()?.currentUser?.uid{
             let objToSend = ["deviceToken": refreshedToken, "userId":userId]
@@ -161,7 +164,7 @@ extension MessagingManager{
                 SecItemDelete(dictionary)
             }
         } catch {
-            debugPrint("------------SIGN OUT ISSUE--------------\n\(error)")
+            debugPrint("------------SIGN OUT ISSUE--------------\(error)")
         }
     }
 

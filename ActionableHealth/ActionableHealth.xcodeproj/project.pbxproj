@@ -40,6 +40,7 @@
 		3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */; };
 		3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */; };
 		3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C39DAAB1DB64A8400D86D24 /* Tracks.storyboard */; };
+		3C3AD6261E3F0FA900722122 /* CommentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3AD6251E3F0FA900722122 /* CommentsManager.swift */; };
 		3C3B88681E1A1E85005DA7B4 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B88661E1A1E85005DA7B4 /* Person+CoreDataClass.swift */; };
 		3C3B88691E1A1E85005DA7B4 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B88671E1A1E85005DA7B4 /* Person+CoreDataProperties.swift */; };
 		3C3B886C1E1A1EAC005DA7B4 /* Messages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B886A1E1A1EAB005DA7B4 /* Messages+CoreDataClass.swift */; };
@@ -186,13 +187,17 @@
 		3CCF31021DB7349B001A1E7B /* SentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF31001DB7349B001A1E7B /* SentMessageCell.swift */; };
 		3CCF31031DB7349B001A1E7B /* SentMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF31011DB7349B001A1E7B /* SentMessageCell.xib */; };
 		3CCF31061DB74B7E001A1E7B /* TrackDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF31051DB74B7E001A1E7B /* TrackDetailsHeaderView.swift */; };
-		3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView.xib */; };
+		3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView_Track.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView_Track.xib */; };
 		3CCF310A1DB75B24001A1E7B /* TrackDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF31091DB75B24001A1E7B /* TrackDetailsViewController.swift */; };
 		3CCF8AF81DA64B1000C76C64 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8AF71DA64B1000C76C64 /* CommonMethods.swift */; };
 		3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */; };
 		3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF8B051DA6682300C76C64 /* Constants.swift */; };
 		3CD2653B1DEE9355008CE1E4 /* CoreDataOperationsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */; };
 		3CD382281DF7E74A00B1B7A3 /* CommonHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD382271DF7E74A00B1B7A3 /* CommonHeaderButton.swift */; };
+		3CD845801E405BAD002EC90D /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CD8457D1E405BAD002EC90D /* iTunesArtwork@1x.png */; };
+		3CD845811E405BAD002EC90D /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CD8457E1E405BAD002EC90D /* iTunesArtwork@2x.png */; };
+		3CD845821E405BAD002EC90D /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CD8457F1E405BAD002EC90D /* iTunesArtwork@3x.png */; };
+		3CD845841E4064A6002EC90D /* TrackDetailsHeaderView_Template.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CD845831E4064A6002EC90D /* TrackDetailsHeaderView_Template.xib */; };
 		3CDD48AB1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */; };
 		3CE5B8891E1BAE7C00526ED8 /* UISlider_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5B8881E1BAE7C00526ED8 /* UISlider_Custom.swift */; };
 		3CE5B88B1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5B88A1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib */; };
@@ -288,6 +293,7 @@
 		3C1EC58D1DA3A864003DC2A3 /* NullCaseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NullCaseView.xib; sourceTree = "<group>"; };
 		3C1EC5B21DA3A9AE003DC2A3 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		3C39DAAB1DB64A8400D86D24 /* Tracks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tracks.storyboard; sourceTree = "<group>"; };
+		3C3AD6251E3F0FA900722122 /* CommentsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsManager.swift; sourceTree = "<group>"; };
 		3C3B88661E1A1E85005DA7B4 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3C3B88671E1A1E85005DA7B4 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C3B886A1E1A1EAB005DA7B4 /* Messages+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Messages+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -484,13 +490,17 @@
 		3CCF31001DB7349B001A1E7B /* SentMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMessageCell.swift; sourceTree = "<group>"; };
 		3CCF31011DB7349B001A1E7B /* SentMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentMessageCell.xib; sourceTree = "<group>"; };
 		3CCF31051DB74B7E001A1E7B /* TrackDetailsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailsHeaderView.swift; sourceTree = "<group>"; };
-		3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackDetailsHeaderView.xib; sourceTree = "<group>"; };
+		3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView_Track.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackDetailsHeaderView_Track.xib; sourceTree = "<group>"; };
 		3CCF31091DB75B24001A1E7B /* TrackDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackDetailsViewController.swift; sourceTree = "<group>"; };
 		3CCF8AF71DA64B1000C76C64 /* CommonMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
 		3CCF8B021DA667B200C76C64 /* GlobalEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalEnums.swift; sourceTree = "<group>"; };
 		3CCF8B051DA6682300C76C64 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3CD2653A1DEE9355008CE1E4 /* CoreDataOperationsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataOperationsClass.swift; sourceTree = "<group>"; };
 		3CD382271DF7E74A00B1B7A3 /* CommonHeaderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderButton.swift; sourceTree = "<group>"; };
+		3CD8457D1E405BAD002EC90D /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@1x.png"; path = "Assets.xcassets/iTunesArtwork@1x.png"; sourceTree = "<group>"; };
+		3CD8457E1E405BAD002EC90D /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Assets.xcassets/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		3CD8457F1E405BAD002EC90D /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "Assets.xcassets/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
+		3CD845831E4064A6002EC90D /* TrackDetailsHeaderView_Template.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackDetailsHeaderView_Template.xib; sourceTree = "<group>"; };
 		3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerController_Common.swift; sourceTree = "<group>"; };
 		3CE5B8881E1BAE7C00526ED8 /* UISlider_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISlider_Custom.swift; sourceTree = "<group>"; };
 		3CE5B88A1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell_Completed.xib; sourceTree = "<group>"; };
@@ -739,6 +749,9 @@
 		3C1EC5551DA3A864003DC2A3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				3CD8457D1E405BAD002EC90D /* iTunesArtwork@1x.png */,
+				3CD8457E1E405BAD002EC90D /* iTunesArtwork@2x.png */,
+				3CD8457F1E405BAD002EC90D /* iTunesArtwork@3x.png */,
 				3C1EC5561DA3A864003DC2A3 /* Assets.xcassets */,
 			);
 			path = Image;
@@ -1361,6 +1374,7 @@
 			isa = PBXGroup;
 			children = (
 				3C91DFFD1DFED31B0074BCB6 /* CommnetsModel */,
+				3C3AD6251E3F0FA900722122 /* CommentsManager.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -1867,7 +1881,8 @@
 			isa = PBXGroup;
 			children = (
 				3CCF31051DB74B7E001A1E7B /* TrackDetailsHeaderView.swift */,
-				3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView.xib */,
+				3CCF31071DB74B87001A1E7B /* TrackDetailsHeaderView_Track.xib */,
+				3CD845831E4064A6002EC90D /* TrackDetailsHeaderView_Template.xib */,
 			);
 			path = TrackDetailsHeaderView;
 			sourceTree = "<group>";
@@ -2284,6 +2299,7 @@
 				3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */,
 				3C71C4131E1D2BEA00468E43 /* SearchByIdHeader.xib in Resources */,
 				3C966DC31DF6CAFB00E299BF /* CountryCodeListCell.xib in Resources */,
+				3CD845801E405BAD002EC90D /* iTunesArtwork@1x.png in Resources */,
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
 				3C1EC5B31DA3A9AE003DC2A3 /* Localizable.strings in Resources */,
@@ -2297,22 +2313,25 @@
 				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
 				3CE5B88B1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib in Resources */,
 				3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */,
+				3CD845821E405BAD002EC90D /* iTunesArtwork@3x.png in Resources */,
 				3CC9D08B1DB8B44D00287068 /* PhaseDetailsCell_Status.xib in Resources */,
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
 				3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */,
 				3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */,
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
-				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView.xib in Resources */,
+				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView_Track.xib in Resources */,
 				3C8E47A71E165CAE0019C261 /* LICENSE in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
 				3C8E47761E165CAE0019C261 /* JSQMessagesAssets.bundle in Resources */,
+				3CD845811E405BAD002EC90D /* iTunesArtwork@2x.png in Resources */,
 				3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */,
 				3CCF31031DB7349B001A1E7B /* SentMessageCell.xib in Resources */,
 				3CACF3F81DB634920034D700 /* CommonCollectionReusableView.xib in Resources */,
 				3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */,
 				3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */,
 				40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */,
+				3CD845841E4064A6002EC90D /* TrackDetailsHeaderView_Template.xib in Resources */,
 				3CC9D0891DB8AE7100287068 /* PhaseDetailsCell.xib in Resources */,
 				3CF5B5501DB78AEC00224046 /* TrackInfoCell.xib in Resources */,
 			);
@@ -2596,6 +2615,7 @@
 				3CC9D0771DB897D600287068 /* TrackFilesViewController.swift in Sources */,
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,
+				3C3AD6261E3F0FA900722122 /* CommentsManager.swift in Sources */,
 				3C1EC5961DA3A864003DC2A3 /* AppDelegate_Common.swift in Sources */,
 				3CCF310A1DB75B24001A1E7B /* TrackDetailsViewController.swift in Sources */,
 				3CCF8AF81DA64B1000C76C64 /* CommonMethods.swift in Sources */,

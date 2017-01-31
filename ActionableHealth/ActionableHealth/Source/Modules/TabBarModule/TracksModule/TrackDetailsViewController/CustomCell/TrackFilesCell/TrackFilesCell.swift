@@ -31,7 +31,7 @@ class TrackFilesCell: UITableViewCell {
 extension TrackFilesCell{
     func configCell(type:TrackDetailsCellTypes, sourceType:TrackDetailsSourceType) {
         switch sourceType {
-        case .Home:
+        case .Templates:
             switch type {
             case .Files:
                 detailsLabel.text = "Template Files"

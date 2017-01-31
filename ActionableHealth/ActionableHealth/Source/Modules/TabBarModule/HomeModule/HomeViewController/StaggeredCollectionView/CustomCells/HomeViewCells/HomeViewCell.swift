@@ -35,7 +35,7 @@ extension HomeViewCell{
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
 
         switch type {
-        case .HomeView:
+        case .TemplateView:
             nameLabel.text = currentTemplate?.name
             logoImageView.image = UIImage(named: "logo-1")
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))

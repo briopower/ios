@@ -200,7 +200,7 @@ extension UIViewController{
                         if shouldResetData{
                             NSUserDefaults.clear()
                             if let tabBarCont = viewCont.viewControllers[0] as? UITabBarController{
-                                tabBarCont.selectedIndex = 1
+                                tabBarCont.selectedIndex = 0
                                 if let homeView = tabBarCont.selectedViewController as?
                                     HomeViewController{
                                     homeView.reset()

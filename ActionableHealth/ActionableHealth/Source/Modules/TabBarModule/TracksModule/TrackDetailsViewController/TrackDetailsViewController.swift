@@ -26,7 +26,7 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
     var isInfoSelected = false
-    var sourceType = TrackDetailsSourceType.Home
+    var sourceType = TrackDetailsSourceType.Templates
     var alertController:UIAlertController?
     var trackName:String?
     var imageUploadURL:String?
@@ -48,7 +48,7 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let headerView = trackDetailsTblView.tableHeaderView as? TrackDetailsHeaderView {
-            headerView.setupFrame()
+            headerView.setupFrame(sourceType)
             trackDetailsTblView.tableHeaderView = headerView
             headerView.delegate = self
         }
@@ -76,10 +76,10 @@ extension TrackDetailsViewController{
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
     func commentsTapped(type: TrackDetailsSourceType) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController, let key = self.currentTemplate?.key {
             dispatch_async(dispatch_get_main_queue(), {
                 viewCont.delegate = self
-                viewCont.commentSourceKey = self.currentTemplate?.key
+                viewCont.commentSourceKey = key
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
         }
@@ -87,7 +87,7 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
 
     func requestButtonTapped(type: TrackDetailsSourceType) {
         switch type {
-        case .Home:
+        case .Templates:
             getTrackName()
         case .Tracks:
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
@@ -114,7 +114,7 @@ extension TrackDetailsViewController:CommentsViewControllerDelegate{
 extension TrackDetailsViewController{
     func setupView() {
         infoButtonAction(infoButton)
-        if let headerView = TrackDetailsHeaderView.getView() {
+        if let headerView = TrackDetailsHeaderView.getView(sourceType) {
             trackDetailsTblView.tableHeaderView = headerView
         }
         updateHeader()
@@ -172,7 +172,7 @@ extension TrackDetailsViewController{
         case .Files:
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
                 viewCont.blobKey = currentTemplate?.blobKey
-                viewCont.navigationTitle = sourceType == .Home ? "Template Files" : "Track Files"
+                viewCont.navigationTitle = sourceType == .Templates ? "Template Files" : "Track Files"
                 getNavigationController()?.pushViewController(viewCont, animated: true)
             }
         case .Members:
@@ -217,7 +217,7 @@ extension TrackDetailsViewController:UITableViewDataSource{
                 switch sourceType {
                 case .Tracks:
                     return currentTemplate?.blobKey == nil ?  TrackDetailsCellTypes.Members.rawValue : TrackDetailsCellTypes.Files.rawValue
-                case .Home:
+                case .Templates:
                     return currentTemplate?.blobKey == nil ? TrackDetailsCellTypes.Details.rawValue : TrackDetailsCellTypes.Members.rawValue
                 default:
                     break
@@ -240,7 +240,7 @@ extension TrackDetailsViewController:UITableViewDataSource{
             case .MemberFiles:
                 if let cell = tableView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
                     switch sourceType {
-                    case .Home:
+                    case .Templates:
                         cell.configCell(TrackDetailsCellTypes.Files, sourceType: sourceType)
                     default:
                         cell.configCell(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files, sourceType: sourceType)
@@ -268,7 +268,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
             switch sectionType {
             case .MemberFiles:
                 switch sourceType {
-                case .Home:
+                case .Templates:
                     infoCellSelectedAtIndexPath(TrackDetailsCellTypes.Files)
                 default:
                     infoCellSelectedAtIndexPath(indexPath.row == 0 ? TrackDetailsCellTypes.Members : TrackDetailsCellTypes.Files)
@@ -320,7 +320,7 @@ extension TrackDetailsViewController{
         alertController = UIAlertController.getAlertController(.Alert, Title: "Enter Track Name", Message: nil,OtherButtonTitles: ["Done"], CancelButtonTitle: "Cancel", completion: { (tappedAtIndex) in
             if tappedAtIndex == 0{
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
-                    viewCont.sourceType = .Home
+                    viewCont.sourceType = .Templates
                     viewCont.currentTemplate = self.currentTemplate
                     viewCont.trackName = self.trackName
                     self.getNavigationController()?.pushViewController(viewCont, animated: true)
@@ -427,8 +427,8 @@ extension TrackDetailsViewController{
 
     func updateTemplate() {
         if NetworkClass.isConnected(true) {
-            if let id = sourceType == .Home ? currentTemplate?.templateId : currentTemplate?.trackId  {
-                let url = sourceType == .Home ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
+            if let id = sourceType == .Templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
+                let url = sourceType == .Templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
                 NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     if status{
@@ -444,7 +444,7 @@ extension TrackDetailsViewController{
     func processResponse(responseObj:AnyObject?) {
         if let dict = responseObj, let temp = currentTemplate {
             switch sourceType {
-            case .Home:
+            case .Templates:
                 TemplatesModel.updateTemplateObj(temp, dict: dict)
             case .Tracks:
                 TemplatesModel.updateTrackObj(temp, dict: dict)

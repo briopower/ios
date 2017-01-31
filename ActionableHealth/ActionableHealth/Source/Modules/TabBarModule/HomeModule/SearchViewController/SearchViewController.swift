@@ -41,7 +41,7 @@ extension SearchViewController{
         
         clctView.commonCollectionViewDelegate = self
         clctView.dataArray = NSMutableArray()
-        clctView.type = CollectionViewType.HomeView
+        clctView.type = CollectionViewType.TemplateView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
 
         srchBar.becomeFirstResponder()
@@ -75,7 +75,7 @@ extension SearchViewController:CommonCollectionViewDelegate{
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
             dispatch_async(dispatch_get_main_queue(), {
-                viewCont.sourceType = TrackDetailsSourceType.Home
+                viewCont.sourceType = TrackDetailsSourceType.Templates
                 viewCont.currentTemplate = object as? TemplatesModel
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })

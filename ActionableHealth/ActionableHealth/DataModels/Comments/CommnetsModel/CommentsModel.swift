@@ -12,7 +12,7 @@ class CommentsModel: NSObject {
     //MARK:- Variables
     var comment = ""
     var commentedOn:NSDate?
-    var commentedBy:UserModel?
+    var commentedBy:String?
 }
 
 
@@ -40,12 +40,10 @@ extension CommentsModel{
     }
 
     class func updateCommentObj(commObj:CommentsModel, dict:AnyObject) {
-        commObj.comment = dict["comment"] as? String ?? ""
-        let timeInterval = (dict["commentDate"] as? NSTimeInterval ?? 0)
-        commObj.commentedOn = NSDate.dateWithTimeIntervalInMilliSecs(timeInterval)
-
-        if let userDict = dict["commentedBy"] as? [String:AnyObject] {
-            commObj.commentedBy = UserModel.getUserObject(userDict)
+        if let dict = dict as? [String:AnyObject] {
+            commObj.commentedBy = dict["from"] as? String
+            commObj.commentedOn = NSDate.dateWithTimeIntervalInMilliSecs((dict["timeStamp"] as? NSNumber)?.doubleValue ?? 0)
+            commObj.comment = dict["data"]?["message"] as? String ?? ""
         }
     }
 }

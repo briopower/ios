@@ -150,7 +150,7 @@ extension PhaseDetailsCell{
         ratingLabel?.text = "\(currentTask?.rating ?? 0) Rating"
 
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Comment(s)", forState: .Normal)
+            commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journals", forState: .Normal)
             commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
             rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
 

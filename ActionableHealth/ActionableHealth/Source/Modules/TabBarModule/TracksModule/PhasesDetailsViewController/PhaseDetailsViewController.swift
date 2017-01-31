@@ -120,13 +120,14 @@ extension PhaseDetailsViewController:CommentsViewControllerDelegate{
 //MARK:- RatingView Methods / PhaseDetailsCellDelegate
 extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
     func commentsTapped(tag: Int, obj: AnyObject?) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController, let commentSourceKey = obj as? String {
             dispatch_async(dispatch_get_main_queue(), {
                 if let task = self.currentPhase?.tasks[tag] as? TasksModel {
                     self.selectedTask = task
                 }
                 viewCont.delegate = self
-                viewCont.commentSourceKey = obj as? String
+                viewCont.commentSourceKey = commentSourceKey + "_\(NSUserDefaults.getUserId())"
+                viewCont.titleString = "Journals"
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
         }

@@ -13,6 +13,7 @@ class TracksViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var clctView: StaggeredCollectionView!
     @IBOutlet weak var nullCase: UIButton!
+    @IBOutlet var titleView: UIImageView!
 
     //MARK:- Variables
     var cursor = ""
@@ -24,7 +25,7 @@ class TracksViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("Your Tracks", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        self.setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
         getData("")
     }
     override func viewDidAppear(animated: Bool) {
@@ -40,6 +41,8 @@ class TracksViewController: CommonViewController {
 //MARK:- Additional methods
 extension TracksViewController{
     func setupView() {
+        let width = (235/1242) * UIDevice.width()
+        titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
         clctView.commonCollectionViewDelegate = self
         clctView.dataArray = NSMutableArray()
         clctView.type = CollectionViewType.TrackView
@@ -53,7 +56,7 @@ extension TracksViewController{
     
     @IBAction func nullCaseAction(sender: UIButton) {
         if let tbCont = getNavigationController()?.viewControllers[0] as? UITabBarController{
-            tbCont.selectedIndex = 0
+            tbCont.selectedIndex = 1
         }
     }
 }

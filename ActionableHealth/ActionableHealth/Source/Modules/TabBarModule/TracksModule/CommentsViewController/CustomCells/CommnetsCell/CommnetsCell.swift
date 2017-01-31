@@ -28,19 +28,35 @@ class CommnetsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }
 
 //MARK:- Addtional Methods
 extension CommnetsCell{
     func configCell(comment:CommentsModel) {
         personImageView.image = nil
-        if let url = NSURL(string: comment.commentedBy?.profileImage ?? "") {
-            personImageView.sd_setImageWithURL(url)
+        if let id = comment.commentedBy {
+            if let person = Person.getPersonWith(id) {
+                if let personImage =  person.personImage{
+                    if let url = NSURL(string: personImage) {
+                        personImageView.sd_setImageWithURL(url)
+                    }
+                }else{
+                    NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(id ?? "")", RequestType: .GET) {
+                        (status, responseObj, error, statusCode) in
+                        if status, let imageUrl = responseObj?["profileURL"] as? String{
+                            if let url = NSURL(string: imageUrl) {
+                                self.personImageView.sd_setImageWithURL(url)
+                            }
+                        }
+                    }
+                }
+                personNameLabel.text = person.personName ?? person.personId
+            }
         }
-        personNameLabel.text = comment.commentedBy?.name ?? comment.commentedBy?.userID
+
         commentLabel.text = comment.comment
-        
+
         if comment.commentedOn?.isEqualToDateIgnoringTime(NSDate()) ?? false{
             dateLabel.text = "\(comment.commentedOn?.shortTimeString ?? "")"
         }else{

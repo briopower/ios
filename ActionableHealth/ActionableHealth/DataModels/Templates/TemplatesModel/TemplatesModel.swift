@@ -1,3 +1,4 @@
+
 //
 //  TemplatesModel.swift
 //  ActionableHealth
@@ -27,7 +28,9 @@ class TemplatesModel: NSObject {
     var commentsCount = 0
     var activeTrackCount = 0
     var phases = NSMutableArray()
-
+    var isFollowing = false
+    var followersCount = 0
+    
     //MARK: Additional for tracks
     var trackId:String?
     var members = NSMutableArray()
@@ -71,7 +74,12 @@ extension TemplatesModel{
         dict["members"] = arrOfMembers
         return dict
     }
-
+    func getFollowingDict(followValue:Bool) -> [String:AnyObject] {
+        var dict:[String:AnyObject] = [:]
+        dict["trackID"] = templateId ?? ""
+        dict["follow"] = followValue
+        return dict
+    }
     class func getPayloadDict(cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = []) -> [String:AnyObject] {
         return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType]
     }
@@ -121,6 +129,8 @@ extension TemplatesModel{
         obj.commentsCount = dict["reviewCount"] as? Int ?? 0
         obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
         obj.blobKey = dict["blobKey"] as? String
+        obj.followersCount = dict["followerCount"] as? Int ?? 0
+        obj.isFollowing = dict["currentUserFollower"] as? Bool ?? false
 
         addPhases(dict, toModel: obj)
     }
@@ -139,6 +149,8 @@ extension TemplatesModel{
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["commentCount"] as? Int ?? 0
+        obj.followersCount = dict["followerCount"] as? Int ?? 0
+        obj.isFollowing = dict["currentUserFollower"] as? Bool ?? false
         obj.blobKey = dict["blobKey"] as? String
         obj.key = dict["key"] as? String
         obj.status = dict["status"] as? String ?? ""

@@ -26,7 +26,6 @@ class HomeViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var buttonsContainer: UIView!
     @IBOutlet weak var clctView: StaggeredCollectionView!
-    @IBOutlet var titleView: UIImageView!
 
     //MARK:- Variables
     var cursor = ""
@@ -40,7 +39,7 @@ class HomeViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None2, RightButtonType: BarButtontype.Search_Notification)
+        setNavigationBarWithTitle("Library", LeftButtonType: BarButtontype.None2, RightButtonType: BarButtontype.Search_Notification)
         getData(cursor)
     }
     override func viewDidAppear(animated: Bool) {
@@ -56,13 +55,11 @@ class HomeViewController: CommonViewController {
 //MARK:- Additional methods
 extension HomeViewController{
     func setupView() {
-        let width = (235/1242) * UIDevice.width()
-        titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
         CommonMethods.addShadowToView(buttonsContainer)
 
         clctView.commonCollectionViewDelegate = self
         clctView.dataArray = NSMutableArray()
-        clctView.type = CollectionViewType.HomeView
+        clctView.type = CollectionViewType.TemplateView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
     }
 
@@ -85,7 +82,7 @@ extension HomeViewController:CommonCollectionViewDelegate{
     func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
             dispatch_async(dispatch_get_main_queue(), {
-                viewCont.sourceType = TrackDetailsSourceType.Home
+                viewCont.sourceType = TrackDetailsSourceType.Templates
                 viewCont.currentTemplate = object as? TemplatesModel
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })

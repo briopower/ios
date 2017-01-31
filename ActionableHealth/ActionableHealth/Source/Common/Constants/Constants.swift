@@ -106,5 +106,6 @@ class Constants: NSObject {
         static let createTrackUploadURL = "\(base)\(trackAPIs)createTrackUploadURL/"
         static let searchUser = "\(base)\(trackAPIs)searchAppUsers/"
         static let sendToken = "\(base)\(trackAPIs)saveDeviceToken/"
+        static let follow = "\(base)\(trackAPIs)follow/"
     }
 }

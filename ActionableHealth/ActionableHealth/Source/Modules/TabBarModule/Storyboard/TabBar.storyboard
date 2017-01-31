@@ -19,7 +19,7 @@
         <scene sceneID="0Ya-zY-ioI">
             <objects>
                 <navigationController id="9KZ-hV-bXi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rtf-Ad-QRC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rtf-Ad-QRC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="0.90006956335616439" colorSpace="calibratedWhite"/>
@@ -51,7 +51,7 @@
                                 <cells/>
                             </collectionView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeB-XT-NrR" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="85" y="349.66666666666669" width="245" height="52"/>
+                                <rect key="frame" x="86.666666666666686" y="353" width="242" height="46"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <state key="normal">
@@ -81,17 +81,22 @@ Tap here to create or join a track</string>
                             <constraint firstItem="Uoh-yK-Aja" firstAttribute="top" secondItem="ToL-FB-Ffe" secondAttribute="bottom" constant="5" id="trM-iD-UWj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Track" id="cU2-yq-mcQ" customClass="UITabBarItem_Custom" customModule="BRIO" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Track" id="cU2-yq-mcQ" customClass="UITabBarItem_Custom" customModule="BRIO" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="clctView" destination="ToL-FB-Ffe" id="jxy-hF-qgL"/>
                         <outlet property="nullCase" destination="TeB-XT-NrR" id="1VJ-88-FwV"/>
+                        <outlet property="titleView" destination="ovU-JS-fdf" id="Tdy-74-VUg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ly4-2a-cNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" id="ovU-JS-fdf">
+                    <rect key="frame" x="0.0" y="0.0" width="230" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
-            <point key="canvasLocation" x="-268.1159420289855" y="-827.44565217391312"/>
+            <point key="canvasLocation" x="-948" y="-850"/>
         </scene>
         <!--Chat-->
         <scene sceneID="O6g-up-eEy">
@@ -114,7 +119,7 @@ Tap here to create or join a track</string>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO CHATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-R0-lFL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="157.33333333333337" y="356.33333333333331" width="99.666666666666629" height="23.333333333333371"/>
+                                <rect key="frame" x="157" y="356" width="100" height="24"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -276,22 +281,17 @@ Tap here to create or join a track</string>
                             <constraint firstItem="qQP-kR-Pb0" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" id="qdA-D4-l38"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="E7f-Sj-AZf" customClass="UITabBarItem_Custom" customModule="BRIO" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" tag="1" title="Home" id="E7f-Sj-AZf" customClass="UITabBarItem_Custom" customModule="BRIO" customModuleProvider="target">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="buttonsContainer" destination="qQP-kR-Pb0" id="DuO-cF-sB4"/>
                         <outlet property="clctView" destination="k6A-O7-zxG" id="ScA-D0-QZH"/>
-                        <outlet property="titleView" destination="cJP-Ia-gAb" id="kDv-rR-oEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N7-ou-kQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" id="cJP-Ia-gAb">
-                    <rect key="frame" x="0.0" y="0.0" width="230" height="85"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </objects>
-            <point key="canvasLocation" x="-977" y="-827"/>
+            <point key="canvasLocation" x="-239" y="-850"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JRn-VW-6RH">
@@ -303,10 +303,10 @@ Tap here to create or join a track</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Z2f-Jx-dhb" kind="relationship" relationship="viewControllers" id="9QP-oN-Bwi"/>
-                        <segue destination="oVf-5R-hYc" kind="relationship" relationship="viewControllers" id="ID9-gc-MXf"/>
-                        <segue destination="5ce-bV-DGT" kind="relationship" relationship="viewControllers" id="o5x-EJ-ZRe"/>
-                        <segue destination="VJW-rc-AcC" kind="relationship" relationship="viewControllers" id="ldR-l1-Uwe"/>
+                        <segue destination="oVf-5R-hYc" kind="relationship" relationship="viewControllers" id="eRP-Sz-Toy"/>
+                        <segue destination="Z2f-Jx-dhb" kind="relationship" relationship="viewControllers" id="Nhg-sC-kBp"/>
+                        <segue destination="5ce-bV-DGT" kind="relationship" relationship="viewControllers" id="XmF-iv-530"/>
+                        <segue destination="VJW-rc-AcC" kind="relationship" relationship="viewControllers" id="I0C-Zb-NMc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W7o-PA-SwB" userLabel="First Responder" sceneMemberID="firstResponder"/>

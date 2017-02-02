@@ -359,10 +359,15 @@ Cg
                     </view>
                     <navigationItem key="navigationItem" id="Nhn-EO-mna"/>
                     <connections>
+                        <outlet property="titleView" destination="DcB-ec-8DO" id="PSb-Pv-os8"/>
                         <outlet property="txtView" destination="pMP-IO-hcD" id="jpI-yI-igo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwG-lY-dh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" id="DcB-ec-8DO">
+                    <rect key="frame" x="0.0" y="0.0" width="230" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
             <point key="canvasLocation" x="-2171" y="-231"/>
         </scene>
@@ -425,5 +430,6 @@ Cg
     </scenes>
     <resources>
         <image name="Bg" width="414" height="736"/>
+        <image name="logo" width="251" height="38"/>
     </resources>
 </document>

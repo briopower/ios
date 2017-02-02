@@ -267,7 +267,7 @@
                 <outlet property="taskNameLabel" destination="fwg-9Z-lfU" id="6Zt-gN-je9"/>
                 <outlet property="topView" destination="Dhy-lq-qOA" id="33W-1P-Vla"/>
             </connections>
-            <point key="canvasLocation" x="-2806" y="394"/>
+            <point key="canvasLocation" x="-2804" y="-630"/>
         </tableViewCell>
     </objects>
     <resources>

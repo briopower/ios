@@ -12,17 +12,21 @@ class TextDetailsController: CommonViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var txtView: UITextView!
+    @IBOutlet var titleView: UIImageView!
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
         showLoginModule = false
         super.viewDidLoad()
         txtView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+        let width = (235/1242) * UIDevice.width()
+        titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
+
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Welcome to BrioPOWER", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Next)
+        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Next)
     }
 
     override func viewDidLayoutSubviews() {

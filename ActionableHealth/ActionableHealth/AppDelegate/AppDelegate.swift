@@ -20,15 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationManager = CLLocationManager()
     var geoCoder = CLGeocoder()
     var currentPlacemark:CLPlacemark?
+    var imageView = UIImageView(frame: UIScreen.mainScreen().bounds)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
 
         forEasyLoading()
 
         setupOnAppLauch()
 
-        debugPrint(applicationLibraryDirectory.absoluteURL)
-
+        if let myDict = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
+            MessagingManager.sharedInstance.receivedPushNotification(myDict)
+        }
         return true
     }
 
@@ -177,16 +180,7 @@ extension AppDelegate{
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
     {
-        // Let FCM know about the message for analytics etc.`
-        FIRMessaging.messaging().appDidReceiveMessage(userInfo)
-
-        // Print message ID.
-        if let messageID = userInfo["gcm.message_id"] {
-            debugPrint("Message ID: \(messageID)")
-        }
-
-        // Print full message.
-        debugPrint(userInfo)
+        MessagingManager.sharedInstance.receivedPushNotification(userInfo)
     }
 }
 
@@ -217,6 +211,17 @@ extension AppDelegate{
             MessagingManager.sharedInstance.closeChatSession()
         }
     }
+
+    func addLaunchScreen() {
+        imageView.image = UIImage.getLaunchImage()
+        imageView.contentMode = .ScaleToFill
+        imageView.backgroundColor = UIColor.whiteColor()
+        UIApplication.sharedApplication().keyWindow?.addSubview(imageView)
+    }
+
+    func removeLaunchScreen() {
+        imageView.removeFromSuperview()
+    }
 }
 
 //MARK:- UNUserNotificationCenterDelegate
@@ -226,7 +231,7 @@ extension AppDelegate:UNUserNotificationCenterDelegate{
 //MARK:- FIRMessagingDelegate
 extension AppDelegate:FIRMessagingDelegate{
     func applicationReceivedRemoteMessage(remoteMessage: FIRMessagingRemoteMessage){
-        debugPrint(remoteMessage.appData)
+        MessagingManager.sharedInstance.receivedPushNotification(remoteMessage.appData)
     }
 }
 

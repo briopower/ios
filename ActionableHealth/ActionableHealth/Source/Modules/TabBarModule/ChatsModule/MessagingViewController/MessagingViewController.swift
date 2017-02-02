@@ -20,6 +20,11 @@ class MessagingViewController: JSQMessagesViewController {
     let dummAvtarIcon = JSQMessagesAvatarImage(placeholder: UIImage(named:"circle-user-ic")!)
     var shouldScroll = true
 
+    //MARK:- Outlets
+    @IBOutlet var titleView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,10 @@ class MessagingViewController: JSQMessagesViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle(personObj?.personName ?? personObj?.personId ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        titleLabel.text = personObj?.personName ?? personObj?.personId ?? ""
+        titleLabel.sizeToFit()
+        titleView.frame = CGRect(origin: CGPointZero, size: titleLabel.frame.size)
+        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -37,9 +45,17 @@ class MessagingViewController: JSQMessagesViewController {
         AppDelegate.getAppDelegateObject()?.saveContext()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        shouldScroll = false
+        uponDidAppear()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        MessagingManager.sharedInstance.chattingWithPerson = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +78,36 @@ extension MessagingViewController{
             _fetchedResultsController?.delegate = self
         }
         setupMessagingView()
+        removeActivityIndicator()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.messageReceived(_:)), name: MessagingManager.sharedInstance.messageReceived, object: nil)
+
+    }
+
+    func messageReceived(notification:NSNotification) {
+        if MessagingManager.sharedInstance.isConnected {
+            removeActivityIndicator()
+        }
+    }
+
+    func removeActivityIndicator(){
+        if MessagingManager.sharedInstance.isConnected {
+            activityIndicator.stopAnimating()
+        }
+    }
+    func uponDidAppear() {
+        shouldScroll = false
+        MessagingManager.sharedInstance.chattingWithPerson = personObj?.personId
+        if let viewcontrls = getNavigationController()?.viewControllers {
+            var arr = [UIViewController]()
+            for viewCont in viewcontrls {
+                if !viewCont.isKindOfClass(MessagingViewController) {
+                    arr.append(viewCont)
+                }
+            }
+            arr.append(self)
+            getNavigationController()?.viewControllers = arr
+        }
+
     }
 
     func setupMessagingView() {

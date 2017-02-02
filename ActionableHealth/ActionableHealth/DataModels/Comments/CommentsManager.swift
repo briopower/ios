@@ -63,6 +63,7 @@ extension CommentsManager{
         })
         self.ref?.child(chanelToObserve).childByAutoId().setValue(objToSend)
     }
+
 }
 
 //MARK:- Public methods

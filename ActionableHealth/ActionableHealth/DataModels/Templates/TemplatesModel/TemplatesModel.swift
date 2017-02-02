@@ -76,10 +76,16 @@ extension TemplatesModel{
     }
     func getFollowingDict(followValue:Bool) -> [String:AnyObject] {
         var dict:[String:AnyObject] = [:]
-        dict["trackID"] = templateId ?? ""
+        dict["templateId"] = templateId ?? ""
         dict["follow"] = followValue
         return dict
     }
+
+    func updateFollowers(dict:AnyObject?) {
+        self.followersCount = dict?["followerCount"] as? Int ?? 0
+        self.isFollowing = dict?["currentUserFollower"] as? Bool ?? false
+    }
+    
     class func getPayloadDict(cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = []) -> [String:AnyObject] {
         return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType]
     }

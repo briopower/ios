@@ -445,7 +445,7 @@ extension TrackDetailsViewController{
         if let dict = responseObj, let temp = currentTemplate {
             switch sourceType {
             case .Templates:
-                TemplatesModel.updateTemplateObj(temp, dict: dict)
+                TemplatesModel.addPhases(dict, toModel: temp)
             case .Tracks:
                 TemplatesModel.updateTrackObj(temp, dict: dict)
             default:

@@ -121,13 +121,13 @@ extension TrackDetailsHeaderView{
             logoImageView.image = UIImage(named: "logo-1")
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
             detailsButton1?.setTitle("\(currentTemplate?.followersCount ?? 0) Followers", forState: .Normal)
-            detailsButton2?.setTitle("\(currentTemplate?.commentsCount ?? 0) Comments", forState: .Normal)
+            detailsButton2?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Chat", forState: .Normal)
             detailsButton3?.setTitle("\(currentTemplate?.activeTrackCount ?? 0) Active Groups", forState: .Normal)
             setupFollowUnfollowButton()
         case .Tracks:
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
             logoImageView.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
-            detailsButton1?.setTitle("\(currentTemplate?.commentsCount ?? 0) Comments", forState: .Normal)
+            detailsButton1?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Chat", forState: .Normal)
             editButton?.hidden = !(NSUserDefaults.getUserId() == currentTemplate?.createdBy)
             requestButton1?.hidden = editButton?.hidden ?? true
         default:
@@ -144,12 +144,13 @@ extension TrackDetailsHeaderView{
         if NetworkClass.isConnected(true) {
             NetworkClass.sendRequest(URL: Constants.URLs.follow, RequestType: .POST, ResponseType: ExpectedResponseType.JSON, Parameters: currentTemplate?.getFollowingDict(shouldFollow), Headers: nil, CompletionHandler: { (status, responseObj, error, statusCode) in
                 if status{
-                    self.currentTemplate?.isFollowing = shouldFollow
-                    self.setupFollowUnfollowButton()
+                    self.currentTemplate?.updateFollowers(responseObj)
+                    self.setupForType(self.type, template: self.currentTemplate)
                 }
             })
         }
     }
+    
     func setupFollowUnfollowButton() {
         let check = currentTemplate?.isFollowing ?? false
         UIView.animateWithDuration(0.1) {

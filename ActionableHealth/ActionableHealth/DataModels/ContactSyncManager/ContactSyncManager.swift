@@ -48,6 +48,8 @@ class ContactSyncManager: NSObject {
             }else if let desc = error?.localizedDescription{
                 // UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
                 UIView.showToast(desc, theme: Theme.Error)
+            }else{
+                self.syncCompleted()
             }
         }
     }
@@ -78,10 +80,7 @@ class ContactSyncManager: NSObject {
                     prntCxt.performBlock({
                         do{
                             try prntCxt.save()
-                            NSUserDefaults.setLastSyncDate(NSDate())
-                            self.syncCoreDataContacts()
-                            self.isSyncing = false
-                            NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
+                            self.syncCompleted()
                         }catch{
                             self.isSyncing = false
                             debugPrint("Error saving data")
@@ -96,6 +95,12 @@ class ContactSyncManager: NSObject {
 
     }
 
+    private func syncCompleted() {
+        NSUserDefaults.setLastSyncDate(NSDate())
+        self.syncCoreDataContacts()
+        self.isSyncing = false
+        NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
+    }
     private func processResponse(response:AnyObject?) {
         if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext {
             bgCxt.performBlock({

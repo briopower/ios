@@ -119,13 +119,6 @@
                                 <constraint firstAttribute="bottom" secondItem="K79-jk-Xnz" secondAttribute="bottom" id="vrt-7Y-dIQ"/>
                             </constraints>
                         </view>
-                        <button hidden="YES" opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-mJ-3hB">
-                            <rect key="frame" x="368.5" y="296.5" width="40" height="40"/>
-                            <state key="normal" image="edit"/>
-                            <connections>
-                                <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Glv-4d-rkg"/>
-                            </connections>
-                        </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V5j-yI-oOE" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="352" width="424" height="1"/>
                             <constraints>
@@ -135,6 +128,13 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-zR-LgI">
                             <rect key="frame" x="0.0" y="102.5" width="424" height="250.5"/>
                         </imageView>
+                        <button hidden="YES" opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZI-mJ-3hB">
+                            <rect key="frame" x="368" y="296" width="40" height="40"/>
+                            <state key="normal" image="edit"/>
+                            <connections>
+                                <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Glv-4d-rkg"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>

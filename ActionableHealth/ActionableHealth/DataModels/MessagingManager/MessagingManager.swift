@@ -18,8 +18,11 @@ class MessagingManager: NSObject {
     //MARK:- Variables
     static let sharedInstance = MessagingManager()
     let messageReceived = "messageReceivedNotification"
+    var isConnected = false
     var ref: FIRDatabaseReference?
     private var _refHandle: FIRDatabaseHandle?
+    var chattingWithPerson:String?
+
     var chanelToObserve:String{
         get{
             return "channels/\(NSUserDefaults.getUserId())"
@@ -79,6 +82,7 @@ extension MessagingManager{
         // Listen for new messages in the Firebase database
         _refHandle = self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
             { (snapshot:FIRDataSnapshot) in
+                self.isConnected = true
                 if let data = snapshot.valueInExportFormat() as? [String:AnyObject]{
                     if let type = MessageType(rawValue: data["data"]?["type"] as? String ?? ""){
                         switch type{
@@ -116,7 +120,7 @@ extension MessagingManager{
     }
 
     private func sendNotification(message:String, userId:String) {
-        let objToSend:[String:AnyObject] = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
+        let objToSend:[String:AnyObject] = ["data":["key":NSUserDefaults.getUserId(), "message":message, "type": MessageType.chat.rawValue],
                                             "notification":["title":"New Message", "body":message, "icon": ""],
                                             "from": NSUserDefaults.getUserId(),
                                             "priority": "high",
@@ -188,7 +192,41 @@ extension MessagingManager{
                     }
                 }
             }
-            
+
         }
+    }
+
+    func receivedPushNotification(userInfo: [NSObject : AnyObject]) {
+        // Let FCM know about the message for analytics etc.`
+        FIRMessaging.messaging().appDidReceiveMessage(userInfo)
+        
+        if let type = MessageType(rawValue: userInfo["type"] as? String ?? "") {
+            switch type {
+            case .chat:
+                if let from = userInfo["key"] as? String {
+                    if let message = userInfo["message"] as? String {
+                        let person = Person.getPersonWith(from)
+                        switch UIApplication.sharedApplication().applicationState {
+                        case .Active:
+                            if from != chattingWithPerson {
+                                let personName = person?.personName ?? from
+                                UIView.showToast("\(personName) : \(message)", theme: Theme.Success)
+                            }
+                        case .Inactive:
+                            if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = person{
+                                viewCont.personObj = person
+                                AppDelegate.getAppDelegateObject()?.window?.rootViewController?.getNavigationController()?.pushViewController(viewCont, animated: false)
+                            }
+                        default:
+                            break
+                        }
+                    }
+                }
+            default:
+                break
+            }
+        }
+        
+        
     }
 }

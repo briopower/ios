@@ -4,10 +4,14 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Messaging View Controller-->
         <scene sceneID="5Ke-Fd-Owg">
@@ -22,8 +26,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ULX-MP-vCt" id="bJn-YO-5dE"/>
+                        <outlet property="titleLabel" destination="iub-O3-0KT" id="W3t-C7-bQ6"/>
+                        <outlet property="titleView" destination="dju-EW-Df3" id="W1j-XW-FWt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6f-sA-boO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="dju-EW-Df3">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="9555418272" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iub-O3-0KT" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ULX-MP-vCt">
+                            <rect key="frame" x="-28" y="54" width="20" height="20"/>
+                            <color key="color" red="0.29405722020000002" green="0.29399010539999998" blue="0.30223828549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="iub-O3-0KT" firstAttribute="top" secondItem="dju-EW-Df3" secondAttribute="top" id="22r-mA-rei"/>
+                        <constraint firstItem="iub-O3-0KT" firstAttribute="leading" secondItem="dju-EW-Df3" secondAttribute="leading" id="Ik0-jh-ciC"/>
+                        <constraint firstAttribute="trailing" secondItem="iub-O3-0KT" secondAttribute="trailing" id="Yku-rC-PSI"/>
+                        <constraint firstItem="iub-O3-0KT" firstAttribute="leading" secondItem="ULX-MP-vCt" secondAttribute="trailing" constant="8" id="lu7-Jv-WRH"/>
+                        <constraint firstItem="ULX-MP-vCt" firstAttribute="centerY" secondItem="iub-O3-0KT" secondAttribute="centerY" id="nlY-vc-WgJ"/>
+                        <constraint firstAttribute="bottom" secondItem="iub-O3-0KT" secondAttribute="bottom" id="ufg-Vf-iCL"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1413" y="359"/>
         </scene>

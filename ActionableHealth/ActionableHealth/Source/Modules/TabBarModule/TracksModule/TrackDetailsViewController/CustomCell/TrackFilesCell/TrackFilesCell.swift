@@ -30,28 +30,13 @@ class TrackFilesCell: UITableViewCell {
 //MARK:- Additional methods
 extension TrackFilesCell{
     func configCell(type:TrackDetailsCellTypes, sourceType:TrackDetailsSourceType) {
-        switch sourceType {
-        case .Templates:
-            switch type {
-            case .Files:
-                detailsLabel.text = "Template Files"
-            case .Members:
-                detailsLabel.text = "Template Members"
-            default:
-                break
-            }
-        case .Tracks:
-            switch type {
-            case .Files:
-                detailsLabel.text = "Track Files"
-            case .Members:
-                detailsLabel.text = "Track Members"
-            default:
-                break
-            }
+        switch type {
+        case .Files:
+            detailsLabel.text = "Track Files"
+        case .Members:
+            detailsLabel.text = "Track Members"
         default:
             break
         }
-
     }
 }

@@ -13,7 +13,6 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
     var nullCaseView:NullCaseView?
     var showLoading = true
     var showLoginModule = true
-    var imageView = UIImageView(frame: UIScreen.mainScreen().bounds)
     var loader:VNProgreessHUD?
 
     //MARK:- Life cycle
@@ -21,10 +20,7 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         if !NSUserDefaults.isLoggedIn(){
             if showLoginModule {
-                imageView.image = UIImage.getLaunchImage()
-                imageView.contentMode = .ScaleToFill
-                imageView.backgroundColor = UIColor.whiteColor()
-                UIApplication.sharedApplication().keyWindow?.addSubview(imageView)
+                AppDelegate.getAppDelegateObject()?.addLaunchScreen()
             }
         }
         CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
@@ -57,8 +53,10 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
 
         if !NSUserDefaults.isLoggedIn() && showLoginModule {
             UIViewController.presentLoginViewController(true, animated: false, Completion: {
-                self.imageView.removeFromSuperview()
+                AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
             })
+        }else{
+            AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
         }
     }
 

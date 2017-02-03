@@ -49,6 +49,7 @@ class Constants: NSObject {
         struct MessagingStoryboard {
             static let storyboardName = "Chats"
             static let messagingView = "messagingView"
+            static let contactListView = "contactListView"
         }
 
         struct TracksStoryboard {

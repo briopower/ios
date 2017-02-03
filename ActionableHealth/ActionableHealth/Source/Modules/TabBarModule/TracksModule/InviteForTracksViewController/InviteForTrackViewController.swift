@@ -35,7 +35,6 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: ContactSyncManager.contactSyncCompleted, object: nil)
         setupView()
     }
 
@@ -77,6 +76,8 @@ extension InviteForTrackViewController{
 //MARK:- Additional methods
 extension InviteForTrackViewController{
     func setupView() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: ContactSyncManager.contactSyncCompleted, object: nil)
         tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
         tblView.registerNib(UINib(nibName: String(SearchByIdHeader), bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: String(SearchByIdHeader))
         tblView.registerNib(UINib(nibName: String(AddFromPhoneHeader), bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: String(AddFromPhoneHeader))

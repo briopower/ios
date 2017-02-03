@@ -25,7 +25,7 @@ class ChatsViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("Chats", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        self.setNavigationBarWithTitle("Chats", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Add)
         messagesListTblView.reloadData()
     }
     override func viewDidAppear(animated: Bool) {
@@ -50,6 +50,14 @@ extension ChatsViewController{
         messagesListTblView.estimatedRowHeight = 80
         messagesListTblView.registerNib(UINib(nibName: String(MessageListCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(MessageListCell))
         messagesListTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
+    }
+
+    override func addButtonAction(sender:UIButton?){
+        super.addButtonAction(sender)
+
+        if let contactList = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.contactListView) as? ContactListViewController {
+            getNavigationController()?.pushViewController(contactList, animated: true)
+        }
     }
 
 }

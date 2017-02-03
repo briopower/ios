@@ -15,6 +15,7 @@
 		3C1577C31E13CB54004FFAB1 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */; };
 		3C1577C51E13CB54004FFAB1 /* ContactSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */; };
 		3C1577C61E13CB54004FFAB1 /* MessagingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BF1E13CB54004FFAB1 /* MessagingManager.swift */; };
+		3C1DA9481E4457A200B3A46C /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1DA9471E4457A200B3A46C /* ContactListViewController.swift */; };
 		3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C1EC5291DA3A7C0003DC2A3 /* LaunchScreen.storyboard */; };
 		3C1EC5361DA3A7C0003DC2A3 /* ActionableHealthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EC5351DA3A7C0003DC2A3 /* ActionableHealthTests.swift */; };
 		3C1EC5411DA3A7C0003DC2A3 /* ActionableHealthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EC5401DA3A7C0003DC2A3 /* ActionableHealthUITests.swift */; };
@@ -262,6 +263,7 @@
 		3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSyncManager.swift; sourceTree = "<group>"; };
 		3C1577BF1E13CB54004FFAB1 /* MessagingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagingManager.swift; sourceTree = "<group>"; };
+		3C1DA9471E4457A200B3A46C /* ContactListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		3C1EC51A1DA3A7C0003DC2A3 /* BRIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BRIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1EC52A1DA3A7C0003DC2A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C1EC52C1DA3A7C0003DC2A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -647,6 +649,14 @@
 				3C3B88671E1A1E85005DA7B4 /* Person+CoreDataProperties.swift */,
 			);
 			path = Person;
+			sourceTree = "<group>";
+		};
+		3C1DA9461E44578300B3A46C /* ContactListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C1DA9471E4457A200B3A46C /* ContactListViewController.swift */,
+			);
+			path = ContactListViewController;
 			sourceTree = "<group>";
 		};
 		3C1EC5111DA3A7BF003DC2A3 = {
@@ -1647,6 +1657,7 @@
 		3CBD5C6B1DA7AF71004BCAE0 /* ChatsModule */ = {
 			isa = PBXGroup;
 			children = (
+				3C1DA9461E44578300B3A46C /* ContactListViewController */,
 				3C9641321DB4D72B00EE9676 /* Storyboard */,
 				3CBD5C6C1DA7AF71004BCAE0 /* ChatsViewController */,
 				3CCF30F11DB73186001A1E7B /* MessagingViewController */,
@@ -2550,6 +2561,7 @@
 				3C8E479F1E165CAE0019C261 /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				3C8E47A61E165CAE0019C261 /* JSQSystemSoundPlayer.m in Sources */,
 				3C8E47921E165CAE0019C261 /* JSQVideoMediaItem.m in Sources */,
+				3C1DA9481E4457A200B3A46C /* ContactListViewController.swift in Sources */,
 				3C8E47961E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				3C7F287B1E1F98820021D269 /* AboutUsShortViewController.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,

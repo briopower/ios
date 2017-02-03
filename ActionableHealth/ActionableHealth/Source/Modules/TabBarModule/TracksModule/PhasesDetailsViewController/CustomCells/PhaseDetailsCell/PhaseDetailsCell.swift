@@ -153,7 +153,6 @@ extension PhaseDetailsCell{
             commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journals", forState: .Normal)
             commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
             rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
-
             let (status, sliderEnabled, sliderValue, startStopImage, details) = TaskStatus.getConfig(obj)
             statusLabel?.text = status
             slider?.enabled = sliderEnabled

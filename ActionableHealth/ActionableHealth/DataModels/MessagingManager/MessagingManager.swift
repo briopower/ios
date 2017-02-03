@@ -102,12 +102,13 @@ extension MessagingManager{
     }
 
 
-    private func sendMessage(message:String, userId:String) {
+    private func sendMessage(message:String, userId:String, trackName:String?) {
         let objToSend:[String:AnyObject] = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
                                             "from": NSUserDefaults.getUserId(),
                                             "priority": "high",
                                             "toUserIds":[userId],
-                                            "timeStamp": NSDate().timeIntervalInMilliSecs()]
+                                            "timeStamp": NSDate().timeIntervalInMilliSecs(),
+                                            "lastTrackName": trackName ?? ""]
 
         NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .POST, ResponseType: ExpectedResponseType.NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
             debugPrint("sendMessage \(statusCode)")
@@ -172,8 +173,8 @@ extension MessagingManager{
         }
     }
 
-    func send(message:String, userId:String) {
-        sendMessage(message, userId: userId)
+    func send(message:String, userId:String, trackName:String?) {
+        sendMessage(message, userId: userId, trackName:trackName)
         sendNotification(message, userId: userId)
     }
 

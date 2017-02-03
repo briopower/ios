@@ -64,6 +64,7 @@ extension TrackMemberListViewController:UITableViewDelegate{
             if userId != NSUserDefaults.getUserId() {
                 dispatch_async(dispatch_get_main_queue(), {
                     viewCont.personObj = Person.getPersonWith(userId)
+                    viewCont.trackName = self.currentTemplate?.name
                     AppDelegate.getAppDelegateObject()?.saveContext()
                     self.getNavigationController()?.pushViewController(viewCont, animated: true)
                 })

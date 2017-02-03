@@ -22,6 +22,7 @@
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="messages" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Person" representedClassName=".Person" syncable="YES">
+        <attribute name="lastTrack" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="personImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personName" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,6 +33,6 @@
         <element name="AddressBook" positionX="-236" positionY="-43" width="128" height="88"/>
         <element name="Contact" positionX="-45" positionY="-43" width="128" height="88"/>
         <element name="Messages" positionX="-36" positionY="90" width="128" height="178"/>
-        <element name="Person" positionX="-227" positionY="144" width="128" height="118"/>
+        <element name="Person" positionX="-227" positionY="144" width="128" height="135"/>
     </elements>
 </model>

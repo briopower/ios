@@ -2,7 +2,7 @@
 //  Person+CoreDataProperties.swift
 //  
 //
-//  Created by Vidhan Nandi on 02/01/17.
+//  Created by Vidhan Nandi on 03/02/17.
 //
 //
 
@@ -17,10 +17,11 @@ extension Person {
     }
 
     @NSManaged public var personId: String?
-    @NSManaged public var personName: String?
     @NSManaged public var personImage: String?
-    @NSManaged public var messages: NSSet?
+    @NSManaged public var personName: String?
+    @NSManaged public var lastTrack: String?
     @NSManaged public var lastMessage: Messages?
+    @NSManaged public var messages: NSSet?
 
 }
 

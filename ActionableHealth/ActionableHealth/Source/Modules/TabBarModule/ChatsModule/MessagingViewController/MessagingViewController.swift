@@ -14,6 +14,7 @@ class MessagingViewController: JSQMessagesViewController {
     //MARK:- Variables
     var _fetchedResultsController: NSFetchedResultsController?
     var personObj:Person?
+    var trackName:String?
 
     let outgoingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"sentMessage")!, highlightedImage: UIImage(named:"sentMessage")!)
     let incomingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"recievedMessage")!, highlightedImage: UIImage(named:"recievedMessage")!)
@@ -33,7 +34,11 @@ class MessagingViewController: JSQMessagesViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        titleLabel.text = personObj?.personName ?? personObj?.personId ?? ""
+        var text = personObj?.personName ?? personObj?.personId ?? ""
+        if let lastTrackName = personObj?.lastTrack {
+            text += " (\(lastTrackName))"
+        }
+        titleLabel.text = text
         titleLabel.sizeToFit()
         titleView.frame = CGRect(origin: CGPointZero, size: titleLabel.frame.size)
         setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
@@ -223,7 +228,7 @@ extension MessagingViewController{
 
         if NetworkClass.isConnected(true) {
             if let id = personObj?.personId{
-                MessagingManager.sharedInstance.send(text, userId: id)
+                MessagingManager.sharedInstance.send(text, userId: id, trackName: trackName ?? personObj?.lastTrack)
             }
             finishSendingMessage()
         }

@@ -70,6 +70,7 @@ public class Messages: NSManagedObject {
                     messageObject.person = person
                 }
             }
+            messageObject.person?.lastTrack = (value["lastTrackName"] as? String)?.getValidObject()
             messageObject.person?.lastMessage = messageObject
             messageObject.person?.addToMessages(messageObject)
         }

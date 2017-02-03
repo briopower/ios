@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ActionableHealth/DataModels/MessagingManager/Person/Person+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:ActionableHealth.xcodeproj">
    </FileRef>
    <FileRef

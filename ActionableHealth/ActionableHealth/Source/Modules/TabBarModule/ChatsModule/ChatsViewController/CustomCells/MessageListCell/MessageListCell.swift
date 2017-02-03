@@ -34,7 +34,11 @@ class MessageListCell: UITableViewCell {
 //MARK:- Additional methods
 extension MessageListCell{
     func configureCell(isLastCell:Bool, personObj:Person) {
-        userNameLabel.text = personObj.personName ?? personObj.personId
+        var labelText = personObj.personName ?? personObj.personId ?? ""
+        if let trackName = personObj.lastTrack {
+            labelText += " (\(trackName))"
+        }
+        userNameLabel.text = labelText
         messageLabel.text = personObj.lastMessage?.message
         let count = personObj.getUnreadMessageCount()
         unreadMessageCountButton.setTitle("\(count)", forState: .Normal)

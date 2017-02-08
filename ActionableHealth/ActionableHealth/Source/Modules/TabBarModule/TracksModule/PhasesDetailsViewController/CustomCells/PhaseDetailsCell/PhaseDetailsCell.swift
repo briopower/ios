@@ -148,11 +148,11 @@ extension PhaseDetailsCell{
         taskNameLabel?.text = currentTask?.taskName.uppercaseString ?? ""
         starRatingView?.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel?.text = "\(currentTask?.rating ?? 0) Rating"
+        commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journals", forState: .Normal)
+        commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
+        rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
 
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
-            commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journals", forState: .Normal)
-            commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
-            rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
             let (status, sliderEnabled, sliderValue, startStopImage, details) = TaskStatus.getConfig(obj)
             statusLabel?.text = status
             slider?.enabled = sliderEnabled

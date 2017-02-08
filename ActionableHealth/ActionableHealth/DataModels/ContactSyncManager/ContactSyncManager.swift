@@ -194,7 +194,7 @@ extension ContactSyncManager{
 
     func syncContacts() {
 
-        if ContactSyncManager.sharedInstance.checkAccess() == .Granted{
+        if ContactSyncManager.sharedInstance.checkAccess() != .Denied{
             if !isSyncing {
                 ContactSyncManager.apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
 

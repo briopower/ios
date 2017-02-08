@@ -34,7 +34,7 @@ class MessageListCell: UITableViewCell {
 //MARK:- Additional methods
 extension MessageListCell{
     func configureCell(isLastCell:Bool, personObj:Person) {
-        var labelText = personObj.personName ?? personObj.personId ?? ""
+        var labelText = Contact.getNameForContact(personObj.personId ?? "") ?? personObj.personId ?? ""
         if let trackName = personObj.lastTrack {
             labelText += " (\(trackName))"
         }

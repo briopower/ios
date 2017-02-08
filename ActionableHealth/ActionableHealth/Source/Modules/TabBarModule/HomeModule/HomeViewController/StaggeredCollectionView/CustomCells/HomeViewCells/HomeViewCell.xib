@@ -10,8 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="ProximaNova-Regular.otf">
-            <string>ProximaNova-Regular</string>
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
         </array>
     </customFonts>
     <objects>
@@ -47,13 +47,14 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="18.5" height="88.5"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccb-LU-7eF" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                                <rect key="frame" x="85.5" y="15.5" width="59" height="16"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
-                                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="84.5" y="16" width="59.5" height="16"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                                <color key="textColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8m-Ui-gwT" customClass="HCSStarRatingView">
-                                                <rect key="frame" x="85.5" y="31.5" width="137.5" height="32"/>
+                                                <rect key="frame" x="84.5" y="31.5" width="137.5" height="32"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
                                                         <integer key="value" value="5"/>
@@ -66,15 +67,15 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="rating-icon"/>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="rating-fill-icon"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="staroutline"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="star"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="spacing">
                                                         <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.14449501037597656" green="0.15549704432487488" blue="0.22183999419212341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="d8m-Ui-gwT" firstAttribute="top" secondItem="Ccb-LU-7eF" secondAttribute="bottom" id="0Sv-Gp-5JR"/>
                                             <constraint firstItem="ZBl-LL-1pY" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="35:580" id="4Yg-iM-3Nr"/>
@@ -106,7 +107,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="2"/>
+                                        <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -140,7 +141,7 @@
     </objects>
     <resources>
         <image name="logo-1" width="70" height="70"/>
-        <image name="rating-fill-icon" width="11" height="10"/>
-        <image name="rating-icon" width="11" height="11"/>
+        <image name="star" width="10" height="10"/>
+        <image name="staroutline" width="10" height="10"/>
     </resources>
 </document>

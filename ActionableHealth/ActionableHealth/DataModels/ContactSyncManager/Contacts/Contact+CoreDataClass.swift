@@ -40,6 +40,19 @@ public class Contact: NSManagedObject {
         }
     }
 
+    class func deleteContactsForRecordId(recordId:NSNumber, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+        if let context = contextRef{
+            let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: NSPredicate(format: "recordId = %@", recordId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [AddressBook]
+            for obj in addBookArr ?? [] {
+                if let arr = obj.contacts?.allObjects as? [Contact] {
+                    for temp in arr {
+                        context.deleteObject(temp)
+                    }
+                }
+            }
+        }
+
+    }
     class func getNameForContact(number:String) -> String? {
         if number == NSUserDefaults.getUserId() {
             return "You"

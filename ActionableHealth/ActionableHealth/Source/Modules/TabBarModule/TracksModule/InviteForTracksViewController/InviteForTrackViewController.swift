@@ -69,6 +69,7 @@ extension InviteForTrackViewController{
     }
 
     func contactSyncCompleted(notification:NSNotification) {
+        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         tblView.reloadData()
     }
 }
@@ -76,7 +77,8 @@ extension InviteForTrackViewController{
 //MARK:- Additional methods
 extension InviteForTrackViewController{
     func setupView() {
-        
+        AppDelegate.getAppDelegateObject()?.startSyncing()
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: ContactSyncManager.contactSyncCompleted, object: nil)
         tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
         tblView.registerNib(UINib(nibName: String(SearchByIdHeader), bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: String(SearchByIdHeader))

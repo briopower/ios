@@ -63,6 +63,7 @@ class Constants: NSObject {
             static let searchUserView = "searchUserView"
             static let trackMemberListView = "trackMemberListView"
             static let showTextView = "showTextView"
+            static let phasesView = "phasesView"
         }
     }
 

@@ -28,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-zR-LgI">
-                            <rect key="frame" x="0.0" y="78" width="320" height="324.5"/>
+                            <rect key="frame" x="0.0" y="78" width="320" height="314"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCG-ZG-W60">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="77.5"/>
@@ -103,10 +103,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kg8-mm-hdP">
-                            <rect key="frame" x="0.0" y="402.5" width="320" height="49"/>
+                            <rect key="frame" x="0.0" y="392" width="320" height="59.5"/>
                             <subviews>
                                 <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="8.5" width="148" height="33"/>
+                                    <rect key="frame" x="15" y="8.5" width="137.5" height="43.5"/>
                                     <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -124,9 +124,9 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50R-lj-os9" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="164" y="8" width="148" height="33"/>
+                                    <rect key="frame" x="167.5" y="8" width="137.5" height="43.5"/>
                                     <color key="backgroundColor" red="0.10980392160000001" green="0.1137254902" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                     <state key="normal" title="CREATE A GROUP">
@@ -142,9 +142,9 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIS-Rd-way" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="8.5" width="148" height="33"/>
+                                    <rect key="frame" x="15" y="8" width="137.5" height="43.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                     <state key="normal" title="FOLLOW">
@@ -169,16 +169,16 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="width" secondItem="f5O-3a-9u1" secondAttribute="width" id="0Gv-wL-VbV"/>
-                                <constraint firstAttribute="trailing" secondItem="50R-lj-os9" secondAttribute="trailing" constant="8" id="27z-hx-cJY"/>
+                                <constraint firstAttribute="trailing" secondItem="50R-lj-os9" secondAttribute="trailing" constant="15" id="27z-hx-cJY"/>
                                 <constraint firstItem="50R-lj-os9" firstAttribute="top" secondItem="Kg8-mm-hdP" secondAttribute="top" constant="8" id="2eT-av-ApY"/>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="centerY" secondItem="f5O-3a-9u1" secondAttribute="centerY" id="2ql-qQ-hUN"/>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="height" secondItem="f5O-3a-9u1" secondAttribute="height" id="5yz-2W-nOm"/>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="centerX" secondItem="f5O-3a-9u1" secondAttribute="centerX" id="PBW-3N-lqs"/>
-                                <constraint firstItem="50R-lj-os9" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" constant="8" id="b9d-WJ-p29"/>
+                                <constraint firstItem="50R-lj-os9" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" constant="15" id="b9d-WJ-p29"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="height" secondItem="50R-lj-os9" secondAttribute="height" id="d19-iw-W1I"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="width" secondItem="50R-lj-os9" secondAttribute="width" id="hjk-lc-DcZ"/>
                                 <constraint firstAttribute="bottom" secondItem="50R-lj-os9" secondAttribute="bottom" constant="8" id="rpU-Q3-8MB"/>
-                                <constraint firstItem="f5O-3a-9u1" firstAttribute="leading" secondItem="Kg8-mm-hdP" secondAttribute="leading" constant="8" id="xqa-Yp-Xhx"/>
+                                <constraint firstItem="f5O-3a-9u1" firstAttribute="leading" secondItem="Kg8-mm-hdP" secondAttribute="leading" constant="15" id="xqa-Yp-Xhx"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="50R-lj-os9" secondAttribute="centerY" id="yHv-K2-BuU"/>
                             </constraints>
                         </view>
@@ -195,7 +195,7 @@
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="bottom" id="5gJ-Kf-Hh4"/>
                         <constraint firstAttribute="bottom" secondItem="Kg8-mm-hdP" secondAttribute="bottom" id="DPr-uh-zTQ"/>
                         <constraint firstItem="Kg8-mm-hdP" firstAttribute="top" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="O3t-Z4-2PO"/>
-                        <constraint firstItem="Kg8-mm-hdP" firstAttribute="width" secondItem="Kg8-mm-hdP" secondAttribute="height" multiplier="1242:190" id="SGe-W9-N8R"/>
+                        <constraint firstItem="Kg8-mm-hdP" firstAttribute="width" secondItem="Kg8-mm-hdP" secondAttribute="height" multiplier="1242:230" id="SGe-W9-N8R"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="Ste-DA-WBG"/>
                         <constraint firstAttribute="trailing" secondItem="Kg8-mm-hdP" secondAttribute="trailing" id="Ts3-V3-Mh4"/>
                         <constraint firstItem="V5j-yI-oOE" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="aS4-Hr-Uw7"/>

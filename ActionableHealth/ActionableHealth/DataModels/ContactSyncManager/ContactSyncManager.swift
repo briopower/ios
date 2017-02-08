@@ -46,7 +46,6 @@ class ContactSyncManager: NSObject {
             if let contacts = contacts{
                 self.performSelectorInBackground(#selector(ContactSyncManager.addContacts(_:)), withObject: contacts)
             }else if let desc = error?.localizedDescription{
-                // UIAlertController.showAlertOfStyle(.Alert, Message: desc, completion: nil)
                 UIView.showToast(desc, theme: Theme.Error)
             }else{
                 self.syncCompleted()
@@ -61,8 +60,8 @@ class ContactSyncManager: NSObject {
             bgCxt.performBlock({
                 self.isSyncing = true
                 for contact in contacts {
-                    if let addBkObj = AddressBook.saveAddressBookObj(contact, contextRef: bgCxt){
-
+                    if self.shouldProcess(contact), let addBkObj = AddressBook.saveAddressBookObj(contact, contextRef: bgCxt){
+                        Contact.deleteContactsForRecordId(contact.recordID)
                         if let phoneNumbers = contact.phones {
                             for phone in phoneNumbers {
                                 if let actualNumber = phone.number {
@@ -74,7 +73,6 @@ class ContactSyncManager: NSObject {
                         }
                     }
                 }
-
                 do{
                     try bgCxt.save()
                     prntCxt.performBlock({
@@ -95,6 +93,26 @@ class ContactSyncManager: NSObject {
 
     }
 
+    private func shouldProcess(contact:APContact) -> Bool {
+        debugPrint(contact.phones?[0].number)
+        if let modificationDate = contact.recordDate?.modificationDate {
+            var shouldProcess = false
+            if let lastSycned = NSUserDefaults.getLastSyncDate() {
+                if modificationDate.compare(lastSycned) == NSComparisonResult.OrderedDescending  {
+                    shouldProcess = true
+                }
+            }else{
+                shouldProcess = true
+            }
+            if shouldProcess {
+                if let phones = contact.phones
+                {
+                    return phones.count > 0
+                }
+            }
+        }
+        return false
+    }
     private func syncCompleted() {
         NSUserDefaults.setLastSyncDate(NSDate())
         self.syncCoreDataContacts()
@@ -193,38 +211,18 @@ extension ContactSyncManager{
     }
 
     func syncContacts() {
-
-        if ContactSyncManager.sharedInstance.checkAccess() != .Denied{
+        if ContactSyncManager.sharedInstance.checkAccess() == .Granted{
             if !isSyncing {
                 ContactSyncManager.apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
-
-                ContactSyncManager.apAddressBook.filterBlock =
-                    {
-                        (contact: APContact) -> Bool in
-                        if let modificationDate = contact.recordDate?.modificationDate {
-                            var shouldProcess = false
-                            if let lastSycned = NSUserDefaults.getLastSyncDate() {
-                                if modificationDate.compare(lastSycned) == NSComparisonResult.OrderedDescending  {
-                                    shouldProcess = true
-                                }
-                            }else{
-                                shouldProcess = true
-                            }
-                            if shouldProcess {
-                                if let phones = contact.phones
-                                {
-                                    return phones.count > 0
-                                }
-                            }
-                        }
-                        return false
-                }
+                ContactSyncManager.apAddressBook.sortDescriptors = [NSSortDescriptor(key: "recordDate.modificationDate", ascending: false)]
                 loadContacts()
             }
         }else{
             ContactSyncManager.apAddressBook.requestAccess({ (request:Bool, error:NSError?) in
                 if let error = error{
                     debugPrint("Contact request access error ----------\(error)----------")
+                }else if request{
+                    self.syncContacts()
                 }
             })
             NSUserDefaults.setLastSyncDate(NSDate())
@@ -252,6 +250,14 @@ extension ContactSyncManager{
                     self.isDeleting = false
                 })
             }
+        }else{
+            ContactSyncManager.apAddressBook.requestAccess({ (request:Bool, error:NSError?) in
+                if let error = error{
+                    debugPrint("Contact request access error ----------\(error)----------")
+                }else if request{
+                    self.checkForDeletedContacts()
+                }
+            })
         }
     }
 }

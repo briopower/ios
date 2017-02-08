@@ -34,7 +34,7 @@ class MessagingViewController: JSQMessagesViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        var text = personObj?.personName ?? personObj?.personId ?? ""
+        var text = Contact.getNameForContact(personObj?.personId ?? "") ?? personObj?.personId ?? ""
         if let lastTrackName = personObj?.lastTrack {
             text += " (\(lastTrackName))"
         }

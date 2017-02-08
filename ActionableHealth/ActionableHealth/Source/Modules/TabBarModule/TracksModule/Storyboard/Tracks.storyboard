@@ -48,63 +48,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="infoButton" destination="BVx-xh-U9H" id="IGS-OB-8SK"/>
-                        <outlet property="phaseButton" destination="yPA-sJ-KAf" id="Jsp-sU-1DR"/>
-                        <outlet property="sectionHeaderView" destination="hqk-eu-oz4" id="Tcw-Ur-Rt7"/>
                         <outlet property="trackDetailsTblView" destination="Byi-sT-NNP" id="3mE-rm-YcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSQ-DH-iUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="hqk-eu-oz4">
-                    <rect key="frame" x="0.0" y="0.0" width="594" height="69"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blx-1H-cpV">
-                            <rect key="frame" x="0.0" y="0.0" width="594" height="69"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-sJ-KAf" customClass="CommonHeaderButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="297" y="0.0" width="297" height="69"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                    <state key="normal" title="PHASES">
-                                        <color key="titleColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="sectionButtonActions:" destination="8bK-0c-DA2" eventType="touchUpInside" id="hrB-Nq-2uw"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVx-xh-U9H" customClass="CommonHeaderButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="297" height="69"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
-                                    <state key="normal" title="INFO">
-                                        <color key="titleColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="infoButtonAction:" destination="8bK-0c-DA2" eventType="touchUpInside" id="gf4-Jy-PB6"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.93725490196078431" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="yPA-sJ-KAf" firstAttribute="top" secondItem="blx-1H-cpV" secondAttribute="top" id="Ibt-kM-H0H"/>
-                                <constraint firstAttribute="width" secondItem="blx-1H-cpV" secondAttribute="height" multiplier="1242:500" priority="999" id="Ioc-Bc-mig"/>
-                                <constraint firstAttribute="bottom" secondItem="BVx-xh-U9H" secondAttribute="bottom" id="J09-vJ-umr"/>
-                                <constraint firstItem="BVx-xh-U9H" firstAttribute="top" secondItem="blx-1H-cpV" secondAttribute="top" id="Lac-Aj-9BH"/>
-                                <constraint firstItem="BVx-xh-U9H" firstAttribute="leading" secondItem="blx-1H-cpV" secondAttribute="leading" id="asb-r0-YHE"/>
-                                <constraint firstItem="yPA-sJ-KAf" firstAttribute="width" secondItem="BVx-xh-U9H" secondAttribute="width" id="cIz-yf-z3r"/>
-                                <constraint firstAttribute="bottom" secondItem="yPA-sJ-KAf" secondAttribute="bottom" id="fTU-ms-CSo"/>
-                                <constraint firstItem="yPA-sJ-KAf" firstAttribute="leading" secondItem="BVx-xh-U9H" secondAttribute="trailing" id="nCC-rr-640"/>
-                                <constraint firstAttribute="trailing" secondItem="yPA-sJ-KAf" secondAttribute="trailing" id="zR2-RU-EkK"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="blx-1H-cpV" firstAttribute="top" secondItem="hqk-eu-oz4" secondAttribute="top" id="2aH-E6-mz7"/>
-                        <constraint firstAttribute="trailing" secondItem="blx-1H-cpV" secondAttribute="trailing" id="Vfn-IS-zww"/>
-                        <constraint firstAttribute="bottom" secondItem="blx-1H-cpV" secondAttribute="bottom" id="bTh-pD-7wL"/>
-                        <constraint firstItem="blx-1H-cpV" firstAttribute="leading" secondItem="hqk-eu-oz4" secondAttribute="leading" id="f2f-ai-ls5"/>
-                    </constraints>
-                </view>
             </objects>
             <point key="canvasLocation" x="630" y="419"/>
         </scene>
@@ -250,7 +197,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type you comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="127.66666666666666" height="17.666666666666629"/>
+                                        <rect key="frame" x="21" y="16" width="125.66666666666666" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -625,6 +572,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ku-iI-re5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5875" y="417"/>
+        </scene>
+        <!--Phases View Controller-->
+        <scene sceneID="Ggg-3q-u3t">
+            <objects>
+                <viewController storyboardIdentifier="phasesView" id="DQb-B3-5VK" customClass="PhasesViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kZg-PI-JMY"/>
+                        <viewControllerLayoutGuide type="bottom" id="YHu-XH-ODX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5DI-gq-yZh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kiC-UF-ws0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="DQb-B3-5VK" id="3G2-Ej-MwQ"/>
+                                    <outlet property="delegate" destination="DQb-B3-5VK" id="TZC-6L-nYM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YHu-XH-ODX" firstAttribute="top" secondItem="kiC-UF-ws0" secondAttribute="bottom" id="P4Z-wL-Sph"/>
+                            <constraint firstAttribute="trailing" secondItem="kiC-UF-ws0" secondAttribute="trailing" id="p86-Zd-I0W"/>
+                            <constraint firstItem="kiC-UF-ws0" firstAttribute="top" secondItem="5DI-gq-yZh" secondAttribute="top" id="qzE-3S-esC"/>
+                            <constraint firstItem="kiC-UF-ws0" firstAttribute="leading" secondItem="5DI-gq-yZh" secondAttribute="leading" id="rkO-Mg-Fzo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tblView" destination="kiC-UF-ws0" id="kba-bC-Yf7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SPb-Ah-XE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6571.0144927536239" y="418.20652173913049"/>
         </scene>
     </scenes>
     <resources>

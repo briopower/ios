@@ -150,6 +150,9 @@
 		3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF3FD1DB635060034D700 /* HomeViewCell.swift */; };
 		3CACF4001DB635060034D700 /* HomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CACF3FE1DB635060034D700 /* HomeViewCell.xib */; };
 		3CACF4021DB635220034D700 /* StaggeredCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CACF4011DB635220034D700 /* StaggeredCollectionView.swift */; };
+		3CAD35311E4B313B00A0DB43 /* TrackPhasesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAD352F1E4B313B00A0DB43 /* TrackPhasesCell.swift */; };
+		3CAD35321E4B313B00A0DB43 /* TrackPhasesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CAD35301E4B313B00A0DB43 /* TrackPhasesCell.xib */; };
+		3CAD35341E4B315600A0DB43 /* PhasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAD35331E4B315600A0DB43 /* PhasesViewController.swift */; };
 		3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */; };
 		3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */; };
 		3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */; };
@@ -206,10 +209,6 @@
 		3CEFA9601DF6816B00185459 /* NSArray_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */; };
 		3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5491DB7892000224046 /* TrackFilesCell.swift */; };
 		3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */; };
-		3CF5B54F1DB78AEC00224046 /* TrackInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */; };
-		3CF5B5501DB78AEC00224046 /* TrackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B54E1DB78AEC00224046 /* TrackInfoCell.xib */; };
-		3CF5B5531DB78E4500224046 /* TrackPhasesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */; };
-		3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */; };
 		3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */; };
 		3CF5B5661DB7A56700224046 /* CommnetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5641DB7A56700224046 /* CommnetsCell.swift */; };
 		3CF5B5671DB7A56700224046 /* CommnetsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CF5B5651DB7A56700224046 /* CommnetsCell.xib */; };
@@ -454,6 +453,9 @@
 		3CACF3FD1DB635060034D700 /* HomeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		3CACF3FE1DB635060034D700 /* HomeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewCell.xib; sourceTree = "<group>"; };
 		3CACF4011DB635220034D700 /* StaggeredCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaggeredCollectionView.swift; sourceTree = "<group>"; };
+		3CAD352F1E4B313B00A0DB43 /* TrackPhasesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPhasesCell.swift; sourceTree = "<group>"; };
+		3CAD35301E4B313B00A0DB43 /* TrackPhasesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell.xib; sourceTree = "<group>"; };
+		3CAD35331E4B315600A0DB43 /* PhasesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhasesViewController.swift; sourceTree = "<group>"; };
 		3CAE3C621DA78903006F5212 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		3CAE3C641DA7898C006F5212 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
 		3CAE70B21DB0A01D00D733C2 /* SignupLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignupLogin.storyboard; sourceTree = "<group>"; };
@@ -510,10 +512,6 @@
 		3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArray_Common.swift; sourceTree = "<group>"; };
 		3CF5B5491DB7892000224046 /* TrackFilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFilesCell.swift; sourceTree = "<group>"; };
 		3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackFilesCell.xib; sourceTree = "<group>"; };
-		3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackInfoCell.swift; sourceTree = "<group>"; };
-		3CF5B54E1DB78AEC00224046 /* TrackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackInfoCell.xib; sourceTree = "<group>"; };
-		3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPhasesCell.swift; sourceTree = "<group>"; };
-		3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell.xib; sourceTree = "<group>"; };
 		3CF5B5571DB79E0700224046 /* InviteForTrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteForTrackViewController.swift; sourceTree = "<group>"; };
 		3CF5B5641DB7A56700224046 /* CommnetsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommnetsCell.swift; sourceTree = "<group>"; };
 		3CF5B5651DB7A56700224046 /* CommnetsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommnetsCell.xib; sourceTree = "<group>"; };
@@ -1001,8 +999,6 @@
 			isa = PBXGroup;
 			children = (
 				3CF5B5461DB7861500224046 /* TrackFilesCell */,
-				3CF5B5471DB7861500224046 /* TrackInfoCell */,
-				3CF5B5481DB7861500224046 /* TrackPhasesCell */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1572,6 +1568,32 @@
 			path = HomeViewCells;
 			sourceTree = "<group>";
 		};
+		3CAD352C1E4B313B00A0DB43 /* PhasesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CAD352D1E4B313B00A0DB43 /* CustomCells */,
+				3CAD35331E4B315600A0DB43 /* PhasesViewController.swift */,
+			);
+			path = PhasesViewController;
+			sourceTree = "<group>";
+		};
+		3CAD352D1E4B313B00A0DB43 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3CAD352E1E4B313B00A0DB43 /* TrackPhasesCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3CAD352E1E4B313B00A0DB43 /* TrackPhasesCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CAD352F1E4B313B00A0DB43 /* TrackPhasesCell.swift */,
+				3CAD35301E4B313B00A0DB43 /* TrackPhasesCell.xib */,
+			);
+			path = TrackPhasesCell;
+			sourceTree = "<group>";
+		};
 		3CAE70B11DB0A01D00D733C2 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1699,6 +1721,7 @@
 		3CBD5C711DA7AF71004BCAE0 /* TracksModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CAD352C1E4B313B00A0DB43 /* PhasesViewController */,
 				3C39DAA81DB64A7400D86D24 /* Storyboard */,
 				3CFEBC561E38A487009B029E /* ShowTextViewController */,
 				3CC9D07D1DB8A9AE00287068 /* PhasesDetailsViewController */,
@@ -1981,24 +2004,6 @@
 				3CF5B54A1DB7892000224046 /* TrackFilesCell.xib */,
 			);
 			path = TrackFilesCell;
-			sourceTree = "<group>";
-		};
-		3CF5B5471DB7861500224046 /* TrackInfoCell */ = {
-			isa = PBXGroup;
-			children = (
-				3CF5B54D1DB78AEC00224046 /* TrackInfoCell.swift */,
-				3CF5B54E1DB78AEC00224046 /* TrackInfoCell.xib */,
-			);
-			path = TrackInfoCell;
-			sourceTree = "<group>";
-		};
-		3CF5B5481DB7861500224046 /* TrackPhasesCell */ = {
-			isa = PBXGroup;
-			children = (
-				3CF5B5511DB78E4500224046 /* TrackPhasesCell.swift */,
-				3CF5B5521DB78E4500224046 /* TrackPhasesCell.xib */,
-			);
-			path = TrackPhasesCell;
 			sourceTree = "<group>";
 		};
 		3CF5B5551DB79DE600224046 /* InviteForTracksViewController */ = {
@@ -2302,7 +2307,6 @@
 				3C9443B31E37611800C2F695 /* GoogleService-Info.plist in Resources */,
 				3C6BF4CA1E0155F800F6DC70 /* GroupsCell.xib in Resources */,
 				3C8E47971E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
-				3CF5B5541DB78E4500224046 /* TrackPhasesCell.xib in Resources */,
 				3C8E47A41E165CAE0019C261 /* LICENSE in Resources */,
 				3CACF4001DB635060034D700 /* HomeViewCell.xib in Resources */,
 				3CAB0F931DB0B2910090BEF3 /* ProximaNova-Medium.ttf in Resources */,
@@ -2310,6 +2314,7 @@
 				3CF6AAEA1DB4A08E0067387F /* Settings.storyboard in Resources */,
 				3C71C4131E1D2BEA00468E43 /* SearchByIdHeader.xib in Resources */,
 				3C966DC31DF6CAFB00E299BF /* CountryCodeListCell.xib in Resources */,
+				3CAD35321E4B313B00A0DB43 /* TrackPhasesCell.xib in Resources */,
 				3CD845801E405BAD002EC90D /* iTunesArtwork@1x.png in Resources */,
 				3C6763171DB0F1F8001F7A4A /* SeparatorCell.xib in Resources */,
 				3CAE3C631DA78903006F5212 /* ProximaNova-Regular.otf in Resources */,
@@ -2344,7 +2349,6 @@
 				40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */,
 				3CD845841E4064A6002EC90D /* TrackDetailsHeaderView_Template.xib in Resources */,
 				3CC9D0891DB8AE7100287068 /* PhaseDetailsCell.xib in Resources */,
-				3CF5B5501DB78AEC00224046 /* TrackInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2536,6 +2540,7 @@
 				3C9D13301DA3CE7D00998DA2 /* UITabBarItem_Custom.swift in Sources */,
 				3C8E47871E165CAE0019C261 /* JSQMessagesBubblesSizeCalculator.m in Sources */,
 				3CCECDB81DAF872300831242 /* SubPropertiesCell.swift in Sources */,
+				3CAD35341E4B315600A0DB43 /* PhasesViewController.swift in Sources */,
 				3C3B88691E1A1E85005DA7B4 /* Person+CoreDataProperties.swift in Sources */,
 				3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */,
 				3C8E47851E165CAE0019C261 /* JSQMessagesToolbarButtonFactory.m in Sources */,
@@ -2609,7 +2614,6 @@
 				3C8E478F1E165CAE0019C261 /* JSQMessagesAvatarImage.m in Sources */,
 				3C3B88681E1A1E85005DA7B4 /* Person+CoreDataClass.swift in Sources */,
 				3C9D132C1DA3CE5800998DA2 /* UITextField_Localizable.swift in Sources */,
-				3CF5B54F1DB78AEC00224046 /* TrackInfoCell.swift in Sources */,
 				3C1EC5AB1DA3A864003DC2A3 /* VNProgreessHUD.swift in Sources */,
 				40EBFEDF1DF8071500605397 /* WelcomeToBrio.swift in Sources */,
 				3C1EC59F1DA3A864003DC2A3 /* UIColor_Common.swift in Sources */,
@@ -2631,10 +2635,10 @@
 				3C1EC5961DA3A864003DC2A3 /* AppDelegate_Common.swift in Sources */,
 				3CCF310A1DB75B24001A1E7B /* TrackDetailsViewController.swift in Sources */,
 				3CCF8AF81DA64B1000C76C64 /* CommonMethods.swift in Sources */,
+				3CAD35311E4B313B00A0DB43 /* TrackPhasesCell.swift in Sources */,
 				3CD382281DF7E74A00B1B7A3 /* CommonHeaderButton.swift in Sources */,
 				3C6BF4C91E0155F800F6DC70 /* GroupsCell.swift in Sources */,
 				3CB8A2981DEDAE0C009B9AE9 /* UserModel.swift in Sources */,
-				3CF5B5531DB78E4500224046 /* TrackPhasesCell.swift in Sources */,
 				3C8E477A1E165CAE0019C261 /* UIColor+JSQMessages.m in Sources */,
 				3C1EC5981DA3A864003DC2A3 /* NSUserDefaults_Common.swift in Sources */,
 				3CCF31061DB74B7E001A1E7B /* TrackDetailsHeaderView.swift in Sources */,

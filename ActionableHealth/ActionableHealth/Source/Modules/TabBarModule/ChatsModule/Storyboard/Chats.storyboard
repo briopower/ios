@@ -132,6 +132,7 @@
                     </view>
                     <connections>
                         <outlet property="contactSyncingView" destination="fpS-tz-S20" id="ibP-ZG-UVR"/>
+                        <outlet property="srchbar" destination="gsW-BC-NJU" id="F56-s7-QX3"/>
                         <outlet property="tblView" destination="t7r-5o-G8l" id="QlV-NX-bKy"/>
                     </connections>
                 </viewController>

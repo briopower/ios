@@ -11,6 +11,7 @@ import CoreData
 
 class ContactListViewController: CommonViewController {
     //MARK:- Outlets
+    @IBOutlet weak var srchbar: UISearchBar!
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var contactSyncingView: UIVisualEffectView!
 
@@ -42,13 +43,14 @@ class ContactListViewController: CommonViewController {
 //MARK:- Actions
 extension ContactListViewController{
     func contactSyncCompleted(notification:NSNotification) {
-        tblView.reloadData()
+        setupFRC(srchbar.text?.getValidObject())
     }
 }
 
 //MARK:- Additional methods
 extension ContactListViewController{
     func setupView() {
+        AppDelegate.getAppDelegateObject()?.startSyncing()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: ContactSyncManager.contactSyncCompleted, object: nil)
         tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
 

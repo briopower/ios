@@ -21,14 +21,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TrackDetailsHeaderView" customModule="BRIO" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-CV-mYu">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-zR-LgI">
-                            <rect key="frame" x="0.0" y="78" width="320" height="314"/>
+                            <rect key="frame" x="0.0" y="78" width="320" height="226"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCG-ZG-W60">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="77.5"/>
@@ -58,6 +58,7 @@
                                 </imageView>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-Vt-fO7" customClass="HCSStarRatingView">
                                     <rect key="frame" x="80" y="16" width="71.5" height="18"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="4Gb-Vt-fO7" secondAttribute="height" multiplier="280:70" id="2bJ-gi-JnH"/>
                                     </constraints>
@@ -81,7 +82,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="65:1242" id="18b-Oy-cib"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="centerY" secondItem="wCG-ZG-W60" secondAttribute="centerY" id="2ux-Ii-KI3"/>
@@ -103,11 +104,11 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kg8-mm-hdP">
-                            <rect key="frame" x="0.0" y="392" width="320" height="59.5"/>
+                            <rect key="frame" x="0.0" y="304" width="320" height="59.5"/>
                             <subviews>
                                 <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="15" y="8.5" width="137.5" height="43.5"/>
-                                    <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="frame" x="15" y="10.5" width="137.5" height="39.5"/>
+                                    <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -124,8 +125,8 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50R-lj-os9" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="167.5" y="8" width="137.5" height="43.5"/>
-                                    <color key="backgroundColor" red="0.10980392160000001" green="0.1137254902" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <rect key="frame" x="167.5" y="10" width="137.5" height="39.5"/>
+                                    <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -142,7 +143,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIS-Rd-way" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="15" y="8" width="137.5" height="43.5"/>
+                                    <rect key="frame" x="15" y="10" width="137.5" height="39.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
                                     <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -166,49 +167,67 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="width" secondItem="f5O-3a-9u1" secondAttribute="width" id="0Gv-wL-VbV"/>
                                 <constraint firstAttribute="trailing" secondItem="50R-lj-os9" secondAttribute="trailing" constant="15" id="27z-hx-cJY"/>
-                                <constraint firstItem="50R-lj-os9" firstAttribute="top" secondItem="Kg8-mm-hdP" secondAttribute="top" constant="8" id="2eT-av-ApY"/>
+                                <constraint firstItem="50R-lj-os9" firstAttribute="top" secondItem="Kg8-mm-hdP" secondAttribute="top" constant="10" id="2eT-av-ApY"/>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="centerY" secondItem="f5O-3a-9u1" secondAttribute="centerY" id="2ql-qQ-hUN"/>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="height" secondItem="f5O-3a-9u1" secondAttribute="height" id="5yz-2W-nOm"/>
                                 <constraint firstItem="hIS-Rd-way" firstAttribute="centerX" secondItem="f5O-3a-9u1" secondAttribute="centerX" id="PBW-3N-lqs"/>
                                 <constraint firstItem="50R-lj-os9" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" constant="15" id="b9d-WJ-p29"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="height" secondItem="50R-lj-os9" secondAttribute="height" id="d19-iw-W1I"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="width" secondItem="50R-lj-os9" secondAttribute="width" id="hjk-lc-DcZ"/>
-                                <constraint firstAttribute="bottom" secondItem="50R-lj-os9" secondAttribute="bottom" constant="8" id="rpU-Q3-8MB"/>
+                                <constraint firstAttribute="bottom" secondItem="50R-lj-os9" secondAttribute="bottom" constant="10" id="rpU-Q3-8MB"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="leading" secondItem="Kg8-mm-hdP" secondAttribute="leading" constant="15" id="xqa-Yp-Xhx"/>
                                 <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="50R-lj-os9" secondAttribute="centerY" id="yHv-K2-BuU"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V5j-yI-oOE" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="451" width="320" height="1"/>
+                            <rect key="frame" x="0.0" y="363" width="320" height="1"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="xX4-lh-9z3"/>
                             </constraints>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tPC-Yr-9N1">
+                            <rect key="frame" x="0.0" y="259.5" width="320" height="44.5"/>
+                            <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="0.40087221746575341" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-8F-poC" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="16" y="259.5" width="288" height="44.5"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="31"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="V5j-yI-oOE" secondAttribute="bottom" id="4wd-Pn-CyK"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="centerX" secondItem="tPC-Yr-9N1" secondAttribute="centerX" id="56D-mO-cCB"/>
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="bottom" id="5gJ-Kf-Hh4"/>
                         <constraint firstAttribute="bottom" secondItem="Kg8-mm-hdP" secondAttribute="bottom" id="DPr-uh-zTQ"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="leading" secondItem="I1O-zR-LgI" secondAttribute="leading" id="II8-MQ-VEr"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="height" secondItem="I1O-zR-LgI" secondAttribute="height" multiplier="0.2" id="O0D-Nt-5ad"/>
                         <constraint firstItem="Kg8-mm-hdP" firstAttribute="top" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="O3t-Z4-2PO"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="bottom" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="PLb-mR-YP0"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="centerY" secondItem="tPC-Yr-9N1" secondAttribute="centerY" id="QJA-md-Xvz"/>
                         <constraint firstItem="Kg8-mm-hdP" firstAttribute="width" secondItem="Kg8-mm-hdP" secondAttribute="height" multiplier="1242:230" id="SGe-W9-N8R"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="Ste-DA-WBG"/>
                         <constraint firstAttribute="trailing" secondItem="Kg8-mm-hdP" secondAttribute="trailing" id="Ts3-V3-Mh4"/>
                         <constraint firstItem="V5j-yI-oOE" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="aS4-Hr-Uw7"/>
                         <constraint firstAttribute="trailing" secondItem="V5j-yI-oOE" secondAttribute="trailing" id="dIu-pk-itL"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="height" secondItem="tPC-Yr-9N1" secondAttribute="height" id="ev6-zJ-i2Q"/>
                         <constraint firstAttribute="trailing" secondItem="wCG-ZG-W60" secondAttribute="trailing" id="paD-eT-ESN"/>
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="q0i-du-6fD"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="trailing" secondItem="I1O-zR-LgI" secondAttribute="trailing" id="qDF-KS-8wf"/>
                         <constraint firstItem="Kg8-mm-hdP" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="ulK-DK-NEZ"/>
                         <constraint firstAttribute="trailing" secondItem="I1O-zR-LgI" secondAttribute="trailing" id="un4-ao-fdP"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="width" secondItem="tPC-Yr-9N1" secondAttribute="width" multiplier="0.9" id="vRj-sy-VLr"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="top" secondItem="6zP-CV-mYu" secondAttribute="top" id="z5Z-Hl-sKj"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="6zP-CV-mYu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5vu-Gb-TkM"/>
                 <constraint firstAttribute="trailing" secondItem="6zP-CV-mYu" secondAttribute="trailing" id="KVN-WS-d1p"/>
@@ -220,6 +239,7 @@
                 <outlet property="bottomContainer" destination="Kg8-mm-hdP" id="jlQ-uy-iiG"/>
                 <outlet property="detailsButton1" destination="dh5-wE-Ch1" id="iQa-SZ-tFz"/>
                 <outlet property="logoImageView" destination="cnB-D5-yTp" id="mHq-OD-gZh"/>
+                <outlet property="nameLabel" destination="4fI-8F-poC" id="MVf-4q-yRo"/>
                 <outlet property="ratingView" destination="4Gb-Vt-fO7" id="bee-yr-rxT"/>
                 <outlet property="requestButton1" destination="f5O-3a-9u1" id="Lpt-Hw-GvA"/>
                 <outlet property="requestButton2" destination="50R-lj-os9" id="L7U-iL-L6f"/>
@@ -227,7 +247,7 @@
                 <outlet property="templateImage" destination="I1O-zR-LgI" id="ysy-uK-etL"/>
                 <outlet property="topContainer" destination="wCG-ZG-W60" id="hPo-41-cD6"/>
             </connections>
-            <point key="canvasLocation" x="-416" y="-276"/>
+            <point key="canvasLocation" x="-416" y="-320"/>
         </view>
     </objects>
     <resources>

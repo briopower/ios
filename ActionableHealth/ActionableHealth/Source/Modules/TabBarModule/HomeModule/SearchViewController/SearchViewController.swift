@@ -36,9 +36,7 @@ class SearchViewController: CommonViewController {
 //MARK:- Additional methods
 extension SearchViewController{
 
-    func setupView() {
-        setNavigationBarBackgroundColor(UIColor.whiteColor())
-        
+    func setupView() {        
         clctView.commonCollectionViewDelegate = self
         clctView.dataArray = NSMutableArray()
         clctView.type = CollectionViewType.TemplateView

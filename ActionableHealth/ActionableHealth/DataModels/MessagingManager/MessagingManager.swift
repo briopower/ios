@@ -18,7 +18,7 @@ class MessagingManager: NSObject {
     //MARK:- Variables
     static let sharedInstance = MessagingManager()
     let messageReceived = "messageReceivedNotification"
-    var isConnected = false
+    var isConnected = true
     var ref: FIRDatabaseReference?
     private var _refHandle: FIRDatabaseHandle?
     var chattingWithPerson:String?
@@ -35,6 +35,7 @@ extension MessagingManager{
     private func signIn() {
         FIRAuth.auth()?.signInWithCustomToken(NSUserDefaults.getFirebaseToken(), completion: { (user:FIRUser?, error:NSError?) in
             if let error = error{
+                self.isConnected = false
                 debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\(error)")
                 if let type = FIRAuthErrorCode(rawValue: error.code){
                     switch type{
@@ -53,9 +54,11 @@ extension MessagingManager{
     private func refreshToken() {
         FIRAuth.auth()?.currentUser?.getTokenForcingRefresh(true, completion: { (token:String?, error:NSError?) in
             if let error = error{
+                self.isConnected = false
                 debugPrint("------------FIREBASE REFRESH TOKEN ISSUE--------------\(error)")
                 self.signIn()
             }else if let tkn = token{
+                self.isConnected = true
                 NSUserDefaults.setFirebaseToken(tkn)
                 self.connect()
             }
@@ -96,6 +99,7 @@ extension MessagingManager{
                 }
             }, withCancelBlock:
             { (error:NSError) in
+                self.isConnected = false
                 debugPrint("------------DATABASE SYNC ISSUE MESSAGING--------------\(error)")
                 self.refreshToken()
         })
@@ -185,9 +189,11 @@ extension MessagingManager{
                 FIRMessaging.messaging().disconnect()
                 FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
                     if error != nil {
+                        self.isConnected = false
                         debugPrint("Unable to connect with FCM. \(error)")
                         self.connectToFcm()
                     } else {
+                        self.isConnected = true
                         debugPrint("Connected to FCM with token: \(FIRInstanceID.instanceID().token())")
                         self.sendNotificationToken()
                     }

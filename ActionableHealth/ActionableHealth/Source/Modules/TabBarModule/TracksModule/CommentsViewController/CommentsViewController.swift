@@ -28,7 +28,7 @@ class CommentsViewController: KeyboardAvoidingViewController {
 
     var commentSourceKey:String?
     var cursor = ""
-    var titleString = "Group Chat"
+    var titleString = "Group Message(s)"
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()

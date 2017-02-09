@@ -139,7 +139,7 @@ extension InviteForTrackViewController{
         case .Templates:
             getNavigationController()
             if let tbCont = getNavigationController()?.viewControllers[0] as? UITabBarController{
-                tbCont.selectedIndex = TrackDetailsSourceType.Tracks.rawValue
+                tbCont.selectedIndex = 0
                 getNavigationController()?.popToRootViewControllerAnimated(true)
             }
         case .Tracks:

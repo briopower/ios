@@ -61,7 +61,7 @@
                                     <constraint firstAttribute="width" secondItem="LOY-Fi-nbz" secondAttribute="height" multiplier="1242:70" id="m57-jf-8JW"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-9Z-lfU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-9Z-lfU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="32.5" y="25" width="338.5" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -85,7 +85,7 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="uIU-Tf-dca" customClass="HCSStarRatingView">
-                                <rect key="frame" x="32.5" y="50" width="90" height="21.5"/>
+                                <rect key="frame" x="32.5" y="51" width="90" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uIU-Tf-dca" secondAttribute="height" multiplier="250:60" id="ZyN-HS-QDY"/>
                                 </constraints>
@@ -109,7 +109,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bU3-JV-iRK" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="134.5" y="52.5" width="70.5" height="21.5"/>
+                                <rect key="frame" x="134.5" y="51" width="70.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -124,7 +124,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fav-vz-Y6g">
-                                <rect key="frame" x="371" y="37.5" width="47" height="46.5"/>
+                                <rect key="frame" x="371" y="38.5" width="47" height="46.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fav-vz-Y6g" secondAttribute="height" id="QZz-Cq-fY2"/>
                                 </constraints>
@@ -170,7 +170,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="5ea-2o-818">
-                                <rect key="frame" x="410" y="606.5" width="8" height="15"/>
+                                <rect key="frame" x="403" y="606.5" width="15" height="15"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQI-j7-4zu">
                                 <rect key="frame" x="0.0" y="574.5" width="448" height="79.5"/>
@@ -182,7 +182,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zT7-BP-OaL">
-                                <rect key="frame" x="32.5" y="92" width="385.5" height="306.5"/>
+                                <rect key="frame" x="32.5" y="93.5" width="385.5" height="305"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -212,7 +212,7 @@
                             <constraint firstItem="bU3-JV-iRK" firstAttribute="height" secondItem="uIU-Tf-dca" secondAttribute="height" id="NVC-hA-HB0"/>
                             <constraint firstItem="uIU-Tf-dca" firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="width" multiplier="250:1242" id="Nmb-yz-4Ka"/>
                             <constraint firstItem="pAp-H4-dce" firstAttribute="leading" secondItem="Ez9-et-ple" secondAttribute="leading" id="NwO-uN-bSJ"/>
-                            <constraint firstItem="bU3-JV-iRK" firstAttribute="centerY" secondItem="uIU-Tf-dca" secondAttribute="centerY" multiplier="1.04" id="PLQ-Rs-WYZ"/>
+                            <constraint firstItem="bU3-JV-iRK" firstAttribute="centerY" secondItem="uIU-Tf-dca" secondAttribute="centerY" id="PLQ-Rs-WYZ"/>
                             <constraint firstAttribute="bottom" secondItem="4sT-TD-qIz" secondAttribute="bottom" id="Qqm-rr-hFc"/>
                             <constraint firstItem="Fav-vz-Y6g" firstAttribute="leading" secondItem="fwg-9Z-lfU" secondAttribute="trailing" id="UHa-ty-1tA"/>
                             <constraint firstItem="uIU-Tf-dca" firstAttribute="centerX" secondItem="6Di-20-0PO" secondAttribute="centerX" multiplier="215:621" id="UJu-O7-RBa"/>
@@ -232,6 +232,7 @@
                             <constraint firstAttribute="trailing" secondItem="4sT-TD-qIz" secondAttribute="trailing" id="lZT-hh-seM"/>
                             <constraint firstItem="LOY-Fi-nbz" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="m1U-cB-sBm"/>
                             <constraint firstItem="Me7-Yr-gfL" firstAttribute="centerY" secondItem="QBZ-BU-34K" secondAttribute="centerY" id="mZ7-H9-QQF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zT7-BP-OaL" secondAttribute="trailing" constant="30" id="nfG-Gb-T3P"/>
                             <constraint firstItem="5ea-2o-818" firstAttribute="centerY" secondItem="m5c-7E-ZGP" secondAttribute="centerY" id="ok2-UC-CEv"/>
                             <constraint firstAttribute="trailing" secondItem="CTJ-FV-xl3" secondAttribute="trailing" id="prW-Fb-Pbh"/>
                             <constraint firstItem="Fav-vz-Y6g" firstAttribute="trailing" secondItem="Me7-Yr-gfL" secondAttribute="trailing" id="sPV-qj-Nug"/>
@@ -272,7 +273,7 @@
     </objects>
     <resources>
         <image name="Start" width="41" height="41"/>
-        <image name="arrow" width="8" height="15"/>
+        <image name="arrow" width="15" height="15"/>
         <image name="comment-ic" width="17" height="17"/>
         <image name="rating-fill-icon" width="11" height="10"/>
         <image name="rating-icon" width="11" height="11"/>

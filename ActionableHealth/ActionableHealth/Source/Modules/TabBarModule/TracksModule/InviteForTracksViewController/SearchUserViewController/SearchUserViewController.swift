@@ -60,7 +60,6 @@ extension SearchUserViewController{
 //MARK:- Additonal methods
 extension SearchUserViewController{
     func setupView() {
-        setNavigationBarBackgroundColor(UIColor.whiteColor())
         srchBar.becomeFirstResponder()
         tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
         tblView.rowHeight = UITableViewAutomaticDimension

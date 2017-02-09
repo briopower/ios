@@ -24,6 +24,8 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
+        setNavigationBarBackgroundColor(UIColor.whiteColor())
+
     }
 
     override func didReceiveMemoryWarning() {

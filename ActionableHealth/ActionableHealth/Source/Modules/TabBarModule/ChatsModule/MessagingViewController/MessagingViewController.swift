@@ -35,7 +35,7 @@ class MessagingViewController: JSQMessagesViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         var text = Contact.getNameForContact(personObj?.personId ?? "") ?? personObj?.personId ?? ""
-        if let lastTrackName = personObj?.lastTrack {
+        if let lastTrackName = trackName ?? personObj?.lastTrack {
             text += " (\(lastTrackName))"
         }
         titleLabel.text = text
@@ -85,6 +85,7 @@ extension MessagingViewController{
         setupMessagingView()
         removeActivityIndicator()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.messageReceived(_:)), name: MessagingManager.sharedInstance.messageReceived, object: nil)
+        setNavigationBarBackgroundColor(UIColor.whiteColor())
 
     }
 

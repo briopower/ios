@@ -33,7 +33,6 @@ class NotificationsViewController: CommonViewController {
 //MARK:- Additional methods
 extension NotificationsViewController{
     func setupView() {
-        setNavigationBarBackgroundColor(UIColor.whiteColor())
     }
 }
 

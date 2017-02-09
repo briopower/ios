@@ -23,7 +23,7 @@
             <objects>
                 <navigationController id="Mgw-jc-D4N" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="b7t-me-nf2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b7t-me-nf2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="0.90006956339999999" colorSpace="calibratedWhite"/>
@@ -50,7 +50,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJC-n2-Ejk" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="671" width="414" height="65"/>
-                                <color key="backgroundColor" red="0.10017777979373932" green="0.10629464685916901" blue="0.15517653524875641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="23"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" red="1" green="0.99752539396286011" blue="0.10908816009759903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -128,7 +128,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-8U-Kzy" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="20" y="175.33333333333334" width="374" height="62.333333333333314"/>
-                                <color key="backgroundColor" red="0.10980392156862745" green="0.11764705882352941" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="22"/>
                                 <state key="normal" title="VERIFY">
                                     <color key="titleColor" red="1" green="0.99607843137254903" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

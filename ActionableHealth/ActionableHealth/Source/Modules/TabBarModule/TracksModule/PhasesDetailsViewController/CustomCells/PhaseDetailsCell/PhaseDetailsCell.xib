@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="width" secondItem="dXG-fk-tb7" secondAttribute="height" multiplier="1242:70" id="DFk-0k-5MT"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emX-Ho-yFA" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emX-Ho-yFA" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="33" y="25.5" width="338" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -78,7 +78,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtO-vZ-dwz" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="135" y="52.5" width="70.5" height="21.5"/>
+                                <rect key="frame" x="135" y="50" width="70.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="rMe-CT-kbB">
-                                <rect key="frame" x="410" y="419" width="8" height="15"/>
+                                <rect key="frame" x="403" y="419" width="15" height="15"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csu-Ne-ebm">
                                 <rect key="frame" x="0.0" y="386.5" width="448" height="79.5"/>
@@ -137,7 +137,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MtO-vZ-dwz" firstAttribute="centerY" secondItem="fPy-65-m1v" secondAttribute="centerY" multiplier="1.04" id="2Lw-9v-Zym"/>
+                            <constraint firstItem="MtO-vZ-dwz" firstAttribute="centerY" secondItem="fPy-65-m1v" secondAttribute="centerY" id="2Lw-9v-Zym"/>
                             <constraint firstItem="5W8-Jj-6Fr" firstAttribute="centerY" secondItem="y7K-DI-pqF" secondAttribute="centerY" id="3PB-dX-Hvr"/>
                             <constraint firstItem="fPy-65-m1v" firstAttribute="top" secondItem="emX-Ho-yFA" secondAttribute="bottom" multiplier="1.2" id="3Zf-be-fce"/>
                             <constraint firstItem="emX-Ho-yFA" firstAttribute="top" secondItem="dXG-fk-tb7" secondAttribute="bottom" id="3hg-m8-n1x"/>
@@ -158,6 +158,7 @@
                             <constraint firstItem="q5W-7x-iwj" firstAttribute="leading" secondItem="fPy-65-m1v" secondAttribute="leading" id="U8b-Oh-6IZ"/>
                             <constraint firstItem="fPy-65-m1v" firstAttribute="leading" secondItem="emX-Ho-yFA" secondAttribute="leading" id="XYG-xs-8IW"/>
                             <constraint firstItem="lvL-Sd-3uV" firstAttribute="top" secondItem="csu-Ne-ebm" secondAttribute="bottom" id="Yw6-4L-OgF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q5W-7x-iwj" secondAttribute="trailing" constant="30" id="Z58-1H-NNj"/>
                             <constraint firstItem="q5W-7x-iwj" firstAttribute="top" secondItem="RQN-kW-Zna" secondAttribute="bottom" multiplier="1.1" id="Zum-4X-SY1"/>
                             <constraint firstItem="fPy-65-m1v" firstAttribute="width" secondItem="aYF-HG-FYn" secondAttribute="width" multiplier="250:1242" id="d7X-Tn-Lcx"/>
                             <constraint firstItem="RQN-kW-Zna" firstAttribute="trailing" secondItem="5W8-Jj-6Fr" secondAttribute="trailing" id="da6-3Y-ylb"/>
@@ -194,7 +195,7 @@
     </objects>
     <resources>
         <image name="Start" width="41" height="41"/>
-        <image name="arrow" width="8" height="15"/>
+        <image name="arrow" width="15" height="15"/>
         <image name="comment-ic" width="17" height="17"/>
         <image name="rating-fill-icon" width="11" height="10"/>
         <image name="rating-icon" width="11" height="11"/>

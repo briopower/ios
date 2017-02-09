@@ -75,7 +75,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.14449501037597656" green="0.15549704432487488" blue="0.22183999419212341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.10980392156862745" green="0.11372549019607843" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="d8m-Ui-gwT" firstAttribute="top" secondItem="Ccb-LU-7eF" secondAttribute="bottom" id="0Sv-Gp-5JR"/>
                                             <constraint firstItem="ZBl-LL-1pY" firstAttribute="width" secondItem="tnK-8o-Haq" secondAttribute="width" multiplier="35:580" id="4Yg-iM-3Nr"/>

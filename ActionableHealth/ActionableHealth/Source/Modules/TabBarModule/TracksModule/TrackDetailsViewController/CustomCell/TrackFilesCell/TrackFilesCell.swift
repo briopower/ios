@@ -29,23 +29,29 @@ class TrackFilesCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension TrackFilesCell{
-    func configCell(type:TrackDetailsAboutPhaseCellTypes) {
+    func configCell(type:TemplateSectionTypes) {
         switch type {
         case .About:
             detailsLabel.text = "About"
         case .Phases:
             detailsLabel.text = "Phases"
+        case .Resources:
+            detailsLabel.text = "Resources"
         default:
             break
         }
     }
 
-    func configCell(type:TrackDetailsMemberFilesCellTypes) {
+    func configCell(type:TrackSectionTypes) {
         switch type {
-        case .Members:
-            detailsLabel.text = "Track Members"
-        case .Files:
-            detailsLabel.text = "Track Files"
+        case .About:
+            detailsLabel.text = "About"
+        case .Phases:
+            detailsLabel.text = "Phases"
+        case .Resources:
+            detailsLabel.text = "Resources"
+        case .TeamMembers:
+            detailsLabel.text = "Team Members"
         default:
             break
         }

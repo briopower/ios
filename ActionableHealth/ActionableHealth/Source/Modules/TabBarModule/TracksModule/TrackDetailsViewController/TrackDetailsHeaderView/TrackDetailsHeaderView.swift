@@ -38,6 +38,7 @@ class TrackDetailsHeaderView: UIView {
     @IBOutlet weak var detailsButton1: UIButton?
     @IBOutlet weak var detailsButton2: UIButton?
     @IBOutlet weak var detailsButton3: UIButton?
+    @IBOutlet weak var nameLabel: UILabel?
 
     //MARK:- Variables
     static let heightOf1PxlWidthTemplate:CGFloat = 1.2663438257
@@ -116,18 +117,19 @@ extension TrackDetailsHeaderView{
         self.type = type
         currentTemplate = template
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
+        nameLabel?.text = template?.name
         switch self.type {
         case .Templates:
             logoImageView.image = UIImage(named: "logo-1")
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
-            detailsButton1?.setTitle("\(currentTemplate?.followersCount ?? 0) Followers", forState: .Normal)
-            detailsButton2?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Chat", forState: .Normal)
-            detailsButton3?.setTitle("\(currentTemplate?.activeTrackCount ?? 0) Active Groups", forState: .Normal)
+            detailsButton1?.setTitle("\(currentTemplate?.followersCount ?? 0) Follower(s)", forState: .Normal)
+            detailsButton2?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Message(s)", forState: .Normal)
+            detailsButton3?.setTitle("\(currentTemplate?.activeTrackCount ?? 0) Active Group(s)", forState: .Normal)
             setupFollowUnfollowButton()
         case .Tracks:
             templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
             logoImageView.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
-            detailsButton1?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Chat", forState: .Normal)
+            detailsButton1?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Message(s)", forState: .Normal)
             editButton?.hidden = !(NSUserDefaults.getUserId() == currentTemplate?.createdBy)
             requestButton1?.hidden = editButton?.hidden ?? true
         default:

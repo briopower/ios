@@ -8,16 +8,12 @@
 
 import UIKit
 
-enum TrackDetailsMemberFilesCellTypes:Int {
-    case Members, Files, Count
+enum TrackSectionTypes:Int {
+    case Phases, TeamMembers, Resources, About, Count
 }
 
-enum TrackDetailsAboutPhaseCellTypes:Int {
-    case About, Phases, Count
-}
-
-enum TrackDetailsSectionTypes:Int {
-    case MemberFiles, AboutPhase, Count
+enum TemplateSectionTypes:Int {
+    case About, Resources, Phases, Count
 }
 
 class TrackDetailsViewController: CommonViewController, UINavigationControllerDelegate {
@@ -111,6 +107,7 @@ extension TrackDetailsViewController{
         trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
         trackDetailsTblView.estimatedRowHeight = 80
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
+        trackDetailsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         createImageUploadUrl(false)
     }
 
@@ -125,54 +122,35 @@ extension TrackDetailsViewController{
 extension TrackDetailsViewController:UITableViewDataSource{
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return TrackDetailsSectionTypes.Count.rawValue
+        if sourceType == .Templates {
+            return TemplateSectionTypes.Count.rawValue
+        }else{
+            return TrackSectionTypes.Count.rawValue
+        }
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if let sectionType = TrackDetailsSectionTypes(rawValue: section) {
-            switch sectionType {
-            case .MemberFiles:
-                var numberOfCells = 0
-                if sourceType == .Tracks {
-                    numberOfCells += 1
-                }
-                if currentTemplate?.blobKey != nil {
-                    numberOfCells += 1
-                }
-                return numberOfCells
-            case .AboutPhase:
-                return TrackDetailsAboutPhaseCellTypes.Count.rawValue
-            default:
-                break
-            }
-        }
-        return 0
+        return 1
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        if let sectionType = TrackDetailsSectionTypes(rawValue: indexPath.section), let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
-            switch sectionType {
-            case .MemberFiles:
-                switch sourceType {
-                case .Tracks:
-                    if let cellType = TrackDetailsMemberFilesCellTypes(rawValue: indexPath.row) {
-                        switch cellType {
-                        case .Members, .Files:
-                            cell.configCell(cellType)
-                            return cell
-                        default:
-                            break
-                        }
+        if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
+            switch sourceType {
+            case .Templates:
+                if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
+                    switch sectionType {
+                    case .About, .Phases, .Resources:
+                        cell.configCell(sectionType)
+                        return cell
+                    default:
+                        break
                     }
-                default:
-                    cell.configCell(TrackDetailsMemberFilesCellTypes.Files)
-                    return cell
                 }
-            case .AboutPhase:
-                if let cellType = TrackDetailsAboutPhaseCellTypes(rawValue: indexPath.row) {
-                    switch cellType {
-                    case .About, .Phases:
-                        cell.configCell(cellType)
+            case .Tracks:
+                if let sectionType = TrackSectionTypes(rawValue: indexPath.section) {
+                    switch sectionType {
+                    case .About, .Phases, .Resources, .TeamMembers:
+                        cell.configCell(sectionType)
                         return cell
                     default:
                         break
@@ -189,58 +167,66 @@ extension TrackDetailsViewController:UITableViewDataSource{
 //MARK:- UITableViewDelegate
 extension TrackDetailsViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let sectionType = TrackDetailsSectionTypes(rawValue: indexPath.section) {
-            switch sectionType {
-            case .MemberFiles:
-                if let cellType = TrackDetailsMemberFilesCellTypes(rawValue: indexPath.row) {
-                    switch sourceType {
-                    case .Tracks:
-                        switch cellType {
-                        case .Members:
-                            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
-                                viewCont.currentTemplate = currentTemplate
-                                getNavigationController()?.pushViewController(viewCont, animated: true)
-                            }
-                        case .Files:
-                            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
-                                viewCont.blobKey = currentTemplate?.blobKey
-                                viewCont.navigationTitle = "Track Files"
-                                getNavigationController()?.pushViewController(viewCont, animated: true)
-                            }
-                        default:
-                            break
-                        }
-                    default:
-                        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
-                            viewCont.blobKey = currentTemplate?.blobKey
-                            viewCont.navigationTitle = "Track Files"
-                            getNavigationController()?.pushViewController(viewCont, animated: true)
-                        }
-                    }
 
-                }
-            case .AboutPhase:
-                if let cellType = TrackDetailsAboutPhaseCellTypes(rawValue: indexPath.row) {
-                    switch cellType {
-                    case .About:
-                        if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
-                            showTextView.text = currentTemplate?.details ?? ""
-                            showTextView.navigationTitle = currentTemplate?.name ?? ""
-                            getNavigationController()?.pushViewController(showTextView, animated: true)
-                        }
-                    case .Phases:
-                        if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesView) as? PhasesViewController {
-                            phasesView.currentTemplate = currentTemplate
-                            phasesView.sourceType = sourceType
-                            getNavigationController()?.pushViewController(phasesView, animated: true)
-                        }
-                    default:
-                        break
+
+        switch sourceType {
+        case .Templates:
+            if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
+                switch sectionType {
+                case .Resources:
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
+                        viewCont.blobKey = currentTemplate?.blobKey
+                        viewCont.navigationTitle = "Resources"
+                        getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
+                case .About:
+                    if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
+                        showTextView.text = currentTemplate?.details ?? ""
+                        showTextView.navigationTitle = currentTemplate?.name ?? ""
+                        getNavigationController()?.pushViewController(showTextView, animated: true)
+                    }
+                case .Phases:
+                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesView) as? PhasesViewController {
+                        phasesView.currentTemplate = currentTemplate
+                        phasesView.sourceType = sourceType
+                        getNavigationController()?.pushViewController(phasesView, animated: true)
+                    }
+                default:
+                    break
                 }
-            default:
-                break
             }
+        case .Tracks:
+            if let sectionType = TrackSectionTypes(rawValue: indexPath.section) {
+                switch sectionType {
+                case .TeamMembers:
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
+                        viewCont.currentTemplate = currentTemplate
+                        getNavigationController()?.pushViewController(viewCont, animated: true)
+                    }
+                case .Resources:
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
+                        viewCont.blobKey = currentTemplate?.blobKey
+                        viewCont.navigationTitle = "Resources"
+                        getNavigationController()?.pushViewController(viewCont, animated: true)
+                    }
+                case .About:
+                    if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
+                        showTextView.text = currentTemplate?.details ?? ""
+                        showTextView.navigationTitle = currentTemplate?.name ?? ""
+                        getNavigationController()?.pushViewController(showTextView, animated: true)
+                    }
+                case .Phases:
+                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesView) as? PhasesViewController {
+                        phasesView.currentTemplate = currentTemplate
+                        phasesView.sourceType = sourceType
+                        getNavigationController()?.pushViewController(phasesView, animated: true)
+                    }
+                default:
+                    break
+                }
+            }
+        default:
+            break
         }
     }
 }

@@ -67,6 +67,7 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var taskCompleted: UITextField?
     @IBOutlet weak var startStopButton: UIButton?
     @IBOutlet weak var taskDetailsTextView: UITextView?
+    @IBOutlet weak var durationLabel: UILabel?
 
     //MARK:- Variables
     static var statusCell = "PhaseDetailsCell_Status"
@@ -152,6 +153,16 @@ extension PhaseDetailsCell{
         commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
         rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
 
+        if let currentStatus = TaskStatus(rawValue: obj.status) {
+            switch currentStatus{
+            case .InProgress, .Paused:
+                let date = NSDate.dateWithTimeIntervalInMilliSecs(NSDate().timeIntervalInMilliSecs() + (currentTask?.remainingTimeInMillis ?? 0))
+                durationLabel?.text = date.shortTimeLeftString
+            default:
+                durationLabel?.text = nil
+            }
+        }
+
         if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
             let (status, sliderEnabled, sliderValue, startStopImage, details) = TaskStatus.getConfig(obj)
             statusLabel?.text = status
@@ -169,7 +180,6 @@ extension PhaseDetailsCell{
 
             let fixSize = 250
             let customFont = (UIFont.getAppRegularFontWithSize(17) ?? UIFont.systemFontOfSize(17)).getDynamicSizeFont()
-            let customBoldFont = (UIFont.getAppSemiboldFontWithSize(17) ?? UIFont.boldSystemFontOfSize(17)).getDynamicSizeFont()
             let mutableAttrString = NSMutableAttributedString(string: "")
 
             if text.characters.count <= fixSize {
@@ -178,7 +188,8 @@ extension PhaseDetailsCell{
                 let numberOfCharToAccept = fixSize - readMoreString.characters.count
                 let acceptableString = text.substringWithRange(text.startIndex ..< text.startIndex.advancedBy(numberOfCharToAccept))
                 mutableAttrString.appendAttributedString(NSAttributedString(string: acceptableString, attributes: [NSFontAttributeName : customFont]))
-                mutableAttrString.appendAttributedString(NSAttributedString(string: readMoreString, attributes: [NSFontAttributeName : customBoldFont]))
+                mutableAttrString.appendAttributedString(NSAttributedString(string: readMoreString, attributes: [NSFontAttributeName : customFont,
+                    NSForegroundColorAttributeName: UIColor.blueColor()]))
             }
             taskDetailsTextView?.attributedText = mutableAttrString
 

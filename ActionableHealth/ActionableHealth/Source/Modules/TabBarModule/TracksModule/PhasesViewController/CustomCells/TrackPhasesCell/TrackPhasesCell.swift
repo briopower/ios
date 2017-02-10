@@ -67,7 +67,6 @@ extension TrackPhasesCell{
         if let text = currentPhase?.details {
             let fixSize = 250
             let customFont = (UIFont.getAppRegularFontWithSize(17) ?? UIFont.systemFontOfSize(17)).getDynamicSizeFont()
-            let customBoldFont = (UIFont.getAppSemiboldFontWithSize(17) ?? UIFont.boldSystemFontOfSize(17)).getDynamicSizeFont()
             let mutableAttrString = NSMutableAttributedString(string: "")
 
             if text.characters.count <= fixSize {
@@ -76,7 +75,8 @@ extension TrackPhasesCell{
                 let numberOfCharToAccept = fixSize - readMoreString.characters.count
                 let acceptableString = text.substringWithRange(text.startIndex ..< text.startIndex.advancedBy(numberOfCharToAccept))
                 mutableAttrString.appendAttributedString(NSAttributedString(string: acceptableString, attributes: [NSFontAttributeName : customFont]))
-                mutableAttrString.appendAttributedString(NSAttributedString(string: readMoreString, attributes: [NSFontAttributeName : customBoldFont]))
+                mutableAttrString.appendAttributedString(NSAttributedString(string: readMoreString, attributes: [NSFontAttributeName : customFont,
+                    NSForegroundColorAttributeName: UIColor.blueColor()]))
             }
             taskDetailsTextView?.attributedText = mutableAttrString
 

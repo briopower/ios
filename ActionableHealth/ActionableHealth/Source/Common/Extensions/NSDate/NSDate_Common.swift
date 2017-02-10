@@ -440,6 +440,54 @@ extension NSDate {
         }
         return "Just Now"
     }
+
+
+    var shortTimeLeftString:String {
+
+        let numberOfSecs = floor(self.timeIntervalSinceDate(NSDate()))
+        //Years
+        let numberOfYears = floor(numberOfSecs/D_YEAR)
+        if numberOfYears > 0 {
+            if numberOfYears == 1 {
+                return "1 yr left"
+            }else{
+                return "\(Int(numberOfYears)) yrs left"
+            }
+        }
+
+
+        //Days
+        let numberOfDays = floor(numberOfSecs/D_DAY)
+        if numberOfDays > 0 {
+            if numberOfDays == 1 {
+                return "1 day left"
+            }else{
+                return "\(Int(numberOfDays)) days left"
+            }
+        }
+
+        //Hours
+        let numberOfHours = floor(numberOfSecs/D_HOUR)
+        if numberOfHours > 0 {
+            if numberOfHours == 1 {
+                return "1 hr left"
+            }else{
+                return "\(Int(numberOfHours)) hrs left"
+            }
+        }
+
+        //Minutes
+        let numberOfMins = floor(numberOfSecs/D_MINUTE)
+        if numberOfMins > 0 {
+            if numberOfMins == 1 {
+                return "1 min left"
+            }else{
+                return "\(Int(numberOfMins)) mins left"
+            }
+        }
+
+        return "You are late"
+    }
 }
 
 

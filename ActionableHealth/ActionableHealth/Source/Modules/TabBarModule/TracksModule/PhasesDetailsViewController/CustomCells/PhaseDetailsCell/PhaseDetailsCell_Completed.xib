@@ -63,7 +63,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-eh-zKk" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="32.5" y="25" width="338.5" height="17"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -74,8 +74,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-ak-bTb" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="462" width="136" height="17"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <rect key="frame" x="32.5" y="462" width="139" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -158,7 +158,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="na6-ni-Uai">
-                                <rect key="frame" x="32" y="93.5" width="385.5" height="285.5"/>
+                                <rect key="frame" x="32" y="85" width="385.5" height="294"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -177,7 +177,7 @@
                             <constraint firstAttribute="bottom" secondItem="YWx-15-dW2" secondAttribute="bottom" id="HTx-nY-XFD"/>
                             <constraint firstItem="uxR-lw-SVb" firstAttribute="leading" secondItem="PPs-ak-bTb" secondAttribute="leading" id="HuO-Yt-v3c"/>
                             <constraint firstItem="V8n-B7-v30" firstAttribute="top" secondItem="fgl-0t-QQj" secondAttribute="bottom" multiplier="1.01" id="IfU-Vd-rfH"/>
-                            <constraint firstItem="na6-ni-Uai" firstAttribute="top" secondItem="xeg-63-GD0" secondAttribute="bottom" multiplier="1.1" id="Kp1-P0-loP"/>
+                            <constraint firstItem="na6-ni-Uai" firstAttribute="top" secondItem="xeg-63-GD0" secondAttribute="bottom" id="Kp1-P0-loP"/>
                             <constraint firstItem="uAw-bg-GLS" firstAttribute="centerY" secondItem="mz2-1C-qvL" secondAttribute="centerY" id="Kvk-UH-CA8"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="na6-ni-Uai" secondAttribute="trailing" constant="30" id="OAY-ry-F76"/>
                             <constraint firstItem="mHX-ct-JgX" firstAttribute="leading" secondItem="mz2-1C-qvL" secondAttribute="leading" id="PbQ-o2-e67"/>

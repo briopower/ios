@@ -63,19 +63,19 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-9Z-lfU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
                                 <rect key="frame" x="32.5" y="25" width="338.5" height="17"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ez9-et-ple" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="33" y="438" width="224.5" height="17"/>
+                                <rect key="frame" x="33" y="410.5" width="224.5" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBZ-BU-34K" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="546.5" width="136" height="17"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <rect key="frame" x="32.5" y="546.5" width="139" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -134,7 +134,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="CTJ-FV-xl3">
-                                <rect key="frame" x="0.0" y="455.5" width="448" height="79.5"/>
+                                <rect key="frame" x="0.0" y="428" width="448" height="79.5"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="pAp-H4-dce" customClass="UISlider_Custom" customModule="BRIO" customModuleProvider="target">
                                         <rect key="frame" x="30.5" y="25" width="299.5" height="31"/>
@@ -182,7 +182,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zT7-BP-OaL">
-                                <rect key="frame" x="32.5" y="93.5" width="385.5" height="305"/>
+                                <rect key="frame" x="32.5" y="85" width="385.5" height="287.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -196,17 +196,24 @@
                                     <constraint firstAttribute="height" constant="1" id="iYR-My-gEh"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQd-xf-2IH" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="33" y="512.5" width="224.5" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="SQd-xf-2IH" firstAttribute="top" secondItem="CTJ-FV-xl3" secondAttribute="bottom" multiplier="1.01" id="01f-yH-3Ee"/>
                             <constraint firstItem="4sT-TD-qIz" firstAttribute="top" secondItem="lQI-j7-4zu" secondAttribute="bottom" id="0OL-wQ-uiK"/>
                             <constraint firstItem="Me7-Yr-gfL" firstAttribute="centerX" secondItem="6Di-20-0PO" secondAttribute="centerX" multiplier="1040:621" id="1gW-g8-OBD"/>
                             <constraint firstItem="zT7-BP-OaL" firstAttribute="trailing" secondItem="Me7-Yr-gfL" secondAttribute="trailing" priority="999" id="6lf-I8-biO"/>
                             <constraint firstAttribute="trailing" secondItem="lQI-j7-4zu" secondAttribute="trailing" id="7SM-mo-mKe"/>
+                            <constraint firstItem="SQd-xf-2IH" firstAttribute="leading" secondItem="Ez9-et-ple" secondAttribute="leading" id="8aZ-8K-zvc"/>
                             <constraint firstItem="Ez9-et-ple" firstAttribute="top" secondItem="zT7-BP-OaL" secondAttribute="bottom" multiplier="1.1" id="Dbh-ub-ai7"/>
                             <constraint firstItem="fwg-9Z-lfU" firstAttribute="top" secondItem="LOY-Fi-nbz" secondAttribute="bottom" id="FF7-Vt-cbf"/>
-                            <constraint firstItem="zT7-BP-OaL" firstAttribute="top" secondItem="Fav-vz-Y6g" secondAttribute="bottom" multiplier="1.1" id="Jrb-kq-4iS"/>
-                            <constraint firstItem="Me7-Yr-gfL" firstAttribute="top" secondItem="CTJ-FV-xl3" secondAttribute="bottom" multiplier="1.01" id="K4e-lE-1g9"/>
+                            <constraint firstItem="zT7-BP-OaL" firstAttribute="top" secondItem="Fav-vz-Y6g" secondAttribute="bottom" id="Jrb-kq-4iS"/>
                             <constraint firstAttribute="trailing" secondItem="LOY-Fi-nbz" secondAttribute="trailing" id="K86-yv-tMo"/>
                             <constraint firstItem="Fav-vz-Y6g" firstAttribute="width" secondItem="6Di-20-0PO" secondAttribute="width" multiplier="130:1242" id="LMf-B0-dMN"/>
                             <constraint firstItem="bU3-JV-iRK" firstAttribute="height" secondItem="uIU-Tf-dca" secondAttribute="height" id="NVC-hA-HB0"/>
@@ -233,6 +240,7 @@
                             <constraint firstItem="LOY-Fi-nbz" firstAttribute="leading" secondItem="6Di-20-0PO" secondAttribute="leading" id="m1U-cB-sBm"/>
                             <constraint firstItem="Me7-Yr-gfL" firstAttribute="centerY" secondItem="QBZ-BU-34K" secondAttribute="centerY" id="mZ7-H9-QQF"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zT7-BP-OaL" secondAttribute="trailing" constant="30" id="nfG-Gb-T3P"/>
+                            <constraint firstItem="Me7-Yr-gfL" firstAttribute="top" secondItem="SQd-xf-2IH" secondAttribute="bottom" multiplier="1.02" id="oKb-a1-8xa"/>
                             <constraint firstItem="5ea-2o-818" firstAttribute="centerY" secondItem="m5c-7E-ZGP" secondAttribute="centerY" id="ok2-UC-CEv"/>
                             <constraint firstAttribute="trailing" secondItem="CTJ-FV-xl3" secondAttribute="trailing" id="prW-Fb-Pbh"/>
                             <constraint firstItem="Fav-vz-Y6g" firstAttribute="trailing" secondItem="Me7-Yr-gfL" secondAttribute="trailing" id="sPV-qj-Nug"/>
@@ -257,6 +265,7 @@
             <connections>
                 <outlet property="commentCountButton" destination="QBZ-BU-34K" id="E49-DI-t7s"/>
                 <outlet property="completedOnlabel" destination="Ez9-et-ple" id="ibm-oH-6Pc"/>
+                <outlet property="durationLabel" destination="SQd-xf-2IH" id="mqO-aY-FfU"/>
                 <outlet property="rateTaskButton" destination="Me7-Yr-gfL" id="x6v-m6-WpS"/>
                 <outlet property="ratingLabel" destination="bU3-JV-iRK" id="yCu-lN-ggJ"/>
                 <outlet property="slider" destination="pAp-H4-dce" id="Z1g-IL-4pc"/>

@@ -61,7 +61,7 @@ extension UIViewController{
         getNavigationItem()?.titleView = nil
         getNavigationController()?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.getAppThemeColor(),
-            NSFontAttributeName: UIFont.getAppRegularFontWithSize(20)?.getDynamicSizeFont() ?? UIFont.systemFontOfSize(20).getDynamicSizeFont()]
+            NSFontAttributeName: UIFont.getAppSemiboldFontWithSize(20)?.getDynamicSizeFont() ?? UIFont.systemFontOfSize(20).getDynamicSizeFont()]
         getNavigationItem()?.title = title
         setBarButtonAt(.Left, Type: leftButtonType)
         setBarButtonAt(.Right, Type: rightButtonType)

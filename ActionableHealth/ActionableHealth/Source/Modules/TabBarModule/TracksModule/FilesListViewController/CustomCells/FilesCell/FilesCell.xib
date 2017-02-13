@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="FilesCell" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fh2-RV-rgg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="fh2-RV-rgg" secondAttribute="height" multiplier="1242:200" priority="999" id="haL-gv-pls"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jdH-wg-leB" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="16" y="78" width="320" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="NLB-So-QX9"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="4SL-jF-vBX">
+                        <rect key="frame" x="280.5" y="31.5" width="15" height="15"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="245" verticalHuggingPriority="245" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Overall 2 tasks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zm7-hl-JBe" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="16" y="29.5" width="113" height="20"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fh2-RV-rgg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5f9-1W-W3m"/>
+                    <constraint firstItem="4SL-jF-vBX" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="1.8" id="8HI-ib-tER"/>
+                    <constraint firstItem="Zm7-hl-JBe" firstAttribute="leading" secondItem="jdH-wg-leB" secondAttribute="leading" id="Bhc-Wb-55Q"/>
+                    <constraint firstItem="jdH-wg-leB" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="EZg-Ne-qdV"/>
+                    <constraint firstAttribute="trailing" secondItem="fh2-RV-rgg" secondAttribute="trailing" id="KFE-fh-8DQ"/>
+                    <constraint firstItem="fh2-RV-rgg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Sw0-8c-hGr"/>
+                    <constraint firstItem="Zm7-hl-JBe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZUQ-db-p5W"/>
+                    <constraint firstAttribute="bottom" secondItem="fh2-RV-rgg" secondAttribute="bottom" id="dTX-Mh-LxP"/>
+                    <constraint firstItem="jdH-wg-leB" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="1.1" id="gOu-sT-emu"/>
+                    <constraint firstItem="4SL-jF-vBX" firstAttribute="centerY" secondItem="Zm7-hl-JBe" secondAttribute="centerY" id="lhB-Nh-iQL"/>
+                    <constraint firstAttribute="bottom" secondItem="jdH-wg-leB" secondAttribute="bottom" id="mwP-Nd-GbU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="fileNameLabel" destination="Zm7-hl-JBe" id="MJL-Cb-Cyb"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="36"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow" width="15" height="15"/>
+    </resources>
+</document>

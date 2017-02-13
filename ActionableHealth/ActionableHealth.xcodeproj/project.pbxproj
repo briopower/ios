@@ -11,6 +11,10 @@
 		3C03593F1E3B2F9000AE8485 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C03593A1E3B2F9000AE8485 /* JVFloatLabeledTextField.m */; };
 		3C0359401E3B2F9000AE8485 /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C03593C1E3B2F9000AE8485 /* JVFloatLabeledTextView.m */; };
 		3C0359411E3B2F9000AE8485 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C03593E1E3B2F9000AE8485 /* NSString+TextDirectionality.m */; };
+		3C13A4F11E519354001B8723 /* FilesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C13A4F01E519354001B8723 /* FilesListViewController.swift */; };
+		3C13A4F41E51938A001B8723 /* FilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C13A4F21E51938A001B8723 /* FilesCell.swift */; };
+		3C13A4F51E51938A001B8723 /* FilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C13A4F31E51938A001B8723 /* FilesCell.xib */; };
+		3C13A4F81E519B42001B8723 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C13A4F71E519B42001B8723 /* Resources.swift */; };
 		3C1577C11E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */; };
 		3C1577C31E13CB54004FFAB1 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */; };
 		3C1577C51E13CB54004FFAB1 /* ContactSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */; };
@@ -258,6 +262,10 @@
 		3C03593C1E3B2F9000AE8485 /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVFloatLabeledTextView.m; sourceTree = "<group>"; };
 		3C03593D1E3B2F9000AE8485 /* NSString+TextDirectionality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TextDirectionality.h"; sourceTree = "<group>"; };
 		3C03593E1E3B2F9000AE8485 /* NSString+TextDirectionality.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TextDirectionality.m"; sourceTree = "<group>"; };
+		3C13A4F01E519354001B8723 /* FilesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesListViewController.swift; sourceTree = "<group>"; };
+		3C13A4F21E51938A001B8723 /* FilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCell.swift; sourceTree = "<group>"; };
+		3C13A4F31E51938A001B8723 /* FilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilesCell.xib; sourceTree = "<group>"; };
+		3C13A4F71E519B42001B8723 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddressBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSyncManager.swift; sourceTree = "<group>"; };
@@ -591,6 +599,40 @@
 				3C03593E1E3B2F9000AE8485 /* NSString+TextDirectionality.m */,
 			);
 			path = JVFloatLabeled;
+			sourceTree = "<group>";
+		};
+		3C13A4ED1E5192C2001B8723 /* FilesListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C13A4EE1E5192C2001B8723 /* CustomCells */,
+				3C13A4F01E519354001B8723 /* FilesListViewController.swift */,
+			);
+			path = FilesListViewController;
+			sourceTree = "<group>";
+		};
+		3C13A4EE1E5192C2001B8723 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3C13A4EF1E5192C2001B8723 /* FilesCell */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		3C13A4EF1E5192C2001B8723 /* FilesCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C13A4F21E51938A001B8723 /* FilesCell.swift */,
+				3C13A4F31E51938A001B8723 /* FilesCell.xib */,
+			);
+			path = FilesCell;
+			sourceTree = "<group>";
+		};
+		3C13A4F61E519B31001B8723 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C13A4F71E519B42001B8723 /* Resources.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		3C1577B51E13CB54004FFAB1 /* ContactSyncManager */ = {
@@ -1637,6 +1679,7 @@
 		3CB8A28C1DEDAE0C009B9AE9 /* TemplatesModel */ = {
 			isa = PBXGroup;
 			children = (
+				3C13A4F61E519B31001B8723 /* Resources */,
 				3CB8A28D1DEDAE0C009B9AE9 /* Phases */,
 				3CB8A2911DEDAE0C009B9AE9 /* TemplatesModel.swift */,
 			);
@@ -1721,6 +1764,7 @@
 		3CBD5C711DA7AF71004BCAE0 /* TracksModule */ = {
 			isa = PBXGroup;
 			children = (
+				3C13A4ED1E5192C2001B8723 /* FilesListViewController */,
 				3CAD352C1E4B313B00A0DB43 /* PhasesViewController */,
 				3C39DAA81DB64A7400D86D24 /* Storyboard */,
 				3CFEBC561E38A487009B029E /* ShowTextViewController */,
@@ -2323,6 +2367,7 @@
 				3C8E479E1E165CAE0019C261 /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */,
 				3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */,
+				3C13A4F51E51938A001B8723 /* FilesCell.xib in Resources */,
 				3C71C40F1E1D2BEA00468E43 /* AddFromPhoneHeader.xib in Resources */,
 				3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */,
 				3C8E47A31E165CAE0019C261 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
@@ -2545,6 +2590,7 @@
 				3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */,
 				3C8E47851E165CAE0019C261 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				3C8E479A1E165CAE0019C261 /* JSQMessagesComposerTextView.m in Sources */,
+				3C13A4F11E519354001B8723 /* FilesListViewController.swift in Sources */,
 				3C1577C31E13CB54004FFAB1 /* Contact+CoreDataProperties.swift in Sources */,
 				3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */,
 				3CF5B5581DB79E0700224046 /* InviteForTrackViewController.swift in Sources */,
@@ -2553,6 +2599,7 @@
 				409414981E02740B00057EFD /* UIView_Common.swift in Sources */,
 				3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */,
 				3C8E47791E165CAE0019C261 /* NSString+JSQMessages.m in Sources */,
+				3C13A4F81E519B42001B8723 /* Resources.swift in Sources */,
 				40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */,
 				3C6BF4C31E01559100F6DC70 /* ProfileImageCell.swift in Sources */,
 				3C8E47841E165CAE0019C261 /* JSQMessagesTimestampFormatter.m in Sources */,
@@ -2567,6 +2614,7 @@
 				3C8E47A61E165CAE0019C261 /* JSQSystemSoundPlayer.m in Sources */,
 				3C8E47921E165CAE0019C261 /* JSQVideoMediaItem.m in Sources */,
 				3C1DA9481E4457A200B3A46C /* ContactListViewController.swift in Sources */,
+				3C13A4F41E51938A001B8723 /* FilesCell.swift in Sources */,
 				3C8E47961E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				3C7F287B1E1F98820021D269 /* AboutUsShortViewController.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,

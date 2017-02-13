@@ -21,7 +21,6 @@ class TemplatesModel: NSObject {
     var status = ""
     var templateImageUrl = ""
     var createdBy = ""
-    var fileName = ""
     var createDate = 0
     var key:String?
     var rating = 0.0
@@ -30,12 +29,12 @@ class TemplatesModel: NSObject {
     var phases = NSMutableArray()
     var isFollowing = false
     var followersCount = 0
-    
+    var resources = NSMutableArray()
+
     //MARK: Additional for tracks
     var trackId:String?
     var members = NSMutableArray()
     var trackImageUrl = ""
-    var blobKey:String?
 }
 
 //MARK:- Additional methods
@@ -129,16 +128,15 @@ extension TemplatesModel{
         obj.details = dict["descriptionText"] as? String ?? obj.details
         obj.templateImageUrl = dict["profileURL"] as? String ?? obj.templateImageUrl
         obj.createdBy = dict["createdBy"] as? String ?? obj.createdBy
-        obj.fileName = dict["fileName"] as? String ?? ""
         obj.createDate = dict["createdDate"] as? Int ?? obj.createDate
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["reviewCount"] as? Int ?? 0
         obj.activeTrackCount = dict["activeTracks"] as? Int ?? 0
-        obj.blobKey = dict["blobKey"] as? String
         obj.followersCount = dict["followerCount"] as? Int ?? 0
         obj.isFollowing = dict["currentUserFollower"] as? Bool ?? false
 
         addPhases(dict, toModel: obj)
+        addResources(dict, toModel: obj)
     }
 
     class func updateTrackObj(obj:TemplatesModel, dict:AnyObject) {
@@ -151,26 +149,38 @@ extension TemplatesModel{
         obj.templateImageUrl = dict["templateURL"] as? String ?? obj.templateImageUrl
         obj.trackImageUrl = dict["trackURL"] as? String ?? ""
         obj.createdBy = dict["createdBy"] as? String ?? ""
-        obj.fileName = dict["fileName"] as? String ?? ""
         obj.createDate = dict["createdDate"] as? Int ?? 0
         obj.rating = dict["rating"] as? Double ?? 0
         obj.commentsCount = dict["commentCount"] as? Int ?? 0
         obj.followersCount = dict["followerCount"] as? Int ?? 0
         obj.isFollowing = dict["currentUserFollower"] as? Bool ?? false
-        obj.blobKey = dict["blobKey"] as? String
         obj.key = dict["key"] as? String
         obj.status = dict["status"] as? String ?? ""
+        addPhases(dict, toModel: obj)
+        addMembers(dict, toModel: obj)
+        addResources(dict, toModel: obj)
+    }
 
-        obj.members = NSMutableArray()
-        if let arr = dict["members"] as? NSArray{
-            for userObject in arr {
-                if let userDict = userObject as? [String:AnyObject]{
-                    obj.members.addObject(UserModel.getUserObject(userDict))
+    class func addResources(dict:AnyObject, toModel:TemplatesModel) {
+        toModel.resources = NSMutableArray()
+        if let arr = dict["resources"] as? NSArray{
+            for resourceObject in arr {
+                if let resourceDict = resourceObject as? [String:AnyObject]{
+                    toModel.resources.addObject(Resources.getResourceUsingObj(resourceDict))
                 }
             }
         }
+    }
 
-        addPhases(dict, toModel: obj)
+    class func addMembers(dict:AnyObject, toModel:TemplatesModel) {
+        toModel.members = NSMutableArray()
+        if let arr = dict["members"] as? NSArray{
+            for userObject in arr {
+                if let userDict = userObject as? [String:AnyObject]{
+                    toModel.members.addObject(UserModel.getUserObject(userDict))
+                }
+            }
+        }
     }
 
     class func addPhases(dict:AnyObject, toModel:TemplatesModel) {

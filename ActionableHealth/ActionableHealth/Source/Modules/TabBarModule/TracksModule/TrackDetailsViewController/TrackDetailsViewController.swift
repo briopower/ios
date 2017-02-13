@@ -174,9 +174,8 @@ extension TrackDetailsViewController:UITableViewDelegate{
             if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
                 switch sectionType {
                 case .Resources:
-                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
-                        viewCont.blobKey = currentTemplate?.blobKey
-                        viewCont.navigationTitle = "Resources"
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
+                        viewCont.currentTemplate = currentTemplate
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
                 case .About:
@@ -204,9 +203,8 @@ extension TrackDetailsViewController:UITableViewDelegate{
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
                 case .Resources:
-                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
-                        viewCont.blobKey = currentTemplate?.blobKey
-                        viewCont.navigationTitle = "Resources"
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
+                        viewCont.currentTemplate = currentTemplate
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
                 case .About:

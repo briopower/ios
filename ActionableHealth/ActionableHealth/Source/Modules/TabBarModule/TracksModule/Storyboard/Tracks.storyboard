@@ -197,7 +197,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type you comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="125.66666666666666" height="15"/>
+                                        <rect key="frame" x="21" y="16" width="127.66666666666666" height="17.666666666666629"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -609,6 +609,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPb-Ah-XE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6571.0144927536239" y="418.20652173913049"/>
+        </scene>
+        <!--Files List View Controller-->
+        <scene sceneID="7gq-2K-lWB">
+            <objects>
+                <viewController storyboardIdentifier="filesListView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dD0-5R-j26" customClass="FilesListViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DXo-I8-kUF"/>
+                        <viewControllerLayoutGuide type="bottom" id="dpl-Uy-HWO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kmh-sA-oPL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uft-3h-xxq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dD0-5R-j26" id="85P-5i-bJd"/>
+                                    <outlet property="delegate" destination="dD0-5R-j26" id="aIG-hZ-zvy"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Files Found" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De3-yF-UjQ">
+                                <rect key="frame" x="150.33333333333337" y="357.66666666666669" width="113.66666666666663" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="De3-yF-UjQ" firstAttribute="centerX" secondItem="kmh-sA-oPL" secondAttribute="centerX" id="1uk-26-kSA"/>
+                            <constraint firstItem="dpl-Uy-HWO" firstAttribute="top" secondItem="Uft-3h-xxq" secondAttribute="bottom" id="Jte-pF-B3P"/>
+                            <constraint firstItem="Uft-3h-xxq" firstAttribute="leading" secondItem="kmh-sA-oPL" secondAttribute="leading" id="WWy-uY-8Cg"/>
+                            <constraint firstItem="Uft-3h-xxq" firstAttribute="top" secondItem="kmh-sA-oPL" secondAttribute="top" id="cVu-9e-TIq"/>
+                            <constraint firstItem="De3-yF-UjQ" firstAttribute="centerY" secondItem="kmh-sA-oPL" secondAttribute="centerY" id="rsV-9n-Dhf"/>
+                            <constraint firstAttribute="trailing" secondItem="Uft-3h-xxq" secondAttribute="trailing" id="s6b-yi-TxM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nullCaseLabel" destination="De3-yF-UjQ" id="Q41-p4-Tbh"/>
+                        <outlet property="tblView" destination="Uft-3h-xxq" id="cjx-wX-k1p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z2i-Bf-cdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7263.7681159420299" y="418.20652173913049"/>
         </scene>
     </scenes>
     <resources>

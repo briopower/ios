@@ -25,5 +25,6 @@ extension Resources{
 
     class func updateObj(model:Resources, dict:AnyObject) {
         model.blobKey = dict["blobKey"] as? String
-    }
+        model.fileName = (dict["fileName"] as? String)?.getValidObject() ?? "Unknown"
+     }
 }

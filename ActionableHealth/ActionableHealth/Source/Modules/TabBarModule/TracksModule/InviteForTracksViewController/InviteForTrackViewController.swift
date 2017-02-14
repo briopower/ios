@@ -172,8 +172,13 @@ extension InviteForTrackViewController:UITableViewDataSource{
             case .Details:
                 return searchedUsers.count
             default:
-                contactSyncingView.hidden = NSUserDefaults.getLastSyncDate() != nil
-                return frc?.fetchedObjects?.count ?? 0
+                let count = frc?.fetchedObjects?.count ?? 0
+                if count == 0 {
+                    contactSyncingView.hidden = !ContactSyncManager.sharedInstance.isSyncing
+                }else{
+                    contactSyncingView.hidden = true
+                }
+                return count
             }
         }
         return 0

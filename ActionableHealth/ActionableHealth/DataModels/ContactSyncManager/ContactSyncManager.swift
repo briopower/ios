@@ -48,7 +48,7 @@ class ContactSyncManager: NSObject {
             }else if let desc = error?.localizedDescription{
                 UIView.showToast(desc, theme: Theme.Error)
             }else{
-                self.syncCompleted()
+                self.syncCompleted(NSDate(timeIntervalSince1970: 0))
             }
         }
     }
@@ -113,8 +113,8 @@ class ContactSyncManager: NSObject {
         }
         return false
     }
-    private func syncCompleted() {
-        NSUserDefaults.setLastSyncDate(NSDate())
+    private func syncCompleted(date:NSDate = NSDate()) {
+        NSUserDefaults.setLastSyncDate(date)
         self.syncCoreDataContacts()
         self.isSyncing = false
         NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
@@ -225,7 +225,7 @@ extension ContactSyncManager{
                     self.syncContacts()
                 }
             })
-            NSUserDefaults.setLastSyncDate(NSDate())
+            self.syncCompleted(NSDate(timeIntervalSince1970: 0))
         }
 
     }

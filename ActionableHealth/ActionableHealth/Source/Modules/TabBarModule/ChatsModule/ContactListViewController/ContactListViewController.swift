@@ -76,8 +76,13 @@ extension ContactListViewController{
 extension ContactListViewController:UITableViewDataSource{
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        contactSyncingView.hidden = NSUserDefaults.getLastSyncDate() != nil
-        return frc?.fetchedObjects?.count ?? 0
+        let count = frc?.fetchedObjects?.count ?? 0
+        if count == 0 {
+            contactSyncingView.hidden = !ContactSyncManager.sharedInstance.isSyncing
+        }else{
+            contactSyncingView.hidden = true
+        }
+        return count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

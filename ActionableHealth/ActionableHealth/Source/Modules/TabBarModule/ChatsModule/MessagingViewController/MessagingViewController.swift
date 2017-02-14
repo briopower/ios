@@ -79,7 +79,7 @@ extension MessagingViewController{
     func setupView() {
         if let id = personObj?.personId {
             personObj?.updateProfileImage()
-            _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Messages), predicate: NSPredicate(format: "person.personId = %@", id), sectionNameKeyPath: nil, sorting: [("timestamp", true)])
+            _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Messages), predicate: NSPredicate(format: "person.personId = %@", id), sectionNameKeyPath: "msgDate", sorting: [("timestamp", true)])
             _fetchedResultsController?.delegate = self
         }
         setupMessagingView()
@@ -168,8 +168,12 @@ extension MessagingViewController{
         }
     }
 
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return _fetchedResultsController?.sections?.count ?? 0
+    }
+
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return _fetchedResultsController?.fetchedObjects?.count ?? 0
+        return _fetchedResultsController?.sections?[section].numberOfObjects ?? 0
     }
 
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
@@ -182,6 +186,22 @@ extension MessagingViewController{
     }
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         return dummAvtarIcon
+    }
+
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        var str = ""
+        if indexPath.row == 0 {
+            let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+            let date = NSDate.dateWithTimeIntervalInMilliSecs(messageObj?.timestamp?.doubleValue ?? 0)
+            if date.isToday() {
+                str = "Today"
+            }else if date.isYesterday(){
+                str = "Yesterday"
+            }else{
+                str = date.longDateString
+            }
+        }
+        return NSAttributedString(string: str)
     }
 
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
@@ -212,6 +232,14 @@ extension MessagingViewController{
 
     override func collectionView(collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
 
+    }
+
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        if indexPath.row == 0 {
+            return 30
+        }
+
+        return 0
     }
 }
 //MARK:- NSFetchedResultsControllerDelegate

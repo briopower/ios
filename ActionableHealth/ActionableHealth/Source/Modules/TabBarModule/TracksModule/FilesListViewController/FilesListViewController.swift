@@ -15,7 +15,7 @@ class FilesListViewController: CommonViewController {
     @IBOutlet weak var nullCaseLabel: UILabel!
 
     //MARK:- Variables
-    var currentTemplate:TemplatesModel?
+    var resources = NSMutableArray()
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ extension FilesListViewController{
 //MARK:- UITableViewDataSource
 extension FilesListViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfCell = currentTemplate?.resources.count ?? 0
+        let numberOfCell = resources.count
         if numberOfCell == 0 {
             UIView.showToast("No Files Found.", theme: Theme.Warning)
             nullCaseLabel.hidden = false
@@ -58,7 +58,7 @@ extension FilesListViewController:UITableViewDataSource{
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(FilesCell)) as? FilesCell, let resourceObj = currentTemplate?.resources[indexPath.row] as? Resources{
+        if let cell = tableView.dequeueReusableCellWithIdentifier(String(FilesCell)) as? FilesCell, let resourceObj = resources[indexPath.row] as? Resources{
             cell.configCell(resourceObj)
             return cell
         }
@@ -70,7 +70,7 @@ extension FilesListViewController:UITableViewDataSource{
 extension FilesListViewController:UITableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController,let resourceObj = currentTemplate?.resources[indexPath.row] as? Resources {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController,let resourceObj = resources[indexPath.row] as? Resources {
             viewCont.blobKey = resourceObj.blobKey
             viewCont.navigationTitle = resourceObj.fileName
             getNavigationController()?.pushViewController(viewCont, animated: true)

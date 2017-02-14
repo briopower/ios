@@ -2,7 +2,7 @@
 //  Messages+CoreDataProperties.swift
 //  
 //
-//  Created by Vidhan Nandi on 02/01/17.
+//  Created by Vidhan Nandi on 14/02/17.
 //
 //
 
@@ -20,10 +20,11 @@ extension Messages {
     @NSManaged public var message: String?
     @NSManaged public var messageId: String?
     @NSManaged public var priority: String?
-    @NSManaged public var type: String?
-    @NSManaged public var timestamp: NSNumber?
     @NSManaged public var status: String?
-    @NSManaged public var person: Person?
+    @NSManaged public var timestamp: NSNumber?
+    @NSManaged public var type: String?
+    @NSManaged public var msgDate: NSDate?
     @NSManaged public var lastMessagePerson: Person?
+    @NSManaged public var person: Person?
 
 }

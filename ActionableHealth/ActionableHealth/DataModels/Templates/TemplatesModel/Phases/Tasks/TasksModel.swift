@@ -26,11 +26,11 @@ class TasksModel: NSObject {
     var completedDate = 0.0
     var remainingTimeInMillis = 0.0
     var details = ""
+    var resources = NSMutableArray()
+
     //MARK: Additional for tracks
     var status = ""
     var templateTaskId:String?
-    var blobKey:String?
-
 }
 
 //MARK:- Additional methods
@@ -73,7 +73,19 @@ extension TasksModel{
         model.completedDate = dict["completedDate"] as? Double ?? 0
         model.remainingTimeInMillis = dict["remainingTimeInMillis"] as? Double ?? 0
         model.details = dict["description"] as? String ?? ""
-        model.blobKey = dict["blobKey"] as? String
+
+        addResources(dict, toModel: model)
         return model
+    }
+
+    class func addResources(dict:AnyObject, toModel:TasksModel) {
+        toModel.resources = NSMutableArray()
+        if let arr = dict["resources"] as? NSArray{
+            for resourceObject in arr {
+                if let resourceDict = resourceObject as? [String:AnyObject]{
+                    toModel.resources.addObject(Resources.getResourceUsingObj(resourceDict))
+                }
+            }
+        }
     }
 }

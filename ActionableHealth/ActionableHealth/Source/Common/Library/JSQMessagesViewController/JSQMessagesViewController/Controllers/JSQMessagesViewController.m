@@ -429,8 +429,11 @@ JSQMessagesKeyboardControllerDelegate>
     if ([self.collectionView numberOfSections] == 0) {
         return;
     }
-
-    NSIndexPath *lastCell = [NSIndexPath indexPathForItem:([self.collectionView numberOfItemsInSection:0] - 1) inSection:0];
+    NSInteger sectionCount = [self numberOfSectionsInCollectionView:self.collectionView];
+    if (sectionCount > 0) {
+        sectionCount -= 1;
+    }
+    NSIndexPath *lastCell = [NSIndexPath indexPathForItem:([self.collectionView numberOfItemsInSection:sectionCount] - 1) inSection:sectionCount];
     [self scrollToIndexPath:lastCell animated:animated];
 }
 
@@ -459,7 +462,7 @@ JSQMessagesKeyboardControllerDelegate>
     }
 
     NSInteger item = MAX(MIN(indexPath.item, numberOfItems - 1), 0);
-    indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+    indexPath = [NSIndexPath indexPathForItem:item inSection:indexPath.section];
 
     //  workaround for really long messages not scrolling
     //  if last message is too long, use scroll position bottom for better appearance, else use top

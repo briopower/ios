@@ -175,7 +175,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
                 switch sectionType {
                 case .Resources:
                     if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
-                        viewCont.currentTemplate = currentTemplate
+                        viewCont.resources = currentTemplate?.resources ?? NSMutableArray()
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
                 case .About:
@@ -204,7 +204,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
                     }
                 case .Resources:
                     if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
-                        viewCont.currentTemplate = currentTemplate
+                        viewCont.resources = currentTemplate?.resources ?? NSMutableArray()
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
                 case .About:

@@ -22,8 +22,8 @@ class PhasesModel: NSObject {
     var tasks = NSMutableArray()
     var parentTemplate = TemplatesModel()
     var details = ""
-    var blobKey:String?
-    
+    var resources = NSMutableArray()
+
     //MARK: Additional for tracks
     var status = ""
     var templatePhaseId:String?
@@ -51,8 +51,12 @@ extension PhasesModel{
         model.templatePhaseId = dict["templatePhaseId"] as? String
         model.status = dict["status"] as? String ?? ""
         model.details = dict["description"] as? String ?? ""
-        model.blobKey = dict["blobKey"] as? String
 
+        addTasks(dict, model: model)
+        addResources(dict, toModel: model)
+    }
+
+    class func addTasks(dict:AnyObject, model:PhasesModel) {
         model.tasks = NSMutableArray()
         if let tasks = dict["tasks"] as? NSArray {
             for temp in tasks {
@@ -62,6 +66,17 @@ extension PhasesModel{
             }
             let sortDesc = NSSortDescriptor(key: "orderIndex", ascending: true)
             model.tasks.sortUsingDescriptors([sortDesc])
+        }
+    }
+
+    class func addResources(dict:AnyObject, toModel:PhasesModel) {
+        toModel.resources = NSMutableArray()
+        if let arr = dict["resources"] as? NSArray{
+            for resourceObject in arr {
+                if let resourceDict = resourceObject as? [String:AnyObject]{
+                    toModel.resources.addObject(Resources.getResourceUsingObj(resourceDict))
+                }
+            }
         }
     }
 }

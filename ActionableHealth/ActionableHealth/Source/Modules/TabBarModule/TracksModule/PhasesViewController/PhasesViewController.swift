@@ -84,12 +84,10 @@ extension PhasesViewController:TrackPhasesCellDelegate{
     }
 
     func taskFilesTapped(tag: Int, obj: AnyObject?) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController, let blobKey = (obj as? PhasesModel)?.blobKey {
-            viewCont.blobKey = blobKey
-            viewCont.navigationTitle = "Phase Files"
+
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
+            viewCont.resources = (obj as? PhasesModel)?.resources ?? NSMutableArray()
             getNavigationController()?.pushViewController(viewCont, animated: true)
-        }else{
-            UIView.showToast("No Files Found.", theme: Theme.Warning)
         }
     }
 }

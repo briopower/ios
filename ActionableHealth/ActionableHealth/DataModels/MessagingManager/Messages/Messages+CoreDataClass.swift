@@ -56,6 +56,8 @@ public class Messages: NSManagedObject {
             messageObject.type = value["data"]?["type"] as? String
             messageObject.priority = value["priority"] as? String
             messageObject.timestamp = value["timeStamp"] as? NSNumber
+            messageObject.msgDate = NSDate.dateWithTimeIntervalInMilliSecs((messageObject.timestamp ?? 0).doubleValue).startOfDay()
+
             if fromId == NSUserDefaults.getUserId() {
                 if let toId = messageObject.key {
                     if let person = Person.getPersonWith(toId, contextRef: context) {

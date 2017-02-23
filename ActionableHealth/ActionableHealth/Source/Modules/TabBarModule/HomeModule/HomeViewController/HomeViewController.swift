@@ -26,6 +26,7 @@ class HomeViewController: CommonViewController {
     //MARK:- Outlets
     @IBOutlet weak var buttonsContainer: UIView!
     @IBOutlet weak var clctView: StaggeredCollectionView!
+    @IBOutlet weak var filterBtn: UIButton!
 
     //MARK:- Variables
     var cursor = ""
@@ -39,8 +40,25 @@ class HomeViewController: CommonViewController {
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Library", LeftButtonType: BarButtontype.None2, RightButtonType: BarButtontype.Search_Notification)
+        setupOnAppear()
+    }
+
+    func setupOnAppear() {
+        setNavigationBarWithTitle("Library", LeftButtonType: BarButtontype.None2, RightButtonType: BarButtontype.Search)
         getData(cursor)
+        setupFilterButton()
+    }
+
+    func setupFilterButton() {
+        var image:UIImage?
+        if filterArray.count > 0 {
+            image = UIImage(named: "filterApplied")
+        }else{
+            image = UIImage(named: "filter")
+        }
+
+        filterBtn.setImage(image?.imageWithRenderingMode(.AlwaysOriginal), forState: .Normal)
+
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -111,7 +129,7 @@ extension HomeViewController{
         }
     }
     @IBAction func sortAction(sender: UIButton) {
-        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["ORDER BY DATE", "RATINGS" , "ACTIVE TRACKS"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
+        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["ORDER BY DATE", "RATINGS" , "ACTIVE GROUPS"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
             debugPrint("Clicked at index \(tappedAtIndex)")
             if let key = SortTypes(rawValue: tappedAtIndex ?? 0)?.getStringValue(){
                 self.sortingKey = key
@@ -168,6 +186,8 @@ extension HomeViewController{
     }
 
     func processError(error:NSError?) {
-        
+        if NSUserDefaults.isLoggedIn(){
+            UIView.showToast("Something went wrong", theme: Theme.Error)
+        }
     }
 }

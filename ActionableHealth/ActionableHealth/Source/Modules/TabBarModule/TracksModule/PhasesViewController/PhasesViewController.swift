@@ -126,6 +126,6 @@ extension PhasesViewController{
     }
 
     func processError(error:NSError?) {
-        UIView.showToast(error?.localizedDescription ?? "", theme: Theme.Error)
+        UIView.showToast("Something went wrong", theme: Theme.Error)
     }
 }

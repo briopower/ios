@@ -130,7 +130,9 @@ extension TracksViewController{
     }
 
     func processError(error:NSError?) {
-        
+        if NSUserDefaults.isLoggedIn() {
+            UIView.showToast("Something went wrong", theme: Theme.Error)
+        }
     }
     
 }

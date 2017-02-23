@@ -51,7 +51,7 @@
                                 <cells/>
                             </collectionView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeB-XT-NrR" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="84.666666666666686" y="350" width="245" height="52"/>
+                                <rect key="frame" x="86.666666666666686" y="353" width="242" height="46"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <state key="normal">
@@ -119,7 +119,7 @@ Tap here to create or join a track</string>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO CHATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-R0-lFL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="158.33333333333337" y="356.33333333333331" width="99.666666666666629" height="23.333333333333371"/>
+                                <rect key="frame" x="158.66666666666663" y="358" width="97.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -209,19 +209,6 @@ Tap here to create or join a track</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kp-31-erY">
                                         <rect key="frame" x="90.333333333333314" y="0.0" width="233.33333333333337" height="61.666666666666671"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caM-Zp-3gQ" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                                <rect key="frame" x="116.66666666666666" y="0.0" width="116.66666666666669" height="61.666666666666671"/>
-                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
-                                                <color key="tintColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="FILTER" image="filter"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLocalized" value="YES"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="filterAction:" destination="Z2f-Jx-dhb" eventType="touchUpInside" id="kLT-Jl-pOG"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnQ-A2-SeL" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="61.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
@@ -233,6 +220,19 @@ Tap here to create or join a track</string>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="sortAction:" destination="Z2f-Jx-dhb" eventType="touchUpInside" id="3aG-JW-jiO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caM-Zp-3gQ" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                                <rect key="frame" x="116.66666666666666" y="0.0" width="116.66666666666669" height="61.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                                <color key="tintColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="FILTER" image="filter"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLocalized" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterAction:" destination="Z2f-Jx-dhb" eventType="touchUpInside" id="kLT-Jl-pOG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -287,6 +287,7 @@ Tap here to create or join a track</string>
                     <connections>
                         <outlet property="buttonsContainer" destination="qQP-kR-Pb0" id="DuO-cF-sB4"/>
                         <outlet property="clctView" destination="k6A-O7-zxG" id="ScA-D0-QZH"/>
+                        <outlet property="filterBtn" destination="caM-Zp-3gQ" id="04c-w1-f7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N7-ou-kQc" userLabel="First Responder" sceneMemberID="firstResponder"/>

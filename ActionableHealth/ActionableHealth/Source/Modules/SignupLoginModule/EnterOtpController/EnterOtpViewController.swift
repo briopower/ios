@@ -63,9 +63,9 @@ extension EnterOtpViewController{
     }
     
     func processError(error:NSError?) {
-        
+        UIView.showToast("Something went wrong", theme: Theme.Error)
     }
-    
+
     func checkFields() -> Bool {
         if otpTextField.text?.getValidObject() == nil {
             UIView.showToast("Please Enter OTP", theme: Theme.Info)

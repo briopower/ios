@@ -29,7 +29,7 @@
                         <color key="barTintColor" white="1" alpha="0.90006956339999999" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Pag-If-Iap" kind="relationship" relationship="rootViewController" id="HDh-vd-5Eh"/>
+                        <segue destination="jUS-AJ-wLe" kind="relationship" relationship="rootViewController" id="8hj-7e-kqB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQD-st-5fY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,7 +39,7 @@
         <!--Welcome To Brio-->
         <scene sceneID="RxF-JN-LYW">
             <objects>
-                <viewController storyboardIdentifier="welcomeToBrio" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jUS-AJ-wLe" customClass="WelcomeToBrio" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcomeToBrio" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jUS-AJ-wLe" customClass="WelcomeToBrio" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hiY-SI-Pmb"/>
                         <viewControllerLayoutGuide type="bottom" id="p1K-J0-vWv"/>
@@ -48,19 +48,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJC-n2-Ejk" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="671" width="414" height="65"/>
-                                <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="23"/>
-                                <state key="normal" title="NEXT">
-                                    <color key="titleColor" red="1" green="0.99752539396286011" blue="0.10908816009759903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextBtnAction:" destination="jUS-AJ-wLe" eventType="touchUpInside" id="kPk-dk-8yX"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="52o-x9-KWe" customClass="TPKeyboardAvoidingTableView">
-                                <rect key="frame" x="0.0" y="20" width="414" height="651"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jUS-AJ-wLe" id="odk-Iq-l7u"/>
@@ -70,25 +59,26 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SJC-n2-Ejk" firstAttribute="height" secondItem="FTS-K8-O3E" secondAttribute="height" multiplier="195:2207" id="49c-kJ-mi8"/>
-                            <constraint firstItem="p1K-J0-vWv" firstAttribute="top" secondItem="SJC-n2-Ejk" secondAttribute="bottom" id="CWt-f3-Cz8"/>
-                            <constraint firstItem="SJC-n2-Ejk" firstAttribute="top" secondItem="52o-x9-KWe" secondAttribute="bottom" id="GpO-rA-nnX"/>
-                            <constraint firstItem="SJC-n2-Ejk" firstAttribute="leading" secondItem="FTS-K8-O3E" secondAttribute="leading" id="OQD-6p-fEj"/>
-                            <constraint firstItem="52o-x9-KWe" firstAttribute="top" secondItem="hiY-SI-Pmb" secondAttribute="bottom" id="ehi-ZE-iw5"/>
+                            <constraint firstItem="p1K-J0-vWv" firstAttribute="top" secondItem="52o-x9-KWe" secondAttribute="bottom" id="ZrM-d3-hBA"/>
+                            <constraint firstItem="52o-x9-KWe" firstAttribute="top" secondItem="hiY-SI-Pmb" secondAttribute="bottom" id="eYF-l6-8qa"/>
                             <constraint firstAttribute="trailing" secondItem="52o-x9-KWe" secondAttribute="trailing" id="hod-IE-EDc"/>
                             <constraint firstItem="52o-x9-KWe" firstAttribute="leading" secondItem="FTS-K8-O3E" secondAttribute="leading" id="t0P-cn-ocS"/>
-                            <constraint firstAttribute="trailing" secondItem="SJC-n2-Ejk" secondAttribute="trailing" id="vod-qI-cLw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FsN-qu-xWu"/>
                     <connections>
                         <outlet property="tblView" destination="52o-x9-KWe" id="aAU-xT-Id9"/>
+                        <outlet property="titleView" destination="xAg-PG-i50" id="OqK-cG-TpZ"/>
                         <segue destination="baA-EG-QDb" kind="show" identifier="enterOtp" id="piy-HN-kZw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57V-KH-sec" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" id="xAg-PG-i50">
+                    <rect key="frame" x="0.0" y="0.0" width="230" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
-            <point key="canvasLocation" x="-1387" y="-230"/>
+            <point key="canvasLocation" x="-1388.4057971014495" y="-230.70652173913047"/>
         </scene>
         <!--Enter Otp View Controller-->
         <scene sceneID="qcQ-1c-3Ps">
@@ -103,13 +93,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the OTP received on your phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ls-TC-pmk" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="20" y="30" width="374" height="53"/>
+                                <rect key="frame" x="20" y="74" width="374" height="53"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                 <color key="textColor" red="0.33721464872360229" green="0.3372780978679657" blue="0.33721065521240234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ziJ-Lb-tY9">
-                                <rect key="frame" x="20" y="93" width="374" height="62.333333333333343"/>
+                                <rect key="frame" x="20" y="137" width="374" height="62.333333333333343"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your One time password (OTP)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f5G-0F-Xqg" customClass="UITextField_FontSizeTextField" customModule="BRIO" customModuleProvider="target">
                                         <rect key="frame" x="16" y="0.0" width="358" height="62.333333333333343"/>
@@ -127,7 +117,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-8U-Kzy" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="20" y="175.33333333333334" width="374" height="62.333333333333314"/>
+                                <rect key="frame" x="20" y="219.33333333333331" width="374" height="62.333333333333314"/>
                                 <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="22"/>
                                 <state key="normal" title="VERIFY">
@@ -138,7 +128,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8H-uw-T5g" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="20" y="257.66666666666669" width="374" height="62"/>
+                                <rect key="frame" x="20" y="301.66666666666669" width="374" height="62"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaSW07-Medium" family="ProximaNovaSW07-Medium" pointSize="22"/>
                                 <state key="normal" title="RESEND CODE">
                                     <color key="titleColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -193,7 +183,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMP-IO-hcD">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
                                     <fragment>

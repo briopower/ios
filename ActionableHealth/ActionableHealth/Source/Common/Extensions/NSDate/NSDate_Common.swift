@@ -486,6 +486,15 @@ extension NSDate {
             }
         }
 
+        //Seconds
+        if numberOfSecs > 0 {
+            if numberOfSecs == 1 {
+                return "1 sec left"
+            }else{
+                return "\(Int(numberOfSecs)) secs left"
+            }
+        }
+
         return "You are late"
     }
 }
@@ -863,7 +872,7 @@ extension NSDate{
     class func dateTommorow() -> NSDate? {
         return NSDate.dateWithDaysFromNow(1)
     }
-
+    
     class func dateYesterday() -> NSDate? {
         return NSDate.dateWithDaysBeforeNow(1)
     }

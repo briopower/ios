@@ -15,6 +15,8 @@
 		3C13A4F41E51938A001B8723 /* FilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C13A4F21E51938A001B8723 /* FilesCell.swift */; };
 		3C13A4F51E51938A001B8723 /* FilesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C13A4F31E51938A001B8723 /* FilesCell.xib */; };
 		3C13A4F81E519B42001B8723 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C13A4F71E519B42001B8723 /* Resources.swift */; };
+		3C1516C31E5582EB00500999 /* NextButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1516C11E5582EB00500999 /* NextButtonCell.swift */; };
+		3C1516C41E5582EB00500999 /* NextButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C1516C21E5582EB00500999 /* NextButtonCell.xib */; };
 		3C1577C11E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */; };
 		3C1577C31E13CB54004FFAB1 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */; };
 		3C1577C51E13CB54004FFAB1 /* ContactSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */; };
@@ -226,8 +228,6 @@
 		3CFEBC5B1E38A4BF009B029E /* ShowTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFEBC5A1E38A4BF009B029E /* ShowTextViewController.swift */; };
 		3DADFB9880771B64955ED386 /* Pods_ActionableHealthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */; };
 		409414981E02740B00057EFD /* UIView_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409414971E02740B00057EFD /* UIView_Common.swift */; };
-		40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED01DF8071500605397 /* ChooseCountryCell.swift */; };
-		40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EBFED11DF8071500605397 /* ChooseCountryCell.xib */; };
 		40EBFEDB1DF8071500605397 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED31DF8071500605397 /* DetailViewCell.swift */; };
 		40EBFEDC1DF8071500605397 /* DetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EBFED41DF8071500605397 /* DetailViewCell.xib */; };
 		40EBFEDD1DF8071500605397 /* PhoneNoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED61DF8071500605397 /* PhoneNoCell.swift */; };
@@ -266,6 +266,8 @@
 		3C13A4F21E51938A001B8723 /* FilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesCell.swift; sourceTree = "<group>"; };
 		3C13A4F31E51938A001B8723 /* FilesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilesCell.xib; sourceTree = "<group>"; };
 		3C13A4F71E519B42001B8723 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		3C1516C11E5582EB00500999 /* NextButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextButtonCell.swift; sourceTree = "<group>"; };
+		3C1516C21E5582EB00500999 /* NextButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NextButtonCell.xib; sourceTree = "<group>"; };
 		3C1577B71E13CB54004FFAB1 /* AddressBook+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddressBook+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BA1E13CB54004FFAB1 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3C1577BC1E13CB54004FFAB1 /* ContactSyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSyncManager.swift; sourceTree = "<group>"; };
@@ -532,8 +534,6 @@
 		3CFB48E11DFA7E110022F3B6 /* SearchUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
 		3CFEBC5A1E38A4BF009B029E /* ShowTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowTextViewController.swift; sourceTree = "<group>"; };
 		409414971E02740B00057EFD /* UIView_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Common.swift; sourceTree = "<group>"; };
-		40EBFED01DF8071500605397 /* ChooseCountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCountryCell.swift; sourceTree = "<group>"; };
-		40EBFED11DF8071500605397 /* ChooseCountryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCountryCell.xib; sourceTree = "<group>"; };
 		40EBFED31DF8071500605397 /* DetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 		40EBFED41DF8071500605397 /* DetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewCell.xib; sourceTree = "<group>"; };
 		40EBFED61DF8071500605397 /* PhoneNoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNoCell.swift; sourceTree = "<group>"; };
@@ -633,6 +633,15 @@
 				3C13A4F71E519B42001B8723 /* Resources.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C1516C01E5582D400500999 /* NextButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C1516C11E5582EB00500999 /* NextButtonCell.swift */,
+				3C1516C21E5582EB00500999 /* NextButtonCell.xib */,
+			);
+			path = NextButtonCell;
 			sourceTree = "<group>";
 		};
 		3C1577B51E13CB54004FFAB1 /* ContactSyncManager */ = {
@@ -2159,20 +2168,11 @@
 		40EBFECE1DF8071500605397 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
-				40EBFECF1DF8071500605397 /* ChooseCountry */,
+				3C1516C01E5582D400500999 /* NextButtonCell */,
 				40EBFED21DF8071500605397 /* DetailsCell */,
 				40EBFED51DF8071500605397 /* PhoneNoCell */,
 			);
 			path = CustomCells;
-			sourceTree = "<group>";
-		};
-		40EBFECF1DF8071500605397 /* ChooseCountry */ = {
-			isa = PBXGroup;
-			children = (
-				40EBFED01DF8071500605397 /* ChooseCountryCell.swift */,
-				40EBFED11DF8071500605397 /* ChooseCountryCell.xib */,
-			);
-			path = ChooseCountry;
 			sourceTree = "<group>";
 		};
 		40EBFED21DF8071500605397 /* DetailsCell */ = {
@@ -2385,13 +2385,13 @@
 				3C8E47A71E165CAE0019C261 /* LICENSE in Resources */,
 				3CCECDB91DAF872300831242 /* SubPropertiesCell.xib in Resources */,
 				3C8E47761E165CAE0019C261 /* JSQMessagesAssets.bundle in Resources */,
+				3C1516C41E5582EB00500999 /* NextButtonCell.xib in Resources */,
 				3CD845811E405BAD002EC90D /* iTunesArtwork@2x.png in Resources */,
 				3CF6AAF31DB4A4F80067387F /* EditProfileDetailsCell.xib in Resources */,
 				3CCF31031DB7349B001A1E7B /* SentMessageCell.xib in Resources */,
 				3CACF3F81DB634920034D700 /* CommonCollectionReusableView.xib in Resources */,
 				3CAE70B61DB0A02B00D733C2 /* TabBar.storyboard in Resources */,
 				3C1EC5AF1DA3A864003DC2A3 /* NullCaseView.xib in Resources */,
-				40EBFEDA1DF8071500605397 /* ChooseCountryCell.xib in Resources */,
 				3CD845841E4064A6002EC90D /* TrackDetailsHeaderView_Template.xib in Resources */,
 				3CC9D0891DB8AE7100287068 /* PhaseDetailsCell.xib in Resources */,
 			);
@@ -2560,6 +2560,7 @@
 				3C71C4121E1D2BEA00468E43 /* SearchByIdHeader.swift in Sources */,
 				3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */,
 				3CCF30FE1DB7327C001A1E7B /* MessagingViewController.swift in Sources */,
+				3C1516C31E5582EB00500999 /* NextButtonCell.swift in Sources */,
 				3C8E478E1E165CAE0019C261 /* JSQMessage.m in Sources */,
 				3C3B886C1E1A1EAC005DA7B4 /* Messages+CoreDataClass.swift in Sources */,
 				3C3B886F1E1A1F34005DA7B4 /* AddressBook+CoreDataClass.swift in Sources */,
@@ -2600,7 +2601,6 @@
 				3CACF3FF1DB635060034D700 /* HomeViewCell.swift in Sources */,
 				3C8E47791E165CAE0019C261 /* NSString+JSQMessages.m in Sources */,
 				3C13A4F81E519B42001B8723 /* Resources.swift in Sources */,
-				40EBFED91DF8071500605397 /* ChooseCountryCell.swift in Sources */,
 				3C6BF4C31E01559100F6DC70 /* ProfileImageCell.swift in Sources */,
 				3C8E47841E165CAE0019C261 /* JSQMessagesTimestampFormatter.m in Sources */,
 				3C8E477C1E165CAE0019C261 /* UIImage+JSQMessages.m in Sources */,

@@ -103,6 +103,6 @@ extension TrackMemberListViewController{
     }
 
     func processError(error:NSError?) {
-        
+        UIView.showToast("Something went wrong", theme: Theme.Error)
     }
 }

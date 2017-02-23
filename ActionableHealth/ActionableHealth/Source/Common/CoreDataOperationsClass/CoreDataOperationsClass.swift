@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class CoreDataOperationsClass: NSObject {
+
     //MARK:  data fetching methods via NSFetchRequest
     class  func fetchObjectsOfClassWithName(className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false , fetchLimit :Int?, context:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Array<AnyObject>{
         let fetchRequest = NSFetchRequest(entityName: className)

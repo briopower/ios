@@ -9,7 +9,7 @@
 import UIKit
 
 enum TrackSectionTypes:Int {
-    case Phases, TeamMembers, Resources, About, Count
+    case Phases, Resources, TeamMembers, About, Count
 }
 
 enum TemplateSectionTypes:Int {
@@ -232,7 +232,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
 //MARK:- Get Track Name methods
 extension TrackDetailsViewController{
     func getTrackName() {
-        alertController = UIAlertController.getAlertController(.Alert, Title: "Enter Track Name", Message: nil,OtherButtonTitles: ["Done"], CancelButtonTitle: "Cancel", completion: { (tappedAtIndex) in
+        alertController = UIAlertController.getAlertController(.Alert, Title: "Enter Group Name", Message: nil,OtherButtonTitles: ["Done"], CancelButtonTitle: "Cancel", completion: { (tappedAtIndex) in
             if tappedAtIndex == 0{
                 if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
                     viewCont.sourceType = .Templates
@@ -349,6 +349,6 @@ extension TrackDetailsViewController{
     }
     
     func processError(error:NSError?) {
-        UIView.showToast(error?.localizedDescription ?? "", theme: Theme.Error)
+        UIView.showToast("Something went wrong", theme: Theme.Error)
     }
 }

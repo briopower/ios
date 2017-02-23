@@ -144,11 +144,16 @@ extension TrackDetailsHeaderView{
 
     func updateFollowingStatus(shouldFollow:Bool) {
         if NetworkClass.isConnected(true) {
+            requestButton1?.enabled = false
+            requestButton3?.enabled = false
             NetworkClass.sendRequest(URL: Constants.URLs.follow, RequestType: .POST, ResponseType: ExpectedResponseType.JSON, Parameters: currentTemplate?.getFollowingDict(shouldFollow), Headers: nil, CompletionHandler: { (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTemplate?.updateFollowers(responseObj)
                     self.setupForType(self.type, template: self.currentTemplate)
                 }
+                self.requestButton1?.enabled = true
+                self.requestButton3?.enabled = true
+
             })
         }
     }

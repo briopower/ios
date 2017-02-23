@@ -127,7 +127,7 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
                 }
                 viewCont.delegate = self
                 viewCont.commentSourceKey = commentSourceKey + "_\(NSUserDefaults.getUserId())"
-                viewCont.titleString = "Journals"
+                viewCont.titleString = "Journal(s)"
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
         }

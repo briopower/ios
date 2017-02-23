@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -22,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="594" height="219"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="594" height="218.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="594" height="218"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2l7-MR-Kwt">
@@ -55,6 +54,12 @@
                             <outlet property="delegate" destination="-1" id="55y-aM-Y4D"/>
                         </connections>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rui-Vn-EnV">
+                        <rect key="frame" x="-1" y="0.0" width="58" height="217"/>
+                        <connections>
+                            <action selector="countryCodeClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WuP-D3-tnA"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yl9-Tf-wQf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0fK-72-wki"/>
@@ -62,12 +67,16 @@
                     <constraint firstAttribute="trailing" secondItem="2l7-MR-Kwt" secondAttribute="trailing" id="BV3-x7-jDK"/>
                     <constraint firstItem="Arg-bE-sxx" firstAttribute="leading" secondItem="nSK-0x-3r0" secondAttribute="trailing" id="Ddz-Bm-SHT"/>
                     <constraint firstAttribute="trailing" secondItem="vG1-NB-K2l" secondAttribute="trailing" id="Eoj-dL-sUm"/>
+                    <constraint firstItem="vG1-NB-K2l" firstAttribute="top" secondItem="rui-Vn-EnV" secondAttribute="bottom" id="GoV-JV-iUj"/>
                     <constraint firstItem="vG1-NB-K2l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NYc-J8-2Rq"/>
+                    <constraint firstItem="rui-Vn-EnV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Sbr-59-aV5"/>
                     <constraint firstItem="2l7-MR-Kwt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="T0J-53-0JT"/>
                     <constraint firstItem="Arg-bE-sxx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xyt-yc-Qh2"/>
                     <constraint firstItem="2l7-MR-Kwt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YxM-JX-I0l"/>
                     <constraint firstAttribute="bottom" secondItem="yl9-Tf-wQf" secondAttribute="bottom" id="bxH-3q-4HI"/>
+                    <constraint firstItem="rui-Vn-EnV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-1" id="eKR-6O-oUc"/>
                     <constraint firstAttribute="bottom" secondItem="2l7-MR-Kwt" secondAttribute="bottom" id="egh-t0-1Wh"/>
+                    <constraint firstItem="yl9-Tf-wQf" firstAttribute="leading" secondItem="rui-Vn-EnV" secondAttribute="trailing" id="fQH-jc-ixY"/>
                     <constraint firstItem="nSK-0x-3r0" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="69:1241" id="inM-En-ZbI"/>
                     <constraint firstItem="yl9-Tf-wQf" firstAttribute="leading" secondItem="Arg-bE-sxx" secondAttribute="trailing" constant="6" id="l6C-YO-uqM"/>
                     <constraint firstAttribute="bottom" secondItem="Arg-bE-sxx" secondAttribute="bottom" id="llC-UW-rBz"/>
@@ -81,7 +90,7 @@
                 <outlet property="countryCode" destination="Arg-bE-sxx" id="G12-sJ-pEU"/>
                 <outlet property="phoneNoTxtFld" destination="yl9-Tf-wQf" id="u86-ct-hvj"/>
             </connections>
-            <point key="canvasLocation" x="-425" y="3"/>
+            <point key="canvasLocation" x="-425" y="2.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -7,16 +7,19 @@
 //
 
 import UIKit
-
+protocol PhoneNoCellDelegate:NSObjectProtocol {
+    func countryCodeTapped()
+}
 class PhoneNoCell: UITableViewCell {
-    
+
     //MARK:- Outlets
     @IBOutlet weak var countryCode: UITextField!
     @IBOutlet weak var phoneNoTxtFld: UITextField!
-    
+
     //MARK:- Variables
+    weak var delegate:PhoneNoCellDelegate?
     var phoneDetail:NSMutableDictionary?
-    
+
     //MARK:- ------------------
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,12 +31,7 @@ class PhoneNoCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func textChanged(sender: AnyObject) {
-        if let dict = phoneDetail{
-                        dict["phone"] = phoneNoTxtFld.text
-                    }
-    }
-    
+
 }
 
 //MARK:- Additional Functions
@@ -44,8 +42,21 @@ extension PhoneNoCell{
             countryCode.text = "+\(dict[normalizedISDCode_key] as? String ?? "")"
         }
     }
-    
-    func textChanged(){
-        
+
+    @IBAction func countryCodeClicked(sender: UIButton) {
+        delegate?.countryCodeTapped()
+    }
+
+    @IBAction func textChanged(sender: AnyObject) {
+        if let dict = phoneDetail{
+            dict["phone"] = phoneNoTxtFld.text
+        }
+        if let text = phoneNoTxtFld.text {
+            if text.characters.count >= 10 {
+                if let _ = ContactSyncManager.phoneNumberKit.parseMultiple([text]).first?.nationalNumber{
+                    phoneNoTxtFld.resignFirstResponder()
+                }
+            }
+        }
     }
 }

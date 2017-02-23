@@ -57,6 +57,7 @@ extension UIViewController{
         setBarButtonAt(.Left, Type: leftButtonType)
         setBarButtonAt(.Right, Type: rightButtonType)
     }
+
     func setNavigationBarWithTitle(title:String, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
         getNavigationItem()?.titleView = nil
         getNavigationController()?.navigationBar.titleTextAttributes = [
@@ -66,6 +67,7 @@ extension UIViewController{
         setBarButtonAt(.Left, Type: leftButtonType)
         setBarButtonAt(.Right, Type: rightButtonType)
     }
+
     private func setBarButtonAt(position:BarButtonPosition, Type type:BarButtontype){
         var barButton:UIBarButtonItem?
         var barButton1:UIBarButtonItem?
@@ -120,6 +122,7 @@ extension UIViewController{
             }
         }
     }
+
     private func getButtonWithImage(image:UIImage?, Action action:Selector) -> UIButton{
         let button = UIButton(type:.Custom)
         button.setImage(image, forState: .Normal)

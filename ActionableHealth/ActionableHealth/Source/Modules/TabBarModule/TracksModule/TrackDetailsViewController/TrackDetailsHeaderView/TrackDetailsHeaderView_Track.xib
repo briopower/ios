@@ -37,7 +37,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-wE-Ch1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="102.5" y="60.5" width="139" height="17"/>
+                                    <rect key="frame" x="102.5" y="59" width="142" height="20"/>
                                     <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                     <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -50,24 +50,6 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K79-jk-Xnz">
                                     <rect key="frame" x="402" y="0.0" width="22" height="102.5"/>
                                 </imageView>
-                                <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                    <rect key="frame" x="333" y="34.5" width="69" height="33"/>
-                                    <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
-                                    <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                    <state key="normal" title="INVITE">
-                                        <color key="titleColor" red="0.96862745098039216" green="0.92156862745098034" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="3"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="L3B-dL-2hr"/>
-                                    </connections>
-                                </button>
                                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-Vt-fO7" customClass="HCSStarRatingView">
                                     <rect key="frame" x="105.5" y="21.5" width="95" height="23.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -93,15 +75,25 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AtC-OR-ZRo" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="295" y="17.5" width="107" height="32"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                    <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="RATE GROUP"/>
+                                    <connections>
+                                        <action selector="rateGroupAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="2Uq-JE-1gR"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="65:1242" id="18b-Oy-cib"/>
-                                <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" id="2dZ-Xr-dqP"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="centerY" secondItem="wCG-ZG-W60" secondAttribute="centerY" id="2ux-Ii-KI3"/>
                                 <constraint firstAttribute="trailing" secondItem="K79-jk-Xnz" secondAttribute="trailing" id="Au8-d5-o5v"/>
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="0.65" id="Gt5-e3-b4w"/>
                                 <constraint firstAttribute="bottom" secondItem="bbE-Yn-hVM" secondAttribute="bottom" id="KVq-FI-GDd"/>
+                                <constraint firstItem="K79-jk-Xnz" firstAttribute="leading" secondItem="AtC-OR-ZRo" secondAttribute="trailing" id="PkY-p6-kwb"/>
+                                <constraint firstItem="AtC-OR-ZRo" firstAttribute="centerY" secondItem="4Gb-Vt-fO7" secondAttribute="centerY" id="R0X-Zs-beM"/>
                                 <constraint firstItem="K79-jk-Xnz" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="SnZ-3g-whC"/>
                                 <constraint firstItem="dh5-wE-Ch1" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="1.35" id="T0p-Sh-YOY"/>
                                 <constraint firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="height" multiplier="1242:300" id="TLp-DX-vVt"/>
@@ -110,7 +102,6 @@
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="leading" secondItem="cnB-D5-yTp" secondAttribute="trailing" multiplier="300:275" id="edL-ag-4pg"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="leading" secondItem="bbE-Yn-hVM" secondAttribute="trailing" id="iui-3t-H9r"/>
                                 <constraint firstItem="cnB-D5-yTp" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="200:1242" id="lK6-wM-BKa"/>
-                                <constraint firstItem="K79-jk-Xnz" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" id="mC2-ox-0em"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="leading" secondItem="wCG-ZG-W60" secondAttribute="leading" id="sz2-QG-qd2"/>
                                 <constraint firstItem="bbE-Yn-hVM" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="80:1242" id="tOg-5P-QL9"/>
                                 <constraint firstItem="4Gb-Vt-fO7" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="280:1242" id="vgZ-2K-RRo"/>
@@ -131,8 +122,8 @@
                             <rect key="frame" x="0.0" y="302" width="424" height="50"/>
                             <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="0.40087221750000002" colorSpace="custom" customColorSpace="sRGB"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSL-LP-QSc" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                            <rect key="frame" x="21" y="302" width="382" height="50"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSL-LP-QSc" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="27.5" y="302" width="298.5" height="50"/>
                             <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="31"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -143,27 +134,47 @@
                                 <constraint firstAttribute="height" constant="1" id="xX4-lh-9z3"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="334" y="309.5" width="68" height="36"/>
+                            <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                            <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                            <state key="normal" title="INVITE">
+                                <color key="titleColor" red="0.96862745098039216" green="0.92156862745098034" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="L3B-dL-2hr"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="3py-zq-RLR"/>
                         <constraint firstAttribute="bottom" secondItem="V5j-yI-oOE" secondAttribute="bottom" id="4wd-Pn-CyK"/>
+                        <constraint firstItem="uSL-LP-QSc" firstAttribute="leading" secondItem="cnB-D5-yTp" secondAttribute="leading" id="5AX-JF-dDR"/>
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="bottom" id="5gJ-Kf-Hh4"/>
                         <constraint firstAttribute="width" secondItem="6zP-CV-mYu" secondAttribute="height" multiplier="1242:1320" priority="999" id="Hfw-zA-Tqc"/>
                         <constraint firstItem="LvY-Kc-MG4" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="Iu7-zr-fQ3"/>
                         <constraint firstItem="LvY-Kc-MG4" firstAttribute="height" secondItem="I1O-zR-LgI" secondAttribute="height" multiplier="0.2" id="JyZ-fG-wAe"/>
                         <constraint firstItem="HZI-mJ-3hB" firstAttribute="trailing" secondItem="I1O-zR-LgI" secondAttribute="trailing" multiplier="0.97" id="QhZ-65-76S"/>
-                        <constraint firstItem="uSL-LP-QSc" firstAttribute="centerX" secondItem="LvY-Kc-MG4" secondAttribute="centerX" id="R18-IH-pUL"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="Ste-DA-WBG"/>
+                        <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="uSL-LP-QSc" secondAttribute="centerY" id="Xg3-Dh-5qC"/>
                         <constraint firstItem="V5j-yI-oOE" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="aS4-Hr-Uw7"/>
                         <constraint firstItem="HZI-mJ-3hB" firstAttribute="top" secondItem="I1O-zR-LgI" secondAttribute="top" multiplier="1.1" id="afE-pJ-Tm5"/>
+                        <constraint firstItem="f5O-3a-9u1" firstAttribute="leading" secondItem="uSL-LP-QSc" secondAttribute="trailing" constant="8" id="dAr-Gu-lke"/>
                         <constraint firstItem="V5j-yI-oOE" firstAttribute="top" secondItem="LvY-Kc-MG4" secondAttribute="bottom" id="dGR-4H-Fxq"/>
                         <constraint firstAttribute="trailing" secondItem="V5j-yI-oOE" secondAttribute="trailing" id="dIu-pk-itL"/>
                         <constraint firstAttribute="trailing" secondItem="LvY-Kc-MG4" secondAttribute="trailing" id="gjL-GX-T17"/>
                         <constraint firstItem="uSL-LP-QSc" firstAttribute="centerY" secondItem="LvY-Kc-MG4" secondAttribute="centerY" id="icy-Wk-cQL"/>
                         <constraint firstAttribute="trailing" secondItem="wCG-ZG-W60" secondAttribute="trailing" id="paD-eT-ESN"/>
                         <constraint firstItem="I1O-zR-LgI" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="q0i-du-6fD"/>
-                        <constraint firstItem="uSL-LP-QSc" firstAttribute="width" secondItem="LvY-Kc-MG4" secondAttribute="width" multiplier="0.9" id="r7w-6L-0BV"/>
+                        <constraint firstItem="K79-jk-Xnz" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" id="q3C-vW-KMB"/>
                         <constraint firstAttribute="trailing" secondItem="I1O-zR-LgI" secondAttribute="trailing" id="un4-ao-fdP"/>
                         <constraint firstItem="uSL-LP-QSc" firstAttribute="height" secondItem="LvY-Kc-MG4" secondAttribute="height" id="yjl-Q6-LFN"/>
                         <constraint firstItem="wCG-ZG-W60" firstAttribute="top" secondItem="6zP-CV-mYu" secondAttribute="top" id="z5Z-Hl-sKj"/>
@@ -183,6 +194,7 @@
                 <outlet property="editButton" destination="HZI-mJ-3hB" id="0lG-JS-Qxt"/>
                 <outlet property="logoImageView" destination="cnB-D5-yTp" id="mHq-OD-gZh"/>
                 <outlet property="nameLabel" destination="uSL-LP-QSc" id="tzb-XF-Lpi"/>
+                <outlet property="rateGroupButton" destination="AtC-OR-ZRo" id="tJP-Jz-PG1"/>
                 <outlet property="ratingView" destination="4Gb-Vt-fO7" id="bee-yr-rxT"/>
                 <outlet property="requestButton1" destination="f5O-3a-9u1" id="Lpt-Hw-GvA"/>
                 <outlet property="templateImage" destination="I1O-zR-LgI" id="ysy-uK-etL"/>

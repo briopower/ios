@@ -20,7 +20,9 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
 
     //MARK:- Outlets
     @IBOutlet weak var trackDetailsTblView: UITableView!
-
+    @IBOutlet var ratingView: UIView!
+    @IBOutlet weak var starRatingView: HCSStarRatingView!
+    
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
     var sourceType = TrackDetailsSourceType.Templates
@@ -56,8 +58,18 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
         // Dispose of any resources that can be recreated.
     }
 
+
 }
 
+//MARK:- Button Actions
+extension TrackDetailsViewController{
+    @IBAction func rateTaskAction(sender: AnyObject) {
+        submitRating()
+    }
+    @IBAction func hideRatingAction(sender: AnyObject) {
+        hideRatingView()
+    }
+}
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
     func commentsTapped(type: TrackDetailsSourceType) {
@@ -88,6 +100,10 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
     func showImagePicker() {
         UIImagePickerController.showPickerWithDelegate(self)
     }
+
+    func rateGroup() {
+        showRatingView()
+    }
 }
 
 //MARK:- CommentsViewControllerDelegate
@@ -114,6 +130,32 @@ extension TrackDetailsViewController{
     func updateHeader() {
         if let headerView = trackDetailsTblView.tableHeaderView as? TrackDetailsHeaderView {
             headerView.setupForType(sourceType, template: currentTemplate)
+        }
+    }
+
+    func showRatingView() {
+        if let view = getNavigationController()?.view {
+            ratingView.alpha = 0
+            ratingView.frame = view.frame
+            ratingView.userInteractionEnabled = false
+
+            starRatingView.value = CGFloat(currentTemplate?.rating ?? 0)
+            view.addSubview(ratingView)
+            UIView.animateWithDuration(0.3, animations: {
+                self.ratingView.alpha = 1
+                }, completion: { (completed:Bool) in
+                    self.ratingView.userInteractionEnabled = true
+            })
+        }
+    }
+
+    func hideRatingView() {
+        UIView.animateWithDuration(0.3, animations: {
+            self.ratingView.alpha = 0
+            self.ratingView.userInteractionEnabled = false
+        }) { (completed:Bool) in
+            self.ratingView.userInteractionEnabled = false
+            self.ratingView.removeFromSuperview()
         }
     }
 }
@@ -350,5 +392,24 @@ extension TrackDetailsViewController{
     
     func processError(error:NSError?) {
         UIView.showToast("Something went wrong", theme: Theme.Error)
+    }
+
+    func submitRating() {
+        if NetworkClass.isConnected(true), let key = currentTemplate?.key?.getValidObject(){
+            showLoaderOnWindow()
+            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .POST, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value), Headers: nil, CompletionHandler: {
+                (status, responseObj, error, statusCode) in
+                if statusCode == 200{
+                    self.updateRating(responseObj)
+                }
+                self.hideLoader()
+            })
+        }
+    }
+
+    func updateRating(response:AnyObject?) {
+        currentTemplate?.updateRating(response)
+        updateHeader()
+        hideRatingView()
     }
 }

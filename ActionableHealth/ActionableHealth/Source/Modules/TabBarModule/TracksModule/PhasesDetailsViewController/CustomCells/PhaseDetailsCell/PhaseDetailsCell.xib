@@ -37,13 +37,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emX-Ho-yFA" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="33" y="25.5" width="338" height="17"/>
+                                <rect key="frame" x="33" y="25.5" width="339" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-DI-pqF" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="33" y="360.5" width="139" height="17"/>
+                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-DI-pqF" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="33" y="357.5" width="142" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -53,8 +53,8 @@
                                     <action selector="commentsAction:" destination="sFr-Xm-Fzb" eventType="touchUpInside" id="Eh7-Nn-vbp"/>
                                 </connections>
                             </button>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="fPy-65-m1v" customClass="HCSStarRatingView">
-                                <rect key="frame" x="33" y="50.5" width="90" height="21.5"/>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="fPy-65-m1v" customClass="HCSStarRatingView">
+                                <rect key="frame" x="33" y="54.5" width="90" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fPy-65-m1v" secondAttribute="height" multiplier="250:60" id="ChJ-sV-Ru6"/>
                                 </constraints>
@@ -77,14 +77,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtO-vZ-dwz" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="135" y="50.5" width="70.5" height="21.5"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtO-vZ-dwz" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="135" y="54.5" width="73" height="21.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5W8-Jj-6Fr" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="332" y="354" width="86" height="29"/>
+                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5W8-Jj-6Fr" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="331" y="351" width="88" height="32"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="RATE TASK"/>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQN-kW-Zna">
-                                <rect key="frame" x="371" y="37.5" width="47" height="47"/>
+                                <rect key="frame" x="372" y="41.5" width="47" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RQN-kW-Zna" secondAttribute="height" id="sG4-qB-Tqb"/>
                                 </constraints>
@@ -103,13 +103,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Resources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55j-Wc-XHo" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="33" y="418" width="79" height="17"/>
+                                <rect key="frame" x="33" y="416.5" width="81" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="rMe-CT-kbB">
-                                <rect key="frame" x="403" y="419" width="15" height="15"/>
+                                <rect key="frame" x="404" y="419" width="15" height="15"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csu-Ne-ebm">
                                 <rect key="frame" x="0.0" y="386.5" width="448" height="79.5"/>
@@ -121,7 +121,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q5W-7x-iwj">
-                                <rect key="frame" x="33" y="84.5" width="385" height="265.5"/>
+                                <rect key="frame" x="33" y="49.5" width="385" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -137,6 +137,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="csu-Ne-ebm" firstAttribute="top" secondItem="q5W-7x-iwj" secondAttribute="bottom" id="14A-Ro-anE"/>
                             <constraint firstItem="MtO-vZ-dwz" firstAttribute="centerY" secondItem="fPy-65-m1v" secondAttribute="centerY" id="2Lw-9v-Zym"/>
                             <constraint firstItem="5W8-Jj-6Fr" firstAttribute="centerY" secondItem="y7K-DI-pqF" secondAttribute="centerY" id="3PB-dX-Hvr"/>
                             <constraint firstItem="fPy-65-m1v" firstAttribute="top" secondItem="emX-Ho-yFA" secondAttribute="bottom" multiplier="1.2" id="3Zf-be-fce"/>
@@ -145,11 +146,11 @@
                             <constraint firstItem="55j-Wc-XHo" firstAttribute="leading" secondItem="y7K-DI-pqF" secondAttribute="leading" id="6FR-pu-2Ok"/>
                             <constraint firstAttribute="trailing" secondItem="dXG-fk-tb7" secondAttribute="trailing" id="6gY-VQ-xZb"/>
                             <constraint firstItem="dXG-fk-tb7" firstAttribute="top" secondItem="aYF-HG-FYn" secondAttribute="top" id="7ME-UT-jdp"/>
+                            <constraint firstItem="q5W-7x-iwj" firstAttribute="top" secondItem="emX-Ho-yFA" secondAttribute="bottom" multiplier="1.1" id="Bxk-q4-7h0"/>
                             <constraint firstItem="RQN-kW-Zna" firstAttribute="centerY" secondItem="fPy-65-m1v" secondAttribute="centerY" id="Gqr-6w-XtS"/>
                             <constraint firstItem="q5W-7x-iwj" firstAttribute="trailing" secondItem="5W8-Jj-6Fr" secondAttribute="trailing" priority="999" id="H3y-ka-a4R"/>
                             <constraint firstItem="csu-Ne-ebm" firstAttribute="leading" secondItem="aYF-HG-FYn" secondAttribute="leading" id="HTY-7L-aWS"/>
                             <constraint firstItem="rMe-CT-kbB" firstAttribute="centerY" secondItem="55j-Wc-XHo" secondAttribute="centerY" id="Hpq-iI-nWC"/>
-                            <constraint firstItem="5W8-Jj-6Fr" firstAttribute="top" secondItem="q5W-7x-iwj" secondAttribute="bottom" multiplier="1.01" id="L1Z-sf-41z"/>
                             <constraint firstAttribute="bottom" secondItem="lvL-Sd-3uV" secondAttribute="bottom" id="N56-g5-2ez"/>
                             <constraint firstItem="csu-Ne-ebm" firstAttribute="top" secondItem="5W8-Jj-6Fr" secondAttribute="bottom" multiplier="1.01" id="NCj-yF-TsM"/>
                             <constraint firstItem="y7K-DI-pqF" firstAttribute="leading" secondItem="fPy-65-m1v" secondAttribute="leading" id="NMP-cQ-Xzf"/>
@@ -159,7 +160,6 @@
                             <constraint firstItem="fPy-65-m1v" firstAttribute="leading" secondItem="emX-Ho-yFA" secondAttribute="leading" id="XYG-xs-8IW"/>
                             <constraint firstItem="lvL-Sd-3uV" firstAttribute="top" secondItem="csu-Ne-ebm" secondAttribute="bottom" id="Yw6-4L-OgF"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q5W-7x-iwj" secondAttribute="trailing" constant="30" id="Z58-1H-NNj"/>
-                            <constraint firstItem="q5W-7x-iwj" firstAttribute="top" secondItem="RQN-kW-Zna" secondAttribute="bottom" id="Zum-4X-SY1"/>
                             <constraint firstItem="fPy-65-m1v" firstAttribute="width" secondItem="aYF-HG-FYn" secondAttribute="width" multiplier="250:1242" id="d7X-Tn-Lcx"/>
                             <constraint firstItem="RQN-kW-Zna" firstAttribute="trailing" secondItem="5W8-Jj-6Fr" secondAttribute="trailing" id="da6-3Y-ylb"/>
                             <constraint firstAttribute="trailing" secondItem="lvL-Sd-3uV" secondAttribute="trailing" id="fSE-g8-amb"/>

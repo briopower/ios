@@ -19,6 +19,7 @@ class TrackPhasesCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var numberOfTaskLabel: UILabel!
     @IBOutlet weak var taskDetailsTextView: UITextView?
+    @IBOutlet weak var topHeight: NSLayoutConstraint!
 
     //MARK:- Variables
     weak var delegate:TrackPhasesCellDelegate?
@@ -37,7 +38,6 @@ class TrackPhasesCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
@@ -58,7 +58,6 @@ extension TrackPhasesCell{
         }else{
             numberOfTaskLabel.text = ""
         }
-
         configDetailsText()
 
     }

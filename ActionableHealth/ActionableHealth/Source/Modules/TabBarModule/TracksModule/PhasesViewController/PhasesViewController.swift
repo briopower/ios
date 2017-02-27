@@ -16,7 +16,7 @@ class PhasesViewController: CommonViewController {
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
     var sourceType = TrackDetailsSourceType.Templates
-
+    let cellName = "TrackPhasesCell_Template"
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,7 @@ class PhasesViewController: CommonViewController {
 extension PhasesViewController{
     func setupView() {
         tblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: nil), forCellReuseIdentifier: String(TrackPhasesCell))
+        tblView.registerNib(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
         tblView.estimatedRowHeight = 300
         tblView.rowHeight = UITableViewAutomaticDimension
     }
@@ -52,7 +53,8 @@ extension PhasesViewController:UITableViewDataSource{
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(TrackPhasesCell)) as? TrackPhasesCell, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
+        let reuseId = sourceType == .Templates ? cellName : String(TrackPhasesCell)
+        if let cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? TrackPhasesCell, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
             cell.configCell(phase)
             cell.delegate = self
             return cell

@@ -48,10 +48,121 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ratingView" destination="9C4-iQ-Btg" id="hss-9O-ZMB"/>
+                        <outlet property="starRatingView" destination="YxW-6d-tla" id="MWB-aY-ham"/>
                         <outlet property="trackDetailsTblView" destination="Byi-sT-NNP" id="3mE-rm-YcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSQ-DH-iUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="9C4-iQ-Btg">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGX-yF-Elc">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <connections>
+                                <action selector="hideRatingAction:" destination="8bK-0c-DA2" eventType="touchUpInside" id="QvP-Ku-GID"/>
+                                <action selector="hideRatingActtion:" destination="Np4-Hx-sqP" eventType="touchUpInside" id="tHm-1c-Do8"/>
+                            </connections>
+                        </button>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CnU-ui-O3m">
+                            <rect key="frame" x="11" y="197" width="298" height="175"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATE GROUP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHD-yd-IQU" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="298" height="34.666666666666657"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="VHD-yd-IQU" secondAttribute="height" multiplier="1160:135" id="iJy-Bw-7Xw"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="19"/>
+                                    <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofX-Dj-jS1" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="34.666666666666657" width="298" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="bjw-zt-etW"/>
+                                    </constraints>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z3A-JH-H2H" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="139.33333333333331" width="298" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="grG-Z9-f7f"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZj-yk-EGf" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="140.33333333333331" width="298" height="34.666666666666686"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="19"/>
+                                    <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="OK"/>
+                                    <connections>
+                                        <action selector="rateTaskAction:" destination="8bK-0c-DA2" eventType="touchUpInside" id="Q8O-ti-8iP"/>
+                                        <action selector="rateTaskAction:" destination="Np4-Hx-sqP" eventType="touchUpInside" id="QCM-bL-Srp"/>
+                                    </connections>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxW-6d-tla" customClass="HCSStarRatingView">
+                                    <rect key="frame" x="42" y="74" width="214" height="28"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="YxW-6d-tla" secondAttribute="height" multiplier="1160:150" id="dES-O1-YZV"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                            <real key="value" value="2.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="star-black-ic"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="star-yellow-ic"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="mZj-yk-EGf" firstAttribute="leading" secondItem="CnU-ui-O3m" secondAttribute="leading" id="18j-1U-mCj"/>
+                                <constraint firstAttribute="trailing" secondItem="ofX-Dj-jS1" secondAttribute="trailing" id="624-sh-FIH"/>
+                                <constraint firstItem="VHD-yd-IQU" firstAttribute="top" secondItem="CnU-ui-O3m" secondAttribute="top" id="9Aa-Gn-uMj"/>
+                                <constraint firstItem="ofX-Dj-jS1" firstAttribute="top" secondItem="VHD-yd-IQU" secondAttribute="bottom" id="9ZO-Oe-x2y"/>
+                                <constraint firstAttribute="width" secondItem="CnU-ui-O3m" secondAttribute="height" multiplier="1160:680" id="A9b-TS-PDL"/>
+                                <constraint firstItem="mZj-yk-EGf" firstAttribute="top" secondItem="Z3A-JH-H2H" secondAttribute="bottom" id="DpA-gS-lg0"/>
+                                <constraint firstItem="ofX-Dj-jS1" firstAttribute="leading" secondItem="CnU-ui-O3m" secondAttribute="leading" id="E7J-gr-ROg"/>
+                                <constraint firstItem="Z3A-JH-H2H" firstAttribute="leading" secondItem="CnU-ui-O3m" secondAttribute="leading" id="MyE-X7-4DC"/>
+                                <constraint firstItem="YxW-6d-tla" firstAttribute="width" secondItem="CnU-ui-O3m" secondAttribute="width" multiplier="835:1160" id="NCX-Tf-HHU"/>
+                                <constraint firstItem="mZj-yk-EGf" firstAttribute="height" secondItem="VHD-yd-IQU" secondAttribute="height" id="Voi-wx-ppp"/>
+                                <constraint firstAttribute="trailing" secondItem="VHD-yd-IQU" secondAttribute="trailing" id="a6Z-bJ-Pby"/>
+                                <constraint firstItem="YxW-6d-tla" firstAttribute="centerY" secondItem="CnU-ui-O3m" secondAttribute="centerY" id="aYK-U4-MSN"/>
+                                <constraint firstAttribute="trailing" secondItem="Z3A-JH-H2H" secondAttribute="trailing" id="dVK-27-BG8"/>
+                                <constraint firstItem="YxW-6d-tla" firstAttribute="centerX" secondItem="CnU-ui-O3m" secondAttribute="centerX" id="g04-Q2-aRq"/>
+                                <constraint firstItem="VHD-yd-IQU" firstAttribute="leading" secondItem="CnU-ui-O3m" secondAttribute="leading" id="jTB-Yc-9RH"/>
+                                <constraint firstAttribute="bottom" secondItem="mZj-yk-EGf" secondAttribute="bottom" id="oTG-AA-pey"/>
+                                <constraint firstAttribute="trailing" secondItem="mZj-yk-EGf" secondAttribute="trailing" id="uHh-XD-oOq"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.39784482760000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="CnU-ui-O3m" firstAttribute="centerX" secondItem="9C4-iQ-Btg" secondAttribute="centerX" id="5aU-Bw-5XF"/>
+                        <constraint firstItem="CnU-ui-O3m" firstAttribute="width" secondItem="9C4-iQ-Btg" secondAttribute="width" multiplier="1160:1242" id="6oH-bu-i53"/>
+                        <constraint firstItem="aGX-yF-Elc" firstAttribute="centerX" secondItem="9C4-iQ-Btg" secondAttribute="centerX" id="8iQ-GA-ZY0"/>
+                        <constraint firstItem="aGX-yF-Elc" firstAttribute="width" secondItem="9C4-iQ-Btg" secondAttribute="width" id="aNy-to-Ugi"/>
+                        <constraint firstItem="aGX-yF-Elc" firstAttribute="height" secondItem="9C4-iQ-Btg" secondAttribute="height" id="b0S-Z1-B2w"/>
+                        <constraint firstItem="CnU-ui-O3m" firstAttribute="centerY" secondItem="9C4-iQ-Btg" secondAttribute="centerY" id="bGi-bV-Eqg"/>
+                        <constraint firstItem="aGX-yF-Elc" firstAttribute="centerY" secondItem="9C4-iQ-Btg" secondAttribute="centerY" id="xNN-qH-lmY"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="630" y="419"/>
         </scene>
@@ -197,7 +308,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type your message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="162.66666666666666" height="15"/>
+                                        <rect key="frame" x="21" y="16" width="162.66666666666666" height="17.666666666666629"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

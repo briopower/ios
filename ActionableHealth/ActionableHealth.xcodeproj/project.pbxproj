@@ -55,6 +55,7 @@
 		3C3B886F1E1A1F34005DA7B4 /* AddressBook+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B886E1E1A1F34005DA7B4 /* AddressBook+CoreDataClass.swift */; };
 		3C3B88711E1A1F84005DA7B4 /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3B88701E1A1F84005DA7B4 /* Contact+CoreDataClass.swift */; };
 		3C4387F21DA7835500F68125 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4387F11DA7835500F68125 /* HomeViewController.swift */; };
+		3C5979E91E5F11C900D4380B /* TrackPhasesCell_Template.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C5979E81E5F11C900D4380B /* TrackPhasesCell_Template.xib */; };
 		3C6763121DB0EA92001F7A4A /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */; };
 		3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */; };
 		3C6763161DB0F1F8001F7A4A /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6763141DB0F1F8001F7A4A /* SeparatorCell.swift */; };
@@ -312,6 +313,7 @@
 		3C3B886E1E1A1F34005DA7B4 /* AddressBook+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AddressBook+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3C3B88701E1A1F84005DA7B4 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3C4387F11DA7835500F68125 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3C5979E81E5F11C900D4380B /* TrackPhasesCell_Template.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell_Template.xib; sourceTree = "<group>"; };
 		3C6763101DB0EA92001F7A4A /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		3C6763111DB0EA92001F7A4A /* SettingsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewCell.xib; sourceTree = "<group>"; };
 		3C6763141DB0F1F8001F7A4A /* SeparatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
@@ -1640,6 +1642,7 @@
 			isa = PBXGroup;
 			children = (
 				3CAD352F1E4B313B00A0DB43 /* TrackPhasesCell.swift */,
+				3C5979E81E5F11C900D4380B /* TrackPhasesCell_Template.xib */,
 				3CAD35301E4B313B00A0DB43 /* TrackPhasesCell.xib */,
 			);
 			path = TrackPhasesCell;
@@ -2370,6 +2373,7 @@
 				3C13A4F51E51938A001B8723 /* FilesCell.xib in Resources */,
 				3C71C40F1E1D2BEA00468E43 /* AddFromPhoneHeader.xib in Resources */,
 				3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */,
+				3C5979E91E5F11C900D4380B /* TrackPhasesCell_Template.xib in Resources */,
 				3C8E47A31E165CAE0019C261 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
 				3CE5B88B1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib in Resources */,

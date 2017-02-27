@@ -171,6 +171,9 @@ extension PhaseDetailsCell{
             slider?.value = Float(sliderValue) ?? 0
             completedOnlabel?.text = details
             updateCompleted()
+        }else{
+            commentCountButton?.hidden = true
+            rateTaskButton?.hidden = true
         }
         configDetailsText()
     }

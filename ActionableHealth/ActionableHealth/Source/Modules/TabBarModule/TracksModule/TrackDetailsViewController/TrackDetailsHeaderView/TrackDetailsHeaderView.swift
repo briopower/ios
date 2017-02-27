@@ -21,12 +21,14 @@ protocol TrackDetailsHeaderViewDelegate:NSObjectProtocol {
     func commentsTapped(type:TrackDetailsSourceType)
     func requestButtonTapped(type:TrackDetailsSourceType)
     func showImagePicker()
+    func rateGroup()
 }
 
 class TrackDetailsHeaderView: UIView {
 
     //MARK:- Outlets
     @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var rateGroupButton: UIButton?
     @IBOutlet weak var bottomContainer: UIView?
     @IBOutlet weak var templateImage: UIImageView!
     @IBOutlet weak var ratingView: HCSStarRatingView!
@@ -81,6 +83,10 @@ extension TrackDetailsHeaderView{
             break
         }
     }
+
+    @IBAction func rateGroupAction(sender: UIButton) {
+        delegate?.rateGroup()
+    }
 }
 //MARK:- Additional methods
 extension TrackDetailsHeaderView{
@@ -117,6 +123,7 @@ extension TrackDetailsHeaderView{
         self.type = type
         currentTemplate = template
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
+        ratingView.hidden = currentTemplate?.key == nil
         nameLabel?.text = template?.name
         switch self.type {
         case .Templates:

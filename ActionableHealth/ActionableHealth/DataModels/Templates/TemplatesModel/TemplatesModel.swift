@@ -84,7 +84,13 @@ extension TemplatesModel{
         self.followersCount = dict?["followerCount"] as? Int ?? 0
         self.isFollowing = dict?["currentUserFollower"] as? Bool ?? false
     }
-    
+
+    func updateRating(response:AnyObject?) {
+        if let ratingVal  = response?["rating"] as? String {
+            rating = Double(ratingVal) ?? 0.0
+        }
+    }
+
     class func getPayloadDict(cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = []) -> [String:AnyObject] {
         return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType]
     }

@@ -89,7 +89,7 @@ extension TracksViewController{
                 showLoader()
             }
             NetworkClass.sendRequest(URL:Constants.URLs.myTracks, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(cursorVal), Headers: nil, CompletionHandler: {
-                (status, responseObj, error, statusCode) in
+                (status, responseObj, error, new ) in
                 if status{
                     self.processResponse(responseObj, cursorVal: cursorVal)
                 }else{

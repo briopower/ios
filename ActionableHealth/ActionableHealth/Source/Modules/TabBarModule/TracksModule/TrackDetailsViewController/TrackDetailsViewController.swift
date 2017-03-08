@@ -399,17 +399,21 @@ extension TrackDetailsViewController{
             showLoaderOnWindow()
             NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .POST, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
+                self.hideLoader()
                 if statusCode == 200{
                     self.updateRating(responseObj)
+                }else{
+                    self.processError(error)
                 }
-                self.hideLoader()
             })
         }
     }
 
     func updateRating(response:AnyObject?) {
-        currentTemplate?.updateRating(response)
-        updateHeader()
-        hideRatingView()
+        dispatch_async(dispatch_get_main_queue()) { 
+            self.currentTemplate?.updateRating(response)
+            self.updateHeader()
+            self.hideRatingView()
+        }
     }
 }

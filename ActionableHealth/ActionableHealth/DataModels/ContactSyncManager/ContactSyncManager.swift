@@ -192,7 +192,7 @@ class ContactSyncManager: NSObject {
                     arr.addObject([emailOrPhone:uniqueId])
                 }
             }
-            if let splitedArray = arr.splitArrayWithSize(500) as? [NSArray]{
+            if let splitedArray = arr.splitArrayWithSize(50) as? [NSArray]{
                 for obj in splitedArray {
                     let arr:Array<UIColor> = []
                     arr

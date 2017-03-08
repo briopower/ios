@@ -123,7 +123,7 @@ extension TrackDetailsHeaderView{
         self.type = type
         currentTemplate = template
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
-        ratingView.hidden = currentTemplate?.key == nil
+        rateGroupButton?.hidden = currentTemplate?.key == nil
         nameLabel?.text = template?.name
         switch self.type {
         case .Templates:

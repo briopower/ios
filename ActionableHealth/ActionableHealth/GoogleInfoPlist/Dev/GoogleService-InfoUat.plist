@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>170675134536-4md6hd2fufvtltru712qvf7fgogn2eg3.apps.googleusercontent.com</string>
+	<string>1081674559720-3uoi42m2klbu6l84c04d9l6cqbjj6984.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.170675134536-4md6hd2fufvtltru712qvf7fgogn2eg3</string>
+	<string>com.googleusercontent.apps.1081674559720-3uoi42m2klbu6l84c04d9l6cqbjj6984</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBkoSFcEFhoWjMW-jsdbqFbWDmKq7EpQUU</string>
+	<string>AIzaSyBthCPpuEooFElp3F1p71Us4Ith0-ID2Cg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>170675134536</string>
+	<string>1081674559720</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.finoit.ActionableHealth</string>
 	<key>PROJECT_ID</key>
-	<string>briopower-prod</string>
+	<string>briopower-uat</string>
 	<key>STORAGE_BUCKET</key>
-	<string>briopower-prod.appspot.com</string>
+	<string>briopower-uat.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:170675134536:ios:82d16c6cb21c6a83</string>
+	<string>1:1081674559720:ios:82d16c6cb21c6a83</string>
 	<key>DATABASE_URL</key>
-	<string>https://briopower-prod.firebaseio.com</string>
+	<string>https://briopower-uat.firebaseio.com</string>
 </dict>
 </plist>

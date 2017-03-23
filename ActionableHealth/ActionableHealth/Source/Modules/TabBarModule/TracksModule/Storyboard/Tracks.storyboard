@@ -16,6 +16,9 @@
         <array key="ProximaNova-Regular.otf">
             <string>ProximaNova-Regular</string>
         </array>
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Track Details View Controller-->
@@ -308,7 +311,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type your message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="162.66666666666666" height="17.666666666666629"/>
+                                        <rect key="frame" x="21" y="16" width="162.66666666666666" height="15"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -766,6 +769,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2i-Bf-cdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7263.7681159420299" y="418.20652173913049"/>
+        </scene>
+        <!--Phases List View Controller-->
+        <scene sceneID="Xzq-4h-d1q">
+            <objects>
+                <viewController storyboardIdentifier="PhasesListViewController" id="HB3-aw-sqK" customClass="PhasesListViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cSq-iS-8Wr"/>
+                        <viewControllerLayoutGuide type="bottom" id="bbr-KE-12y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8qF-4s-AIB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HPE-WO-CoO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ptS-Te-vPw">
+                                    <size key="itemSize" width="192" height="292"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhaseListCell" id="9Eb-fP-vLC" customClass="PhaseListCell" customModule="BRIO" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="192" height="292"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="192" height="292"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Files" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMh-1K-nov" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                                    <rect key="frame" x="9.6666666666666714" y="14.666666666666657" width="172.66666666666669" height="262.66666666666663"/>
+                                                    <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                                    <color key="textColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="hMh-1K-nov" firstAttribute="centerY" secondItem="9Eb-fP-vLC" secondAttribute="centerY" id="UNR-IU-JRG"/>
+                                            <constraint firstItem="hMh-1K-nov" firstAttribute="centerX" secondItem="9Eb-fP-vLC" secondAttribute="centerX" id="opz-1j-EGx"/>
+                                            <constraint firstItem="hMh-1K-nov" firstAttribute="width" secondItem="9Eb-fP-vLC" secondAttribute="width" multiplier="0.9" id="pQW-q4-qdI"/>
+                                            <constraint firstItem="hMh-1K-nov" firstAttribute="height" secondItem="9Eb-fP-vLC" secondAttribute="height" multiplier="0.9" id="zyJ-ny-p26"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="txtLbel" destination="hMh-1K-nov" id="yvJ-vZ-ngy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="HB3-aw-sqK" id="gin-za-uY6"/>
+                                    <outlet property="delegate" destination="HB3-aw-sqK" id="NIR-ic-BGt"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HPE-WO-CoO" firstAttribute="leading" secondItem="8qF-4s-AIB" secondAttribute="leading" id="Csp-Iy-J6t"/>
+                            <constraint firstItem="bbr-KE-12y" firstAttribute="top" secondItem="HPE-WO-CoO" secondAttribute="bottom" id="HTs-gH-gsQ"/>
+                            <constraint firstItem="HPE-WO-CoO" firstAttribute="top" secondItem="8qF-4s-AIB" secondAttribute="top" id="ckV-tN-rkT"/>
+                            <constraint firstAttribute="trailing" secondItem="HPE-WO-CoO" secondAttribute="trailing" id="spI-qG-GgA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="HPE-WO-CoO" id="TTH-TX-ltu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k91-uN-RkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7937.6811594202909" y="417.39130434782612"/>
         </scene>
     </scenes>
     <resources>

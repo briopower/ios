@@ -227,7 +227,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
                         getNavigationController()?.pushViewController(showTextView, animated: true)
                     }
                 case .Phases:
-                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesView) as? PhasesViewController {
+                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesListView) as? PhasesListViewController {
                         phasesView.currentTemplate = currentTemplate
                         phasesView.sourceType = sourceType
                         getNavigationController()?.pushViewController(phasesView, animated: true)
@@ -256,7 +256,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
                         getNavigationController()?.pushViewController(showTextView, animated: true)
                     }
                 case .Phases:
-                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesView) as? PhasesViewController {
+                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesListView) as? PhasesListViewController {
                         phasesView.currentTemplate = currentTemplate
                         phasesView.sourceType = sourceType
                         getNavigationController()?.pushViewController(phasesView, animated: true)

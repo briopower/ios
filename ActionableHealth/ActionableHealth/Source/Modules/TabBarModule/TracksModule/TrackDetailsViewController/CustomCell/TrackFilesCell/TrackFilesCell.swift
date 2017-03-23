@@ -56,4 +56,8 @@ extension TrackFilesCell{
             break
         }
     }
+
+    func configCell(phase:PhasesModel) {
+        detailsLabel.text = phase.phaseName
+    }
 }

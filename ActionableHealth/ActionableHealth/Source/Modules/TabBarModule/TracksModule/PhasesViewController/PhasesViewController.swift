@@ -14,9 +14,10 @@ class PhasesViewController: CommonViewController {
     @IBOutlet weak var tblView: UITableView!
 
     //MARK:- Variables
-    var currentTemplate:TemplatesModel?
+    var currentPhase:PhasesModel?
     var sourceType = TrackDetailsSourceType.Templates
     let cellName = "TrackPhasesCell_Template"
+
     //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,7 @@ class PhasesViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        updateTemplate()
-        setNavigationBarWithTitle("Phases", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Phases Info", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,7 +40,7 @@ extension PhasesViewController{
     func setupView() {
         tblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: nil), forCellReuseIdentifier: String(TrackPhasesCell))
         tblView.registerNib(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
-        tblView.estimatedRowHeight = 300
+        tblView.estimatedRowHeight = 100
         tblView.rowHeight = UITableViewAutomaticDimension
     }
 
@@ -49,27 +49,17 @@ extension PhasesViewController{
 //MARK:- UITableViewDataSource
 extension PhasesViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentTemplate?.phases.count ?? 0
+        return 1
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let reuseId = sourceType == .Templates ? cellName : String(TrackPhasesCell)
-        if let cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? TrackPhasesCell, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
+        if let cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? TrackPhasesCell, let phase = currentPhase {
             cell.configCell(phase)
             cell.delegate = self
             return cell
         }
         return UITableViewCell()
-    }
-}
-
-//MARK:- UITableViewDelegate
-extension PhasesViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
-            viewCont.currentPhase = currentTemplate?.phases[indexPath.row] as? PhasesModel
-            getNavigationController()?.pushViewController(viewCont, animated: true)
-        }
     }
 }
 
@@ -86,48 +76,20 @@ extension PhasesViewController:TrackPhasesCellDelegate{
     }
 
     func taskFilesTapped(tag: Int, obj: AnyObject?) {
-
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
             viewCont.resources = (obj as? PhasesModel)?.resources ?? NSMutableArray()
             getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }
-}
 
-//MARK:- Network methods
-extension PhasesViewController{
-
-    func updateTemplate() {
-        if NetworkClass.isConnected(true) {
-            if let id = sourceType == .Templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
-                let url = sourceType == .Templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
-                NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
-                    (status, responseObj, error, statusCode) in
-                    if status{
-                        self.processResponse(responseObj)
-                    }else{
-                        self.processError(error)
-                    }
-                })
+    func numberOfTasksTapped(tag: Int, obj: AnyObject?) {
+        if (currentPhase?.tasks.count ?? 0) != 0{
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
+                viewCont.currentPhase = currentPhase
+                getNavigationController()?.pushViewController(viewCont, animated: true)
             }
         }
     }
-
-    func processResponse(responseObj:AnyObject?) {
-        if let dict = responseObj, let temp = currentTemplate {
-            switch sourceType {
-            case .Templates:
-                TemplatesModel.addPhases(dict, toModel: temp)
-            case .Tracks:
-                TemplatesModel.updateTrackObj(temp, dict: dict)
-            default:
-                break
-            }
-        }
-        tblView.reloadData()
-    }
-
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
-    }
 }
+
+

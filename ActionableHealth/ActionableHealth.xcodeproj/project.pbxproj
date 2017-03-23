@@ -212,6 +212,7 @@
 		3CDD48AB1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */; };
 		3CE5B8891E1BAE7C00526ED8 /* UISlider_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5B8881E1BAE7C00526ED8 /* UISlider_Custom.swift */; };
 		3CE5B88B1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5B88A1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib */; };
+		3CE600271E7FD6C100904C1C /* PhasesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE600261E7FD6C100904C1C /* PhasesListViewController.swift */; };
 		3CEDA2361E0D281700EF6919 /* NSFileManager_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEDA2351E0D281700EF6919 /* NSFileManager_Common.swift */; };
 		3CEFA9601DF6816B00185459 /* NSArray_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */; };
 		3CF5B54B1DB7892000224046 /* TrackFilesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5B5491DB7892000224046 /* TrackFilesCell.swift */; };
@@ -520,6 +521,7 @@
 		3CDD48AA1E03E6CE00ACAFB4 /* UIImagePickerController_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerController_Common.swift; sourceTree = "<group>"; };
 		3CE5B8881E1BAE7C00526ED8 /* UISlider_Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISlider_Custom.swift; sourceTree = "<group>"; };
 		3CE5B88A1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell_Completed.xib; sourceTree = "<group>"; };
+		3CE600261E7FD6C100904C1C /* PhasesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhasesListViewController.swift; sourceTree = "<group>"; };
 		3CEDA2351E0D281700EF6919 /* NSFileManager_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager_Common.swift; sourceTree = "<group>"; };
 		3CEFA95F1DF6816B00185459 /* NSArray_Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArray_Common.swift; sourceTree = "<group>"; };
 		3CF5B5491DB7892000224046 /* TrackFilesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackFilesCell.swift; sourceTree = "<group>"; };
@@ -1776,6 +1778,7 @@
 		3CBD5C711DA7AF71004BCAE0 /* TracksModule */ = {
 			isa = PBXGroup;
 			children = (
+				3CE600251E7FD6A400904C1C /* PhasesListViewController */,
 				3C13A4ED1E5192C2001B8723 /* FilesListViewController */,
 				3CAD352C1E4B313B00A0DB43 /* PhasesViewController */,
 				3C39DAA81DB64A7400D86D24 /* Storyboard */,
@@ -2035,6 +2038,14 @@
 				3CE5B8881E1BAE7C00526ED8 /* UISlider_Custom.swift */,
 			);
 			path = UISlider;
+			sourceTree = "<group>";
+		};
+		3CE600251E7FD6A400904C1C /* PhasesListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3CE600261E7FD6C100904C1C /* PhasesListViewController.swift */,
+			);
+			path = PhasesListViewController;
 			sourceTree = "<group>";
 		};
 		3CEDA2341E0D27F400EF6919 /* NSFileManager */ = {
@@ -2639,6 +2650,7 @@
 				3C8E47A51E165CAE0019C261 /* README.md in Sources */,
 				3CCF31021DB7349B001A1E7B /* SentMessageCell.swift in Sources */,
 				3C1EC5941DA3A864003DC2A3 /* CommonViewController.swift in Sources */,
+				3CE600271E7FD6C100904C1C /* PhasesListViewController.swift in Sources */,
 				3C8E47951E165CAE0019C261 /* JSQMessagesCollectionViewCell.m in Sources */,
 				3CCECD9F1DAF55E800831242 /* FiltersViewController.swift in Sources */,
 				40EBFEE21DF8078F00605397 /* EnterOtpViewController.swift in Sources */,
@@ -2875,7 +2887,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "df7cf10b-663b-4ed0-a51f-8fe1e180ce91";
+				PROVISIONING_PROFILE = "5eaf22a1-0db9-49c5-bfcc-eaba5338d22e";
 				PROVISIONING_PROFILE_SPECIFIER = ActionableHealthDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;

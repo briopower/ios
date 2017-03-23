@@ -97,16 +97,21 @@ extension InviteForTrackViewController{
     }
 
     func updatDoneButton() {
-        let shouldEnable = selectedUsers != currentTemplate?.members
-        doneButton.enabled = shouldEnable
-        shouldEnable ? (doneButton.alpha = 1) : (doneButton.alpha = 0.8)
+        switch sourceType {
+        case .Tracks:
+            let shouldEnable = selectedUsers != currentTemplate?.members
+            doneButton.enabled = shouldEnable
+            shouldEnable ? (doneButton.alpha = 1) : (doneButton.alpha = 0.8)
+        default:
+            break
+        }
     }
 }
 
 //MARK:- Network Methods
 extension InviteForTrackViewController{
     func createTrack() {
-        if NetworkClass.isConnected(true) && selectedUsers.count > 0 && !isRequestSent {
+        if NetworkClass.isConnected(true) /*&& selectedUsers.count > 0*/ && !isRequestSent {
             showLoaderOnWindow()
             self.isRequestSent = true
             NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(trackName, array: selectedUsers), Headers: nil, CompletionHandler: {

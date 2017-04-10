@@ -68,13 +68,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHX-ct-JgX" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="33" y="417.5" width="224.5" height="17"/>
+                                <rect key="frame" x="33" y="421.5" width="224.5" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-ak-bTb" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="462" width="139" height="17"/>
+                                <rect key="frame" x="32.5" y="466.5" width="139" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -85,7 +85,7 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-1C-qvL" customClass="HCSStarRatingView">
-                                <rect key="frame" x="32.5" y="50.5" width="90" height="21.5"/>
+                                <rect key="frame" x="32.5" y="51" width="90" height="21.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mz2-1C-qvL" secondAttribute="height" multiplier="250:60" id="hbM-jd-ElE"/>
                                 </constraints>
@@ -109,13 +109,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAw-bg-GLS" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="134.5" y="50.5" width="70.5" height="21.5"/>
+                                <rect key="frame" x="134.5" y="51" width="70.5" height="21.5"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-0t-QQj" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="332" y="455.5" width="86" height="29"/>
+                                <rect key="frame" x="332" y="460" width="86" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="RATE TASK"/>
@@ -124,31 +124,13 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeg-63-GD0">
-                                <rect key="frame" x="371" y="38" width="47" height="46.5"/>
+                                <rect key="frame" x="371" y="38.5" width="47" height="46.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xeg-63-GD0" secondAttribute="height" id="o1L-1g-6za"/>
                                 </constraints>
                                 <state key="normal" image="Start"/>
                                 <connections>
                                     <action selector="startStopAction:" destination="gDm-Tr-urs" eventType="touchUpInside" id="0G8-oQ-ych"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Resources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxR-lw-SVb" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="520.5" width="79" height="17"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
-                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="s3x-hf-1XN">
-                                <rect key="frame" x="403" y="521.5" width="15" height="15"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8n-B7-v30">
-                                <rect key="frame" x="0.0" y="489.5" width="448" height="79.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="V8n-B7-v30" secondAttribute="height" multiplier="1242:220" id="Ujd-uy-c3u"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="taskFiles:" destination="gDm-Tr-urs" eventType="touchUpInside" id="lN8-Td-ujP"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YWx-15-dW2" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
@@ -158,7 +140,7 @@
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="na6-ni-Uai">
-                                <rect key="frame" x="32" y="84.5" width="385.5" height="294.5"/>
+                                <rect key="frame" x="32" y="85" width="385.5" height="298"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -166,43 +148,77 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHp-5r-gNs">
+                                <rect key="frame" x="0.0" y="489" width="448" height="79.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1AJ-NF-IfC" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                        <rect key="frame" x="22" y="8" width="404" height="63.5"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Resources"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="6.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="taskFiles:" destination="gDm-Tr-urs" eventType="touchUpInside" id="B7c-py-O4D"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIU-Gu-kLH">
+                                        <rect key="frame" x="395.5" y="31.5" width="15" height="18"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="arrow">
+                                            <color key="titleShadowColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="GIU-Gu-kLH" firstAttribute="centerY" secondItem="1AJ-NF-IfC" secondAttribute="centerY" id="1ZV-md-g32"/>
+                                    <constraint firstItem="1AJ-NF-IfC" firstAttribute="centerX" secondItem="MHp-5r-gNs" secondAttribute="centerX" id="2kS-Zl-gAv"/>
+                                    <constraint firstItem="1AJ-NF-IfC" firstAttribute="width" secondItem="MHp-5r-gNs" secondAttribute="width" multiplier="0.9" id="H3l-Hl-W9c"/>
+                                    <constraint firstItem="1AJ-NF-IfC" firstAttribute="centerY" secondItem="MHp-5r-gNs" secondAttribute="centerY" id="myH-fp-cHE"/>
+                                    <constraint firstItem="GIU-Gu-kLH" firstAttribute="centerX" secondItem="MHp-5r-gNs" secondAttribute="centerX" multiplier="1.8" id="vHI-M6-NOC"/>
+                                    <constraint firstItem="1AJ-NF-IfC" firstAttribute="height" secondItem="MHp-5r-gNs" secondAttribute="height" multiplier="0.8" id="wfi-2m-hEe"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="V8n-B7-v30" secondAttribute="trailing" id="8jV-Ar-rRW"/>
                             <constraint firstItem="PPs-ak-bTb" firstAttribute="leading" secondItem="mHX-ct-JgX" secondAttribute="leading" id="AzO-M4-zda"/>
                             <constraint firstItem="fgl-0t-QQj" firstAttribute="centerX" secondItem="NEj-Ij-Rgy" secondAttribute="centerX" multiplier="1040:621" id="BdP-Ip-5II"/>
                             <constraint firstItem="YWx-15-dW2" firstAttribute="leading" secondItem="NEj-Ij-Rgy" secondAttribute="leading" id="Bxd-Gf-mHm"/>
-                            <constraint firstItem="s3x-hf-1XN" firstAttribute="centerY" secondItem="uxR-lw-SVb" secondAttribute="centerY" id="GNd-4Y-yb4"/>
                             <constraint firstAttribute="bottom" secondItem="YWx-15-dW2" secondAttribute="bottom" id="HTx-nY-XFD"/>
-                            <constraint firstItem="uxR-lw-SVb" firstAttribute="leading" secondItem="PPs-ak-bTb" secondAttribute="leading" id="HuO-Yt-v3c"/>
-                            <constraint firstItem="V8n-B7-v30" firstAttribute="top" secondItem="fgl-0t-QQj" secondAttribute="bottom" multiplier="1.01" id="IfU-Vd-rfH"/>
+                            <constraint firstAttribute="trailing" secondItem="MHp-5r-gNs" secondAttribute="trailing" id="IRJ-H0-siD"/>
                             <constraint firstItem="na6-ni-Uai" firstAttribute="top" secondItem="xeg-63-GD0" secondAttribute="bottom" id="Kp1-P0-loP"/>
                             <constraint firstItem="uAw-bg-GLS" firstAttribute="centerY" secondItem="mz2-1C-qvL" secondAttribute="centerY" id="Kvk-UH-CA8"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="na6-ni-Uai" secondAttribute="trailing" constant="30" id="OAY-ry-F76"/>
                             <constraint firstItem="mHX-ct-JgX" firstAttribute="leading" secondItem="mz2-1C-qvL" secondAttribute="leading" id="PbQ-o2-e67"/>
-                            <constraint firstItem="V8n-B7-v30" firstAttribute="leading" secondItem="NEj-Ij-Rgy" secondAttribute="leading" id="Qff-H2-0Av"/>
                             <constraint firstItem="na6-ni-Uai" firstAttribute="trailing" secondItem="fgl-0t-QQj" secondAttribute="trailing" priority="999" id="Qvo-v7-2af"/>
+                            <constraint firstItem="MHp-5r-gNs" firstAttribute="top" secondItem="fgl-0t-QQj" secondAttribute="bottom" id="RcS-CJ-fw6"/>
                             <constraint firstItem="j9A-FO-mrc" firstAttribute="leading" secondItem="NEj-Ij-Rgy" secondAttribute="leading" id="TVR-lj-xH0"/>
                             <constraint firstItem="na6-ni-Uai" firstAttribute="leading" secondItem="mz2-1C-qvL" secondAttribute="leading" id="VNA-Ad-faQ"/>
                             <constraint firstItem="fgl-0t-QQj" firstAttribute="centerY" secondItem="PPs-ak-bTb" secondAttribute="centerY" id="Xlb-tf-4w9"/>
                             <constraint firstItem="fgl-0t-QQj" firstAttribute="top" secondItem="mHX-ct-JgX" secondAttribute="bottom" multiplier="1.03" constant="8" symbolic="YES" id="ZId-n4-bxV"/>
+                            <constraint firstItem="YWx-15-dW2" firstAttribute="top" secondItem="MHp-5r-gNs" secondAttribute="bottom" id="ZjJ-Og-Xr9"/>
                             <constraint firstItem="xeg-63-GD0" firstAttribute="centerY" secondItem="mz2-1C-qvL" secondAttribute="centerY" id="aXj-wG-hag"/>
                             <constraint firstAttribute="trailing" secondItem="YWx-15-dW2" secondAttribute="trailing" id="apJ-Tm-gpk"/>
-                            <constraint firstItem="s3x-hf-1XN" firstAttribute="trailing" secondItem="fgl-0t-QQj" secondAttribute="trailing" id="b2b-cz-g1b"/>
                             <constraint firstItem="j9A-FO-mrc" firstAttribute="top" secondItem="NEj-Ij-Rgy" secondAttribute="top" id="d37-Hs-3Ef"/>
                             <constraint firstItem="SzV-eh-zKk" firstAttribute="top" secondItem="j9A-FO-mrc" secondAttribute="bottom" id="dzd-pD-p2X"/>
                             <constraint firstItem="mz2-1C-qvL" firstAttribute="top" secondItem="SzV-eh-zKk" secondAttribute="bottom" multiplier="1.2" id="gIF-na-GYm"/>
                             <constraint firstItem="mHX-ct-JgX" firstAttribute="top" secondItem="na6-ni-Uai" secondAttribute="bottom" multiplier="1.1" id="hH9-ra-UQT"/>
                             <constraint firstItem="xeg-63-GD0" firstAttribute="trailing" secondItem="fgl-0t-QQj" secondAttribute="trailing" id="itn-Y0-RGX"/>
+                            <constraint firstItem="MHp-5r-gNs" firstAttribute="width" secondItem="MHp-5r-gNs" secondAttribute="height" multiplier="1242:220" id="lFC-sE-rtn"/>
                             <constraint firstItem="xeg-63-GD0" firstAttribute="leading" secondItem="SzV-eh-zKk" secondAttribute="trailing" id="lz5-E2-bIU"/>
                             <constraint firstAttribute="trailing" secondItem="j9A-FO-mrc" secondAttribute="trailing" id="mYk-SG-mI0"/>
                             <constraint firstItem="uAw-bg-GLS" firstAttribute="height" secondItem="mz2-1C-qvL" secondAttribute="height" id="okz-DO-XmM"/>
-                            <constraint firstItem="uxR-lw-SVb" firstAttribute="centerY" secondItem="V8n-B7-v30" secondAttribute="centerY" id="rj1-0E-pzn"/>
+                            <constraint firstItem="MHp-5r-gNs" firstAttribute="leading" secondItem="NEj-Ij-Rgy" secondAttribute="leading" id="q7A-kX-8St"/>
                             <constraint firstItem="mz2-1C-qvL" firstAttribute="width" secondItem="NEj-Ij-Rgy" secondAttribute="width" multiplier="250:1242" id="seM-cu-p0w"/>
                             <constraint firstItem="uAw-bg-GLS" firstAttribute="leading" secondItem="mz2-1C-qvL" secondAttribute="trailing" multiplier="350:320" id="tR1-x0-nmB"/>
                             <constraint firstItem="mz2-1C-qvL" firstAttribute="centerX" secondItem="NEj-Ij-Rgy" secondAttribute="centerX" multiplier="215:621" id="u7H-dn-gr2"/>
-                            <constraint firstItem="YWx-15-dW2" firstAttribute="top" secondItem="V8n-B7-v30" secondAttribute="bottom" id="xMH-WZ-hyL"/>
                             <constraint firstItem="xeg-63-GD0" firstAttribute="width" secondItem="NEj-Ij-Rgy" secondAttribute="width" multiplier="130:1242" id="yxj-AS-Obl"/>
                             <constraint firstItem="mz2-1C-qvL" firstAttribute="leading" secondItem="SzV-eh-zKk" secondAttribute="leading" id="zlH-cq-34M"/>
                         </constraints>

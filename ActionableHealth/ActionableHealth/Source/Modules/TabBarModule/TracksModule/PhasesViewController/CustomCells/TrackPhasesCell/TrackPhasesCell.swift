@@ -10,7 +10,6 @@ import UIKit
 protocol TrackPhasesCellDelegate:NSObjectProtocol {
     func taskFilesTapped(tag:Int, obj:AnyObject?)
     func numberOfTasksTapped(tag:Int, obj:AnyObject?)
-    func readMoreTapped(tag:Int, obj:AnyObject?)
 }
 
 class TrackPhasesCell: UITableViewCell {

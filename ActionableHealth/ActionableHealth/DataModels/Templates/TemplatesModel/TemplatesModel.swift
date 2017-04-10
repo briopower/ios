@@ -18,6 +18,7 @@ class TemplatesModel: NSObject {
     var templateId:String?
     var name:String?
     var details = ""
+    var htmldetails = ""
     var status = ""
     var templateImageUrl = ""
     var createdBy = ""
@@ -132,6 +133,7 @@ extension TemplatesModel{
         obj.templateId = dict["id"] as? String
         obj.name = dict["name"] as? String
         obj.details = dict["descriptionText"] as? String ?? obj.details
+        obj.htmldetails = dict["description"] as? String ?? obj.htmldetails
         obj.templateImageUrl = dict["profileURL"] as? String ?? obj.templateImageUrl
         obj.createdBy = dict["createdBy"] as? String ?? obj.createdBy
         obj.createDate = dict["createdDate"] as? Int ?? obj.createDate
@@ -151,7 +153,8 @@ extension TemplatesModel{
         obj.trackId = dict["id"] as? String
         obj.templateId = dict["templateId"] as? String
         obj.name = dict["name"] as? String
-        obj.details = dict["descriptionText"] as? String ?? dict["description"] as? String ?? ""
+        obj.details = dict["descriptionText"] as? String ?? ""
+        obj.htmldetails = dict["description"] as? String ?? ""
         obj.templateImageUrl = dict["templateURL"] as? String ?? obj.templateImageUrl
         obj.trackImageUrl = dict["trackURL"] as? String ?? ""
         obj.createdBy = dict["createdBy"] as? String ?? ""

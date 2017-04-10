@@ -222,7 +222,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
                     }
                 case .About:
                     if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
-                        showTextView.text = currentTemplate?.details ?? ""
+                        showTextView.html = currentTemplate?.htmldetails
                         showTextView.navigationTitle = currentTemplate?.name ?? ""
                         getNavigationController()?.pushViewController(showTextView, animated: true)
                     }
@@ -251,7 +251,7 @@ extension TrackDetailsViewController:UITableViewDelegate{
                     }
                 case .About:
                     if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
-                        showTextView.text = currentTemplate?.details ?? ""
+                        showTextView.html = currentTemplate?.htmldetails
                         showTextView.navigationTitle = currentTemplate?.name ?? ""
                         getNavigationController()?.pushViewController(showTextView, animated: true)
                     }

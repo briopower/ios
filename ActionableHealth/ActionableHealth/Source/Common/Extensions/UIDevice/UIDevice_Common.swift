@@ -78,6 +78,10 @@ extension UIDevice{
         return UIScreen.mainScreen().bounds.size.width
     }
 
+    class func navigationBarheight() -> CGFloat {
+        return 64
+    }
+
     class func getDeviceType() -> DeviceType{
         var systemInfo = utsname()
         uname(&systemInfo)

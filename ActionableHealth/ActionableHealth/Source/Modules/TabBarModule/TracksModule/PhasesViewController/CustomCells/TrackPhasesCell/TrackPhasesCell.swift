@@ -17,8 +17,8 @@ class TrackPhasesCell: UITableViewCell {
     //MARK:- Outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var taskDetailsTextView: UITextView?
     @IBOutlet weak var numberOfTask: UIButton!
+    @IBOutlet weak var webView: UIWebView!
 
 
     //MARK:- Variables
@@ -28,6 +28,7 @@ class TrackPhasesCell: UITableViewCell {
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
+        webView.scrollView.showsVerticalScrollIndicator = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -51,7 +52,7 @@ extension TrackPhasesCell{
         }else{
             numberOfTask.setTitle("", forState: .Normal)
         }
-        taskDetailsTextView?.text = currentPhase?.details ?? ""
+        webView.loadHTMLString(currentPhase?.details ?? "", baseURL: nil)
     }
 
     @IBAction func numberOfTaskAction(sender: UIButton) {

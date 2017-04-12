@@ -27,14 +27,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OOA-08-BeE">
-                        <rect key="frame" x="20.5" y="180.5" width="373" height="194"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drV-xc-QER">
                         <rect key="frame" x="0.0" y="60.5" width="414" height="60"/>
                         <subviews>
@@ -139,24 +131,28 @@
                             <constraint firstAttribute="height" constant="1" id="Vp0-IX-Vxr"/>
                         </constraints>
                     </imageView>
+                    <webView contentMode="scaleToFill" suppressesIncrementalRendering="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Zv-ic-h1o">
+                        <rect key="frame" x="20.5" y="180.5" width="373" height="194"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </webView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="jsV-vJ-csQ" firstAttribute="top" secondItem="6Zv-ic-h1o" secondAttribute="bottom" id="11I-ns-B75"/>
                     <constraint firstItem="drV-xc-QER" firstAttribute="width" secondItem="0uc-s6-8OI" secondAttribute="width" id="4Ip-tF-DRl"/>
                     <constraint firstItem="cLP-O8-dh6" firstAttribute="leading" secondItem="yGh-SB-vlM" secondAttribute="leading" id="7zX-HK-ufz"/>
                     <constraint firstAttribute="bottom" secondItem="jsV-vJ-csQ" secondAttribute="bottom" id="Crw-J6-WF1"/>
+                    <constraint firstItem="6Zv-ic-h1o" firstAttribute="trailing" secondItem="yGh-SB-vlM" secondAttribute="trailing" id="I9s-aK-Lat"/>
+                    <constraint firstItem="6Zv-ic-h1o" firstAttribute="leading" secondItem="yGh-SB-vlM" secondAttribute="leading" id="IJJ-vd-nxj"/>
                     <constraint firstAttribute="trailing" secondItem="jsV-vJ-csQ" secondAttribute="trailing" id="Ikz-df-qzi"/>
-                    <constraint firstItem="jsV-vJ-csQ" firstAttribute="top" secondItem="OOA-08-BeE" secondAttribute="bottom" id="MSD-Gf-4cS"/>
                     <constraint firstItem="0uc-s6-8OI" firstAttribute="leading" secondItem="gxp-0j-lL5" secondAttribute="leading" id="ONi-nv-ckV"/>
+                    <constraint firstItem="6Zv-ic-h1o" firstAttribute="top" secondItem="0uc-s6-8OI" secondAttribute="bottom" id="QsG-Pw-hgY"/>
                     <constraint firstItem="wCS-5t-1WD" firstAttribute="top" secondItem="gxp-0j-lL5" secondAttribute="top" id="SZi-h3-XaH"/>
-                    <constraint firstItem="OOA-08-BeE" firstAttribute="leading" secondItem="yGh-SB-vlM" secondAttribute="leading" id="Xr6-Mx-UP9"/>
                     <constraint firstItem="wCS-5t-1WD" firstAttribute="centerX" secondItem="drV-xc-QER" secondAttribute="centerX" id="Yxi-M1-ari"/>
                     <constraint firstItem="0uc-s6-8OI" firstAttribute="top" secondItem="drV-xc-QER" secondAttribute="bottom" id="bcg-pG-HiZ"/>
                     <constraint firstItem="drV-xc-QER" firstAttribute="height" secondItem="0uc-s6-8OI" secondAttribute="height" id="dIx-sp-cKR"/>
                     <constraint firstItem="jsV-vJ-csQ" firstAttribute="leading" secondItem="gxp-0j-lL5" secondAttribute="leading" id="eae-8c-Sba"/>
-                    <constraint firstItem="OOA-08-BeE" firstAttribute="top" secondItem="0uc-s6-8OI" secondAttribute="bottom" id="gIg-hv-RvB"/>
                     <constraint firstItem="wCS-5t-1WD" firstAttribute="height" secondItem="drV-xc-QER" secondAttribute="height" id="gJk-Cw-pJT"/>
                     <constraint firstItem="drV-xc-QER" firstAttribute="centerX" secondItem="0uc-s6-8OI" secondAttribute="centerX" id="gua-WB-YxV"/>
-                    <constraint firstItem="OOA-08-BeE" firstAttribute="trailing" secondItem="yGh-SB-vlM" secondAttribute="trailing" id="k2U-xg-qji"/>
                     <constraint firstAttribute="trailing" secondItem="0uc-s6-8OI" secondAttribute="trailing" id="nsi-VG-GEh"/>
                     <constraint firstItem="wCS-5t-1WD" firstAttribute="width" secondItem="drV-xc-QER" secondAttribute="width" id="pkQ-ov-N69"/>
                     <constraint firstItem="drV-xc-QER" firstAttribute="top" secondItem="wCS-5t-1WD" secondAttribute="bottom" id="qRU-KB-a8m"/>
@@ -166,9 +162,9 @@
                 <outlet property="nameLabel" destination="E0I-dd-kPb" id="BJV-CF-s64"/>
                 <outlet property="numberOfTask" destination="yGh-SB-vlM" id="AfJ-Oz-IoO"/>
                 <outlet property="ratingLabel" destination="cLP-O8-dh6" id="yd1-hC-AtD"/>
-                <outlet property="taskDetailsTextView" destination="OOA-08-BeE" id="PA2-3O-Cec"/>
+                <outlet property="webView" destination="6Zv-ic-h1o" id="qN3-t5-Icn"/>
             </connections>
-            <point key="canvasLocation" x="-98" y="250"/>
+            <point key="canvasLocation" x="-481" y="115"/>
         </tableViewCell>
     </objects>
     <resources>

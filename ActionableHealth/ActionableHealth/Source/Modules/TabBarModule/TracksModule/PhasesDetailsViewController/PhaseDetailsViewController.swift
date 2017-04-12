@@ -133,17 +133,7 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
         }
 
     }
-
-    func readMoreTapped(tag: Int, obj: AnyObject?) {
-        if let task = obj as? TasksModel {
-            if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
-                showTextView.text = task.details
-                showTextView.navigationTitle = task.taskName
-                getNavigationController()?.pushViewController(showTextView, animated: true)
-            }
-        }
-    }
-
+    
     func taskFilesTapped(tag: Int, obj: AnyObject?) {
 
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {

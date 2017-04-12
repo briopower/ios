@@ -11,8 +11,8 @@ protocol PhaseDetailsCellDelegate:NSObjectProtocol {
     func commentsTapped(tag:Int, obj:AnyObject?)
     func rateTaskTapped(tag:Int, obj:AnyObject?)
     func taskFilesTapped(tag:Int, obj:AnyObject?)
-    func readMoreTapped(tag:Int, obj:AnyObject?)
 }
+
 enum TaskStatus:String {
     case New, InProgress, Paused, Complete, InComplete, Late
 
@@ -66,8 +66,8 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var slider: UISlider?
     @IBOutlet weak var taskCompleted: UITextField?
     @IBOutlet weak var startStopButton: UIButton?
-    @IBOutlet weak var taskDetailsTextView: UITextView?
     @IBOutlet weak var durationLabel: UILabel?
+    @IBOutlet weak var webView: UIWebView!
 
     //MARK:- Variables
     static var statusCell = "PhaseDetailsCell_Status"
@@ -75,16 +75,11 @@ class PhaseDetailsCell: UITableViewCell {
 
     weak var delegate:PhaseDetailsCellDelegate?
     var currentTask:TasksModel?
-    let readMoreString = "...Read more"
-    var tapGesture:UITapGestureRecognizer?
-    
+
     //MARK:- -------------------
     override func awakeFromNib() {
         super.awakeFromNib()
-        if tapGesture?.view == nil{
-            tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.textViewTapped(_:)))
-            taskDetailsTextView?.addGestureRecognizer(tapGesture!)
-        }
+        webView.scrollView.showsVerticalScrollIndicator = false
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -122,17 +117,6 @@ extension PhaseDetailsCell{
                 setStatus(TaskStatus.Paused)
             default:
                 break
-            }
-        }
-    }
-
-    @IBAction func textViewTapped(sender: UITapGestureRecognizer) {
-        if let textView = sender.view as? UITextView {
-            let location = sender.locationInView(textView)
-            if let tapPostion = textView.closestPositionToPoint(location) {
-                if let range = textView.tokenizer.rangeEnclosingPosition(tapPostion, withGranularity: .Word, inDirection: UITextLayoutDirection.Right.rawValue){
-                    tappedInRange(range)
-                }
             }
         }
     }
@@ -175,43 +159,7 @@ extension PhaseDetailsCell{
             commentCountButton?.hidden = true
             rateTaskButton?.hidden = true
         }
-        configDetailsText()
-    }
-
-    func configDetailsText() {
-        if let text = currentTask?.details {
-
-            let fixSize = 250
-            let customFont = (UIFont.getAppRegularFontWithSize(17) ?? UIFont.systemFontOfSize(17)).getDynamicSizeFont()
-            let mutableAttrString = NSMutableAttributedString(string: "")
-
-            if text.characters.count <= fixSize {
-                mutableAttrString.appendAttributedString(NSAttributedString(string: text, attributes: [NSFontAttributeName : customFont]))
-            }else{
-                let numberOfCharToAccept = fixSize - readMoreString.characters.count
-                let acceptableString = text.substringWithRange(text.startIndex ..< text.startIndex.advancedBy(numberOfCharToAccept))
-                mutableAttrString.appendAttributedString(NSAttributedString(string: acceptableString, attributes: [NSFontAttributeName : customFont]))
-                mutableAttrString.appendAttributedString(NSAttributedString(string: readMoreString, attributes: [NSFontAttributeName : customFont,
-                    NSForegroundColorAttributeName: UIColor.blueColor()]))
-            }
-            taskDetailsTextView?.attributedText = mutableAttrString
-
-        }else{
-            taskDetailsTextView?.attributedText = nil
-        }
-
-    }
-
-    func tappedInRange(textRange:UITextRange) {
-        if let txtView = taskDetailsTextView {
-            let readMoreRange = NSString(string: txtView.text).rangeOfString(readMoreString)
-            let location = txtView.offsetFromPosition(txtView.beginningOfDocument, toPosition: textRange.start)
-            let length = txtView.offsetFromPosition(textRange.start, toPosition: textRange.end)
-            let tappedTextRange = NSRange(location: location, length: length)
-            if NSIntersectionRange(readMoreRange, tappedTextRange).length > 0 {
-                delegate?.readMoreTapped(self.tag, obj: currentTask)
-            }
-        }
+        webView.loadHTMLString(currentTask?.details ?? "", baseURL: nil)
     }
 
     func updateCompleted() {

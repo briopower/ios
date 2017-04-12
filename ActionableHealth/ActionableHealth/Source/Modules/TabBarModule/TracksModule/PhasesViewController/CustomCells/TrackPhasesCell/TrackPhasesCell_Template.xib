@@ -27,14 +27,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="100" verticalHuggingPriority="100" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="100" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EdL-4g-JBV">
-                        <rect key="frame" x="21" y="180" width="373" height="195"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Uf-th-vGD">
                         <rect key="frame" x="0.0" y="60" width="414" height="60"/>
                         <subviews>
@@ -133,6 +125,10 @@
                             <constraint firstItem="Ryn-OG-ulC" firstAttribute="leading" secondItem="CRE-D5-3zF" secondAttribute="leading" id="ic7-42-BRO"/>
                         </constraints>
                     </view>
+                    <webView contentMode="scaleToFill" suppressesIncrementalRendering="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yma-Cr-beh">
+                        <rect key="frame" x="21" y="180" width="373" height="196"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </webView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5T5-eO-jS2" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="375" width="414" height="1"/>
                         <constraints>
@@ -145,17 +141,17 @@
                     <constraint firstItem="WdL-iI-83L" firstAttribute="centerX" secondItem="3Uf-th-vGD" secondAttribute="centerX" id="CGW-nS-Awl"/>
                     <constraint firstItem="3Uf-th-vGD" firstAttribute="height" secondItem="RlV-lo-jAR" secondAttribute="height" id="HLE-dD-NC3"/>
                     <constraint firstItem="CRE-D5-3zF" firstAttribute="leading" secondItem="w0u-mX-UYR" secondAttribute="leading" id="KZU-Sl-hEF"/>
+                    <constraint firstItem="yma-Cr-beh" firstAttribute="leading" secondItem="w0u-mX-UYR" secondAttribute="leading" id="MQW-yK-tXj"/>
+                    <constraint firstItem="yma-Cr-beh" firstAttribute="top" secondItem="RlV-lo-jAR" secondAttribute="bottom" id="WAp-vb-VrF"/>
+                    <constraint firstAttribute="bottom" secondItem="yma-Cr-beh" secondAttribute="bottom" id="YQ1-1O-RvS"/>
                     <constraint firstItem="WdL-iI-83L" firstAttribute="height" secondItem="3Uf-th-vGD" secondAttribute="height" id="dY0-Tf-olR"/>
                     <constraint firstAttribute="trailing" secondItem="5T5-eO-jS2" secondAttribute="trailing" id="eo4-At-H9Q"/>
-                    <constraint firstItem="EdL-4g-JBV" firstAttribute="trailing" secondItem="w0u-mX-UYR" secondAttribute="trailing" id="hBj-j7-lCL"/>
                     <constraint firstItem="WdL-iI-83L" firstAttribute="top" secondItem="49a-oz-bFs" secondAttribute="top" id="hep-ZQ-9qD"/>
                     <constraint firstItem="3Uf-th-vGD" firstAttribute="width" secondItem="RlV-lo-jAR" secondAttribute="width" id="hiL-eu-x9a"/>
                     <constraint firstItem="3Uf-th-vGD" firstAttribute="centerX" secondItem="RlV-lo-jAR" secondAttribute="centerX" id="kqm-Ug-Ygu"/>
                     <constraint firstAttribute="trailing" secondItem="RlV-lo-jAR" secondAttribute="trailing" id="lbQ-Z7-1R8"/>
-                    <constraint firstItem="EdL-4g-JBV" firstAttribute="leading" secondItem="w0u-mX-UYR" secondAttribute="leading" id="lgi-Vq-dKq"/>
-                    <constraint firstItem="EdL-4g-JBV" firstAttribute="top" secondItem="RlV-lo-jAR" secondAttribute="bottom" id="o5p-Ev-euv"/>
                     <constraint firstItem="3Uf-th-vGD" firstAttribute="top" secondItem="WdL-iI-83L" secondAttribute="bottom" id="put-zE-Epm"/>
-                    <constraint firstItem="5T5-eO-jS2" firstAttribute="top" secondItem="EdL-4g-JBV" secondAttribute="bottom" id="uSf-YV-JZV"/>
+                    <constraint firstItem="yma-Cr-beh" firstAttribute="trailing" secondItem="w0u-mX-UYR" secondAttribute="trailing" id="rEU-e5-0MV"/>
                     <constraint firstAttribute="bottom" secondItem="5T5-eO-jS2" secondAttribute="bottom" id="uWR-3Y-2QL"/>
                     <constraint firstItem="RlV-lo-jAR" firstAttribute="leading" secondItem="49a-oz-bFs" secondAttribute="leading" id="wtZ-He-iu8"/>
                     <constraint firstItem="WdL-iI-83L" firstAttribute="width" secondItem="3Uf-th-vGD" secondAttribute="width" id="xOn-pS-aGM"/>
@@ -166,7 +162,7 @@
                 <outlet property="nameLabel" destination="Ryn-OG-ulC" id="UWm-KB-xgF"/>
                 <outlet property="numberOfTask" destination="w0u-mX-UYR" id="7Pa-Gn-TEY"/>
                 <outlet property="ratingLabel" destination="CRE-D5-3zF" id="2DT-ct-u7A"/>
-                <outlet property="taskDetailsTextView" destination="EdL-4g-JBV" id="wfm-un-AGH"/>
+                <outlet property="webView" destination="yma-Cr-beh" id="lov-tQ-rND"/>
             </connections>
             <point key="canvasLocation" x="-98" y="250"/>
         </tableViewCell>

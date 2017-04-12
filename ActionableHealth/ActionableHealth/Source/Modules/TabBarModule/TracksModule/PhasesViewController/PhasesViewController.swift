@@ -40,10 +40,7 @@ extension PhasesViewController{
     func setupView() {
         tblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: nil), forCellReuseIdentifier: String(TrackPhasesCell))
         tblView.registerNib(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
-        tblView.estimatedRowHeight = 100
-        tblView.rowHeight = UITableViewAutomaticDimension
     }
-
 }
 
 //MARK:- UITableViewDataSource
@@ -63,6 +60,12 @@ extension PhasesViewController:UITableViewDataSource{
     }
 }
 
+//MARK:- UITableViewDataSource
+extension PhasesViewController:UITableViewDelegate{
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UIDevice.height() - UIDevice.navigationBarheight()
+    }
+}
 //MARK:- TrackPhasesCellDelegate
 extension PhasesViewController:TrackPhasesCellDelegate{
     

@@ -120,7 +120,7 @@ extension TrackDetailsViewController{
             trackDetailsTblView.tableHeaderView = headerView
         }
 
-        trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
+//        trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
         trackDetailsTblView.estimatedRowHeight = 80
         trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
         trackDetailsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
@@ -268,6 +268,42 @@ extension TrackDetailsViewController:UITableViewDelegate{
         default:
             break
         }
+    }
+    
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch sourceType {
+        case .Templates:
+            if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
+                switch sectionType {
+                case .Resources:
+                    if currentTemplate?.resources.count > 0{
+                        return UITableViewAutomaticDimension
+                    }else{
+                        return 0
+                    }
+                    
+                default:
+                    return UITableViewAutomaticDimension;
+                }
+            }
+        case .Tracks:
+            if let sectionType = TrackSectionTypes(rawValue: indexPath.section) {
+                switch sectionType {
+                case .Resources:
+                    if currentTemplate?.resources.count > 0{
+                        return UITableViewAutomaticDimension
+                    }else{
+                        return 0
+                    }
+                default:
+                    return UITableViewAutomaticDimension;
+                }
+            }
+        default:
+            break
+        }
+        return UITableViewAutomaticDimension
     }
 }
 

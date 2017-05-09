@@ -30,6 +30,7 @@ enum TaskStatus:String {
 
     static func getConfig(currentTask:TasksModel) -> (status:String, sliderEnabled:Bool, sliderValue:Double, startStopImage:UIImage?, detailsString:String) {
         if  let status = TaskStatus(rawValue: currentTask.status) {
+            
             switch status {
             case .New:
                 return (status.rawValue.uppercaseString, false, 0, UIImage(named: "Start"), "New as on \(NSDate().mediumDateString)")
@@ -67,6 +68,9 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var taskCompleted: UITextField?
     @IBOutlet weak var startStopButton: UIButton?
     @IBOutlet weak var durationLabel: UILabel?
+    @IBOutlet weak var resourceView: UIView!
+    
+    
     @IBOutlet weak var webView: UIWebView!
 
     //MARK:- Variables
@@ -80,13 +84,21 @@ class PhaseDetailsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         webView.scrollView.showsVerticalScrollIndicator = false
+        taskNameLabel?.layer.cornerRadius = 6.0
+        taskNameLabel?.layer.masksToBounds = true
+        taskNameLabel?.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
+    @IBAction func taskFiles(sender: UIButton) {
+        delegate?.taskFilesTapped(self.tag, obj: currentTask)
+    }
 }
+
+
 
 //MARK:- Button Action
 extension PhaseDetailsCell{
@@ -120,17 +132,17 @@ extension PhaseDetailsCell{
             }
         }
     }
+    
+    
 
-    @IBAction func taskFiles(sender: UIButton) {
-        delegate?.taskFilesTapped(self.tag, obj: currentTask)
-    }
+    
 }
 
 //MARK:- Additional methods
 extension PhaseDetailsCell{
     func configureCell(obj:TasksModel) {
         currentTask = obj
-        taskNameLabel?.text = currentTask?.taskName.uppercaseString ?? ""
+        taskNameLabel?.text = "  " + (currentTask?.taskName.uppercaseString ?? "")
         starRatingView?.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel?.text = "\(currentTask?.rating ?? 0) Rating"
         commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journal(s)", forState: .Normal)
@@ -160,6 +172,22 @@ extension PhaseDetailsCell{
             rateTaskButton?.hidden = true
         }
         webView.loadHTMLString(currentTask?.details ?? "", baseURL: nil)
+        
+        if obj.resources.count > 0{
+            var frame = resourceView.frame
+            frame.size.height = (220/1242) * frame.size.width
+            resourceView.frame = frame
+            resourceView.hidden = false;
+        }else{
+            var frame = resourceView.frame
+            frame.size.height = 0
+            resourceView.frame = frame
+            resourceView.hidden = true;
+        }
+        
+        
+        
+        
     }
 
     func updateCompleted() {

@@ -31,6 +31,18 @@ class FilesCell: UITableViewCell {
 //MARK:- Additional Methods
 extension FilesCell{
     func configCell(obj:Resources) {
-        fileNameLabel.text = obj.fileName
+        let fileNameSeperated = obj.fileName?.componentsSeparatedByString(".")
+        var fileName = ""
+        if let fileWords = fileNameSeperated{
+            for (index, element) in fileWords.enumerate() {
+                if index != fileWords.count - 1{
+                    fileName = fileName + element
+                }
+                
+            }
+        }
+        
+        
+        fileNameLabel.text = fileName
     }
 }

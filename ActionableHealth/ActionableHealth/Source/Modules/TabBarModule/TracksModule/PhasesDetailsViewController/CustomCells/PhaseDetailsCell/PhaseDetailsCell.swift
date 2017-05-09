@@ -146,6 +146,11 @@ extension PhaseDetailsCell{
         starRatingView?.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel?.text = "\(currentTask?.rating ?? 0) Rating"
         commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journal(s)", forState: .Normal)
+//        var taskNameLabelFrame = taskNameLabel?.frame
+//        taskNameLabelFrame?.size.height = (220/1242) * frame.size.width
+//        if let frame = taskNameLabelFrame{
+//            taskNameLabel?.frame = frame
+//        }
         commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
         rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
 
@@ -186,6 +191,7 @@ extension PhaseDetailsCell{
         }
         
         
+        self.layoutIfNeeded()
         
         
     }

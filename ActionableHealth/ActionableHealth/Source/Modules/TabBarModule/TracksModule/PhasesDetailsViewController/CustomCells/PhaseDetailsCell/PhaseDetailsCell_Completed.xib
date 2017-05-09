@@ -62,7 +62,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-eh-zKk" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="35" y="27" width="410" height="85"/>
+                                <rect key="frame" x="35" y="27" width="410" height="68"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
@@ -70,7 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHX-ct-JgX" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="35.5" y="213.5" width="224.5" height="73"/>
+                                <rect key="frame" x="35.5" y="186.5" width="224.5" height="100"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-1C-qvL" customClass="HCSStarRatingView">
-                                <rect key="frame" x="35" y="157.5" width="96.5" height="23"/>
+                                <rect key="frame" x="35" y="133" width="96.5" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="mz2-1C-qvL" secondAttribute="height" multiplier="250:60" id="hbM-jd-ElE"/>
                                 </constraints>
@@ -111,7 +111,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAw-bg-GLS" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="144" y="157.5" width="70.5" height="23"/>
+                                <rect key="frame" x="144" y="133" width="70.5" height="23"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -126,7 +126,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xeg-63-GD0">
-                                <rect key="frame" x="394.5" y="143.5" width="50.5" height="50.5"/>
+                                <rect key="frame" x="394.5" y="119" width="50.5" height="50.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xeg-63-GD0" secondAttribute="height" id="o1L-1g-6za"/>
                                 </constraints>
@@ -183,7 +183,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SzV-eh-zKk" firstAttribute="height" secondItem="Uue-u3-x0G" secondAttribute="height" id="4ke-mL-VgM"/>
                             <constraint firstItem="W9J-bR-GUN" firstAttribute="leading" secondItem="Uue-u3-x0G" secondAttribute="leading" id="85E-nn-3RH"/>
                             <constraint firstItem="W9J-bR-GUN" firstAttribute="trailing" secondItem="Uue-u3-x0G" secondAttribute="trailing" id="9Yi-Rj-NAE"/>
                             <constraint firstItem="PPs-ak-bTb" firstAttribute="leading" secondItem="mHX-ct-JgX" secondAttribute="leading" id="AzO-M4-zda"/>
@@ -207,6 +206,7 @@
                             <constraint firstItem="SzV-eh-zKk" firstAttribute="top" secondItem="j9A-FO-mrc" secondAttribute="bottom" id="dzd-pD-p2X"/>
                             <constraint firstItem="mz2-1C-qvL" firstAttribute="top" secondItem="SzV-eh-zKk" secondAttribute="bottom" multiplier="1.4" id="gIF-na-GYm"/>
                             <constraint firstItem="xeg-63-GD0" firstAttribute="trailing" secondItem="fgl-0t-QQj" secondAttribute="trailing" id="itn-Y0-RGX"/>
+                            <constraint firstItem="SzV-eh-zKk" firstAttribute="height" secondItem="MHp-5r-gNs" secondAttribute="height" multiplier="0.8" id="kcj-EU-k8v"/>
                             <constraint firstItem="585-hB-Z3h" firstAttribute="leading" secondItem="PPs-ak-bTb" secondAttribute="leading" id="kuS-QU-E76"/>
                             <constraint firstItem="MHp-5r-gNs" firstAttribute="width" secondItem="MHp-5r-gNs" secondAttribute="height" multiplier="1242:220" priority="999" placeholder="YES" id="lFC-sE-rtn"/>
                             <constraint firstItem="xeg-63-GD0" firstAttribute="trailing" secondItem="SzV-eh-zKk" secondAttribute="trailing" id="lz5-E2-bIU"/>

@@ -2880,15 +2880,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: vidhan nandi (W6T8TLY7B9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "5eaf22a1-0db9-49c5-bfcc-eaba5338d22e";
-				PROVISIONING_PROFILE_SPECIFIER = ActionableHealthDev;
+				PROVISIONING_PROFILE = "00c78739-51ea-4c99-a957-1c57b8c86756";
+				PROVISIONING_PROFILE_SPECIFIER = ActionableHealthInHouse;
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};

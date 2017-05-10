@@ -68,7 +68,7 @@ class PhaseDetailsCell: UITableViewCell {
     @IBOutlet weak var taskCompleted: UITextField?
     @IBOutlet weak var startStopButton: UIButton?
     @IBOutlet weak var durationLabel: UILabel?
-    @IBOutlet weak var resourceView: UIView!
+    @IBOutlet weak var resourceView: UIView?
     
     
     @IBOutlet weak var webView: UIWebView!
@@ -76,7 +76,7 @@ class PhaseDetailsCell: UITableViewCell {
     //MARK:- Variables
     static var statusCell = "PhaseDetailsCell_Status"
     static var completedCell = "PhaseDetailsCell_Completed"
-
+    static var informationCell = "PhaseDetailCell"
     weak var delegate:PhaseDetailsCellDelegate?
     var currentTask:TasksModel?
 
@@ -177,17 +177,18 @@ extension PhaseDetailsCell{
             rateTaskButton?.hidden = true
         }
         webView.loadHTMLString(currentTask?.details ?? "", baseURL: nil)
-        
+        if var frame  = resourceView?.frame{
         if obj.resources.count > 0{
-            var frame = resourceView.frame
+            
             frame.size.height = (220/1242) * frame.size.width
-            resourceView.frame = frame
-            resourceView.hidden = false;
+            resourceView!.frame = frame
+            resourceView!.hidden = false;
+            
         }else{
-            var frame = resourceView.frame
             frame.size.height = 0
-            resourceView.frame = frame
-            resourceView.hidden = true;
+            resourceView!.frame = frame
+            resourceView!.hidden = true;
+        }
         }
         
         

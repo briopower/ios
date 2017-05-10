@@ -71,6 +71,7 @@ extension PhaseDetailsViewController{
         phaseDetailsTblView.registerNib(UINib(nibName: String(PhaseDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhaseDetailsCell))
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedCell)
+        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.informationCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.informationCell)
 
     }
 }
@@ -84,8 +85,9 @@ extension PhaseDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let type = currentPhase?.parentTemplate.objectType {
             switch type {
+                //changed cell from pohasedetailscell to phasedetailcell.
             case .Template:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell)) as? PhaseDetailsCell {
+                if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell.informationCell)) as? PhaseDetailsCell {
                     if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
                         cell.tag = indexPath.row
                         cell.delegate = self

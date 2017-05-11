@@ -16,13 +16,22 @@ protocol PhaseDetailsCellDelegate:NSObjectProtocol {
 enum TaskStatus:String {
     case New, InProgress, Paused, Complete, InComplete, Late
 
-    static func getNibName(status:String) -> String{
-        if let currentStatus = TaskStatus(rawValue: status) {
+    static func getNibName(task:TasksModel) -> String{
+        if let currentStatus = TaskStatus(rawValue: task.status) {
             switch currentStatus{
             case .Complete, .InComplete:
-                return PhaseDetailsCell.completedCell
+                if(task.resources.count > 0){
+                   return PhaseDetailsCell.completedCell
+                }else{
+                    return PhaseDetailsCell.completedNoResourceCell
+                }
+                
             default:
-                return PhaseDetailsCell.statusCell
+                if(task.resources.count > 0){
+                    return PhaseDetailsCell.statusCell
+                }else{
+                    return PhaseDetailsCell.statusNoResourceCell
+                }
             }
         }
         return ""
@@ -75,7 +84,9 @@ class PhaseDetailsCell: UITableViewCell {
 
     //MARK:- Variables
     static var statusCell = "PhaseDetailsCell_Status"
+    static var statusNoResourceCell = "PhaseDetailsCell_Status_NoResource"
     static var completedCell = "PhaseDetailsCell_Completed"
+    static var completedNoResourceCell = "PhaseDetailsCell_Completed_NoResource"
     static var informationCell = "PhaseDetailCell"
     weak var delegate:PhaseDetailsCellDelegate?
     var currentTask:TasksModel?
@@ -146,11 +157,6 @@ extension PhaseDetailsCell{
         starRatingView?.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel?.text = "\(currentTask?.rating ?? 0) Rating"
         commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journal(s)", forState: .Normal)
-//        var taskNameLabelFrame = taskNameLabel?.frame
-//        taskNameLabelFrame?.size.height = (220/1242) * frame.size.width
-//        if let frame = taskNameLabelFrame{
-//            taskNameLabel?.frame = frame
-//        }
         commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
         rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
 
@@ -177,25 +183,9 @@ extension PhaseDetailsCell{
             rateTaskButton?.hidden = true
         }
         webView.loadHTMLString(currentTask?.details ?? "", baseURL: nil)
-        if var frame  = resourceView?.frame{
-        if obj.resources.count > 0{
-            
-            frame.size.height = (220/1242) * frame.size.width
-            resourceView!.frame = frame
-            resourceView!.hidden = false;
-            
-        }else{
-            frame.size.height = 0
-            resourceView!.frame = frame
-            resourceView!.hidden = true;
-        }
-        }
-        
-        
-        self.layoutIfNeeded()
-        
         
     }
+    
 
     func updateCompleted() {
         taskCompleted?.text = "\(Int(round(slider?.value ?? 0)))%"

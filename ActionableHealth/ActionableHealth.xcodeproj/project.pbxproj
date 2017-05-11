@@ -237,6 +237,8 @@
 		40EBFEDF1DF8071500605397 /* WelcomeToBrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED81DF8071500605397 /* WelcomeToBrio.swift */; };
 		40EBFEE21DF8078F00605397 /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */; };
 		423958E01EC2D6F200F74C4E /* PhaseDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423958DE1EC2D6F200F74C4E /* PhaseDetailCell.xib */; };
+		426BA4001EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426BA3FE1EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib */; };
+		426BA4061EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426BA4041EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib */; };
 		427A39561EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427A39541EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
 /* End PBXBuildFile section */
@@ -547,6 +549,8 @@
 		40EBFED81DF8071500605397 /* WelcomeToBrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToBrio.swift; sourceTree = "<group>"; };
 		40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterOtpViewController.swift; sourceTree = "<group>"; };
 		423958DE1EC2D6F200F74C4E /* PhaseDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailCell.xib; sourceTree = "<group>"; };
+		426BA3FE1EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell_Status_NoResource.xib; sourceTree = "<group>"; };
+		426BA4041EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell_Completed_NoResource.xib; sourceTree = "<group>"; };
 		427A39541EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell_NoResources.xib; sourceTree = "<group>"; };
 		448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1880,6 +1884,8 @@
 			isa = PBXGroup;
 			children = (
 				3CC9D0861DB8AE7100287068 /* PhaseDetailsCell.swift */,
+				426BA4041EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib */,
+				426BA3FE1EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib */,
 				3CC9D0871DB8AE7100287068 /* PhaseDetailsCell.xib */,
 				3CC9D08A1DB8B44D00287068 /* PhaseDetailsCell_Status.xib */,
 				3CE5B88A1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib */,
@@ -2368,6 +2374,7 @@
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
 				40EBFEDE1DF8071500605397 /* PhoneNoCell.xib in Resources */,
 				3CC9D0851DB8AAB600287068 /* AllTaskCompletedHeaderView.xib in Resources */,
+				426BA4061EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib in Resources */,
 				3C9443B31E37611800C2F695 /* GoogleService-Info.plist in Resources */,
 				3C6BF4CA1E0155F800F6DC70 /* GroupsCell.xib in Resources */,
 				3C8E47971E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
@@ -2401,6 +2408,7 @@
 				3C1EC5931DA3A864003DC2A3 /* Assets.xcassets in Resources */,
 				3C9641311DB4CD7000EE9676 /* MessageListCell.xib in Resources */,
 				3C39DAAC1DB64A8400D86D24 /* Tracks.storyboard in Resources */,
+				426BA4001EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib in Resources */,
 				3CF6AAF51DB4A5D70067387F /* EditProfileDetailsCell_TextView.xib in Resources */,
 				3C1EC52B1DA3A7C0003DC2A3 /* LaunchScreen.storyboard in Resources */,
 				3CCF31081DB74B87001A1E7B /* TrackDetailsHeaderView_Track.xib in Resources */,

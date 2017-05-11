@@ -70,13 +70,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHX-ct-JgX" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="35.5" y="186.5" width="224.5" height="95"/>
+                                <rect key="frame" x="35.5" y="186.5" width="224.5" height="85"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-ak-bTb" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="35" y="305" width="139" height="17"/>
+                                <rect key="frame" x="35" y="295" width="139" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -117,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgl-0t-QQj" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="359" y="298.5" width="86" height="29"/>
+                                <rect key="frame" x="359" y="288.5" width="86" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="RATE TASK"/>
@@ -136,7 +136,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHp-5r-gNs">
-                                <rect key="frame" x="0.0" y="327.5" width="480" height="85"/>
+                                <rect key="frame" x="0.0" y="322.5" width="480" height="85"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resources" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="585-hB-Z3h">
                                         <rect key="frame" x="35" y="34" width="78" height="17"/>
@@ -195,11 +195,11 @@
                             <constraint firstItem="uAw-bg-GLS" firstAttribute="centerY" secondItem="mz2-1C-qvL" secondAttribute="centerY" id="Kvk-UH-CA8"/>
                             <constraint firstItem="mHX-ct-JgX" firstAttribute="leading" secondItem="mz2-1C-qvL" secondAttribute="leading" id="PbQ-o2-e67"/>
                             <constraint firstItem="YWx-15-dW2" firstAttribute="top" secondItem="W9J-bR-GUN" secondAttribute="bottom" constant="5" id="QPb-zO-gTC"/>
-                            <constraint firstItem="MHp-5r-gNs" firstAttribute="top" secondItem="fgl-0t-QQj" secondAttribute="bottom" id="RcS-CJ-fw6"/>
+                            <constraint firstItem="MHp-5r-gNs" firstAttribute="top" secondItem="fgl-0t-QQj" secondAttribute="bottom" constant="5" id="RcS-CJ-fw6"/>
                             <constraint firstItem="j9A-FO-mrc" firstAttribute="leading" secondItem="NEj-Ij-Rgy" secondAttribute="leading" id="TVR-lj-xH0"/>
                             <constraint firstItem="fgl-0t-QQj" firstAttribute="centerY" secondItem="PPs-ak-bTb" secondAttribute="centerY" id="Xlb-tf-4w9"/>
                             <constraint firstItem="fgl-0t-QQj" firstAttribute="top" secondItem="mHX-ct-JgX" secondAttribute="bottom" multiplier="1.03" constant="8" symbolic="YES" id="ZId-n4-bxV"/>
-                            <constraint firstItem="W9J-bR-GUN" firstAttribute="top" secondItem="MHp-5r-gNs" secondAttribute="bottom" id="a8h-1J-hrM"/>
+                            <constraint firstItem="W9J-bR-GUN" firstAttribute="top" secondItem="MHp-5r-gNs" secondAttribute="bottom" constant="5" id="a8h-1J-hrM"/>
                             <constraint firstItem="xeg-63-GD0" firstAttribute="centerY" secondItem="mz2-1C-qvL" secondAttribute="centerY" id="aXj-wG-hag"/>
                             <constraint firstAttribute="trailing" secondItem="YWx-15-dW2" secondAttribute="trailing" id="apJ-Tm-gpk"/>
                             <constraint firstItem="j9A-FO-mrc" firstAttribute="top" secondItem="NEj-Ij-Rgy" secondAttribute="top" id="d37-Hs-3Ef"/>

@@ -72,6 +72,10 @@ extension PhaseDetailsViewController{
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedCell)
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.informationCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.informationCell)
+        
+        
+        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedNoResourceCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedNoResourceCell)
+        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusNoResourceCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusNoResourceCell)
 
     }
 }
@@ -87,7 +91,12 @@ extension PhaseDetailsViewController:UITableViewDataSource{
             switch type {
                 //changed cell from pohasedetailscell to phasedetailcell.
             case .Template:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(PhaseDetailsCell.informationCell)) as? PhaseDetailsCell {
+                var identifier : String!
+                if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                    identifier = task.resources.count > 0 ? String(PhaseDetailsCell) : String(PhaseDetailsCell.informationCell)
+                }
+
+                if let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? PhaseDetailsCell {
                     if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
                         cell.tag = indexPath.row
                         cell.delegate = self
@@ -97,7 +106,7 @@ extension PhaseDetailsViewController:UITableViewDataSource{
                 }
             case .Track:
                 if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
-                    if let cell = tableView.dequeueReusableCellWithIdentifier(TaskStatus.getNibName(task.status)) as? PhaseDetailsCell {
+                    if let cell = tableView.dequeueReusableCellWithIdentifier(TaskStatus.getNibName(task)) as? PhaseDetailsCell {
                         cell.tag = indexPath.row
                         cell.delegate = self
                         cell.configureCell(task)

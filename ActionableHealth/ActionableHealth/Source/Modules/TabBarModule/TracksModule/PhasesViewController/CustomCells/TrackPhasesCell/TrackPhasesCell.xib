@@ -106,7 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="MONDAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0I-dd-kPb" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="20.5" y="20" width="73" height="20"/>
+                                <rect key="frame" x="20.5" y="21.5" width="73" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -162,6 +162,8 @@
                 <outlet property="nameLabel" destination="E0I-dd-kPb" id="BJV-CF-s64"/>
                 <outlet property="numberOfTask" destination="yGh-SB-vlM" id="AfJ-Oz-IoO"/>
                 <outlet property="ratingLabel" destination="cLP-O8-dh6" id="yd1-hC-AtD"/>
+                <outlet property="resourceButtonHeightConstraint" destination="FmZ-If-q6L" id="lqp-cf-3VU"/>
+                <outlet property="resourceView" destination="0uc-s6-8OI" id="WKq-ci-qb8"/>
                 <outlet property="webView" destination="6Zv-ic-h1o" id="qN3-t5-Icn"/>
             </connections>
             <point key="canvasLocation" x="-481" y="115"/>

@@ -17,6 +17,7 @@ class PhasesViewController: CommonViewController {
     var currentPhase:PhasesModel?
     var sourceType = TrackDetailsSourceType.Templates
     let cellName = "TrackPhasesCell_Template"
+    let cellNameNoResource = "TrackPhasesCell_NoResources"
 
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -40,6 +41,7 @@ extension PhasesViewController{
     func setupView() {
         tblView.registerNib(UINib(nibName: String(TrackPhasesCell), bundle: nil), forCellReuseIdentifier: String(TrackPhasesCell))
         tblView.registerNib(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
+        tblView.registerNib(UINib(nibName: cellNameNoResource, bundle: nil), forCellReuseIdentifier: cellNameNoResource)
     }
 }
 
@@ -50,7 +52,10 @@ extension PhasesViewController:UITableViewDataSource{
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let reuseId = sourceType == .Templates ? cellName : String(TrackPhasesCell)
+        var reuseId = sourceType == .Templates ? cellName : String(TrackPhasesCell)
+        if(currentPhase?.resources.count < 1){
+            reuseId = cellNameNoResource
+        }
         if let cell = tableView.dequeueReusableCellWithIdentifier(reuseId) as? TrackPhasesCell, let phase = currentPhase {
             cell.configCell(phase)
             cell.delegate = self

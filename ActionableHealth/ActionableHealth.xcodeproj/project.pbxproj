@@ -237,6 +237,7 @@
 		40EBFEDF1DF8071500605397 /* WelcomeToBrio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFED81DF8071500605397 /* WelcomeToBrio.swift */; };
 		40EBFEE21DF8078F00605397 /* EnterOtpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */; };
 		423958E01EC2D6F200F74C4E /* PhaseDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 423958DE1EC2D6F200F74C4E /* PhaseDetailCell.xib */; };
+		427A39561EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427A39541EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -546,6 +547,7 @@
 		40EBFED81DF8071500605397 /* WelcomeToBrio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeToBrio.swift; sourceTree = "<group>"; };
 		40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterOtpViewController.swift; sourceTree = "<group>"; };
 		423958DE1EC2D6F200F74C4E /* PhaseDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailCell.xib; sourceTree = "<group>"; };
+		427A39541EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell_NoResources.xib; sourceTree = "<group>"; };
 		448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E175286D6CB4870D551118E /* Pods-ActionableHealthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthTests/Pods-ActionableHealthTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1646,6 +1648,7 @@
 			isa = PBXGroup;
 			children = (
 				3CAD352F1E4B313B00A0DB43 /* TrackPhasesCell.swift */,
+				427A39541EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib */,
 				3C5979E81E5F11C900D4380B /* TrackPhasesCell_Template.xib */,
 				3CAD35301E4B313B00A0DB43 /* TrackPhasesCell.xib */,
 			);
@@ -2390,6 +2393,7 @@
 				3C5979E91E5F11C900D4380B /* TrackPhasesCell_Template.xib in Resources */,
 				3C8E47A31E165CAE0019C261 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				3CAE70B91DB0A03A00D733C2 /* Home.storyboard in Resources */,
+				427A39561EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib in Resources */,
 				3CE5B88B1E1BBC1D00526ED8 /* PhaseDetailsCell_Completed.xib in Resources */,
 				3CF5B54C1DB7892000224046 /* TrackFilesCell.xib in Resources */,
 				3CD845821E405BAD002EC90D /* iTunesArtwork@3x.png in Resources */,

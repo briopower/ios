@@ -8,7 +8,7 @@
 
 import UIKit
 enum SettingsCellType:Int {
-    case Edit_Profile, Notification, Separator1, Terms_Conditions, Privacy_Policy, About_Us, Count
+    case Edit_Profile, Notification, Separator1, Terms_Conditions,  About_Us, Count
 
     func getConfig() -> (title:String , imageName:String, hideSideArrow:Bool) {
         switch self {
@@ -18,8 +18,8 @@ enum SettingsCellType:Int {
             return ("Notification", "notificationSettings", true)
         case .Terms_Conditions:
             return ("Terms & Conditions", "t&c", false)
-        case .Privacy_Policy:
-            return ("Privacy Policy", "password", false)
+//        case .Privacy_Policy:
+//            return ("Privacy Policy", "password", false)
         case .About_Us:
             return ("About Us", "about-us", false)
         default:

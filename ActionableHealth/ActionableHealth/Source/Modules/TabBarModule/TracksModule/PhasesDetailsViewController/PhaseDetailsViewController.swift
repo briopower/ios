@@ -18,6 +18,8 @@ class PhaseDetailsViewController: CommonViewController {
     //MARK:- Varibales
     var currentPhase:PhasesModel?
     var selectedTask:TasksModel?
+    var currentTask:TasksModel?
+
 
     //MARK:- Life cycle
     override func viewDidLoad() {
@@ -28,7 +30,7 @@ class PhaseDetailsViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         phaseDetailsTblView.reloadData()
-        setNavigationBarWithTitle(currentPhase?.phaseName ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(currentTask?.taskName ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
     override func viewDidLayoutSubviews() {
@@ -83,7 +85,7 @@ extension PhaseDetailsViewController{
 //MARK:- UITableViewDataSource
 extension PhaseDetailsViewController:UITableViewDataSource{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentPhase?.tasks.count ?? 0
+        return 1
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -92,12 +94,12 @@ extension PhaseDetailsViewController:UITableViewDataSource{
                 //changed cell from pohasedetailscell to phasedetailcell.
             case .Template:
                 var identifier : String!
-                if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                if let task = currentTask {
                     identifier = task.resources.count > 0 ? String(PhaseDetailsCell) : String(PhaseDetailsCell.informationCell)
                 }
 
                 if let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? PhaseDetailsCell {
-                    if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                    if let task = currentTask {
                         cell.tag = indexPath.row
                         cell.delegate = self
                         cell.configureCell(task)
@@ -105,7 +107,7 @@ extension PhaseDetailsViewController:UITableViewDataSource{
                     }
                 }
             case .Track:
-                if let task = currentPhase?.tasks[indexPath.row] as? TasksModel {
+                if let task = currentTask {
                     if let cell = tableView.dequeueReusableCellWithIdentifier(TaskStatus.getNibName(task)) as? PhaseDetailsCell {
                         cell.tag = indexPath.row
                         cell.delegate = self

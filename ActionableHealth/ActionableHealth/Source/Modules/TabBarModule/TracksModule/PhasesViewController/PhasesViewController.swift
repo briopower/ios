@@ -83,10 +83,15 @@ extension PhasesViewController:TrackPhasesCellDelegate{
 
     func numberOfTasksTapped(tag: Int, obj: AnyObject?) {
         if (currentPhase?.tasks.count ?? 0) != 0{
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.taskView) as? TaskListViewController
+            {
                 viewCont.currentPhase = currentPhase
                 getNavigationController()?.pushViewController(viewCont, animated: true)
             }
+//            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
+//                viewCont.currentPhase = currentPhase
+//                getNavigationController()?.pushViewController(viewCont, animated: true)
+//            }
         }
     }
 }

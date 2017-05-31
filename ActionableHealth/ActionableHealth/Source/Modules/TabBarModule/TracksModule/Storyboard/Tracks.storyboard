@@ -844,6 +844,43 @@
             </objects>
             <point key="canvasLocation" x="7937.6811594202909" y="417.39130434782612"/>
         </scene>
+        <!--Task List View Controller-->
+        <scene sceneID="9aX-re-9lC">
+            <objects>
+                <viewController storyboardIdentifier="TaskListViewController" id="L6O-Y1-DRh" customClass="TaskListViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RRC-OV-XSM"/>
+                        <viewControllerLayoutGuide type="bottom" id="rJL-Yg-Cls"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nUB-x7-H1s">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iIT-2f-vCv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="L6O-Y1-DRh" id="tKJ-r0-kWv"/>
+                                    <outlet property="delegate" destination="L6O-Y1-DRh" id="BIF-BK-TIE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iIT-2f-vCv" firstAttribute="top" secondItem="nUB-x7-H1s" secondAttribute="top" id="Vf3-J0-c0m"/>
+                            <constraint firstAttribute="trailing" secondItem="iIT-2f-vCv" secondAttribute="trailing" id="nRT-IA-AZt"/>
+                            <constraint firstAttribute="bottom" secondItem="iIT-2f-vCv" secondAttribute="bottom" id="oHa-f1-CSy"/>
+                            <constraint firstItem="iIT-2f-vCv" firstAttribute="leading" secondItem="nUB-x7-H1s" secondAttribute="leading" id="wEF-Ce-6Wl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="taskListTableView" destination="iIT-2f-vCv" id="lm7-oz-yN8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Lm-Uk-2Lc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8599" y="417"/>
+        </scene>
     </scenes>
     <resources>
         <image name="send" width="36" height="36"/>

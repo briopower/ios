@@ -1474,7 +1474,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Users of the Sites and/or other services of Brio Power should refer to Brio Power's Privacy Policy Link for information about how Brio Power uses and collects information, which may be accessed by clicking on the appropriate link on the particular Site that you visited. You agree that Brio Power may disclose your personal information to a third party if Brio Power believes in good faith that the law or legal process requires it, to protect the rights or property of Brio Power or others, or as otherwise described in the Privacy policy Link</mutableString>
+                                        <mutableString key="content">Users of the Sites and/or other services of Brio Power should refer to Brio Power's Privacy Policy Link for information about how Brio Power uses and collects information, which may be accessed by clicking on the appropriate link on the particular Site that you visited. You agree that Brio Power may disclose your personal information to a third party if Brio Power believes in good faith that the law or legal process requires it, to protect the rights or property of Brio Power or others, or as otherwise described in the Privacy policy Link.</mutableString>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                             <font key="NSFont" size="16" name="TimesNewRomanPSMT"/>
@@ -3066,7 +3066,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">(a)Initiation of Arbitration Proceeding. If either you or Brio Power decide to arbitrate a Dispute, we agree to the following procedure:</string>
+                                        <string key="content">(a) Initiation of Arbitration Proceeding. If either you or Brio Power decide to arbitrate a Dispute, we agree to the following procedure:</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                             <font key="NSFont" size="16" name="TimesNewRomanPSMT"/>
@@ -3743,7 +3743,7 @@ Cg
                                     </fragment>
                                     <fragment>
                                         <string key="content" base64-UTF8="YES">
-Cg
+Cgo
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>

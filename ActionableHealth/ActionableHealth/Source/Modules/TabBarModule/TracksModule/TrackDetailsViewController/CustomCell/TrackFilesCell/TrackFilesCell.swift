@@ -60,4 +60,8 @@ extension TrackFilesCell{
     func configCell(phase:PhasesModel) {
         detailsLabel.text = phase.phaseName
     }
+    
+    func configTaskCell(task:TasksModel) {
+        detailsLabel.text = task.taskName
+    }
 }

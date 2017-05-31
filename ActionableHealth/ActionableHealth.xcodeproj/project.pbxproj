@@ -240,6 +240,7 @@
 		426BA4001EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426BA3FE1EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib */; };
 		426BA4061EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib in Resources */ = {isa = PBXBuildFile; fileRef = 426BA4041EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib */; };
 		427A39561EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427A39541EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib */; };
+		4282FBE01EDE9198003200D7 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4282FBDF1EDE9198003200D7 /* TaskListViewController.swift */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -552,6 +553,7 @@
 		426BA3FE1EC435F900B670DB /* PhaseDetailsCell_Status_NoResource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell_Status_NoResource.xib; sourceTree = "<group>"; };
 		426BA4041EC4363C00B670DB /* PhaseDetailsCell_Completed_NoResource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhaseDetailsCell_Completed_NoResource.xib; sourceTree = "<group>"; };
 		427A39541EC33FA9007AEEA7 /* TrackPhasesCell_NoResources.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackPhasesCell_NoResources.xib; sourceTree = "<group>"; };
+		4282FBDF1EDE9198003200D7 /* TaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4B7514541FBC9B946442564C /* Pods_ActionableHealthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E175286D6CB4870D551118E /* Pods-ActionableHealthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthTests/Pods-ActionableHealthTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1797,6 +1799,7 @@
 				3CF5B5611DB7A55000224046 /* CommentsViewController */,
 				3CF5B5551DB79DE600224046 /* InviteForTracksViewController */,
 				3C39DAA91DB64A7400D86D24 /* TrackDetailsViewController */,
+				4282FBDE1EDE914D003200D7 /* TaskListViewController */,
 				3CBD5C721DA7AF71004BCAE0 /* TracksViewController */,
 			);
 			path = TracksModule;
@@ -2225,6 +2228,14 @@
 				40EBFEE11DF8078F00605397 /* EnterOtpViewController.swift */,
 			);
 			path = EnterOtpController;
+			sourceTree = "<group>";
+		};
+		4282FBDE1EDE914D003200D7 /* TaskListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4282FBDF1EDE9198003200D7 /* TaskListViewController.swift */,
+			);
+			path = TaskListViewController;
 			sourceTree = "<group>";
 		};
 		623BBCDDBBA68AEC3583C3DC /* Pods */ = {
@@ -2664,6 +2675,7 @@
 				3CFB48E21DFA7E110022F3B6 /* SearchUserViewController.swift in Sources */,
 				3CBD5C741DA7AF86004BCAE0 /* ChatsViewController.swift in Sources */,
 				3C8E47A51E165CAE0019C261 /* README.md in Sources */,
+				4282FBE01EDE9198003200D7 /* TaskListViewController.swift in Sources */,
 				3CCF31021DB7349B001A1E7B /* SentMessageCell.swift in Sources */,
 				3C1EC5941DA3A864003DC2A3 /* CommonViewController.swift in Sources */,
 				3CE600271E7FD6C100904C1C /* PhasesListViewController.swift in Sources */,

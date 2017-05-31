@@ -30,7 +30,7 @@ class PhaseDetailsViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         phaseDetailsTblView.reloadData()
-        setNavigationBarWithTitle(currentTask?.taskName ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Task Info", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
     override func viewDidLayoutSubviews() {
@@ -68,8 +68,8 @@ extension PhaseDetailsViewController{
         //            phaseDetailsTblView.tableHeaderView = headerView
         //        }
 
-        phaseDetailsTblView.rowHeight = UITableViewAutomaticDimension
-        phaseDetailsTblView.estimatedRowHeight = 400
+        phaseDetailsTblView.rowHeight = UIScreen.mainScreen().bounds.height - 44
+//        phaseDetailsTblView.estimatedRowHeight = 400
         phaseDetailsTblView.registerNib(UINib(nibName: String(PhaseDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhaseDetailsCell))
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
         phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedCell)

@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="479" height="384"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="61f-gk-eNW" id="WuH-V7-QNO">
-                <rect key="frame" x="0.0" y="0.0" width="479" height="383"/>
+                <rect key="frame" x="0.0" y="0.0" width="479" height="383.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMZ-vx-kwE">
@@ -62,21 +62,24 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPc-9h-kRL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="35" y="27" width="409.5" height="20.5"/>
+                                <rect key="frame" x="35" y="27" width="409.5" height="63.5"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="gPc-9h-kRL" secondAttribute="width" multiplier="60:385" id="jmj-25-Iv6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                 <color key="textColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKd-kM-1sA" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="35.5" y="113" width="224.5" height="17"/>
+                                <rect key="frame" x="35.5" y="179.5" width="224.5" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsh-Hw-QED" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="35" y="148" width="139" height="17"/>
+                                <rect key="frame" x="35" y="216.5" width="139" height="17"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -87,7 +90,7 @@
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SGa-t9-ddU" customClass="HCSStarRatingView">
-                                <rect key="frame" x="35" y="66.5" width="96.5" height="23"/>
+                                <rect key="frame" x="35" y="127" width="96.5" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SGa-t9-ddU" secondAttribute="height" multiplier="250:60" id="yZX-2s-ALa"/>
                                 </constraints>
@@ -111,13 +114,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAz-AR-8Rl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="144" y="66.5" width="70.5" height="23"/>
+                                <rect key="frame" x="144" y="127" width="70.5" height="23"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-WO-cVu" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="358.5" y="141.5" width="86" height="29"/>
+                                <rect key="frame" x="358.5" y="210" width="86" height="29"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="RATE TASK"/>
@@ -126,7 +129,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-k6-RPC">
-                                <rect key="frame" x="393.5" y="52.5" width="51" height="50.5"/>
+                                <rect key="frame" x="393.5" y="113" width="51" height="50.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OL7-k6-RPC" secondAttribute="height" id="FHc-vw-k4F"/>
                                 </constraints>
@@ -136,7 +139,7 @@
                                 </connections>
                             </button>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dev-2Q-DPT">
-                                <rect key="frame" x="35" y="170" width="409.5" height="206.5"/>
+                                <rect key="frame" x="35" y="238.5" width="409.5" height="138"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="InE-Mx-p3z" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">

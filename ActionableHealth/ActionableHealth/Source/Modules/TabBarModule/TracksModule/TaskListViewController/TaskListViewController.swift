@@ -20,7 +20,9 @@ class TaskListViewController: CommonViewController  {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Task Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        if let title = currentPhase?.phaseName {
+            setNavigationBarWithTitle(title, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        }
     }
 
     override func didReceiveMemoryWarning() {

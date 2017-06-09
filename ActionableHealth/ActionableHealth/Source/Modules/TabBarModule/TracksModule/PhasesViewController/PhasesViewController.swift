@@ -27,7 +27,10 @@ class PhasesViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Phases Info", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        if let title = currentPhase?.phaseName {
+            setNavigationBarWithTitle(title, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

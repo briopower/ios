@@ -30,7 +30,9 @@ class PhaseDetailsViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         phaseDetailsTblView.reloadData()
-        setNavigationBarWithTitle("Task Info", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        if let title = currentPhase?.phaseName {
+            setNavigationBarWithTitle(title, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        }
     }
 
     override func viewDidLayoutSubviews() {

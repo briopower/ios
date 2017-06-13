@@ -80,6 +80,7 @@ extension PhasesViewController:TrackPhasesCellDelegate{
     func taskFilesTapped(tag: Int, obj: AnyObject?) {
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
             viewCont.resources = (obj as? PhasesModel)?.resources ?? NSMutableArray()
+            viewCont.navTitle = (obj as? PhasesModel)?.phaseName ?? ""
             getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }

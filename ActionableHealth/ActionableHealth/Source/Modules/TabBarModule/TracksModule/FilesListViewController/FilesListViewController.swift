@@ -16,6 +16,7 @@ class FilesListViewController: CommonViewController {
 
     //MARK:- Variables
     var resources = NSMutableArray()
+    var navTitle = ""
 
     //MARK:- LifeCycle
     override func viewDidLoad() {
@@ -25,7 +26,7 @@ class FilesListViewController: CommonViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Resources", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(navTitle, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
     
     override func didReceiveMemoryWarning() {

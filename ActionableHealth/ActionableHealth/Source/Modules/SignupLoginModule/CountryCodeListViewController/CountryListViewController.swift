@@ -119,15 +119,15 @@ extension CountryListViewController{
                     return .OrderedDescending
                 }
 
-                if let isdCode1 = dict1[normalizedISDCode_key], let isdCode2 = dict2[normalizedISDCode_key]{
-                    let result = isdCode1.compare(isdCode2, options: NSStringCompareOptions.NumericSearch)
-                    return result
-                }
+//                if let isdCode1 = dict1[normalizedISDCode_key], let isdCode2 = dict2[normalizedISDCode_key]{
+//                    let result = isdCode1.compare(isdCode2, options: NSStringCompareOptions.NumericSearch)
+//                    return result
+//                }
 
-                //                if let countryName1 = dict1[countryName_key], let countryName2 = dict2[countryName_key]{
-                //                    let result = countryName1.compare(countryName2)
-                //                    return result
-                //                }
+                                if let countryName1 = dict1[countryName_key], let countryName2 = dict2[countryName_key]{
+                                    let result = countryName1.compare(countryName2)
+                                    return result
+                                }
             }
             return .OrderedAscending
         }

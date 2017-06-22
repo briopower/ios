@@ -96,7 +96,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/FilesListViewController/CustomCells/FilesCell/FilesCell.swift"
@@ -244,7 +244,7 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/TrackDetailsViewController/TrackDetailsViewController.swift"
-                  timestampString = "519024878.454349"
+                  timestampString = "519033912.553403"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "179"
@@ -259,7 +259,7 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/TrackDetailsViewController/TrackDetailsViewController.swift"
-                  timestampString = "519024878.456607"
+                  timestampString = "519033912.555731"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "179"
@@ -336,31 +336,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/SignupLoginModule/CountryCodeListViewController/CountryListViewController.swift"
-            timestampString = "519024031.433121"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "createDataSet()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActionableHealth/Source/Modules/SignupLoginModule/CountryCodeListViewController/CountryListViewController.swift"
-            timestampString = "519023907.399834"
+            timestampString = "519037206.246359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "getCodesJson()"
             landmarkType = "7">
          </BreakpointContent>
@@ -372,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActionableHealth/Source/Modules/SignupLoginModule/CountryCodeListViewController/CountryListViewController.swift"
-            timestampString = "519024104.946868"
+            timestampString = "519037206.246359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "getNamesJson()"
             landmarkType = "7">
             <Locations>
@@ -420,28 +404,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ActionableHealth/Source/Modules/SignupLoginModule/CountryCodeListViewController/CountryListViewController.swift"
-            timestampString = "519024202.916305"
+            timestampString = "519037206.246359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "getCodesJson()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/SignupLoginModule/CountryCodeListViewController/CountryListViewController.swift"
-            timestampString = "519024317.701478"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "createDataSet()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -468,7 +436,7 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/CountryCodeListViewController/CountryListViewController.swift"
-                  timestampString = "519024878.485514"
+                  timestampString = "519033912.57561"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "112"
@@ -483,12 +451,156 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/SignupLoginModule/CountryCodeListViewController/CountryListViewController.swift"
-                  timestampString = "519024878.48767"
+                  timestampString = "519033912.578197"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "113"
                   endingLineNumber = "113"
                   offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/TaskListViewController/TaskListViewController.swift"
+            timestampString = "519033172.161582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "tableView(tableView:didSelectRowAtIndexPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+            timestampString = "519033269.282977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "commentsTapped(tag:obj:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+            timestampString = "519033291.659296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "taskFilesTapped(tag:obj:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+            timestampString = "519033400.571527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "rateTaskTapped(tag:obj:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.PhaseDetailsViewController.rateTaskTapped (Swift.Int, obj : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+                  timestampString = "519033912.595674"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.PhaseDetailsViewController.rateTaskTapped (Swift.Int, obj : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+                  timestampString = "519033912.597665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+            timestampString = "519033400.571527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "showRatingView(task:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.PhaseDetailsViewController.showRatingView (BRIO.TasksModel) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+                  timestampString = "519033912.60167"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BRIO.PhaseDetailsViewController.showRatingView (BRIO.TasksModel) -&gt; ()"
+                  moduleName = "BRIO"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/emp270/Documents/projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/PhasesDetailsViewController/PhaseDetailsViewController.swift"
+                  timestampString = "519033912.603676"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "242">
                </Location>
             </Locations>
          </BreakpointContent>

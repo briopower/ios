@@ -118,20 +118,27 @@ extension CountryListViewController{
                 }else if dict2[countryCode_key] == "US"{
                     return .OrderedDescending
                 }
+                
+                // Fix for CA at top
+                if dict1[countryCode_key] == "CA"{
+                    return .OrderedAscending
+                }else if dict2[countryCode_key] == "CA"{
+                    return .OrderedDescending
+                }
 
 //                if let isdCode1 = dict1[normalizedISDCode_key], let isdCode2 = dict2[normalizedISDCode_key]{
 //                    let result = isdCode1.compare(isdCode2, options: NSStringCompareOptions.NumericSearch)
 //                    return result
 //                }
 
-                                if let countryName1 = dict1[countryName_key], let countryName2 = dict2[countryName_key]{
-                                    let result = countryName1.compare(countryName2)
-                                    return result
-                                }
+                if let countryName1 = dict1[countryName_key], let countryName2 = dict2[countryName_key]{
+                    let result = countryName1.compare(countryName2)
+                    return result
+                }
             }
             return .OrderedAscending
         }
-
+        
         let isWritten = dataSet.writeToFile(path, atomically: true)
         if isWritten {
             createCountryArray()

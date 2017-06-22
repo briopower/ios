@@ -153,6 +153,7 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
 
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
             viewCont.resources = (obj as? TasksModel)?.resources ?? NSMutableArray()
+            viewCont.navTitle = currentPhase?.phaseName ?? ""
             getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }

@@ -50,6 +50,16 @@ extension NSUserDefaults{
         return userDefault.boolForKey("userLoggedIn")
 
     }
+    
+    class func isDisclaimerWatched() -> Bool {
+        return userDefault.boolForKey("disclaimerWatched")
+        
+    }
+    
+    class func setDisclaimerWatched(watched:Bool){
+        userDefault.setBool(watched, forKey: "disclaimerWatched")
+        userDefault.synchronize()
+    }
 
     class func setLoggedIn(loggedIn:Bool) {
         userDefault.setBool(loggedIn, forKey: "userLoggedIn")

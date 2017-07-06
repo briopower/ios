@@ -11,6 +11,7 @@ protocol NextButtonCellDelegate:NSObjectProtocol {
     func nextButtonClicked()
 }
 class NextButtonCell: UITableViewCell {
+    @IBOutlet weak var nextBTN: UIButton_FontSizeButton!
 
     //MARK:- Variables
     weak var delegate:NextButtonCellDelegate?
@@ -29,5 +30,9 @@ class NextButtonCell: UITableViewCell {
     
     @IBAction func nxtAction(sender: AnyObject) {
         delegate?.nextButtonClicked()
+    }
+    
+    func setButtonTitle(title:String) {
+        nextBTN.setTitle(title, forState: .Normal)
     }
 }

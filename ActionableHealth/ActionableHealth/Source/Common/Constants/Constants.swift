@@ -17,6 +17,7 @@ class Constants: NSObject {
             static let countryList = "countryListView"
             static let verificationView = "welcomeToBrio"
             static let textDetailsView = "textDetailsView"
+            static let waiverViewController = "WaiverViewController"
         }
 
         struct TabBarStoryboard {

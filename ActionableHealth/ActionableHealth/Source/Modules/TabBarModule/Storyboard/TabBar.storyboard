@@ -19,7 +19,7 @@
         <scene sceneID="0Ya-zY-ioI">
             <objects>
                 <navigationController id="9KZ-hV-bXi" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rtf-Ad-QRC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rtf-Ad-QRC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" white="1" alpha="0.90006956335616439" colorSpace="calibratedWhite"/>
@@ -119,7 +119,7 @@ Tap here to create or join a track</string>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO CHATS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYa-R0-lFL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="158.33333333333334" y="358" width="97.333333333333314" height="20"/>
+                                <rect key="frame" x="159.33333333333331" y="358" width="97.333333333333314" height="20"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

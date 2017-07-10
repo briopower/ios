@@ -56,20 +56,14 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
 
         if !NSUserDefaults.isLoggedIn() && showLoginModule {
             UIViewController.presentLoginViewController(true, animated: false, Completion: {
-                AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
-                dispatch_async(dispatch_get_main_queue(), {
-                    if let waiverController = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.waiverViewController) as? WaiverViewController{
-                        if let navControl = UIViewController.getTopMostViewController() as? UINavigationController{
-                            
-                            let waiverNavController = UINavigationController.init(rootViewController: waiverController)
-                            
-                                navControl.presentViewController(waiverNavController, animated: false, completion: nil);
-                        }
-                    }
-                });
+                if NSUserDefaults.isDisclaimerWatched(){
+                    AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+                }
             })
         }else{
-            AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+            if NSUserDefaults.isDisclaimerWatched(){
+                AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+            }
         }
     }
 

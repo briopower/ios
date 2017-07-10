@@ -30,6 +30,22 @@ class WelcomeToBrio: CommonViewController {
         super.viewWillAppear(animated)
         setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if !NSUserDefaults.isDisclaimerWatched() {
+            dispatch_async(dispatch_get_main_queue(), {
+                if let waiverController = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.waiverViewController) as? WaiverViewController{
+                    if let navControl = UIViewController.getTopMostViewController() as? UINavigationController{
+                        
+                        let waiverNavController = UINavigationController.init(rootViewController: waiverController)
+                        
+                        navControl.presentViewController(waiverNavController, animated: false, completion: nil);
+                    }
+                }
+            });
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

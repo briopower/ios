@@ -29,6 +29,10 @@ class WaiverViewController: CommonViewController {
         setNavigationBarWithTitle("General Disclosures/Waivers", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
         
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+    }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated);
@@ -98,6 +102,7 @@ extension WaiverViewController : UITableViewDelegate{
 
 extension WaiverViewController : NextButtonCellDelegate{
     func nextButtonClicked() {
+        NSUserDefaults.setDisclaimerWatched(true)
         self.dismissViewControllerAnimated(true, completion: nil);
     }
 }

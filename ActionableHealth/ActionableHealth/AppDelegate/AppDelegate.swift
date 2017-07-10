@@ -213,7 +213,7 @@ extension AppDelegate{
     }
 
     func addLaunchScreen() {
-        imageView.image = UIImage.getLaunchImage()
+        imageView.image = UIImage(named: "Splash")
         imageView.contentMode = .ScaleToFill
         imageView.backgroundColor = UIColor.whiteColor()
         UIApplication.sharedApplication().keyWindow?.addSubview(imageView)

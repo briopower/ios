@@ -31,6 +31,8 @@ class EnterOtpViewController: CommonViewController {
         setNavigationBarWithTitle("Enter OTP", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

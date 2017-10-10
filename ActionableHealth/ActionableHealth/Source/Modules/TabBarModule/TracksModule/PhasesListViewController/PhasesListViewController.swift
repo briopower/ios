@@ -34,7 +34,7 @@ class PhasesListViewController: CommonViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         updateTemplate()
-        setNavigationBarWithTitle("Phases", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Getting Started", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
     }
 
     override func didReceiveMemoryWarning() {

@@ -34,7 +34,7 @@ extension TrackFilesCell{
         case .About:
             detailsLabel.text = "About"
         case .Phases:
-            detailsLabel.text = "Phases"
+            detailsLabel.text = "Getting Started"
         case .Resources:
             detailsLabel.text = "Resources"
         default:
@@ -47,7 +47,7 @@ extension TrackFilesCell{
         case .About:
             detailsLabel.text = "About"
         case .Phases:
-            detailsLabel.text = "Phases"
+            detailsLabel.text = "Getting Started"
         case .Resources:
             detailsLabel.text = "Resources"
         case .TeamMembers:

@@ -2943,7 +2943,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "00c78739-51ea-4c99-a957-1c57b8c86756";
+				PROVISIONING_PROFILE = "f9748387-4e65-4fb7-bb64-6ab8d53cae67";
 				PROVISIONING_PROFILE_SPECIFIER = ActionableHealthInHouse;
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;

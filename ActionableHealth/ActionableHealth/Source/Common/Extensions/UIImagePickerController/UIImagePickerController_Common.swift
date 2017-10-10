@@ -30,7 +30,9 @@ extension UIImagePickerController{
 
                 if tappedAtIndex != -1{
                     dispatch_async(dispatch_get_main_queue(), {
-                        UIViewController.getTopMostViewController()?.presentViewController(pickerController, animated: true, completion: nil)
+                        UIViewController.getTopMostViewController()?.presentViewController(pickerController, animated: true, completion: {
+                            pickerController.delegate = delegate
+                        })
                     })
                 }
             }

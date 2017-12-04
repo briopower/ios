@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -54,6 +59,16 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>SwiftMessages-SwiftMessages.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
+		<key>SwiftMessages.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>TPKeyboardAvoiding.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -62,6 +77,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>055CE5FCADB8656F09E4542A7709489C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0C4D6D21E61953B565EFACC9FEC3713A</key>
 		<dict>
 			<key>primary</key>
@@ -102,6 +122,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>72781BD8830E26376E47ACB18E7D5097</key>
 		<dict>
 			<key>primary</key>
@@ -118,6 +143,11 @@
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A0E2A98F8EC6BD95D052D1863DF6CFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,6 +177,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C5B80060FE8C664DF08841000F41D515</key>
 		<dict>
 			<key>primary</key>
@@ -162,7 +197,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D4F46A973FA76581A4D7C5D0349FE5D8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DD6A2DEBDCE43038C546FE6708DCC196</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE3C56DCC736FF0E1429B62A38621D96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5B4BF384C362BAA2E569FAAFE66305B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

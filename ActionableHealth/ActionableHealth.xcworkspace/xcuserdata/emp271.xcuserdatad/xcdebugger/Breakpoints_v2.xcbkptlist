@@ -315,38 +315,6 @@
             endingLineNumber = "100"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.SearchUserViewController.tableView (__ObjC.UITableView, didSelectRowAtIndexPath : __ObjC.NSIndexPath) -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
-                  timestampString = "504094192.587355"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "30">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.SearchUserViewController.tableView (__ObjC.UITableView, didSelectRowAtIndexPath : __ObjC.NSIndexPath) -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/InviteForTracksViewController/SearchUserViewController/SearchUserViewController.swift"
-                  timestampString = "504094192.590225"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "480">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -363,38 +331,6 @@
             endingLineNumber = "137"
             landmarkName = "getData(cursorVal:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.HomeViewController.getData (Swift.String) -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
-                  timestampString = "504094192.596297"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136"
-                  offsetFromSymbolStart = "379">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.HomeViewController.(getData (Swift.String) -&gt; ()).(closure #1)"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
-                  timestampString = "504094192.59956"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "138"
-                  endingLineNumber = "138"
-                  offsetFromSymbolStart = "78">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -411,38 +347,6 @@
             endingLineNumber = "151"
             landmarkName = "processResponse(responseObj:cursorVal:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.HomeViewController.processResponse (Swift.Optional&lt;Swift.AnyObject&gt;, cursorVal : Swift.String) -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
-                  timestampString = "504094192.606044"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "31">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.HomeViewController.processResponse (Swift.Optional&lt;Swift.AnyObject&gt;, cursorVal : Swift.String) -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp271/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/HomeModule/HomeViewController/HomeViewController.swift"
-                  timestampString = "504094192.609224"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

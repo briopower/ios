@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>383629305501-0opasvjhai9pfqm8k6qbla7ce3recj16.apps.googleusercontent.com</string>
+	<string>170675134536-cl22c8gvsfbueucm9g491dj6stodk9s5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.383629305501-0opasvjhai9pfqm8k6qbla7ce3recj16</string>
+	<string>com.googleusercontent.apps.170675134536-cl22c8gvsfbueucm9g491dj6stodk9s5</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD0J1Gy8D6VUgf1u8tVBZIKV9Y8G50h9Zk</string>
+	<string>AIzaSyBkoSFcEFhoWjMW-jsdbqFbWDmKq7EpQUU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>383629305501</string>
+	<string>170675134536</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.Brio.Briopower</string>
 	<key>PROJECT_ID</key>
-	<string>briopower-qa</string>
+	<string>briopower-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>briopower-qa.appspot.com</string>
+	<string>briopower-prod.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:383629305501:ios:e33cbabe03f7b1b7</string>
+	<string>1:170675134536:ios:e33cbabe03f7b1b7</string>
 	<key>DATABASE_URL</key>
-	<string>https://briopower-qa.firebaseio.com</string>
+	<string>https://briopower-prod.firebaseio.com</string>
 </dict>
 </plist>

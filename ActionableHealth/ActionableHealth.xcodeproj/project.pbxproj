@@ -2355,7 +2355,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 37FZ8W2WCQ;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -2938,16 +2938,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: vidhan nandi (W6T8TLY7B9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 37FZ8W2WCQ;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Brio.Briopower;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "692e83e3-7ec4-47b2-be5f-cb7a8bbc9759";
+				PROVISIONING_PROFILE_SPECIFIER = "BrioPower Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};
@@ -2960,16 +2960,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: FINOIT TECHNOLOGIES (I) PRIVATE LIMITED";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 37FZ8W2WCQ;
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Brio.Briopower;
 				PRODUCT_NAME = BRIO;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "23397765-8a49-4c34-b943-115858db0315";
+				PROVISIONING_PROFILE_SPECIFIER = "BrioPower appstore";
 				SWIFT_OBJC_BRIDGING_HEADER = "ActionableHealth/Source/Common/BridgingHeader/ActionableHealth-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 			};

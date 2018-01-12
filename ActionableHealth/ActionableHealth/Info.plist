@@ -32,7 +32,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Please allow $(PRODUCT_NAME) to use Camera</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Please allow $(PRODUCT_NAME) to use Contacts</string>
+	<string>Please allow $(PRODUCT_NAME) to use your contacts to chat with existing app users and invite contacts to join the BRIO app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please allow $(PRODUCT_NAME) to use Photos</string>
 	<key>UIAppFonts</key>

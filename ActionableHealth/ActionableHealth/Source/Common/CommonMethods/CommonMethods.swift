@@ -17,6 +17,13 @@ class CommonMethods: NSObject {
         containerView.clipsToBounds = false
     }
 
+    class func addShadowToTabBar(containerView:UIView?) {
+        containerView?.layer.shadowColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.7).CGColor
+        containerView?.layer.shadowOpacity = 1
+        containerView?.layer.shadowRadius = 2
+        containerView?.clipsToBounds = false
+    }
+
     class func setCornerRadius(containerView:UIView) {
         containerView.layer.cornerRadius = 1
         containerView.clipsToBounds = true

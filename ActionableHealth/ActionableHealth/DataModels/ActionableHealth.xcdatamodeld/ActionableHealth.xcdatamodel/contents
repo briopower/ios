@@ -1,4 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Xcode 7.0" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddressBook" representedClassName=".AddressBook" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
+        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Contact" inverseName="addressBook" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="Contact" representedClassName=".Contact" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="isAppUser" optional="YES" attributeType="Integer 32" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="addressBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressBook" inverseName="contacts" inverseEntity="AddressBook" syncable="YES"/>
+    </entity>
+    <entity name="Messages" representedClassName="Messages" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="msgDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lastMessagePerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="lastMessage" inverseEntity="Person" syncable="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="messages" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName=".Person" syncable="YES">
+        <attribute name="lastTrack" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="personId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="personImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="personName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lastMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Messages" inverseName="lastMessagePerson" inverseEntity="Messages" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Messages" inverseName="person" inverseEntity="Messages" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AddressBook" positionX="-236" positionY="-43" width="128" height="88"/>
+        <element name="Contact" positionX="-45" positionY="-43" width="128" height="88"/>
+        <element name="Messages" positionX="-36" positionY="90" width="128" height="195"/>
+        <element name="Person" positionX="-227" positionY="144" width="128" height="135"/>
+    </elements>
 </model>

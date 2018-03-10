@@ -95,7 +95,7 @@ class VNProgreessHUD: UIView {
      * the entire text. If the text is too long it will get clipped by displaying "..." at the end. If left unchanged or
      * set to @"", then no message is displayed.
      */
-    var labelText:String? = ""{
+    var labelText:String? = "Please Wait..."{
         didSet {
             dispatch_async(dispatch_get_main_queue()) {
                 self.label?.text = self.labelText
@@ -136,6 +136,7 @@ class VNProgreessHUD: UIView {
      * The color of the HUD window. If this property is set, color is set using
      * this UIColor and the opacity property is not used.
      */
+    //MARK:- Changed
     var color:UIColor?{
         didSet {
             dispatch_async(dispatch_get_main_queue()) {
@@ -307,7 +308,6 @@ class VNProgreessHUD: UIView {
         }
     }
 
-
     /**
      * The progress of the progress indicator, from 0.0 to 1.0. Defaults to 0.0.
      */
@@ -371,6 +371,7 @@ class VNProgreessHUD: UIView {
         self.autoresizingMask = [.FlexibleTopMargin, .FlexibleBottomMargin, .FlexibleLeftMargin, .FlexibleRightMargin]
         self.opaque = false
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
+
         self.alpha = 0.0
         setupLabels()
         updateIndicator()
@@ -508,7 +509,7 @@ extension VNProgreessHUD{
             let gradLocationsNum:size_t = 2
             let gradLocations:[CGFloat] = [0.0, 1.0]
             let gradColors:[CGFloat] = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.75]
-            let colorSpace = CGColorSpaceCreateDeviceRGB()!
+            let colorSpace = CGColorSpaceCreateDeviceRGB()
             let gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNum)!
 
             //Gradient center
@@ -534,8 +535,8 @@ extension VNProgreessHUD{
         let allRect = self.bounds
 
         // Draw rounded HUD backgroud rect
-        let boxRect = CGRectMake(round((allRect.size.width - size!.width) / 2) + self.xOffset,
-                                 round((allRect.size.height - size!.height) / 2) + self.yOffset, size!.width, size!.height)
+        let boxRect = CGRectMake(round((allRect.size.width - (size?.width ?? 0)) / 2) + self.xOffset,
+                                 round((allRect.size.height - (size?.height ?? 0)) / 2) + self.yOffset, (size?.width ?? 0), (size?.height ?? 0))
         let radius = self.cornerRadius
         CGContextBeginPath(context)
         CGContextMoveToPoint(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect))
@@ -791,11 +792,16 @@ extension VNProgreessHUD{
 extension VNProgreessHUD{
 
     class func showHUDAddedToView(view:UIView, Animated animated:Bool) -> VNProgreessHUD {
-        let hud:VNProgreessHUD = VNProgreessHUD(View: view)
-        hud.removeFromSuperViewOnHide = true
-        view.addSubview(hud)
-        hud.show(animated)
-        return hud
+        if let hud = allHUDsForView(view).firstObject as? VNProgreessHUD {
+            return hud
+
+        }else{
+            let hud:VNProgreessHUD = VNProgreessHUD(View: view)
+            hud.removeFromSuperViewOnHide = true
+            view.addSubview(hud)
+            hud.show(animated)
+            return hud
+        }
     }
 
     class func hideHUDForView(view:UIView, Animated animated:Bool) -> Bool {

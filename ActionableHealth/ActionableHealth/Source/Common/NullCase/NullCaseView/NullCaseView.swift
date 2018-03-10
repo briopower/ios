@@ -76,12 +76,12 @@ extension NullCaseView{
             if let nullCaseView = viewForNullCase.viewWithTag(NullCaseTag) as? NullCaseView {
                 return nullCaseView
             }else{
-                let nibArr = NSBundle.mainBundle().loadNibNamed(String(NullCaseView), owner: nil, options: nil)
-
-                for view in nibArr {
-                    if let nullCaseView = view as? NullCaseView
-                    {
-                        return nullCaseView
+                if let nibArr = NSBundle.mainBundle().loadNibNamed(String(NullCaseView), owner: nil, options: nil){
+                    for view in nibArr {
+                        if let nullCaseView = view as? NullCaseView
+                        {
+                            return nullCaseView
+                        }
                     }
                 }
             }

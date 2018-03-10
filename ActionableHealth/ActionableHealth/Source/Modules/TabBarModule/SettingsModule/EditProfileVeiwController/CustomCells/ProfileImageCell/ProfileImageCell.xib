@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="188" id="KGk-i7-Jjw" customClass="ProfileImageCell" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQt-bd-xrv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle-user-ic" translatesAutoresizingMaskIntoConstraints="NO" id="6Wi-Qb-lw5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="186"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gYm-f3-5Z6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GIE-B0-6kV" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="186" width="320" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="I4c-pA-SFe"/>
+                                </constraints>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cj-aE-6BU">
+                                <rect key="frame" x="264" y="133" width="40" height="40"/>
+                                <state key="normal" image="edit"/>
+                                <connections>
+                                    <action selector="editAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3vx-UL-4T6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GIE-B0-6kV" firstAttribute="top" secondItem="6Wi-Qb-lw5" secondAttribute="bottom" id="0W2-rk-Myf"/>
+                            <constraint firstAttribute="trailing" secondItem="gYm-f3-5Z6" secondAttribute="trailing" id="AsS-qH-Bpv"/>
+                            <constraint firstAttribute="trailing" secondItem="6Wi-Qb-lw5" secondAttribute="trailing" id="D0U-gx-0ps"/>
+                            <constraint firstItem="gYm-f3-5Z6" firstAttribute="top" secondItem="gQt-bd-xrv" secondAttribute="top" id="Eqs-IP-kbp"/>
+                            <constraint firstItem="GIE-B0-6kV" firstAttribute="leading" secondItem="gQt-bd-xrv" secondAttribute="leading" id="FjD-BY-1fF"/>
+                            <constraint firstItem="5cj-aE-6BU" firstAttribute="centerY" secondItem="gQt-bd-xrv" secondAttribute="centerY" multiplier="630:385" id="JNo-Qj-4t9"/>
+                            <constraint firstItem="5cj-aE-6BU" firstAttribute="centerX" secondItem="gQt-bd-xrv" secondAttribute="centerX" multiplier="1100:621" id="RDK-I6-hbI"/>
+                            <constraint firstAttribute="bottom" secondItem="gYm-f3-5Z6" secondAttribute="bottom" id="UBd-lL-2jR"/>
+                            <constraint firstAttribute="width" secondItem="gQt-bd-xrv" secondAttribute="height" multiplier="1242:760" priority="999" id="Z7J-mN-3xC"/>
+                            <constraint firstItem="gYm-f3-5Z6" firstAttribute="leading" secondItem="gQt-bd-xrv" secondAttribute="leading" id="eKP-b1-7Ga"/>
+                            <constraint firstAttribute="trailing" secondItem="GIE-B0-6kV" secondAttribute="trailing" id="ezp-Hc-e47"/>
+                            <constraint firstAttribute="bottom" secondItem="GIE-B0-6kV" secondAttribute="bottom" id="fPY-QM-R8K"/>
+                            <constraint firstItem="6Wi-Qb-lw5" firstAttribute="top" secondItem="gQt-bd-xrv" secondAttribute="top" id="mDk-2m-K7z"/>
+                            <constraint firstItem="6Wi-Qb-lw5" firstAttribute="leading" secondItem="gQt-bd-xrv" secondAttribute="leading" id="qhq-Mg-Bve"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gQt-bd-xrv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1Kv-Tv-94M"/>
+                    <constraint firstAttribute="trailing" secondItem="gQt-bd-xrv" secondAttribute="trailing" id="8O4-DJ-nIN"/>
+                    <constraint firstItem="gQt-bd-xrv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="z12-y1-cls"/>
+                    <constraint firstAttribute="bottom" secondItem="gQt-bd-xrv" secondAttribute="bottom" id="zKE-Wm-wMH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="editButton" destination="5cj-aE-6BU" id="4DQ-7J-YtV"/>
+                <outlet property="profileImage" destination="gYm-f3-5Z6" id="lCL-SH-gna"/>
+            </connections>
+            <point key="canvasLocation" x="-9" y="0.0"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circle-user-ic" width="70" height="70"/>
+        <image name="edit" width="40" height="40"/>
+    </resources>
+</document>

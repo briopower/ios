@@ -7,12 +7,51 @@
 //
 
 import UIKit
-
+enum TabBarType:Int {
+    case Home, Track, Chat, Settings
+}
 class UITabBarItem_Custom: UITabBarItem {
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        super.selectedImage = self.selectedImage?.resizeImage(UIDevice.width()/3, newHeight: 50).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        super.image = self.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        self.imageInsets = UIEdgeInsets(top: 5.5, left: 0, bottom: -5.5, right: 0)
+        setImages()
+        self.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+       self.title = nil
+    }
+
+    func setImages() {
+        if let type = TabBarType(rawValue: self.tag) {
+            var normalImage:UIImage?
+            var selectedStateImage:UIImage?
+            switch type {
+            case .Home:
+                normalImage = UIImage(named: "Home-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Home-Yellow\(getImageNamePostFix())")
+            case .Track:
+                normalImage = UIImage(named: "Track-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Track-yellow\(getImageNamePostFix())")
+            case .Chat:
+                normalImage = UIImage(named: "Chat-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Chat-yellow\(getImageNamePostFix())")
+            case .Settings:
+                normalImage = UIImage(named: "Setting-white\(getImageNamePostFix())")
+                selectedStateImage = UIImage(named: "Setting-yellow\(getImageNamePostFix())")
+            }
+            super.selectedImage = selectedStateImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
+            super.image = normalImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
+        }
+    }
+
+    func getImageNamePostFix() -> String {
+        switch UIDevice.getDeviceType() {
+        case .AppleIphone6P, .AppleIphone6SP, .AppleIphone7P:
+            return "-3x.png"
+        case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
+            return "-2x.png"
+        case .Simulator:
+            return "-1x.png"
+        default:
+            return "-1x.png"
+        }
     }
 }

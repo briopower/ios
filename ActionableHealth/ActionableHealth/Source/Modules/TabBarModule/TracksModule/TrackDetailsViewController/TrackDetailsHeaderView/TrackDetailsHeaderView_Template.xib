@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TrackDetailsHeaderView" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-CV-mYu">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I1O-zR-LgI">
+                            <rect key="frame" x="0.0" y="78" width="320" height="226"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCG-ZG-W60">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="77.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-Yn-hVM">
+                                    <rect key="frame" x="0.0" y="0.0" width="21" height="77.5"/>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="cnB-D5-yTp" customClass="UIImageView_RoundImageView" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="21" y="13" width="52" height="51.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="cnB-D5-yTp" secondAttribute="height" id="P2c-DP-bKb"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" semanticContentAttribute="playback" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-wE-Ch1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="77" y="43.5" width="127" height="17"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                    <color key="tintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="149 Followers" image="user"/>
+                                    <connections>
+                                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="cR1-8U-pei"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K79-jk-Xnz">
+                                    <rect key="frame" x="303.5" y="0.0" width="16.5" height="77.5"/>
+                                </imageView>
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-Vt-fO7" customClass="HCSStarRatingView">
+                                    <rect key="frame" x="80" y="16" width="71.5" height="18"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="4Gb-Vt-fO7" secondAttribute="height" multiplier="280:70" id="2bJ-gi-JnH"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                            <real key="value" value="2.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="rating-icon"/>
+                                        <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="rating-fill-icon"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="K79-jk-Xnz" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="65:1242" id="18b-Oy-cib"/>
+                                <constraint firstItem="cnB-D5-yTp" firstAttribute="centerY" secondItem="wCG-ZG-W60" secondAttribute="centerY" id="2ux-Ii-KI3"/>
+                                <constraint firstAttribute="trailing" secondItem="K79-jk-Xnz" secondAttribute="trailing" id="Au8-d5-o5v"/>
+                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="0.65" id="Gt5-e3-b4w"/>
+                                <constraint firstAttribute="bottom" secondItem="bbE-Yn-hVM" secondAttribute="bottom" id="KVq-FI-GDd"/>
+                                <constraint firstItem="K79-jk-Xnz" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="SnZ-3g-whC"/>
+                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="centerY" secondItem="cnB-D5-yTp" secondAttribute="centerY" multiplier="1.35" id="T0p-Sh-YOY"/>
+                                <constraint firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="height" multiplier="1242:300" id="TLp-DX-vVt"/>
+                                <constraint firstItem="bbE-Yn-hVM" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="top" id="asV-i3-XmE"/>
+                                <constraint firstItem="dh5-wE-Ch1" firstAttribute="leading" secondItem="4Gb-Vt-fO7" secondAttribute="leading" constant="-3" id="bHx-GN-USu"/>
+                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="leading" secondItem="cnB-D5-yTp" secondAttribute="trailing" multiplier="300:275" id="edL-ag-4pg"/>
+                                <constraint firstItem="cnB-D5-yTp" firstAttribute="leading" secondItem="bbE-Yn-hVM" secondAttribute="trailing" id="iui-3t-H9r"/>
+                                <constraint firstItem="cnB-D5-yTp" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="200:1242" id="lK6-wM-BKa"/>
+                                <constraint firstItem="bbE-Yn-hVM" firstAttribute="leading" secondItem="wCG-ZG-W60" secondAttribute="leading" id="sz2-QG-qd2"/>
+                                <constraint firstItem="bbE-Yn-hVM" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="80:1242" id="tOg-5P-QL9"/>
+                                <constraint firstItem="4Gb-Vt-fO7" firstAttribute="width" secondItem="wCG-ZG-W60" secondAttribute="width" multiplier="280:1242" id="vgZ-2K-RRo"/>
+                                <constraint firstAttribute="bottom" secondItem="K79-jk-Xnz" secondAttribute="bottom" id="vrt-7Y-dIQ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kg8-mm-hdP">
+                            <rect key="frame" x="0.0" y="304" width="320" height="59.5"/>
+                            <subviews>
+                                <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5O-3a-9u1" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="15" y="10.5" width="137.5" height="39.5"/>
+                                    <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                    <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                    <state key="normal" title="UNFOLLOW">
+                                        <color key="titleColor" red="0.96862745098039216" green="0.92156862745098034" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="JP3-ew-aPR"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50R-lj-os9" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="167.5" y="10" width="137.5" height="39.5"/>
+                                    <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                    <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                    <state key="normal" title="START TEAM">
+                                        <color key="titleColor" red="0.96862745100000003" green="0.92156862750000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="6e7-zD-oD1"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIS-Rd-way" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                    <rect key="frame" x="15" y="10" width="137.5" height="39.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="16"/>
+                                    <color key="tintColor" red="0.08235294118" green="0.52941176469999995" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                    <state key="normal" title="GO SOLO">
+                                        <color key="titleColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                            <integer key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                            <color key="value" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="buttonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="WFb-zC-5MD"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="hIS-Rd-way" firstAttribute="width" secondItem="f5O-3a-9u1" secondAttribute="width" id="0Gv-wL-VbV"/>
+                                <constraint firstAttribute="trailing" secondItem="50R-lj-os9" secondAttribute="trailing" constant="15" id="27z-hx-cJY"/>
+                                <constraint firstItem="50R-lj-os9" firstAttribute="top" secondItem="Kg8-mm-hdP" secondAttribute="top" constant="10" id="2eT-av-ApY"/>
+                                <constraint firstItem="hIS-Rd-way" firstAttribute="centerY" secondItem="f5O-3a-9u1" secondAttribute="centerY" id="2ql-qQ-hUN"/>
+                                <constraint firstItem="hIS-Rd-way" firstAttribute="height" secondItem="f5O-3a-9u1" secondAttribute="height" id="5yz-2W-nOm"/>
+                                <constraint firstItem="hIS-Rd-way" firstAttribute="centerX" secondItem="f5O-3a-9u1" secondAttribute="centerX" id="PBW-3N-lqs"/>
+                                <constraint firstItem="50R-lj-os9" firstAttribute="leading" secondItem="f5O-3a-9u1" secondAttribute="trailing" constant="15" id="b9d-WJ-p29"/>
+                                <constraint firstItem="f5O-3a-9u1" firstAttribute="height" secondItem="50R-lj-os9" secondAttribute="height" id="d19-iw-W1I"/>
+                                <constraint firstItem="f5O-3a-9u1" firstAttribute="width" secondItem="50R-lj-os9" secondAttribute="width" id="hjk-lc-DcZ"/>
+                                <constraint firstAttribute="bottom" secondItem="50R-lj-os9" secondAttribute="bottom" constant="10" id="rpU-Q3-8MB"/>
+                                <constraint firstItem="f5O-3a-9u1" firstAttribute="leading" secondItem="Kg8-mm-hdP" secondAttribute="leading" constant="15" id="xqa-Yp-Xhx"/>
+                                <constraint firstItem="f5O-3a-9u1" firstAttribute="centerY" secondItem="50R-lj-os9" secondAttribute="centerY" id="yHv-K2-BuU"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V5j-yI-oOE" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="363" width="320" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="xX4-lh-9z3"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tPC-Yr-9N1">
+                            <rect key="frame" x="0.0" y="259.5" width="320" height="44.5"/>
+                            <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="0.40087221746575341" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-8F-poC" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="16" y="259.5" width="288" height="44.5"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="31"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="V5j-yI-oOE" secondAttribute="bottom" id="4wd-Pn-CyK"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="centerX" secondItem="tPC-Yr-9N1" secondAttribute="centerX" id="56D-mO-cCB"/>
+                        <constraint firstItem="I1O-zR-LgI" firstAttribute="top" secondItem="wCG-ZG-W60" secondAttribute="bottom" id="5gJ-Kf-Hh4"/>
+                        <constraint firstAttribute="bottom" secondItem="Kg8-mm-hdP" secondAttribute="bottom" id="DPr-uh-zTQ"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="leading" secondItem="I1O-zR-LgI" secondAttribute="leading" id="II8-MQ-VEr"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="height" secondItem="I1O-zR-LgI" secondAttribute="height" multiplier="0.2" id="O0D-Nt-5ad"/>
+                        <constraint firstItem="Kg8-mm-hdP" firstAttribute="top" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="O3t-Z4-2PO"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="bottom" secondItem="I1O-zR-LgI" secondAttribute="bottom" id="PLb-mR-YP0"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="centerY" secondItem="tPC-Yr-9N1" secondAttribute="centerY" id="QJA-md-Xvz"/>
+                        <constraint firstItem="Kg8-mm-hdP" firstAttribute="width" secondItem="Kg8-mm-hdP" secondAttribute="height" multiplier="1242:230" id="SGe-W9-N8R"/>
+                        <constraint firstItem="wCG-ZG-W60" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="Ste-DA-WBG"/>
+                        <constraint firstAttribute="trailing" secondItem="Kg8-mm-hdP" secondAttribute="trailing" id="Ts3-V3-Mh4"/>
+                        <constraint firstItem="V5j-yI-oOE" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="aS4-Hr-Uw7"/>
+                        <constraint firstAttribute="trailing" secondItem="V5j-yI-oOE" secondAttribute="trailing" id="dIu-pk-itL"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="height" secondItem="tPC-Yr-9N1" secondAttribute="height" id="ev6-zJ-i2Q"/>
+                        <constraint firstAttribute="trailing" secondItem="wCG-ZG-W60" secondAttribute="trailing" id="paD-eT-ESN"/>
+                        <constraint firstItem="I1O-zR-LgI" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="q0i-du-6fD"/>
+                        <constraint firstItem="tPC-Yr-9N1" firstAttribute="trailing" secondItem="I1O-zR-LgI" secondAttribute="trailing" id="qDF-KS-8wf"/>
+                        <constraint firstItem="Kg8-mm-hdP" firstAttribute="leading" secondItem="6zP-CV-mYu" secondAttribute="leading" id="ulK-DK-NEZ"/>
+                        <constraint firstAttribute="trailing" secondItem="I1O-zR-LgI" secondAttribute="trailing" id="un4-ao-fdP"/>
+                        <constraint firstItem="4fI-8F-poC" firstAttribute="width" secondItem="tPC-Yr-9N1" secondAttribute="width" multiplier="0.9" id="vRj-sy-VLr"/>
+                        <constraint firstItem="wCG-ZG-W60" firstAttribute="top" secondItem="6zP-CV-mYu" secondAttribute="top" id="z5Z-Hl-sKj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="6zP-CV-mYu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5vu-Gb-TkM"/>
+                <constraint firstAttribute="trailing" secondItem="6zP-CV-mYu" secondAttribute="trailing" id="KVN-WS-d1p"/>
+                <constraint firstItem="6zP-CV-mYu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cW5-Cj-n2U"/>
+                <constraint firstAttribute="bottom" secondItem="6zP-CV-mYu" secondAttribute="bottom" id="reL-lh-k3R"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bottomContainer" destination="Kg8-mm-hdP" id="jlQ-uy-iiG"/>
+                <outlet property="detailsButton1" destination="dh5-wE-Ch1" id="iQa-SZ-tFz"/>
+                <outlet property="logoImageView" destination="cnB-D5-yTp" id="mHq-OD-gZh"/>
+                <outlet property="nameLabel" destination="4fI-8F-poC" id="MVf-4q-yRo"/>
+                <outlet property="ratingView" destination="4Gb-Vt-fO7" id="bee-yr-rxT"/>
+                <outlet property="requestButton1" destination="f5O-3a-9u1" id="Lpt-Hw-GvA"/>
+                <outlet property="requestButton2" destination="50R-lj-os9" id="L7U-iL-L6f"/>
+                <outlet property="requestButton3" destination="hIS-Rd-way" id="axd-tq-A5I"/>
+                <outlet property="templateImage" destination="I1O-zR-LgI" id="ysy-uK-etL"/>
+                <outlet property="topContainer" destination="wCG-ZG-W60" id="hPo-41-cD6"/>
+            </connections>
+            <point key="canvasLocation" x="-416" y="-320"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="logo-1" width="70" height="70"/>
+        <image name="rating-fill-icon" width="11" height="10"/>
+        <image name="rating-icon" width="11" height="11"/>
+        <image name="user" width="14" height="14"/>
+    </resources>
+</document>

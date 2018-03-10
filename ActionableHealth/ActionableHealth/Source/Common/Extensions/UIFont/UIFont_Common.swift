@@ -12,14 +12,14 @@ import UIKit
 extension UIFont{
     func getDynamicSizeFont() -> UIFont {
         switch UIDevice.getDeviceType() {
-        case .AppleIphone6P, .AppleIphone6SP:
+        case .AppleIphone6P, .AppleIphone6SP, .AppleIphone7P:
             return self
-        case .AppleIphone6S, .AppleIphone6:
+        case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
             return self.fontWithSize(self.pointSize * 0.91)
         case .Simulator:
-            return self.fontWithSize(self.pointSize * 0.82)
+            return self.fontWithSize(self.pointSize * 0.85)
         default:
-            return self.fontWithSize(self.pointSize * 0.82)
+            return self.fontWithSize(self.pointSize * 0.85)
 
         }
     }
@@ -29,39 +29,21 @@ extension UIFont {
 
     class func printAvailableFonts(){
         for family in UIFont.familyNames() {
-            print(family)
+            debugPrint(family)
             for fontName in UIFont.fontNamesForFamilyName(family) {
-                print(fontName)
+                debugPrint(fontName)
             }
         }
     }
 
     class func getAppTitleFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "BubbleboddyNeueTrial-Light", size: size)
+        return UIFont(name: "ProximaNovaSW07-Medium", size: size)
     }
     class func getAppRegularFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Regular", size: size)
+        return UIFont(name: "ProximaNova-Regular", size: size)
     }
     class func getAppSemiboldFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Semibold", size: size)
-    }
-    class func getAppThinFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Thin", size: size)
-    }
-    class func getAppUltralightFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Ultralight", size: size)
-    }
-    class func getAppBoldFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Bold", size: size)
-    }
-    class func getAppMediumFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Medium", size: size)
-    }
-    class func getAppHeavyFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Heavy", size: size)
-    }
-    class func getAppLightFontWithSize(size:CGFloat) -> UIFont?{
-        return UIFont(name: "SFUIDisplay-Light", size: size)
+        return UIFont(name: "ProximaNova-Semibold", size: size)
     }
     
     class func getSizeWithFont(text : NSString, font : UIFont, constraintSize : CGSize) -> CGSize

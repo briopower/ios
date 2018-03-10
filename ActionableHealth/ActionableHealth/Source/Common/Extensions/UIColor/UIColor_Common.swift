@@ -15,16 +15,21 @@ extension UIColor{
         return UIColor.init(colorLiteralRed: ((Float)((hexValue & 0xFF0000) >> 16))/255.0, green: ((Float)((hexValue & 0xFF00) >> 8))/255.0, blue: ((Float)(hexValue & 0xFF))/255.0, alpha: alpha)
     }
     
-    class func getAppDefaultNavigationBarColor() -> UIColor{
-        return self.getColorFromHexValue(0x2F1F2F, Alpha: 1)
-    }
-    
     class func getAppTextColor() -> UIColor{
-        return self.getColorFromHexValue(0x3E303B, Alpha: 1)
+        return self.getColorFromHexValue(0x464646, Alpha: 1)
     }
     
-    class func getAppDisabledTextColor() -> UIColor{
-        return self.getColorFromHexValue(0xBCBCC2, Alpha: 1)
+    class func getAppThemeColor() -> UIColor{
+        return self.getColorFromHexValue(0x1C1C2B, Alpha: 1)
+        //1587CC
+    }
+
+    class func getAppSeperatorColor() -> UIColor {
+        return self.getColorFromHexValue(0xDDE0E0, Alpha: 1)
     }
     
+    class func getAppSelectedTextColor() -> UIColor{
+        return self.getColorFromHexValue(0xFBEE00, Alpha: 1)
+        //1587CC
+    }
 }

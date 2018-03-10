@@ -8,13 +8,15 @@
 
 import UIKit
 
-//MARK:- Additional methods
-
+//MARK:- Additional methods String
 extension String{
+
+    //MARK: Localized
     var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
     }
-    
+
+    //MARK: Height
     func getHeight(font:UIFont?, maxWidth:Double?) -> CGFloat {
         if font == nil || maxWidth == nil || self.isEmpty || self.characters.count == 0 {
             return CGSizeZero.height
@@ -23,16 +25,44 @@ extension String{
         }
     }
 
+    //MARK: Lenght 
+    func length() -> Int {
+        return self.characters.count
+    }
+
+    //MARK: Numbers Only
+    func getNumbers() -> String {
+        let okayChars : Set<Character> = Set("1234567890".characters)
+        return String(self.characters.filter {okayChars.contains($0) })
+    }
+    
+    //MARK: Validation
     func getValidObject() -> String? {
-        
-        if self == "" || self.isEmpty{
+        let text = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+
+        if text == "" || text.isEmpty{
             return nil
         }
+        return text
+    }
 
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(self.getValidObject())
+    }
+
+    //MARK:- Split
+    func sliceFrom(start: String, to: String) -> String? {
+        return (rangeOfString(start)?.endIndex).flatMap { sInd in
+            (rangeOfString(to, range: sInd..<endIndex)?.startIndex).map { eInd in
+                substringWithRange(sInd..<eInd)
+            }
+        }
     }
 }
 
+//MARK:- Additional methods NSAttributedString
 extension NSAttributedString{
     var localized: NSAttributedString {
         let mutAttrString = NSMutableAttributedString()

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="269" id="KGk-i7-Jjw" customClass="TextViewTableViewCell" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="466" height="269"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="466" height="268.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="191-4t-dqc">
+                        <rect key="frame" x="46.5" y="8" width="373" height="244.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <attributedString key="attributedText">
+                            <fragment>
+                                <string key="content">General Disclosures/Waivers 
+
+</string>
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPS-BoldMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                </attributes>
+                            </fragment>
+                            <fragment content="Brio Power, LLC, (herein after referred to as “">
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                </attributes>
+                            </fragment>
+                            <fragment content="Brio Power">
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPS-BoldMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                </attributes>
+                            </fragment>
+                            <fragment>
+                                <string key="content">”) does not warrant the accuracy or completeness of the materials or the reliability of any advices, opinions, statements or other information as displayed or distributed through the Applications or Website (herein after referred to as “</string>
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                </attributes>
+                            </fragment>
+                            <fragment content="Applications">
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPS-BoldMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                </attributes>
+                            </fragment>
+                            <fragment content="”). You acknowledge that any reliance on any such opinion, advice, statement, memorandum, or information shall be at your ">
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                </attributes>
+                            </fragment>
+                            <fragment content="own/sole risk and consequences">
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPS-BoldMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <integer key="NSUnderline" value="1"/>
+                                    <color key="NSUnderlineColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </attributes>
+                            </fragment>
+                            <fragment>
+                                <mutableString key="content">.
+
+Brio Power as the developer of the Applications reserves its right, in its sole discretion, to correct/rectify any errors or omissions in any portion of the materials. Brio Power may make any other changes/improvements in the Applications and the products, programs, services or prices (if any) described/published at any time without any prior notice. 
+
+While every effort would be made to ensure accurate functioning of functional modules, extensions, code base or integrations as possible; their accuracy can only be as good as the information provided by the suppliers of the services, products, extension, code base or suppliers (in case of integrations). The Applications are dependent on many factors to function as depicted or illustrated or described and thus Brio Power cannot and does not ensure any comprehensive cover for the functioning.
+
+Brio Power makes no representations as to accuracy, completeness, suitability, or validity of any information in the Applications and will not be liable for any errors, omissions, or delays in this information or any losses, injuries, or damages arising from its display or use of the same. All information is provided on an as-is basis. The content is provided for general information only, and should not be treated as a substitute for any other professional counsel.
+
+The content comes from sources believed to be accurate, but may contain inaccuracies or typographical errors or may there be a case of omission. Brio Power makes no representations about the results to be obtained from using the Applications or the contents there of. The use of the Applications and the contents is at your/the person who is using at their own risk. Tips and advice noted on the Applications might or might not work for everyone or everytime or everywhere. 
+
+You further agree that Brio Power shall not be held responsible for any uncontrollable security attack leading to failures of accuracy and integrity of information on the Applications and in such cases, you agree that Brio Power shall not be held responsible for any type of losses that may occur to you under the Provisions of Section 43 and 43A of Information Technology Act, 2000 and including any amendments in the said Act.
+</mutableString>
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <color key="NSUnderlineColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </attributes>
+                            </fragment>
+                            <fragment>
+                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                <attributes>
+                                    <color key="NSColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <color key="NSUnderlineColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </attributes>
+                            </fragment>
+                            <fragment>
+                                <string key="content">Medical Waiver
+
+</string>
+                                <attributes>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPS-BoldMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <color key="NSUnderlineColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </attributes>
+                            </fragment>
+                            <fragment>
+                                <mutableString key="content">The information on this Application is not intended or implied to be a substitute for professional medical advice, diagnosis or treatment and in no way, creates a patient-physician relationship. All content, including text, graphics, images and information, contained on or available through this Application is for general information purposes only. Brio Power makes no representation and assumes no responsibility or liability for the accuracy of information contained on or available through this Application, and such information is subject to change without notice. You are encouraged to confirm any information obtained from or through this Application with other sources, and review all information regarding any medical condition or treatment with your physician. NEVER DISREGARD PROFESSIONAL MEDICAL ADVICE OR DELAY SEEKING MEDICAL TREATMENT BECAUSE OF SOMETHING YOU HAVE READ ON OR ACCESSED THROUGH THIS APPLICATION.
+</mutableString>
+                                <attributes>
+                                    <color key="NSColor" red="0.13725000000000001" green="0.12157" blue="0.12548999999999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <color key="NSUnderlineColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </attributes>
+                            </fragment>
+                            <fragment>
+                                <mutableString key="content">   BRIO POWER does not recommend, endorse or make any representation about the efficacy, appropriateness or suitability of any specific tests, products, procedures, treatments, services, opinions, health care providers or other information that may be contained on or available through this Application. BRIO POWER IS NOT RESPONSIBLE NOR LIABLE FOR ANY ADVICE, COURSE OF TREATMENT, DIAGNOSIS OR ANY OTHER INFORMATION, SERVICES OR PRODUCTS THAT YOU OBTAIN THROUGH THIS APPLICATION.
+</mutableString>
+                                <attributes>
+                                    <color key="NSColor" red="0.13725000000000001" green="0.12157" blue="0.12548999999999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacing="7.5" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <color key="NSUnderlineColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </attributes>
+                            </fragment>
+                            <fragment>
+                                <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                                <attributes>
+                                    <color key="NSColor" red="0.13725000000000001" green="0.12157" blue="0.12548999999999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops/>
+                                    </paragraphStyle>
+                                    <color key="NSUnderlineColor" red="0.20784" green="0.20391999999999999" blue="0.18431" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="191-4t-dqc" secondAttribute="bottom" constant="8" id="KdA-5a-UUV"/>
+                    <constraint firstItem="191-4t-dqc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="gbX-KN-3GI"/>
+                    <constraint firstItem="191-4t-dqc" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.8" id="jNi-Q4-1p7"/>
+                    <constraint firstItem="191-4t-dqc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="l2H-v7-hEM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="33" y="49"/>
+        </tableViewCell>
+    </objects>
+</document>

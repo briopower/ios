@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="376" id="SLx-sJ-bkS" customClass="TrackPhasesCell" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="376"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SLx-sJ-bkS" id="gxp-0j-lL5">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="375"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drV-xc-QER">
+                        <rect key="frame" x="0.0" y="60.5" width="414" height="60"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGh-SB-vlM" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="6" width="373" height="48"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Overall 3 tasks"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="6.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="numberOfTaskAction:" destination="SLx-sJ-bkS" eventType="touchUpInside" id="Avx-dP-mzG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68l-lc-4BA">
+                                <rect key="frame" x="365" y="21.5" width="15" height="18"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="arrow">
+                                    <color key="titleShadowColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yGh-SB-vlM" firstAttribute="centerY" secondItem="drV-xc-QER" secondAttribute="centerY" id="3aM-dX-u6S"/>
+                            <constraint firstItem="yGh-SB-vlM" firstAttribute="centerX" secondItem="drV-xc-QER" secondAttribute="centerX" id="4JG-bW-Zdi"/>
+                            <constraint firstItem="68l-lc-4BA" firstAttribute="centerX" secondItem="drV-xc-QER" secondAttribute="centerX" multiplier="1.8" id="Ii2-PH-sN0"/>
+                            <constraint firstItem="yGh-SB-vlM" firstAttribute="height" secondItem="drV-xc-QER" secondAttribute="height" multiplier="0.8" id="fUU-1O-Zbj"/>
+                            <constraint firstItem="68l-lc-4BA" firstAttribute="centerY" secondItem="yGh-SB-vlM" secondAttribute="centerY" id="joN-mg-QZH"/>
+                            <constraint firstItem="yGh-SB-vlM" firstAttribute="width" secondItem="drV-xc-QER" secondAttribute="width" multiplier="0.9" id="vhd-sf-MXI"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uc-s6-8OI">
+                        <rect key="frame" x="0.0" y="120.5" width="414" height="60"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwU-bc-Erh" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="6" width="373" height="48"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Resources"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="6.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resourcesAction:" destination="SLx-sJ-bkS" eventType="touchUpInside" id="Rvz-wI-kNY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IL7-y2-eCc">
+                                <rect key="frame" x="365" y="21.5" width="15" height="18"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="arrow">
+                                    <color key="titleShadowColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="0uc-s6-8OI" secondAttribute="height" multiplier="1242:180" id="0Qe-Mn-tPg"/>
+                            <constraint firstItem="LwU-bc-Erh" firstAttribute="height" secondItem="0uc-s6-8OI" secondAttribute="height" multiplier="0.8" id="FmZ-If-q6L"/>
+                            <constraint firstItem="IL7-y2-eCc" firstAttribute="centerX" secondItem="0uc-s6-8OI" secondAttribute="centerX" multiplier="1.8" id="JAL-5M-Z1K"/>
+                            <constraint firstItem="LwU-bc-Erh" firstAttribute="centerX" secondItem="0uc-s6-8OI" secondAttribute="centerX" id="Ndb-2C-dxM"/>
+                            <constraint firstItem="IL7-y2-eCc" firstAttribute="centerY" secondItem="LwU-bc-Erh" secondAttribute="centerY" id="XVu-LJ-UEz"/>
+                            <constraint firstItem="LwU-bc-Erh" firstAttribute="centerY" secondItem="0uc-s6-8OI" secondAttribute="centerY" id="aqB-yc-bkc"/>
+                            <constraint firstItem="LwU-bc-Erh" firstAttribute="width" secondItem="0uc-s6-8OI" secondAttribute="width" multiplier="0.9" id="cuh-VV-2Jz"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCS-5t-1WD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="MONDAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0I-dd-kPb" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="21.5" width="73" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                <color key="textColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="248" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-O8-dh6" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="40.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <color key="textColor" red="0.85098039215686272" green="0.40784313725490196" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E0I-dd-kPb" firstAttribute="centerY" secondItem="wCS-5t-1WD" secondAttribute="centerY" id="91F-nB-wkn"/>
+                            <constraint firstItem="E0I-dd-kPb" firstAttribute="leading" secondItem="cLP-O8-dh6" secondAttribute="leading" id="UH2-QK-gUC"/>
+                            <constraint firstItem="cLP-O8-dh6" firstAttribute="centerY" secondItem="wCS-5t-1WD" secondAttribute="centerY" multiplier="1.35" id="hrk-Ds-dHm"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jsV-vJ-csQ" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="374.5" width="414" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Vp0-IX-Vxr"/>
+                        </constraints>
+                    </imageView>
+                    <webView contentMode="scaleToFill" suppressesIncrementalRendering="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Zv-ic-h1o">
+                        <rect key="frame" x="20.5" y="180.5" width="373" height="194"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </webView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jsV-vJ-csQ" firstAttribute="top" secondItem="6Zv-ic-h1o" secondAttribute="bottom" id="11I-ns-B75"/>
+                    <constraint firstItem="drV-xc-QER" firstAttribute="width" secondItem="0uc-s6-8OI" secondAttribute="width" id="4Ip-tF-DRl"/>
+                    <constraint firstItem="cLP-O8-dh6" firstAttribute="leading" secondItem="yGh-SB-vlM" secondAttribute="leading" id="7zX-HK-ufz"/>
+                    <constraint firstAttribute="bottom" secondItem="jsV-vJ-csQ" secondAttribute="bottom" id="Crw-J6-WF1"/>
+                    <constraint firstItem="6Zv-ic-h1o" firstAttribute="trailing" secondItem="yGh-SB-vlM" secondAttribute="trailing" id="I9s-aK-Lat"/>
+                    <constraint firstItem="6Zv-ic-h1o" firstAttribute="leading" secondItem="yGh-SB-vlM" secondAttribute="leading" id="IJJ-vd-nxj"/>
+                    <constraint firstAttribute="trailing" secondItem="jsV-vJ-csQ" secondAttribute="trailing" id="Ikz-df-qzi"/>
+                    <constraint firstItem="0uc-s6-8OI" firstAttribute="leading" secondItem="gxp-0j-lL5" secondAttribute="leading" id="ONi-nv-ckV"/>
+                    <constraint firstItem="6Zv-ic-h1o" firstAttribute="top" secondItem="0uc-s6-8OI" secondAttribute="bottom" id="QsG-Pw-hgY"/>
+                    <constraint firstItem="wCS-5t-1WD" firstAttribute="top" secondItem="gxp-0j-lL5" secondAttribute="top" id="SZi-h3-XaH"/>
+                    <constraint firstItem="wCS-5t-1WD" firstAttribute="centerX" secondItem="drV-xc-QER" secondAttribute="centerX" id="Yxi-M1-ari"/>
+                    <constraint firstItem="0uc-s6-8OI" firstAttribute="top" secondItem="drV-xc-QER" secondAttribute="bottom" id="bcg-pG-HiZ"/>
+                    <constraint firstItem="drV-xc-QER" firstAttribute="height" secondItem="0uc-s6-8OI" secondAttribute="height" id="dIx-sp-cKR"/>
+                    <constraint firstItem="jsV-vJ-csQ" firstAttribute="leading" secondItem="gxp-0j-lL5" secondAttribute="leading" id="eae-8c-Sba"/>
+                    <constraint firstItem="wCS-5t-1WD" firstAttribute="height" secondItem="drV-xc-QER" secondAttribute="height" id="gJk-Cw-pJT"/>
+                    <constraint firstItem="drV-xc-QER" firstAttribute="centerX" secondItem="0uc-s6-8OI" secondAttribute="centerX" id="gua-WB-YxV"/>
+                    <constraint firstAttribute="trailing" secondItem="0uc-s6-8OI" secondAttribute="trailing" id="nsi-VG-GEh"/>
+                    <constraint firstItem="wCS-5t-1WD" firstAttribute="width" secondItem="drV-xc-QER" secondAttribute="width" id="pkQ-ov-N69"/>
+                    <constraint firstItem="drV-xc-QER" firstAttribute="top" secondItem="wCS-5t-1WD" secondAttribute="bottom" id="qRU-KB-a8m"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="E0I-dd-kPb" id="BJV-CF-s64"/>
+                <outlet property="numberOfTask" destination="yGh-SB-vlM" id="AfJ-Oz-IoO"/>
+                <outlet property="ratingLabel" destination="cLP-O8-dh6" id="yd1-hC-AtD"/>
+                <outlet property="resourceButtonHeightConstraint" destination="FmZ-If-q6L" id="lqp-cf-3VU"/>
+                <outlet property="resourceView" destination="0uc-s6-8OI" id="WKq-ci-qb8"/>
+                <outlet property="webView" destination="6Zv-ic-h1o" id="qN3-t5-Icn"/>
+            </connections>
+            <point key="canvasLocation" x="-481" y="115"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow" width="15" height="15"/>
+    </resources>
+</document>

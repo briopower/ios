@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 import CoreLocation
 
+import Firebase
+import UserNotifications
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,9 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationManager = CLLocationManager()
     var geoCoder = CLGeocoder()
     var currentPlacemark:CLPlacemark?
+    var imageView = UIImageView(frame: UIScreen.mainScreen().bounds)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+
+        forEasyLoading()
+
+        setupOnAppLauch()
+
+        if let myDict = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
+            MessagingManager.sharedInstance.receivedPushNotification(myDict)
+        }
         return true
     }
 
@@ -31,14 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        FIRMessaging.messaging().disconnect()
+        debugPrint("Disconnected from FCM.")
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        MessagingManager.sharedInstance.connectToFcm()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        startSyncing()
     }
 
     func applicationWillTerminate(application: UIApplication) {
@@ -55,6 +71,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return urls[urls.count-1]
     }()
 
+    lazy var applicationLibraryDirectory: NSURL = {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.LibraryDirectory, inDomains: .UserDomainMask)
+        return urls[urls.count-1]
+    }()
+
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("ActionableHealth", withExtension: "momd")!
@@ -65,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        let url = self.applicationLibraryDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
@@ -75,14 +96,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
 
-            dict[NSUnderlyingErrorKey] = error as NSError
+            if let tempError = error as? NSError{
+                dict[NSUnderlyingErrorKey] = tempError
+            }
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
         }
-        
+
         return coordinator
     }()
 
@@ -92,6 +115,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
+    }()
+
+    lazy var bgManagedObjectContext: NSManagedObjectContext = {
+        var bgContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        bgContext.parentContext = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        return bgContext
+    }()
+
+    lazy var abManagedObjectContext: NSManagedObjectContext = {
+        var bgContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        bgContext.parentContext = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        return bgContext
     }()
 
     // MARK: - Core Data Saving support
@@ -108,6 +143,101 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
+//MARK: - Notification Methods
+extension AppDelegate{
+
+    func registerForPushNotifications() {
+        let application = UIApplication.sharedApplication()
+
+        if #available(iOS 10.0, *) {
+            let authOptions: UNAuthorizationOptions = [.Alert, .Badge, .Sound]
+            UNUserNotificationCenter.currentNotificationCenter().requestAuthorizationWithOptions(authOptions, completionHandler: { (val, error) in
+
+            })
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.currentNotificationCenter().delegate = self
+            // For iOS 10 data message (sent via FCM)
+            FIRMessaging.messaging().remoteMessageDelegate = self
+
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+
+        application.registerForRemoteNotifications()
+    }
+
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
+    {
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.Unknown)
+    }
+
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
+    {
+        MessagingManager.sharedInstance.receivedPushNotification(userInfo)
+    }
+}
+
+//MARK:- Additonal methods
+extension AppDelegate{
+    func forEasyLoading() {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController {
+            viewCont.view.userInteractionEnabled = true
+        }
+
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController {
+            viewCont.view.userInteractionEnabled = true
+        }
+    }
+
+    func startSyncing(){
+        ContactSyncManager.sharedInstance.checkForDeletedContacts()
+        ContactSyncManager.sharedInstance.syncContacts()
+    }
+
+    func setupOnAppLauch() {
+        if NSUserDefaults.isLoggedIn() {
+            // Add observer for InstanceID token refresh callback.
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: kFIRInstanceIDTokenRefreshNotification, object: nil)
+            registerForPushNotifications()
+            MessagingManager.sharedInstance.openChatSession()
+        }else{
+            MessagingManager.sharedInstance.closeChatSession()
+        }
+    }
+
+    func addLaunchScreen() {
+        imageView.image = UIImage(named: "Splash")
+        imageView.contentMode = .ScaleToFill
+        imageView.backgroundColor = UIColor.whiteColor()
+        UIApplication.sharedApplication().keyWindow?.addSubview(imageView)
+    }
+
+    func removeLaunchScreen() {
+        imageView.removeFromSuperview()
+    }
+}
+
+//MARK:- UNUserNotificationCenterDelegate
+extension AppDelegate:UNUserNotificationCenterDelegate{
+
+}
+//MARK:- FIRMessagingDelegate
+extension AppDelegate:FIRMessagingDelegate{
+    func applicationReceivedRemoteMessage(remoteMessage: FIRMessagingRemoteMessage){
+        MessagingManager.sharedInstance.receivedPushNotification(remoteMessage.appData)
+    }
+}
+
+//MARK:- Notification Methods
+extension AppDelegate{
+    func tokenRefreshNotification(not:NSNotification) {
+        MessagingManager.sharedInstance.connectToFcm()        
+    }
+}

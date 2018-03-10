@@ -13,7 +13,7 @@ import ImageIO
 
 //MARK:- Instance methods
 extension UIImage{
-    func resizeImage(newWidth: CGFloat, newHeight: CGFloat) -> UIImage {
+    func resizeImage(newWidth: CGFloat, newHeight: CGFloat) -> UIImage? {
 
         UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
         self.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
@@ -29,9 +29,9 @@ extension UIImage{
         let frame:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
         UIGraphicsBeginImageContext(frame.size)
         let  context:CGContextRef = UIGraphicsGetCurrentContext()!
-        CGContextSetFillColorWithColor(context, color?.CGColor)
+        CGContextSetFillColorWithColor(context, (color?.CGColor)!)
         CGContextFillRect(context, frame)
-        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }
@@ -39,7 +39,7 @@ extension UIImage{
     class func printAllImages(){
         let imageArray = NSBundle.mainBundle().pathsForResourcesOfType("png", inDirectory: nil)
         for image in imageArray {
-            print(image)
+            debugPrint(image)
         }
     }
 
@@ -49,9 +49,9 @@ extension UIImage{
             return UIImage(named: "Brand Assets-700@2x.png") // 640 960
         case .AppleIphone5, .AppleIphone5C, .AppleIphone5S:
             return UIImage(named: "Brand Assets-700-568h@2x.png") // 640 1136
-        case .AppleIphone6, .AppleIphone6S:
+        case .AppleIphone6, .AppleIphone6S, .AppleIphone7:
             return UIImage(named: "Brand Assets-800-667h@2x.png") // 750 1334
-        case .AppleIphone6P, .AppleIphone6SP:
+        case .AppleIphone6P, .AppleIphone6SP, .AppleIphone7P:
             return UIImage(named: "Brand Assets-800-Portrait-736h@3x.png") // 1242 2208
         default:
             return UIImage(named: "Brand Assets-700-568h@2x.png") // 640 960
@@ -75,7 +75,7 @@ extension UIImage {
     public class func gifWithData(data: NSData) -> UIImage? {
         // Create source from data
         guard let source = CGImageSourceCreateWithData(data, nil) else {
-            print("SwiftGif: Source for the image does not exist")
+            debugPrint("SwiftGif: Source for the image does not exist")
             return nil
         }
 
@@ -86,13 +86,13 @@ extension UIImage {
         // Validate URL
         guard let bundleURL:NSURL? = NSURL(string: gifUrl)
             else {
-                print("SwiftGif: This image named \"\(gifUrl)\" does not exist")
+                debugPrint("SwiftGif: This image named \"\(gifUrl)\" does not exist")
                 return nil
         }
 
         // Validate data
         guard let imageData = NSData(contentsOfURL: bundleURL!) else {
-            print("SwiftGif: Cannot turn image named \"\(gifUrl)\" into NSData")
+            debugPrint("SwiftGif: Cannot turn image named \"\(gifUrl)\" into NSData")
             return nil
         }
 
@@ -103,13 +103,13 @@ extension UIImage {
         // Check for existance of gif
         guard let bundleURL = NSBundle.mainBundle()
             .URLForResource(name, withExtension: "gif") else {
-                print("SwiftGif: This image named \"\(name)\" does not exist")
+                debugPrint("SwiftGif: This image named \"\(name)\" does not exist")
                 return nil
         }
 
         // Validate data
         guard let imageData = NSData(contentsOfURL: bundleURL) else {
-            print("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
+            debugPrint("SwiftGif: Cannot turn image named \"\(name)\" into NSData")
             return nil
         }
 

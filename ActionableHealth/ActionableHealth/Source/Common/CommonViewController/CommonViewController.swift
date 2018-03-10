@@ -8,18 +8,27 @@
 
 import UIKit
 
-class CommonViewController: UIViewController {
+class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
     //MARK:- variables
     var nullCaseView:NullCaseView?
     var showLoading = true
-    
+    var showLoginModule = true
+    var loader:VNProgreessHUD?
+    var isDisclaimerPresented : Bool = false
+
     //MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.delegate = self
+        if !NSUserDefaults.isLoggedIn(){
+            if showLoginModule {
+                AppDelegate.getAppDelegateObject()?.addLaunchScreen()
+            }
+        }
+        CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
+        setNavigationBarBackgroundColor(UIColor.whiteColor())
 
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -27,23 +36,40 @@ class CommonViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.dissmissKeyboard()
+        UIApplication.enableInteraction()
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.dissmissKeyboard()
-        
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-    }
-    
-    //MARK: Nullcase Delegate
-    func retryButtonTapped(nullCaseType: NullCaseType, identifier: Int?) {
+        if getNavigationController()?.viewControllers.count > 1 {
+            getNavigationController()?.interactivePopGestureRecognizer?.enabled = true
+            getNavigationController()?.interactivePopGestureRecognizer?.delegate = self
+        }else{
+            getNavigationController()?.interactivePopGestureRecognizer?.enabled = false
+            getNavigationController()?.interactivePopGestureRecognizer?.delegate = nil
+        }
 
+        if !NSUserDefaults.isLoggedIn() && showLoginModule {
+            UIViewController.presentLoginViewController(true, animated: false, Completion: {
+                if NSUserDefaults.isDisclaimerWatched(){
+                    AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+                }
+            })
+        }else{
+            if NSUserDefaults.isDisclaimerWatched(){
+                AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+            }
+        }
+    }
+
+    //MARK:  Delegate
+    func retryButtonTapped(nullCaseType: NullCaseType, identifier: Int?) {
+        
     }
 }
 

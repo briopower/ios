@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="384" id="61f-gk-eNW" customClass="PhaseDetailsCell" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="479" height="384"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="61f-gk-eNW" id="WuH-V7-QNO">
+                <rect key="frame" x="0.0" y="0.0" width="479" height="383.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMZ-vx-kwE">
+                        <rect key="frame" x="0.0" y="0.0" width="479" height="0.5"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="IN PROGRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hek-M3-Qn4" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="35" y="-8.5" width="112.5" height="18"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mo7-tB-ukJ" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-0.5" width="479" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="QRu-lf-5er"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.92941176469999998" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Hek-M3-Qn4" firstAttribute="centerY" secondItem="BMZ-vx-kwE" secondAttribute="centerY" multiplier="1.4" id="6ba-3G-gia"/>
+                            <constraint firstAttribute="width" secondItem="BMZ-vx-kwE" secondAttribute="height" multiplier="1242:1" id="6qD-IK-hqh"/>
+                            <constraint firstItem="Mo7-tB-ukJ" firstAttribute="leading" secondItem="BMZ-vx-kwE" secondAttribute="leading" id="I0R-nt-Ey2"/>
+                            <constraint firstAttribute="bottom" secondItem="Mo7-tB-ukJ" secondAttribute="bottom" id="Kz8-Cp-If3"/>
+                            <constraint firstAttribute="trailing" secondItem="Mo7-tB-ukJ" secondAttribute="trailing" id="u40-Zz-Gtm"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0S-ga-0ib">
+                        <rect key="frame" x="0.0" y="0.5" width="479" height="383"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0bo-5h-mM1">
+                                <rect key="frame" x="0.0" y="0.0" width="479" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0bo-5h-mM1" secondAttribute="height" multiplier="1242:70" id="cKa-sD-4My"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" verticalCompressionResistancePriority="1000" text="DAILY STRETCHING ROUTINE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPc-9h-kRL" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="35" y="27" width="409.5" height="63.5"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="gPc-9h-kRL" secondAttribute="width" multiplier="60:385" id="jmj-25-Iv6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.92156862750000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="In Progress as on 12 Aug 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKd-kM-1sA" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="35.5" y="179.5" width="224.5" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                <color key="textColor" red="0.52156862749999999" green="0.52941176469999995" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsh-Hw-QED" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="35" y="216.5" width="139" height="17"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                <color key="tintColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="149 Comments" image="comment-ic"/>
+                                <connections>
+                                    <action selector="commentsAction:" destination="61f-gk-eNW" eventType="touchUpInside" id="kux-Dz-8Nm"/>
+                                </connections>
+                            </button>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SGa-t9-ddU" customClass="HCSStarRatingView">
+                                <rect key="frame" x="35" y="127" width="96.5" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SGa-t9-ddU" secondAttribute="height" multiplier="250:60" id="yZX-2s-ALa"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="4.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="accurateHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStarImage" value="rating-icon"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledStarImage" value="rating-fill-icon"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="4.0 Rating" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAz-AR-8Rl" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="144" y="127" width="70.5" height="23"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-WO-cVu" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="358.5" y="210" width="86" height="29"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                <color key="tintColor" red="0.85098039219999999" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="RATE TASK"/>
+                                <connections>
+                                    <action selector="rateTaskAction:" destination="61f-gk-eNW" eventType="touchUpInside" id="kmJ-RS-QSS"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-k6-RPC">
+                                <rect key="frame" x="393.5" y="113" width="51" height="50.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OL7-k6-RPC" secondAttribute="height" id="FHc-vw-k4F"/>
+                                </constraints>
+                                <state key="normal" image="Start"/>
+                                <connections>
+                                    <action selector="startStopAction:" destination="61f-gk-eNW" eventType="touchUpInside" id="lmn-Oq-v1A"/>
+                                </connections>
+                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dev-2Q-DPT">
+                                <rect key="frame" x="35" y="238.5" width="409.5" height="138"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="InE-Mx-p3z" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="381.5" width="479" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="cuu-K5-Ugk"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="SGa-t9-ddU" firstAttribute="leading" secondItem="gPc-9h-kRL" secondAttribute="leading" id="0bn-wG-cuE"/>
+                            <constraint firstItem="Dev-2Q-DPT" firstAttribute="top" secondItem="tsh-Hw-QED" secondAttribute="bottom" constant="5" id="3vu-5o-82J"/>
+                            <constraint firstItem="Dev-2Q-DPT" firstAttribute="trailing" secondItem="RDB-WO-cVu" secondAttribute="trailing" id="4ie-Bc-6iP"/>
+                            <constraint firstItem="0bo-5h-mM1" firstAttribute="leading" secondItem="q0S-ga-0ib" secondAttribute="leading" id="6Vp-Iw-Y2D"/>
+                            <constraint firstItem="OL7-k6-RPC" firstAttribute="centerY" secondItem="SGa-t9-ddU" secondAttribute="centerY" id="6qf-YT-3xi"/>
+                            <constraint firstItem="WAz-AR-8Rl" firstAttribute="leading" secondItem="SGa-t9-ddU" secondAttribute="trailing" multiplier="350:320" id="7TB-cS-gBB"/>
+                            <constraint firstItem="HKd-kM-1sA" firstAttribute="top" secondItem="OL7-k6-RPC" secondAttribute="bottom" multiplier="1.1" id="8ba-hN-3f1"/>
+                            <constraint firstItem="SGa-t9-ddU" firstAttribute="top" secondItem="gPc-9h-kRL" secondAttribute="bottom" multiplier="1.4" id="AZJ-0t-rJa"/>
+                            <constraint firstItem="OL7-k6-RPC" firstAttribute="trailing" secondItem="gPc-9h-kRL" secondAttribute="trailing" id="U1T-kQ-1oI"/>
+                            <constraint firstItem="SGa-t9-ddU" firstAttribute="centerX" secondItem="q0S-ga-0ib" secondAttribute="centerX" multiplier="215:621" id="U2F-E7-g1h"/>
+                            <constraint firstItem="HKd-kM-1sA" firstAttribute="leading" secondItem="SGa-t9-ddU" secondAttribute="leading" id="ULj-Ly-O9x"/>
+                            <constraint firstItem="Dev-2Q-DPT" firstAttribute="leading" secondItem="tsh-Hw-QED" secondAttribute="leading" id="Y5o-AD-baD"/>
+                            <constraint firstItem="InE-Mx-p3z" firstAttribute="top" secondItem="Dev-2Q-DPT" secondAttribute="bottom" constant="5" id="a4K-0Y-219"/>
+                            <constraint firstItem="RDB-WO-cVu" firstAttribute="top" secondItem="HKd-kM-1sA" secondAttribute="bottom" multiplier="1.03" constant="8" symbolic="YES" id="bfQ-y6-VyA"/>
+                            <constraint firstItem="InE-Mx-p3z" firstAttribute="leading" secondItem="q0S-ga-0ib" secondAttribute="leading" id="bfV-hT-8Wv"/>
+                            <constraint firstAttribute="bottom" secondItem="InE-Mx-p3z" secondAttribute="bottom" id="ddE-Qd-S27"/>
+                            <constraint firstItem="WAz-AR-8Rl" firstAttribute="centerY" secondItem="SGa-t9-ddU" secondAttribute="centerY" id="eYz-O7-GMi"/>
+                            <constraint firstItem="SGa-t9-ddU" firstAttribute="width" secondItem="q0S-ga-0ib" secondAttribute="width" multiplier="250:1242" id="giB-TQ-lDU"/>
+                            <constraint firstItem="OL7-k6-RPC" firstAttribute="width" secondItem="q0S-ga-0ib" secondAttribute="width" multiplier="130:1242" id="jGq-VM-Q8o"/>
+                            <constraint firstAttribute="trailing" secondItem="0bo-5h-mM1" secondAttribute="trailing" id="jfx-k5-VWB"/>
+                            <constraint firstItem="RDB-WO-cVu" firstAttribute="centerY" secondItem="tsh-Hw-QED" secondAttribute="centerY" id="kMa-h4-kjs"/>
+                            <constraint firstItem="WAz-AR-8Rl" firstAttribute="height" secondItem="SGa-t9-ddU" secondAttribute="height" id="nSU-br-XSp"/>
+                            <constraint firstItem="tsh-Hw-QED" firstAttribute="leading" secondItem="HKd-kM-1sA" secondAttribute="leading" id="pfZ-ou-do6"/>
+                            <constraint firstItem="OL7-k6-RPC" firstAttribute="trailing" secondItem="RDB-WO-cVu" secondAttribute="trailing" id="umY-Ya-Ztb"/>
+                            <constraint firstItem="RDB-WO-cVu" firstAttribute="centerX" secondItem="q0S-ga-0ib" secondAttribute="centerX" multiplier="1040:621" id="wJD-Ge-eUu"/>
+                            <constraint firstItem="gPc-9h-kRL" firstAttribute="top" secondItem="0bo-5h-mM1" secondAttribute="bottom" id="wxi-IU-ih7"/>
+                            <constraint firstAttribute="trailing" secondItem="InE-Mx-p3z" secondAttribute="trailing" id="yCJ-mY-6nh"/>
+                            <constraint firstItem="0bo-5h-mM1" firstAttribute="top" secondItem="q0S-ga-0ib" secondAttribute="top" id="yqT-ca-K5b"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BMZ-vx-kwE" firstAttribute="leading" secondItem="WuH-V7-QNO" secondAttribute="leading" id="6e7-Wy-3mP"/>
+                    <constraint firstAttribute="trailing" secondItem="q0S-ga-0ib" secondAttribute="trailing" id="8gI-Fw-Ecr"/>
+                    <constraint firstAttribute="trailing" secondItem="BMZ-vx-kwE" secondAttribute="trailing" id="Jnn-RR-Z3H"/>
+                    <constraint firstAttribute="bottom" secondItem="q0S-ga-0ib" secondAttribute="bottom" id="VsV-B0-E3E"/>
+                    <constraint firstItem="BMZ-vx-kwE" firstAttribute="top" secondItem="WuH-V7-QNO" secondAttribute="top" id="ftw-cj-2mS"/>
+                    <constraint firstItem="Hek-M3-Qn4" firstAttribute="leading" secondItem="SGa-t9-ddU" secondAttribute="leading" id="rBj-m9-0r4"/>
+                    <constraint firstItem="q0S-ga-0ib" firstAttribute="top" secondItem="BMZ-vx-kwE" secondAttribute="bottom" id="tvb-SI-0dg"/>
+                    <constraint firstItem="q0S-ga-0ib" firstAttribute="leading" secondItem="WuH-V7-QNO" secondAttribute="leading" id="u8S-Iw-WBv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="commentCountButton" destination="tsh-Hw-QED" id="Dxv-Dm-SnE"/>
+                <outlet property="completedOnlabel" destination="HKd-kM-1sA" id="OVU-Rz-29K"/>
+                <outlet property="rateTaskButton" destination="RDB-WO-cVu" id="MQV-NN-MhR"/>
+                <outlet property="ratingLabel" destination="WAz-AR-8Rl" id="hfH-Xf-bVV"/>
+                <outlet property="starRatingView" destination="SGa-t9-ddU" id="v9t-rE-0RE"/>
+                <outlet property="startStopButton" destination="OL7-k6-RPC" id="qEA-U8-kAx"/>
+                <outlet property="statusLabel" destination="Hek-M3-Qn4" id="lUz-zH-arT"/>
+                <outlet property="taskNameLabel" destination="gPc-9h-kRL" id="WPN-wo-rwl"/>
+                <outlet property="topView" destination="BMZ-vx-kwE" id="Lxe-sI-UHk"/>
+                <outlet property="webView" destination="Dev-2Q-DPT" id="r8o-9B-2PG"/>
+            </connections>
+            <point key="canvasLocation" x="-2922.5" y="126"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Start" width="41" height="41"/>
+        <image name="comment-ic" width="17" height="17"/>
+        <image name="rating-fill-icon" width="11" height="10"/>
+        <image name="rating-icon" width="11" height="11"/>
+    </resources>
+</document>

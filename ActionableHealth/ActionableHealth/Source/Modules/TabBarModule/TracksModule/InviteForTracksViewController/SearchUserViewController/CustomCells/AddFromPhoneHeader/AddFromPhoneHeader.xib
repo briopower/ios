@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="eg8-jA-s45" customClass="AddFromPhoneHeader" customModule="BRIO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H1M-bB-3pi">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="H1M-bB-3pi" secondAttribute="height" multiplier="1242:190" priority="999" id="9pa-uA-Zd2"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zi3-E6-TfZ">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="142"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HXr-wN-Ywn" customClass="UIImageView_SepratorImageView" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="141" width="375" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="8em-Xj-nKx"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD FROM PHONEBOOK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCY-1c-Tin" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
+                            <rect key="frame" x="59" y="62.5" width="197.5" height="17"/>
+                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                            <color key="textColor" red="0.084022149439999999" green="0.082385703919999997" blue="0.1262660176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment-ic" translatesAutoresizingMaskIntoConstraints="NO" id="YX3-F2-Mqc">
+                            <rect key="frame" x="30" y="62.5" width="17" height="17"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="H1M-bB-3pi" secondAttribute="bottom" id="0a8-9u-fEG"/>
+                        <constraint firstItem="hCY-1c-Tin" firstAttribute="centerY" secondItem="YX3-F2-Mqc" secondAttribute="centerY" id="1QJ-Zm-Qeq"/>
+                        <constraint firstAttribute="bottom" secondItem="Zi3-E6-TfZ" secondAttribute="bottom" id="7Kb-JZ-pYc"/>
+                        <constraint firstItem="Zi3-E6-TfZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9ME-4b-jJX"/>
+                        <constraint firstItem="hCY-1c-Tin" firstAttribute="leading" secondItem="YX3-F2-Mqc" secondAttribute="trailing" multiplier="1.25" id="Bji-ba-Spl"/>
+                        <constraint firstItem="Zi3-E6-TfZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Heu-vR-s84"/>
+                        <constraint firstAttribute="trailing" secondItem="HXr-wN-Ywn" secondAttribute="trailing" id="Myv-lc-4bG"/>
+                        <constraint firstAttribute="trailing" secondItem="H1M-bB-3pi" secondAttribute="trailing" id="P8R-hE-9tQ"/>
+                        <constraint firstItem="YX3-F2-Mqc" firstAttribute="leading" secondItem="Zi3-E6-TfZ" secondAttribute="trailing" id="QLB-Ov-5qX"/>
+                        <constraint firstAttribute="bottom" secondItem="HXr-wN-Ywn" secondAttribute="bottom" id="R6l-eX-CvL"/>
+                        <constraint firstItem="YX3-F2-Mqc" firstAttribute="centerY" secondItem="Zi3-E6-TfZ" secondAttribute="centerY" id="Zga-vt-cq5"/>
+                        <constraint firstItem="H1M-bB-3pi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="edZ-00-M9G"/>
+                        <constraint firstItem="Zi3-E6-TfZ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="100:1242" id="pN5-Xe-qzv"/>
+                        <constraint firstItem="HXr-wN-Ywn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vWB-Mh-aKL"/>
+                        <constraint firstItem="H1M-bB-3pi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vsx-nI-Uh5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="eg8-jA-s45" secondAttribute="leading" id="31o-Ae-N0Q"/>
+                <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="PdY-dG-Fbf"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="eg8-jA-s45" secondAttribute="top" id="W18-eM-05K"/>
+                <constraint firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="vlE-PO-Lco"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-27" y="-537"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="comment-ic" width="17" height="17"/>
+    </resources>
+</document>

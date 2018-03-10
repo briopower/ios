@@ -13,7 +13,7 @@ let D_DAY = 86400.0
 let D_WEEK = 604800.0
 let D_MONTH = 2629743.83
 let D_YEAR = 31556926.0
-let MICRO_SECOND = 100000000.0
+let MILLI_SECOND = 1000.0
 
 let componentFlags:NSCalendarUnit = [.Era, .Year, .Month, .Day, .Hour, .Minute, .Second, .Weekday, .WeekdayOrdinal, .Quarter, .WeekOfMonth, .WeekOfYear, .YearForWeekOfYear, .Nanosecond, .Calendar, .TimeZone]
 
@@ -440,6 +440,63 @@ extension NSDate {
         }
         return "Just Now"
     }
+
+
+    var shortTimeLeftString:String {
+
+        let numberOfSecs = floor(self.timeIntervalSinceDate(NSDate()))
+        //Years
+        let numberOfYears = floor(numberOfSecs/D_YEAR)
+        if numberOfYears > 0 {
+            if numberOfYears == 1 {
+                return "1 yr left"
+            }else{
+                return "\(Int(numberOfYears)) yrs left"
+            }
+        }
+
+
+        //Days
+        let numberOfDays = floor(numberOfSecs/D_DAY)
+        if numberOfDays > 0 {
+            if numberOfDays == 1 {
+                return "1 day left"
+            }else{
+                return "\(Int(numberOfDays)) days left"
+            }
+        }
+
+        //Hours
+        let numberOfHours = floor(numberOfSecs/D_HOUR)
+        if numberOfHours > 0 {
+            if numberOfHours == 1 {
+                return "1 hr left"
+            }else{
+                return "\(Int(numberOfHours)) hrs left"
+            }
+        }
+
+        //Minutes
+        let numberOfMins = floor(numberOfSecs/D_MINUTE)
+        if numberOfMins > 0 {
+            if numberOfMins == 1 {
+                return "1 min left"
+            }else{
+                return "\(Int(numberOfMins)) mins left"
+            }
+        }
+
+        //Seconds
+        if numberOfSecs > 0 {
+            if numberOfSecs == 1 {
+                return "1 sec left"
+            }else{
+                return "\(Int(numberOfSecs)) secs left"
+            }
+        }
+
+        return "You are late"
+    }
 }
 
 
@@ -698,6 +755,10 @@ extension NSDate{
 //MARK:- Retrieving intervals
 extension NSDate{
 
+    func timeIntervalInMilliSecs() -> NSTimeInterval {
+        return timeIntervalSince1970 * MILLI_SECOND
+    }
+
     func minutesAfterDate(aDate:NSDate) -> Int {
         let interval = self.timeIntervalSinceDate(aDate)
         return Int(interval/D_MINUTE)
@@ -797,6 +858,9 @@ extension NSDate{
 //MARK:- Relative Dates
 extension NSDate{
 
+    class func dateWithTimeIntervalInMilliSecs(interval:NSTimeInterval) -> NSDate {
+        return NSDate(timeIntervalSince1970: interval/MILLI_SECOND)
+    }
     class func dateWithDaysFromNow(days:Int) -> NSDate? {
         return NSDate().dateByAddingDays(days)
     }
@@ -808,7 +872,7 @@ extension NSDate{
     class func dateTommorow() -> NSDate? {
         return NSDate.dateWithDaysFromNow(1)
     }
-
+    
     class func dateYesterday() -> NSDate? {
         return NSDate.dateWithDaysBeforeNow(1)
     }

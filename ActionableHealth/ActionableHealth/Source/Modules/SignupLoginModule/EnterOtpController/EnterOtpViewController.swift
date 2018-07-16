@@ -85,7 +85,7 @@ extension EnterOtpViewController{
             showLoader()
             if checkFields() {
                 UIApplication.dismissKeyboard()
-                NetworkClass.sendRequest(URL: "\(Constants.URLs.verifyOtp)\(phoneDetail!["phone"]!)/\(otpTextField.text ?? "")", RequestType: .GET, Parameters: nil , Headers: nil, CompletionHandler: {
+                NetworkClass.sendRequest(URL: "\(Constants.URLs.verifyOtp)\(phoneDetail!["phone"]!)/\(otpTextField.text ?? "")", RequestType: .get, Parameters: nil , Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     
                     if status{
@@ -103,7 +103,7 @@ extension EnterOtpViewController{
     @IBAction func resendCodeButton(_ sender: AnyObject) {
         if NetworkClass.isConnected(true) {
             showLoader()
-            NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .POST, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .post, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if let dict = responseObj as? NSDictionary{
                     if dict["exists"] as? Bool == true{

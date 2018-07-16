@@ -83,7 +83,7 @@ extension TasksModel{
         if let arr = dict["resources"] as? NSArray{
             for resourceObject in arr {
                 if let resourceDict = resourceObject as? [String:AnyObject]{
-                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict))
+                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict as AnyObject))
                 }
             }
         }

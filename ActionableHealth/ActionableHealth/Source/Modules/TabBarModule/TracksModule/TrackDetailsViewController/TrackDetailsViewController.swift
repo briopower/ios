@@ -387,7 +387,7 @@ extension TrackDetailsViewController{
             if let url = imageUploadURL{
                 if let image = selectedImage {
                     showProgressLoader()
-                    NetworkClass.sendImageRequest(URL: url, RequestType: .POST, ResponseType: .NONE, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+                    NetworkClass.sendImageRequest(URL: url, RequestType: .post, ResponseType: .none, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
 
                         let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
                         self.loader?.progress = progress
@@ -408,7 +408,7 @@ extension TrackDetailsViewController{
 
     func createImageUploadUrl(_ shouldUploadImage:Bool = true){
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.createTrackUploadURL)\(currentTemplate?.trackId ?? "")", RequestType: .GET, ResponseType: .STRING,CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.createTrackUploadURL)\(currentTemplate?.trackId ?? "")", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
                     self.imageUploadURL = str
                     if shouldUploadImage{
@@ -424,7 +424,7 @@ extension TrackDetailsViewController{
         if NetworkClass.isConnected(true) {
             if let id = sourceType == .templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
                 let url = sourceType == .templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
-                NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
+                NetworkClass.sendRequest(URL: url, RequestType: .get, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     if status{
                         self.processResponse(responseObj)
@@ -457,7 +457,7 @@ extension TrackDetailsViewController{
     func submitRating() {
         if NetworkClass.isConnected(true), let key = currentTemplate?.key?.getValidObject(){
             showLoaderOnWindow()
-            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .POST, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .post, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 self.hideLoader()
                 if statusCode == 200{

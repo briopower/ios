@@ -175,7 +175,7 @@ extension TemplatesModel{
         if let arr = dict["resources"] as? NSArray{
             for resourceObject in arr {
                 if let resourceDict = resourceObject as? [String:AnyObject]{
-                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict))
+                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict as AnyObject))
                 }
             }
         }
@@ -198,7 +198,7 @@ extension TemplatesModel{
         let obj = toModel.objectType == .template ? dict["details"] : dict["phasesAndTasks"]
         if let phases = obj as? NSArray {
             for phase in phases {
-                let phaseObj = PhasesModel.getPhaseUsingObj(phase)
+                let phaseObj = PhasesModel.getPhaseUsingObj(phase as AnyObject)
                 phaseObj.parentTemplate = toModel
                 toModel.phases.add(phaseObj)
             }

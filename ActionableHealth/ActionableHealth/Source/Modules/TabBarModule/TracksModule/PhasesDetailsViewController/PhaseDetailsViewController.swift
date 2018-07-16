@@ -195,7 +195,7 @@ extension PhaseDetailsViewController{
     func submitRating() {
         if NetworkClass.isConnected(true), let key = selectedTask?.key.getValidObject(){
             showLoaderOnWindow()
-            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .POST, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .post, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if statusCode == 200{
                     self.processResponse(responseObj)

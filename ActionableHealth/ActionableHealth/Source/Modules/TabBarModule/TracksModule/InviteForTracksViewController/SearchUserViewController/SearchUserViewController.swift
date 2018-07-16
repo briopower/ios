@@ -153,7 +153,7 @@ extension SearchUserViewController{
 
     func getData(_ cursorVal:String) {
         if NetworkClass.isConnected(true){
-            NetworkClass.sendRequest(URL:Constants.URLs.searchUser, RequestType: .POST, Parameters: TemplatesModel.getSearchUserDict(cursor ,query: searchString), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL:Constants.URLs.searchUser, RequestType: .post, Parameters: TemplatesModel.getSearchUserDict(cursor ,query: searchString) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.processResponse(responseObj, cursorVal: cursorVal)

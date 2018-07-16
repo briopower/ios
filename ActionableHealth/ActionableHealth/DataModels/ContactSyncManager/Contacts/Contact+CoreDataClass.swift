@@ -16,7 +16,7 @@ open class Contact: NSManagedObject {
         if let context = contextRef{
             var contact:Contact?
 
-            let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", forId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Contact]
+            let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Contact", predicate: NSPredicate(format: "id = %@", forId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Contact]
 
             if let temp = contactsArr?.first {
                 contact = temp
@@ -42,7 +42,7 @@ open class Contact: NSManagedObject {
 
     class func deleteContactsForRecordId(_ recordId:NSNumber, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let context = contextRef{
-            let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: NSPredicate(format: "recordId = %@", recordId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [AddressBook]
+            let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("AddressBook", predicate: NSPredicate(format: "recordId = %@", recordId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [AddressBook]
             for obj in addBookArr ?? [] {
                 if let arr = obj.contacts?.allObjects as? [Contact] {
                     for temp in arr {
@@ -57,7 +57,7 @@ open class Contact: NSManagedObject {
         if number == UserDefaults.getUserId() {
             return "You"
         }
-        let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, isAcendingSort: true, fetchLimit: nil) as? [Contact]
+        let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Contact", predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, isAcendingSort: true, fetchLimit: nil) as? [Contact]
 
         if let temp = contactsArr?.first {
             for obj in contactsArr ?? [] {

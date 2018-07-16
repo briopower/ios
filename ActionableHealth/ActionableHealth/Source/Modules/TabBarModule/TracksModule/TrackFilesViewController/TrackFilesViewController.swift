@@ -46,7 +46,8 @@ extension TrackFilesViewController{
     func loadFileInWebView() {
         if let data = responseData, let mimeType = httpResponse?.mimeType{
             FileManager.save(data, fileName: "response", mimeType: mimeType)
-            webView.load(data, mimeType: mimeType, textEncodingName: "utf-8", baseURL: URL())
+            // TODO
+            webView.load(data, mimeType: mimeType, textEncodingName: "utf-8", baseURL: URL.init(string: "")!)
             webView.delegate = self
         }
     }
@@ -92,7 +93,7 @@ extension TrackFilesViewController{
     func getFile() {
         if let blobKey = blobKey, NetworkClass.isConnected(true){
             showLoader()
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackFiles)\(blobKey)/true", RequestType: .GET, ResponseType: .NONE, CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackFiles)\(blobKey)/true", RequestType: .get, ResponseType: .none, CompletionHandler: { (status, responseObj, error, statusCode) in
                 self.processResponse(responseObj)
             })
         }

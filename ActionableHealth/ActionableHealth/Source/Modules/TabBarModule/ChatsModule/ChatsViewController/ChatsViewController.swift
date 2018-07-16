@@ -44,7 +44,7 @@ class ChatsViewController: CommonViewController {
 extension ChatsViewController{
     func setupView() {
 
-        _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Person), predicate: NSPredicate(format: "messages.@count > 0"), sectionNameKeyPath: nil, sorting: [("lastMessage.timestamp", false)])
+        _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Person", predicate: NSPredicate(format: "messages.@count > 0"), sectionNameKeyPath: nil, sorting: [("lastMessage.timestamp", false)])
         _fetchedResultsController?.delegate = self
         messagesListTblView.rowHeight = UITableViewAutomaticDimension
         messagesListTblView.estimatedRowHeight = 80

@@ -70,7 +70,7 @@ extension InviteForTrackViewController{
     }
 
     func contactSyncCompleted(_ notification:Notification) {
-        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
+        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         tblView.reloadData()
     }
 }
@@ -90,7 +90,7 @@ extension InviteForTrackViewController{
         tblView.estimatedSectionHeaderHeight = 80
         tblView.estimatedRowHeight = 80
 
-        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
+        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
 
@@ -114,7 +114,7 @@ extension InviteForTrackViewController{
         if NetworkClass.isConnected(true) /*&& selectedUsers.count > 0*/ && !isRequestSent {
             showLoaderOnWindow()
             self.isRequestSent = true
-            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(trackName, array: selectedUsers), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .post, Parameters: currentTemplate?.getCreateTrackDict(trackName, array: selectedUsers) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 self.isRequestSent = false
                 if status {
@@ -131,7 +131,7 @@ extension InviteForTrackViewController{
         if NetworkClass.isConnected(true) && selectedUsers.count > 0 && !isRequestSent{
             showLoaderOnWindow()
             self.isRequestSent = true
-            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .post, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 self.isRequestSent = false
                 if status {

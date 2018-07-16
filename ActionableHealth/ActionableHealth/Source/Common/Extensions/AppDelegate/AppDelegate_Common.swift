@@ -56,12 +56,22 @@ extension AppDelegate: CLLocationManagerDelegate{
             locationManager.startUpdatingLocation()
         }
     }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        geoCoder.reverseGeocodeLocation(newLocation) { (placemarks:[CLPlacemark]?, error:NSError?) in
-            if placemarks?.count > 0 && error == nil{
-                self.currentPlacemark = placemarks![0]
+//
+//    func locationManager(_ manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+//        geoCoder.reverseGeocodeLocation(newLocation) { (placemarks:[CLPlacemark]?, error:Error?) in
+//            if placemarks?.count > 0 && error == nil{
+//                self.currentPlacemark = placemarks![0]
+//            }
+//        }
+//    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let newLocation = locations.last{
+            geoCoder.reverseGeocodeLocation(newLocation) { (placemarks:[CLPlacemark]?, error:Error?) in
+                if placemarks?.count > 0 && error == nil{
+                    self.currentPlacemark = placemarks![0]
+                }
             }
-        } as! CLGeocodeCompletionHandler as! CLGeocodeCompletionHandler as! CLGeocodeCompletionHandler as! CLGeocodeCompletionHandler as! CLGeocodeCompletionHandler as! CLGeocodeCompletionHandler as! CLGeocodeCompletionHandler
+        }
+        
     }
 }

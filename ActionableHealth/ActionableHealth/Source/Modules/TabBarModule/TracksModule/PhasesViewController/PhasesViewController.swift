@@ -68,7 +68,7 @@ extension PhasesViewController:UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var reuseId = sourceType == .templates ? cellName : String(TrackPhasesCell)
+        var reuseId = sourceType == .templates ? cellName : "TrackPhasesCell"
         if(currentPhase?.resources.count < 1){
             reuseId = cellNameNoResource
         }

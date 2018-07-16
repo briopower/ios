@@ -33,7 +33,7 @@ class ContactSyncManager: NSObject {
     //MARK:- Variables
     static let sharedInstance = ContactSyncManager()
     static let apAddressBook = APAddressBook()
-    static let phoneNumberKit = PhoneNumberKit
+    static let phoneNumberKit = PhoneNumberKit()
     static let contactSyncCompleted = "ContactSyncCompleted"
 
     var isSyncing = false
@@ -42,7 +42,7 @@ class ContactSyncManager: NSObject {
     //MARK:- Private Methods
     fileprivate func loadContacts()
     {
-        ContactSyncManager.apAddressBook.loadContacts { (contacts:[APContact]?, error:NSError?) in
+        ContactSyncManager.apAddressBook.loadContacts { (contacts:[APContact]?, error:Error?) in
             if let contacts = contacts{
                 self.performSelector(inBackground: #selector(ContactSyncManager.addContacts(_:)), with: contacts)
             }else if let desc = error?.localizedDescription{
@@ -50,7 +50,8 @@ class ContactSyncManager: NSObject {
             }else{
                 self.syncCompleted(Date(timeIntervalSince1970: 0))
             }
-        } as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void
+            }
+        
     }
 
     @objc fileprivate func addContacts(_ contacts:[APContact]) {
@@ -65,7 +66,7 @@ class ContactSyncManager: NSObject {
                         if let phoneNumbers = contact.phones {
                             for phone in phoneNumbers {
                                 if let actualNumber = phone.number {
-                                    if let phNum = ContactSyncManager.phoneNumberKit.parseMultiple([actualNumber]).first{
+                                    if let phNum = ContactSyncManager.phoneNumberKit.parse([actualNumber]).first{
                                         Contact.saveContactObj(addBkObj, forId: "\(phNum.nationalNumber)", contextRef: bgCxt)
                                     }
                                 }
@@ -148,7 +149,7 @@ class ContactSyncManager: NSObject {
     }
 
     fileprivate func setAppUserWithId(_ id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
-        if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
+        if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Contact", predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
             for obj in arr {
                 obj.isAppUser = NSNumber(value: true as Bool)
             }
@@ -185,7 +186,7 @@ class ContactSyncManager: NSObject {
     }
 
     @objc fileprivate func fetchContactsAndStartSyncing() {
-        if let contacts = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@", NSNumber(value: false as Bool)), sortingKey: nil, fetchLimit: nil) as? [Contact] {
+        if let contacts = CoreDataOperationsClass.fetchObjectsOfClassWithName("Contact", predicate: NSPredicate(format: "isAppUser = %@", NSNumber(value: false as Bool)), sortingKey: nil, fetchLimit: nil) as? [Contact] {
             let arr = NSMutableArray()
             for contact in contacts {
                 if let uniqueId = contact.id {
@@ -242,7 +243,7 @@ extension ContactSyncManager{
                 self.isDeleting = true
 
                 bgCxt.perform({
-                    if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: nil, sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [AddressBook] {
+                    if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName("AddressBook", predicate: nil, sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [AddressBook] {
                         for obj in arr {
                             self.checkIfUserExists(obj, bgCxt: bgCxt, prntCxt: prntCxt)
                         }
@@ -266,7 +267,7 @@ extension ContactSyncManager{
 extension ContactSyncManager{
 
     fileprivate func syncContactFromServer(_ array:NSMutableArray) {
-        NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
+        NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .post, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
             if status{
                 self.processResponse(responseObj)
             }else{

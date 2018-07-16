@@ -79,7 +79,7 @@ extension TrackMemberListViewController{
     func getMembers() {
         if NetworkClass.isConnected(true), let id = currentTemplate?.trackId {
             showLoader()
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackMembers)\(id)", RequestType: .GET, CompletionHandler: {
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackMembers)\(id)", RequestType: .get, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.processResponse(responseObj)

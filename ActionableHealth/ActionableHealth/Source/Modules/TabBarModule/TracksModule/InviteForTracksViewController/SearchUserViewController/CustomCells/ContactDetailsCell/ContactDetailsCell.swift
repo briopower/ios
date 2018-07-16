@@ -56,12 +56,12 @@ extension ContactDetailsCell{
 
     @IBAction func inviteAction(_ sender: UIButton) {
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: Constants.URLs.inviteUsersToApp, RequestType: .POST, Parameters: contactObj?.getInviteMemberDict(), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.inviteUsersToApp, RequestType: .post, Parameters: contactObj?.getInviteMemberDict() as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status {
-                    UIView.showToast("Invitation sent to \"\(self.contactObj?.id ?? "")\"", theme: Theme.Success)
+                    UIView.showToast("Invitation sent to \"\(self.contactObj?.id ?? "")\"", theme: Theme.success)
                 }else{
-                    UIView.showToast("Failed to invite \"\(self.contactObj?.id ?? "")\"", theme: Theme.Error)
+                    UIView.showToast("Failed to invite \"\(self.contactObj?.id ?? "")\"", theme: Theme.error)
                 }
             })
         }

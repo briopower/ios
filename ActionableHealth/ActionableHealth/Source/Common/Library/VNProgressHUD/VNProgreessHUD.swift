@@ -501,53 +501,53 @@ extension VNProgreessHUD{
     }
 
     override func draw(_ rect: CGRect) {
-        let context:CGContext = UIGraphicsGetCurrentContext()!
-        UIGraphicsPushContext(context)
-        if dimBackground {
-
-            //Gradient colours
-            let gradLocationsNum:size_t = 2
-            let gradLocations:[CGFloat] = [0.0, 1.0]
-            let gradColors:[CGFloat] = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.75]
-            let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let gradient = CGGradient(colorSpace: colorSpace, colorComponents: gradColors, locations: gradLocations, count: gradLocationsNum)!
-
-            //Gradient center
-            let gradCenter = CGPoint(x: self.bounds.size.width/2, y: self.bounds.size.height/2)
-
-            //Gradient radius
-            let gradRadius = min(self.bounds.size.width , self.bounds.size.height)
-
-            //Gradient draw
-            context.drawRadialGradient (gradient, startCenter: gradCenter,
-                                         startRadius: 0, endCenter: gradCenter, endRadius: gradRadius,
-                                         options: CGGradientDrawingOptions.drawsAfterEndLocation)
-        }
-
-        // Set background rect color
-        if self.color != nil {
-            context.setFillColor(self.color!.cgColor)
-        }else {
-            context.setFillColor(gray: 0.0, alpha: self.opacity)
-        }
-
-        // Center HUD
-        let allRect = self.bounds
-
-        // Draw rounded HUD backgroud rect
-        let boxRect = CGRect(x: round((allRect.size.width - (size?.width ?? 0)) / 2) + self.xOffset,
-                                 y: round((allRect.size.height - (size?.height ?? 0)) / 2) + self.yOffset, width: (size?.width ?? 0), height: (size?.height ?? 0))
-        let radius = self.cornerRadius
-        context.beginPath()
-        context.move(to: CGPoint(x: boxRect.minX + radius, y: boxRect.minY))
-        CGContextAddArc(context, boxRect.maxX - radius, boxRect.minY + radius, radius, 3 * CGFloat(M_PI / 2), 0, 0)
-        CGContextAddArc(context, boxRect.maxX - radius, boxRect.maxY - radius, radius, 0, CGFloat(M_PI / 2), 0)
-        CGContextAddArc(context, boxRect.minX + radius, boxRect.maxY - radius, radius, CGFloat(M_PI / 2), CGFloat(M_PI), 0)
-        CGContextAddArc(context, boxRect.minX + radius, boxRect.minY + radius, radius, CGFloat(M_PI), 3 * CGFloat(M_PI / 2), 0)
-        context.closePath()
-        context.fillPath()
-
-        UIGraphicsPopContext()
+//        let context:CGContext = UIGraphicsGetCurrentContext()!
+//        UIGraphicsPushContext(context)
+//        if dimBackground {
+//
+//            //Gradient colours
+//            let gradLocationsNum:size_t = 2
+//            let gradLocations:[CGFloat] = [0.0, 1.0]
+//            let gradColors:[CGFloat] = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.75]
+//            let colorSpace = CGColorSpaceCreateDeviceRGB()
+//            let gradient = CGGradient(colorSpace: colorSpace, colorComponents: gradColors, locations: gradLocations, count: gradLocationsNum)!
+//
+//            //Gradient center
+//            let gradCenter = CGPoint(x: self.bounds.size.width/2, y: self.bounds.size.height/2)
+//
+//            //Gradient radius
+//            let gradRadius = min(self.bounds.size.width , self.bounds.size.height)
+//
+//            //Gradient draw
+//            context.drawRadialGradient (gradient, startCenter: gradCenter,
+//                                         startRadius: 0, endCenter: gradCenter, endRadius: gradRadius,
+//                                         options: CGGradientDrawingOptions.drawsAfterEndLocation)
+//        }
+//
+//        // Set background rect color
+//        if self.color != nil {
+//            context.setFillColor(self.color!.cgColor)
+//        }else {
+//            context.setFillColor(gray: 0.0, alpha: self.opacity)
+//        }
+//
+//        // Center HUD
+//        let allRect = self.bounds
+//
+//        // Draw rounded HUD backgroud rect
+//        let boxRect = CGRect(x: round((allRect.size.width - (size?.width ?? 0)) / 2) + self.xOffset,
+//                                 y: round((allRect.size.height - (size?.height ?? 0)) / 2) + self.yOffset, width: (size?.width ?? 0), height: (size?.height ?? 0))
+//        let radius = self.cornerRadius
+//        context.beginPath()
+//        context.move(to: CGPoint(x: boxRect.minX + radius, y: boxRect.minY))
+//        CGContextAddArc(context, boxRect.maxX - radius, boxRect.minY + radius, radius, 3 * CGFloat(M_PI / 2), 0, 0)
+//        CGContextAddArc(context, boxRect.maxX - radius, boxRect.maxY - radius, radius, 0, CGFloat(M_PI / 2), 0)
+//        CGContextAddArc(context, boxRect.minX + radius, boxRect.maxY - radius, radius, CGFloat(M_PI / 2), CGFloat(M_PI), 0)
+//        CGContextAddArc(context, boxRect.minX + radius, boxRect.minY + radius, radius, CGFloat(M_PI), 3 * CGFloat(M_PI / 2), 0)
+//        context.closePath()
+//        context.fillPath()
+//
+//        UIGraphicsPopContext()
     }
 }
 
@@ -918,51 +918,51 @@ class VNRoundProgressView: UIView {
 //MARK:- Drawing Methods
 extension VNRoundProgressView{
     override func draw(_ rect: CGRect) {
-        let allRect = self.bounds
-        let circleRect = allRect.insetBy(dx: 2.0, dy: 2.0)
-        let context = UIGraphicsGetCurrentContext()!
-
-        if self.annular {
-            // Draw background
-            let lineWidth:CGFloat = 2.0
-            let processBackgroundPath = UIBezierPath()
-            processBackgroundPath.lineWidth = lineWidth
-            processBackgroundPath.lineCapStyle = .butt
-            let center:CGPoint = CGPoint(x: self.bounds.size.width/2 , y: self.bounds.size.height/2)
-            let radius:CGFloat = (self.bounds.size.width - lineWidth)/2
-            let startAngle:CGFloat = -CGFloat(M_PI/2) // 90 degrees
-            var endAngle = (2 * CGFloat(M_PI)) + startAngle
-            processBackgroundPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-            self.backgroundTintColor.set()
-            processBackgroundPath.stroke()
-
-            //Draw progress
-            let processPath = UIBezierPath()
-            processPath.lineCapStyle = .square
-            processPath.lineWidth = lineWidth
-            endAngle = (self.progress * 2 * CGFloat(M_PI)) + startAngle
-            processPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
-            self.progressTintColor.set()
-            processPath.stroke()
-        }else{
-            // Draw background
-            self.progressTintColor.setStroke()
-            self.backgroundTintColor.setFill()
-            context.setLineWidth(2.0)
-            context.fillEllipse(in: circleRect)
-            context.strokeEllipse(in: circleRect)
-
-            //Draw progress
-            let center = CGPoint(x: allRect.size.width/2, y: allRect.size.height/2)
-            let radius:CGFloat = (allRect.size.width - 4)/2
-            let startAngle:CGFloat = -CGFloat(M_PI/2) // 90 degrees
-            let endAngle = (self.progress * 2 * CGFloat(M_PI)) + startAngle
-            self.progressTintColor.setFill()
-            context.move(to: CGPoint(x: center.x, y: center.y))
-            CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0)
-            context.closePath()
-            context.fillPath()
-        }
+//        let allRect = self.bounds
+//        let circleRect = allRect.insetBy(dx: 2.0, dy: 2.0)
+//        let context = UIGraphicsGetCurrentContext()!
+//
+//        if self.annular {
+//            // Draw background
+//            let lineWidth:CGFloat = 2.0
+//            let processBackgroundPath = UIBezierPath()
+//            processBackgroundPath.lineWidth = lineWidth
+//            processBackgroundPath.lineCapStyle = .butt
+//            let center:CGPoint = CGPoint(x: self.bounds.size.width/2 , y: self.bounds.size.height/2)
+//            let radius:CGFloat = (self.bounds.size.width - lineWidth)/2
+//            let startAngle:CGFloat = -CGFloat(M_PI/2) // 90 degrees
+//            var endAngle = (2 * CGFloat(M_PI)) + startAngle
+//            processBackgroundPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+//            self.backgroundTintColor.set()
+//            processBackgroundPath.stroke()
+//
+//            //Draw progress
+//            let processPath = UIBezierPath()
+//            processPath.lineCapStyle = .square
+//            processPath.lineWidth = lineWidth
+//            endAngle = (self.progress * 2 * CGFloat(M_PI)) + startAngle
+//            processPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+//            self.progressTintColor.set()
+//            processPath.stroke()
+//        }else{
+//            // Draw background
+//            self.progressTintColor.setStroke()
+//            self.backgroundTintColor.setFill()
+//            context.setLineWidth(2.0)
+//            context.fillEllipse(in: circleRect)
+//            context.strokeEllipse(in: circleRect)
+//
+//            //Draw progress
+//            let center = CGPoint(x: allRect.size.width/2, y: allRect.size.height/2)
+//            let radius:CGFloat = (allRect.size.width - 4)/2
+//            let startAngle:CGFloat = -CGFloat(M_PI/2) // 90 degrees
+//            let endAngle = (self.progress * 2 * CGFloat(M_PI)) + startAngle
+//            self.progressTintColor.setFill()
+//            context.move(to: CGPoint(x: center.x, y: center.y))
+//            CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0)
+//            context.closePath()
+//            context.fillPath()
+//        }
     }
 }
 
@@ -1038,89 +1038,89 @@ class VNBarProgressView: UIView {
 extension VNBarProgressView{
     override func draw(_ rect: CGRect) {
 
-        let context = UIGraphicsGetCurrentContext()!
-        context.setLineWidth(2)
-        context.setStrokeColor(self.lineColor.cgColor)
-        context.setFillColor(self.progressRemainingColor.cgColor)
-
-        // Draw background
-        var radius:CGFloat = (rect.size.height / 2) - 2
-        context.move(to: CGPoint(x: 2, y: rect.size.height/2))
-        CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
-        context.addLine(to: CGPoint(x: rect.size.width - radius - 2, y: 2))
-        CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
-        CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
-        context.addLine(to: CGPoint(x: radius + 2, y: rect.size.height - 2))
-        CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
-        context.fillPath()
-
-        // Draw border
-        context.move(to: CGPoint(x: 2, y: rect.size.height/2))
-        CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
-        context.addLine(to: CGPoint(x: rect.size.width - radius - 2, y: 2))
-        CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
-        CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
-        context.addLine(to: CGPoint(x: radius + 2, y: rect.size.height - 2))
-        CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
-        context.strokePath()
-
-        context.setFillColor(self.progressColor.cgColor)
-        radius = radius - 2
-        let amount:CGFloat = self.progress * rect.size.width
-
-        // Progress in the middle area
-        if amount >= radius + 4 && amount <= (rect.size.width - radius - 4) {
-            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
-            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
-            context.addLine(to: CGPoint(x: amount, y: 4))
-            context.addLine(to: CGPoint(x: amount, y: radius + 4))
-
-            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
-            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
-            context.addLine(to: CGPoint(x: amount, y: rect.size.height - 4))
-            context.addLine(to: CGPoint(x: amount, y: radius + 4))
-
-            context.fillPath()
-        }
-            // Progress in the right arc
-        else if amount > radius + 4 {
-            let x:CGFloat = amount - (rect.size.width - radius - 4)
-
-            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
-            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
-            context.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: 4))
-            var angle:CGFloat = -acos(x/radius)
-            if isnan(angle){
-                angle = 0
-            }
-            CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, CGFloat(M_PI), angle, 0)
-            context.addLine(to: CGPoint(x: amount, y: rect.size.height/2))
-
-            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
-            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
-            context.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: rect.size.height - 4))
-            angle = acos(x/radius)
-            if (isnan(angle))
-            {
-                angle = 0
-            }
-            CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, -CGFloat(M_PI), angle, 1)
-            context.addLine(to: CGPoint(x: amount, y: rect.size.height/2))
-
-            context.fillPath()
-        }
-            // Progress is in the left arc
-        else if amount < radius + 4 && amount > 0 {
-            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
-            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
-            context.addLine(to: CGPoint(x: radius + 4, y: rect.size.height/2))
-
-            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
-            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
-            context.addLine(to: CGPoint(x: radius + 4, y: rect.size.height/2))
-
-            context.fillPath()
-        }
+//        let context = UIGraphicsGetCurrentContext()!
+//        context.setLineWidth(2)
+//        context.setStrokeColor(self.lineColor.cgColor)
+//        context.setFillColor(self.progressRemainingColor.cgColor)
+//
+//        // Draw background
+//        var radius:CGFloat = (rect.size.height / 2) - 2
+//        context.move(to: CGPoint(x: 2, y: rect.size.height/2))
+//        CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
+//        context.addLine(to: CGPoint(x: rect.size.width - radius - 2, y: 2))
+//        CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
+//        CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
+//        context.addLine(to: CGPoint(x: radius + 2, y: rect.size.height - 2))
+//        CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
+//        context.fillPath()
+//
+//        // Draw border
+//        context.move(to: CGPoint(x: 2, y: rect.size.height/2))
+//        CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
+//        context.addLine(to: CGPoint(x: rect.size.width - radius - 2, y: 2))
+//        CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
+//        CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
+//        context.addLine(to: CGPoint(x: radius + 2, y: rect.size.height - 2))
+//        CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
+//        context.strokePath()
+//
+//        context.setFillColor(self.progressColor.cgColor)
+//        radius = radius - 2
+//        let amount:CGFloat = self.progress * rect.size.width
+//
+//        // Progress in the middle area
+//        if amount >= radius + 4 && amount <= (rect.size.width - radius - 4) {
+//            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+//            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
+//            context.addLine(to: CGPoint(x: amount, y: 4))
+//            context.addLine(to: CGPoint(x: amount, y: radius + 4))
+//
+//            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+//            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
+//            context.addLine(to: CGPoint(x: amount, y: rect.size.height - 4))
+//            context.addLine(to: CGPoint(x: amount, y: radius + 4))
+//
+//            context.fillPath()
+//        }
+//            // Progress in the right arc
+//        else if amount > radius + 4 {
+//            let x:CGFloat = amount - (rect.size.width - radius - 4)
+//
+//            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+//            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
+//            context.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: 4))
+//            var angle:CGFloat = -acos(x/radius)
+//            if isnan(angle){
+//                angle = 0
+//            }
+//            CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, CGFloat(M_PI), angle, 0)
+//            context.addLine(to: CGPoint(x: amount, y: rect.size.height/2))
+//
+//            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+//            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
+//            context.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: rect.size.height - 4))
+//            angle = acos(x/radius)
+//            if (isnan(angle))
+//            {
+//                angle = 0
+//            }
+//            CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, -CGFloat(M_PI), angle, 1)
+//            context.addLine(to: CGPoint(x: amount, y: rect.size.height/2))
+//
+//            context.fillPath()
+//        }
+//            // Progress is in the left arc
+//        else if amount < radius + 4 && amount > 0 {
+//            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+//            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
+//            context.addLine(to: CGPoint(x: radius + 4, y: rect.size.height/2))
+//
+//            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+//            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
+//            context.addLine(to: CGPoint(x: radius + 4, y: rect.size.height/2))
+//
+//            context.fillPath()
+//        }
 
     }
 }

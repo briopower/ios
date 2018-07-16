@@ -100,7 +100,7 @@ extension SearchViewController{
 //            if clctView.dataArray.count == 0 {
 //                showLoader()
 //            }
-            NetworkClass.sendRequest(URL:Constants.URLs.allTemplates, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(cursor,query: searchString), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL:Constants.URLs.allTemplates, RequestType: .post, Parameters: TemplatesModel.getPayloadDict(cursor,query: searchString) as AnyObject as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.processResponse(responseObj, cursorVal: cursorVal)
@@ -120,7 +120,7 @@ extension SearchViewController{
             }
             let templatesArr = TemplatesModel.getTemplateResponseArray(dict)
             for obj in templatesArr {
-                let template = TemplatesModel.getTemplateObj(obj)
+                let template = TemplatesModel.getTemplateObj(obj as AnyObject)
                 clctView.dataArray.add(template)
             }
             if let cursorVal = TemplatesModel.getCursor(dict){

@@ -67,12 +67,16 @@ extension NSAttributedString{
     var localized: NSAttributedString {
         let mutAttrString = NSMutableAttributedString()
 
-        self.enumerateAttributes(in: NSMakeRange(0, self.string.characters.count), options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired) { (attributes:[String : AnyObject], range:NSRange, obj:UnsafeMutablePointer<ObjCBool>) in
-            let temp = self.attributedSubstring(from: range)
-            let attr = NSAttributedString(string: temp.string.localized, attributes: attributes)
-            mutAttrString.append(attr)
-        }
-
+//        self.enumerateAttributes(in: NSMakeRange(0, self.string.characters.count), options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired) { (attributes:[String : AnyObject], range:NSRange, obj:UnsafeMutablePointer<ObjCBool>) in
+//            let temp = self.attributedSubstring(from: range)
+//            let attr = NSAttributedString(string: temp.string.localized, attributes: attributes)
+//            mutAttrString.append(attr)
+//            }
+        self.enumerateAttributes(in: NSMakeRange(0, self.string.count), options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired, using: { (attributes, range, _) in
+                let temp = self.attributedSubstring(from: range)
+                let attr = NSAttributedString(string: temp.string.localized, attributes: attributes)
+                mutAttrString.append(attr)
+            })
         return mutAttrString
     }
 }

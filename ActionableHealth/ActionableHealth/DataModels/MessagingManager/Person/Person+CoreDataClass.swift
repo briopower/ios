@@ -27,7 +27,7 @@ open class Person: NSManagedObject {
     }
 
     func updateProfileImage() {
-        NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(personId ?? "")", RequestType: .GET) {
+        NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(personId ?? "")", RequestType: .get) {
             (status, responseObj, error, statusCode) in
             if status, let imageUrl = responseObj?["profileURL"] as? String{
                 self.personImage = imageUrl
@@ -40,7 +40,7 @@ open class Person: NSManagedObject {
         if let context = contextRef{
 
             var personObj:Person?
-            let presonArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Person), predicate: NSPredicate(format: "personId = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Person]
+            let presonArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Person", predicate: NSPredicate(format: "personId = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Person]
 
             if let temp = presonArr?.first{
                 personObj = temp

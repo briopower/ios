@@ -169,7 +169,7 @@ extension CountryListViewController{
     func getNamesJson() {
         if NetworkClass.isConnected(true) {
             showLoader()
-            NetworkClass.sendRequest(URL: Constants.URLs.countryNames, RequestType: .GET) { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: Constants.URLs.countryNames, RequestType: .get) { (status, responseObj, error, statusCode) in
                 if status{
                     if let dict = responseObj as? NSDictionary{
                         self.namesDict = NSMutableDictionary(dictionary: dict)
@@ -182,7 +182,7 @@ extension CountryListViewController{
 
     func getCodesJson() {
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: Constants.URLs.countryCodes, RequestType: .GET) { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: Constants.URLs.countryCodes, RequestType: .get) { (status, responseObj, error, statusCode) in
                 if status{
                     if let dict = responseObj as? NSDictionary{
                         self.codesDict = NSMutableDictionary(dictionary: dict)

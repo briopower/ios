@@ -35,8 +35,8 @@ extension StaggeredCollectionView{
 
 //MARK:- CHTCollectionViewDelegateWaterfallLayout
 extension StaggeredCollectionView:CHTCollectionViewDelegateWaterfallLayout{
-    override func collectionView (_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
-                         sizeForItemAt indexPath: IndexPath) -> CGSize{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let gridWidth : CGFloat = (UIScreen.main.bounds.size.width/2)-5.0
         let imageHeight = 1250*gridWidth/1250
         return CGSize(width: gridWidth, height: imageHeight)

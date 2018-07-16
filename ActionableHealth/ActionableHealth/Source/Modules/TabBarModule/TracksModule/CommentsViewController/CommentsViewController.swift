@@ -81,7 +81,7 @@ extension CommentsViewController{
 
     func receivedComment(_ notification:Notification) {
         if let obj = notification.object as? [String: AnyObject] {
-            let commObj = CommentsModel.getCommentObj(obj)
+            let commObj = CommentsModel.getCommentObj(obj as AnyObject)
             commentsTblView.insertElements(NSMutableArray(array: [commObj]), insertAt: InsertAt.top, section: 0, startIndex: 0)
             delegate?.updatedCommentCount(commentsTblView.dataArray.count)
         }

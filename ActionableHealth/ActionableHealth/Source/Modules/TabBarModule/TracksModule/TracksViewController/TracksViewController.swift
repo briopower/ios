@@ -88,7 +88,7 @@ extension TracksViewController{
             if clctView.dataArray.count == 0 {
                 showLoader()
             }
-            NetworkClass.sendRequest(URL:Constants.URLs.myTracks, RequestType: .POST, Parameters: TemplatesModel.getPayloadDict(cursorVal), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL:Constants.URLs.myTracks, RequestType: .post, Parameters: TemplatesModel.getPayloadDict(cursorVal) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, new ) in
                 if status{
                     self.processResponse(responseObj, cursorVal: cursorVal)
@@ -108,7 +108,7 @@ extension TracksViewController{
             }
             let tracksArr = TemplatesModel.getTrackResponseArray(dict)
             for obj in tracksArr {
-                let track = TemplatesModel.getTrackObj(obj)
+                let track = TemplatesModel.getTrackObj(obj as AnyObject)
                 clctView.dataArray.add(track)
             }
             if let cursorVal = TemplatesModel.getCursor(dict){

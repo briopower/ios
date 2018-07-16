@@ -60,7 +60,7 @@ extension PhasesModel{
         model.tasks = NSMutableArray()
         if let tasks = dict["tasks"] as? NSArray {
             for temp in tasks {
-                let task = TasksModel.getTasksUsingObj(temp)
+                let task = TasksModel.getTasksUsingObj(temp as AnyObject)
                 task.parentPhase = model
                 model.tasks.add(task)
             }
@@ -74,7 +74,7 @@ extension PhasesModel{
         if let arr = dict["resources"] as? NSArray{
             for resourceObject in arr {
                 if let resourceDict = resourceObject as? [String:AnyObject]{
-                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict))
+                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict as AnyObject))
                 }
             }
         }

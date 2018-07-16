@@ -45,7 +45,7 @@ extension ProfileImageCell{
         if let image = currentUser?.image {
             profileImage.image = image
         }else if let image = currentUser?.profileImage{
-            profileImage.sd_setImage(with: URL(string: image) ?? URL())
+            profileImage.sd_setImage(with: URL(string: image) ?? URL.init(string: ""))
         }
     }
 

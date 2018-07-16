@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+
 
 extension NSArray{
 
@@ -16,9 +18,15 @@ extension NSArray{
         let splitArray = NSMutableArray()
 
         while currentIndex < totalCount {
-            let range = NSMakeRange(currentIndex, min(size, totalCount-currentIndex))
+            var smallInt = size
+            if size > (totalCount-currentIndex){
+                smallInt = (totalCount-currentIndex)
+            }
+            let range = NSMakeRange(currentIndex, smallInt)
             splitArray.add(self.subarray(with: range))
             currentIndex += size
+            
+            
         }
 
         return splitArray

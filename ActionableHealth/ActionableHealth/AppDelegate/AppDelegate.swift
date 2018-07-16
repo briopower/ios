@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        FIRMessaging.messaging().disconnect()
+        Messaging.messaging().shouldEstablishDirectChannel = false
         debugPrint("Disconnected from FCM.")
     }
 
@@ -159,7 +159,7 @@ extension AppDelegate{
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
             // For iOS 10 data message (sent via FCM)
-            FIRMessaging.messaging().remoteMessageDelegate = self
+            Messaging.messaging().delegate = self
 
         } else {
             let settings: UIUserNotificationSettings =
@@ -172,7 +172,11 @@ extension AppDelegate{
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
     {
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.unknown)
+        
+        // TODO
+        //InstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.unknown)
+        Messaging.messaging().setAPNSToken(deviceToken, type: .unknown)
+        
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -202,9 +206,10 @@ extension AppDelegate{
     }
 
     func setupOnAppLauch() {
+        FirebaseApp.configure()
         if UserDefaults.isLoggedIn() {
             // Add observer for InstanceID token refresh callback.
-            NotificationCenter.default.addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: NSNotification.Name.firInstanceIDTokenRefresh, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
             registerForPushNotifications()
             MessagingManager.sharedInstance.openChatSession()
         }else{

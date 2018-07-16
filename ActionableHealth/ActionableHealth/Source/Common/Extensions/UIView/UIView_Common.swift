@@ -22,7 +22,7 @@ extension UIView{
 //MARK:- Toast Methods
 extension UIView{
     class func showToast(_ message:String, theme:Theme) {
-        let messageView = MessageView.viewFromNib(layout: .StatusLine)
+        let messageView = MessageView.viewFromNib(layout: .statusLine)
         messageView.configureTheme(theme)
         messageView.configureContent(body: message)
         var statusConfig = SwiftMessages.defaultConfig

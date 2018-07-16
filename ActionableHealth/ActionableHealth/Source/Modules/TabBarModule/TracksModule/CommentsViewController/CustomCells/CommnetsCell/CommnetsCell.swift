@@ -42,11 +42,11 @@ extension CommnetsCell{
                         personImageView.sd_setImage(with: url)
                     }
                 }else{
-                    NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(id ?? "")", RequestType: .GET) {
+                    NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(id ?? "")", RequestType: .get) {
                         (status, responseObj, error, statusCode) in
                         if status, let imageUrl = responseObj?["profileURL"] as? String{
                             if let url = NSURL(string: imageUrl) {
-                                self.personImageView.sd_setImageWithURL(url)
+                                self.personImageView.sd_setImage(with: url as URL)
                             }
                         }
                     }

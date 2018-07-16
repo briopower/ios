@@ -138,7 +138,7 @@ extension EditProfileViewController:UITableViewDelegate {
 extension EditProfileViewController{
     func createImageUploadUrl(_ shouldUploadImage:Bool = true){
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.createUploadURL)\(UserDefaults.getUserId())", RequestType: .GET, ResponseType: .STRING,CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.createUploadURL)\(UserDefaults.getUserId())", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
                     self.imageUploadURL = str
                     if shouldUploadImage{
@@ -154,7 +154,7 @@ extension EditProfileViewController{
             if let url = imageUploadURL{
                 if let image = user.image {
                     self.showProgressLoader()
-                    NetworkClass.sendImageRequest(URL: url, RequestType: .POST, ResponseType: .NONE, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+                    NetworkClass.sendImageRequest(URL: url, RequestType: .post, ResponseType: .none, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
 
                         let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
                         self.loader?.progress = progress
@@ -180,7 +180,7 @@ extension EditProfileViewController{
 
     func updateProfile() {
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .POST, ResponseType: .JSON, Parameters: user.getUpdateProfileDictionary(), CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .post, ResponseType: .json, Parameters: user.getUpdateProfileDictionary() as AnyObject, CompletionHandler: { (status, responseObj, error, statusCode) in
                 if status{
                     self.processSuccess(responseObj)
                 }else{

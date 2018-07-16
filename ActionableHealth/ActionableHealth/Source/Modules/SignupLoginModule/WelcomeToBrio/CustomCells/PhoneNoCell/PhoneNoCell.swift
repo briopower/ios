@@ -53,7 +53,7 @@ extension PhoneNoCell{
         }
         if let text = phoneNoTxtFld.text {
             if text.characters.count >= 10 {
-                if let _ = ContactSyncManager.phoneNumberKit.parseMultiple([text]).first?.nationalNumber{
+                if let _ = ContactSyncManager.phoneNumberKit.parse([text]).first?.nationalNumber{
                     phoneNoTxtFld.resignFirstResponder()
                 }
             }

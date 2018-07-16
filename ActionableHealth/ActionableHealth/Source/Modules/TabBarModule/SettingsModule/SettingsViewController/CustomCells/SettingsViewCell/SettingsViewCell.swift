@@ -79,11 +79,11 @@ extension SettingsViewCell{
 extension SettingsViewCell{
     func updateProfile() {
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .POST, ResponseType: .JSON, Parameters: user.getUpdateProfileDictionary(), CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .post, ResponseType: .json, Parameters: user.getUpdateProfileDictionary() as AnyObject, CompletionHandler: { (status, responseObj, error, statusCode) in
                 if !status{
-                    self.toggleSwitch.on = self.previousState
+                    self.toggleSwitch.isOn = self.previousState
                 }else{
-                    NSUserDefaults.saveUser(responseObj)
+                    UserDefaults.saveUser(responseObj)
                     self.updateCurrentStatus()
                 }
             })

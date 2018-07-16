@@ -12,10 +12,10 @@ import Firebase
 class CommentsManager: NSObject {
     //MARK:- Variables
     static let sharedInstance = CommentsManager()
-    var ref: FIRDatabaseReference?
+    var ref: DatabaseReference?
     var commentId:String! = ""
     let commentReceived = "commentReceivedNotifiaction"
-    fileprivate var _refHandle: FIRDatabaseHandle?
+    fileprivate var _refHandle: DatabaseHandle?
     fileprivate var chanelToObserve:String{
         get{
             return "comments/\(commentId)"
@@ -28,12 +28,12 @@ extension CommentsManager{
     fileprivate func configureDatabase() {
 
         if ref == nil {
-            ref = FIRDatabase.database().reference()
+            ref = Database.database().reference()
         }
 
         // Listen for new messages in the Firebase database
         _refHandle = self.ref?.child(chanelToObserve).observe(.childAdded, with:
-            { (snapshot:FIRDataSnapshot) in
+            { (snapshot:DataSnapshot) in
                 if let data = snapshot.valueInExportFormat() as? [String:AnyObject]{
                     if let type = MessageType(rawValue: data["data"]?["type"] as? String ?? ""){
                         switch type{
@@ -47,17 +47,17 @@ extension CommentsManager{
             }, withCancel:
             { (error:NSError) in
                 debugPrint("------------DATABASE SYNC ISSUE COMMENT--------------\(error)")
-        })
+                } as! (Error) -> Void)
     }
 
     fileprivate func sendComment(_ comment:String) {
        let key = commentId.replacingOccurrences(of: "_\(UserDefaults.getUserId())", with: "")
-        let objToSend:[String:AnyObject] = ["data":["key":key, "message":comment, "type": MessageType.comment.rawValue],
-                                            "from": UserDefaults.getUserId(),
-                                            "priority": "high",
-                                            "timeStamp": Date().timeIntervalInMilliSecs()]
+        let objToSend:[String:AnyObject] = ["data":["key":key, "message":comment, "type": MessageType.comment.rawValue] as AnyObject,
+                                            "from": UserDefaults.getUserId() as AnyObject,
+                                            "priority": "high" as AnyObject,
+                                            "timeStamp": Date().timeIntervalInMilliSecs() as AnyObject]
 
-        NetworkClass.sendRequest(URL: Constants.URLs.comment, RequestType: .POST, Parameters: CommentsModel.getPayloadDictForCommenting(key, commnt: comment), Headers: nil, CompletionHandler: {
+        NetworkClass.sendRequest(URL: Constants.URLs.comment, RequestType: .post, Parameters: CommentsModel.getPayloadDictForCommenting(key, commnt: comment) as AnyObject, Headers: nil, CompletionHandler: {
             (status, responseObj, error, statusCode) in
             debugPrint("send comment \(statusCode)")
         })

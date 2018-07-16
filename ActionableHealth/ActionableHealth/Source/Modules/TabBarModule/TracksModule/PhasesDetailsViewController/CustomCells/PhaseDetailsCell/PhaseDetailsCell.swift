@@ -195,15 +195,15 @@ extension PhaseDetailsCell{
         
         if NetworkClass.isConnected(true), let key = currentTask?.key {
             startStopButton?.isEnabled = false
-            NetworkClass.sendRequest(URL: Constants.URLs.setStatus, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForStatus(key, status: taskStatus.rawValue), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.setStatus, RequestType: .post, ResponseType: .json, Parameters: TasksModel.getDictForStatus(key, status: taskStatus.rawValue) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTask?.status = taskStatus.rawValue
                     switch taskStatus{
                     case .Complete:
-                        self.currentTask?.completedDate = NSDate().timeIntervalInMilliSecs()
+                        self.currentTask?.completedDate = Date().timeIntervalInMilliSecs()
                     case .Paused:
-                        self.currentTask?.pausedDate = NSDate().timeIntervalInMilliSecs()
+                        self.currentTask?.pausedDate = Date().timeIntervalInMilliSecs()
                     default:
                         break
                     }
@@ -212,7 +212,7 @@ extension PhaseDetailsCell{
                     }
                     self.getTableView()?.reloadData()
                 }
-                self.startStopButton?.enabled = true
+                self.startStopButton?.isEnabled = true
             })
         }
     }
@@ -237,7 +237,7 @@ extension PhaseDetailsCell{
     func updateProgress(_ progress:Float) {
         if NetworkClass.isConnected(true), let key = currentTask?.key {
             slider?.isEnabled = false
-            NetworkClass.sendRequest(URL: Constants.URLs.setProgress, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForProgress(key, progress: "\(progress/100)"), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.setProgress, RequestType: .post, ResponseType: .json, Parameters: TasksModel.getDictForProgress(key, progress: "\(progress/100)") as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTask?.progress = Double(progress)
@@ -245,7 +245,7 @@ extension PhaseDetailsCell{
                         self.configureCell(task)
                     }
                 }
-                self.slider?.enabled = true
+                self.slider?.isEnabled = true
             })
         }
     }

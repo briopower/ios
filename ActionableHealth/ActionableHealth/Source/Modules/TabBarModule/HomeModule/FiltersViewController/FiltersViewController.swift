@@ -18,7 +18,7 @@ class FiltersViewController: CommonViewController {
     //MARK:- Variables
     var filterObj:FilterByObject!
     weak var delegate:HomeViewController?
-    var selectedFilters = []
+    var selectedFilters: [Any] = []
 
     //MARK:- LifeCycle
     override func viewDidLoad() {

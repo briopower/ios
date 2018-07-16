@@ -49,26 +49,9 @@ extension MessagingManager{
            self.connect()
         }
     }
-//        Auth.auth().signIn(withCustomToken: UserDefaults.getFirebaseToken(), completion: { (user:User?, error:NSError?) in
-//            if let error = error{
-//                self.isConnected = false
-//                debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\(error)")
-//                if let type = FIRAuthErrorCode(rawValue: error.code){
-//                    switch type{
-//                    case .errorCodeNetworkError:
-//                        self.openChatSession()
-//                    default:
-//                        self.refreshToken()
-//                    }
-//                }
-//            }
-//
-//            self.connect()
-//        })
-//    }
 
     fileprivate func refreshToken() {
-        FIRAuth.auth()?.currentUser?.getTokenForcingRefresh(true, completion: { (token:String?, error:NSError?) in
+        Auth.auth().currentUser?.getIDTokenForcingRefresh(true, completion: { (token: String?, error: Error?) in
             if let error = error{
                 self.isConnected = false
                 debugPrint("------------FIREBASE REFRESH TOKEN ISSUE--------------\(error)")
@@ -123,14 +106,14 @@ extension MessagingManager{
 
 
     fileprivate func sendMessage(_ message:String, userId:String, trackName:String?) {
-        let objToSend:[String:AnyObject] = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
+        let objToSend:[String:Any] = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
                                             "from": UserDefaults.getUserId(),
                                             "priority": "high",
                                             "toUserIds":[userId],
                                             "timeStamp": Date().timeIntervalInMilliSecs(),
                                             "lastTrackName": trackName ?? ""]
 
-        NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .POST, ResponseType: ExpectedResponseType.NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
+        NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: objToSend as AnyObject){ (status, responseObj, error, statusCode) in
             debugPrint("sendMessage \(statusCode)")
         }
 
@@ -141,13 +124,13 @@ extension MessagingManager{
     }
 
     fileprivate func sendNotification(_ message:String, userId:String) {
-        let objToSend:[String:AnyObject] = ["data":["key":UserDefaults.getUserId(), "message":message, "type": MessageType.chat.rawValue],
-                                            "notification":["title":"New Message", "body":message, "icon": ""],
-                                            "from": UserDefaults.getUserId(),
-                                            "priority": "high",
-                                            "toUserIds":[userId]]
+        let objToSend:[String:AnyObject] = ["data":["key":UserDefaults.getUserId(), "message":message, "type": MessageType.chat.rawValue] as AnyObject,
+                                            "notification":["title":"New Message", "body":message, "icon": ""] as AnyObject,
+                                            "from": UserDefaults.getUserId() as AnyObject,
+                                            "priority": "high" as AnyObject,
+                                            "toUserIds":[userId] as AnyObject]
 
-        NetworkClass.sendRequest(URL: Constants.URLs.postNotification, RequestType: .POST, ResponseType: ExpectedResponseType.NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
+        NetworkClass.sendRequest(URL: Constants.URLs.postNotification, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: objToSend as AnyObject){ (status, responseObj, error, statusCode) in
             debugPrint("sendNotification \(statusCode)")
         }
 
@@ -156,7 +139,7 @@ extension MessagingManager{
     fileprivate func sendNotificationToken() {
         if let refreshedToken = InstanceID.instanceID().token(), let userId = Auth.auth().currentUser?.uid{
             let objToSend = ["deviceToken": refreshedToken, "userId":userId]
-            NetworkClass.sendRequest(URL: Constants.URLs.sendToken, RequestType: .POST, ResponseType: .NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: Constants.URLs.sendToken, RequestType: .post, ResponseType: .none, Parameters: objToSend as AnyObject){ (status, responseObj, error, statusCode) in
                 debugPrint("sendNotificationToken \(statusCode)")
             }
         }
@@ -178,7 +161,7 @@ extension MessagingManager{
 
     func closeChatSession() {
         do {
-            try Auth.auth()?.signOut()
+            try Auth.auth().signOut()
             let secItemClasses = [kSecClassGenericPassword,
                                   kSecClassInternetPassword,
                                   kSecClassCertificate,
@@ -200,21 +183,29 @@ extension MessagingManager{
 
     func connectToFcm() {
         if UserDefaults.isLoggedIn() {
-            if let _ = InstanceID.instanceID().token() {
-                // Connect to FCM since connection may have failed when attempted before having a token.
-                Messaging.messaging().disconnect()
-                Messaging.messaging().connect { (error:Error?) in
-                    if error != nil {
-                        self.isConnected = false
-                        debugPrint("Unable to connect with FCM. \(error)")
-                        self.connectToFcm()
-                    } else {
-                        self.isConnected = true
-                        debugPrint("Connected to FCM with token: \(InstanceID.instanceID().token())")
-                        self.sendNotificationToken()
-                    }
-                    } as! MessagingConnectCompletion
-            }
+            InstanceID.instanceID().instanceID(handler: { (result: InstanceIDResult?, error: Error?) in
+                if let _ = result?.token{
+                    Messaging.messaging().shouldEstablishDirectChannel = false
+                    Messaging.messaging().shouldEstablishDirectChannel = true
+                    
+                }
+            })
+            
+//            if let _ = InstanceID.instanceID().token() {
+//                // Connect to FCM since connection may have failed when attempted before having a token.
+//                Messaging.messaging().disconnect()
+//                Messaging.messaging().connect { (error:Error?) in
+//                    if error != nil {
+//                        self.isConnected = false
+//                        debugPrint("Unable to connect with FCM. \(error)")
+//                        self.connectToFcm()
+//                    } else {
+//                        self.isConnected = true
+//                        debugPrint("Connected to FCM with token: \(InstanceID.instanceID().token())")
+//                        self.sendNotificationToken()
+//                    }
+//                    } as! MessagingConnectCompletion
+//            }
 
         }
     }

@@ -65,7 +65,7 @@ extension ContactListViewController{
         if let text = searchText {
             frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id != %@ AND (addressBook.name contains[cd] %@ OR id contains[cd] %@)", UserDefaults.getUserId(), text, text), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         }else{
-            frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
+            frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         }
 
         tblView.reloadData()

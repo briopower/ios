@@ -153,13 +153,13 @@ extension TrackDetailsHeaderView{
         if NetworkClass.isConnected(true) {
             requestButton1?.isEnabled = false
             requestButton3?.isEnabled = false
-            NetworkClass.sendRequest(URL: Constants.URLs.follow, RequestType: .POST, ResponseType: ExpectedResponseType.JSON, Parameters: currentTemplate?.getFollowingDict(shouldFollow), Headers: nil, CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: Constants.URLs.follow, RequestType: .post, ResponseType: .json, Parameters: currentTemplate?.getFollowingDict(shouldFollow) as AnyObject, Headers: nil, CompletionHandler: { (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTemplate?.updateFollowers(responseObj)
                     self.setupForType(self.type, template: self.currentTemplate)
                 }
-                self.requestButton1?.enabled = true
-                self.requestButton3?.enabled = true
+                self.requestButton1?.isEnabled = true
+                self.requestButton3?.isEnabled = true
 
             })
         }

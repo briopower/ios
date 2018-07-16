@@ -87,7 +87,7 @@ extension PhasesListViewController{
         if NetworkClass.isConnected(true) {
             if let id = sourceType == .templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
                 let url = sourceType == .templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
-                NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
+                NetworkClass.sendRequest(URL: url, RequestType: .get, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     if status{
                         self.processResponse(responseObj)

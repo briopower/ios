@@ -7,6 +7,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
     //MARK:- variables
@@ -19,13 +43,13 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
     //MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !NSUserDefaults.isLoggedIn(){
+        if !UserDefaults.isLoggedIn(){
             if showLoginModule {
                 AppDelegate.getAppDelegateObject()?.addLaunchScreen()
             }
         }
         CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
-        setNavigationBarBackgroundColor(UIColor.whiteColor())
+        setNavigationBarBackgroundColor(UIColor.white)
 
     }
 
@@ -34,41 +58,41 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.enableInteraction()
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         if getNavigationController()?.viewControllers.count > 1 {
-            getNavigationController()?.interactivePopGestureRecognizer?.enabled = true
+            getNavigationController()?.interactivePopGestureRecognizer?.isEnabled = true
             getNavigationController()?.interactivePopGestureRecognizer?.delegate = self
         }else{
-            getNavigationController()?.interactivePopGestureRecognizer?.enabled = false
+            getNavigationController()?.interactivePopGestureRecognizer?.isEnabled = false
             getNavigationController()?.interactivePopGestureRecognizer?.delegate = nil
         }
 
-        if !NSUserDefaults.isLoggedIn() && showLoginModule {
+        if !UserDefaults.isLoggedIn() && showLoginModule {
             UIViewController.presentLoginViewController(true, animated: false, Completion: {
-                if NSUserDefaults.isDisclaimerWatched(){
+                if UserDefaults.isDisclaimerWatched(){
                     AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
                 }
             })
         }else{
-            if NSUserDefaults.isDisclaimerWatched(){
+            if UserDefaults.isDisclaimerWatched(){
                 AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
             }
         }
     }
 
     //MARK:  Delegate
-    func retryButtonTapped(nullCaseType: NullCaseType, identifier: Int?) {
+    func retryButtonTapped(_ nullCaseType: NullCaseType, identifier: Int?) {
         
     }
 }

@@ -19,8 +19,8 @@ import UIKit
 
     //MARK:- overriden methods
 
-    override func trackRectForBounds(bounds: CGRect) -> CGRect {
-        super.trackRectForBounds(bounds)
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        super.trackRect(forBounds: bounds)
         return CGRect(origin: CGPoint(x: bounds.origin.x, y: (bounds.size.height - height)/2), size: CGSize(width: bounds.size.width, height: height))
     }
 

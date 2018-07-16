@@ -38,13 +38,13 @@ class HomeViewController: CommonViewController {
         super.viewDidLoad()
         setupView()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupOnAppear()
     }
 
     func setupOnAppear() {
-        setNavigationBarWithTitle("Library", LeftButtonType: BarButtontype.None2, RightButtonType: BarButtontype.Search)
+        setNavigationBarWithTitle("Library", LeftButtonType: BarButtontype.none2, RightButtonType: BarButtontype.search)
         getData(cursor)
         setupFilterButton()
     }
@@ -57,10 +57,10 @@ class HomeViewController: CommonViewController {
             image = UIImage(named: "filter")
         }
 
-        filterBtn.setImage(image?.imageWithRenderingMode(.AlwaysOriginal), forState: .Normal)
+        filterBtn.setImage(image?.withRenderingMode(.alwaysOriginal), for: UIControlState())
 
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
@@ -77,7 +77,7 @@ extension HomeViewController{
 
         clctView.commonCollectionViewDelegate = self
         clctView.dataArray = NSMutableArray()
-        clctView.type = CollectionViewType.TemplateView
+        clctView.type = CollectionViewType.templateView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
     }
 
@@ -89,18 +89,18 @@ extension HomeViewController{
 }
 //MARK:- CommonCollectionViewDelegate
 extension HomeViewController:CommonCollectionViewDelegate{
-    func topElements(view: UIView) {
+    func topElements(_ view: UIView) {
         getData("")
     }
 
-    func bottomElements(view: UIView) {
+    func bottomElements(_ view: UIView) {
         getData(cursor)
     }
 
-    func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
-            dispatch_async(dispatch_get_main_queue(), {
-                viewCont.sourceType = TrackDetailsSourceType.Templates
+    func clickedAtIndexPath(_ indexPath: IndexPath, object: AnyObject) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
+            DispatchQueue.main.async(execute: {
+                viewCont.sourceType = TrackDetailsSourceType.templates
                 viewCont.currentTemplate = object as? TemplatesModel
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
@@ -109,27 +109,27 @@ extension HomeViewController:CommonCollectionViewDelegate{
 }
 //MARK:- Button Action
 extension HomeViewController{
-    override func searchButtonAction(sender: UIButton?) {
+    override func searchButtonAction(_ sender: UIButton?) {
         super.searchButtonAction(sender)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.searchView) as? UINavigationController {
-            UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.HomeStoryboard.searchView) as? UINavigationController {
+            UIViewController.getTopMostViewController()?.present(viewCont, animated: true, completion: nil)
         }
     }
-    override func notificationButtonAction(sender: UIButton?) {
+    override func notificationButtonAction(_ sender: UIButton?) {
         super.notificationButtonAction(sender)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.notificationNavigationView) as? UINavigationController {
-            UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.HomeStoryboard.notificationNavigationView) as? UINavigationController {
+            UIViewController.getTopMostViewController()?.present(viewCont, animated: true, completion: nil)
         }
     }
-    @IBAction func filterAction(sender: UIButton) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.HomeStoryboard.filtersView) as? FiltersViewController {
+    @IBAction func filterAction(_ sender: UIButton) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.HomeStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.HomeStoryboard.filtersView) as? FiltersViewController {
             viewCont.delegate = self
             viewCont.selectedFilters = filterArray
-            UIViewController.getTopMostViewController()?.presentViewController(viewCont, animated: true, completion: nil)
+            UIViewController.getTopMostViewController()?.present(viewCont, animated: true, completion: nil)
         }
     }
-    @IBAction func sortAction(sender: UIButton) {
-        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["ORDER BY DATE", "RATINGS" , "ACTIVE GROUPS"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
+    @IBAction func sortAction(_ sender: UIButton) {
+        UIAlertController.showAlertOfStyle(.actionSheet, Title: nil, Message: nil, OtherButtonTitles: ["ORDER BY DATE", "RATINGS" , "ACTIVE GROUPS"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
             debugPrint("Clicked at index \(tappedAtIndex)")
             if let key = SortTypes(rawValue: tappedAtIndex ?? 0)?.getStringValue(){
                 self.sortingKey = key
@@ -142,7 +142,7 @@ extension HomeViewController{
 //MARK:- Network Methods
 extension HomeViewController{
 
-    func getData(cursorVal:String) {
+    func getData(_ cursorVal:String) {
         if NetworkClass.isConnected(true){
             if clctView.dataArray.count == 0 {
                 showLoader()
@@ -159,7 +159,7 @@ extension HomeViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?, cursorVal:String) {
+    func processResponse(_ responseObj:AnyObject?, cursorVal:String) {
 
         if let dict = responseObj {
             if cursorVal == "" {
@@ -168,7 +168,7 @@ extension HomeViewController{
             let templatesArr = TemplatesModel.getTemplateResponseArray(dict)
             for obj in templatesArr {
                 let template = TemplatesModel.getTemplateObj(obj)
-                clctView.dataArray.addObject(template)
+                clctView.dataArray.add(template)
             }
             if let cursorVal = TemplatesModel.getCursor(dict){
                 cursor = cursorVal
@@ -185,9 +185,9 @@ extension HomeViewController{
         clctView.reloadContent()
     }
 
-    func processError(error:NSError?) {
-        if NSUserDefaults.isLoggedIn(){
-            UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        if UserDefaults.isLoggedIn(){
+            UIView.showToast("Something went wrong", theme: Theme.error)
         }
     }
 }

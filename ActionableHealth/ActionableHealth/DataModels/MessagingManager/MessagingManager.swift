@@ -19,39 +19,55 @@ class MessagingManager: NSObject {
     static let sharedInstance = MessagingManager()
     let messageReceived = "messageReceivedNotification"
     var isConnected = true
-    var ref: FIRDatabaseReference?
-    private var _refHandle: FIRDatabaseHandle?
+    var ref: DatabaseReference?
+    fileprivate var _refHandle: DatabaseHandle?
     var chattingWithPerson:String?
 
     var chanelToObserve:String{
         get{
-            return "channels/\(NSUserDefaults.getUserId())"
+            return "channels/\(UserDefaults.getUserId())"
         }
     }
 }
 
 //MARK:- Private methods
 extension MessagingManager{
-    private func signIn() {
-        FIRAuth.auth()?.signInWithCustomToken(NSUserDefaults.getFirebaseToken(), completion: { (user:FIRUser?, error:NSError?) in
+    fileprivate func signIn() {
+        Auth.auth().signIn(withCustomToken: UserDefaults.getFirebaseToken()) { (authDataResult: AuthDataResult?, error: Error?) in
             if let error = error{
                 self.isConnected = false
                 debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\(error)")
-                if let type = FIRAuthErrorCode(rawValue: error.code){
+                if let type = AuthErrorCode(rawValue: (error as NSError).code){
                     switch type{
-                    case .ErrorCodeNetworkError:
+                    case .networkError:
                         self.openChatSession()
                     default:
                         self.refreshToken()
                     }
                 }
             }
-
-            self.connect()
-        })
+           self.connect()
+        }
     }
+//        Auth.auth().signIn(withCustomToken: UserDefaults.getFirebaseToken(), completion: { (user:User?, error:NSError?) in
+//            if let error = error{
+//                self.isConnected = false
+//                debugPrint("------------FIREBASE SIGNIN TOKEN ISSUE--------------\(error)")
+//                if let type = FIRAuthErrorCode(rawValue: error.code){
+//                    switch type{
+//                    case .errorCodeNetworkError:
+//                        self.openChatSession()
+//                    default:
+//                        self.refreshToken()
+//                    }
+//                }
+//            }
+//
+//            self.connect()
+//        })
+//    }
 
-    private func refreshToken() {
+    fileprivate func refreshToken() {
         FIRAuth.auth()?.currentUser?.getTokenForcingRefresh(true, completion: { (token:String?, error:NSError?) in
             if let error = error{
                 self.isConnected = false
@@ -59,59 +75,59 @@ extension MessagingManager{
                 self.signIn()
             }else if let tkn = token{
                 self.isConnected = true
-                NSUserDefaults.setFirebaseToken(tkn)
+                UserDefaults.setFirebaseToken(tkn)
                 self.connect()
             }
         })
     }
 
-    private func connect() {
+    fileprivate func connect() {
         self.configureDatabase()
         connectToFcm()
     }
 
-    private func configureDatabase() {
+    fileprivate func configureDatabase() {
 
         if let handler = _refHandle {
-            ref?.child(chanelToObserve).removeObserverWithHandle(handler)
+            ref?.child(chanelToObserve).removeObserver(withHandle: handler)
             ref?.removeAllObservers()
             ref = nil
         }
 
         if ref == nil {
-            ref = FIRDatabase.database().reference()
+            ref = Database.database().reference()
         }
 
         // Listen for new messages in the Firebase database
-        _refHandle = self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
-            { (snapshot:FIRDataSnapshot) in
+        _refHandle = self.ref?.child(chanelToObserve).observe(.childAdded, with:
+            { (snapshot:DataSnapshot) in
                 self.isConnected = true
                 if let data = snapshot.valueInExportFormat() as? [String:AnyObject]{
                     if let type = MessageType(rawValue: data["data"]?["type"] as? String ?? ""){
                         switch type{
                         case .chat:
                             Messages.saveMessageFor(snapshot.key, value: data)
-                            NSNotificationCenter.defaultCenter().postNotificationName(self.messageReceived, object: data)
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: self.messageReceived), object: data)
                         default:
                             break
                         }
                     }
                 }
-            }, withCancelBlock:
+            }, withCancel:
             { (error:NSError) in
                 self.isConnected = false
                 debugPrint("------------DATABASE SYNC ISSUE MESSAGING--------------\(error)")
                 self.refreshToken()
-        })
+                } as! (Error) -> Void)
     }
 
 
-    private func sendMessage(message:String, userId:String, trackName:String?) {
+    fileprivate func sendMessage(_ message:String, userId:String, trackName:String?) {
         let objToSend:[String:AnyObject] = ["data":["key":userId, "message":message, "type": MessageType.chat.rawValue],
-                                            "from": NSUserDefaults.getUserId(),
+                                            "from": UserDefaults.getUserId(),
                                             "priority": "high",
                                             "toUserIds":[userId],
-                                            "timeStamp": NSDate().timeIntervalInMilliSecs(),
+                                            "timeStamp": Date().timeIntervalInMilliSecs(),
                                             "lastTrackName": trackName ?? ""]
 
         NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .POST, ResponseType: ExpectedResponseType.NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
@@ -124,10 +140,10 @@ extension MessagingManager{
         self.ref?.child("channels/\(userId)").childByAutoId().setValue(objToSend)
     }
 
-    private func sendNotification(message:String, userId:String) {
-        let objToSend:[String:AnyObject] = ["data":["key":NSUserDefaults.getUserId(), "message":message, "type": MessageType.chat.rawValue],
+    fileprivate func sendNotification(_ message:String, userId:String) {
+        let objToSend:[String:AnyObject] = ["data":["key":UserDefaults.getUserId(), "message":message, "type": MessageType.chat.rawValue],
                                             "notification":["title":"New Message", "body":message, "icon": ""],
-                                            "from": NSUserDefaults.getUserId(),
+                                            "from": UserDefaults.getUserId(),
                                             "priority": "high",
                                             "toUserIds":[userId]]
 
@@ -137,8 +153,8 @@ extension MessagingManager{
 
     }
 
-    private func sendNotificationToken() {
-        if let refreshedToken = FIRInstanceID.instanceID().token(), let userId = FIRAuth.auth()?.currentUser?.uid{
+    fileprivate func sendNotificationToken() {
+        if let refreshedToken = InstanceID.instanceID().token(), let userId = Auth.auth().currentUser?.uid{
             let objToSend = ["deviceToken": refreshedToken, "userId":userId]
             NetworkClass.sendRequest(URL: Constants.URLs.sendToken, RequestType: .POST, ResponseType: .NONE, Parameters: objToSend){ (status, responseObj, error, statusCode) in
                 debugPrint("sendNotificationToken \(statusCode)")
@@ -151,8 +167,8 @@ extension MessagingManager{
 extension MessagingManager{
 
     func openChatSession() {
-        FIRApp.configure()
-        if FIRAuth.auth()?.currentUser?.uid == NSUserDefaults.getUserId(){
+        FirebaseApp.configure()
+        if Auth.auth().currentUser?.uid == UserDefaults.getUserId(){
             self.configureDatabase()
             refreshToken()
         }else{
@@ -162,7 +178,7 @@ extension MessagingManager{
 
     func closeChatSession() {
         do {
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth()?.signOut()
             let secItemClasses = [kSecClassGenericPassword,
                                   kSecClassInternetPassword,
                                   kSecClassCertificate,
@@ -170,42 +186,42 @@ extension MessagingManager{
                                   kSecClassIdentity]
             for secItemClass in secItemClasses {
                 let dictionary = [kSecClass as String:secItemClass]
-                SecItemDelete(dictionary)
+                SecItemDelete(dictionary as CFDictionary)
             }
         } catch {
             debugPrint("------------SIGN OUT ISSUE--------------\(error)")
         }
     }
 
-    func send(message:String, userId:String, trackName:String?) {
+    func send(_ message:String, userId:String, trackName:String?) {
         sendMessage(message, userId: userId, trackName:trackName)
         sendNotification(message, userId: userId)
     }
 
     func connectToFcm() {
-        if NSUserDefaults.isLoggedIn() {
-            if let _ = FIRInstanceID.instanceID().token() {
+        if UserDefaults.isLoggedIn() {
+            if let _ = InstanceID.instanceID().token() {
                 // Connect to FCM since connection may have failed when attempted before having a token.
-                FIRMessaging.messaging().disconnect()
-                FIRMessaging.messaging().connectWithCompletion { (error:NSError?) in
+                Messaging.messaging().disconnect()
+                Messaging.messaging().connect { (error:Error?) in
                     if error != nil {
                         self.isConnected = false
                         debugPrint("Unable to connect with FCM. \(error)")
                         self.connectToFcm()
                     } else {
                         self.isConnected = true
-                        debugPrint("Connected to FCM with token: \(FIRInstanceID.instanceID().token())")
+                        debugPrint("Connected to FCM with token: \(InstanceID.instanceID().token())")
                         self.sendNotificationToken()
                     }
-                }
+                    } as! MessagingConnectCompletion
             }
 
         }
     }
 
-    func receivedPushNotification(userInfo: [NSObject : AnyObject]) {
+    func receivedPushNotification(_ userInfo: [AnyHashable: Any]) {
         // Let FCM know about the message for analytics etc.`
-        FIRMessaging.messaging().appDidReceiveMessage(userInfo)
+        Messaging.messaging().appDidReceiveMessage(userInfo)
         
         if let type = MessageType(rawValue: userInfo["type"] as? String ?? "") {
             switch type {
@@ -213,14 +229,14 @@ extension MessagingManager{
                 if let from = userInfo["key"] as? String {
                     if let message = userInfo["message"] as? String {
                         let person = Person.getPersonWith(from)
-                        switch UIApplication.sharedApplication().applicationState {
-                        case .Active:
+                        switch UIApplication.shared.applicationState {
+                        case .active:
                             if from != chattingWithPerson {
                                 let personName = person?.personName ?? from
-                                UIView.showToast("\(personName) : \(message)", theme: Theme.Success)
+                                UIView.showToast("\(personName) : \(message)", theme: Theme.success)
                             }
-                        case .Inactive:
-                            if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = person{
+                        case .inactive:
+                            if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = person{
                                 viewCont.personObj = person
                                 AppDelegate.getAppDelegateObject()?.window?.rootViewController?.getNavigationController()?.pushViewController(viewCont, animated: false)
                             }

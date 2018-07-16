@@ -33,13 +33,13 @@ class PhasesModel: NSObject {
 //MARK:- Additional methods
 extension PhasesModel{
 
-    class func getPhaseUsingObj(dict:AnyObject) -> PhasesModel {
+    class func getPhaseUsingObj(_ dict:AnyObject) -> PhasesModel {
         let model = PhasesModel()
         updateObj(model, dict:dict)
         return model
     }
 
-    class func updateObj(model:PhasesModel, dict:AnyObject) {
+    class func updateObj(_ model:PhasesModel, dict:AnyObject) {
         model.phsaeId = dict["id"] as? String
         model.postIds = dict["postIds"] as? [Int] ?? []
         model.orderIndex = dict["orderIndex"] as? Int ?? 0
@@ -56,25 +56,25 @@ extension PhasesModel{
         addResources(dict, toModel: model)
     }
 
-    class func addTasks(dict:AnyObject, model:PhasesModel) {
+    class func addTasks(_ dict:AnyObject, model:PhasesModel) {
         model.tasks = NSMutableArray()
         if let tasks = dict["tasks"] as? NSArray {
             for temp in tasks {
                 let task = TasksModel.getTasksUsingObj(temp)
                 task.parentPhase = model
-                model.tasks.addObject(task)
+                model.tasks.add(task)
             }
             let sortDesc = NSSortDescriptor(key: "orderIndex", ascending: true)
-            model.tasks.sortUsingDescriptors([sortDesc])
+            model.tasks.sort(using: [sortDesc])
         }
     }
 
-    class func addResources(dict:AnyObject, toModel:PhasesModel) {
+    class func addResources(_ dict:AnyObject, toModel:PhasesModel) {
         toModel.resources = NSMutableArray()
         if let arr = dict["resources"] as? NSArray{
             for resourceObject in arr {
                 if let resourceDict = resourceObject as? [String:AnyObject]{
-                    toModel.resources.addObject(Resources.getResourceUsingObj(resourceDict))
+                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict))
                 }
             }
         }

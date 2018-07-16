@@ -19,7 +19,7 @@ class FilesCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -30,11 +30,11 @@ class FilesCell: UITableViewCell {
 
 //MARK:- Additional Methods
 extension FilesCell{
-    func configCell(obj:Resources) {
-        let fileNameSeperated = obj.fileName?.componentsSeparatedByString(".")
+    func configCell(_ obj:Resources) {
+        let fileNameSeperated = obj.fileName?.components(separatedBy: ".")
         var fileName = ""
         if let fileWords = fileNameSeperated{
-            for (index, element) in fileWords.enumerate() {
+            for (index, element) in fileWords.enumerated() {
                 if index != fileWords.count - 1{
                     fileName = fileName + element
                 }

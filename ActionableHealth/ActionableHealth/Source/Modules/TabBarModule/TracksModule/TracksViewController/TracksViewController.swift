@@ -23,12 +23,12 @@ class TracksViewController: CommonViewController {
         super.viewDidLoad()
         setupView()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        self.setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.none)
         getData("")
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
@@ -45,7 +45,7 @@ extension TracksViewController{
         titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
         clctView.commonCollectionViewDelegate = self
         clctView.dataArray = NSMutableArray()
-        clctView.type = CollectionViewType.TrackView
+        clctView.type = CollectionViewType.trackView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
     }
     func reset() {
@@ -54,7 +54,7 @@ extension TracksViewController{
         cursor = ""
     }
     
-    @IBAction func nullCaseAction(sender: UIButton) {
+    @IBAction func nullCaseAction(_ sender: UIButton) {
         if let tbCont = getNavigationController()?.viewControllers[0] as? UITabBarController{
             tbCont.selectedIndex = 1
         }
@@ -63,17 +63,17 @@ extension TracksViewController{
 
 //MARK:- CommonCollectionViewDelegate
 extension TracksViewController:CommonCollectionViewDelegate{
-    func topElements(view: UIView) {
+    func topElements(_ view: UIView) {
         getData("")
     }
 
-    func bottomElements(view: UIView) {
+    func bottomElements(_ view: UIView) {
         getData(cursor)
     }
 
-    func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
-                viewCont.sourceType = TrackDetailsSourceType.Tracks
+    func clickedAtIndexPath(_ indexPath: IndexPath, object: AnyObject) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
+                viewCont.sourceType = TrackDetailsSourceType.tracks
                 viewCont.currentTemplate = object as? TemplatesModel
                 getNavigationController()?.pushViewController(viewCont, animated: true)
         }
@@ -83,7 +83,7 @@ extension TracksViewController:CommonCollectionViewDelegate{
 //MARK:- Network Methods
 extension TracksViewController{
 
-    func getData(cursorVal:String) {
+    func getData(_ cursorVal:String) {
         if NetworkClass.isConnected(true){
             if clctView.dataArray.count == 0 {
                 showLoader()
@@ -100,7 +100,7 @@ extension TracksViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?, cursorVal:String) {
+    func processResponse(_ responseObj:AnyObject?, cursorVal:String) {
 
         if let dict = responseObj {
             if cursorVal == "" {
@@ -109,7 +109,7 @@ extension TracksViewController{
             let tracksArr = TemplatesModel.getTrackResponseArray(dict)
             for obj in tracksArr {
                 let track = TemplatesModel.getTrackObj(obj)
-                clctView.dataArray.addObject(track)
+                clctView.dataArray.add(track)
             }
             if let cursorVal = TemplatesModel.getCursor(dict){
                 cursor = cursorVal
@@ -121,17 +121,17 @@ extension TracksViewController{
             clctView.removeTopLoader()
             if clctView.dataArray.count > 0 {
                 clctView.addTopLoader()
-                nullCase.hidden = true
+                nullCase.isHidden = true
             }else{
-                nullCase.hidden = false
+                nullCase.isHidden = false
             }
         }
         clctView.reloadContent()
     }
 
-    func processError(error:NSError?) {
-        if NSUserDefaults.isLoggedIn() {
-            UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        if UserDefaults.isLoggedIn() {
+            UIView.showToast("Something went wrong", theme: Theme.error)
         }
     }
     

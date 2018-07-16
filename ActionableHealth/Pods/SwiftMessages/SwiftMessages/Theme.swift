@@ -10,56 +10,58 @@ import UIKit
 
 /// The theme enum specifies the built-in theme options
 public enum Theme {
-    case Info
-    case Success
-    case Warning
-    case Error
+    case info
+    case success
+    case warning
+    case error
 }
 
 /// The Icon enum provides type-safe access to the included icons.
 public enum Icon: String {
     
-    case Error = "errorIcon"
-    case Warning = "warningIcon"
-    case Success = "successIcon"
-    case Info = "infoIcon"
-    case ErrorLight = "errorIconLight"
-    case WarningLight = "warningIconLight"
-    case SuccessLight = "successIconLight"
-    case InfoLight = "infoIconLight"
-    case ErrorSubtle = "errorIconSubtle"
-    case WarningSubtle = "warningIconSubtle"
-    case SuccessSubtle = "successIconSubtle"
-    case InfoSubtle = "infoIconSubtle"
+    case error = "errorIcon"
+    case warning = "warningIcon"
+    case success = "successIcon"
+    case info = "infoIcon"
+    case errorLight = "errorIconLight"
+    case warningLight = "warningIconLight"
+    case successLight = "successIconLight"
+    case infoLight = "infoIconLight"
+    case errorSubtle = "errorIconSubtle"
+    case warningSubtle = "warningIconSubtle"
+    case successSubtle = "successIconSubtle"
+    case infoSubtle = "infoIconSubtle"
     
     /// Returns the associated image.
-    public var image: UIImage {        
-        return UIImage(named: rawValue, inBundle: NSBundle.sm_frameworkBundle(), compatibleWithTraitCollection: nil)!
+    public var image: UIImage {
+        return UIImage(named: rawValue, in: Bundle.sm_frameworkBundle(), compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
     }
 }
 
 /// The IconStyle enum specifies the different variations of the included icons.
 public enum IconStyle {
     
-    case Default
-    case Light
-    case Subtle
+    case `default`
+    case light
+    case subtle
+    case none
     
     /// Returns the image for the given theme
-    public func image(theme theme: Theme) -> UIImage {
+    public func image(theme: Theme) -> UIImage? {
         switch (theme, self) {
-        case (.Info, .Default): return Icon.Info.image
-        case (.Info, .Light): return Icon.InfoLight.image
-        case (.Info, .Subtle): return Icon.InfoSubtle.image
-        case (.Success, .Default): return Icon.Success.image
-        case (.Success, .Light): return Icon.SuccessLight.image
-        case (.Success, .Subtle): return Icon.SuccessSubtle.image
-        case (.Warning, .Default): return Icon.Warning.image
-        case (.Warning, .Light): return Icon.WarningLight.image
-        case (.Warning, .Subtle): return Icon.WarningSubtle.image
-        case (.Error, .Default): return Icon.Error.image
-        case (.Error, .Light): return Icon.ErrorLight.image
-        case (.Error, .Subtle): return Icon.ErrorSubtle.image
+        case (.info, .default): return Icon.info.image
+        case (.info, .light): return Icon.infoLight.image
+        case (.info, .subtle): return Icon.infoSubtle.image
+        case (.success, .default): return Icon.success.image
+        case (.success, .light): return Icon.successLight.image
+        case (.success, .subtle): return Icon.successSubtle.image
+        case (.warning, .default): return Icon.warning.image
+        case (.warning, .light): return Icon.warningLight.image
+        case (.warning, .subtle): return Icon.warningSubtle.image
+        case (.error, .default): return Icon.error.image
+        case (.error, .light): return Icon.errorLight.image
+        case (.error, .subtle): return Icon.errorSubtle.image
+        default: return nil
         }
     }
 }

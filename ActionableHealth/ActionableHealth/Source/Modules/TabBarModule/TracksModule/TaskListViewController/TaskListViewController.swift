@@ -18,10 +18,10 @@ class TaskListViewController: CommonViewController  {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let title = currentPhase?.phaseName {
-            setNavigationBarWithTitle(title, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+            setNavigationBarWithTitle(title, LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         }
     }
 
@@ -36,19 +36,19 @@ extension TaskListViewController{
     func setUpView(){
         taskListTableView.estimatedRowHeight = 200
         taskListTableView.rowHeight = UITableViewAutomaticDimension
-        taskListTableView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
+        taskListTableView.register(UINib(nibName: String(describing: TrackFilesCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TrackFilesCell))
         taskListTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     }
 }
 
 
 extension TaskListViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentPhase?.tasks.count ?? 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = taskListTableView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = taskListTableView.dequeueReusableCell(withIdentifier: String(describing: TrackFilesCell)) as? TrackFilesCell {
             if let task = currentPhase?.tasks[indexPath.row] as? TasksModel{
                 cell.configTaskCell(task)
             }
@@ -60,8 +60,8 @@ extension TaskListViewController:UITableViewDataSource{
 }
 
 extension TaskListViewController : UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.phaseDetailsView) as? PhaseDetailsViewController {
             viewCont.currentPhase = currentPhase
             if let task = currentPhase?.tasks[indexPath.row] as? TasksModel{
                 viewCont.currentTask = task

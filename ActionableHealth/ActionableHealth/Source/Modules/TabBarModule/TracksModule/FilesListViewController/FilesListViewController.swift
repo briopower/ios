@@ -24,9 +24,9 @@ class FilesListViewController: CommonViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle(navTitle, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(navTitle, LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,7 +39,7 @@ class FilesListViewController: CommonViewController {
 //MARK:- Additional Methods
 extension FilesListViewController{
     func setupView(){
-        tblView.registerNib(UINib(nibName: String(FilesCell), bundle: nil), forCellReuseIdentifier: String(FilesCell))
+        tblView.register(UINib(nibName: String(describing: FilesCell), bundle: nil), forCellReuseIdentifier: String(describing: FilesCell))
         tblView.estimatedRowHeight = 80
         tblView.rowHeight = UITableViewAutomaticDimension
     }
@@ -47,19 +47,19 @@ extension FilesListViewController{
 
 //MARK:- UITableViewDataSource
 extension FilesListViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfCell = resources.count
         if numberOfCell == 0 {
-            UIView.showToast("No Files Found.", theme: Theme.Warning)
-            nullCaseLabel.hidden = false
+            UIView.showToast("No Files Found.", theme: Theme.warning)
+            nullCaseLabel.isHidden = false
         }else{
-            nullCaseLabel.hidden = true
+            nullCaseLabel.isHidden = true
         }
         return numberOfCell
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(FilesCell)) as? FilesCell, let resourceObj = resources[indexPath.row] as? Resources{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FilesCell)) as? FilesCell, let resourceObj = resources[indexPath.row] as? Resources{
             cell.configCell(resourceObj)
             return cell
         }
@@ -69,9 +69,9 @@ extension FilesListViewController:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension FilesListViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController,let resourceObj = resources[indexPath.row] as? Resources {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.trackFileView) as? TrackFilesViewController,let resourceObj = resources[indexPath.row] as? Resources {
             viewCont.blobKey = resourceObj.blobKey
             viewCont.navigationTitle = resourceObj.fileName
             getNavigationController()?.pushViewController(viewCont, animated: true)

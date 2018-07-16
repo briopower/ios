@@ -27,7 +27,7 @@ class CommonReverseTableView: CommonTableView {
 extension CommonReverseTableView{
 
 
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset
         let bounds = scrollView.bounds
         let size = scrollView.contentSize
@@ -41,7 +41,7 @@ extension CommonReverseTableView{
 
         if h > reload_distance && yTemp > (h - reload_distance) && hasMoreActivity && self.tableFooterView == nil
         {
-            if self.respondsToSelector(#selector(self.bottomElements(_:)))
+            if self.responds(to: #selector(self.bottomElements(_:)))
             {
                 addBottomLoader()
                 commonTableViewDelegate?.topElements(self)

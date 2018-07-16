@@ -24,14 +24,14 @@ class TextDetailsController: CommonViewController {
 
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Next)
+        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.next)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        txtView.contentOffset = CGPointZero
+        txtView.contentOffset = CGPoint.zero
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,9 +40,9 @@ class TextDetailsController: CommonViewController {
     }
 
     //MARK:- Additional Methods
-    override func nextButtonAction(sender: UIButton?) {
+    override func nextButtonAction(_ sender: UIButton?) {
         super.nextButtonAction(sender)
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.verificationView) as? WelcomeToBrio {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.LoginStoryboard.verificationView) as? WelcomeToBrio {
             getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }

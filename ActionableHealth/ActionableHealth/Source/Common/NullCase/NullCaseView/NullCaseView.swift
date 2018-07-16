@@ -11,14 +11,14 @@ import UIKit
 //MARK:- Enum
 
 enum NullCaseType:Int {
-    case NoInternet, NoData, ErrorFetching, Count
+    case noInternet, noData, errorFetching, count
 }
 //MARK:- Constant
 let NullCaseTag = Int.min
 
 //MARK:- Protocol
 protocol NullCaseDelegate:NSObjectProtocol{
-    func retryButtonTapped(nullCaseType:NullCaseType, identifier:Int?)
+    func retryButtonTapped(_ nullCaseType:NullCaseType, identifier:Int?)
 }
 
 //MARK:- Class
@@ -36,10 +36,10 @@ class NullCaseView: UIView {
     var identifier:Int?
 
     //MARK:- touch passing methods
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         if shouldPassTouch {
             if let frame = self.viewWithTag(99)?.frame {
-                if CGRectContainsPoint(frame, point){
+                if frame.contains(point){
                     return true
                 }
             }
@@ -51,7 +51,7 @@ class NullCaseView: UIView {
 
 //MARK:- Action
 extension NullCaseView{
-    @IBAction func retryTapped(sender: UIButton) {
+    @IBAction func retryTapped(_ sender: UIButton) {
         if let obj = delegate {
             obj.retryButtonTapped(nullCaseType!, identifier: identifier)
         }
@@ -61,7 +61,7 @@ extension NullCaseView{
 
 //MARK:- Private methods
 extension NullCaseView{
-    private class func getViewForNullCase(obj:AnyObject) -> UIView?{
+    fileprivate class func getViewForNullCase(_ obj:AnyObject) -> UIView?{
         var viewForNullCase:UIView?
         if let viewCont = obj as? UIViewController{
             viewForNullCase = viewCont.view
@@ -71,12 +71,12 @@ extension NullCaseView{
         return viewForNullCase
     }
 
-    private class func getNullCaseView(obj:AnyObject) -> NullCaseView{
+    fileprivate class func getNullCaseView(_ obj:AnyObject) -> NullCaseView{
         if let viewForNullCase = getViewForNullCase(obj) {
             if let nullCaseView = viewForNullCase.viewWithTag(NullCaseTag) as? NullCaseView {
                 return nullCaseView
             }else{
-                if let nibArr = NSBundle.mainBundle().loadNibNamed(String(NullCaseView), owner: nil, options: nil){
+                if let nibArr = Bundle.main.loadNibNamed(String(describing: NullCaseView), owner: nil, options: nil){
                     for view in nibArr {
                         if let nullCaseView = view as? NullCaseView
                         {
@@ -89,7 +89,7 @@ extension NullCaseView{
         return NullCaseView()
     }
 
-    private func setupView(nullCaseType:NullCaseType, identifier:Int?, delegate:NullCaseDelegate?, shouldPassTouch:Bool){
+    fileprivate func setupView(_ nullCaseType:NullCaseType, identifier:Int?, delegate:NullCaseDelegate?, shouldPassTouch:Bool){
         self.nullCaseType = nullCaseType
         self.identifier = identifier
         self.delegate = delegate
@@ -97,22 +97,22 @@ extension NullCaseView{
         self.tag = NullCaseTag
         configureView(nullCaseType)
     }
-    private func configureView(type:NullCaseType){
+    fileprivate func configureView(_ type:NullCaseType){
         switch type {
-        case .NoInternet:
+        case .noInternet:
             nullCaseSetup("", nullCaseImageName: "no-internet", description: "No Internet", buttonTitle: "Retry", buttonImageName: nil)
-            button.hidden = false
-        case .NoData:
+            button.isHidden = false
+        case .noData:
             nullCaseSetup("", nullCaseImageName: "no-feed", description: "No Data Available", buttonTitle: "Retry", buttonImageName: nil)
-            button.hidden = true
-        case .ErrorFetching:
+            button.isHidden = true
+        case .errorFetching:
             nullCaseSetup("", nullCaseImageName: "no-feed", description: "Error Fetching Data", buttonTitle: "Retry", buttonImageName: nil)
-            button.hidden = false
+            button.isHidden = false
         default:
             break
         }
     }
-    private func nullCaseSetup(title:String?, nullCaseImageName:String?, description:String?, buttonTitle:String?, buttonImageName:String?) {
+    fileprivate func nullCaseSetup(_ title:String?, nullCaseImageName:String?, description:String?, buttonTitle:String?, buttonImageName:String?) {
 
         //Title
         if let text = title {
@@ -137,16 +137,16 @@ extension NullCaseView{
 
         //Button Title
         if let text = buttonTitle {
-            button.setTitle(text, forState: .Normal)
+            button.setTitle(text, for: UIControlState())
         }else{
-            button.setTitle(nil, forState: .Normal)
+            button.setTitle(nil, for: UIControlState())
         }
 
         //Button Image
         if let imageName = buttonImageName {
-            button.setImage(UIImage(named:imageName), forState: .Normal)
+            button.setImage(UIImage(named:imageName), for: UIControlState())
         }else{
-            button.setImage(nil, forState: .Normal)
+            button.setImage(nil, for: UIControlState())
         }
     }
 }
@@ -154,7 +154,7 @@ extension NullCaseView{
 //MARK:- Additional methods
 extension NullCaseView{
 
-    class func showNullCaseOn(obj:AnyObject, nullCaseType:NullCaseType, identifier:Int?, delegate:NullCaseDelegate?, shouldPassTouch:Bool) -> NullCaseView? {
+    class func showNullCaseOn(_ obj:AnyObject, nullCaseType:NullCaseType, identifier:Int?, delegate:NullCaseDelegate?, shouldPassTouch:Bool) -> NullCaseView? {
 
         let viewForNullCase = getViewForNullCase(obj)
 
@@ -170,7 +170,7 @@ extension NullCaseView{
         return nil
     }
 
-    class func hideNullCaseOn(obj:AnyObject){
+    class func hideNullCaseOn(_ obj:AnyObject){
         if getNullCaseView(obj).superview != nil {
             getNullCaseView(obj).removeFromSuperview()
         }

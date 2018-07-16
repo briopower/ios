@@ -9,12 +9,12 @@
 
 import UIKit
 enum ObjectType:Int {
-    case Template, Track, Count
+    case template, track, count
 }
 class TemplatesModel: NSObject {
 
     //MARK:- Variables
-    var objectType = ObjectType.Template
+    var objectType = ObjectType.template
     var templateId:String?
     var name:String?
     var details = ""
@@ -41,95 +41,95 @@ class TemplatesModel: NSObject {
 //MARK:- Additional methods
 extension TemplatesModel{
 
-    func getCreateTrackDict(trackName:String?, array:NSMutableArray) -> [String:AnyObject] {
+    func getCreateTrackDict(_ trackName:String?, array:NSMutableArray) -> [String:AnyObject] {
         var dict:[String:AnyObject] = [:]
-        dict["templateID"] = templateId ?? ""
-        dict["teamName"] = trackName ?? name
+        dict["templateID"] = templateId as AnyObject?? ?? "" as AnyObject?
+        dict["teamName"] = trackName as AnyObject?? ?? name as AnyObject?
         var arrOfMembers:[[String: String]] = []
         for obj in array {
             if let id = obj as? String {
                 arrOfMembers.append(["emailOrPhone":id , "isdCode": ""])
             }
         }
-        dict["members"] = arrOfMembers
+        dict["members"] = arrOfMembers as AnyObject?
         return dict
     }
 
-    func isMemberOfTemplate(id:String) -> Bool{
-        if let _ = self.members.filteredArrayUsingPredicate(NSPredicate(format: "userID = %@", id)).first {
+    func isMemberOfTemplate(_ id:String) -> Bool{
+        if let _ = self.members.filtered(using: NSPredicate(format: "userID = %@", id)).first {
             return true
         }
         return false
     }
     
-    func getInviteMemberDict(array:NSMutableArray) -> [String:AnyObject] {
+    func getInviteMemberDict(_ array:NSMutableArray) -> [String:AnyObject] {
         var dict:[String:AnyObject] = [:]
-        dict["trackID"] = trackId ?? ""
+        dict["trackID"] = trackId as AnyObject?? ?? "" as AnyObject?
         var arrOfMembers:[[String: String]] = []
         for obj in array {
             if let id = obj as? String {
                 arrOfMembers.append(["emailOrPhone":id])
             }
         }
-        dict["members"] = arrOfMembers
+        dict["members"] = arrOfMembers as AnyObject?
         return dict
     }
-    func getFollowingDict(followValue:Bool) -> [String:AnyObject] {
+    func getFollowingDict(_ followValue:Bool) -> [String:AnyObject] {
         var dict:[String:AnyObject] = [:]
-        dict["templateId"] = templateId ?? ""
-        dict["follow"] = followValue
+        dict["templateId"] = templateId as AnyObject?? ?? "" as AnyObject?
+        dict["follow"] = followValue as AnyObject?
         return dict
     }
 
-    func updateFollowers(dict:AnyObject?) {
+    func updateFollowers(_ dict:AnyObject?) {
         self.followersCount = dict?["followerCount"] as? Int ?? 0
         self.isFollowing = dict?["currentUserFollower"] as? Bool ?? false
     }
 
-    func updateRating(response:AnyObject?) {
+    func updateRating(_ response:AnyObject?) {
         if let ratingVal  = response?["rating"] as? String {
             rating = Double(ratingVal) ?? 0.0
         }
     }
 
-    class func getPayloadDict(cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = []) -> [String:AnyObject] {
-        return ["cursor":cursor, "pageSize": 20, "query": query , "orderBy":orderBy , "filterByType":filterByType]
+    class func getPayloadDict(_ cursor:String, query:String = "" ,orderBy:String = "" , filterByType:NSArray = []) -> [String:AnyObject] {
+        return ["cursor":cursor as AnyObject, "pageSize": 20 as AnyObject, "query": query as AnyObject , "orderBy":orderBy as AnyObject , "filterByType":filterByType]
     }
 
-    class func getSearchUserDict(cursor:String, query:String = "") -> [String:AnyObject] {
-        return ["cursor":cursor, "pageSize": 100, "query": query]
+    class func getSearchUserDict(_ cursor:String, query:String = "") -> [String:AnyObject] {
+        return ["cursor":cursor as AnyObject, "pageSize": 100 as AnyObject, "query": query as AnyObject]
     }
-    class func getTemplateResponseArray(dict:AnyObject) -> NSArray {
+    class func getTemplateResponseArray(_ dict:AnyObject) -> NSArray {
         return dict["templateResultSet"] as? NSArray ?? []
     }
 
-    class func getTrackResponseArray(dict:AnyObject) -> NSArray {
+    class func getTrackResponseArray(_ dict:AnyObject) -> NSArray {
         return dict["myTracksResultSet"] as? NSArray ?? []
     }
 
-    class func getCursor(dict:AnyObject) -> String? {
+    class func getCursor(_ dict:AnyObject) -> String? {
         return dict["cursor"] as? String
     }
 
-    class func getTotalObjectsCount(dict:AnyObject) -> Int {
+    class func getTotalObjectsCount(_ dict:AnyObject) -> Int {
         return dict["totalCount"] as? Int ?? 0
     }
 
-    class func getTemplateObj(dict:AnyObject) -> TemplatesModel {
+    class func getTemplateObj(_ dict:AnyObject) -> TemplatesModel {
         let model = TemplatesModel()
         updateTemplateObj(model, dict: dict)
         return model
     }
 
-    class func getTrackObj(dict:AnyObject) -> TemplatesModel {
+    class func getTrackObj(_ dict:AnyObject) -> TemplatesModel {
         let model = TemplatesModel()
         updateTrackObj(model, dict: dict)
         return model
     }
 
-    class func updateTemplateObj(obj:TemplatesModel, dict:AnyObject) {
+    class func updateTemplateObj(_ obj:TemplatesModel, dict:AnyObject) {
 
-        obj.objectType = ObjectType.Template
+        obj.objectType = ObjectType.template
         obj.templateId = dict["id"] as? String
         obj.name = dict["name"] as? String
         obj.details = dict["descriptionText"] as? String ?? obj.details
@@ -147,9 +147,9 @@ extension TemplatesModel{
         addResources(dict, toModel: obj)
     }
 
-    class func updateTrackObj(obj:TemplatesModel, dict:AnyObject) {
+    class func updateTrackObj(_ obj:TemplatesModel, dict:AnyObject) {
 
-        obj.objectType = ObjectType.Track
+        obj.objectType = ObjectType.track
         obj.trackId = dict["id"] as? String
         obj.templateId = dict["templateId"] as? String
         obj.name = dict["name"] as? String
@@ -170,40 +170,40 @@ extension TemplatesModel{
         addResources(dict, toModel: obj)
     }
 
-    class func addResources(dict:AnyObject, toModel:TemplatesModel) {
+    class func addResources(_ dict:AnyObject, toModel:TemplatesModel) {
         toModel.resources = NSMutableArray()
         if let arr = dict["resources"] as? NSArray{
             for resourceObject in arr {
                 if let resourceDict = resourceObject as? [String:AnyObject]{
-                    toModel.resources.addObject(Resources.getResourceUsingObj(resourceDict))
+                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict))
                 }
             }
         }
     }
 
-    class func addMembers(dict:AnyObject, toModel:TemplatesModel) {
+    class func addMembers(_ dict:AnyObject, toModel:TemplatesModel) {
         toModel.members = NSMutableArray()
         if let arr = dict["members"] as? NSArray{
             for userObject in arr {
                 if let userDict = userObject as? [String:AnyObject]{
-                    toModel.members.addObject(UserModel.getUserObject(userDict))
+                    toModel.members.add(UserModel.getUserObject(userDict))
                 }
             }
         }
     }
 
-    class func addPhases(dict:AnyObject, toModel:TemplatesModel) {
+    class func addPhases(_ dict:AnyObject, toModel:TemplatesModel) {
 
         toModel.phases = NSMutableArray()
-        let obj = toModel.objectType == .Template ? dict["details"] : dict["phasesAndTasks"]
+        let obj = toModel.objectType == .template ? dict["details"] : dict["phasesAndTasks"]
         if let phases = obj as? NSArray {
             for phase in phases {
                 let phaseObj = PhasesModel.getPhaseUsingObj(phase)
                 phaseObj.parentTemplate = toModel
-                toModel.phases.addObject(phaseObj)
+                toModel.phases.add(phaseObj)
             }
             let sortDesc = NSSortDescriptor(key: "orderIndex", ascending: true)
-            toModel.phases.sortUsingDescriptors([sortDesc])
+            toModel.phases.sort(using: [sortDesc])
         }
     }
 }

@@ -12,12 +12,12 @@ import CoreData
 class MessagingViewController: JSQMessagesViewController {
 
     //MARK:- Variables
-    var _fetchedResultsController: NSFetchedResultsController?
+    var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     var personObj:Person?
     var trackName:String?
 
-    let outgoingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"sentMessage")!, highlightedImage: UIImage(named:"sentMessage")!)
-    let incomingBubbleImageView = JSQMessagesBubbleImage(messageBubbleImage: UIImage(named:"recievedMessage")!, highlightedImage: UIImage(named:"recievedMessage")!)
+    let outgoingBubbleImageView = JSQMessagesBubbleImage(messageBubble: UIImage(named:"sentMessage")!, highlightedImage: UIImage(named:"sentMessage")!)
+    let incomingBubbleImageView = JSQMessagesBubbleImage(messageBubble: UIImage(named:"recievedMessage")!, highlightedImage: UIImage(named:"recievedMessage")!)
     let dummAvtarIcon = JSQMessagesAvatarImage(placeholder: UIImage(named:"circle-user-ic")!)
     var shouldScroll = true
 
@@ -32,7 +32,7 @@ class MessagingViewController: JSQMessagesViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         var text = Contact.getNameForContact(personObj?.personId ?? "") ?? personObj?.personId ?? ""
         if let lastTrackName = trackName ?? personObj?.lastTrack {
@@ -40,11 +40,11 @@ class MessagingViewController: JSQMessagesViewController {
         }
         titleLabel.text = text
         titleLabel.sizeToFit()
-        titleView.frame = CGRect(origin: CGPointZero, size: titleLabel.frame.size)
-        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        titleView.frame = CGRect(origin: CGPoint.zero, size: titleLabel.frame.size)
+        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         personObj?.markAllAsRead()
         AppDelegate.getAppDelegateObject()?.saveContext()
@@ -53,12 +53,12 @@ class MessagingViewController: JSQMessagesViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         uponDidAppear()
     }
 
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         MessagingManager.sharedInstance.chattingWithPerson = nil
     }
@@ -79,17 +79,17 @@ extension MessagingViewController{
     func setupView() {
         if let id = personObj?.personId {
             personObj?.updateProfileImage()
-            _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Messages), predicate: NSPredicate(format: "person.personId = %@", id), sectionNameKeyPath: "msgDate", sorting: [("timestamp", true)])
+            _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Messages", predicate: NSPredicate(format: "person.personId = %@", id), sectionNameKeyPath: "msgDate", sorting: [("timestamp", true)])
             _fetchedResultsController?.delegate = self
         }
         setupMessagingView()
         removeActivityIndicator()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.messageReceived(_:)), name: MessagingManager.sharedInstance.messageReceived, object: nil)
-        setNavigationBarBackgroundColor(UIColor.whiteColor())
+        NotificationCenter.default.addObserver(self, selector: #selector(self.messageReceived(_:)), name: NSNotification.Name(rawValue: MessagingManager.sharedInstance.messageReceived), object: nil)
+        setNavigationBarBackgroundColor(UIColor.white)
 
     }
 
-    func messageReceived(notification:NSNotification) {
+    func messageReceived(_ notification:Notification) {
         if MessagingManager.sharedInstance.isConnected {
             removeActivityIndicator()
         }
@@ -106,7 +106,7 @@ extension MessagingViewController{
         if let viewcontrls = getNavigationController()?.viewControllers {
             var arr = [UIViewController]()
             for viewCont in viewcontrls {
-                if !viewCont.isKindOfClass(MessagingViewController) {
+                if !viewCont.isKind(of: MessagingViewController.self) {
                     arr.append(viewCont)
                 }
             }
@@ -117,19 +117,19 @@ extension MessagingViewController{
     }
 
     func setupMessagingView() {
-        self.senderId = NSUserDefaults.getUserId()
+        self.senderId = UserDefaults.getUserId()
         self.senderDisplayName = ""
 
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        collectionView.backgroundColor = UIColor.clearColor()
+        collectionView.backgroundColor = UIColor.clear
         collectionView.collectionViewLayout.messageBubbleFont = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
         collectionView.collectionViewLayout.messageBubbleTextViewFrameInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 9)
 
-        collectionView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
+        collectionView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         inputToolbar.contentView.leftBarButtonItem = nil
         let sendButton = UIButton(frame: CGRect.zero)
-        sendButton.setImage(UIImage(named:"send"), forState: .Normal)
-        sendButton.imageView?.contentMode = .ScaleAspectFit
+        sendButton.setImage(UIImage(named:"send"), for: UIControlState())
+        sendButton.imageView?.contentMode = .scaleAspectFit
         sendButton.sizeToFit()
         inputToolbar.contentView.rightBarButtonItem = sendButton
         inputToolbar.contentView.textView.placeHolder = "Type your message here"
@@ -138,19 +138,19 @@ extension MessagingViewController{
         inputToolbar.preferredDefaultHeight = 50
     }
 
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         if shouldScroll && keyPath == "contentSize" {
-            scrollToBottomAnimated(false)
+            scrollToBottom(animated: false)
         }
     }
 }
 
 //MARK:- Button action
 extension MessagingViewController{
-    override func detailsButtonAction(sender: UIButton?) {
+    override func detailsButtonAction(_ sender: UIButton?) {
         super.detailsButtonAction(sender)
-        UIAlertController.showAlertOfStyle(.ActionSheet, Title: nil, Message: nil, OtherButtonTitles: ["VIEW PROFILE", "CLEAR CHAT"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
+        UIAlertController.showAlertOfStyle(.actionSheet, Title: nil, Message: nil, OtherButtonTitles: ["VIEW PROFILE", "CLEAR CHAT"], CancelButtonTitle: "CANCEL") { (tappedAtIndex) in
             debugPrint("CLicked at index\(tappedAtIndex)")
         }
     }
@@ -159,8 +159,8 @@ extension MessagingViewController{
 // MARK: Collection view data source methods
 extension MessagingViewController{
 
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
-        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        let messageObj = _fetchedResultsController?.object(at: indexPath) as? Messages
         if messageObj?.status == MessageStatus.Sent.rawValue {
             return JSQMessage(senderId: senderId, displayName: "", text: messageObj?.message ?? "")
         }else{
@@ -168,31 +168,31 @@ extension MessagingViewController{
         }
     }
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return _fetchedResultsController?.sections?.count ?? 0
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return _fetchedResultsController?.sections?[section].numberOfObjects ?? 0
     }
 
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let messageObj = _fetchedResultsController?.object(at: indexPath) as? Messages
         if messageObj?.status == MessageStatus.Sent.rawValue { // 2
             return outgoingBubbleImageView
         } else { // 3
             return incomingBubbleImageView
         }
     }
-    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return dummAvtarIcon
     }
 
-    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
         var str = ""
         if indexPath.row == 0 {
-            let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
-            let date = NSDate.dateWithTimeIntervalInMilliSecs(messageObj?.timestamp?.doubleValue ?? 0)
+            let messageObj = _fetchedResultsController?.object(at: indexPath) as? Messages
+            let date = Date.dateWithTimeIntervalInMilliSecs(messageObj?.timestamp?.doubleValue ?? 0)
             if date.isToday() {
                 str = "Today"
             }else if date.isYesterday(){
@@ -204,37 +204,37 @@ extension MessagingViewController{
         return NSAttributedString(string: str)
     }
 
-    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
-        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
-        let date = NSDate.dateWithTimeIntervalInMilliSecs(messageObj?.timestamp?.doubleValue ?? 0)
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        let messageObj = _fetchedResultsController?.object(at: indexPath) as? Messages
+        let date = Date.dateWithTimeIntervalInMilliSecs(messageObj?.timestamp?.doubleValue ?? 0)
         return NSAttributedString(string: date.shortTimeString)
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
-        let messageObj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Messages
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        let messageObj = _fetchedResultsController?.object(at: indexPath) as? Messages
 
         if messageObj?.status == MessageStatus.Sent.rawValue {
-            cell.textView?.textColor = UIColor.whiteColor()
+            cell.textView?.textColor = UIColor.white
         } else {
-            cell.textView?.textColor = UIColor.blackColor()
+            cell.textView?.textColor = UIColor.black
         }
 
         if let str = personObj?.personImage {
-            cell.avatarImageView.sd_setImageWithURL(NSURL(string: str))
+            cell.avatarImageView.sd_setImage(with: URL(string: str))
         }
         return cell
     }
 
-    override func collectionView(collectionView: JSQMessagesCollectionView!, didTapAvatarImageView avatarImageView: UIImageView!, atIndexPath indexPath: NSIndexPath!) {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapAvatarImageView avatarImageView: UIImageView!, at indexPath: IndexPath!) {
 
     }
 
-    override func collectionView(collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, header headerView: JSQMessagesLoadEarlierHeaderView!, didTapLoadEarlierMessagesButton sender: UIButton!) {
 
     }
 
-    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
         if indexPath.row == 0 {
             return 30
         }
@@ -244,7 +244,7 @@ extension MessagingViewController{
 }
 //MARK:- NSFetchedResultsControllerDelegate
 extension MessagingViewController:NSFetchedResultsControllerDelegate{
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         collectionView.reloadData()
         finishReceivingMessage()
     }
@@ -253,7 +253,7 @@ extension MessagingViewController:NSFetchedResultsControllerDelegate{
 // MARK:- Firebase related methods
 extension MessagingViewController{
 
-    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
 
         if NetworkClass.isConnected(true) {
             if let id = personObj?.personId{

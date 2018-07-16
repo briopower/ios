@@ -15,12 +15,12 @@ class NotificationsViewController: CommonViewController {
         super.viewDidLoad()
         setupView()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if getNavigationController()?.viewControllers.count ?? 0 > 1{
-            self.setNavigationBarWithTitle("Notifications", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+            self.setNavigationBarWithTitle("Notifications", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         }else{
-            self.setNavigationBarWithTitle("Notifications", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Cross)
+            self.setNavigationBarWithTitle("Notifications", LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.cross)
         }
     }
 
@@ -38,9 +38,9 @@ extension NotificationsViewController{
 
 //MARK:- Button Actions
 extension NotificationsViewController{
-    override func crossButtonAction(sender: UIButton?) {
+    override func crossButtonAction(_ sender: UIButton?) {
         super.crossButtonAction(sender)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

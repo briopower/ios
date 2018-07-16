@@ -17,14 +17,14 @@ private let emailOrPhone = "emailOrPhone"
 private let userId = "userId"
 
 //MARK:- NSUserDefaults for last sync date
-extension NSUserDefaults{
-    class func setLastSyncDate(date:NSDate) -> Bool {
-        NSUserDefaults.standardUserDefaults().setObject(date, forKey: lastSyncedDate)
-        return NSUserDefaults.standardUserDefaults().synchronize()
+extension UserDefaults{
+    class func setLastSyncDate(_ date:Date) -> Bool {
+        UserDefaults.standard.set(date, forKey: lastSyncedDate)
+        return UserDefaults.standard.synchronize()
     }
 
-    class func getLastSyncDate() -> NSDate? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(lastSyncedDate) as? NSDate
+    class func getLastSyncDate() -> Date? {
+        return UserDefaults.standard.object(forKey: lastSyncedDate) as? Date
     }
 }
 
@@ -33,31 +33,31 @@ class ContactSyncManager: NSObject {
     //MARK:- Variables
     static let sharedInstance = ContactSyncManager()
     static let apAddressBook = APAddressBook()
-    static let phoneNumberKit = PhoneNumberKit()
+    static let phoneNumberKit = PhoneNumberKit
     static let contactSyncCompleted = "ContactSyncCompleted"
 
     var isSyncing = false
     var isDeleting = false
 
     //MARK:- Private Methods
-    private func loadContacts()
+    fileprivate func loadContacts()
     {
         ContactSyncManager.apAddressBook.loadContacts { (contacts:[APContact]?, error:NSError?) in
             if let contacts = contacts{
-                self.performSelectorInBackground(#selector(ContactSyncManager.addContacts(_:)), withObject: contacts)
+                self.performSelector(inBackground: #selector(ContactSyncManager.addContacts(_:)), with: contacts)
             }else if let desc = error?.localizedDescription{
-                UIView.showToast(desc, theme: Theme.Error)
+                UIView.showToast(desc, theme: Theme.error)
             }else{
-                self.syncCompleted(NSDate(timeIntervalSince1970: 0))
+                self.syncCompleted(Date(timeIntervalSince1970: 0))
             }
-        }
+        } as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void as! ([APContact]?, Error?) -> Void
     }
 
-    @objc private func addContacts(contacts:[APContact]) {
+    @objc fileprivate func addContacts(_ contacts:[APContact]) {
 
-        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext where !isSyncing {
+        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext, !isSyncing {
 
-            bgCxt.performBlock({
+            bgCxt.perform({
                 self.isSyncing = true
                 for contact in contacts {
                     if self.shouldProcess(contact), let addBkObj = AddressBook.saveAddressBookObj(contact, contextRef: bgCxt){
@@ -75,7 +75,7 @@ class ContactSyncManager: NSObject {
                 }
                 do{
                     try bgCxt.save()
-                    prntCxt.performBlock({
+                    prntCxt.perform({
                         do{
                             try prntCxt.save()
                             self.syncCompleted()
@@ -93,12 +93,12 @@ class ContactSyncManager: NSObject {
 
     }
 
-    private func shouldProcess(contact:APContact) -> Bool {
+    fileprivate func shouldProcess(_ contact:APContact) -> Bool {
         debugPrint(contact.phones?[0].number)
         if let modificationDate = contact.recordDate?.modificationDate {
             var shouldProcess = false
-            if let lastSycned = NSUserDefaults.getLastSyncDate() {
-                if modificationDate.compare(lastSycned) == NSComparisonResult.OrderedDescending  {
+            if let lastSycned = UserDefaults.getLastSyncDate() {
+                if modificationDate.compare(lastSycned) == ComparisonResult.orderedDescending  {
                     shouldProcess = true
                 }
             }else{
@@ -113,15 +113,15 @@ class ContactSyncManager: NSObject {
         }
         return false
     }
-    private func syncCompleted(date:NSDate = NSDate()) {
-        NSUserDefaults.setLastSyncDate(date)
+    fileprivate func syncCompleted(_ date:Date = Date()) {
+        UserDefaults.setLastSyncDate(date)
         self.syncCoreDataContacts()
         self.isSyncing = false
-        NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
     }
-    private func processResponse(response:AnyObject?) {
+    fileprivate func processResponse(_ response:AnyObject?) {
         if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext {
-            bgCxt.performBlock({
+            bgCxt.perform({
                 if let arr = response as? NSArray {
                     for obj in arr {
                         if let tempId = (obj as? NSDictionary)?[userId] as? String {
@@ -131,10 +131,10 @@ class ContactSyncManager: NSObject {
                 }
                 do{
                     try bgCxt.save()
-                    prntCxt.performBlock({
+                    prntCxt.perform({
                         do{
                             try prntCxt.save()
-                            NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
                         }catch{
                             debugPrint("Error saving data")
                         }
@@ -147,17 +147,17 @@ class ContactSyncManager: NSObject {
 
     }
 
-    private func setAppUserWithId(id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    fileprivate func setAppUserWithId(_ id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
             for obj in arr {
-                obj.isAppUser = NSNumber(bool: true)
+                obj.isAppUser = NSNumber(value: true as Bool)
             }
         }
     }
 
-    private func checkIfUserExists(addBook:AddressBook, bgCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext, prntCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    fileprivate func checkIfUserExists(_ addBook:AddressBook, bgCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext, prntCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let rId = addBook.recordId {
-            ContactSyncManager.apAddressBook.loadContactByRecordID(rId, completion: { (contact:APContact?) in
+            ContactSyncManager.apAddressBook.loadContact(byRecordID: rId, completion: { (contact:APContact?) in
                 if contact == nil{
                     self.deleteFromCoreData(addBook, bgCxt: bgCxt, prntCxt: prntCxt)
                 }
@@ -165,16 +165,16 @@ class ContactSyncManager: NSObject {
         }
     }
 
-    private func deleteFromCoreData(addBook:AddressBook, bgCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext, prntCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    fileprivate func deleteFromCoreData(_ addBook:AddressBook, bgCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext, prntCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
 
-        bgCxt?.deleteObject(addBook)
+        bgCxt?.delete(addBook)
 
         do{
             try bgCxt?.save()
-            prntCxt?.performBlock({
+            prntCxt?.perform({
                 do{
                     try prntCxt?.save()
-                    NSNotificationCenter.defaultCenter().postNotificationName(ContactSyncManager.contactSyncCompleted, object: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
                 }catch{
                     debugPrint("Error saving data")
                 }
@@ -184,12 +184,12 @@ class ContactSyncManager: NSObject {
         }
     }
 
-    @objc private func fetchContactsAndStartSyncing() {
-        if let contacts = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@", NSNumber(bool: false)), sortingKey: nil, fetchLimit: nil) as? [Contact] {
+    @objc fileprivate func fetchContactsAndStartSyncing() {
+        if let contacts = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "isAppUser = %@", NSNumber(value: false as Bool)), sortingKey: nil, fetchLimit: nil) as? [Contact] {
             let arr = NSMutableArray()
             for contact in contacts {
                 if let uniqueId = contact.id {
-                    arr.addObject([emailOrPhone:uniqueId])
+                    arr.add([emailOrPhone:uniqueId])
                 }
             }
             if let splitedArray = arr.splitArrayWithSize(50) as? [NSArray]{
@@ -211,9 +211,9 @@ extension ContactSyncManager{
     }
 
     func syncContacts() {
-        if ContactSyncManager.sharedInstance.checkAccess() == .Granted{
+        if ContactSyncManager.sharedInstance.checkAccess() == .granted{
             if !isSyncing {
-                ContactSyncManager.apAddressBook.fieldsMask = [.Name, .PhonesOnly, .Dates, .RecordDate]
+                ContactSyncManager.apAddressBook.fieldsMask = [.name, .phonesOnly, .dates, .recordDate]
                 ContactSyncManager.apAddressBook.sortDescriptors = [NSSortDescriptor(key: "recordDate.modificationDate", ascending: false)]
                 loadContacts()
             }
@@ -224,24 +224,24 @@ extension ContactSyncManager{
                 }else if request{
                     self.syncContacts()
                 }
-            })
-            self.syncCompleted(NSDate(timeIntervalSince1970: 0))
+            } as! (Bool, Error?) -> Void)
+            self.syncCompleted(Date(timeIntervalSince1970: 0))
         }
 
     }
 
     func syncCoreDataContacts() {
-        if NSUserDefaults.isLoggedIn() {
-            performSelectorInBackground(#selector(ContactSyncManager.fetchContactsAndStartSyncing), withObject: nil)
+        if UserDefaults.isLoggedIn() {
+            performSelector(inBackground: #selector(ContactSyncManager.fetchContactsAndStartSyncing), with: nil)
         }
     }
 
     func checkForDeletedContacts() {
-        if ContactSyncManager.sharedInstance.checkAccess() == .Granted{
-            if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext where !isDeleting {
+        if ContactSyncManager.sharedInstance.checkAccess() == .granted{
+            if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext, !isDeleting {
                 self.isDeleting = true
 
-                bgCxt.performBlock({
+                bgCxt.perform({
                     if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: nil, sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [AddressBook] {
                         for obj in arr {
                             self.checkIfUserExists(obj, bgCxt: bgCxt, prntCxt: prntCxt)
@@ -257,7 +257,7 @@ extension ContactSyncManager{
                 }else if request{
                     self.checkForDeletedContacts()
                 }
-            })
+            } as! (Bool, Error?) -> Void)
         }
     }
 }
@@ -265,7 +265,7 @@ extension ContactSyncManager{
 //MARK: Network Methods
 extension ContactSyncManager{
 
-    private func syncContactFromServer(array:NSMutableArray) {
+    fileprivate func syncContactFromServer(_ array:NSMutableArray) {
         NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .POST, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
             if status{
                 self.processResponse(responseObj)

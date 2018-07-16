@@ -8,7 +8,7 @@
 
 import UIKit
 protocol SubPropertiesTableViewDelagate:NSObjectProtocol {
-    func subPropertySelected(selectedSubProperty:SubProperties, index:Int)
+    func subPropertySelected(_ selectedSubProperty:SubProperties, index:Int)
 }
 
 class SubPropertiesTableView: UITableView {
@@ -19,7 +19,7 @@ class SubPropertiesTableView: UITableView {
 
     //MARK:- Additional methods
     func setupTableView() {
-        self.registerNib(UINib(nibName: String(SubPropertiesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SubPropertiesCell))
+        self.register(UINib(nibName: String(describing: SubPropertiesCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SubPropertiesCell))
         self.dataSource = self
         self.delegate = self
         self.estimatedRowHeight = 80
@@ -30,12 +30,12 @@ class SubPropertiesTableView: UITableView {
 
 //MARK:- UITableViewDataSource
 extension SubPropertiesTableView: UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(SubPropertiesCell)) as? SubPropertiesCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SubPropertiesCell)) as? SubPropertiesCell {
             if let obj = dataArray[indexPath.row] as? SubProperties {
                 cell.configureCell(obj)
                 return cell
@@ -46,7 +46,7 @@ extension SubPropertiesTableView: UITableViewDataSource{
 }
 //MARK:- UITableViewDataSource
 extension SubPropertiesTableView: UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if let obj = dataArray[indexPath.row] as? SubProperties {
             subPropertiesTableViewDelegate?.subPropertySelected(obj, index: indexPath.row)

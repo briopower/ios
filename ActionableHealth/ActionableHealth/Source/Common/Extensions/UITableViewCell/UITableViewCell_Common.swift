@@ -11,7 +11,7 @@ import UIKit
 extension UITableViewCell{
     func getTableView() -> UITableView? {
         if var view = self.superview{
-            while !view.isKindOfClass(UITableView.self) {
+            while !view.isKind(of: UITableView.self) {
                 if let temp = view.superview {
                     view = temp
                 }else{

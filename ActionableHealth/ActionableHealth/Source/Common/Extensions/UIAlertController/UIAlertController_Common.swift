@@ -8,45 +8,45 @@
 
 import UIKit
 
-typealias ActionHandler = (tappedAtIndex:Int?) -> Void
+typealias ActionHandler = (_ tappedAtIndex:Int?) -> Void
 
 //MARK:- Additional methods
 extension UIAlertController{
 
-    class func showAlertOfStyle(alertStyle:UIAlertControllerStyle = .Alert, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?){
+    class func showAlertOfStyle(_ alertStyle:UIAlertControllerStyle = .alert, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?){
 
         let alertController = getAlertController(alertStyle, Title: title, Message: message, OtherButtonTitles: otherButtonTitles, CancelButtonTitle: cancelTitle, completion: completion)
 
-        UIViewController.getTopMostViewController()?.presentViewController(alertController, animated: true, completion: nil)
+        UIViewController.getTopMostViewController()?.present(alertController, animated: true, completion: nil)
 
         alertController.view.tintColor = UIColor.getAppThemeColor()
     }
 
-    class func getAlertController(alertStyle:UIAlertControllerStyle = .Alert, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?) -> UIAlertController {
+    class func getAlertController(_ alertStyle:UIAlertControllerStyle = .alert, Title title:String? = "Error", Message message:String?, OtherButtonTitles otherButtonTitles:[String]? = nil, CancelButtonTitle cancelTitle:String = "Cancel", completion:ActionHandler?) -> UIAlertController {
 
-        UIApplication.sharedApplication().windows.first?.endEditing(true)
+        UIApplication.shared.windows.first?.endEditing(true)
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
         if otherButtonTitles != nil {
             for count in 0..<otherButtonTitles!.count {
                 let  alertAction = UIAlertAction(title: otherButtonTitles![count],
-                                                 style: UIAlertActionStyle.Default,
+                                                 style: UIAlertActionStyle.default,
                                                  handler:
                     { (action) in
-                        dispatch_async(dispatch_get_main_queue(), {
+                        DispatchQueue.main.async(execute: {
                             if  completion != nil{
-                                completion!(tappedAtIndex:count)
+                                completion!(count)
                             }
                         })
                 })
                 alertController.addAction(alertAction)
             }
         }
-        let  alertAction = UIAlertAction(title:cancelTitle, style: UIAlertActionStyle.Cancel,handler:{ (action) in
-            dispatch_async(dispatch_get_main_queue(), {
+        let  alertAction = UIAlertAction(title:cancelTitle, style: UIAlertActionStyle.cancel,handler:{ (action) in
+            DispatchQueue.main.async(execute: {
                 if  completion != nil{
-                    completion!(tappedAtIndex:-1)
+                    completion!(-1)
                 }
             })
         })

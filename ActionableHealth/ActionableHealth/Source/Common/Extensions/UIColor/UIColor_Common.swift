@@ -11,7 +11,7 @@ import UIKit
 //MARK:- Additional methods
 extension UIColor{
     
-    class func getColorFromHexValue(hexValue:UInt64,Alpha alpha:Float)-> UIColor{
+    class func getColorFromHexValue(_ hexValue:UInt64,Alpha alpha:Float)-> UIColor{
         return UIColor.init(colorLiteralRed: ((Float)((hexValue & 0xFF0000) >> 16))/255.0, green: ((Float)((hexValue & 0xFF00) >> 8))/255.0, blue: ((Float)(hexValue & 0xFF))/255.0, alpha: alpha)
     }
     

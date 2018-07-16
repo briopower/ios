@@ -12,7 +12,7 @@ import CoreData
 
 extension Messages {
 
-    @nonobjc public override class func fetchRequest() -> NSFetchRequest {
+    @nonobjc public override class func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest(entityName: "Messages");
     }
 
@@ -23,7 +23,7 @@ extension Messages {
     @NSManaged public var status: String?
     @NSManaged public var timestamp: NSNumber?
     @NSManaged public var type: String?
-    @NSManaged public var msgDate: NSDate?
+    @NSManaged public var msgDate: Date?
     @NSManaged public var lastMessagePerson: Person?
     @NSManaged public var person: Person?
 

@@ -12,7 +12,7 @@ let initialHeight:CGFloat = 48.0
 let lineHeight:CGFloat = 19.09375
 
 protocol CommentsViewControllerDelegate:NSObjectProtocol {
-    func updatedCommentCount(count:Int)
+    func updatedCommentCount(_ count:Int)
 }
 class CommentsViewController: KeyboardAvoidingViewController {
 
@@ -35,11 +35,11 @@ class CommentsViewController: KeyboardAvoidingViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle(titleString, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(titleString, LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
     }
@@ -51,13 +51,13 @@ class CommentsViewController: KeyboardAvoidingViewController {
 
     deinit {
         CommentsManager.sharedInstance.closeCommentSession()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
 //MARK:- Actions
 extension CommentsViewController{
-    @IBAction func sendAction(sender: UIButton) {
+    @IBAction func sendAction(_ sender: UIButton) {
         if NetworkClass.isConnected(false) {
             if let text = txtView.text.getValidObject(), let _ = commentSourceKey {
                 CommentsManager.sharedInstance.send(text)
@@ -71,18 +71,18 @@ extension CommentsViewController{
 extension CommentsViewController{
     func setupView() {
         txtView.font = UIFont.getAppRegularFontWithSize(17)?.getDynamicSizeFont()
-        commentsTblView.tableViewType = TableViewType.Comments
+        commentsTblView.tableViewType = TableViewType.comments
         commentsTblView.commonTableViewDelegate = self
         if let key = commentSourceKey {
             CommentsManager.sharedInstance.openCommentSession(key)
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.receivedComment(_:)), name: CommentsManager.sharedInstance.commentReceived, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.receivedComment(_:)), name: NSNotification.Name(rawValue: CommentsManager.sharedInstance.commentReceived), object: nil)
     }
 
-    func receivedComment(notification:NSNotification) {
+    func receivedComment(_ notification:Notification) {
         if let obj = notification.object as? [String: AnyObject] {
             let commObj = CommentsModel.getCommentObj(obj)
-            commentsTblView.insertElements(NSMutableArray(array: [commObj]), insertAt: InsertAt.Top, section: 0, startIndex: 0)
+            commentsTblView.insertElements(NSMutableArray(array: [commObj]), insertAt: InsertAt.top, section: 0, startIndex: 0)
             delegate?.updatedCommentCount(commentsTblView.dataArray.count)
         }
     }
@@ -90,24 +90,24 @@ extension CommentsViewController{
 
 //MARK:- CommonTableViewDelegate
 extension CommentsViewController:CommonTableViewDelegate{
-    func topElements(view:UIView){
+    func topElements(_ view:UIView){
     }
-    func bottomElements(view:UIView){
+    func bottomElements(_ view:UIView){
     }
-    func clickedAtIndexPath(indexPath:NSIndexPath,obj:AnyObject){
+    func clickedAtIndexPath(_ indexPath:IndexPath,obj:AnyObject){
         UIApplication.dismissKeyboard()
     }
 }
 
 //MARK:- UITextViewDelegate
 extension CommentsViewController:UITextViewDelegate{
-    func textViewDidChange(textView: UITextView) {
-        placeHolderLabel.hidden = !(textView.text.length() == 0)
+    func textViewDidChange(_ textView: UITextView) {
+        placeHolderLabel.isHidden = !(textView.text.length() == 0)
         if textView.text.getValidObject() != nil  {
-            sendButton.enabled = true
+            sendButton.isEnabled = true
 
         }else{
-            sendButton.enabled = false
+            sendButton.isEnabled = false
         }
         let height = textView.text.getHeight(textView.font, maxWidth: Double(textView.frame.size.width))
         if height == 0 {

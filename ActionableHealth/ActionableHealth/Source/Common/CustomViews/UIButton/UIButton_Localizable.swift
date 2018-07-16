@@ -25,29 +25,29 @@ import UIKit
         super.init(frame: frame)
     }
 
-    override func setTitle(title: String?, forState state: UIControlState) {
+    override func setTitle(_ title: String?, for state: UIControlState) {
         if isLocalized {
-            super.setTitle(title?.localized, forState: state)
+            super.setTitle(title?.localized, for: state)
         }else{
-            super.setTitle(title, forState: state)
+            super.setTitle(title, for: state)
         }
     }
 
-    override func setAttributedTitle(title: NSAttributedString?, forState state: UIControlState) {
+    override func setAttributedTitle(_ title: NSAttributedString?, for state: UIControlState) {
         if isLocalized{
-            super.setAttributedTitle(title?.localized, forState: state)
+            super.setAttributedTitle(title?.localized, for: state)
         }else{
-            super.setAttributedTitle(title, forState: state)
+            super.setAttributedTitle(title, for: state)
         }
     }
 
     func setup() {
         if isLocalized {
-            super.setAttributedTitle(self.attributedTitleForState(self.state)?.localized, forState: self.state)
-            super.setTitle(titleForState(self.state)?.localized, forState: self.state)
+            super.setAttributedTitle(self.attributedTitle(for: self.state)?.localized, for: self.state)
+            super.setTitle(title(for: self.state)?.localized, for: self.state)
         }else{
-            super.setAttributedTitle(self.attributedTitleForState(self.state), forState: self.state)
-            super.setTitle(titleForState(self.state), forState: self.state)
+            super.setAttributedTitle(self.attributedTitle(for: self.state), for: self.state)
+            super.setTitle(title(for: self.state), for: self.state)
         }
     }
 }

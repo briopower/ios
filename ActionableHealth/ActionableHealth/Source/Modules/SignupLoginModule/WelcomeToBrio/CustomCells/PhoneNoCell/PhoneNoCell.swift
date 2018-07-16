@@ -26,7 +26,7 @@ class PhoneNoCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -36,18 +36,18 @@ class PhoneNoCell: UITableViewCell {
 
 //MARK:- Additional Functions
 extension PhoneNoCell{
-    func setUPCell(countryDict:NSDictionary? , phoneDict:NSMutableDictionary){
+    func setUPCell(_ countryDict:NSDictionary? , phoneDict:NSMutableDictionary){
         phoneDetail = phoneDict
         if let dict = countryDict{
             countryCode.text = "+\(dict[normalizedISDCode_key] as? String ?? "")"
         }
     }
 
-    @IBAction func countryCodeClicked(sender: UIButton) {
+    @IBAction func countryCodeClicked(_ sender: UIButton) {
         delegate?.countryCodeTapped()
     }
 
-    @IBAction func textChanged(sender: AnyObject) {
+    @IBAction func textChanged(_ sender: AnyObject) {
         if let dict = phoneDetail{
             dict["phone"] = phoneNoTxtFld.text
         }

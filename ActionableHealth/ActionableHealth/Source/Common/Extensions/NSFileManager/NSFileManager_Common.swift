@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import MobileCoreServices
 
-extension NSFileManager{
-    class func save(data:NSData, fileName:String, mimeType:String, path:String? = nil) -> String? {
+extension FileManager{
+    class func save(_ data:Data, fileName:String, mimeType:String, path:String? = nil) -> String? {
 
-        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType, nil)?.takeRetainedValue(){
+        if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, mimeType as CFString, nil)?.takeRetainedValue(){
             if let ext = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassFilenameExtension)?.takeRetainedValue(){
                 return save(data, fileName: fileName, fileExtension: String(ext),path: path)
             }
@@ -21,11 +21,11 @@ extension NSFileManager{
         return nil
     }
 
-    class func save(data:NSData, fileName:String, fileExtension:String, path:String? = nil) -> String?{
-        if let filePath = path ?? NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first{
-            if let completeFilePath = NSURL(string: filePath)?.URLByAppendingPathComponent("\(fileName).\(fileExtension)")?.relativeString {
-                if !defaultManager().fileExistsAtPath(completeFilePath){
-                    if data.writeToFile(completeFilePath, atomically: false){
+    class func save(_ data:Data, fileName:String, fileExtension:String, path:String? = nil) -> String?{
+        if let filePath = path ?? NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first{
+            if let completeFilePath = URL(string: filePath)?.appendingPathComponent("\(fileName).\(fileExtension)").relativeString {
+                if !`default`.fileExists(atPath: completeFilePath){
+                    if (try? data.write(to: URL(fileURLWithPath: completeFilePath), options: [])) != nil{
                         return completeFilePath
                     }
                 }else{

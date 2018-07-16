@@ -16,19 +16,19 @@ enum MessageStatus:String {
 @objc(Messages)
 
 //MARK:- Public Methods
-public class Messages: NSManagedObject {
+open class Messages: NSManagedObject {
 
-    class func saveMessageFor(key:String, value:[String:AnyObject]){
+    class func saveMessageFor(_ key:String, value:[String:AnyObject]){
         if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.bgManagedObjectContext {
 
-            let message = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Messages), predicate: NSPredicate(format: "messageId = %@", key), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [Messages]
+            let message = CoreDataOperationsClass.fetchObjectsOfClassWithName("Messages", predicate: NSPredicate(format: "messageId = %@", key), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [Messages]
 
             if message?.count ?? 0 == 0 {
-                bgCxt.performBlock({
+                bgCxt.perform({
                     insertMessageInDB(key, value: value, context: bgCxt)
                     do{
                         try bgCxt.save()
-                        prntCxt.performBlock({
+                        prntCxt.perform({
                             do{
                                 try prntCxt.save()
                             }catch{
@@ -45,10 +45,10 @@ public class Messages: NSManagedObject {
         }
     }
 
-    private class func insertMessageInDB(key:String, value:[String:AnyObject], context:NSManagedObjectContext) {
+    fileprivate class func insertMessageInDB(_ key:String, value:[String:AnyObject], context:NSManagedObjectContext) {
         debugPrint("Recieved New Message")
         if let fromId = value["from"] as? String {
-            let messageObject = Messages(entity: NSEntityDescription.entityForName(String(Messages), inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
+            let messageObject = Messages(entity: NSEntityDescription.entity(forEntityName: String(describing: Messages), in: context)!, insertInto: context)
 
             messageObject.messageId = key
             messageObject.key = value["data"]?["key"] as? String
@@ -56,9 +56,9 @@ public class Messages: NSManagedObject {
             messageObject.type = value["data"]?["type"] as? String
             messageObject.priority = value["priority"] as? String
             messageObject.timestamp = value["timeStamp"] as? NSNumber
-            messageObject.msgDate = NSDate.dateWithTimeIntervalInMilliSecs((messageObject.timestamp ?? 0).doubleValue).startOfDay()
+            messageObject.msgDate = Date.dateWithTimeIntervalInMilliSecs((messageObject.timestamp ?? 0).doubleValue).startOfDay()
 
-            if fromId == NSUserDefaults.getUserId() {
+            if fromId == UserDefaults.getUserId() {
                 if let toId = messageObject.key {
                     if let person = Person.getPersonWith(toId, contextRef: context) {
                         person.markAllAsRead()

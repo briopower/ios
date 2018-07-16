@@ -23,9 +23,9 @@ class SearchViewController: CommonViewController {
         super.viewDidLoad()
         setupView()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("Search", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Cross)
+        self.setNavigationBarWithTitle("Search", LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.cross)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,7 +39,7 @@ extension SearchViewController{
     func setupView() {        
         clctView.commonCollectionViewDelegate = self
         clctView.dataArray = NSMutableArray()
-        clctView.type = CollectionViewType.TemplateView
+        clctView.type = CollectionViewType.templateView
         clctView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
 
         srchBar.becomeFirstResponder()
@@ -54,26 +54,26 @@ extension SearchViewController{
 
 //MARK:- Button Actions
 extension SearchViewController{
-    override func crossButtonAction(sender: UIButton?) {
+    override func crossButtonAction(_ sender: UIButton?) {
         super.crossButtonAction(sender)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 //MARK:- CommonCollectionViewDelegate
 extension SearchViewController:CommonCollectionViewDelegate{
-    func topElements(view: UIView) {
+    func topElements(_ view: UIView) {
         getData("")
     }
 
-    func bottomElements(view: UIView) {
+    func bottomElements(_ view: UIView) {
         getData(cursor)
     }
 
-    func clickedAtIndexPath(indexPath: NSIndexPath, object: AnyObject) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
-            dispatch_async(dispatch_get_main_queue(), {
-                viewCont.sourceType = TrackDetailsSourceType.Templates
+    func clickedAtIndexPath(_ indexPath: IndexPath, object: AnyObject) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.trackDetailsView) as? TrackDetailsViewController {
+            DispatchQueue.main.async(execute: {
+                viewCont.sourceType = TrackDetailsSourceType.templates
                 viewCont.currentTemplate = object as? TemplatesModel
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
@@ -83,8 +83,8 @@ extension SearchViewController:CommonCollectionViewDelegate{
 
 //MARK:- UISearchBarDelegate
 extension SearchViewController:UISearchBarDelegate{
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if let text = searchBar.text?.getValidObject() where NetworkClass.isConnected(false) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text?.getValidObject(), NetworkClass.isConnected(false) {
             searchBar.resignFirstResponder()
             showLoader()
             searchString = text
@@ -95,7 +95,7 @@ extension SearchViewController:UISearchBarDelegate{
 //MARK:- Network Methods
 extension SearchViewController{
 
-    func getData(cursorVal:String) {
+    func getData(_ cursorVal:String) {
         if NetworkClass.isConnected(true){
 //            if clctView.dataArray.count == 0 {
 //                showLoader()
@@ -112,7 +112,7 @@ extension SearchViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?, cursorVal:String) {
+    func processResponse(_ responseObj:AnyObject?, cursorVal:String) {
 
         if let dict = responseObj {
             if cursorVal == "" {
@@ -121,7 +121,7 @@ extension SearchViewController{
             let templatesArr = TemplatesModel.getTemplateResponseArray(dict)
             for obj in templatesArr {
                 let template = TemplatesModel.getTemplateObj(obj)
-                clctView.dataArray.addObject(template)
+                clctView.dataArray.add(template)
             }
             if let cursorVal = TemplatesModel.getCursor(dict){
                 cursor = cursorVal
@@ -138,7 +138,7 @@ extension SearchViewController{
         clctView.reloadContent()
     }
 
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        UIView.showToast("Something went wrong", theme: Theme.error)
     }
 }

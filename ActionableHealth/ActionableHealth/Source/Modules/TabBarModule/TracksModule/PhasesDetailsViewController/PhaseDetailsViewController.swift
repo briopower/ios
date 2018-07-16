@@ -27,11 +27,11 @@ class PhaseDetailsViewController: CommonViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         phaseDetailsTblView.reloadData()
         if let title = currentPhase?.phaseName {
-            setNavigationBarWithTitle(title, LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+            setNavigationBarWithTitle(title, LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         }
     }
 
@@ -54,10 +54,10 @@ class PhaseDetailsViewController: CommonViewController {
 
 //MARK:- Button Actions
 extension PhaseDetailsViewController{
-    @IBAction func rateTaskAction(sender: UIButton) {
+    @IBAction func rateTaskAction(_ sender: UIButton) {
         submitRating()
     }
-    @IBAction func hideRatingActtion(sender: AnyObject) {
+    @IBAction func hideRatingActtion(_ sender: AnyObject) {
         hideRatingView()
     }
 }
@@ -70,37 +70,37 @@ extension PhaseDetailsViewController{
         //            phaseDetailsTblView.tableHeaderView = headerView
         //        }
 
-        phaseDetailsTblView.rowHeight = UIScreen.mainScreen().bounds.height - 44
+        phaseDetailsTblView.rowHeight = UIScreen.main.bounds.height - 44
 //        phaseDetailsTblView.estimatedRowHeight = 400
-        phaseDetailsTblView.registerNib(UINib(nibName: String(PhaseDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhaseDetailsCell))
-        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
-        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedCell)
-        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.informationCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.informationCell)
+        phaseDetailsTblView.register(UINib(nibName: String(describing: PhaseDetailsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: PhaseDetailsCell))
+        phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.statusCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
+        phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.completedCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.completedCell)
+        phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.informationCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.informationCell)
         
         
-        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.completedNoResourceCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.completedNoResourceCell)
-        phaseDetailsTblView.registerNib(UINib(nibName: PhaseDetailsCell.statusNoResourceCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: PhaseDetailsCell.statusNoResourceCell)
+        phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.completedNoResourceCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.completedNoResourceCell)
+        phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.statusNoResourceCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.statusNoResourceCell)
 
     }
 }
 
 //MARK:- UITableViewDataSource
 extension PhaseDetailsViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let type = currentPhase?.parentTemplate.objectType {
             switch type {
                 //changed cell from pohasedetailscell to phasedetailcell.
-            case .Template:
+            case .template:
                 var identifier : String!
                 if let task = currentTask {
-                    identifier = task.resources.count > 0 ? String(PhaseDetailsCell) : String(PhaseDetailsCell.informationCell)
+                    identifier = task.resources.count > 0 ? String(describing: PhaseDetailsCell) : String(PhaseDetailsCell.informationCell)
                 }
 
-                if let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as? PhaseDetailsCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? PhaseDetailsCell {
                     if let task = currentTask {
                         cell.tag = indexPath.row
                         cell.delegate = self
@@ -108,9 +108,9 @@ extension PhaseDetailsViewController:UITableViewDataSource{
                         return cell
                     }
                 }
-            case .Track:
+            case .track:
                 if let task = currentTask {
-                    if let cell = tableView.dequeueReusableCellWithIdentifier(TaskStatus.getNibName(task)) as? PhaseDetailsCell {
+                    if let cell = tableView.dequeueReusableCell(withIdentifier: TaskStatus.getNibName(task)) as? PhaseDetailsCell {
                         cell.tag = indexPath.row
                         cell.delegate = self
                         cell.configureCell(task)
@@ -127,21 +127,21 @@ extension PhaseDetailsViewController:UITableViewDataSource{
 
 //MARK:- CommentsViewControllerDelegate
 extension PhaseDetailsViewController:CommentsViewControllerDelegate{
-    func updatedCommentCount(count: Int) {
+    func updatedCommentCount(_ count: Int) {
         selectedTask?.commentsCount = count
     }
 }
 
 //MARK:- RatingView Methods / PhaseDetailsCellDelegate
 extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
-    func commentsTapped(tag: Int, obj: AnyObject?) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController, let commentSourceKey = obj as? String {
-            dispatch_async(dispatch_get_main_queue(), {
+    func commentsTapped(_ tag: Int, obj: AnyObject?) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController, let commentSourceKey = obj as? String {
+            DispatchQueue.main.async(execute: {
                 if let task = self.currentPhase?.tasks[tag] as? TasksModel {
                     self.selectedTask = task
                 }
                 viewCont.delegate = self
-                viewCont.commentSourceKey = commentSourceKey + "_\(NSUserDefaults.getUserId())"
+                viewCont.commentSourceKey = commentSourceKey + "_\(UserDefaults.getUserId())"
                 viewCont.titleString = "Journal(s)"
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
@@ -149,44 +149,44 @@ extension PhaseDetailsViewController:PhaseDetailsCellDelegate{
 
     }
     
-    func taskFilesTapped(tag: Int, obj: AnyObject?) {
+    func taskFilesTapped(_ tag: Int, obj: AnyObject?) {
 
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
             viewCont.resources = (obj as? TasksModel)?.resources ?? NSMutableArray()
             viewCont.navTitle = currentPhase?.phaseName ?? ""
             getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }
 
-    func rateTaskTapped(tag: Int, obj: AnyObject?) {
+    func rateTaskTapped(_ tag: Int, obj: AnyObject?) {
         if let task = obj as? TasksModel {
             showRatingView(task)
         }
     }
 
-    func showRatingView(task:TasksModel) {
+    func showRatingView(_ task:TasksModel) {
         if let view = getNavigationController()?.view {
             ratingView.alpha = 0
             ratingView.frame = view.frame
-            ratingView.userInteractionEnabled = false
+            ratingView.isUserInteractionEnabled = false
             starRatingView.value = CGFloat(task.rating)
             view.addSubview(ratingView)
             selectedTask = task
-            UIView.animateWithDuration(0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.ratingView.alpha = 1
                 }, completion: { (completed:Bool) in
-                    self.ratingView.userInteractionEnabled = true
+                    self.ratingView.isUserInteractionEnabled = true
             })
         }
     }
 
     func hideRatingView() {
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.ratingView.alpha = 0
-            self.ratingView.userInteractionEnabled = false
-        }) { (completed:Bool) in
-            self.ratingView.userInteractionEnabled = false
-        }
+            self.ratingView.isUserInteractionEnabled = false
+        }, completion: { (completed:Bool) in
+            self.ratingView.isUserInteractionEnabled = false
+        }) 
     }
 }
 
@@ -205,7 +205,7 @@ extension PhaseDetailsViewController{
         }
     }
 
-    func processResponse(response:AnyObject?) {
+    func processResponse(_ response:AnyObject?) {
         selectedTask?.updateRating(response)
         phaseDetailsTblView.reloadData()
         hideRatingView()

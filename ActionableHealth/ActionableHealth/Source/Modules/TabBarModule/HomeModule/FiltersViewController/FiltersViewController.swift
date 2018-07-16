@@ -42,7 +42,7 @@ extension FiltersViewController{
         for obj in filterObj.subProperties {
             if let localobj = obj as? SubProperties{
                 for names in selectedFilters {
-                    if localobj.name == String(names){
+                    if localobj.name == String(describing: names){
                         localobj.isSelected = true
                     }
                 }
@@ -51,8 +51,8 @@ extension FiltersViewController{
         subPropertiesTblView.subPropertiesTableViewDelegate = self
         subPropertiesTblView.dataArray = filterObj.subProperties
         subPropertiesTblView.setupTableView()
-        applyButton.enabled = false
-        clearButton.enabled = filterObj.getAllSelectedSubproperties().count != 0
+        applyButton.isEnabled = false
+        clearButton.isEnabled = filterObj.getAllSelectedSubproperties().count != 0
     }
     func getFilterObject() -> FilterByObject {
         
@@ -60,50 +60,50 @@ extension FiltersViewController{
         
         let subProperty1 = SubProperties()
         subProperty1.name = "Yoga"
-        filterObj.subProperties.addObject(subProperty1)
+        filterObj.subProperties.add(subProperty1)
         
         let subProperty2 = SubProperties()
         subProperty2.name = "Training"
-        filterObj.subProperties.addObject(subProperty2)
+        filterObj.subProperties.add(subProperty2)
         
         let subProperty3 = SubProperties()
         subProperty3.name = "Aerobics"
-        filterObj.subProperties.addObject(subProperty3)
+        filterObj.subProperties.add(subProperty3)
         
         let subProperty4 = SubProperties()
         subProperty4.name = "Karate"
-        filterObj.subProperties.addObject(subProperty4)
+        filterObj.subProperties.add(subProperty4)
         
         let subProperty5 = SubProperties()
         subProperty5.name = "HIIT"
-        filterObj.subProperties.addObject(subProperty5)
+        filterObj.subProperties.add(subProperty5)
         return filterObj
     }
 }
 
 //MARK:- SubPropertiesTableViewDelagate
 extension FiltersViewController: SubPropertiesTableViewDelagate{
-    func subPropertySelected(selectedSubProperty: SubProperties, index: Int) {
+    func subPropertySelected(_ selectedSubProperty: SubProperties, index: Int) {
         filterObj.selectSubProperty(selectedSubProperty)
         subPropertiesTblView.reloadData()
-        applyButton.enabled = true
-        clearButton.enabled = true
+        applyButton.isEnabled = true
+        clearButton.isEnabled = true
     }
 }
 //MARK:- Actions
 extension FiltersViewController{
-    @IBAction func crossButtonActions(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func crossButtonActions(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func clearButtonActions(sender: UIButton) {
+    @IBAction func clearButtonActions(_ sender: UIButton) {
         filterObj.deselectAllSubProperties()
         subPropertiesTblView.reloadData()
-        applyButton.enabled = true
+        applyButton.isEnabled = true
     }
-    @IBAction func applyButtonActions(sender: UIButton) {
+    @IBAction func applyButtonActions(_ sender: UIButton) {
         if let obj = delegate{
-            obj.filterArray = filterObj.getAllSelectedSubproperties()
+            obj.filterArray = filterObj.getAllSelectedSubproperties() as! [Any]
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

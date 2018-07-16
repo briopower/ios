@@ -8,33 +8,33 @@
 //
 
 enum ExpectedResponseType:Int {
-    case JSON, DATA, STRING, NONE, Count
+    case json, data, string, none, count
 }
-typealias CompletionHandler = (status:Bool, responseObj:AnyObject?,error: NSError?, statusCode:Int?) -> Void
-typealias ProgressHandler = (totalBytesSent:Int64, totalBytesExpectedToSend:Int64)-> Void
+typealias CompletionHandler = (_ status:Bool, _ responseObj:AnyObject?,_ error: NSError?, _ statusCode:Int?) -> Void
+typealias ProgressHandler = (_ totalBytesSent:Int64, _ totalBytesExpectedToSend:Int64)-> Void
 
 import Alamofire
 
 //MARK:- Private Methods
 class NetworkClass:NSObject  {
 
-    private class func processResponse(request:Alamofire.Request, responseType:ExpectedResponseType, CompletionHandler completion:CompletionHandler?) {
+    fileprivate class func processResponse(_ request:Alamofire.Request, responseType:ExpectedResponseType, CompletionHandler completion:CompletionHandler?) {
 
         switch responseType {
-        case .JSON:
+        case .json:
             parseJSON(request, CompletionHandler: completion)
-        case .DATA:
+        case .data:
             parseDATA(request, CompletionHandler: completion)
-        case .STRING:
+        case .string:
             parseSTRING(request, CompletionHandler: completion)
-        case .NONE:
+        case .none:
             parseNONE(request, CompletionHandler: completion)
         default:
             break
         }
     }
 
-    private class func parseJSON(request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
+    fileprivate class func parseJSON(_ request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
 
         request.responseJSON{ response in
             switch response.result {
@@ -46,7 +46,7 @@ class NetworkClass:NSObject  {
         }
     }
 
-    private class func parseDATA(request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
+    fileprivate class func parseDATA(_ request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
         request.responseData{ response in
             switch response.result {
             case .Success:
@@ -57,7 +57,7 @@ class NetworkClass:NSObject  {
         }
     }
 
-    private class func parseSTRING(request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
+    fileprivate class func parseSTRING(_ request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
         request.responseString{ response in
             switch response.result {
             case .Success:
@@ -68,7 +68,7 @@ class NetworkClass:NSObject  {
         }
     }
 
-    private class func parseNONE(request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
+    fileprivate class func parseNONE(_ request:Alamofire.Request, CompletionHandler completion:CompletionHandler?){
         request.response{ response in
             if response.3 == nil{
                 processCompletionWithStatus(true, response: response, CompletionHandler: completion)
@@ -78,7 +78,7 @@ class NetworkClass:NSObject  {
         }
     }
 
-    private class func processEncodingResult(encodingResult:Manager.MultipartFormDataEncodingResult, responseType:ExpectedResponseType, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?) {
+    fileprivate class func processEncodingResult(_ encodingResult:Manager.MultipartFormDataEncodingResult, responseType:ExpectedResponseType, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?) {
 
         switch encodingResult {
         case .Success(let upload, _, _):
@@ -97,9 +97,9 @@ class NetworkClass:NSObject  {
         }
     }
 
-    private class func processCompletionWithStatus(status:Bool, response:Any?, CompletionHandler completion:CompletionHandler?) {
+    fileprivate class func processCompletionWithStatus(_ status:Bool, response:Any?, CompletionHandler completion:CompletionHandler?) {
 
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         if let completion = completion{
 
             var responseObj:AnyObject? = nil
@@ -118,13 +118,13 @@ class NetworkClass:NSObject  {
                 responseObj = temp.result.value
                 error = temp.result.error
                 statusCode = temp.response?.statusCode
-            }else if let temp = response as? (NSURLRequest?, NSHTTPURLResponse?, NSData?, NSError?) {
-                responseObj = NSArray(objects: temp.1 ?? NSHTTPURLResponse(), temp.2 ?? NSData())
+            }else if let temp = response as? (URLRequest?, HTTPURLResponse?, Data?, NSError?) {
+                responseObj = NSArray(objects: temp.1 ?? HTTPURLResponse(), temp.2 ?? Data())
                 error = temp.3
                 statusCode = temp.1?.statusCode
             }
 
-            completion(status: status, responseObj: responseObj, error: error, statusCode: statusCode)
+            completion(status, responseObj, error, statusCode)
         }
     }
 }
@@ -132,9 +132,9 @@ class NetworkClass:NSObject  {
 //MARK:- Request Methods
 extension NetworkClass{
 
-    class func sendRequest(URL url:String, RequestType requestType:Alamofire.Method, ResponseType responseType:ExpectedResponseType = .JSON , Parameters parameters: AnyObject? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?){
+    class func sendRequest(URL url:String, RequestType requestType:Alamofire.Method, ResponseType responseType:ExpectedResponseType = .json , Parameters parameters: AnyObject? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?){
 
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let request = getRequest(requestType, responseType: responseType, URLString: url, headers: headers, parameters: parameters)
         let afRequest = Alamofire.request(request)
         afRequest.validate()
@@ -143,8 +143,8 @@ extension NetworkClass{
     }
 
     class func getRequest(
-        method: Alamofire.Method,
-        responseType:ExpectedResponseType = .JSON,
+        _ method: Alamofire.Method,
+        responseType:ExpectedResponseType = .json,
         URLString: URLStringConvertible,
         headers: [String: String]? = nil,
         parameters:AnyObject? = nil)
@@ -152,12 +152,12 @@ extension NetworkClass{
 
             let mutableURLRequest: NSMutableURLRequest
 
-            if URLString.dynamicType == NSMutableURLRequest.self {
+            if type(of: URLString) == NSMutableURLRequest.self {
                 mutableURLRequest = URLString as! NSMutableURLRequest
-            } else if URLString.dynamicType == NSURLRequest.self {
+            } else if type(of: URLString) == URLRequest.self {
                 mutableURLRequest = (URLString as! NSURLRequest).URLRequest
             } else {
-                mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: URLString.URLString)!)
+                mutableURLRequest = NSMutableURLRequest(URL: URL(string: URLString.URLString)!)
             }
 
             mutableURLRequest.HTTPMethod = method.rawValue
@@ -170,8 +170,8 @@ extension NetworkClass{
 
             if let parameters = parameters {
                 do{
-                    if NSJSONSerialization.isValidJSONObject(parameters) {
-                        mutableURLRequest.HTTPBody =  try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+                    if JSONSerialization.isValidJSONObject(parameters) {
+                        mutableURLRequest.httpBody =  try JSONSerialization.data(withJSONObject: parameters, options: [])
                     }else{
                         debugPrint("Problem in Parameters")
                     }
@@ -187,9 +187,9 @@ extension NetworkClass{
 
 //MARK:- Image Uploading Methods
 extension NetworkClass{
-    class func sendImageRequest(URL url:String, RequestType requestType:Alamofire.Method, ResponseType responseType:ExpectedResponseType = .NONE, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = [:], ImageData imageData:NSData?, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){
+    class func sendImageRequest(URL url:String, RequestType requestType:Alamofire.Method, ResponseType responseType:ExpectedResponseType = .none, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = [:], ImageData imageData:Data?, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){
 
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let request = getRequest(requestType, responseType: responseType, URLString: url, headers: headers, parameters: parameters)
         Alamofire.upload(request,
 
@@ -218,10 +218,10 @@ extension NetworkClass{
 
 //MARK:- Video Uploading Methods
 extension NetworkClass{
-    class func sendVideoRequest(URL url:String, RequestType requestType:Alamofire.Method, ResponseType responseType:ExpectedResponseType = .JSON, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil, VideoUrl videoUrl:NSURL, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){
+    class func sendVideoRequest(URL url:String, RequestType requestType:Alamofire.Method, ResponseType responseType:ExpectedResponseType = .json, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = nil, VideoUrl videoUrl:URL, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){
 
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        let videoData = NSData(contentsOfURL: videoUrl)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let videoData = try? Data(contentsOf: videoUrl)
         let request = getRequest(requestType, responseType: responseType, URLString: url, headers: headers, parameters: parameters)
         Alamofire.upload(request,
 
@@ -250,14 +250,14 @@ extension NetworkClass{
 
 //MARK:- Reachablity Methods
 extension NetworkClass{
-    class func isConnected(showAlert:Bool)->Bool{
+    class func isConnected(_ showAlert:Bool)->Bool{
 
         var val = false
         let reachability: Reachability
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
             switch reachability.currentReachabilityStatus {
-            case .NotReachable:
+            case .notReachable:
                 val = false
             default:
                 val = true
@@ -268,7 +268,7 @@ extension NetworkClass{
 
         if !val && showAlert {
           //  UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "No Internet Connection", completion: nil)
-            UIView.showToast("No Internet Connection !!", theme: Theme.Warning)
+            UIView.showToast("No Internet Connection !!", theme: Theme.warning)
         }
         return val
     }
@@ -276,7 +276,7 @@ extension NetworkClass{
 
 //MARK:- Additional Methods
 extension NetworkClass{
-    class func getUpdatedHeader(header: [String: String]?, requestType:Alamofire.Method) -> [String: String] {
+    class func getUpdatedHeader(_ header: [String: String]?, requestType:Alamofire.Method) -> [String: String] {
         
         var updatedHeader:[String:String] = [:]
         switch requestType {
@@ -285,8 +285,8 @@ extension NetworkClass{
         default:
             break
         }
-        if NSUserDefaults.isLoggedIn(){
-            updatedHeader["ahw-token"] = NSUserDefaults.getUserToken()
+        if UserDefaults.isLoggedIn(){
+            updatedHeader["ahw-token"] = UserDefaults.getUserToken()
         }
         if let arr = header?.keys {
             for key in arr {

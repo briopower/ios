@@ -9,28 +9,28 @@
 import UIKit
 
 extension UIImagePickerController{
-    class func showPickerWithDelegate(delegate:protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>?) {
+    class func showPickerWithDelegate(_ delegate:(UIImagePickerControllerDelegate & UINavigationControllerDelegate)?) {
 
-        dispatch_async(dispatch_get_main_queue(), {
-            let buttonTitles =  UIImagePickerController.isSourceTypeAvailable(.Camera) ? ["Camera", "Photo Library"] : ["Photo Library"]
+        DispatchQueue.main.async(execute: {
+            let buttonTitles =  UIImagePickerController.isSourceTypeAvailable(.camera) ? ["Camera", "Photo Library"] : ["Photo Library"]
             let pickerController = UIImagePickerController()
             pickerController.allowsEditing = true
             pickerController.delegate = delegate
 
-            UIAlertController.showAlertOfStyle(.ActionSheet, Title: "Select image source", Message: nil, OtherButtonTitles: buttonTitles, CancelButtonTitle: "Cancel") { (tappedAtIndex) in
+            UIAlertController.showAlertOfStyle(.actionSheet, Title: "Select image source", Message: nil, OtherButtonTitles: buttonTitles, CancelButtonTitle: "Cancel") { (tappedAtIndex) in
                 if tappedAtIndex == 0{
-                    if UIImagePickerController.isSourceTypeAvailable(.Camera){
-                        pickerController.sourceType = .Camera
+                    if UIImagePickerController.isSourceTypeAvailable(.camera){
+                        pickerController.sourceType = .camera
                     }else{
-                        pickerController.sourceType = .PhotoLibrary
+                        pickerController.sourceType = .photoLibrary
                     }
                 }else if tappedAtIndex == 1{
-                    pickerController.sourceType = .PhotoLibrary
+                    pickerController.sourceType = .photoLibrary
                 }
 
                 if tappedAtIndex != -1{
-                    dispatch_async(dispatch_get_main_queue(), {
-                        UIViewController.getTopMostViewController()?.presentViewController(pickerController, animated: true, completion: {
+                    DispatchQueue.main.async(execute: {
+                        UIViewController.getTopMostViewController()?.present(pickerController, animated: true, completion: {
                             pickerController.delegate = delegate
                         })
                     })

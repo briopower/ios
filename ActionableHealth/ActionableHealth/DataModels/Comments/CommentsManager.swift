@@ -15,8 +15,8 @@ class CommentsManager: NSObject {
     var ref: FIRDatabaseReference?
     var commentId:String! = ""
     let commentReceived = "commentReceivedNotifiaction"
-    private var _refHandle: FIRDatabaseHandle?
-    private var chanelToObserve:String{
+    fileprivate var _refHandle: FIRDatabaseHandle?
+    fileprivate var chanelToObserve:String{
         get{
             return "comments/\(commentId)"
         }
@@ -25,37 +25,37 @@ class CommentsManager: NSObject {
 
 //MARK:- Private methods
 extension CommentsManager{
-    private func configureDatabase() {
+    fileprivate func configureDatabase() {
 
         if ref == nil {
             ref = FIRDatabase.database().reference()
         }
 
         // Listen for new messages in the Firebase database
-        _refHandle = self.ref?.child(chanelToObserve).observeEventType(.ChildAdded, withBlock:
+        _refHandle = self.ref?.child(chanelToObserve).observe(.childAdded, with:
             { (snapshot:FIRDataSnapshot) in
                 if let data = snapshot.valueInExportFormat() as? [String:AnyObject]{
                     if let type = MessageType(rawValue: data["data"]?["type"] as? String ?? ""){
                         switch type{
                         case .comment:
-                            NSNotificationCenter.defaultCenter().postNotificationName(self.commentReceived, object: data)
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: self.commentReceived), object: data)
                         default:
                             break
                         }
                     }
                 }
-            }, withCancelBlock:
+            }, withCancel:
             { (error:NSError) in
                 debugPrint("------------DATABASE SYNC ISSUE COMMENT--------------\(error)")
         })
     }
 
-    private func sendComment(comment:String) {
-       let key = commentId.stringByReplacingOccurrencesOfString("_\(NSUserDefaults.getUserId())", withString: "")
+    fileprivate func sendComment(_ comment:String) {
+       let key = commentId.replacingOccurrences(of: "_\(UserDefaults.getUserId())", with: "")
         let objToSend:[String:AnyObject] = ["data":["key":key, "message":comment, "type": MessageType.comment.rawValue],
-                                            "from": NSUserDefaults.getUserId(),
+                                            "from": UserDefaults.getUserId(),
                                             "priority": "high",
-                                            "timeStamp": NSDate().timeIntervalInMilliSecs()]
+                                            "timeStamp": Date().timeIntervalInMilliSecs()]
 
         NetworkClass.sendRequest(URL: Constants.URLs.comment, RequestType: .POST, Parameters: CommentsModel.getPayloadDictForCommenting(key, commnt: comment), Headers: nil, CompletionHandler: {
             (status, responseObj, error, statusCode) in
@@ -69,7 +69,7 @@ extension CommentsManager{
 //MARK:- Public methods
 extension CommentsManager{
 
-    func openCommentSession(commentID:String) {
+    func openCommentSession(_ commentID:String) {
         closeCommentSession()
         self.commentId = commentID
         self.configureDatabase()
@@ -77,7 +77,7 @@ extension CommentsManager{
 
     func closeCommentSession() {
         if let handler = _refHandle {
-            ref?.child(chanelToObserve).removeObserverWithHandle(handler)
+            ref?.child(chanelToObserve).removeObserver(withHandle: handler)
             ref?.removeAllObservers()
             ref = nil
             _refHandle = nil
@@ -85,7 +85,7 @@ extension CommentsManager{
         }
     }
 
-    func send(comment:String) {
+    func send(_ comment:String) {
         sendComment(comment)
     }
 }

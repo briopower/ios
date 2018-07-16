@@ -12,7 +12,7 @@ import CoreData
 
 extension Contact {
 
-    @nonobjc public override class func fetchRequest() -> NSFetchRequest {
+    @nonobjc public override class func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest(entityName: "Contact");
     }
 

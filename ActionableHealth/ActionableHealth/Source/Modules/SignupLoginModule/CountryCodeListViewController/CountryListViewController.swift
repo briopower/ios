@@ -15,7 +15,7 @@ let isdCode_key = "ISDCode"
 let normalizedISDCode_key = "NormalizedISDCode"
 
 protocol CountryListViewControllerDelegate:NSObjectProtocol {
-    func selectedCountryObject(dict:NSDictionary)
+    func selectedCountryObject(_ dict:NSDictionary)
 }
 
 class CountryListViewController: CommonViewController {
@@ -27,7 +27,7 @@ class CountryListViewController: CommonViewController {
     //MARK:- Variables
     weak var delegate :CountryListViewControllerDelegate?
 
-    let fileManager = NSFileManager.defaultManager()
+    let fileManager = FileManager.default
     var path = ""
 
     var namesDict = NSMutableDictionary()
@@ -44,9 +44,9 @@ class CountryListViewController: CommonViewController {
 
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Select Country", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Select Country", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,30 +60,30 @@ class CountryListViewController: CommonViewController {
 extension CountryListViewController{
 
     func setupView() {
-        let libraryDirectory = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true)[0] as String
-        path = libraryDirectory.stringByAppendingString("/\(fileName).\(fileType)")
-        if fileManager.fileExistsAtPath(path) {
+        let libraryDirectory = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0] as String
+        path = libraryDirectory + "/\(fileName).\(fileType)"
+        if fileManager.fileExists(atPath: path) {
             createCountryArray()
         }else{
             getNamesJson()
         }
-        srchBar.returnKeyType = .Done
+        srchBar.returnKeyType = .done
 
-        tblView.registerNib(UINib(nibName: String(CountryCodeListCell), bundle: nil), forCellReuseIdentifier: String(CountryCodeListCell))
-        tblView.tableFooterView = UIView(frame: CGRectZero)
+        tblView.register(UINib(nibName: String(describing: CountryCodeListCell), bundle: nil), forCellReuseIdentifier: String(describing: CountryCodeListCell))
+        tblView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
 
     func createDataSet() {
         let values = NSMutableArray(array: namesDict.allValues)
         let descriptor: NSSortDescriptor = NSSortDescriptor(key: "self", ascending: true, selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
-        values.sortUsingDescriptors([descriptor])
+        values.sort(using: [descriptor])
 
         if let countryNames = NSArray(array: values) as? [String]{
             for countryName in countryNames {
-                if let countryCodes = namesDict.allKeysForObject(countryName) as? [String]{
+                if let countryCodes = namesDict.allKeys(for: countryName) as? [String]{
                     if let countryCode = countryCodes.first {
-                        if let isdCodeText = (codesDict.valueForKey(countryCode) as? String)?.getValidObject() {
+                        if let isdCodeText = (codesDict.value(forKey: countryCode) as? String)?.getValidObject() {
                             let isdCode = isdCodeText.characters.split{$0 == " "}.map(String.init).first
                             if isdCode != nil {
                                 let obj = [countryName_key : countryName,
@@ -91,7 +91,7 @@ extension CountryListViewController{
                                            isdCode_key : isdCode!,
                                            normalizedISDCode_key : isdCode!.getNumbers()]
 
-                                dataSet.addObject(obj)
+                                dataSet.add(obj)
                             }
                         }
                     }
@@ -109,21 +109,21 @@ extension CountryListViewController{
     }
 
     func createPlist() {
-        dataSet.sortUsingComparator { (obj1:AnyObject, obj2:AnyObject) -> NSComparisonResult in
+        dataSet.sort (comparator: { (obj1:AnyObject, obj2:AnyObject) -> ComparisonResult in
             if let dict1 = obj1 as? [String:String], let dict2 = obj2 as? [String:String]{
 
                 // Fix for US at top
                 if dict1[countryCode_key] == "US"{
-                    return .OrderedAscending
+                    return .orderedAscending
                 }else if dict2[countryCode_key] == "US"{
-                    return .OrderedDescending
+                    return .orderedDescending
                 }
                 
                 // Fix for CA at top
                 if dict1[countryCode_key] == "CA"{
-                    return .OrderedAscending
+                    return .orderedAscending
                 }else if dict2[countryCode_key] == "CA"{
-                    return .OrderedDescending
+                    return .orderedDescending
                 }
 
 //                if let isdCode1 = dict1[normalizedISDCode_key], let isdCode2 = dict2[normalizedISDCode_key]{
@@ -136,13 +136,13 @@ extension CountryListViewController{
                     return result
                 }
             }
-            return .OrderedAscending
-        }
+            return .orderedAscending
+        } as! (Any, Any) -> ComparisonResult)
         
-        let isWritten = dataSet.writeToFile(path, atomically: true)
+        let isWritten = dataSet.write(toFile: path, atomically: true)
         if isWritten {
             createCountryArray()
-            tblView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+            tblView.reloadSections(IndexSet(integer: 0), with: .automatic)
             hideLoader()
         }
     }
@@ -150,16 +150,16 @@ extension CountryListViewController{
 
 //MARK:- UISearchBarDelegate
 extension CountryListViewController:UISearchBarDelegate{
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         if let text = searchText.getValidObject() {
             let predicate = NSPredicate(format: "%K contains[cd] %@ OR %K contains[cd] %@ OR %K contains[cd] %@", countryName_key, text, countryCode_key, text, normalizedISDCode_key, text)
-            countryArray = allCountriesArray.filteredArrayUsingPredicate(predicate)
+            countryArray = allCountriesArray.filtered(using: predicate) as NSArray
         }else{
             countryArray = allCountriesArray
         }
         tblView.reloadData()
     }
-    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
@@ -199,12 +199,12 @@ extension CountryListViewController{
 //MARK: - UITableViewDataSource
 extension CountryListViewController: UITableViewDataSource
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countryArray.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let dict = countryArray[indexPath.row] as? NSDictionary, let cell = tableView.dequeueReusableCellWithIdentifier(String(CountryCodeListCell)) as? CountryCodeListCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let dict = countryArray[indexPath.row] as? NSDictionary, let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryCodeListCell)) as? CountryCodeListCell {
             cell.configCell(dict)
             return cell
         }
@@ -214,11 +214,11 @@ extension CountryListViewController: UITableViewDataSource
 
 //MARK:- UITableViewDelegate
 extension CountryListViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let dict = countryArray[indexPath.row] as? NSDictionary{
             delegate?.selectedCountryObject(dict)
         }
-        getNavigationController()?.popViewControllerAnimated(true)
+        getNavigationController()?.popViewController(animated: true)
     }
 }
 

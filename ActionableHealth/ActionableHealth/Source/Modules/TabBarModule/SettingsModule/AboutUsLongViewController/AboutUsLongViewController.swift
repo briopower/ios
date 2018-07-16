@@ -19,14 +19,14 @@ class AboutUsLongViewController: CommonViewController {
         txtView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("About Us", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("About Us", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        txtView.contentOffset = CGPointZero
+        txtView.contentOffset = CGPoint.zero
     }
 
     override func didReceiveMemoryWarning() {

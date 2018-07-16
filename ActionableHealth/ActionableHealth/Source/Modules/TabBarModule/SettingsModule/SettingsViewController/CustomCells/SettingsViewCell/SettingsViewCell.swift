@@ -8,19 +8,19 @@
 
 import UIKit
 enum SettingsCellType:Int {
-    case Edit_Profile, Notification, Separator1, Terms_Conditions,  About_Us, Count
+    case edit_Profile, notification, separator1, terms_Conditions,  about_Us, count
 
     func getConfig() -> (title:String , imageName:String, hideSideArrow:Bool) {
         switch self {
-        case .Edit_Profile:
+        case .edit_Profile:
             return ("Edit Profile", "message", false)
-        case .Notification:
+        case .notification:
             return ("Notification", "notificationSettings", true)
-        case .Terms_Conditions:
+        case .terms_Conditions:
             return ("Terms & Conditions", "t&c", false)
 //        case .Privacy_Policy:
 //            return ("Privacy Policy", "password", false)
-        case .About_Us:
+        case .about_Us:
             return ("About Us", "about-us", false)
         default:
             return ("", "", false)
@@ -45,7 +45,7 @@ class SettingsViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -54,23 +54,23 @@ class SettingsViewCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension SettingsViewCell{
-    @IBAction func toggled(sender: UISwitch) {
-        user.enableNotifications = sender.on ?? false
+    @IBAction func toggled(_ sender: UISwitch) {
+        user.enableNotifications = sender.isOn ?? false
         updateProfile()
     }
     
-    func configureCellForType(type:SettingsCellType) {
+    func configureCellForType(_ type:SettingsCellType) {
         let (title, imageName, hideSideArrow) = type.getConfig()
         titleDescLabel.text = title
         detailsImageView.image = UIImage(named: imageName)
-        sideArrow.hidden = hideSideArrow
-        toggleSwitch.hidden = !hideSideArrow
+        sideArrow.isHidden = hideSideArrow
+        toggleSwitch.isHidden = !hideSideArrow
         updateCurrentStatus()
     }
 
     func updateCurrentStatus() {
         user = UserModel.getCurrentUser()
-        toggleSwitch.on = user.enableNotifications
+        toggleSwitch.isOn = user.enableNotifications
         previousState = user.enableNotifications
     }
 }

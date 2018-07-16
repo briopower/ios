@@ -24,17 +24,17 @@ class WaiverViewController: CommonViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("General Disclosures/Waivers", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("General Disclosures/Waivers", LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.none)
         
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated);
     }
 
@@ -46,28 +46,28 @@ class WaiverViewController: CommonViewController {
 
 extension WaiverViewController {
     func setUpTableView(){
-        tblView.registerNib(UINib(nibName: String(TextViewTableViewCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TextViewTableViewCell))
-        tblView.registerNib(UINib(nibName: String(NextButtonCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(NextButtonCell))
+        tblView.register(UINib(nibName: String(describing: TextViewTableViewCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TextViewTableViewCell))
+        tblView.register(UINib(nibName: String(describing: NextButtonCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: NextButtonCell))
     }
 }
 
 extension WaiverViewController : UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CellsWaiverController.count.rawValue
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellsWaiverController : CellsWaiverController = CellsWaiverController.init(rawValue: indexPath.row)!
         switch cellsWaiverController {
         case .textView:
-            if let cell = tblView.dequeueReusableCellWithIdentifier(String(TextViewTableViewCell)) as? TextViewTableViewCell{
+            if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: TextViewTableViewCell)) as? TextViewTableViewCell{
                 print(cell)
                 return cell
                 
             }
             break
         case .button:
-            if let cell = tblView.dequeueReusableCellWithIdentifier(String(NextButtonCell)) as? NextButtonCell{
+            if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: NextButtonCell)) as? NextButtonCell{
                 cell.setButtonTitle("OK");
                 cell.delegate = self
                 return cell
@@ -83,11 +83,11 @@ extension WaiverViewController : UITableViewDataSource{
 }
 
 extension WaiverViewController : UITableViewDelegate{
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellsWaiverController : CellsWaiverController = CellsWaiverController.init(rawValue: indexPath.row)!
         switch cellsWaiverController {
         case .textView:
@@ -102,7 +102,7 @@ extension WaiverViewController : UITableViewDelegate{
 
 extension WaiverViewController : NextButtonCellDelegate{
     func nextButtonClicked() {
-        NSUserDefaults.setDisclaimerWatched(true)
-        self.dismissViewControllerAnimated(true, completion: nil);
+        UserDefaults.setDisclaimerWatched(true)
+        self.dismiss(animated: true, completion: nil);
     }
 }

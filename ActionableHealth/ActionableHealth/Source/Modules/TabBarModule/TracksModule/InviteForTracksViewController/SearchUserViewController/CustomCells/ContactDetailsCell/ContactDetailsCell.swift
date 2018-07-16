@@ -27,7 +27,7 @@ class ContactDetailsCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -38,23 +38,23 @@ class ContactDetailsCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension ContactDetailsCell{
-    func configCell(obj:AnyObject, shouldSelect:Bool = false, isMember:Bool = false) {
+    func configCell(_ obj:AnyObject, shouldSelect:Bool = false, isMember:Bool = false) {
         if let contact = obj as? Contact {
             contactObj = contact
-            inviteButton.hidden = contact.isAppUser?.boolValue ?? false
+            inviteButton.isHidden = contact.isAppUser?.boolValue ?? false
             nameLabel.text = contact.addressBook?.name
             numberLabel.text = contact.id
         }else if let model = obj as? UserModel {
-            inviteButton.hidden = true
+            inviteButton.isHidden = true
             nameLabel.text = model.name
             numberLabel.text = model.userID
         }
-        tickImage.hidden = isMember ? true : !shouldSelect
-        shadowLayer.hidden = !isMember
-        alreadyMemberLabel.hidden = !isMember
+        tickImage.isHidden = isMember ? true : !shouldSelect
+        shadowLayer.isHidden = !isMember
+        alreadyMemberLabel.isHidden = !isMember
     }
 
-    @IBAction func inviteAction(sender: UIButton) {
+    @IBAction func inviteAction(_ sender: UIButton) {
         if NetworkClass.isConnected(true) {
             NetworkClass.sendRequest(URL: Constants.URLs.inviteUsersToApp, RequestType: .POST, Parameters: contactObj?.getInviteMemberDict(), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in

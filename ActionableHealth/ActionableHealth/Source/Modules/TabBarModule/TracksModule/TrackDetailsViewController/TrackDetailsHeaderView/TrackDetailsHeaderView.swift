@@ -8,18 +8,18 @@
 
 import UIKit
 enum TrackDetailsSourceType:Int {
-    case Templates, Tracks, Count
+    case templates, tracks, count
 }
 enum TrackButtonTypes:Int {
-    case Comment, Invite, Edit
+    case comment, invite, edit
 }
 enum TemplateButtonTypes:Int {
-    case Follower, Unfollow, Comment, ActiveGroups, CreateGroup, Follow
+    case follower, unfollow, comment, activeGroups, createGroup, follow
 }
 
 protocol TrackDetailsHeaderViewDelegate:NSObjectProtocol {
-    func commentsTapped(type:TrackDetailsSourceType)
-    func requestButtonTapped(type:TrackDetailsSourceType)
+    func commentsTapped(_ type:TrackDetailsSourceType)
+    func requestButtonTapped(_ type:TrackDetailsSourceType)
     func showImagePicker()
     func rateGroup()
 }
@@ -47,35 +47,35 @@ class TrackDetailsHeaderView: UIView {
     static let heightOf1PxlWidthTrack:CGFloat = 1.0403551251
 
     weak var delegate:TrackDetailsHeaderViewDelegate?
-    var type:TrackDetailsSourceType = TrackDetailsSourceType.Templates
+    var type:TrackDetailsSourceType = TrackDetailsSourceType.templates
     var currentTemplate:TemplatesModel?
 }
 
 //MARK:- Button Action
 extension TrackDetailsHeaderView{
-    @IBAction func buttonAction(sender: UIButton) {
+    @IBAction func buttonAction(_ sender: UIButton) {
         switch type {
-        case .Templates:
+        case .templates:
             if let buttonType = TemplateButtonTypes(rawValue: sender.tag) {
                 switch buttonType {
-                case .ActiveGroups, .Follower:
+                case .activeGroups, .follower:
                     debugPrint("No Actions")
-                case .Comment:
+                case .comment:
                     delegate?.commentsTapped(type)
-                case .CreateGroup:
+                case .createGroup:
                     delegate?.requestButtonTapped(type)
-                case .Follow, .Unfollow:
+                case .follow, .unfollow:
                     followUnfollowTapped()
                 }
             }
-        case .Tracks:
+        case .tracks:
             if let buttonType = TrackButtonTypes(rawValue: sender.tag) {
                 switch buttonType {
-                case .Comment:
+                case .comment:
                     delegate?.commentsTapped(type)
-                case .Invite:
+                case .invite:
                     delegate?.requestButtonTapped(type)
-                case .Edit:
+                case .edit:
                     delegate?.showImagePicker()
                 }
             }
@@ -84,15 +84,15 @@ extension TrackDetailsHeaderView{
         }
     }
 
-    @IBAction func rateGroupAction(sender: UIButton) {
+    @IBAction func rateGroupAction(_ sender: UIButton) {
         delegate?.rateGroup()
     }
 }
 //MARK:- Additional methods
 extension TrackDetailsHeaderView{
-    class func getView(type:TrackDetailsSourceType) -> TrackDetailsHeaderView? {
-        let nibName = type == .Templates ? "TrackDetailsHeaderView_Template" : "TrackDetailsHeaderView_Track"
-        if let nibArr = NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil){
+    class func getView(_ type:TrackDetailsSourceType) -> TrackDetailsHeaderView? {
+        let nibName = type == .templates ? "TrackDetailsHeaderView_Template" : "TrackDetailsHeaderView_Track"
+        if let nibArr = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil){
             for view in nibArr {
                 if let headerView = view as? TrackDetailsHeaderView
                 {
@@ -104,41 +104,41 @@ extension TrackDetailsHeaderView{
         return nil
     }
 
-    func setupFrame(type:TrackDetailsSourceType = .Templates) {
+    func setupFrame(_ type:TrackDetailsSourceType = .templates) {
         CommonMethods.addShadowToView(topContainer)
         CommonMethods.addShadowToTabBar(bottomContainer)
         requestButton3?.layer.borderWidth = 1
-        requestButton3?.layer.borderColor = UIColor.getAppThemeColor().CGColor
+        requestButton3?.layer.borderColor = UIColor.getAppThemeColor().cgColor
         switch type {
-        case .Templates:
+        case .templates:
             self.frame = CGRect(x: 0, y: 0, width: UIDevice.width(), height: UIDevice.width() * TrackDetailsHeaderView.heightOf1PxlWidthTemplate)
-        case .Tracks:
+        case .tracks:
             self.frame = CGRect(x: 0, y: 0, width: UIDevice.width(), height: UIDevice.width() * TrackDetailsHeaderView.heightOf1PxlWidthTrack)
         default:
             break
         }
     }
 
-    func setupForType(type:TrackDetailsSourceType, template:TemplatesModel?) {
+    func setupForType(_ type:TrackDetailsSourceType, template:TemplatesModel?) {
         self.type = type
         currentTemplate = template
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
-        rateGroupButton?.hidden = currentTemplate?.key == nil
+        rateGroupButton?.isHidden = currentTemplate?.key == nil
         nameLabel?.text = template?.name
         switch self.type {
-        case .Templates:
+        case .templates:
             logoImageView.image = UIImage(named: "logo-1")
-            templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
-            detailsButton1?.setTitle("\(currentTemplate?.followersCount ?? 0) Follower(s)", forState: .Normal)
-            detailsButton2?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Message(s)", forState: .Normal)
-            detailsButton3?.setTitle("\(currentTemplate?.activeTrackCount ?? 0) Active Group(s)", forState: .Normal)
+            templateImage.sd_setImage(with: URL(string: currentTemplate?.templateImageUrl ?? ""))
+            detailsButton1?.setTitle("\(currentTemplate?.followersCount ?? 0) Follower(s)", for: UIControlState())
+            detailsButton2?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Message(s)", for: UIControlState())
+            detailsButton3?.setTitle("\(currentTemplate?.activeTrackCount ?? 0) Active Group(s)", for: UIControlState())
             setupFollowUnfollowButton()
-        case .Tracks:
-            templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
-            logoImageView.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
-            detailsButton1?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Message(s)", forState: .Normal)
-            editButton?.hidden = !(NSUserDefaults.getUserId() == currentTemplate?.createdBy)
-            requestButton1?.hidden = editButton?.hidden ?? true
+        case .tracks:
+            templateImage.sd_setImage(with: URL(string: currentTemplate?.trackImageUrl ?? ""))
+            logoImageView.sd_setImage(with: URL(string: currentTemplate?.templateImageUrl ?? ""))
+            detailsButton1?.setTitle("\(currentTemplate?.commentsCount ?? 0) Group Message(s)", for: UIControlState())
+            editButton?.isHidden = !(UserDefaults.getUserId() == currentTemplate?.createdBy)
+            requestButton1?.isHidden = editButton?.isHidden ?? true
         default:
             break
         }
@@ -149,10 +149,10 @@ extension TrackDetailsHeaderView{
         updateFollowingStatus(!check)
     }
 
-    func updateFollowingStatus(shouldFollow:Bool) {
+    func updateFollowingStatus(_ shouldFollow:Bool) {
         if NetworkClass.isConnected(true) {
-            requestButton1?.enabled = false
-            requestButton3?.enabled = false
+            requestButton1?.isEnabled = false
+            requestButton3?.isEnabled = false
             NetworkClass.sendRequest(URL: Constants.URLs.follow, RequestType: .POST, ResponseType: ExpectedResponseType.JSON, Parameters: currentTemplate?.getFollowingDict(shouldFollow), Headers: nil, CompletionHandler: { (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTemplate?.updateFollowers(responseObj)
@@ -167,10 +167,10 @@ extension TrackDetailsHeaderView{
     
     func setupFollowUnfollowButton() {
         let check = currentTemplate?.isFollowing ?? false
-        UIView.animateWithDuration(0.1) {
+        UIView.animate(withDuration: 0.1, animations: {
             self.requestButton1?.alpha = check ? 1 : 0
             self.requestButton3?.alpha = check ? 0 : 1
-        }
+        }) 
 
     }
 }

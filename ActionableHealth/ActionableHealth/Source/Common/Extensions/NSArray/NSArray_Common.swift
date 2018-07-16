@@ -10,14 +10,14 @@ import UIKit
 
 extension NSArray{
 
-    func splitArrayWithSize(size:Int) -> NSArray {
+    func splitArrayWithSize(_ size:Int) -> NSArray {
         let totalCount = self.count
         var currentIndex = 0
         let splitArray = NSMutableArray()
 
         while currentIndex < totalCount {
             let range = NSMakeRange(currentIndex, min(size, totalCount-currentIndex))
-            splitArray.addObject(self.subarrayWithRange(range))
+            splitArray.add(self.subarray(with: range))
             currentIndex += size
         }
 

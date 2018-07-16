@@ -12,7 +12,7 @@ class PhaseListCell:UICollectionViewCell{
     @IBOutlet weak var txtLbel: UILabel!
 
     //MARK:- Additonal methods
-    func configCell(model:PhasesModel) {
+    func configCell(_ model:PhasesModel) {
         txtLbel.text = model.phaseName
     }
 
@@ -24,17 +24,17 @@ class PhasesListViewController: CommonViewController {
 
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
-    var sourceType = TrackDetailsSourceType.Templates
+    var sourceType = TrackDetailsSourceType.templates
     
     //MARK:- LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateTemplate()
-        setNavigationBarWithTitle("Getting Started", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Getting Started", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,13 +45,13 @@ class PhasesListViewController: CommonViewController {
 
 //MARK:- UICollectionViewDataSource
 extension PhasesListViewController:UICollectionViewDataSource{
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currentTemplate?.phases.count ?? 0
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier(String(PhaseListCell), forIndexPath: indexPath) as? PhaseListCell, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhaseListCell), for: indexPath) as? PhaseListCell, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
             cell.configCell(phase)
             return cell
         }
@@ -63,7 +63,7 @@ extension PhasesListViewController:UICollectionViewDataSource{
 //MARK:- UICollectionViewDelegateFlowLayout
 extension PhasesListViewController:UICollectionViewDelegateFlowLayout{
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let dimension = (UIDevice.width() - 30)/2
         return CGSize(width: dimension, height: dimension)
     }
@@ -71,8 +71,8 @@ extension PhasesListViewController:UICollectionViewDelegateFlowLayout{
 
 //MARK:- UITableViewDelegate
 extension PhasesListViewController:UICollectionViewDelegate{
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesView) as? PhasesViewController, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.phasesView) as? PhasesViewController, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
             phasesView.currentPhase = phase
             phasesView.sourceType = sourceType
             getNavigationController()?.pushViewController(phasesView, animated: true)
@@ -85,8 +85,8 @@ extension PhasesListViewController{
 
     func updateTemplate() {
         if NetworkClass.isConnected(true) {
-            if let id = sourceType == .Templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
-                let url = sourceType == .Templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
+            if let id = sourceType == .templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
+                let url = sourceType == .templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
                 NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     if status{
@@ -99,12 +99,12 @@ extension PhasesListViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?) {
+    func processResponse(_ responseObj:AnyObject?) {
         if let dict = responseObj, let temp = currentTemplate {
             switch sourceType {
-            case .Templates:
+            case .templates:
                 TemplatesModel.addPhases(dict, toModel: temp)
-            case .Tracks:
+            case .tracks:
                 TemplatesModel.updateTrackObj(temp, dict: dict)
             default:
                 break
@@ -113,8 +113,8 @@ extension PhasesListViewController{
         collectionView.reloadData()
     }
 
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        UIView.showToast("Something went wrong", theme: Theme.error)
     }
 }
 

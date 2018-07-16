@@ -30,9 +30,9 @@ class SearchUserViewController: CommonViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Search User", LeftButtonType: BarButtontype.Cross, RightButtonType: BarButtontype.Done)
+        setNavigationBarWithTitle("Search User", LeftButtonType: BarButtontype.cross, RightButtonType: BarButtontype.done)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,17 +43,17 @@ class SearchUserViewController: CommonViewController {
 
 //MARK:- Actions
 extension SearchUserViewController{
-    override func doneButtonAction(sender: UIButton?) {
+    override func doneButtonAction(_ sender: UIButton?) {
         super.doneButtonAction(sender)
         delegate?.selectedUsers = contactsSelected
         delegate?.searchedUsers = searchedUsers
         delegate?.tblView.reloadData()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
-    override func crossButtonAction(sender: UIButton?) {
+    override func crossButtonAction(_ sender: UIButton?) {
         super.crossButtonAction(sender)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -61,7 +61,7 @@ extension SearchUserViewController{
 extension SearchUserViewController{
     func setupView() {
         srchBar.becomeFirstResponder()
-        tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
+        tblView.register(UINib(nibName: String(describing: ContactDetailsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell))
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80
 
@@ -69,8 +69,8 @@ extension SearchUserViewController{
             for sub in subViews {
                 if let cancelButton = sub as? UIButton{
                     self.cancelButton = cancelButton
-                    self.cancelButton?.enabled = false
-                    self.cancelButton?.setTitle("Search", forState: .Normal)
+                    self.cancelButton?.isEnabled = false
+                    self.cancelButton?.setTitle("Search", for: UIControlState())
                 }
             }
         }
@@ -79,15 +79,15 @@ extension SearchUserViewController{
 
 //MARK:- UISearchBarDelegate
 extension SearchUserViewController:UISearchBarDelegate{
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let _ = searchText.getValidObject() {
-            cancelButton?.enabled = true
+            cancelButton?.isEnabled = true
         }else{
-            cancelButton?.enabled = false
+            cancelButton?.isEnabled = false
         }
     }
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        if let text = searchBar.text?.getValidObject() where NetworkClass.isConnected(false) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text?.getValidObject(), NetworkClass.isConnected(false) {
             searchBar.resignFirstResponder()
             showLoader()
             searchString = text
@@ -99,14 +99,14 @@ extension SearchUserViewController:UISearchBarDelegate{
 
 //MARK:- Datasource
 extension SearchUserViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResult.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell)) as? ContactDetailsCell {
             if let obj = searchResult[indexPath.row] as? UserModel{
-                cell.configCell(obj, shouldSelect: contactsSelected.containsObject(obj.userID ?? ""),isMember:currentTemplate?.isMemberOfTemplate(obj.userID ?? "") ?? false)
+                cell.configCell(obj, shouldSelect: contactsSelected.contains(obj.userID ?? ""),isMember:currentTemplate?.isMemberOfTemplate(obj.userID ?? "") ?? false)
             }
             return cell
         }
@@ -116,9 +116,9 @@ extension SearchUserViewController:UITableViewDataSource{
 
 //MARK:- Delegate
 extension SearchUserViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let obj = (searchResult[indexPath.row] as? UserModel)?.userID {
-            if NSUserDefaults.getUserId() == obj {
+            if UserDefaults.getUserId() == obj {
                 return
             }
             var userToRemove:UserModel?
@@ -131,18 +131,18 @@ extension SearchUserViewController:UITableViewDelegate{
                 }
             }
             if let temp = userToRemove {
-                searchedUsers.removeObject(temp)
+                searchedUsers.remove(temp)
             }
 
-            if contactsSelected.containsObject(obj) {
-                contactsSelected.removeObject(obj)
+            if contactsSelected.contains(obj) {
+                contactsSelected.remove(obj)
             }else{
                 if let temp = searchResult[indexPath.row] as? UserModel {
-                    searchedUsers.addObject(temp)
-                    contactsSelected.addObject(obj)
+                    searchedUsers.add(temp)
+                    contactsSelected.add(obj)
                 }
             }
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
 
@@ -151,7 +151,7 @@ extension SearchUserViewController:UITableViewDelegate{
 //MARK:- Network Methods
 extension SearchUserViewController{
 
-    func getData(cursorVal:String) {
+    func getData(_ cursorVal:String) {
         if NetworkClass.isConnected(true){
             NetworkClass.sendRequest(URL:Constants.URLs.searchUser, RequestType: .POST, Parameters: TemplatesModel.getSearchUserDict(cursor ,query: searchString), Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
@@ -165,18 +165,18 @@ extension SearchUserViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?, cursorVal:String) {
+    func processResponse(_ responseObj:AnyObject?, cursorVal:String) {
         let userResultSet  = responseObj?["userResultSet"] ?? []
         if let resultSet = userResultSet as? NSArray{
             for obj in resultSet{
                 let model = UserModel.getUserObject(obj as? [String : AnyObject] ?? [:])
-                searchResult.addObject(model)
+                searchResult.add(model)
             }
         }
         tblView.reloadData()
     }
     
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        UIView.showToast("Something went wrong", theme: Theme.error)
     }
 }

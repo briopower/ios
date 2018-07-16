@@ -8,11 +8,11 @@
 
 import UIKit
 enum BarButtontype {
-    case Empty, None, None2, Back, Search ,Search_Notification, Cross, Done, Details, Add, Skip, Next
+    case empty, none, none2, back, search ,search_Notification, cross, done, details, add, skip, next
 }
 
 enum BarButtonPosition {
-    case Left,Right
+    case left,right
 }
 
 private let NoneButtonImage = UIImage(named: "noneButton")
@@ -39,82 +39,82 @@ extension UIViewController{
         return self.navigationItem
     }
 
-    func setNavigationBarBackgroundColor(color:UIColor?) -> Void {
+    func setNavigationBarBackgroundColor(_ color:UIColor?) -> Void {
         if let color = color {
-            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), forBarMetrics: UIBarMetrics.Default)
+            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), for: UIBarMetrics.default)
             getNavigationController()?.view.backgroundColor = color
         }else{
             let color = UIColor.getColorFromHexValue(0xF5F5F5, Alpha: 0.9)
-            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), forBarMetrics: UIBarMetrics.Default)
+            getNavigationController()?.navigationBar.setBackgroundImage(UIImage.getImageFromColor(color), for: UIBarMetrics.default)
             getNavigationController()?.view.backgroundColor = color
         }
         getNavigationController()?.navigationBar.setNeedsDisplay()
     }
 
-    func setNavigationBarWithTitleView(titleView:UIView, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
+    func setNavigationBarWithTitleView(_ titleView:UIView, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
         getNavigationItem()?.titleView = titleView
         getNavigationItem()?.title = ""
-        setBarButtonAt(.Left, Type: leftButtonType)
-        setBarButtonAt(.Right, Type: rightButtonType)
+        setBarButtonAt(.left, Type: leftButtonType)
+        setBarButtonAt(.right, Type: rightButtonType)
     }
 
-    func setNavigationBarWithTitle(title:String, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
+    func setNavigationBarWithTitle(_ title:String, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
         getNavigationItem()?.titleView = nil
         getNavigationController()?.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.getAppThemeColor(),
-            NSFontAttributeName: UIFont.getAppSemiboldFontWithSize(20)?.getDynamicSizeFont() ?? UIFont.systemFontOfSize(20).getDynamicSizeFont()]
+            NSFontAttributeName: UIFont.getAppSemiboldFontWithSize(20)?.getDynamicSizeFont() ?? UIFont.systemFont(ofSize: 20).getDynamicSizeFont()]
         getNavigationItem()?.title = title
-        setBarButtonAt(.Left, Type: leftButtonType)
-        setBarButtonAt(.Right, Type: rightButtonType)
+        setBarButtonAt(.left, Type: leftButtonType)
+        setBarButtonAt(.right, Type: rightButtonType)
     }
 
-    private func setBarButtonAt(position:BarButtonPosition, Type type:BarButtontype){
+    fileprivate func setBarButtonAt(_ position:BarButtonPosition, Type type:BarButtontype){
         var barButton:UIBarButtonItem?
         var barButton1:UIBarButtonItem?
         switch type {
-        case .Empty:
+        case .empty:
             barButton = nil
             barButton1 = nil
-        case .None:
+        case .none:
             barButton = UIBarButtonItem(customView:getButtonWithImage(NoneButtonImage,Action: #selector(self.noneButtonAction(_:))))
             barButton1 = nil
             getNavigationItem()?.backBarButtonItem = nil
-        case .None2:
+        case .none2:
             barButton = UIBarButtonItem(customView:getButtonWithImage(NoneButtonImage,Action: #selector(self.noneButtonAction(_:))))
             barButton1 = UIBarButtonItem(customView:getButtonWithImage(NoneButtonImage,Action: #selector(self.noneButtonAction(_:))))
             getNavigationItem()?.backBarButtonItem = nil
-        case .Back:
+        case .back:
             barButton = UIBarButtonItem(customView:getButtonWithImage(BackButtonImage,Action: #selector(self.backButtonAction(_:))))
-        case .Search:
+        case .search:
             barButton = UIBarButtonItem(customView:getButtonWithImage(SearchButtonImage,Action: #selector(self.searchButtonAction(_:))))
-        case .Search_Notification:
+        case .search_Notification:
             barButton = UIBarButtonItem(customView:getButtonWithImage(NotificationButtonImage,Action: #selector(self.notificationButtonAction(_:))))
             barButton1 = UIBarButtonItem(customView:getButtonWithImage(SearchButtonImage,Action: #selector(self.searchButtonAction(_:))))
-        case .Cross:
+        case .cross:
             barButton = UIBarButtonItem(customView:getButtonWithImage(CrossButtonImage,Action: #selector(self.crossButtonAction(_:))))
-        case .Done:
+        case .done:
             barButton = UIBarButtonItem(customView:getButtonWithImage(DoneButtonImage,Action: #selector(self.doneButtonAction(_:))))
-        case .Details:
+        case .details:
             barButton = UIBarButtonItem(customView:getButtonWithImage(DetailsButtonImage,Action: #selector(self.detailsButtonAction(_:))))
-        case .Add:
+        case .add:
             barButton = UIBarButtonItem(customView:getButtonWithImage(AddButtonImage,Action: #selector(self.addButtonAction(_:))))
-        case .Skip:
+        case .skip:
             barButton = UIBarButtonItem(customView:getButtonWithTitle("Skip",Action: #selector(self.skipButtonAction(_:))))
-        case .Next:
+        case .next:
             barButton = UIBarButtonItem(customView:getButtonWithTitle("Next",Action: #selector(self.nextButtonAction(_:))))
         }
 
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace , target: nil, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace , target: nil, action: nil)
         flexibleSpace.width = 16
 
         switch position {
-        case .Left:
+        case .left:
             if barButton1 != nil {
                 getNavigationItem()?.setLeftBarButtonItems([barButton!, flexibleSpace, barButton1!], animated: false)
             }else{
                 getNavigationItem()?.setLeftBarButtonItems([barButton!], animated: false)
             }
-        case .Right:
+        case .right:
             if barButton1 != nil {
                 getNavigationItem()?.setRightBarButtonItems([barButton!, flexibleSpace, barButton1!], animated: false)
             }else{
@@ -123,23 +123,23 @@ extension UIViewController{
         }
     }
 
-    private func getButtonWithImage(image:UIImage?, Action action:Selector) -> UIButton{
-        let button = UIButton(type:.Custom)
-        button.setImage(image, forState: .Normal)
+    fileprivate func getButtonWithImage(_ image:UIImage?, Action action:Selector) -> UIButton{
+        let button = UIButton(type:.custom)
+        button.setImage(image, for: UIControlState())
         button.clipsToBounds = true
-        button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
-        button.setTitle("", forState: UIControlState.Normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setTitle("", for: UIControlState())
         button.sizeToFit()
         return button
     }
-    private func getButtonWithTitle(title:String?, Action action:Selector) -> UIButton{
-        let button = UIButton(type:.Custom)
+    fileprivate func getButtonWithTitle(_ title:String?, Action action:Selector) -> UIButton{
+        let button = UIButton(type:.custom)
         button.clipsToBounds = true
-        button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
-        button.setTitle(title, forState: UIControlState.Normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.setTitle(title, for: UIControlState())
         button.titleLabel?.font = UIFont.getAppRegularFontWithSize(18)?.getDynamicSizeFont()
-        button.setTitleColor(UIColor.getAppThemeColor(), forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.getAppThemeColor().colorWithAlphaComponent(0.2), forState: .Highlighted)
+        button.setTitleColor(UIColor.getAppThemeColor(), for: UIControlState())
+        button.setTitleColor(UIColor.getAppThemeColor().withAlphaComponent(0.2), for: .highlighted)
         button.sizeToFit()
         return button
     }
@@ -147,31 +147,31 @@ extension UIViewController{
 
 //MARK: Button Actions
 extension UIViewController{
-    @IBAction func noneButtonAction(sender:UIButton?){
+    @IBAction func noneButtonAction(_ sender:UIButton?){
     }
-    @IBAction func backButtonAction(sender:UIButton?){
+    @IBAction func backButtonAction(_ sender:UIButton?){
         UIApplication.dismissKeyboard()
-        getNavigationController()?.popViewControllerAnimated(true)
+        getNavigationController()?.popViewController(animated: true)
     }
-    @IBAction func searchButtonAction(sender:UIButton?){
+    @IBAction func searchButtonAction(_ sender:UIButton?){
     }
-    @IBAction func notificationButtonAction(sender:UIButton?){
+    @IBAction func notificationButtonAction(_ sender:UIButton?){
     }
-    @IBAction func crossButtonAction(sender:UIButton?){
+    @IBAction func crossButtonAction(_ sender:UIButton?){
     }
-    @IBAction func doneButtonAction(sender:UIButton?){
-        UIApplication.dismissKeyboard()
-    }
-    @IBAction func detailsButtonAction(sender:UIButton?){
+    @IBAction func doneButtonAction(_ sender:UIButton?){
         UIApplication.dismissKeyboard()
     }
-    @IBAction func addButtonAction(sender:UIButton?){
+    @IBAction func detailsButtonAction(_ sender:UIButton?){
+        UIApplication.dismissKeyboard()
+    }
+    @IBAction func addButtonAction(_ sender:UIButton?){
 
     }
-    @IBAction func skipButtonAction(sender:UIButton?){
+    @IBAction func skipButtonAction(_ sender:UIButton?){
 
     }
-    @IBAction func nextButtonAction(sender:UIButton?){
+    @IBAction func nextButtonAction(_ sender:UIButton?){
 
     }
 }
@@ -180,13 +180,13 @@ extension UIViewController{
 extension UIViewController{
     class func getTopMostViewController() -> UIViewController? {
 
-        if let rootViewCont =  UIApplication.sharedApplication().keyWindow?.rootViewController{
+        if let rootViewCont =  UIApplication.shared.keyWindow?.rootViewController{
             return self.getTopPresentedViewController(rootViewCont)
         }
         return nil
     }
 
-    class func getTopPresentedViewController(viewControllerObj:UIViewController) -> UIViewController {
+    class func getTopPresentedViewController(_ viewControllerObj:UIViewController) -> UIViewController {
 
         if let presentedViewController = viewControllerObj.presentedViewController {
             return self.getTopPresentedViewController(presentedViewController)
@@ -195,13 +195,13 @@ extension UIViewController{
         }
     }
 
-    class func presentLoginViewController(shouldResetData:Bool = false, animated:Bool = true, Completion complete:(()-> Void)? = nil){
+    class func presentLoginViewController(_ shouldResetData:Bool = false, animated:Bool = true, Completion complete:(()-> Void)? = nil){
         if let viewCont = getTopMostViewController() as? UINavigationController {
             if viewCont.viewControllers.count > 0{
-                if let viewCont1 = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateInitialViewController() as? UINavigationController {
-                    viewCont.presentViewController(viewCont1, animated: animated, completion: {
+                if let viewCont1 = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: Bundle.main).instantiateInitialViewController() as? UINavigationController {
+                    viewCont.present(viewCont1, animated: animated, completion: {
                         if shouldResetData{
-                            NSUserDefaults.clear()
+                            UserDefaults.clear()
                             if let tabBarCont = viewCont.viewControllers[0] as? UITabBarController{
                                 tabBarCont.selectedIndex = 0
                                 if let homeView = tabBarCont.selectedViewController as?

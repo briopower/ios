@@ -97,6 +97,12 @@ extension EnterOtpViewController{
                     self.hideLoader()
                 })
             }
+//            else{
+//                // TODO bypassing this right now
+//                let dict = ["isAuthenticated" : true, "ahwToken" : "dfbdsfbfebserbplms"] as [String : Any]
+//                
+//                self.processResponse(dict as AnyObject)
+//            }
         }
     }
     

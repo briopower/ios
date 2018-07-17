@@ -48,6 +48,7 @@ extension CommentsManager{
             { (error:NSError) in
                 debugPrint("------------DATABASE SYNC ISSUE COMMENT--------------\(error)")
                 } as! (Error) -> Void)
+        // TODO
     }
 
     fileprivate func sendComment(_ comment:String) {

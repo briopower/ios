@@ -41,6 +41,7 @@ class EditProfileViewController: CommonViewController {
         super.viewDidAppear(animated)
         switch type {
         case .updateProfile:
+            
             getNavigationController()?.viewControllers = [self]
         default:
             break

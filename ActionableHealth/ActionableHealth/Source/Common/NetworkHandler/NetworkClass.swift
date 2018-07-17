@@ -17,6 +17,7 @@ import Alamofire
 
 //MARK:- Private Methods
 class NetworkClass:NSObject  {
+     static var sessionManager: SessionManager = SessionManager()
 
     fileprivate class func processResponse(_ request:DataRequest, responseType:ExpectedResponseType, CompletionHandler completion:CompletionHandler?) {
 
@@ -110,8 +111,25 @@ class NetworkClass:NSObject  {
             var error:NSError? = nil
             var statusCode:Int? = nil
 
-            if let temp = response as? DataResponse<AnyObject> {
-                responseObj = temp.result.value
+//            if let temp = response as? DataResponse<AnyObject> {
+//                responseObj = temp.result.value
+//                error = temp.result.error as NSError?
+//                statusCode = temp.response?.statusCode
+//            }else if let temp = response as? DataResponse<NSData> {
+//                responseObj = temp.result.value
+//                error = temp.result.error as NSError?
+//                statusCode = temp.response?.statusCode
+//            }else if let temp = response as? DataResponse<String> {
+//                responseObj = temp.result.value as AnyObject
+//                error = temp.result.error as NSError?
+//                statusCode = temp.response?.statusCode
+//            }else if let temp = response as? (URLRequest?, HTTPURLResponse?, Data?, NSError?) {
+//                responseObj = NSArray(objects: temp.1 ?? HTTPURLResponse(), temp.2 ?? Data())
+//                error = temp.3
+//                statusCode = temp.1?.statusCode
+//            }
+            if let temp = response as? DataResponse<Any> {
+                responseObj = temp.result.value as AnyObject
                 error = temp.result.error as NSError?
                 statusCode = temp.response?.statusCode
             }else if let temp = response as? DataResponse<NSData> {
@@ -191,7 +209,7 @@ extension NetworkClass{
             var dataRequest:DataRequest? = nil
             if parameters == nil || parameters is Parameters {
                 let params = parameters as? Parameters
-                dataRequest = SessionManager().request (
+                dataRequest = NetworkClass.sessionManager.request (
                     completeUrl!,
                     method: method,
                     parameters: params,
@@ -202,7 +220,7 @@ extension NetworkClass{
                 var request = URLRequest(url: url)
                 request.httpMethod = method.rawValue
                 request.httpBody = try! JSONSerialization.data(withJSONObject: parameters!)
-                dataRequest = SessionManager().request(request)
+                dataRequest = NetworkClass.sessionManager.request(request)
             }
             return dataRequest
     }
@@ -292,15 +310,25 @@ extension NetworkClass{
 
         let reachability = Reachability()!
         
-        reachability.whenReachable = { reachability in
-            if reachability.connection == .wifi {
+//        reachability.whenReachable = { reachability in
+//            if reachability.connection == .wifi {
+//                val = true
+//            } else {
+//                val = true
+//            }
+//        }
+//        reachability.whenUnreachable = { _ in
+//           val = false
+//        }
+        if reachability.connection != .none{
+            if reachability.connection == .wifi{
                 val = true
             } else {
+                // cellular data
                 val = true
             }
-        }
-        reachability.whenUnreachable = { _ in
-           val = false
+        }else{
+            // not reachable
         }
 
         if !val && showAlert {

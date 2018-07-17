@@ -219,13 +219,20 @@ extension ContactSyncManager{
                 loadContacts()
             }
         }else{
-            ContactSyncManager.apAddressBook.requestAccess({ (request:Bool, error:NSError?) in
+//            ContactSyncManager.apAddressBook.requestAccess({ (request:Bool, error:NSError?) in
+//                if let error = error{
+//                    debugPrint("Contact request access error ----------\(error)----------")
+//                }else if request{
+//                    self.syncContacts()
+//                }
+//            } as! (Bool, Error?) -> Void)
+            ContactSyncManager.apAddressBook.requestAccess { (request: Bool, error: Error?) in
                 if let error = error{
                     debugPrint("Contact request access error ----------\(error)----------")
                 }else if request{
                     self.syncContacts()
                 }
-            } as! (Bool, Error?) -> Void)
+            }
             self.syncCompleted(Date(timeIntervalSince1970: 0))
         }
 
@@ -252,13 +259,14 @@ extension ContactSyncManager{
                 })
             }
         }else{
-            ContactSyncManager.apAddressBook.requestAccess({ (request:Bool, error:NSError?) in
+
+            ContactSyncManager.apAddressBook.requestAccess { (request: Bool, error: Error?) in
                 if let error = error{
                     debugPrint("Contact request access error ----------\(error)----------")
                 }else if request{
                     self.checkForDeletedContacts()
                 }
-            } as! (Bool, Error?) -> Void)
+            }
         }
     }
 }

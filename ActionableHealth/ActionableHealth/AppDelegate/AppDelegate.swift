@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var imageView = UIImageView(frame: UIScreen.main.bounds)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-
+        
+//        if !UserDefaults.isLoggedIn() {
+//        }
+        FirebaseApp.configure()
         forEasyLoading()
 
         setupOnAppLauch()
@@ -206,7 +208,7 @@ extension AppDelegate{
     }
 
     func setupOnAppLauch() {
-        FirebaseApp.configure()
+        
         if UserDefaults.isLoggedIn() {
             // Add observer for InstanceID token refresh callback.
             NotificationCenter.default.addObserver(self, selector: #selector(self.tokenRefreshNotification(_:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)

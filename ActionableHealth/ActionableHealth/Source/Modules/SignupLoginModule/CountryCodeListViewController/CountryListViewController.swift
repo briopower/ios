@@ -109,7 +109,7 @@ extension CountryListViewController{
     }
 
     func createPlist() {
-        dataSet.sort (comparator: { (obj1:AnyObject, obj2:AnyObject) -> ComparisonResult in
+        dataSet.sort (comparator: { (obj1:Any, obj2:Any) -> ComparisonResult in
             if let dict1 = obj1 as? [String:String], let dict2 = obj2 as? [String:String]{
 
                 // Fix for US at top
@@ -137,7 +137,9 @@ extension CountryListViewController{
                 }
             }
             return .orderedAscending
-        } as! (Any, Any) -> ComparisonResult)
+        }) //as! (Any, Any) -> ComparisonResult)
+        
+        
         
         let isWritten = dataSet.write(toFile: path, atomically: true)
         if isWritten {

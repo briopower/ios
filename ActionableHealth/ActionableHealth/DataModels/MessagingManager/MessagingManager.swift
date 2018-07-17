@@ -97,11 +97,11 @@ extension MessagingManager{
                     }
                 }
             }, withCancel:
-            { (error:NSError) in
+            { (error:Error) in
                 self.isConnected = false
                 debugPrint("------------DATABASE SYNC ISSUE MESSAGING--------------\(error)")
                 self.refreshToken()
-                } as! (Error) -> Void)
+                } )
     }
 
 
@@ -150,7 +150,7 @@ extension MessagingManager{
 extension MessagingManager{
 
     func openChatSession() {
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         if Auth.auth().currentUser?.uid == UserDefaults.getUserId(){
             self.configureDatabase()
             refreshToken()

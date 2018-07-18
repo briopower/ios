@@ -156,7 +156,9 @@ extension NetworkClass{
 
     class func sendRequest(URL url:String, RequestType requestType:HTTPMethod, ResponseType responseType:ExpectedResponseType = .json , Parameters parameters: AnyObject? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?){
 
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
         if let dataRequest = getRequest(requestType, responseType: responseType, URLString: url, headers: headers, parameters: parameters){
             dataRequest.validate()
             processResponse(dataRequest, responseType: responseType, CompletionHandler: completion)
@@ -204,6 +206,7 @@ extension NetworkClass{
 //
 //            mutableURLRequest.timeoutInterval = 360
 //            return mutableURLRequest
+            let allHeaders = getUpdatedHeader(headers,requestType: method)
             guard let url = URL(string: URLString) else{ return nil }
             let completeUrl = URLString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
             var dataRequest:DataRequest? = nil
@@ -214,7 +217,7 @@ extension NetworkClass{
                     method: method,
                     parameters: params,
                     encoding: JSONEncoding.default,
-                    headers: headers
+                    headers: allHeaders
                 )
             } else {
                 var request = URLRequest(url: url)

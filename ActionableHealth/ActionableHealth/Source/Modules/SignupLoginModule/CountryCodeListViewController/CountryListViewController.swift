@@ -69,7 +69,7 @@ extension CountryListViewController{
         }
         srchBar.returnKeyType = .done
 
-        tblView.register(UINib(nibName: String(describing: CountryCodeListCell), bundle: nil), forCellReuseIdentifier: String(describing: CountryCodeListCell))
+        tblView.register(UINib(nibName: String(describing: CountryCodeListCell.self), bundle: nil), forCellReuseIdentifier: String(describing: CountryCodeListCell.self))
         tblView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
@@ -206,7 +206,7 @@ extension CountryListViewController: UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let dict = countryArray[indexPath.row] as? NSDictionary, let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryCodeListCell)) as? CountryCodeListCell {
+        if let dict = countryArray[indexPath.row] as? NSDictionary, let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryCodeListCell.self)) as? CountryCodeListCell {
             cell.configCell(dict)
             return cell
         }

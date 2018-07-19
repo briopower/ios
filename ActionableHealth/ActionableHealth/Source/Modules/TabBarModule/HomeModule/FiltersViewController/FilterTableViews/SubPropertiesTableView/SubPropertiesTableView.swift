@@ -19,7 +19,7 @@ class SubPropertiesTableView: UITableView {
 
     //MARK:- Additional methods
     func setupTableView() {
-        self.register(UINib(nibName: String(describing: SubPropertiesCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SubPropertiesCell))
+        self.register(UINib(nibName: String(describing: SubPropertiesCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SubPropertiesCell.self))
         self.dataSource = self
         self.delegate = self
         self.estimatedRowHeight = 80
@@ -35,7 +35,7 @@ extension SubPropertiesTableView: UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SubPropertiesCell)) as? SubPropertiesCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SubPropertiesCell.self)) as? SubPropertiesCell {
             if let obj = dataArray[indexPath.row] as? SubProperties {
                 cell.configureCell(obj)
                 return cell

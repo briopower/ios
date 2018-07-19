@@ -72,7 +72,7 @@ extension PhaseDetailsViewController{
 
         phaseDetailsTblView.rowHeight = UIScreen.main.bounds.height - 44
 //        phaseDetailsTblView.estimatedRowHeight = 400
-        phaseDetailsTblView.register(UINib(nibName: String(describing: PhaseDetailsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: PhaseDetailsCell))
+        phaseDetailsTblView.register(UINib(nibName: String(describing: PhaseDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: PhaseDetailsCell.self))
         phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.statusCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.statusCell)
         phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.completedCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.completedCell)
         phaseDetailsTblView.register(UINib(nibName: PhaseDetailsCell.informationCell, bundle: Bundle.main), forCellReuseIdentifier: PhaseDetailsCell.informationCell)
@@ -97,7 +97,7 @@ extension PhaseDetailsViewController:UITableViewDataSource{
             case .template:
                 var identifier : String!
                 if let task = currentTask {
-                    identifier = task.resources.count > 0 ? String(describing: PhaseDetailsCell) : String(PhaseDetailsCell.informationCell)
+                    identifier = task.resources.count > 0 ? String(describing: PhaseDetailsCell.self) : String(PhaseDetailsCell.informationCell)
                 }
 
                 if let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? PhaseDetailsCell {

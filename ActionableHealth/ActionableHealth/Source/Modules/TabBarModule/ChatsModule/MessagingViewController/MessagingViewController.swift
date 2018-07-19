@@ -89,7 +89,7 @@ extension MessagingViewController{
 
     }
 
-    func messageReceived(_ notification:Notification) {
+    @objc func messageReceived(_ notification:Notification) {
         if MessagingManager.sharedInstance.isConnected {
             removeActivityIndicator()
         }

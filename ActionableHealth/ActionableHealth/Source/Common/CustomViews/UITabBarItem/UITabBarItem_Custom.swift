@@ -25,33 +25,20 @@ class UITabBarItem_Custom: UITabBarItem {
             var selectedStateImage:UIImage?
             switch type {
             case .home:
-                normalImage = UIImage(named: "Home-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Home-Yellow\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Home-white")
+                selectedStateImage = UIImage(named: "Home-Yellow")
             case .track:
-                normalImage = UIImage(named: "Track-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Track-yellow\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Track-white")
+                selectedStateImage = UIImage(named: "Track-yellow")
             case .chat:
-                normalImage = UIImage(named: "Chat-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Chat-yellow\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Chat-white")
+                selectedStateImage = UIImage(named: "Chat-yellow")
             case .settings:
-                normalImage = UIImage(named: "Setting-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Setting-yellow\(getImageNamePostFix())")
+                normalImage = UIImage(named: "Setting-white")
+                selectedStateImage = UIImage(named: "Setting-yellow")
             }
             super.selectedImage = selectedStateImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
             super.image = normalImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
-        }
-    }
-
-    func getImageNamePostFix() -> String {
-        switch UIDevice.getDeviceType() {
-        case .appleIphone6P, .appleIphone6SP, .appleIphone7P:
-            return "-3x.png"
-        case .appleIphone6S, .appleIphone6, .appleIphone7:
-            return "-2x.png"
-        case .simulator:
-            return "-1x.png"
-        default:
-            return "-1x.png"
         }
     }
 }

@@ -35,7 +35,7 @@ extension TrackMemberListViewController{
     func setupView() {
         tblVIew.estimatedRowHeight = 100
         tblVIew.rowHeight = UITableViewAutomaticDimension
-        tblVIew.register(UINib(nibName: String(describing: GroupsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: GroupsCell))
+        tblVIew.register(UINib(nibName: String(describing: GroupsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: GroupsCell.self))
         getMembers()
     }
 
@@ -49,7 +49,7 @@ extension TrackMemberListViewController:UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GroupsCell)) as? GroupsCell, let obj = membersArray[indexPath.row] as? UserModel {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GroupsCell.self)) as? GroupsCell, let obj = membersArray[indexPath.row] as? UserModel {
             cell.configureForTrackMemberCell(obj)
             return cell
         }

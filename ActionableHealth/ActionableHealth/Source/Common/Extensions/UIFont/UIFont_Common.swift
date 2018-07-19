@@ -48,6 +48,6 @@ extension UIFont {
     
     class func getSizeWithFont(_ text : NSString, font : UIFont, constraintSize : CGSize) -> CGSize
     {
-        return text.boundingRect(with: constraintSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName : font], context: nil).size
+        return text.boundingRect(with: constraintSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : font], context: nil).size
     }
 }

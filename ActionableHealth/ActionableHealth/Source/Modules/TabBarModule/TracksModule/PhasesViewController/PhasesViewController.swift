@@ -55,7 +55,7 @@ class PhasesViewController: CommonViewController {
 //MARK:- Additional methods
 extension PhasesViewController{
     func setupView() {
-        tblView.register(UINib(nibName: String(describing: TrackPhasesCell), bundle: nil), forCellReuseIdentifier: String(describing: TrackPhasesCell))
+        tblView.register(UINib(nibName: String(describing: TrackPhasesCell.self), bundle: nil), forCellReuseIdentifier: String(describing: TrackPhasesCell.self))
         tblView.register(UINib(nibName: cellName, bundle: nil), forCellReuseIdentifier: cellName)
         tblView.register(UINib(nibName: cellNameNoResource, bundle: nil), forCellReuseIdentifier: cellNameNoResource)
     }

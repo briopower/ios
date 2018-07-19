@@ -45,7 +45,7 @@ class KeyboardAvoidingViewController: CommonViewController {
 //MARK: - Keyboard Methods
 extension KeyboardAvoidingViewController{
 
-    func keyboardWillAppear(_ notification:Notification) {
+    @objc func keyboardWillAppear(_ notification:Notification) {
         let keyboardSize:CGSize = ((notification.userInfo![UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size)
         let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         let curve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
@@ -61,7 +61,7 @@ extension KeyboardAvoidingViewController{
 
     }
 
-    func keyboardWillDisappear(_ notification:Notification) {
+    @objc func keyboardWillDisappear(_ notification:Notification) {
         let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         let curve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
         UIView.beginAnimations(nil, context: nil)
@@ -74,7 +74,7 @@ extension KeyboardAvoidingViewController{
         self.perform(#selector(self.moveToBottom), with: nil, afterDelay: duration.doubleValue)
     }
 
-    func moveToBottom() {
+    @objc func moveToBottom() {
         
     }
 

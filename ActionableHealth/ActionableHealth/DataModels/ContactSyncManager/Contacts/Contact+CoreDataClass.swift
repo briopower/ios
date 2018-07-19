@@ -26,7 +26,7 @@ open class Contact: NSManagedObject {
                     }
                 }
             }else{
-                contact = Contact(entity: NSEntityDescription.entity(forEntityName: String(describing: Contact), in: context)!, insertInto: context)
+                contact = Contact(entity: NSEntityDescription.entity(forEntityName: String(describing: Contact.self), in: context)!, insertInto: context)
                 contact?.isAppUser = NSNumber(value: false as Bool)
                 contact?.id = forId
             }

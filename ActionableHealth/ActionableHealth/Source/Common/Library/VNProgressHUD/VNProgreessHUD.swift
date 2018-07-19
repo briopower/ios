@@ -321,6 +321,7 @@ class VNProgreessHUD: UIView {
                     let activityInd2 = self.indicator as? VNRoundProgressView
                     if (activityInd2 != nil) {
                         self.indicator?.setValue(self.progress, forKey: "progress")
+                        self.indicator?.setValue(self.progress, forKey: "progress")
                     }
                 }
             }
@@ -400,14 +401,14 @@ extension VNProgreessHUD{
         if text == nil || font == nil || (text?.isEmpty)! {
             return CGSize.zero
         }else{
-            return (text! as NSString).size(attributes: [NSFontAttributeName : font!])
+            return (text! as NSString).size(withAttributes: [NSAttributedStringKey.font : font!])
         }
     }
     func getMultipleLineTextSize(_ text:String?, Font font:UIFont?, MaxSize maxSize:CGSize?, LineBreakMode lineBreak:NSLineBreakMode?) -> CGSize {
         if text == nil || font == nil || maxSize == nil || lineBreak == nil  || (text?.isEmpty)!{
             return CGSize.zero
         }else{
-            return (text! as NSString).boundingRect(with: maxSize!, options: NSStringDrawingOptions.usesLineFragmentOrigin , attributes: [NSFontAttributeName : font!], context: nil).size
+            return (text! as NSString).boundingRect(with: maxSize!, options: NSStringDrawingOptions.usesLineFragmentOrigin , attributes: [NSAttributedStringKey.font : font!], context: nil).size
         }
     }
 }
@@ -428,7 +429,8 @@ extension VNProgreessHUD{
         var totalSize:CGSize = CGSize.zero
 
         var indicatorF = self.indicator?.bounds
-        indicatorF?.size.width = min(indicatorF!.size.width, maxWidth)
+        let minOfTwo = min(indicatorF!.size.width, maxWidth)
+        indicatorF?.size.width = minOfTwo
         totalSize.width = max(totalSize.width, indicatorF!.size.width)
         totalSize.height += indicatorF!.size.height
 
@@ -637,7 +639,7 @@ extension VNProgreessHUD{
         }
     }
 
-    func statusBarOrientationDidChange(_ notification:NotificationCenter) {
+    @objc func statusBarOrientationDidChange(_ notification:NotificationCenter) {
         #if !TARGET_OS_TV
             if self.superview != nil {
                 updateForCurrentOrientation(Animated: true)
@@ -724,7 +726,7 @@ extension VNProgreessHUD{
         }
     }
 
-    func animationFinished() {
+    @objc func animationFinished() {
         NSObject.cancelPreviousPerformRequests(withTarget: self)
         isFinished = true
         self.alpha = 0.0
@@ -738,14 +740,14 @@ extension VNProgreessHUD{
 //MARK:- Timer callback methods
 extension VNProgreessHUD{
 
-    func handleGraceTimer(_ theTimer:Timer) {
+    @objc func handleGraceTimer(_ theTimer:Timer) {
         // Show the HUD only if the task is still running
         if taskInProgress {
             self.showUsingAnimation(useAnimation)
         }
     }
 
-    func handleMinShowTimer(_ theTimer:Timer) {
+    @objc func handleMinShowTimer(_ theTimer:Timer) {
         self.hideUsingAnimation(useAnimation)
     }
 }
@@ -790,7 +792,7 @@ extension VNProgreessHUD{
         self.perform(#selector(self.hideDelayed(_:)), with: animated, afterDelay: delay)
     }
 
-    func hideDelayed(_ animated:Bool) {
+    @objc func hideDelayed(_ animated:Bool) {
         self.hide(animated)
     }
 }

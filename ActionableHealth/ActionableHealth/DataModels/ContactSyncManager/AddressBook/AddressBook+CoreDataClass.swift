@@ -26,7 +26,7 @@ open class AddressBook: NSManagedObject {
                     }
                 }
             }else{
-                addBook = AddressBook(entity: NSEntityDescription.entity(forEntityName: String(describing: AddressBook), in: context)!, insertInto: context)
+                addBook = AddressBook(entity: NSEntityDescription.entity(forEntityName: String(describing: AddressBook.self), in: context)!, insertInto: context)
                 addBook?.recordId = contact.recordID
             }
 

@@ -50,7 +50,7 @@ open class Person: NSManagedObject {
                     }
                 }
             }else{
-                personObj = Person(entity: NSEntityDescription.entity(forEntityName: String(describing: Person), in: context)!, insertInto: context)
+                personObj = Person(entity: NSEntityDescription.entity(forEntityName: String(describing: Person.self), in: context)!, insertInto: context)
             }
             personObj?.personId = id
             personObj?.personName = Contact.getNameForContact(id)

@@ -61,8 +61,8 @@ extension EditProfileViewController{
         editProfileTblView.estimatedRowHeight = 200
         editProfileTblView.rowHeight = UITableViewAutomaticDimension
 
-        editProfileTblView.register(UINib(nibName: String(describing: ProfileImageCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ProfileImageCell))
-        editProfileTblView.register(UINib(nibName: String(describing: EditProfileDetailsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: EditProfileDetailsCell))
+        editProfileTblView.register(UINib(nibName: String(describing: ProfileImageCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ProfileImageCell.self))
+        editProfileTblView.register(UINib(nibName: String(describing: EditProfileDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: EditProfileDetailsCell.self))
 
         editProfileTblView.register(UINib(nibName: nameViewCellName, bundle: Bundle.main), forCellReuseIdentifier: nameViewCellName)
         editProfileTblView.register(UINib(nibName: textViewCellName, bundle: Bundle.main), forCellReuseIdentifier: textViewCellName)
@@ -93,7 +93,7 @@ extension EditProfileViewController:UITableViewDataSource{
         if let type = EditProfileDetailsCellType(rawValue: indexPath.row) {
             switch type {
             case .image:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileImageCell)) as? ProfileImageCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileImageCell.self)) as? ProfileImageCell {
                     cell.configureForEditProfileCell(user)
                     cell.delegate = self
                     return cell
@@ -111,7 +111,7 @@ extension EditProfileViewController:UITableViewDataSource{
                     return cell
                 }
             default:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditProfileDetailsCell)) as? EditProfileDetailsCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditProfileDetailsCell.self)) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type, user: user)
                     cell.delegate = self
                     return cell

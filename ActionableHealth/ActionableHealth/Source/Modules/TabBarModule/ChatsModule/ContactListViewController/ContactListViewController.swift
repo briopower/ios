@@ -42,7 +42,7 @@ class ContactListViewController: CommonViewController {
 
 //MARK:- Actions
 extension ContactListViewController{
-    func contactSyncCompleted(_ notification:Notification) {
+    @objc func contactSyncCompleted(_ notification:Notification) {
         setupFRC(srchbar.text?.getValidObject())
     }
 }
@@ -52,7 +52,7 @@ extension ContactListViewController{
     func setupView() {
         AppDelegate.getAppDelegateObject()?.startSyncing()
         NotificationCenter.default.addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: NSNotification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
-        tblView.register(UINib(nibName: String(describing: ContactDetailsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell))
+        tblView.register(UINib(nibName: String(describing: ContactDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell.self))
 
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80
@@ -87,7 +87,7 @@ extension ContactListViewController:UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell)) as? ContactDetailsCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell.self)) as? ContactDetailsCell {
             if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact{
                 cell.configCell(obj)
                 return cell

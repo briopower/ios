@@ -79,7 +79,7 @@ extension CommentsViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(self.receivedComment(_:)), name: NSNotification.Name(rawValue: CommentsManager.sharedInstance.commentReceived), object: nil)
     }
 
-    func receivedComment(_ notification:Notification) {
+    @objc func receivedComment(_ notification:Notification) {
         if let obj = notification.object as? [String: AnyObject] {
             let commObj = CommentsModel.getCommentObj(obj as AnyObject)
             commentsTblView.insertElements(NSMutableArray(array: [commObj]), insertAt: InsertAt.top, section: 0, startIndex: 0)

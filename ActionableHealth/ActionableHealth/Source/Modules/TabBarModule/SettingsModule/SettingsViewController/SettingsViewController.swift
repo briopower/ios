@@ -36,8 +36,8 @@ extension SettingsViewController{
     func setupView() {
         settingsTblView.estimatedRowHeight = 200
         settingsTblView.rowHeight = UITableViewAutomaticDimension
-        settingsTblView.register(UINib(nibName: String(describing: SettingsViewCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SettingsViewCell))
-        settingsTblView.register(UINib(nibName: String(describing: SeparatorCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SeparatorCell))
+        settingsTblView.register(UINib(nibName: String(describing: SettingsViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SettingsViewCell.self))
+        settingsTblView.register(UINib(nibName: String(describing: SeparatorCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SeparatorCell.self))
         settingsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
 
     }
@@ -54,11 +54,11 @@ extension SettingsViewController:UITableViewDataSource{
         if let type = SettingsCellType(rawValue: indexPath.row) {
             switch type {
             case .separator1:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SeparatorCell)) as? SeparatorCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SeparatorCell.self)) as? SeparatorCell {
                     return cell
                 }
             default:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsViewCell)) as? SettingsViewCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsViewCell.self)) as? SettingsViewCell {
                     cell.configureCellForType(type)
                     return cell
                 }

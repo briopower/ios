@@ -48,7 +48,7 @@ open class Messages: NSManagedObject {
     fileprivate class func insertMessageInDB(_ key:String, value:[String:AnyObject], context:NSManagedObjectContext) {
         debugPrint("Recieved New Message")
         if let fromId = value["from"] as? String {
-            let messageObject = Messages(entity: NSEntityDescription.entity(forEntityName: String(describing: Messages), in: context)!, insertInto: context)
+            let messageObject = Messages(entity: NSEntityDescription.entity(forEntityName: String(describing: Messages.self), in: context)!, insertInto: context)
 
             messageObject.messageId = key
             messageObject.key = value["data"]?["key"] as? String

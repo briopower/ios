@@ -63,17 +63,17 @@ extension WelcomeToBrio:UITableViewDataSource{
         if let type = WelcomeViewCellType(rawValue: indexPath.row) {
             switch type {
             case .detailCell:
-                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: DetailViewCell)) as? DetailViewCell {
+                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: DetailViewCell.self)) as? DetailViewCell {
                     return cell
                 }
             case .phoneNo:
-                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: PhoneNoCell)) as? PhoneNoCell{
+                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: PhoneNoCell.self)) as? PhoneNoCell{
                     cell.setUPCell(countryDict , phoneDict:phoneDetail)
                     cell.delegate = self
                     return cell
                 }
             case .next:
-                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: NextButtonCell)) as? NextButtonCell {
+                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: NextButtonCell.self)) as? NextButtonCell {
                     cell.delegate = self
                     return cell
                 }
@@ -126,9 +126,9 @@ extension WelcomeToBrio{
         titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 70
-        tblView.register(UINib.init(nibName: String(describing: DetailViewCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: DetailViewCell))
-        tblView.register(UINib.init(nibName: String(describing: NextButtonCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: NextButtonCell))
-        tblView.register(UINib.init(nibName: String(describing: PhoneNoCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: PhoneNoCell))
+        tblView.register(UINib.init(nibName: String(describing: DetailViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: DetailViewCell.self))
+        tblView.register(UINib.init(nibName: String(describing: NextButtonCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: NextButtonCell.self))
+        tblView.register(UINib.init(nibName: String(describing: PhoneNoCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: PhoneNoCell.self))
         tblView.reloadData()
 
         countryDict = [normalizedISDCode_key: "1"]

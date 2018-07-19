@@ -50,7 +50,7 @@ extension CommonCollectionView{
     func registerCells() {
         switch type {
         case .templateView, .trackView:
-        register(UINib(nibName: String(describing: HomeViewCell), bundle: Bundle.main), forCellWithReuseIdentifier: String(describing: HomeViewCell))
+        register(UINib(nibName: String(describing: HomeViewCell.self), bundle: Bundle.main), forCellWithReuseIdentifier: String(describing: HomeViewCell.self))
         default:
             break
         }
@@ -68,7 +68,7 @@ extension CommonCollectionView{
         delegate = self
         dataSource = self
         topIndicator.addTarget(self, action: #selector(self.topReached), for: UIControlEvents.valueChanged)
-        register(UINib(nibName: String(describing: CommonCollectionReusableView), bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: CommonCollectionReusableView))
+        register(UINib(nibName: String(describing: CommonCollectionReusableView.self), bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: CommonCollectionReusableView.self))
     }
 
     func shouldShowBottomViewForSection(_ section:Int) -> Bool {
@@ -82,7 +82,7 @@ extension CommonCollectionView{
     func cellForIndexPath(_ indexPath:IndexPath) -> UICollectionViewCell {
         switch type {
         case .templateView, .trackView:
-            if let cell = self.dequeueReusableCell(withReuseIdentifier: String(describing: HomeViewCell), for: indexPath) as? HomeViewCell {
+            if let cell = self.dequeueReusableCell(withReuseIdentifier: String(describing: HomeViewCell.self), for: indexPath) as? HomeViewCell {
                 cell.configCell(dataArray[indexPath.row] as? TemplatesModel, type: type)
                 return cell
             }
@@ -113,7 +113,7 @@ extension CommonCollectionView{
         topIndicator.endRefreshing()
     }
 
-    func topReached() {
+    @objc func topReached() {
         topViewVisible = true
         commonCollectionViewDelegate?.topElements(self)
     }
@@ -171,7 +171,7 @@ extension CommonCollectionView:UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
 
-        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: CommonCollectionReusableView), for: indexPath) as? CommonCollectionReusableView
+        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: CommonCollectionReusableView.self), for: indexPath) as? CommonCollectionReusableView
         
         return reusableView!
     }

@@ -22,13 +22,13 @@ class StaggeredCollectionView: CommonCollectionView {
 
 //MARK:- overriden methods
 extension StaggeredCollectionView{
-    override func setupView() {
+    @objc override func setupView() {
         super.setupView()
-        register(UINib(nibName: String(describing: CommonCollectionReusableView), bundle: Bundle.main), forSupplementaryViewOfKind: "CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(describing: CommonCollectionReusableView))
+        register(UINib(nibName: String(describing: CommonCollectionReusableView.self), bundle: Bundle.main), forSupplementaryViewOfKind: "CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(describing: CommonCollectionReusableView.self))
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
-        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: "CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(describing: CommonCollectionReusableView), for: indexPath) as? CommonCollectionReusableView
+        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: "CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(describing: CommonCollectionReusableView.self), for: indexPath) as? CommonCollectionReusableView
         return reusableView!
     }
 }

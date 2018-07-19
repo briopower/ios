@@ -39,7 +39,7 @@ class FilesListViewController: CommonViewController {
 //MARK:- Additional Methods
 extension FilesListViewController{
     func setupView(){
-        tblView.register(UINib(nibName: String(describing: FilesCell), bundle: nil), forCellReuseIdentifier: String(describing: FilesCell))
+        tblView.register(UINib(nibName: String(describing: FilesCell.self), bundle: nil), forCellReuseIdentifier: String(describing: FilesCell.self))
         tblView.estimatedRowHeight = 80
         tblView.rowHeight = UITableViewAutomaticDimension
     }
@@ -59,7 +59,7 @@ extension FilesListViewController:UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FilesCell)) as? FilesCell, let resourceObj = resources[indexPath.row] as? Resources{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FilesCell.self)) as? FilesCell, let resourceObj = resources[indexPath.row] as? Resources{
             cell.configCell(resourceObj)
             return cell
         }

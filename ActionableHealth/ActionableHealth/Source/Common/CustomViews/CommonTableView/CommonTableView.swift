@@ -67,7 +67,7 @@ extension CommonTableView{
     func registerCells() {
         switch tableViewType {
         case .comments:
-            self.register(UINib(nibName: String(describing: CommnetsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: CommnetsCell))
+            self.register(UINib(nibName: String(describing: CommnetsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: CommnetsCell.self))
         default:
             break
         }
@@ -99,7 +99,7 @@ extension CommonTableView:UITableViewDataSource{
         checkForLastCell(indexPath)
         switch tableViewType {
         case .comments:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CommnetsCell)) as? CommnetsCell, let obj = dataArray[indexPath.row] as? CommentsModel{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CommnetsCell.self)) as? CommnetsCell, let obj = dataArray[indexPath.row] as? CommentsModel{
                 cell.configCell(obj)
                 return cell
             }

@@ -61,8 +61,8 @@ extension UIViewController{
     func setNavigationBarWithTitle(_ title:String, LeftButtonType leftButtonType:BarButtontype, RightButtonType rightButtonType:BarButtontype){
         getNavigationItem()?.titleView = nil
         getNavigationController()?.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.getAppThemeColor(),
-            NSFontAttributeName: UIFont.getAppSemiboldFontWithSize(20)?.getDynamicSizeFont() ?? UIFont.systemFont(ofSize: 20).getDynamicSizeFont()]
+            NSAttributedStringKey.foregroundColor: UIColor.getAppThemeColor(),
+            NSAttributedStringKey.font: UIFont.getAppSemiboldFontWithSize(20)?.getDynamicSizeFont() ?? UIFont.systemFont(ofSize: 20).getDynamicSizeFont()]
         getNavigationItem()?.title = title
         setBarButtonAt(.left, Type: leftButtonType)
         setBarButtonAt(.right, Type: rightButtonType)

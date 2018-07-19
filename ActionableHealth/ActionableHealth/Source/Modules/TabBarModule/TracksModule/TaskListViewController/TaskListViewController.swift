@@ -36,7 +36,7 @@ extension TaskListViewController{
     func setUpView(){
         taskListTableView.estimatedRowHeight = 200
         taskListTableView.rowHeight = UITableViewAutomaticDimension
-        taskListTableView.register(UINib(nibName: String(describing: TrackFilesCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TrackFilesCell))
+        taskListTableView.register(UINib(nibName: String(describing: TrackFilesCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TrackFilesCell.self))
         taskListTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
     }
 }
@@ -48,7 +48,7 @@ extension TaskListViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = taskListTableView.dequeueReusableCell(withIdentifier: String(describing: TrackFilesCell)) as? TrackFilesCell {
+        if let cell = taskListTableView.dequeueReusableCell(withIdentifier: String(describing: TrackFilesCell.self)) as? TrackFilesCell {
             if let task = currentPhase?.tasks[indexPath.row] as? TasksModel{
                 cell.configTaskCell(task)
             }

@@ -51,7 +51,7 @@ extension PhasesListViewController:UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhaseListCell), for: indexPath) as? PhaseListCell, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhaseListCell.self), for: indexPath) as? PhaseListCell, let phase = currentTemplate?.phases[indexPath.row] as? PhasesModel {
             cell.configCell(phase)
             return cell
         }

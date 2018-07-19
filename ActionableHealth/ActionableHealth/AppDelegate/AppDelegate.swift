@@ -244,7 +244,7 @@ extension AppDelegate:MessagingDelegate{
 
 //MARK:- Notification Methods
 extension AppDelegate{
-    func tokenRefreshNotification(_ not:Notification) {
+    @objc func tokenRefreshNotification(_ not:Notification) {
         MessagingManager.sharedInstance.connectToFcm()        
     }
 }

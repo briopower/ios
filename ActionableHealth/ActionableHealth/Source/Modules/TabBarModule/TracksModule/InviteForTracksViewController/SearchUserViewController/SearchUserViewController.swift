@@ -61,7 +61,7 @@ extension SearchUserViewController{
 extension SearchUserViewController{
     func setupView() {
         srchBar.becomeFirstResponder()
-        tblView.register(UINib(nibName: String(describing: ContactDetailsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell))
+        tblView.register(UINib(nibName: String(describing: ContactDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell.self))
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80
 
@@ -104,7 +104,7 @@ extension SearchUserViewController:UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell)) as? ContactDetailsCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell.self)) as? ContactDetailsCell {
             if let obj = searchResult[indexPath.row] as? UserModel{
                 cell.configCell(obj, shouldSelect: contactsSelected.contains(obj.userID ?? ""),isMember:currentTemplate?.isMemberOfTemplate(obj.userID ?? "") ?? false)
             }

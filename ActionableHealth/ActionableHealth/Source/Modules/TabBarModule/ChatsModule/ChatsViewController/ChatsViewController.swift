@@ -48,7 +48,7 @@ extension ChatsViewController{
         _fetchedResultsController?.delegate = self
         messagesListTblView.rowHeight = UITableViewAutomaticDimension
         messagesListTblView.estimatedRowHeight = 80
-        messagesListTblView.register(UINib(nibName: String(describing: MessageListCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: MessageListCell))
+        messagesListTblView.register(UINib(nibName: String(describing: MessageListCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: MessageListCell.self))
         messagesListTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
     }
 
@@ -71,7 +71,7 @@ extension ChatsViewController:UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MessageListCell)) as? MessageListCell, let obj = _fetchedResultsController?.object(at: indexPath) as? Person {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MessageListCell.self)) as? MessageListCell, let obj = _fetchedResultsController?.object(at: indexPath) as? Person {
             cell.configureCell(indexPath.row == self.tableView(messagesListTblView, numberOfRowsInSection: indexPath.section) - 1, personObj: obj)
             return cell
         }

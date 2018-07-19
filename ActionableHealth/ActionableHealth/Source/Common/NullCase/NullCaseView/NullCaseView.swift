@@ -76,7 +76,7 @@ extension NullCaseView{
             if let nullCaseView = viewForNullCase.viewWithTag(NullCaseTag) as? NullCaseView {
                 return nullCaseView
             }else{
-                if let nibArr = Bundle.main.loadNibNamed(String(describing: NullCaseView), owner: nil, options: nil){
+                if let nibArr = Bundle.main.loadNibNamed(String(describing: NullCaseView.self), owner: nil, options: nil){
                     for view in nibArr {
                         if let nullCaseView = view as? NullCaseView
                         {

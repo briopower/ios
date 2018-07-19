@@ -17,7 +17,7 @@ class AllTaskCompletedHeaderView: UIView {
 //MARK:- Additional methods
 extension AllTaskCompletedHeaderView{
     class func getView() -> AllTaskCompletedHeaderView? {
-        if let nibArr = Bundle.main.loadNibNamed(String(describing: AllTaskCompletedHeaderView), owner: nil, options: nil){
+        if let nibArr = Bundle.main.loadNibNamed(String(describing: AllTaskCompletedHeaderView.self), owner: nil, options: nil){
             for view in nibArr {
                 if let headerView = view as? AllTaskCompletedHeaderView
                 {

@@ -46,8 +46,8 @@ class WaiverViewController: CommonViewController {
 
 extension WaiverViewController {
     func setUpTableView(){
-        tblView.register(UINib(nibName: String(describing: TextViewTableViewCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TextViewTableViewCell))
-        tblView.register(UINib(nibName: String(describing: NextButtonCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: NextButtonCell))
+        tblView.register(UINib(nibName: String(describing: TextViewTableViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TextViewTableViewCell.self))
+        tblView.register(UINib(nibName: String(describing: NextButtonCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: NextButtonCell.self))
     }
 }
 
@@ -60,14 +60,14 @@ extension WaiverViewController : UITableViewDataSource{
         let cellsWaiverController : CellsWaiverController = CellsWaiverController.init(rawValue: indexPath.row)!
         switch cellsWaiverController {
         case .textView:
-            if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: TextViewTableViewCell)) as? TextViewTableViewCell{
+            if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: TextViewTableViewCell.self)) as? TextViewTableViewCell{
                 print(cell)
                 return cell
                 
             }
             break
         case .button:
-            if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: NextButtonCell)) as? NextButtonCell{
+            if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: NextButtonCell.self)) as? NextButtonCell{
                 cell.setButtonTitle("OK");
                 cell.delegate = self
                 return cell

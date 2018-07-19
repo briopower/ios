@@ -146,7 +146,7 @@ extension TrackDetailsViewController{
 
 //        trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
         trackDetailsTblView.estimatedRowHeight = 80
-        trackDetailsTblView.register(UINib(nibName: String(describing: TrackFilesCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TrackFilesCell))
+        trackDetailsTblView.register(UINib(nibName: String(describing: TrackFilesCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TrackFilesCell.self))
         trackDetailsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         createImageUploadUrl(false)
     }
@@ -200,7 +200,7 @@ extension TrackDetailsViewController:UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        if let cell = trackDetailsTblView.dequeueReusableCell(withIdentifier: String(describing: TrackFilesCell)) as? TrackFilesCell {
+        if let cell = trackDetailsTblView.dequeueReusableCell(withIdentifier: String(describing: TrackFilesCell.self)) as? TrackFilesCell {
             switch sourceType {
             case .templates:
                 if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
@@ -359,7 +359,7 @@ extension TrackDetailsViewController{
 
     }
 
-    func textDidChange(_ textField:UITextField) {
+    @objc func textDidChange(_ textField:UITextField) {
         trackName = textField.text?.getValidObject()
         alertController?.actions[0].isEnabled = !(trackName?.isEmpty ?? true)
     }

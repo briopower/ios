@@ -21,7 +21,7 @@ extension String{
         if font == nil || maxWidth == nil || self.isEmpty || self.characters.count == 0 {
             return CGSize.zero.height
         }else{
-            return (self as NSString).boundingRect(with: CGSize(width: maxWidth!, height: DBL_MAX), options: NSStringDrawingOptions.usesLineFragmentOrigin , attributes: [NSFontAttributeName : font!], context: nil).size.height
+            return (self as NSString).boundingRect(with: CGSize(width: maxWidth!, height: DBL_MAX), options: NSStringDrawingOptions.usesLineFragmentOrigin , attributes: [NSAttributedStringKey.font : font!], context: nil).size.height
         }
     }
 

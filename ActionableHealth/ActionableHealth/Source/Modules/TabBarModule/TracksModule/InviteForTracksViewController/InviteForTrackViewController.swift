@@ -69,7 +69,7 @@ extension InviteForTrackViewController{
         }
     }
 
-    func contactSyncCompleted(_ notification:Notification) {
+    @objc func contactSyncCompleted(_ notification:Notification) {
         frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         tblView.reloadData()
     }
@@ -81,9 +81,9 @@ extension InviteForTrackViewController{
         AppDelegate.getAppDelegateObject()?.startSyncing()
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: NSNotification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
-        tblView.register(UINib(nibName: String(describing: ContactDetailsCell), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell))
-        tblView.register(UINib(nibName: String(describing: SearchByIdHeader), bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: String(describing: SearchByIdHeader))
-        tblView.register(UINib(nibName: String(describing: AddFromPhoneHeader), bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: String(describing: AddFromPhoneHeader))
+        tblView.register(UINib(nibName: String(describing: ContactDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell.self))
+        tblView.register(UINib(nibName: String(describing: SearchByIdHeader.self), bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: String(describing: SearchByIdHeader.self))
+        tblView.register(UINib(nibName: String(describing: AddFromPhoneHeader.self), bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: String(describing: AddFromPhoneHeader.self))
 
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.sectionHeaderHeight = UITableViewAutomaticDimension
@@ -199,14 +199,14 @@ extension InviteForTrackViewController:UITableViewDataSource{
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
             switch type {
             case .details:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell)) as? ContactDetailsCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell.self)) as? ContactDetailsCell {
                     if let obj = searchedUsers[indexPath.row] as? UserModel{
                         cell.configCell(obj, shouldSelect: selectedUsers.contains(obj.userID ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.userID ?? "") ?? false)
                         return cell
                     }
                 }
             default:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell)) as? ContactDetailsCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell.self)) as? ContactDetailsCell {
                     if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact{
                         cell.configCell(obj, shouldSelect: selectedUsers.contains(obj.id ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.id ?? "") ?? false)
                         return cell
@@ -224,12 +224,12 @@ extension InviteForTrackViewController:UITableViewDelegate{
         if let type = TrackInviteSectionType(rawValue: section) {
             switch type {
             case .details:
-                if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: SearchByIdHeader)) as? SearchByIdHeader {
+                if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: SearchByIdHeader.self)) as? SearchByIdHeader {
                     headerView.delegate = self
                     return headerView
                 }
             case .contacts:
-                if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: AddFromPhoneHeader)) as? AddFromPhoneHeader {
+                if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: AddFromPhoneHeader.self)) as? AddFromPhoneHeader {
                     return headerView
                 }
             default:

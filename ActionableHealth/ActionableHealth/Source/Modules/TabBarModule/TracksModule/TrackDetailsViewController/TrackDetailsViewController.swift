@@ -33,7 +33,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 enum TrackSectionTypes:Int {
-    case phases, resources, teamMembers, about, count
+    case phases, resources, teamMembers, about,blogs, journals, count
 }
 
 enum TemplateSectionTypes:Int {
@@ -66,6 +66,10 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
         updateHeader()
         updateTemplate()
         setNavigationBarWithTitle(currentTemplate?.name ?? "Details", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
+        if sourceType == .tracks{
+            let deleteButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "delete"), style: .plain, target: self, action: #selector(deleteButtonTapped))
+            getNavigationItem()?.rightBarButtonItem = deleteButton
+        }
 
     }
     override func viewDidLayoutSubviews() {
@@ -83,6 +87,13 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
     }
 
 
+}
+extension TrackDetailsViewController{
+    @objc func deleteButtonTapped(){
+        print("delete tapped")
+        showLoader()
+        
+    }
 }
 
 //MARK:- Button Actions
@@ -149,6 +160,8 @@ extension TrackDetailsViewController{
         trackDetailsTblView.register(UINib(nibName: String(describing: TrackFilesCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TrackFilesCell.self))
         trackDetailsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         createImageUploadUrl(false)
+        
+        
     }
 
     func updateHeader() {
@@ -192,6 +205,7 @@ extension TrackDetailsViewController:UITableViewDataSource{
             return TemplateSectionTypes.count.rawValue
         }else{
             return TrackSectionTypes.count.rawValue
+            
         }
     }
 
@@ -215,7 +229,7 @@ extension TrackDetailsViewController:UITableViewDataSource{
             case .tracks:
                 if let sectionType = TrackSectionTypes(rawValue: indexPath.section) {
                     switch sectionType {
-                    case .about, .phases, .resources, .teamMembers:
+                    case .about, .phases, .resources, .teamMembers, .blogs , .journals:
                         cell.configCell(sectionType)
                         return cell
                     default:

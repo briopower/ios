@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+import FirebaseMessaging
 
 enum MessageType: String {
     case chat,chat_attachment, notification, comment

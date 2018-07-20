@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import FirebaseDatabase
 class CommentsManager: NSObject {
     //MARK:- Variables
     static let sharedInstance = CommentsManager()

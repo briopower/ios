@@ -52,6 +52,10 @@ extension TrackFilesCell{
             detailsLabel.text = "Resources"
         case .teamMembers:
             detailsLabel.text = "My Team"
+        case .blogs:
+            detailsLabel.text = "Blogs"
+        case .journals:
+            detailsLabel.text = "Journals"
         default:
             break
         }

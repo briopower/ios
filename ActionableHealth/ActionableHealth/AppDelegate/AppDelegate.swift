@@ -11,6 +11,7 @@ import CoreData
 import CoreLocation
 
 import Firebase
+import FirebaseMessaging
 import UserNotifications
 
 @UIApplicationMain

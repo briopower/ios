@@ -44,10 +44,9 @@ extension CommentsManager{
                         }
                     }
                 }
-            }, withCancel:
-            { (error:NSError) in
-                debugPrint("------------DATABASE SYNC ISSUE COMMENT--------------\(error)")
-                } as! (Error) -> Void)
+        }, withCancel: { (error: Error) in
+            debugPrint("------------DATABASE SYNC ISSUE COMMENT--------------\(error)")
+        })
         // TODO
     }
 

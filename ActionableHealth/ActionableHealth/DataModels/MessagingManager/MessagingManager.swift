@@ -59,8 +59,9 @@ extension MessagingManager{
                 debugPrint("------------FIREBASE REFRESH TOKEN ISSUE--------------\(error)")
                 self.signIn()
             }else if let tkn = token{
+                debugPrint("--------Firebase token refreshed--------")
+                //UserDefaults.setFirebaseToken(tkn)
                 self.isConnected = true
-                UserDefaults.setFirebaseToken(tkn)
                 self.connect()
             }
         })
@@ -116,7 +117,7 @@ extension MessagingManager{
                                             "lastTrackName": trackName ?? ""]
 
         NetworkClass.sendRequest(URL: Constants.URLs.postMessage, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: objToSend as AnyObject){ (status, responseObj, error, statusCode) in
-            debugPrint("sendMessage \(statusCode)")
+            debugPrint("sendMessage \(String(describing: statusCode))")
         }
 
 
@@ -186,10 +187,18 @@ extension MessagingManager{
     func connectToFcm() {
         if UserDefaults.isLoggedIn() {
             InstanceID.instanceID().instanceID(handler: { (result: InstanceIDResult?, error: Error?) in
-                if let _ = result?.token{
+                if error != nil{
                     Messaging.messaging().shouldEstablishDirectChannel = false
+                    self.isConnected = false
+                    debugPrint("Unable to connect with FCM. \(error.debugDescription)")
+                    self.connectToFcm()
+                    return
+                }
+                if let token = result?.token{
                     Messaging.messaging().shouldEstablishDirectChannel = true
-                    
+                    self.isConnected = true
+                    debugPrint("Connected to FCM with token: \(token)")
+                    self.sendNotificationToken()
                 }
             })
             

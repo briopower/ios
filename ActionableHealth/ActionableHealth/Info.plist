@@ -30,14 +30,14 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>country.io/phone.json</key>
+			<key>country.io/names.json</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
-			<key>country.io/names.json</key>
+			<key>country.io/phone.json</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>

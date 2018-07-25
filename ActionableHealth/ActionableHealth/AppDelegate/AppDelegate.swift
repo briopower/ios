@@ -178,6 +178,7 @@ extension AppDelegate{
         
         // TODO
         //InstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.unknown)
+        
         Messaging.messaging().setAPNSToken(deviceToken, type: .unknown)
         
     }
@@ -188,6 +189,10 @@ extension AppDelegate{
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any])
     {
         MessagingManager.sharedInstance.receivedPushNotification(userInfo)
+    }
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        // send this token on server
+        
     }
 }
 

@@ -61,7 +61,7 @@ extension MessagingManager{
                 self.signIn()
             }else if let tkn = token{
                 debugPrint("--------Firebase token refreshed--------")
-                //UserDefaults.setFirebaseToken(tkn)
+                UserDefaults.setFirebaseToken(tkn)
                 self.isConnected = true
                 self.connect()
             }

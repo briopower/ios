@@ -77,8 +77,8 @@ class Constants: NSObject {
         static let countryNames = "http://country.io/names.json"
 
 //        static let base = "https://briopower-qa.appspot.com/" // Dev
-        static let base = "https://briopower-uat.appspot.com/" // UAT
-//        static let base = "https://briopower-prod.appspot.com/"
+//        static let base = "https://briopower-uat.appspot.com/" // UAT
+        static let base = "https://briopower-prod.appspot.com/"
 
         static let authAPIs = "auth/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"

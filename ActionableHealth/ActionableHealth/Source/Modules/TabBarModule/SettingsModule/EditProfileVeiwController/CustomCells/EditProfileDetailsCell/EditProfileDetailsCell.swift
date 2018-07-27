@@ -106,7 +106,12 @@ extension EditProfileDetailsCell{
         case .phone:
             firstField?.isEnabled = false
             firstField?.placeholder = "Phone Number"
-            firstField?.text = currentUser?.phoneNumber ?? currentUser?.userID
+            if let phoneNumber = currentUser?.phoneNumber , !phoneNumber.isEmpty{
+                firstField?.text = phoneNumber
+            }else if let userID = currentUser?.userID , !userID.isEmpty{
+                firstField?.text = userID
+            }
+            
         case .hobbies:
             detailsTextView?.text = currentUser?.hobbies ?? ""
         default:

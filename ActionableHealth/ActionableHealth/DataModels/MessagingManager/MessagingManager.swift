@@ -50,6 +50,7 @@ extension MessagingManager{
             }
            self.connect()
         }
+        
     }
 
     fileprivate func refreshToken() {

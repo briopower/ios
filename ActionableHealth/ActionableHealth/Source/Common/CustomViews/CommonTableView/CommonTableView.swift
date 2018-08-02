@@ -175,11 +175,13 @@ extension CommonTableView{
             self.beginUpdates()
             switch insertAt {
             case .top:
-                dataArray.insert(array as [AnyObject], at: IndexSet(integersIn: NSRange.init(location: startIndex, length: array.count).toRange() ?? 0..<0))
+                //dataArray.insert(array as [AnyObject], at: IndexSet(integersIn: NSRange.init(location: startIndex, length: array.count).toRange() ?? 0..<0))
+                dataArray.insert(array as! [Any], at: IndexSet.init(integersIn: Range.init(NSRange.init(location: startIndex, length: array.count )) ?? 0..<0))
                 self.insertRows(at: indexPathArr, with: .top)
 
             case  .middle:
-                dataArray.insert(array as [AnyObject], at: IndexSet(integersIn: NSRange.init(location: startIndex, length: array.count).toRange() ?? 0..<0))
+                //dataArray.insert(array as [AnyObject], at: IndexSet(integersIn: NSRange.init(location: startIndex, length: array.count).toRange() ?? 0..<0))
+                dataArray.insert(array as! [Any], at: IndexSet.init(integersIn: Range.init(NSRange.init(location: startIndex, length: array.count )) ?? 0..<0))
                 self.insertRows(at: indexPathArr, with: .middle)
 
             case .bottom:

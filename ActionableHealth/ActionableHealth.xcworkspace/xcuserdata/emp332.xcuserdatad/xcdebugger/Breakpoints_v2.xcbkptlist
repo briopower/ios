@@ -9,54 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActionableHealth/Source/Modules/TabBarModule/TracksModule/TrackDetailsViewController/TrackDetailsViewController.swift"
-            timestampString = "553770949.3567131"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
-            landmarkName = "getTrackName()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BRIO.TrackDetailsViewController.getTrackName() -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp332/Documents/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/TrackDetailsViewController/TrackDetailsViewController.swift"
-                  timestampString = "554387693.39568"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "351"
-                  endingLineNumber = "351"
-                  offsetFromSymbolStart = "18">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Int&gt;) -&gt; () in BRIO.TrackDetailsViewController.getTrackName() -&gt; ()"
-                  moduleName = "BRIO"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/emp332/Documents/Projects/ActionableHealth/ActionableHealth/ActionableHealth/Source/Modules/TabBarModule/TracksModule/TrackDetailsViewController/TrackDetailsViewController.swift"
-                  timestampString = "554387693.397943"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "352"
-                  endingLineNumber = "352"
-                  offsetFromSymbolStart = "57">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "ActionableHealth/Source/Common/Extensions/NSUserDefaults/NSUserDefaults_Common.swift"
             timestampString = "554387693.310318"
             startingColumnNumber = "9223372036854775807"
@@ -90,7 +42,7 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp332/Documents/Projects/ActionableHealth/ActionableHealth/ActionableHealth/DataModels/MessagingManager/MessagingManager.swift"
-                  timestampString = "554387693.409117"
+                  timestampString = "554646440.456785"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -105,7 +57,7 @@
                   moduleName = "BRIO"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/emp332/Documents/Projects/ActionableHealth/ActionableHealth/ActionableHealth/DataModels/MessagingManager/MessagingManager.swift"
-                  timestampString = "554387693.411545"
+                  timestampString = "554646440.458599"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"

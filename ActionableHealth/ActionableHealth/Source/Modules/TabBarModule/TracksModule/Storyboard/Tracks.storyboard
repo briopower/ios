@@ -170,6 +170,103 @@
             </objects>
             <point key="canvasLocation" x="630" y="419"/>
         </scene>
+        <!--Blogs List View Controller-->
+        <scene sceneID="Rpd-HG-PZM">
+            <objects>
+                <viewController storyboardIdentifier="BlogsListViewController" id="c3U-wN-YNh" customClass="BlogsListViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="03H-qu-RdX"/>
+                        <viewControllerLayoutGuide type="bottom" id="oQt-Rx-ATo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qyv-yZ-MFw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-pJ-vFc" userLabel="DeleteButtonView">
+                                <rect key="frame" x="0.0" y="736" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koJ-xy-aQQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
+                                        <state key="normal" title="Delete">
+                                            <color key="titleColor" red="0.99607843137254903" green="0.92156862745098034" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteButtonTapped:" destination="c3U-wN-YNh" eventType="touchUpInside" id="Ni1-j0-Xnz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="zE8-5e-hme"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="umO-pr-G9M">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="W1Q-pJ-vFc" secondAttribute="trailing" id="8Jl-rj-Z3R"/>
+                            <constraint firstItem="W1Q-pJ-vFc" firstAttribute="leading" secondItem="Qyv-yZ-MFw" secondAttribute="leading" id="E2E-aN-K0i"/>
+                            <constraint firstItem="umO-pr-G9M" firstAttribute="leading" secondItem="Qyv-yZ-MFw" secondAttribute="leading" id="G6R-bw-Ga3"/>
+                            <constraint firstAttribute="trailing" secondItem="umO-pr-G9M" secondAttribute="trailing" id="Pmk-Kg-2M9"/>
+                            <constraint firstAttribute="bottom" secondItem="W1Q-pJ-vFc" secondAttribute="bottom" constant="-60" id="dlo-pA-46U"/>
+                            <constraint firstItem="umO-pr-G9M" firstAttribute="top" secondItem="03H-qu-RdX" secondAttribute="bottom" id="fw4-29-IfG"/>
+                            <constraint firstItem="W1Q-pJ-vFc" firstAttribute="top" secondItem="umO-pr-G9M" secondAttribute="bottom" id="hls-ve-YPC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blogsTableView" destination="umO-pr-G9M" id="vfd-Rk-xJr"/>
+                        <outlet property="deleteButton" destination="koJ-xy-aQQ" id="HXS-XX-3Nv"/>
+                        <outlet property="deleteButtonBGView" destination="W1Q-pJ-vFc" id="WFv-ed-Lvj"/>
+                        <outlet property="deleteButtonBgViewBottomConstraint" destination="dlo-pA-46U" id="sCM-Pd-EMm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWu-l5-GXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="628.98550724637687" y="1166.5760869565217"/>
+        </scene>
+        <!--Add Blog View Controller-->
+        <scene sceneID="tX1-ex-Veo">
+            <objects>
+                <viewController storyboardIdentifier="AddBlogViewController" id="ZrR-0a-zrZ" customClass="AddBlogViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xqu-Bj-GKs"/>
+                        <viewControllerLayoutGuide type="bottom" id="PE1-jc-NYU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5LF-J2-ffJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaurc" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UOC-fy-P2F">
+                                <rect key="frame" x="42" y="28" width="285" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yov-y6-1Ny">
+                                <rect key="frame" x="87" y="166" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZpK-ZU-L55">
+                                <rect key="frame" x="101" y="374" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s0r-jE-6gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1440.5797101449277" y="1166.5760869565217"/>
+        </scene>
         <!--Invite For Track View Controller-->
         <scene sceneID="GSE-sR-DGF">
             <objects>

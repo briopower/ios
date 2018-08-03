@@ -52,7 +52,7 @@
                                 <cells/>
                             </collectionView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeB-XT-NrR" customClass="UIButton_FontSizeButton" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="85" y="350" width="245" height="52"/>
+                                <rect key="frame" x="86.666666666666686" y="353" width="242" height="46"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                 <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <state key="normal">

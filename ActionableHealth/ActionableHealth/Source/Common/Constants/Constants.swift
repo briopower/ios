@@ -68,6 +68,9 @@ class Constants: NSObject {
             static let filesListView = "filesListView"
             static let phasesListView = "PhasesListViewController"
             static let taskView = "TaskListViewController"
+            static let blogsListView = "BlogsListViewController"
+            static let addNewBlogView = "AddBlogViewController"
+            
         }
     }
 

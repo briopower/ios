@@ -25,6 +25,7 @@ private let DetailsButtonImage = UIImage(named: "action-button")
 private let AddButtonImage = UIImage(named: "add-button")
 private let DownloadButtonImage = UIImage(named: "add-button")
 
+
 //MARK: NavigationBar Setup
 extension UIViewController{
 
@@ -102,6 +103,7 @@ extension UIViewController{
             barButton = UIBarButtonItem(customView:getButtonWithTitle("Skip",Action: #selector(self.skipButtonAction(_:))))
         case .next:
             barButton = UIBarButtonItem(customView:getButtonWithTitle("Next",Action: #selector(self.nextButtonAction(_:))))
+        
         }
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace , target: nil, action: nil)

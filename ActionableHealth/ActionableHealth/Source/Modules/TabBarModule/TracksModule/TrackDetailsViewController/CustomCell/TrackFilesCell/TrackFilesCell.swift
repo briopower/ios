@@ -19,7 +19,7 @@ class TrackFilesCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -29,39 +29,43 @@ class TrackFilesCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension TrackFilesCell{
-    func configCell(type:TemplateSectionTypes) {
+    func configCell(_ type:TemplateSectionTypes) {
         switch type {
-        case .About:
+        case .about:
             detailsLabel.text = "About"
-        case .Phases:
+        case .phases:
             detailsLabel.text = "Getting Started"
-        case .Resources:
+        case .resources:
             detailsLabel.text = "Resources"
         default:
             break
         }
     }
 
-    func configCell(type:TrackSectionTypes) {
+    func configCell(_ type:TrackSectionTypes) {
         switch type {
-        case .About:
+        case .about:
             detailsLabel.text = "About"
-        case .Phases:
+        case .phases:
             detailsLabel.text = "Getting Started"
-        case .Resources:
+        case .resources:
             detailsLabel.text = "Resources"
-        case .TeamMembers:
+        case .teamMembers:
             detailsLabel.text = "My Team"
+        case .blogs:
+            detailsLabel.text = "Blogs"
+        case .journals:
+            detailsLabel.text = "Journals"
         default:
             break
         }
     }
 
-    func configCell(phase:PhasesModel) {
+    func configCell(_ phase:PhasesModel) {
         detailsLabel.text = phase.phaseName
     }
     
-    func configTaskCell(task:TasksModel) {
+    func configTaskCell(_ task:TasksModel) {
         detailsLabel.text = task.taskName
     }
 }

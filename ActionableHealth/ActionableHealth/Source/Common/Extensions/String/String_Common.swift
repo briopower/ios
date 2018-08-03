@@ -13,15 +13,15 @@ extension String{
 
     //MARK: Localized
     var localized: String {
-        return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
 
     //MARK: Height
-    func getHeight(font:UIFont?, maxWidth:Double?) -> CGFloat {
+    func getHeight(_ font:UIFont?, maxWidth:Double?) -> CGFloat {
         if font == nil || maxWidth == nil || self.isEmpty || self.characters.count == 0 {
-            return CGSizeZero.height
+            return CGSize.zero.height
         }else{
-            return (self as NSString).boundingRectWithSize(CGSize(width: maxWidth!, height: DBL_MAX), options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName : font!], context: nil).size.height
+            return (self as NSString).boundingRect(with: CGSize(width: maxWidth!, height: DBL_MAX), options: NSStringDrawingOptions.usesLineFragmentOrigin , attributes: [NSAttributedStringKey.font : font!], context: nil).size.height
         }
     }
 
@@ -38,7 +38,7 @@ extension String{
     
     //MARK: Validation
     func getValidObject() -> String? {
-        let text = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let text = self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 
         if text == "" || text.isEmpty{
             return nil
@@ -49,14 +49,14 @@ extension String{
     func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(self.getValidObject())
+        return emailTest.evaluate(with: self.getValidObject())
     }
 
     //MARK:- Split
-    func sliceFrom(start: String, to: String) -> String? {
-        return (rangeOfString(start)?.endIndex).flatMap { sInd in
-            (rangeOfString(to, range: sInd..<endIndex)?.startIndex).map { eInd in
-                substringWithRange(sInd..<eInd)
+    func sliceFrom(_ start: String, to: String) -> String? {
+        return (range(of: start)?.upperBound).flatMap { sInd in
+            (range(of: to, range: sInd..<endIndex)?.lowerBound).map { eInd in
+                substring(with: sInd..<eInd)
             }
         }
     }
@@ -67,12 +67,16 @@ extension NSAttributedString{
     var localized: NSAttributedString {
         let mutAttrString = NSMutableAttributedString()
 
-        self.enumerateAttributesInRange(NSMakeRange(0, self.string.characters.count), options: NSAttributedStringEnumerationOptions.LongestEffectiveRangeNotRequired) { (attributes:[String : AnyObject], range:NSRange, obj:UnsafeMutablePointer<ObjCBool>) in
-            let temp = self.attributedSubstringFromRange(range)
-            let attr = NSAttributedString(string: temp.string.localized, attributes: attributes)
-            mutAttrString.appendAttributedString(attr)
-        }
-
+//        self.enumerateAttributes(in: NSMakeRange(0, self.string.characters.count), options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired) { (attributes:[String : AnyObject], range:NSRange, obj:UnsafeMutablePointer<ObjCBool>) in
+//            let temp = self.attributedSubstring(from: range)
+//            let attr = NSAttributedString(string: temp.string.localized, attributes: attributes)
+//            mutAttrString.append(attr)
+//            }
+        self.enumerateAttributes(in: NSMakeRange(0, self.string.count), options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired, using: { (attributes, range, _) in
+                let temp = self.attributedSubstring(from: range)
+                let attr = NSAttributedString(string: temp.string.localized, attributes: attributes)
+                mutAttrString.append(attr)
+            })
         return mutAttrString
     }
 }

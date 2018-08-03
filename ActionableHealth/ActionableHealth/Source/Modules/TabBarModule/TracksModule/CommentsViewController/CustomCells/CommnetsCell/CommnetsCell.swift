@@ -23,7 +23,7 @@ class CommnetsCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -33,20 +33,20 @@ class CommnetsCell: UITableViewCell {
 
 //MARK:- Addtional Methods
 extension CommnetsCell{
-    func configCell(comment:CommentsModel) {
+    func configCell(_ comment:CommentsModel) {
         personImageView.image = nil
         if let id = comment.commentedBy {
             if let person = Person.getPersonWith(id) {
                 if let personImage =  person.personImage{
-                    if let url = NSURL(string: personImage) {
-                        personImageView.sd_setImageWithURL(url)
+                    if let url = URL(string: personImage) {
+                        personImageView.sd_setImage(with: url)
                     }
                 }else{
-                    NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(id ?? "")", RequestType: .GET) {
+                    NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(id ?? "")", RequestType: .get) {
                         (status, responseObj, error, statusCode) in
                         if status, let imageUrl = responseObj?["profileURL"] as? String{
                             if let url = NSURL(string: imageUrl) {
-                                self.personImageView.sd_setImageWithURL(url)
+                                self.personImageView.sd_setImage(with: url as URL)
                             }
                         }
                     }
@@ -57,7 +57,7 @@ extension CommnetsCell{
 
         commentLabel.text = comment.comment
 
-        if comment.commentedOn?.isEqualToDateIgnoringTime(NSDate()) ?? false{
+        if comment.commentedOn?.isEqualToDateIgnoringTime(Date()) ?? false{
             dateLabel.text = "\(comment.commentedOn?.shortTimeString ?? "")"
         }else{
             dateLabel.text = "\(comment.commentedOn?.mediumDateString ?? "")"

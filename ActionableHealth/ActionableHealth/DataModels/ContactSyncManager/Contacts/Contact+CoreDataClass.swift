@@ -10,59 +10,59 @@ import Foundation
 import CoreData
 
 //MARK:- Public Methods
-public class Contact: NSManagedObject {
+open class Contact: NSManagedObject {
 
-    class func saveContactObj(addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    class func saveContactObj(_ addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let context = contextRef{
             var contact:Contact?
 
-            let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", forId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Contact]
+            let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Contact", predicate: NSPredicate(format: "id = %@", forId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Contact]
 
             if let temp = contactsArr?.first {
                 contact = temp
                 for obj in contactsArr ?? [] {
                     if obj != contact {
-                        contextRef?.deleteObject(obj)
+                        contextRef?.delete(obj)
                     }
                 }
             }else{
-                contact = Contact(entity: NSEntityDescription.entityForName(String(Contact), inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
-                contact?.isAppUser = NSNumber(bool: false)
+                contact = Contact(entity: NSEntityDescription.entity(forEntityName: String(describing: Contact.self), in: context)!, insertInto: context)
+                contact?.isAppUser = NSNumber(value: false as Bool)
                 contact?.id = forId
             }
 
             if let temp = contact {
                 let set = NSMutableSet(set: addressBook.contacts ?? NSSet())
-                set.addObject(temp)
+                set.add(temp)
                 addressBook.contacts = set
             }
 
         }
     }
 
-    class func deleteContactsForRecordId(recordId:NSNumber, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    class func deleteContactsForRecordId(_ recordId:NSNumber, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
         if let context = contextRef{
-            let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(AddressBook), predicate: NSPredicate(format: "recordId = %@", recordId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [AddressBook]
+            let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("AddressBook", predicate: NSPredicate(format: "recordId = %@", recordId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [AddressBook]
             for obj in addBookArr ?? [] {
                 if let arr = obj.contacts?.allObjects as? [Contact] {
                     for temp in arr {
-                        context.deleteObject(temp)
+                        context.delete(temp)
                     }
                 }
             }
         }
 
     }
-    class func getNameForContact(number:String) -> String? {
-        if number == NSUserDefaults.getUserId() {
+    class func getNameForContact(_ number:String) -> String? {
+        if number == UserDefaults.getUserId() {
             return "You"
         }
-        let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Contact), predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, isAcendingSort: true, fetchLimit: nil) as? [Contact]
+        let contactsArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Contact", predicate: NSPredicate(format: "id = %@", number), sortingKey: nil, isAcendingSort: true, fetchLimit: nil) as? [Contact]
 
         if let temp = contactsArr?.first {
             for obj in contactsArr ?? [] {
                 if obj != temp {
-                    AppDelegate.getAppDelegateObject()?.managedObjectContext.deleteObject(obj)
+                    AppDelegate.getAppDelegateObject()?.managedObjectContext.delete(obj)
                 }
             }
             return temp.addressBook?.name
@@ -76,7 +76,7 @@ public class Contact: NSManagedObject {
         if let id = id{
             arrOfMembers.append(["emailOrPhone":id])
         }
-        dict["members"] = arrOfMembers
+        dict["members"] = arrOfMembers as AnyObject?
         return dict
     }
 

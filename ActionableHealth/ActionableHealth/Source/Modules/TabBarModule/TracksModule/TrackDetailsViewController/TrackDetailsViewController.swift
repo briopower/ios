@@ -7,13 +7,37 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 enum TrackSectionTypes:Int {
-    case Phases, Resources, TeamMembers, About, Count
+    case phases, resources, teamMembers, blogs, journals, about, count
 }
 
 enum TemplateSectionTypes:Int {
-    case About, Resources, Phases, Count
+    case about, resources, phases, count
 }
 
 class TrackDetailsViewController: CommonViewController, UINavigationControllerDelegate {
@@ -25,7 +49,7 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
     
     //MARK:- Variables
     var currentTemplate:TemplatesModel?
-    var sourceType = TrackDetailsSourceType.Templates
+    var sourceType = TrackDetailsSourceType.templates
     var alertController:UIAlertController?
     var trackName:String?
     var imageUploadURL:String?
@@ -37,11 +61,15 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateHeader()
         updateTemplate()
-        setNavigationBarWithTitle(currentTemplate?.name ?? "Details", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(currentTemplate?.name ?? "Details", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
+        if sourceType == .tracks{
+            let deleteButton = UIBarButtonItem.init(image: #imageLiteral(resourceName: "delete"), style: .plain, target: self, action: #selector(deleteButtonTapped))
+            getNavigationItem()?.rightBarButtonItem = deleteButton
+        }
 
     }
     override func viewDidLayoutSubviews() {
@@ -60,21 +88,28 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
 
 
 }
+extension TrackDetailsViewController{
+    @objc func deleteButtonTapped(){
+        print("delete tapped")
+        showLoader()
+        
+    }
+}
 
 //MARK:- Button Actions
 extension TrackDetailsViewController{
-    @IBAction func rateTaskAction(sender: AnyObject) {
+    @IBAction func rateTaskAction(_ sender: AnyObject) {
         submitRating()
     }
-    @IBAction func hideRatingAction(sender: AnyObject) {
+    @IBAction func hideRatingAction(_ sender: AnyObject) {
         hideRatingView()
     }
 }
 //MARK:- TrackDetailsHeaderViewDelegate
 extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
-    func commentsTapped(type: TrackDetailsSourceType) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController, let key = self.currentTemplate?.key {
-            dispatch_async(dispatch_get_main_queue(), {
+    func commentsTapped(_ type: TrackDetailsSourceType) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.commentsView) as? CommentsViewController, let key = self.currentTemplate?.key {
+            DispatchQueue.main.async(execute: {
                 viewCont.delegate = self
                 viewCont.commentSourceKey = key
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
@@ -82,13 +117,13 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
         }
     }
 
-    func requestButtonTapped(type: TrackDetailsSourceType) {
+    func requestButtonTapped(_ type: TrackDetailsSourceType) {
         switch type {
-        case .Templates:
+        case .templates:
             getTrackName()
-        case .Tracks:
-            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
-                viewCont.sourceType = .Tracks
+        case .tracks:
+            if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
+                viewCont.sourceType = .tracks
                 viewCont.currentTemplate = currentTemplate
                 getNavigationController()?.pushViewController(viewCont, animated: true)
             }
@@ -108,7 +143,7 @@ extension TrackDetailsViewController:TrackDetailsHeaderViewDelegate{
 
 //MARK:- CommentsViewControllerDelegate
 extension TrackDetailsViewController:CommentsViewControllerDelegate{
-    func updatedCommentCount(count: Int) {
+    func updatedCommentCount(_ count: Int) {
         currentTemplate?.commentsCount = count
     }
 }
@@ -122,9 +157,11 @@ extension TrackDetailsViewController{
 
 //        trackDetailsTblView.rowHeight = UITableViewAutomaticDimension
         trackDetailsTblView.estimatedRowHeight = 80
-        trackDetailsTblView.registerNib(UINib(nibName: String(TrackFilesCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(TrackFilesCell))
+        trackDetailsTblView.register(UINib(nibName: String(describing: TrackFilesCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: TrackFilesCell.self))
         trackDetailsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         createImageUploadUrl(false)
+        
+        
     }
 
     func updateHeader() {
@@ -137,61 +174,62 @@ extension TrackDetailsViewController{
         if let view = getNavigationController()?.view {
             ratingView.alpha = 0
             ratingView.frame = view.frame
-            ratingView.userInteractionEnabled = false
+            ratingView.isUserInteractionEnabled = false
 
             starRatingView.value = CGFloat(currentTemplate?.rating ?? 0)
             view.addSubview(ratingView)
-            UIView.animateWithDuration(0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.ratingView.alpha = 1
                 }, completion: { (completed:Bool) in
-                    self.ratingView.userInteractionEnabled = true
+                    self.ratingView.isUserInteractionEnabled = true
             })
         }
     }
 
     func hideRatingView() {
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             self.ratingView.alpha = 0
-            self.ratingView.userInteractionEnabled = false
-        }) { (completed:Bool) in
-            self.ratingView.userInteractionEnabled = false
+            self.ratingView.isUserInteractionEnabled = false
+        }, completion: { (completed:Bool) in
+            self.ratingView.isUserInteractionEnabled = false
             self.ratingView.removeFromSuperview()
-        }
+        }) 
     }
 }
 
 //MARK:- UITableViewDataSource
 extension TrackDetailsViewController:UITableViewDataSource{
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if sourceType == .Templates {
-            return TemplateSectionTypes.Count.rawValue
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if sourceType == .templates {
+            return TemplateSectionTypes.count.rawValue
         }else{
-            return TrackSectionTypes.Count.rawValue
+            return TrackSectionTypes.count.rawValue
+            
         }
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 1
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        if let cell = trackDetailsTblView.dequeueReusableCellWithIdentifier(String(TrackFilesCell)) as? TrackFilesCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        if let cell = trackDetailsTblView.dequeueReusableCell(withIdentifier: String(describing: TrackFilesCell.self)) as? TrackFilesCell {
             switch sourceType {
-            case .Templates:
+            case .templates:
                 if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
                     switch sectionType {
-                    case .About, .Phases, .Resources:
+                    case .about, .phases, .resources:
                         cell.configCell(sectionType)
                         return cell
                     default:
                         break
                     }
                 }
-            case .Tracks:
+            case .tracks:
                 if let sectionType = TrackSectionTypes(rawValue: indexPath.section) {
                     switch sectionType {
-                    case .About, .Phases, .Resources, .TeamMembers:
+                    case .about, .phases, .resources, .teamMembers, .blogs , .journals:
                         cell.configCell(sectionType)
                         return cell
                     default:
@@ -208,26 +246,26 @@ extension TrackDetailsViewController:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension TrackDetailsViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
 
         switch sourceType {
-        case .Templates:
+        case .templates:
             if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
                 switch sectionType {
-                case .Resources:
-                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
+                case .resources:
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
                         viewCont.resources = currentTemplate?.resources ?? NSMutableArray()
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
-                case .About:
-                    if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
+                case .about:
+                    if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
                         showTextView.html = currentTemplate?.htmldetails
                         showTextView.navigationTitle = currentTemplate?.name ?? ""
                         getNavigationController()?.pushViewController(showTextView, animated: true)
                     }
-                case .Phases:
-                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesListView) as? PhasesListViewController {
+                case .phases:
+                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.phasesListView) as? PhasesListViewController {
                         phasesView.currentTemplate = currentTemplate
                         phasesView.sourceType = sourceType
                         getNavigationController()?.pushViewController(phasesView, animated: true)
@@ -236,27 +274,27 @@ extension TrackDetailsViewController:UITableViewDelegate{
                     break
                 }
             }
-        case .Tracks:
+        case .tracks:
             if let sectionType = TrackSectionTypes(rawValue: indexPath.section) {
                 switch sectionType {
-                case .TeamMembers:
-                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
+                case .teamMembers:
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.trackMemberListView) as? TrackMemberListViewController{
                         viewCont.currentTemplate = currentTemplate
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
-                case .Resources:
-                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
+                case .resources:
+                    if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.filesListView) as? FilesListViewController {
                         viewCont.resources = currentTemplate?.resources ?? NSMutableArray()
                         getNavigationController()?.pushViewController(viewCont, animated: true)
                     }
-                case .About:
-                    if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
+                case .about:
+                    if let showTextView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.showTextView) as? ShowTextViewController {
                         showTextView.html = currentTemplate?.htmldetails
                         showTextView.navigationTitle = currentTemplate?.name ?? ""
                         getNavigationController()?.pushViewController(showTextView, animated: true)
                     }
-                case .Phases:
-                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.phasesListView) as? PhasesListViewController {
+                case .phases:
+                    if let phasesView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.phasesListView) as? PhasesListViewController {
                         phasesView.currentTemplate = currentTemplate
                         phasesView.sourceType = sourceType
                         getNavigationController()?.pushViewController(phasesView, animated: true)
@@ -271,12 +309,12 @@ extension TrackDetailsViewController:UITableViewDelegate{
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch sourceType {
-        case .Templates:
+        case .templates:
             if let sectionType = TemplateSectionTypes(rawValue: indexPath.section) {
                 switch sectionType {
-                case .Resources:
+                case .resources:
                     if currentTemplate?.resources.count > 0{
                         return UITableViewAutomaticDimension
                     }else{
@@ -287,10 +325,10 @@ extension TrackDetailsViewController:UITableViewDelegate{
                     return UITableViewAutomaticDimension;
                 }
             }
-        case .Tracks:
+        case .tracks:
             if let sectionType = TrackSectionTypes(rawValue: indexPath.section) {
                 switch sectionType {
-                case .Resources:
+                case .resources:
                     if currentTemplate?.resources.count > 0{
                         return UITableViewAutomaticDimension
                     }else{
@@ -310,10 +348,10 @@ extension TrackDetailsViewController:UITableViewDelegate{
 //MARK:- Get Track Name methods
 extension TrackDetailsViewController{
     func getTrackName() {
-        alertController = UIAlertController.getAlertController(.Alert, Title: "Enter Group Name", Message: nil,OtherButtonTitles: ["Done"], CancelButtonTitle: "Cancel", completion: { (tappedAtIndex) in
+        alertController = UIAlertController.getAlertController(.alert, Title: "Enter Group Name", Message: nil,OtherButtonTitles: ["Done"], CancelButtonTitle: "Cancel", completion: { (tappedAtIndex) in
             if tappedAtIndex == 0{
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
-                    viewCont.sourceType = .Templates
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.inviteTracksView) as? InviteForTrackViewController {
+                    viewCont.sourceType = .templates
                     viewCont.currentTemplate = self.currentTemplate
                     viewCont.trackName = self.trackName
                     self.getNavigationController()?.pushViewController(viewCont, animated: true)
@@ -321,29 +359,29 @@ extension TrackDetailsViewController{
             }
         })
 
-        alertController?.addTextFieldWithConfigurationHandler({ (textField:UITextField) in
+        alertController?.addTextField(configurationHandler: { (textField:UITextField) in
             textField.placeholder = "Name"
             textField.text = nil
             textField.font = UIFont.getAppRegularFontWithSize(16)?.getDynamicSizeFont()
-            textField.addTarget(self, action: #selector(TrackDetailsViewController.textDidChange(_:)), forControlEvents: .EditingChanged)
+            textField.addTarget(self, action: #selector(TrackDetailsViewController.textDidChange(_:)), for: .editingChanged)
         })
 
-        UIViewController.getTopMostViewController()?.presentViewController(alertController!, animated: true, completion: nil)
+        UIViewController.getTopMostViewController()?.present(alertController!, animated: true, completion: nil)
 
         alertController?.view.tintColor = UIColor.getAppThemeColor()
-        alertController?.actions[0].enabled = false
+        alertController?.actions[0].isEnabled = false
 
     }
 
-    func textDidChange(textField:UITextField) {
+    @objc func textDidChange(_ textField:UITextField) {
         trackName = textField.text?.getValidObject()
-        alertController?.actions[0].enabled = !(trackName?.isEmpty ?? true)
+        alertController?.actions[0].isEnabled = !(trackName?.isEmpty ?? true)
     }
 }
 
 //MARK:- UIImagePickerControllerDelegate
 extension TrackDetailsViewController:UIImagePickerControllerDelegate{
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.selectedImage = image
             self.uploadImage()
@@ -351,8 +389,8 @@ extension TrackDetailsViewController:UIImagePickerControllerDelegate{
         imagePickerControllerDidCancel(picker)
     }
 
-    func imagePickerControllerDidCancel(picker: UIImagePickerController){
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -363,7 +401,7 @@ extension TrackDetailsViewController{
             if let url = imageUploadURL{
                 if let image = selectedImage {
                     showProgressLoader()
-                    NetworkClass.sendImageRequest(URL: url, RequestType: .POST, ResponseType: .NONE, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+                    NetworkClass.sendImageRequest(URL: url, RequestType: .post, ResponseType: .none, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
 
                         let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
                         self.loader?.progress = progress
@@ -382,9 +420,9 @@ extension TrackDetailsViewController{
         }
     }
 
-    func createImageUploadUrl(shouldUploadImage:Bool = true){
+    func createImageUploadUrl(_ shouldUploadImage:Bool = true){
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.createTrackUploadURL)\(currentTemplate?.trackId ?? "")", RequestType: .GET, ResponseType: .STRING,CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.createTrackUploadURL)\(currentTemplate?.trackId ?? "")", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
                     self.imageUploadURL = str
                     if shouldUploadImage{
@@ -398,9 +436,9 @@ extension TrackDetailsViewController{
 
     func updateTemplate() {
         if NetworkClass.isConnected(true) {
-            if let id = sourceType == .Templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
-                let url = sourceType == .Templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
-                NetworkClass.sendRequest(URL: url, RequestType: .GET, CompletionHandler: {
+            if let id = sourceType == .templates ? currentTemplate?.templateId : currentTemplate?.trackId  {
+                let url = sourceType == .templates ? "\(Constants.URLs.templateDetails)\(id)" : "\(Constants.URLs.trackDetails)\(id)"
+                NetworkClass.sendRequest(URL: url, RequestType: .get, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     if status{
                         self.processResponse(responseObj)
@@ -412,12 +450,12 @@ extension TrackDetailsViewController{
         }
     }
 
-    func processResponse(responseObj:AnyObject?) {
+    func processResponse(_ responseObj:AnyObject?) {
         if let dict = responseObj, let temp = currentTemplate {
             switch sourceType {
-            case .Templates:
+            case .templates:
                 TemplatesModel.addPhases(dict, toModel: temp)
-            case .Tracks:
+            case .tracks:
                 TemplatesModel.updateTrackObj(temp, dict: dict)
             default:
                 break
@@ -426,14 +464,14 @@ extension TrackDetailsViewController{
         updateHeader()
     }
     
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        UIView.showToast("Something went wrong", theme: Theme.error)
     }
 
     func submitRating() {
         if NetworkClass.isConnected(true), let key = currentTemplate?.key?.getValidObject(){
             showLoaderOnWindow()
-            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .POST, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.rating, RequestType: .post, Parameters: TasksModel.getDictForRating(key, rating: starRatingView.value) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 self.hideLoader()
                 if statusCode == 200{
@@ -445,8 +483,8 @@ extension TrackDetailsViewController{
         }
     }
 
-    func updateRating(response:AnyObject?) {
-        dispatch_async(dispatch_get_main_queue()) { 
+    func updateRating(_ response:AnyObject?) {
+        DispatchQueue.main.async { 
             self.currentTemplate?.updateRating(response)
             self.updateHeader()
             self.hideRatingView()

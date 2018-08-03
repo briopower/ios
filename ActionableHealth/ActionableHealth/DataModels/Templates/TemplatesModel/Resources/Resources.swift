@@ -17,13 +17,13 @@ class Resources: NSObject {
 
 //MARK:- Additional methods
 extension Resources{
-    class func getResourceUsingObj(dict:AnyObject) -> Resources {
+    class func getResourceUsingObj(_ dict:AnyObject) -> Resources {
         let model = Resources()
         updateObj(model, dict:dict)
         return model
     }
 
-    class func updateObj(model:Resources, dict:AnyObject) {
+    class func updateObj(_ model:Resources, dict:AnyObject) {
         model.blobKey = dict["blobKey"] as? String
         model.fileName = (dict["fileName"] as? String)?.getValidObject() ?? "Unknown"
      }

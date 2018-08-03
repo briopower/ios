@@ -8,15 +8,15 @@
 
 import UIKit
 enum TableViewType:Int {
-    case Default, Comments, Count
+    case `default`, comments, count
 }
 enum InsertAt:Int {
-    case Top, Bottom, Middle
+    case top, bottom, middle
 }
 protocol CommonTableViewDelegate :NSObjectProtocol{
-    func topElements(view:UIView)
-    func bottomElements(view:UIView)
-    func clickedAtIndexPath(indexPath:NSIndexPath,obj:AnyObject)
+    func topElements(_ view:UIView)
+    func bottomElements(_ view:UIView)
+    func clickedAtIndexPath(_ indexPath:IndexPath,obj:AnyObject)
 }
 class CommonTableView: UITableView {
 
@@ -25,7 +25,7 @@ class CommonTableView: UITableView {
     var dataArray:NSMutableArray = []
     var topIndicator = UIRefreshControl()
     var animatedFooter = UIView()
-    var tableViewType = TableViewType.Default{
+    var tableViewType = TableViewType.default{
         didSet{
             registerCells()
         }
@@ -53,11 +53,11 @@ extension CommonTableView{
         self.rowHeight = UITableViewAutomaticDimension
         self.tableFooterView = nil
 
-        topIndicator.addTarget(self, action: #selector(self.topElements(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        topIndicator.addTarget(self, action: #selector(self.topElements(_:)), for: UIControlEvents.valueChanged)
 
-        animatedFooter.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.size.width, height: 44)
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
-        activityIndicator.color = UIColor.blackColor()
+        animatedFooter.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44)
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+        activityIndicator.color = UIColor.black
         activityIndicator.center = animatedFooter.center
         activityIndicator.startAnimating()
         animatedFooter.addSubview(activityIndicator)
@@ -66,15 +66,15 @@ extension CommonTableView{
 
     func registerCells() {
         switch tableViewType {
-        case .Comments:
-            self.registerNib(UINib(nibName: String(CommnetsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(CommnetsCell))
+        case .comments:
+            self.register(UINib(nibName: String(describing: CommnetsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: CommnetsCell.self))
         default:
             break
         }
     }
-    func checkForLastCell(indexPath:NSIndexPath) {
+    func checkForLastCell(_ indexPath:IndexPath) {
         if self.tableFooterView == nil && hasMoreActivity && tableView(self, numberOfRowsInSection: indexPath.section) - 1 == indexPath.row{
-            if self.respondsToSelector(#selector(self.bottomElements(_:)))
+            if self.responds(to: #selector(self.bottomElements(_:)))
             {
                 addBottomLoader()
                 bottomElements(self)
@@ -87,19 +87,19 @@ extension CommonTableView{
 
 //MARK:- UITableViewDataSource
 extension CommonTableView:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return getCell(tableView, cellForRowAtIndexPath: indexPath)
     }
 
 
-    func getCell(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func getCell(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         checkForLastCell(indexPath)
         switch tableViewType {
-        case .Comments:
-            if let cell = tableView.dequeueReusableCellWithIdentifier(String(CommnetsCell)) as? CommnetsCell, let obj = dataArray[indexPath.row] as? CommentsModel{
+        case .comments:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CommnetsCell.self)) as? CommnetsCell, let obj = dataArray[indexPath.row] as? CommentsModel{
                 cell.configCell(obj)
                 return cell
             }
@@ -112,14 +112,14 @@ extension CommonTableView:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension CommonTableView:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        commonTableViewDelegate?.clickedAtIndexPath(indexPath, obj: dataArray[indexPath.row])
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        commonTableViewDelegate?.clickedAtIndexPath(indexPath, obj: dataArray[indexPath.row] as AnyObject)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         switch tableViewType {
-        case .Comments:
+        case .comments:
             if let estimate = (dataArray[indexPath.row] as? CommentsModel)?.comment.getHeight(UIFont.getAppRegularFontWithSize(16), maxWidth: Double(UIDevice.width()) * 240/320) {
                 return estimate + 60
             }
@@ -136,7 +136,7 @@ extension CommonTableView:UITableViewDelegate{
 extension CommonTableView{
 
     //MARK: Top loader
-    func addTopLoader(text:String?, tintColor:UIColor = UIColor.darkGrayColor()) {
+    func addTopLoader(_ text:String?, tintColor:UIColor = UIColor.darkGray) {
         topIndicator.removeFromSuperview()
         if let title = text {
             topIndicator.attributedTitle = NSAttributedString(string: title)
@@ -150,7 +150,7 @@ extension CommonTableView{
     func stopTopLoader() {
         topIndicator.endRefreshing()
     }
-    @IBAction func topElements(sender:UIRefreshControl) {
+    @IBAction func topElements(_ sender:UIRefreshControl) {
         commonTableViewDelegate?.topElements(self)
     }
 
@@ -162,29 +162,31 @@ extension CommonTableView{
 
         self.tableFooterView = nil
     }
-    @IBAction func bottomElements(sender:AnyObject) {
+    @IBAction func bottomElements(_ sender:AnyObject) {
         commonTableViewDelegate?.bottomElements(self)
     }
 }
 
 //MARK:- Insertion Methods
 extension CommonTableView{
-    func insertElements(array:NSMutableArray, insertAt:InsertAt = .Bottom, section:Int = 0, startIndex:Int = 0) {
+    func insertElements(_ array:NSMutableArray, insertAt:InsertAt = .bottom, section:Int = 0, startIndex:Int = 0) {
         if array.count > 0 {
             let indexPathArr = getIndexPathsArray(insertAt, count: array.count, section: section,startIndex: startIndex)
             self.beginUpdates()
             switch insertAt {
-            case .Top:
-                dataArray.insertObjects(array as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSRange.init(location: startIndex, length: array.count)))
-                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: .Top)
+            case .top:
+                //dataArray.insert(array as [AnyObject], at: IndexSet(integersIn: NSRange.init(location: startIndex, length: array.count).toRange() ?? 0..<0))
+                dataArray.insert(array as! [Any], at: IndexSet.init(integersIn: Range.init(NSRange.init(location: startIndex, length: array.count )) ?? 0..<0))
+                self.insertRows(at: indexPathArr, with: .top)
 
-            case  .Middle:
-                dataArray.insertObjects(array as [AnyObject], atIndexes: NSIndexSet(indexesInRange: NSRange.init(location: startIndex, length: array.count)))
-                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: .Middle)
+            case  .middle:
+                //dataArray.insert(array as [AnyObject], at: IndexSet(integersIn: NSRange.init(location: startIndex, length: array.count).toRange() ?? 0..<0))
+                dataArray.insert(array as! [Any], at: IndexSet.init(integersIn: Range.init(NSRange.init(location: startIndex, length: array.count )) ?? 0..<0))
+                self.insertRows(at: indexPathArr, with: .middle)
 
-            case .Bottom:
-                dataArray.addObjectsFromArray(array as [AnyObject])
-                self.insertRowsAtIndexPaths(indexPathArr, withRowAnimation: .Automatic)
+            case .bottom:
+                dataArray.addObjects(from: array as [AnyObject])
+                self.insertRows(at: indexPathArr, with: .automatic)
             }
             self.endUpdates()
         }else{
@@ -194,17 +196,17 @@ extension CommonTableView{
         removeBottomLoader()
     }
 
-    func getIndexPathsArray(insertAt:InsertAt = .Bottom, count:Int, section:Int, startIndex:Int) -> [NSIndexPath]{
-        var indexPathsArr:[NSIndexPath] = []
+    func getIndexPathsArray(_ insertAt:InsertAt = .bottom, count:Int, section:Int, startIndex:Int) -> [IndexPath]{
+        var indexPathsArr:[IndexPath] = []
         switch insertAt {
-        case .Top, .Middle:
+        case .top, .middle:
             for i in startIndex..<(count + startIndex) {
-                let  indexPath = NSIndexPath(forRow: i, inSection: section)
+                let  indexPath = IndexPath(row: i, section: section)
                 indexPathsArr.append(indexPath)
             }
-        case .Bottom:
+        case .bottom:
             for i in 0..<count {
-                let  indexPath = NSIndexPath(forRow: dataArray.count+i, inSection: section)
+                let  indexPath = IndexPath(row: dataArray.count+i, section: section)
                 indexPathsArr.append(indexPath)
             }
         }
@@ -216,29 +218,29 @@ extension CommonTableView{
 //MARK:- Deletion Methods
 extension CommonTableView{
 
-    func deleteObjects(objectsArr:NSMutableArray, section:Int = 0, animation:UITableViewRowAnimation = .Automatic) {
+    func deleteObjects(_ objectsArr:NSMutableArray, section:Int = 0, animation:UITableViewRowAnimation = .automatic) {
         self.beginUpdates()
         let arr = getIndexPathsArray(objectsArr, section: section)
         deleteObjects(arr)
-        self.deleteRowsAtIndexPaths(arr, withRowAnimation: animation)
+        self.deleteRows(at: arr, with: animation)
         self.endUpdates()
     }
 
-    func getIndexPathsArray(objectsArr:NSMutableArray, section:Int = 0) -> [NSIndexPath] {
-        var indexPathsArr:[NSIndexPath] = []
+    func getIndexPathsArray(_ objectsArr:NSMutableArray, section:Int = 0) -> [IndexPath] {
+        var indexPathsArr:[IndexPath] = []
 
         for obj in objectsArr {
-            if dataArray.containsObject(obj) {
-                indexPathsArr.append(NSIndexPath(forRow: dataArray.indexOfObject(obj), inSection: section))
+            if dataArray.contains(obj) {
+                indexPathsArr.append(IndexPath(row: dataArray.index(of: obj), section: section))
             }
         }
         return indexPathsArr
     }
 
-    func deleteObjects(indexPathArr:[NSIndexPath]) {
+    func deleteObjects(_ indexPathArr:[IndexPath]) {
         for indexPath in indexPathArr {
             if indexPath.row < dataArray.count {
-                dataArray.removeObjectAtIndex(indexPath.row)
+                dataArray.removeObject(at: indexPath.row)
             }
         }
     }

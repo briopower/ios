@@ -11,7 +11,7 @@ import UIKit
 //MARK:- Additional methods
 extension UIApplication{
     class func dismissKeyboard() {
-        UIApplication.sharedApplication().windows.first?.endEditing(true)
+        UIApplication.shared.windows.first?.endEditing(true)
     }
 
     class func disableInteraction() {

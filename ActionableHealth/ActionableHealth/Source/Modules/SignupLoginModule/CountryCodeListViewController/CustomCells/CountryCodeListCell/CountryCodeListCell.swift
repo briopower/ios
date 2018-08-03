@@ -17,7 +17,7 @@ class CountryCodeListCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -27,7 +27,7 @@ class CountryCodeListCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension CountryCodeListCell{
-    func configCell(dict:NSDictionary) {
+    func configCell(_ dict:NSDictionary) {
         majorLable.text = dict[countryName_key] as? String
         minorLabel.text = "+\(dict[normalizedISDCode_key] as? String ?? ""), \(dict[countryCode_key] as? String ?? "")"
     }

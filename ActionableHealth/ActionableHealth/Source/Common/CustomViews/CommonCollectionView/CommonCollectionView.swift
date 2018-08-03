@@ -9,12 +9,12 @@
 import UIKit
 
 enum CollectionViewType:Int {
-    case Default, TemplateView, TrackView, Count
+    case `default`, templateView, trackView, count
 }
 protocol CommonCollectionViewDelegate:NSObjectProtocol {
-    func topElements(view:UIView)
-    func bottomElements(view:UIView)
-    func clickedAtIndexPath(indexPath:NSIndexPath, object:AnyObject)
+    func topElements(_ view:UIView)
+    func bottomElements(_ view:UIView)
+    func clickedAtIndexPath(_ indexPath:IndexPath, object:AnyObject)
 }
 class CommonCollectionView: UICollectionView {
 
@@ -22,15 +22,15 @@ class CommonCollectionView: UICollectionView {
     weak var commonCollectionViewDelegate:CommonCollectionViewDelegate?
     var hasMoreData = false
     var dataArray = NSMutableArray()
-    var type = CollectionViewType.Default{
+    var type = CollectionViewType.default{
         didSet{
             registerCells()
         }
     }
 
 
-    private var bottomViewVisible = false
-    private var topViewVisible = false
+    fileprivate var bottomViewVisible = false
+    fileprivate var topViewVisible = false
     var topIndicator = UIRefreshControl()
 
     //MARK:- Init Methods
@@ -49,8 +49,8 @@ class CommonCollectionView: UICollectionView {
 extension CommonCollectionView{
     func registerCells() {
         switch type {
-        case .TemplateView, .TrackView:
-        registerNib(UINib(nibName: String(HomeViewCell), bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: String(HomeViewCell))
+        case .templateView, .trackView:
+        register(UINib(nibName: String(describing: HomeViewCell.self), bundle: Bundle.main), forCellWithReuseIdentifier: String(describing: HomeViewCell.self))
         default:
             break
         }
@@ -67,22 +67,22 @@ extension CommonCollectionView{
     func setupView() {
         delegate = self
         dataSource = self
-        topIndicator.addTarget(self, action: #selector(self.topReached), forControlEvents: UIControlEvents.ValueChanged)
-        registerNib(UINib(nibName: String(CommonCollectionReusableView), bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(CommonCollectionReusableView))
+        topIndicator.addTarget(self, action: #selector(self.topReached), for: UIControlEvents.valueChanged)
+        register(UINib(nibName: String(describing: CommonCollectionReusableView.self), bundle: Bundle.main), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: CommonCollectionReusableView.self))
     }
 
-    func shouldShowBottomViewForSection(section:Int) -> Bool {
+    func shouldShowBottomViewForSection(_ section:Int) -> Bool {
 
-        if bottomViewVisible && section == numberOfSections() - 1  {
+        if bottomViewVisible && section == numberOfSections - 1  {
             return true
         }
         return false
     }
 
-    func cellForIndexPath(indexPath:NSIndexPath) -> UICollectionViewCell {
+    func cellForIndexPath(_ indexPath:IndexPath) -> UICollectionViewCell {
         switch type {
-        case .TemplateView, .TrackView:
-            if let cell = self.dequeueReusableCellWithReuseIdentifier(String(HomeViewCell), forIndexPath: indexPath) as? HomeViewCell {
+        case .templateView, .trackView:
+            if let cell = self.dequeueReusableCell(withReuseIdentifier: String(describing: HomeViewCell.self), for: indexPath) as? HomeViewCell {
                 cell.configCell(dataArray[indexPath.row] as? TemplatesModel, type: type)
                 return cell
             }
@@ -113,7 +113,7 @@ extension CommonCollectionView{
         topIndicator.endRefreshing()
     }
 
-    func topReached() {
+    @objc func topReached() {
         topViewVisible = true
         commonCollectionViewDelegate?.topElements(self)
     }
@@ -139,14 +139,14 @@ extension CommonCollectionView{
 
 //MARK:- ScrollViewDelegate
 extension CommonCollectionView:UIScrollViewDelegate{
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset
         let  bounds = scrollView.bounds
         let  size = scrollView.contentSize
         let inset = scrollView.contentInset
         let ytemp = offset.y + bounds.size.height - inset.bottom
         let h = size.height
-        let reload_distance = UIScreen.mainScreen().bounds.size.height
+        let reload_distance = UIScreen.main.bounds.size.height
 
         if h > reload_distance && ytemp > (h - reload_distance) && hasMoreData && !bottomViewVisible && !topViewVisible {
             bottomReached()
@@ -157,21 +157,21 @@ extension CommonCollectionView:UIScrollViewDelegate{
 //MARK:- UICollectionViewDataSource
 extension CommonCollectionView:UICollectionViewDataSource{
 
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         switch type {
-        case .TemplateView , .TrackView:
+        case .templateView , .trackView:
             return dataArray.count
         default:
             return 0
         }
     }
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         return cellForIndexPath(indexPath)
     }
 
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
 
-        let reusableView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: String(CommonCollectionReusableView), forIndexPath: indexPath) as? CommonCollectionReusableView
+        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(describing: CommonCollectionReusableView.self), for: indexPath) as? CommonCollectionReusableView
         
         return reusableView!
     }
@@ -179,26 +179,26 @@ extension CommonCollectionView:UICollectionViewDataSource{
 
 //MARK:- UICollectionViewDelegate
 extension CommonCollectionView:UICollectionViewDelegate{
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        commonCollectionViewDelegate?.clickedAtIndexPath(indexPath, object: dataArray[indexPath.row])
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        commonCollectionViewDelegate?.clickedAtIndexPath(indexPath, object: dataArray[indexPath.row] as AnyObject)
     }
 }
 
 //MARK:- UICollectionViewDelegateFlowLayout
 extension CommonCollectionView:UICollectionViewDelegateFlowLayout{
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         switch type {
-        case .Default:
+        case .default:
             return CGSize(width: collectionView.frame.size.width / 2, height: collectionView.frame.size.width / 2)
         default:
             return CGSize(width: collectionView.frame.size.width / 2, height: collectionView.frame.size.width / 2)
         }
     }
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize{
         if shouldShowBottomViewForSection(section){
             return CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: 80).size
         }
-        return CGSizeZero
+        return CGSize.zero
     }
 }

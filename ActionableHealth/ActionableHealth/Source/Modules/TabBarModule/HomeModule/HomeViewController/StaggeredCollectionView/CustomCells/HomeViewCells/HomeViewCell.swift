@@ -30,19 +30,19 @@ class HomeViewCell: UICollectionViewCell {
 
 //MARK:- Additional methods
 extension HomeViewCell{
-    func configCell(template:TemplatesModel?, type:CollectionViewType) {
+    func configCell(_ template:TemplatesModel?, type:CollectionViewType) {
         currentTemplate = template
         ratingView.value = CGFloat(currentTemplate?.rating ?? 0)
 
         switch type {
-        case .TemplateView:
+        case .templateView:
             nameLabel.text = currentTemplate?.name
             logoImageView.image = UIImage(named: "logo-1")
-            templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
-        case .TrackView:
+            templateImage.sd_setImage(with: URL(string: currentTemplate?.templateImageUrl ?? ""))
+        case .trackView:
             nameLabel.text = currentTemplate?.name
-            templateImage.sd_setImageWithURL(NSURL(string: currentTemplate?.trackImageUrl ?? ""))
-            logoImageView.sd_setImageWithURL(NSURL(string: currentTemplate?.templateImageUrl ?? ""))
+            templateImage.sd_setImage(with: URL(string: currentTemplate?.trackImageUrl ?? ""))
+            logoImageView.sd_setImage(with: URL(string: currentTemplate?.templateImageUrl ?? ""))
         default:
             break
         }

@@ -22,26 +22,26 @@ class StaggeredCollectionView: CommonCollectionView {
 
 //MARK:- overriden methods
 extension StaggeredCollectionView{
-    override func setupView() {
+    @objc override func setupView() {
         super.setupView()
-        registerNib(UINib(nibName: String(CommonCollectionReusableView), bundle: NSBundle.mainBundle()), forSupplementaryViewOfKind: "CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(CommonCollectionReusableView))
+        register(UINib(nibName: String(describing: CommonCollectionReusableView.self), bundle: Bundle.main), forSupplementaryViewOfKind: "CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(describing: CommonCollectionReusableView.self))
     }
 
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView{
-        let reusableView = collectionView.dequeueReusableSupplementaryViewOfKind("CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(CommonCollectionReusableView), forIndexPath: indexPath) as? CommonCollectionReusableView
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+        let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: "CHTCollectionElementKindSectionFooter", withReuseIdentifier: String(describing: CommonCollectionReusableView.self), for: indexPath) as? CommonCollectionReusableView
         return reusableView!
     }
 }
 
 //MARK:- CHTCollectionViewDelegateWaterfallLayout
 extension StaggeredCollectionView:CHTCollectionViewDelegateWaterfallLayout{
-    override func collectionView (collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
-                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-        let gridWidth : CGFloat = (UIScreen.mainScreen().bounds.size.width/2)-5.0
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let gridWidth : CGFloat = (UIScreen.main.bounds.size.width/2)-5.0
         let imageHeight = 1250*gridWidth/1250
-        return CGSizeMake(gridWidth, imageHeight)
+        return CGSize(width: gridWidth, height: imageHeight)
     }
-    func colletionView (collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    func colletionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         heightForFooterInSection section: NSInteger) -> CGFloat{
         if shouldShowBottomViewForSection(section){
             return 50

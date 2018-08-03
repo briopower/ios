@@ -10,11 +10,11 @@ import UIKit
 import CoreData
 
 enum TrackInviteSectionType:Int {
-    case Details, Contacts, Count
+    case details, contacts, count
 }
 
 enum TrackInviteDetailsSectionCellType:Int {
-    case Search, AddFromPhone, Count
+    case search, addFromPhone, count
 }
 
 class InviteForTrackViewController: KeyboardAvoidingViewController {
@@ -25,8 +25,8 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
     @IBOutlet weak var doneButton: UIButton!
 
     //MARK:- Variables
-    var frc:NSFetchedResultsController?
-    var sourceType = TrackDetailsSourceType.Templates
+    var frc:NSFetchedResultsController<NSFetchRequestResult>?
+    var sourceType = TrackDetailsSourceType.templates
     var currentTemplate:TemplatesModel?
     var trackName:String?
     var selectedUsers = NSMutableArray()
@@ -39,10 +39,10 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ContactSyncManager.sharedInstance.syncCoreDataContacts()
-        setNavigationBarWithTitle("Invite", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Invite", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         updatDoneButton()
     }
 
@@ -52,25 +52,25 @@ class InviteForTrackViewController: KeyboardAvoidingViewController {
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
 //MARK:- Actions
 extension InviteForTrackViewController{
-    @IBAction func doneAction(sender: UIButton) {
+    @IBAction func doneAction(_ sender: UIButton) {
         switch sourceType {
-        case .Templates:
+        case .templates:
             createTrack()
-        case .Tracks:
+        case .tracks:
             inviteMembers()
         default:
             break
         }
     }
 
-    func contactSyncCompleted(notification:NSNotification) {
-        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
+    @objc func contactSyncCompleted(_ notification:Notification) {
+        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         tblView.reloadData()
     }
 }
@@ -80,17 +80,17 @@ extension InviteForTrackViewController{
     func setupView() {
         AppDelegate.getAppDelegateObject()?.startSyncing()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: ContactSyncManager.contactSyncCompleted, object: nil)
-        tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
-        tblView.registerNib(UINib(nibName: String(SearchByIdHeader), bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: String(SearchByIdHeader))
-        tblView.registerNib(UINib(nibName: String(AddFromPhoneHeader), bundle: NSBundle.mainBundle()), forHeaderFooterViewReuseIdentifier: String(AddFromPhoneHeader))
+        NotificationCenter.default.addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: NSNotification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
+        tblView.register(UINib(nibName: String(describing: ContactDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell.self))
+        tblView.register(UINib(nibName: String(describing: SearchByIdHeader.self), bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: String(describing: SearchByIdHeader.self))
+        tblView.register(UINib(nibName: String(describing: AddFromPhoneHeader.self), bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: String(describing: AddFromPhoneHeader.self))
 
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.sectionHeaderHeight = UITableViewAutomaticDimension
         tblView.estimatedSectionHeaderHeight = 80
         tblView.estimatedRowHeight = 80
 
-        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
+        frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
 
         selectedUsers = NSMutableArray(array: currentTemplate?.members ?? [])
 
@@ -98,9 +98,9 @@ extension InviteForTrackViewController{
 
     func updatDoneButton() {
         switch sourceType {
-        case .Tracks:
+        case .tracks:
             let shouldEnable = selectedUsers != currentTemplate?.members
-            doneButton.enabled = shouldEnable
+            doneButton.isEnabled = shouldEnable
             shouldEnable ? (doneButton.alpha = 1) : (doneButton.alpha = 0.8)
         default:
             break
@@ -114,7 +114,7 @@ extension InviteForTrackViewController{
         if NetworkClass.isConnected(true) /*&& selectedUsers.count > 0*/ && !isRequestSent {
             showLoaderOnWindow()
             self.isRequestSent = true
-            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .POST, Parameters: currentTemplate?.getCreateTrackDict(trackName, array: selectedUsers), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.createTrack, RequestType: .post, Parameters: currentTemplate?.getCreateTrackDict(trackName, array: selectedUsers) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 self.isRequestSent = false
                 if status {
@@ -131,7 +131,7 @@ extension InviteForTrackViewController{
         if NetworkClass.isConnected(true) && selectedUsers.count > 0 && !isRequestSent{
             showLoaderOnWindow()
             self.isRequestSent = true
-            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .POST, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers), Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.inviteMember, RequestType: .post, Parameters: currentTemplate?.getInviteMemberDict(selectedUsers) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 self.isRequestSent = false
                 if status {
@@ -144,26 +144,26 @@ extension InviteForTrackViewController{
         }
     }
 
-    func processResponse(response:AnyObject?) {
+    func processResponse(_ response:AnyObject?) {
         switch sourceType {
-        case .Templates:
+        case .templates:
             getNavigationController()
             if let tbCont = getNavigationController()?.viewControllers[0] as? UITabBarController{
                 tbCont.selectedIndex = 0
-                getNavigationController()?.popToRootViewControllerAnimated(true)
+                getNavigationController()?.popToRootViewController(animated: true)
             }
-        case .Tracks:
-            getNavigationController()?.popToRootViewControllerAnimated(true)
+        case .tracks:
+            getNavigationController()?.popToRootViewController(animated: true)
         default:
             break
         }
     }
 
-    func processError(error:NSError?) {
+    func processError(_ error:NSError?) {
         switch sourceType {
-        case .Templates, .Tracks:
+        case .templates, .tracks:
             //UIAlertController.showAlertOfStyle(Message: "Something went wrong.", completion: nil)
-            UIView.showToast("Something went wrong", theme: Theme.Error)
+            UIView.showToast("Something went wrong", theme: Theme.error)
         default:
             break
         }
@@ -171,22 +171,22 @@ extension InviteForTrackViewController{
 }
 //MARK:- UITableViewDataSource
 extension InviteForTrackViewController:UITableViewDataSource{
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return TrackInviteSectionType.Count.rawValue
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return TrackInviteSectionType.count.rawValue
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         if let type = TrackInviteSectionType(rawValue: section) {
             switch type {
-            case .Details:
+            case .details:
                 return searchedUsers.count
             default:
                 let count = frc?.fetchedObjects?.count ?? 0
                 if count == 0 {
-                    contactSyncingView.hidden = !ContactSyncManager.sharedInstance.isSyncing
+                    contactSyncingView.isHidden = !ContactSyncManager.sharedInstance.isSyncing
                 }else{
-                    contactSyncingView.hidden = true
+                    contactSyncingView.isHidden = true
                 }
                 return count
             }
@@ -194,21 +194,21 @@ extension InviteForTrackViewController:UITableViewDataSource{
         return 0
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
             switch type {
-            case .Details:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
+            case .details:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell.self)) as? ContactDetailsCell {
                     if let obj = searchedUsers[indexPath.row] as? UserModel{
-                        cell.configCell(obj, shouldSelect: selectedUsers.containsObject(obj.userID ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.userID ?? "") ?? false)
+                        cell.configCell(obj, shouldSelect: selectedUsers.contains(obj.userID ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.userID ?? "") ?? false)
                         return cell
                     }
                 }
             default:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell.self)) as? ContactDetailsCell {
                     if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact{
-                        cell.configCell(obj, shouldSelect: selectedUsers.containsObject(obj.id ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.id ?? "") ?? false)
+                        cell.configCell(obj, shouldSelect: selectedUsers.contains(obj.id ?? ""), isMember: currentTemplate?.isMemberOfTemplate(obj.id ?? "") ?? false)
                         return cell
                     }
                 }
@@ -220,16 +220,16 @@ extension InviteForTrackViewController:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension InviteForTrackViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let type = TrackInviteSectionType(rawValue: section) {
             switch type {
-            case .Details:
-                if let headerView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(String(SearchByIdHeader)) as? SearchByIdHeader {
+            case .details:
+                if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: SearchByIdHeader.self)) as? SearchByIdHeader {
                     headerView.delegate = self
                     return headerView
                 }
-            case .Contacts:
-                if let headerView = tableView.dequeueReusableHeaderFooterViewWithIdentifier(String(AddFromPhoneHeader)) as? AddFromPhoneHeader {
+            case .contacts:
+                if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: AddFromPhoneHeader.self)) as? AddFromPhoneHeader {
                     return headerView
                 }
             default:
@@ -239,23 +239,23 @@ extension InviteForTrackViewController:UITableViewDelegate{
         return nil
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let type = TrackInviteSectionType(rawValue: indexPath.section) {
             switch type {
-            case .Details:
+            case .details:
                 if let obj = (searchedUsers[indexPath.row] as? UserModel)?.userID {
-                    if NSUserDefaults.getUserId() == obj {
+                    if UserDefaults.getUserId() == obj {
                         return
                     }
-                    selectedUsers.containsObject(obj) ? selectedUsers.removeObject(obj) :selectedUsers.addObject(obj)
+                    selectedUsers.contains(obj) ? selectedUsers.remove(obj) :selectedUsers.add(obj)
                 }
-            case .Contacts:
+            case .contacts:
                 if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact {
                     if let id = obj.id, let isAppUser = obj.isAppUser {
-                        if NSUserDefaults.getUserId() == id || !isAppUser.boolValue{
+                        if UserDefaults.getUserId() == id || !isAppUser.boolValue{
                             return
                         }
-                        selectedUsers.containsObject(id) ? selectedUsers.removeObject(id) :selectedUsers.addObject(id)
+                        selectedUsers.contains(id) ? selectedUsers.remove(id) :selectedUsers.add(id)
                     }
                 }
             default:
@@ -271,12 +271,12 @@ extension InviteForTrackViewController:UITableViewDelegate{
 //MARK:- SearchByIdCellDelegate
 extension InviteForTrackViewController:SearchByIdHeaderDelegate{
     func searchTapped() {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.TracksStoryboard.searchUserView) as? SearchUserViewController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.searchUserView) as? SearchUserViewController {
             viewCont.contactsSelected = NSMutableArray(array: selectedUsers)
             viewCont.searchedUsers = NSMutableArray(array: searchedUsers)
             viewCont.currentTemplate = currentTemplate
             viewCont.delegate = self
-            UIViewController.getTopMostViewController()?.presentViewController(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
+            UIViewController.getTopMostViewController()?.present(UINavigationController(rootViewController: viewCont), animated: true, completion: nil)
         }
     }
 }

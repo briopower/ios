@@ -8,15 +8,15 @@
 
 import UIKit
 protocol PhaseDetailsCellDelegate:NSObjectProtocol {
-    func commentsTapped(tag:Int, obj:AnyObject?)
-    func rateTaskTapped(tag:Int, obj:AnyObject?)
-    func taskFilesTapped(tag:Int, obj:AnyObject?)
+    func commentsTapped(_ tag:Int, obj:AnyObject?)
+    func rateTaskTapped(_ tag:Int, obj:AnyObject?)
+    func taskFilesTapped(_ tag:Int, obj:AnyObject?)
 }
 
 enum TaskStatus:String {
     case New, InProgress, Paused, Complete, InComplete, Late
 
-    static func getNibName(task:TasksModel) -> String{
+    static func getNibName(_ task:TasksModel) -> String{
         if let currentStatus = TaskStatus(rawValue: task.status) {
             switch currentStatus{
             case .Complete, .InComplete:
@@ -37,23 +37,23 @@ enum TaskStatus:String {
         return ""
     }
 
-    static func getConfig(currentTask:TasksModel) -> (status:String, sliderEnabled:Bool, sliderValue:Double, startStopImage:UIImage?, detailsString:String) {
+    static func getConfig(_ currentTask:TasksModel) -> (status:String, sliderEnabled:Bool, sliderValue:Double, startStopImage:UIImage?, detailsString:String) {
         if  let status = TaskStatus(rawValue: currentTask.status) {
             
             switch status {
             case .New:
-                return (status.rawValue.uppercaseString, false, 0, UIImage(named: "Start"), "New as on \(NSDate().mediumDateString)")
+                return (status.rawValue.uppercased(), false, 0, UIImage(named: "Start"), "New as on \(Date().mediumDateString)")
             case .Paused:
-                let date = NSDate.dateWithTimeIntervalInMilliSecs(currentTask.pausedDate)
-                return (status.rawValue.uppercaseString, false, currentTask.progress, UIImage(named: "Start"), "Paused on \(date.mediumDateString)")
+                let date = Date.dateWithTimeIntervalInMilliSecs(currentTask.pausedDate)
+                return (status.rawValue.uppercased(), false, currentTask.progress, UIImage(named: "Start"), "Paused on \(date.mediumDateString)")
             case .InProgress:
-                return ("IN PROGRESS", true, currentTask.progress, UIImage(named: "Pause"), "In Progress as on \(NSDate().mediumDateString)")
+                return ("IN PROGRESS", true, currentTask.progress, UIImage(named: "Pause"), "In Progress as on \(Date().mediumDateString)")
             case .Complete:
-                let date = NSDate.dateWithTimeIntervalInMilliSecs(currentTask.completedDate)
+                let date = Date.dateWithTimeIntervalInMilliSecs(currentTask.completedDate)
                 return ("COMPLETED", false, currentTask.progress, nil, "Completed on \(date.mediumDateString)")
             case .InComplete:
-                let date = NSDate.dateWithTimeIntervalInMilliSecs(currentTask.completedDate)
-                return (status.rawValue.uppercaseString, false, currentTask.progress, nil, "Marked Incomplete on \(date.mediumDateString)")
+                let date = Date.dateWithTimeIntervalInMilliSecs(currentTask.completedDate)
+                return (status.rawValue.uppercased(), false, currentTask.progress, nil, "Marked Incomplete on \(date.mediumDateString)")
             default:
                 break
             }
@@ -100,11 +100,11 @@ class PhaseDetailsCell: UITableViewCell {
         taskNameLabel?.clipsToBounds = true
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    @IBAction func taskFiles(sender: UIButton) {
+    @IBAction func taskFiles(_ sender: UIButton) {
         delegate?.taskFilesTapped(self.tag, obj: currentTask)
     }
 }
@@ -113,25 +113,25 @@ class PhaseDetailsCell: UITableViewCell {
 
 //MARK:- Button Action
 extension PhaseDetailsCell{
-    @IBAction func commentsAction(sender: AnyObject) {
-        delegate?.commentsTapped(self.tag, obj: currentTask?.key)
+    @IBAction func commentsAction(_ sender: AnyObject) {
+        delegate?.commentsTapped(self.tag, obj: currentTask?.key as AnyObject?)
     }
-    @IBAction func rateTaskAction(sender: AnyObject) {
+    @IBAction func rateTaskAction(_ sender: AnyObject) {
         delegate?.rateTaskTapped(self.tag, obj: currentTask)
     }
-    @IBAction func sliderValueChanged(sender: UISlider) {
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
         updateCompleted()
     }
-    @IBAction func sliderTouchUpInside(sender: UISlider) {
+    @IBAction func sliderTouchUpInside(_ sender: UISlider) {
         updateCompleted()
         setProgress(round(sender.value))
     }
-    @IBAction func sliderTouchUpOutside(sender: UISlider) {
+    @IBAction func sliderTouchUpOutside(_ sender: UISlider) {
         updateCompleted()
         setProgress(round(sender.value))
     }
 
-    @IBAction func startStopAction(sender: UIButton) {
+    @IBAction func startStopAction(_ sender: UIButton) {
         if let status = TaskStatus(rawValue: currentTask?.status ?? ""){
             switch status {
             case .New, .Paused:
@@ -151,36 +151,36 @@ extension PhaseDetailsCell{
 
 //MARK:- Additional methods
 extension PhaseDetailsCell{
-    func configureCell(obj:TasksModel) {
+    func configureCell(_ obj:TasksModel) {
         currentTask = obj
-        taskNameLabel?.text = "  " + (currentTask?.taskName.uppercaseString ?? "")
+        taskNameLabel?.text = "  " + (currentTask?.taskName.uppercased() ?? "")
         starRatingView?.value = CGFloat(currentTask?.rating ?? 0)
         ratingLabel?.text = "\(currentTask?.rating ?? 0) Rating"
-        commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journal(s)", forState: .Normal)
-        commentCountButton?.hidden = currentTask?.key.getValidObject() == nil
-        rateTaskButton?.hidden = currentTask?.key.getValidObject() == nil
+        commentCountButton?.setTitle("\(currentTask?.commentsCount ?? 0) Journal(s)", for: UIControlState())
+        commentCountButton?.isHidden = currentTask?.key.getValidObject() == nil
+        rateTaskButton?.isHidden = currentTask?.key.getValidObject() == nil
 
         if let currentStatus = TaskStatus(rawValue: obj.status) {
             switch currentStatus{
             case .InProgress, .Paused:
-                let date = NSDate.dateWithTimeIntervalInMilliSecs(NSDate().timeIntervalInMilliSecs() + (currentTask?.remainingTimeInMillis ?? 0))
+                let date = Date.dateWithTimeIntervalInMilliSecs(Date().timeIntervalInMilliSecs() + (currentTask?.remainingTimeInMillis ?? 0))
                 durationLabel?.text = date.shortTimeLeftString
             default:
                 durationLabel?.text = nil
             }
         }
 
-        if obj.parentPhase.parentTemplate.objectType == ObjectType.Track {
+        if obj.parentPhase.parentTemplate.objectType == ObjectType.track {
             let (status, sliderEnabled, sliderValue, startStopImage, details) = TaskStatus.getConfig(obj)
             statusLabel?.text = status
-            slider?.enabled = sliderEnabled
-            startStopButton?.setImage(startStopImage, forState: .Normal)
+            slider?.isEnabled = sliderEnabled
+            startStopButton?.setImage(startStopImage, for: UIControlState())
             slider?.value = Float(sliderValue) ?? 0
             completedOnlabel?.text = details
             updateCompleted()
         }else{
-            commentCountButton?.hidden = true
-            rateTaskButton?.hidden = true
+            commentCountButton?.isHidden = true
+            rateTaskButton?.isHidden = true
         }
         webView.loadHTMLString(currentTask?.details ?? "", baseURL: nil)
         
@@ -191,19 +191,19 @@ extension PhaseDetailsCell{
         taskCompleted?.text = "\(Int(round(slider?.value ?? 0)))%"
     }
 
-    func setStatus(taskStatus:TaskStatus) {
+    func setStatus(_ taskStatus:TaskStatus) {
         
         if NetworkClass.isConnected(true), let key = currentTask?.key {
-            startStopButton?.enabled = false
-            NetworkClass.sendRequest(URL: Constants.URLs.setStatus, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForStatus(key, status: taskStatus.rawValue), Headers: nil, CompletionHandler: {
+            startStopButton?.isEnabled = false
+            NetworkClass.sendRequest(URL: Constants.URLs.setStatus, RequestType: .post, ResponseType: .json, Parameters: TasksModel.getDictForStatus(key, status: taskStatus.rawValue) as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTask?.status = taskStatus.rawValue
                     switch taskStatus{
                     case .Complete:
-                        self.currentTask?.completedDate = NSDate().timeIntervalInMilliSecs()
+                        self.currentTask?.completedDate = Date().timeIntervalInMilliSecs()
                     case .Paused:
-                        self.currentTask?.pausedDate = NSDate().timeIntervalInMilliSecs()
+                        self.currentTask?.pausedDate = Date().timeIntervalInMilliSecs()
                     default:
                         break
                     }
@@ -212,14 +212,14 @@ extension PhaseDetailsCell{
                     }
                     self.getTableView()?.reloadData()
                 }
-                self.startStopButton?.enabled = true
+                self.startStopButton?.isEnabled = true
             })
         }
     }
 
-    func setProgress(progress:Float) {
+    func setProgress(_ progress:Float) {
         if progress == 100{
-            UIAlertController.showAlertOfStyle(.Alert, Title: "Confirm mark this as complete?", Message: nil, OtherButtonTitles: ["YES"], CancelButtonTitle: "NO", completion: { (tappedAtIndex) in
+            UIAlertController.showAlertOfStyle(.alert, Title: "Confirm mark this as complete?", Message: nil, OtherButtonTitles: ["YES"], CancelButtonTitle: "NO", completion: { (tappedAtIndex) in
                 if tappedAtIndex == -1{
                     if let task = self.currentTask{
                         self.configureCell(task)
@@ -234,10 +234,10 @@ extension PhaseDetailsCell{
         }
     }
 
-    func updateProgress(progress:Float) {
+    func updateProgress(_ progress:Float) {
         if NetworkClass.isConnected(true), let key = currentTask?.key {
-            slider?.enabled = false
-            NetworkClass.sendRequest(URL: Constants.URLs.setProgress, RequestType: .POST, ResponseType: .JSON, Parameters: TasksModel.getDictForProgress(key, progress: "\(progress/100)"), Headers: nil, CompletionHandler: {
+            slider?.isEnabled = false
+            NetworkClass.sendRequest(URL: Constants.URLs.setProgress, RequestType: .post, ResponseType: .json, Parameters: TasksModel.getDictForProgress(key, progress: "\(progress/100)") as AnyObject, Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.currentTask?.progress = Double(progress)
@@ -245,7 +245,7 @@ extension PhaseDetailsCell{
                         self.configureCell(task)
                     }
                 }
-                self.slider?.enabled = true
+                self.slider?.isEnabled = true
             })
         }
     }

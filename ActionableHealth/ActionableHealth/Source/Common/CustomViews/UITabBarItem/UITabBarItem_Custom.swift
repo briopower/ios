@@ -8,7 +8,7 @@
 
 import UIKit
 enum TabBarType:Int {
-    case Home, Track, Chat, Settings
+    case home, track, chat, settings
 }
 class UITabBarItem_Custom: UITabBarItem {
 
@@ -24,34 +24,21 @@ class UITabBarItem_Custom: UITabBarItem {
             var normalImage:UIImage?
             var selectedStateImage:UIImage?
             switch type {
-            case .Home:
-                normalImage = UIImage(named: "Home-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Home-Yellow\(getImageNamePostFix())")
-            case .Track:
-                normalImage = UIImage(named: "Track-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Track-yellow\(getImageNamePostFix())")
-            case .Chat:
-                normalImage = UIImage(named: "Chat-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Chat-yellow\(getImageNamePostFix())")
-            case .Settings:
-                normalImage = UIImage(named: "Setting-white\(getImageNamePostFix())")
-                selectedStateImage = UIImage(named: "Setting-yellow\(getImageNamePostFix())")
+            case .home:
+                normalImage = UIImage(named: "Home-white")
+                selectedStateImage = UIImage(named: "Home-Yellow")
+            case .track:
+                normalImage = UIImage(named: "Track-white")
+                selectedStateImage = UIImage(named: "Track-yellow")
+            case .chat:
+                normalImage = UIImage(named: "Chat-white")
+                selectedStateImage = UIImage(named: "Chat-yellow")
+            case .settings:
+                normalImage = UIImage(named: "Setting-white")
+                selectedStateImage = UIImage(named: "Setting-yellow")
             }
-            super.selectedImage = selectedStateImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-            super.image = normalImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        }
-    }
-
-    func getImageNamePostFix() -> String {
-        switch UIDevice.getDeviceType() {
-        case .AppleIphone6P, .AppleIphone6SP, .AppleIphone7P:
-            return "-3x.png"
-        case .AppleIphone6S, .AppleIphone6, .AppleIphone7:
-            return "-2x.png"
-        case .Simulator:
-            return "-1x.png"
-        default:
-            return "-1x.png"
+            super.selectedImage = selectedStateImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
+            super.image = normalImage?.withRenderingMode(UIImageRenderingMode.alwaysOriginal);
         }
     }
 }

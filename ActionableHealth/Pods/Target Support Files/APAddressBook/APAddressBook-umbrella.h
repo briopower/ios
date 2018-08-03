@@ -1,5 +1,13 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
 #endif
 
 #import "APContactBuilder.h"
@@ -15,6 +23,7 @@
 #import "APThread.h"
 #import "APAddressBookRefWrapper.h"
 #import "APAddressBook.h"
+#import "APAddressBookFramework.h"
 #import "APAddress.h"
 #import "APContact.h"
 #import "APContactDate.h"

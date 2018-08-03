@@ -12,8 +12,8 @@ import CoreData
 class CoreDataOperationsClass: NSObject {
 
     //MARK:  data fetching methods via NSFetchRequest
-    class  func fetchObjectsOfClassWithName(className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false , fetchLimit :Int?, context:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Array<AnyObject>{
-        let fetchRequest = NSFetchRequest(entityName: className)
+    class  func fetchObjectsOfClassWithName(_ className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false , fetchLimit :Int?, context:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Array<AnyObject>{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: className)
         fetchRequest.predicate = predicate
         
         //set fetchLimit
@@ -34,8 +34,8 @@ class CoreDataOperationsClass: NSObject {
         
         do{
             let managedObjectContext = context
-            let fetchedObjects = try managedObjectContext?.executeFetchRequest(fetchRequest)
-            return fetchedObjects ?? []
+            let fetchedObjects = try managedObjectContext?.fetch(fetchRequest)
+            return fetchedObjects as [AnyObject]? ?? []
         }
         catch
         {
@@ -43,7 +43,7 @@ class CoreDataOperationsClass: NSObject {
         }
     }
     
-    class func getTopMostFetchedObjectOfClassWithName(className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false) -> AnyObject?
+    class func getTopMostFetchedObjectOfClassWithName(_ className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false) -> AnyObject?
     {
         let fetchedObjectsArray = self.fetchObjectsOfClassWithName(className, predicate: predicate, sortingKey: sortingKey, isAcendingSort: isAcendingSort , fetchLimit: 1)
         
@@ -52,10 +52,10 @@ class CoreDataOperationsClass: NSObject {
     
     
     //MARK:  fetchResultsController setup method
-    class func getFectechedResultsControllerWithEntityName(className : String, predicate : NSPredicate? ,sectionNameKeyPath : String?, sorting : [(key:String, isAcending:Bool)]?) -> NSFetchedResultsController{
+    class func getFectechedResultsControllerWithEntityName(_ className : String, predicate : NSPredicate? ,sectionNameKeyPath : String?, sorting : [(key:String, isAcending:Bool)]?) -> NSFetchedResultsController<NSFetchRequestResult>{
         let managedObjectContext = AppDelegate.getAppDelegateObject()?.managedObjectContext ?? NSManagedObjectContext()
-        let fetchRequest = NSFetchRequest()
-        let entityDesc = NSEntityDescription.entityForName(className, inManagedObjectContext: managedObjectContext)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        let entityDesc = NSEntityDescription.entity(forEntityName: className, in: managedObjectContext)
         fetchRequest.entity = entityDesc
 
         if let sorting = sorting

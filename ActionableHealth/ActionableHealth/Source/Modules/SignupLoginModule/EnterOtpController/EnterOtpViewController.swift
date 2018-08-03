@@ -25,10 +25,10 @@ class EnterOtpViewController: CommonViewController {
         self.setUpView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setNavigationBarWithTitle("Enter OTP", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Enter OTP", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
     
     
@@ -43,34 +43,34 @@ class EnterOtpViewController: CommonViewController {
 extension EnterOtpViewController{
     func setUpView(){
         containerOtpView.layer.borderWidth = 0.5
-        containerOtpView.layer.borderColor = UIColor.getAppSeperatorColor().CGColor
+        containerOtpView.layer.borderColor = UIColor.getAppSeperatorColor().cgColor
     }
     
-    func processResponse(responseObj:AnyObject?) {
+    func processResponse(_ responseObj:AnyObject?) {
         if let dict = responseObj as? NSDictionary{
             if dict["isAuthenticated"] as? Bool == true {
-                NSUserDefaults.saveUser(dict)
+                UserDefaults.saveUser(dict)
                 AppDelegate.getAppDelegateObject()?.setupOnAppLauch()
                 ContactSyncManager.sharedInstance.syncCoreDataContacts()
-                if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
-                    vc.type = .UpdateProfile
+                if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
+                    vc.type = .updateProfile
                     getNavigationController()?.pushViewController(vc, animated: true)
                 }
             }
             else{
                // UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Invalid OTP !", completion: nil)
-                UIView.showToast("Invalid OTP !", theme: Theme.Error)
+                UIView.showToast("Invalid OTP !", theme: Theme.error)
             }
         }
     }
     
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        UIView.showToast("Something went wrong", theme: Theme.error)
     }
 
     func checkFields() -> Bool {
         if otpTextField.text?.getValidObject() == nil {
-            UIView.showToast("Please Enter OTP", theme: Theme.Info)
+            UIView.showToast("Please Enter OTP", theme: Theme.info)
            // UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Enter OTP", completion: nil)
             return false
         }
@@ -80,12 +80,12 @@ extension EnterOtpViewController{
 
 //MARK:- Button actions
 extension EnterOtpViewController{
-    @IBAction func verifyButton(sender: AnyObject) {
+    @IBAction func verifyButton(_ sender: AnyObject) {
         if NetworkClass.isConnected(true) {
             showLoader()
             if checkFields() {
                 UIApplication.dismissKeyboard()
-                NetworkClass.sendRequest(URL: "\(Constants.URLs.verifyOtp)\(phoneDetail!["phone"]!)/\(otpTextField.text ?? "")", RequestType: .GET, Parameters: nil , Headers: nil, CompletionHandler: {
+                NetworkClass.sendRequest(URL: "\(Constants.URLs.verifyOtp)\(phoneDetail!["phone"]!)/\(otpTextField.text ?? "")", RequestType: .get, Parameters: nil , Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     
                     if status{
@@ -97,13 +97,19 @@ extension EnterOtpViewController{
                     self.hideLoader()
                 })
             }
+//            else{
+//                // TODO bypassing this right now
+//                let dict = ["isAuthenticated" : true, "ahwToken" : "dfbdsfbfebserbplms"] as [String : Any]
+//                
+//                self.processResponse(dict as AnyObject)
+//            }
         }
     }
     
-    @IBAction func resendCodeButton(sender: AnyObject) {
+    @IBAction func resendCodeButton(_ sender: AnyObject) {
         if NetworkClass.isConnected(true) {
             showLoader()
-            NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .POST, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
+            NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .post, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if let dict = responseObj as? NSDictionary{
                     if dict["exists"] as? Bool == true{

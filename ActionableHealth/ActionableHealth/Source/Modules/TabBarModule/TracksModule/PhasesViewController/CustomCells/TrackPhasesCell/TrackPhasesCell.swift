@@ -8,8 +8,8 @@
 
 import UIKit
 protocol TrackPhasesCellDelegate:NSObjectProtocol {
-    func taskFilesTapped(tag:Int, obj:AnyObject?)
-    func numberOfTasksTapped(tag:Int, obj:AnyObject?)
+    func taskFilesTapped(_ tag:Int, obj:AnyObject?)
+    func numberOfTasksTapped(_ tag:Int, obj:AnyObject?)
 }
 
 class TrackPhasesCell: UITableViewCell {
@@ -33,7 +33,7 @@ class TrackPhasesCell: UITableViewCell {
         webView.scrollView.showsVerticalScrollIndicator = false
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
@@ -42,7 +42,7 @@ class TrackPhasesCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension TrackPhasesCell{
-    func configCell(phase:PhasesModel) {
+    func configCell(_ phase:PhasesModel) {
         currentPhase = phase
         nameLabel.text = currentPhase?.phaseName ?? ""
 //        if(currentPhase?.tasks.count > 0){
@@ -53,21 +53,21 @@ extension TrackPhasesCell{
 //        ratingLabel.text = "\(currentPhase?.rating ?? 0) Rating"
         if let count = currentPhase?.tasks.count{
             if count == 1 || count == 0{
-                numberOfTask.setTitle("\(count) Task", forState: .Normal)
+                numberOfTask.setTitle("\(count) Task", for: UIControlState())
             }else{
-                numberOfTask.setTitle("\(count) Tasks", forState: .Normal)
+                numberOfTask.setTitle("\(count) Tasks", for: UIControlState())
             }
         }else{
-            numberOfTask.setTitle("", forState: .Normal)
+            numberOfTask.setTitle("", for: UIControlState())
         }
         webView.loadHTMLString(currentPhase?.details ?? "", baseURL: nil)
     }
     
-    @IBAction func numberOfTaskAction(sender: UIButton) {
+    @IBAction func numberOfTaskAction(_ sender: UIButton) {
         delegate?.numberOfTasksTapped(self.tag, obj: currentPhase)
     }
     
-    @IBAction func resourcesAction(sender: UIButton) {
+    @IBAction func resourcesAction(_ sender: UIButton) {
         delegate?.taskFilesTapped(self.tag, obj: currentPhase)
 
     }

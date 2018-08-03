@@ -8,15 +8,15 @@
 
 import UIKit
 enum EditProfileDetailsCellType:Int {
-    case Image, Phone, NameCell, Hobbies,Count
+    case image, phone, nameCell, hobbies,count
 
     func getTitle() -> String {
         switch self {
-        case .NameCell:
+        case .nameCell:
             return "NAME"
-        case .Phone:
+        case .phone:
             return "PHONE NUMBER"
-        case .Hobbies:
+        case .hobbies:
             return "HOBBIES"
         default:
             return ""
@@ -40,7 +40,7 @@ class EditProfileDetailsCell: UITableViewCell {
     //MARK:- Variables
     weak var delegate:EditProfileDetailsCellDelegate?
     var currentUser:UserModel?
-    var currentType = EditProfileDetailsCellType.Count
+    var currentType = EditProfileDetailsCellType.count
 
     //MARK:- -------------------
     override func awakeFromNib() {
@@ -52,7 +52,7 @@ class EditProfileDetailsCell: UITableViewCell {
         detailsTextView?.delegate = self
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -62,9 +62,9 @@ class EditProfileDetailsCell: UITableViewCell {
 
 //MARK:- TextChangeMethods
 extension EditProfileDetailsCell:UITextViewDelegate{
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         switch currentType {
-        case .Hobbies:
+        case .hobbies:
             currentUser?.hobbies = textView.text
         default:
             break
@@ -72,9 +72,9 @@ extension EditProfileDetailsCell:UITextViewDelegate{
         delegate?.dataUpdated()
     }
 
-    @IBAction func textDidChange(sender: UITextField) {
+    @IBAction func textDidChange(_ sender: UITextField) {
         switch currentType {
-        case .NameCell:
+        case .nameCell:
             if sender == firstField {
                 currentUser?.firstName = sender.text
             }else{
@@ -89,25 +89,30 @@ extension EditProfileDetailsCell:UITextViewDelegate{
 
 //MARK:- Additional methods
 extension EditProfileDetailsCell{
-    func configureCellForCellType(type:EditProfileDetailsCellType, user:UserModel?) {
+    func configureCellForCellType(_ type:EditProfileDetailsCellType, user:UserModel?) {
         currentType = type
         currentUser = user
-        completeSeprator?.hidden = currentType != .Hobbies
+        completeSeprator?.isHidden = currentType != .hobbies
         titleDescLabel?.text = currentType.getTitle()
 
         switch currentType {
-        case .NameCell:
-            firstField?.enabled = true
+        case .nameCell:
+            firstField?.isEnabled = true
             firstField?.placeholder = "First Name"
             firstField?.text = currentUser?.firstName
 
             secondField?.placeholder = "Last Name"
             secondField?.text = currentUser?.lastName
-        case .Phone:
-            firstField?.enabled = false
+        case .phone:
+            firstField?.isEnabled = false
             firstField?.placeholder = "Phone Number"
-            firstField?.text = currentUser?.phoneNumber ?? currentUser?.userID
-        case .Hobbies:
+            if let phoneNumber = currentUser?.phoneNumber , !phoneNumber.isEmpty{
+                firstField?.text = phoneNumber
+            }else if let userID = currentUser?.userID , !userID.isEmpty{
+                firstField?.text = userID
+            }
+            
+        case .hobbies:
             detailsTextView?.text = currentUser?.hobbies ?? ""
         default:
             break

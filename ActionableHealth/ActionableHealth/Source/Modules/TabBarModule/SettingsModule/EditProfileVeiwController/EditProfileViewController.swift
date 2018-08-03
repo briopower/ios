@@ -8,7 +8,7 @@
 
 import UIKit
 enum viewType{
-    case EditProfile , UpdateProfile
+    case editProfile , updateProfile
 }
 class EditProfileViewController: CommonViewController {
 
@@ -18,7 +18,7 @@ class EditProfileViewController: CommonViewController {
     //MARK:- Variables
     let textViewCellName = "EditProfileDetailsCell_TextView"
     let nameViewCellName = "EditProfileDetailsCell_Name"
-    var type:viewType = .EditProfile
+    var type:viewType = .editProfile
     var imageUploadURL:String?
     var user = UserModel.getCurrentUser()
 
@@ -28,19 +28,20 @@ class EditProfileViewController: CommonViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         switch type {
-        case .EditProfile:
-            setNavigationBarWithTitle("Edit Profile", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
-        case .UpdateProfile:
-            setNavigationBarWithTitle("Update Profile", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Skip)
+        case .editProfile:
+            setNavigationBarWithTitle("Edit Profile", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
+        case .updateProfile:
+            setNavigationBarWithTitle("Update Profile", LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.skip)
         }
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         switch type {
-        case .UpdateProfile:
+        case .updateProfile:
+            
             getNavigationController()?.viewControllers = [self]
         default:
             break
@@ -60,11 +61,11 @@ extension EditProfileViewController{
         editProfileTblView.estimatedRowHeight = 200
         editProfileTblView.rowHeight = UITableViewAutomaticDimension
 
-        editProfileTblView.registerNib(UINib(nibName: String(ProfileImageCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ProfileImageCell))
-        editProfileTblView.registerNib(UINib(nibName: String(EditProfileDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(EditProfileDetailsCell))
+        editProfileTblView.register(UINib(nibName: String(describing: ProfileImageCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ProfileImageCell.self))
+        editProfileTblView.register(UINib(nibName: String(describing: EditProfileDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: EditProfileDetailsCell.self))
 
-        editProfileTblView.registerNib(UINib(nibName: nameViewCellName, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: nameViewCellName)
-        editProfileTblView.registerNib(UINib(nibName: textViewCellName, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: textViewCellName)
+        editProfileTblView.register(UINib(nibName: nameViewCellName, bundle: Bundle.main), forCellReuseIdentifier: nameViewCellName)
+        editProfileTblView.register(UINib(nibName: textViewCellName, bundle: Bundle.main), forCellReuseIdentifier: textViewCellName)
 
         editProfileTblView.contentInset = UIEdgeInsetsMake(0, 0, 8, 0)
     }
@@ -72,45 +73,45 @@ extension EditProfileViewController{
 
 //MARK:- ButtonActions
 extension EditProfileViewController{
-    override func skipButtonAction(sender: UIButton?) {
+    override func skipButtonAction(_ sender: UIButton?) {
         super.skipButtonAction(sender)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func updateAction(sender: AnyObject) {
+    @IBAction func updateAction(_ sender: AnyObject) {
         uploadImage()
     }
 }
 
 //MARK:- EditProfileViewController
 extension EditProfileViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EditProfileDetailsCellType.Count.rawValue
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return EditProfileDetailsCellType.count.rawValue
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if let type = EditProfileDetailsCellType(rawValue: indexPath.row) {
             switch type {
-            case .Image:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(ProfileImageCell)) as? ProfileImageCell {
+            case .image:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileImageCell.self)) as? ProfileImageCell {
                     cell.configureForEditProfileCell(user)
                     cell.delegate = self
                     return cell
                 }
-            case .NameCell:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(nameViewCellName) as? EditProfileDetailsCell {
+            case .nameCell:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: nameViewCellName) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type, user: user)
                     cell.delegate = self
                     return cell
                 }
-            case .Hobbies:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(textViewCellName) as? EditProfileDetailsCell {
+            case .hobbies:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: textViewCellName) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type, user: user)
                     cell.delegate = self
                     return cell
                 }
             default:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(EditProfileDetailsCell)) as? EditProfileDetailsCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EditProfileDetailsCell.self)) as? EditProfileDetailsCell {
                     cell.configureCellForCellType(type, user: user)
                     cell.delegate = self
                     return cell
@@ -124,21 +125,21 @@ extension EditProfileViewController:UITableViewDataSource{
 //MARK:- EditProfileDetailsCellDelegate ProfileImageCellDelegate
 extension EditProfileViewController:EditProfileDetailsCellDelegate, ProfileImageCellDelegate{
     func dataUpdated() {
-        updateButton.enabled = true
+        updateButton.isEnabled = true
     }
 }
 //MARK:- UITableViewDelegate
 extension EditProfileViewController:UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     }
 }
 
 //MARK:- Network Methods
 extension EditProfileViewController{
-    func createImageUploadUrl(shouldUploadImage:Bool = true){
+    func createImageUploadUrl(_ shouldUploadImage:Bool = true){
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.createUploadURL)\(NSUserDefaults.getUserId())", RequestType: .GET, ResponseType: .STRING,CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.createUploadURL)\(UserDefaults.getUserId())", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
                     self.imageUploadURL = str
                     if shouldUploadImage{
@@ -154,7 +155,7 @@ extension EditProfileViewController{
             if let url = imageUploadURL{
                 if let image = user.image {
                     self.showProgressLoader()
-                    NetworkClass.sendImageRequest(URL: url, RequestType: .POST, ResponseType: .NONE, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+                    NetworkClass.sendImageRequest(URL: url, RequestType: .post, ResponseType: .none, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
 
                         let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
                         self.loader?.progress = progress
@@ -180,7 +181,7 @@ extension EditProfileViewController{
 
     func updateProfile() {
         if NetworkClass.isConnected(true) {
-            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .POST, ResponseType: .JSON, Parameters: user.getUpdateProfileDictionary(), CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: Constants.URLs.updateMyProfile, RequestType: .post, ResponseType: .json, Parameters: user.getUpdateProfileDictionary() as AnyObject, CompletionHandler: { (status, responseObj, error, statusCode) in
                 if status{
                     self.processSuccess(responseObj)
                 }else{
@@ -191,17 +192,17 @@ extension EditProfileViewController{
         }
     }
 
-    func processSuccess(response:AnyObject?) {
-        NSUserDefaults.saveUser(response)
+    func processSuccess(_ response:AnyObject?) {
+        UserDefaults.saveUser(response)
         switch type {
-        case .UpdateProfile:
-            self.dismissViewControllerAnimated(true, completion: nil)
-        case .EditProfile:
-            getNavigationController()?.popViewControllerAnimated(true)
+        case .updateProfile:
+            self.dismiss(animated: true, completion: nil)
+        case .editProfile:
+            getNavigationController()?.popViewController(animated: true)
         }
     }
     
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        UIView.showToast("Something went wrong", theme: Theme.error)
     }
 }

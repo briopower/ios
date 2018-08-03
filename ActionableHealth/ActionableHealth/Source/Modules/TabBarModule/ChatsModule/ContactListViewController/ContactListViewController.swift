@@ -16,7 +16,7 @@ class ContactListViewController: CommonViewController {
     @IBOutlet weak var contactSyncingView: UIVisualEffectView!
 
     //MARK:- Variables
-    var frc:NSFetchedResultsController?
+    var frc:NSFetchedResultsController<NSFetchRequestResult>?
 
     //MARK:- Life Cycle
     override func viewDidLoad() {
@@ -24,10 +24,10 @@ class ContactListViewController: CommonViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ContactSyncManager.sharedInstance.syncCoreDataContacts()
-        setNavigationBarWithTitle("Contacts", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Contacts", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,13 +36,13 @@ class ContactListViewController: CommonViewController {
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
 //MARK:- Actions
 extension ContactListViewController{
-    func contactSyncCompleted(notification:NSNotification) {
+    @objc func contactSyncCompleted(_ notification:Notification) {
         setupFRC(srchbar.text?.getValidObject())
     }
 }
@@ -51,8 +51,8 @@ extension ContactListViewController{
 extension ContactListViewController{
     func setupView() {
         AppDelegate.getAppDelegateObject()?.startSyncing()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: ContactSyncManager.contactSyncCompleted, object: nil)
-        tblView.registerNib(UINib(nibName: String(ContactDetailsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(ContactDetailsCell))
+        NotificationCenter.default.addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: NSNotification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
+        tblView.register(UINib(nibName: String(describing: ContactDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell.self))
 
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 80
@@ -61,11 +61,11 @@ extension ContactListViewController{
 
     }
 
-    func setupFRC(searchText:String?) {
+    func setupFRC(_ searchText:String?) {
         if let text = searchText {
-            frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id != %@ AND (addressBook.name contains[cd] %@ OR id contains[cd] %@)", NSUserDefaults.getUserId(), text, text), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
+            frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id != %@ AND (addressBook.name contains[cd] %@ OR id contains[cd] %@)", UserDefaults.getUserId(), text, text), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         }else{
-            frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Contact), predicate: NSPredicate(format: "id !=%@", NSUserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
+            frc = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Contact", predicate: NSPredicate(format: "id !=%@", UserDefaults.getUserId()), sectionNameKeyPath: nil, sorting: [("isAppUser", false), ("addressBook.name", true)])
         }
 
         tblView.reloadData()
@@ -75,19 +75,19 @@ extension ContactListViewController{
 //MARK:- UITableViewDataSource
 extension ContactListViewController:UITableViewDataSource{
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = frc?.fetchedObjects?.count ?? 0
         if count == 0 {
-            contactSyncingView.hidden = !ContactSyncManager.sharedInstance.isSyncing
+            contactSyncingView.isHidden = !ContactSyncManager.sharedInstance.isSyncing
         }else{
-            contactSyncingView.hidden = true
+            contactSyncingView.isHidden = true
         }
         return count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(ContactDetailsCell)) as? ContactDetailsCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ContactDetailsCell.self)) as? ContactDetailsCell {
             if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact{
                 cell.configCell(obj)
                 return cell
@@ -101,11 +101,11 @@ extension ContactListViewController:UITableViewDataSource{
 extension ContactListViewController:UITableViewDelegate{
 
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let obj = frc?.fetchedObjects?[indexPath.row] as? Contact {
             if obj.isAppUser?.boolValue ?? false, let id = obj.id{
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = Person.getPersonWith(id){
-                    dispatch_async(dispatch_get_main_queue(), {
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = Person.getPersonWith(id){
+                    DispatchQueue.main.async(execute: {
                         viewCont.personObj = person
                         self.getNavigationController()?.pushViewController(viewCont, animated: true)
                     })
@@ -117,7 +117,7 @@ extension ContactListViewController:UITableViewDelegate{
 
 //MARK:- UISearchBarDelegate
 extension ContactListViewController:UISearchBarDelegate{
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         setupFRC(searchText.getValidObject())
     }
 }

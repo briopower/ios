@@ -8,65 +8,65 @@
 
 import UIKit
 
-private let userDefault = NSUserDefaults.standardUserDefaults()
+private let userDefault = UserDefaults.standard
 
 //MARK:- Additional methods
-extension NSUserDefaults{
+extension UserDefaults{
     class func clear() {
-        if let bundleId = NSBundle.mainBundle().bundleIdentifier{
-            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(bundleId)
+        if let bundleId = Bundle.main.bundleIdentifier{
+            UserDefaults.standard.removePersistentDomain(forName: bundleId)
         }
     }
 
-    class func getDeviceToken() -> NSData? {
-        return userDefault.valueForKey("deviceTokenPush_Key") as? NSData
+    class func getDeviceToken() -> Data? {
+        return userDefault.value(forKey: "deviceTokenPush_Key") as? Data
     }
 
-    class func setDeviceToken(token:NSData) {
+    class func setDeviceToken(_ token:Data) {
         userDefault.setValue(token, forKey: "deviceTokenPush_Key")
         userDefault.synchronize()
     }
 
     class func getUserToken() -> String {
-        return userDefault.valueForKey("UserToken_Key") as? String ?? ""
+        return userDefault.value(forKey: "UserToken_Key") as? String ?? ""
     }
 
-    class func setUserToken(token:String) {
+    class func setUserToken(_ token:String) {
         userDefault.setValue(token, forKey: "UserToken_Key")
         userDefault.synchronize()
     }
 
     class func getFirebaseToken() -> String {
-        return userDefault.valueForKey("UserFirebaseToken_Key") as? String ?? ""
+        return userDefault.value(forKey: "UserFirebaseToken_Key") as? String ?? ""
     }
 
-    class func setFirebaseToken(token:String) {
+    class func setFirebaseToken(_ token:String) {
         userDefault.setValue(token, forKey: "UserFirebaseToken_Key")
         userDefault.synchronize()
     }
 
 
     class func isLoggedIn() -> Bool {
-        return userDefault.boolForKey("userLoggedIn")
+        return userDefault.bool(forKey: "userLoggedIn")
 
     }
     
     class func isDisclaimerWatched() -> Bool {
-        return userDefault.boolForKey("disclaimerWatched")
+        return userDefault.bool(forKey: "disclaimerWatched")
         
     }
     
-    class func setDisclaimerWatched(watched:Bool){
-        userDefault.setBool(watched, forKey: "disclaimerWatched")
+    class func setDisclaimerWatched(_ watched:Bool){
+        userDefault.set(watched, forKey: "disclaimerWatched")
         userDefault.synchronize()
     }
 
-    class func setLoggedIn(loggedIn:Bool) {
-        userDefault.setBool(loggedIn, forKey: "userLoggedIn")
+    class func setLoggedIn(_ loggedIn:Bool) {
+        userDefault.set(loggedIn, forKey: "userLoggedIn")
         userDefault.synchronize()
     }
 
-    class func saveUser(obj:AnyObject?) {
+    class func saveUser(_ obj:AnyObject?) {
         if let dict = obj {
             if let token = dict["ahwToken"] as? String {
                 setLoggedIn(true)
@@ -75,20 +75,20 @@ extension NSUserDefaults{
             if let token = dict["firebaseToken"] as? String {
                 setFirebaseToken(token)
             }
-            userDefault.setObject(NSKeyedArchiver.archivedDataWithRootObject(dict), forKey: "currentUser")
+            userDefault.set(NSKeyedArchiver.archivedData(withRootObject: dict), forKey: "currentUser")
         }
     }
     class func getUser() -> AnyObject? {
 
-        if let data = userDefault.objectForKey("currentUser") as? NSData {
-            let returnObj = NSKeyedUnarchiver.unarchiveObjectWithData(data)
-            return returnObj
+        if let data = userDefault.object(forKey: "currentUser") as? Data {
+            let returnObj = NSKeyedUnarchiver.unarchiveObject(with: data)
+            return returnObj as AnyObject?
         }
-        return false
+        return false as AnyObject?
     }
 
     class func getUserId() -> String {
-        if let userDict = NSUserDefaults.getUser() as? [String : AnyObject]  {
+        if let userDict = UserDefaults.getUser() as? [String : AnyObject]  {
             return  userDict["user"]?["userId"] as? String ?? userDict["userId"] as? String ?? ""
         }
         return ""

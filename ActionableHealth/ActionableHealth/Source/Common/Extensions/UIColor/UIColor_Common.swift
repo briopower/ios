@@ -11,8 +11,9 @@ import UIKit
 //MARK:- Additional methods
 extension UIColor{
     
-    class func getColorFromHexValue(hexValue:UInt64,Alpha alpha:Float)-> UIColor{
-        return UIColor.init(colorLiteralRed: ((Float)((hexValue & 0xFF0000) >> 16))/255.0, green: ((Float)((hexValue & 0xFF00) >> 8))/255.0, blue: ((Float)(hexValue & 0xFF))/255.0, alpha: alpha)
+    class func getColorFromHexValue(_ hexValue:UInt64,Alpha alpha:Float)-> UIColor{
+//        return UIColor.init(colorLiteralRed: ((Float)((hexValue & 0xFF0000) >> 16))/255.0, green: ((Float)((hexValue & 0xFF00) >> 8))/255.0, blue: ((Float)(hexValue & 0xFF))/255.0, alpha: alpha)
+        return UIColor.init(red: CGFloat(((Float)((hexValue & 0xFF0000) >> 16))/255.0), green: CGFloat(((Float)((hexValue & 0xFF00) >> 8))/255.0), blue: CGFloat(((Float)(hexValue & 0xFF))/255.0), alpha: CGFloat(alpha))
     }
     
     class func getAppTextColor() -> UIColor{

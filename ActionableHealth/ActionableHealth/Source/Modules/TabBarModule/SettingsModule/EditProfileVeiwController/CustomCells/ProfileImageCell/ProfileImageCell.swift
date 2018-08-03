@@ -27,7 +27,7 @@ class ProfileImageCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -38,25 +38,25 @@ class ProfileImageCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension ProfileImageCell{
-    func configureForEditProfileCell(user:UserModel?) {
-        editButton.hidden = false
+    func configureForEditProfileCell(_ user:UserModel?) {
+        editButton.isHidden = false
         currentUser = user
 
         if let image = currentUser?.image {
             profileImage.image = image
         }else if let image = currentUser?.profileImage{
-            profileImage.sd_setImageWithURL(NSURL(string: image) ?? NSURL())
+            profileImage.sd_setImage(with: URL(string: image) ?? URL.init(string: ""))
         }
     }
 
-    @IBAction func editAction(sender: AnyObject) {
+    @IBAction func editAction(_ sender: AnyObject) {
         UIImagePickerController.showPickerWithDelegate(self)
     }
 }
 
 //MARK:- UIImagePickerControllerDelegate
 extension ProfileImageCell:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         delegate?.dataUpdated()
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             profileImage.image = image
@@ -65,7 +65,7 @@ extension ProfileImageCell:UIImagePickerControllerDelegate, UINavigationControll
         imagePickerControllerDidCancel(picker)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController){
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        picker.dismiss(animated: true, completion: nil)
     }
 }

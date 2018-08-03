@@ -9,7 +9,7 @@
 import UIKit
 
 enum WelcomeViewCellType:Int {
-    case DetailCell, PhoneNo, Next, count
+    case detailCell, phoneNo, next, count
 }
 class WelcomeToBrio: CommonViewController {
 
@@ -26,20 +26,20 @@ class WelcomeToBrio: CommonViewController {
         super.viewDidLoad()
         self.setUpView()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitleView(titleView, LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.none)
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !NSUserDefaults.isDisclaimerWatched() {
-            dispatch_async(dispatch_get_main_queue(), {
-                if let waiverController = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.waiverViewController) as? WaiverViewController{
+        if !UserDefaults.isDisclaimerWatched() {
+            DispatchQueue.main.async(execute: {
+                if let waiverController = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.LoginStoryboard.waiverViewController) as? WaiverViewController{
                     if let navControl = UIViewController.getTopMostViewController() as? UINavigationController{
                         
                         let waiverNavController = UINavigationController.init(rootViewController: waiverController)
                         
-                        navControl.presentViewController(waiverNavController, animated: false, completion: nil);
+                        navControl.present(waiverNavController, animated: false, completion: nil);
                     }
                 }
             });
@@ -55,25 +55,25 @@ class WelcomeToBrio: CommonViewController {
 
 //MARK:- DataSource
 extension WelcomeToBrio:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return WelcomeViewCellType.count.rawValue
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let type = WelcomeViewCellType(rawValue: indexPath.row) {
             switch type {
-            case .DetailCell:
-                if let cell = tblView.dequeueReusableCellWithIdentifier(String(DetailViewCell)) as? DetailViewCell {
+            case .detailCell:
+                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: DetailViewCell.self)) as? DetailViewCell {
                     return cell
                 }
-            case .PhoneNo:
-                if let cell = tblView.dequeueReusableCellWithIdentifier(String(PhoneNoCell)) as? PhoneNoCell{
+            case .phoneNo:
+                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: PhoneNoCell.self)) as? PhoneNoCell{
                     cell.setUPCell(countryDict , phoneDict:phoneDetail)
                     cell.delegate = self
                     return cell
                 }
-            case .Next:
-                if let cell = tblView.dequeueReusableCellWithIdentifier(String(NextButtonCell)) as? NextButtonCell {
+            case .next:
+                if let cell = tblView.dequeueReusableCell(withIdentifier: String(describing: NextButtonCell.self)) as? NextButtonCell {
                     cell.delegate = self
                     return cell
                 }
@@ -87,7 +87,7 @@ extension WelcomeToBrio:UITableViewDataSource{
 
 //MARK:- CountryListDelegates
 extension WelcomeToBrio:CountryListViewControllerDelegate{
-    func selectedCountryObject(dict:NSDictionary){
+    func selectedCountryObject(_ dict:NSDictionary){
         countryDict = dict
         phoneDetail["isdCode"] = dict[normalizedISDCode_key] as? String ?? ""
         self.tblView.reloadData()
@@ -97,7 +97,7 @@ extension WelcomeToBrio:CountryListViewControllerDelegate{
 //MARK:- PhoneNoCellDelegate
 extension WelcomeToBrio:PhoneNoCellDelegate{
     func countryCodeTapped() {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.LoginStoryboard.countryList) as? CountryListViewController {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.LoginStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.LoginStoryboard.countryList) as? CountryListViewController {
             viewCont.delegate = self
             getNavigationController()?.pushViewController(viewCont, animated: true)
         }
@@ -110,7 +110,7 @@ extension WelcomeToBrio:NextButtonCellDelegate{
         if checkPhoneDetails(){
             if NetworkClass.isConnected(true) {
                 showLoader()
-                NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .POST, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
+                NetworkClass.sendRequest(URL: Constants.URLs.requestOtp, RequestType: .post, Parameters: phoneDetail , Headers: nil, CompletionHandler: {
                     (status, responseObj, error, statusCode) in
                     self.processResponse(responseObj)
                     self.hideLoader()
@@ -126,18 +126,18 @@ extension WelcomeToBrio{
         titleView.frame = CGRect(x: 0, y: 0, width: width, height:(75/235) * width)
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.estimatedRowHeight = 70
-        tblView.registerNib(UINib.init(nibName: String(DetailViewCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(DetailViewCell))
-        tblView.registerNib(UINib.init(nibName: String(NextButtonCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(NextButtonCell))
-        tblView.registerNib(UINib.init(nibName: String(PhoneNoCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(PhoneNoCell))
+        tblView.register(UINib.init(nibName: String(describing: DetailViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: DetailViewCell.self))
+        tblView.register(UINib.init(nibName: String(describing: NextButtonCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: NextButtonCell.self))
+        tblView.register(UINib.init(nibName: String(describing: PhoneNoCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: PhoneNoCell.self))
         tblView.reloadData()
 
         countryDict = [normalizedISDCode_key: "1"]
         phoneDetail["isdCode"] = countryDict?[normalizedISDCode_key] as? String ?? ""
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterOtp"{
-            if let vc = segue.destinationViewController as? EnterOtpViewController{
+            if let vc = segue.destination as? EnterOtpViewController{
                 vc.phoneDetail = phoneDetail
             }
             
@@ -149,13 +149,13 @@ extension WelcomeToBrio{
             if phoneDetail["phone"] != nil{
             }
             else{
-                UIView.showToast("Please Enter Phone Number", theme: Theme.Warning)
+                UIView.showToast("Please Enter Phone Number", theme: Theme.warning)
                 //UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Enter Phone Number", completion: nil)
                 return false
             }
         }
         else{
-            UIView.showToast("Please Select Your Country", theme: Theme.Warning)
+            UIView.showToast("Please Select Your Country", theme: Theme.warning)
          // UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "Please Select Your Country", completion: nil)
             return false
         }
@@ -165,13 +165,13 @@ extension WelcomeToBrio{
 
 //MARK:- ActionButton
 extension WelcomeToBrio{
-    func processResponse(responseObj:AnyObject?) {
+    func processResponse(_ responseObj:AnyObject?) {
         if let dict = responseObj as? NSDictionary{
             if dict["created"] as? Bool == true {
-                self.performSegueWithIdentifier("enterOtp", sender: self)
+                self.performSegue(withIdentifier: "enterOtp", sender: self)
             }
             else if dict["exists"] as? Bool == true{
-                self.performSegueWithIdentifier("enterOtp", sender: self)
+                self.performSegue(withIdentifier: "enterOtp", sender: self)
             }
             else{
                 debugPrint("some error occured")

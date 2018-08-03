@@ -22,7 +22,7 @@ class GroupsCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -33,11 +33,11 @@ class GroupsCell: UITableViewCell {
 //MARK:- Additional methods
 extension GroupsCell{
 
-    func configureForTrackMemberCell(obj:UserModel) {
+    func configureForTrackMemberCell(_ obj:UserModel) {
         placeholderImageView.image = UIImage(named: "circle-user-ic")
         circularImageView.image = nil
-        if let url = NSURL(string:obj.profileImage ?? ""){
-            circularImageView.sd_setImageWithURL(url)
+        if let url = URL(string:obj.profileImage ?? ""){
+            circularImageView.sd_setImage(with: url)
         }
         titleDescLabel.text = obj.name
         subTitleDescLabel.text = obj.userID

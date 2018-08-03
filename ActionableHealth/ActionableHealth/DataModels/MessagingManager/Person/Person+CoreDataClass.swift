@@ -10,14 +10,14 @@ import Foundation
 import CoreData
 
 //MARK:- Public Methods
-public class Person: NSManagedObject {
+open class Person: NSManagedObject {
     func getUnreadMessageCount() -> Int {
-        return messages?.filteredSetUsingPredicate(NSPredicate(format: "self.status = %@", MessageStatus.Recieved.rawValue)).count ?? 0
+        return messages?.filtered(using: NSPredicate(format: "self.status = %@", MessageStatus.Recieved.rawValue)).count ?? 0
     }
 
     func markAllAsRead() {
         
-        if let set = messages?.filteredSetUsingPredicate(NSPredicate(format: "self.status = %@", MessageStatus.Recieved.rawValue)) {
+        if let set = messages?.filtered(using: NSPredicate(format: "self.status = %@", MessageStatus.Recieved.rawValue)) {
             if let arr = Array(set) as? [Messages]{
                 for msg in arr {
                     msg.status = MessageStatus.Read.rawValue
@@ -27,7 +27,7 @@ public class Person: NSManagedObject {
     }
 
     func updateProfileImage() {
-        NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(personId ?? "")", RequestType: .GET) {
+        NetworkClass.sendRequest(URL: "\(Constants.URLs.profileImageURL)\(personId ?? "")", RequestType: .get) {
             (status, responseObj, error, statusCode) in
             if status, let imageUrl = responseObj?["profileURL"] as? String{
                 self.personImage = imageUrl
@@ -35,22 +35,22 @@ public class Person: NSManagedObject {
         }
     }
 
-    class func getPersonWith(id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Person? {
+    class func getPersonWith(_ id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Person? {
 
         if let context = contextRef{
 
             var personObj:Person?
-            let presonArr = CoreDataOperationsClass.fetchObjectsOfClassWithName(String(Person), predicate: NSPredicate(format: "personId = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Person]
+            let presonArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Person", predicate: NSPredicate(format: "personId = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [Person]
 
             if let temp = presonArr?.first{
                 personObj = temp
                 for obj in presonArr ?? [] {
                     if obj != personObj {
-                        context.deleteObject(obj)
+                        context.delete(obj)
                     }
                 }
             }else{
-                personObj = Person(entity: NSEntityDescription.entityForName(String(Person), inManagedObjectContext: context)!, insertIntoManagedObjectContext: context)
+                personObj = Person(entity: NSEntityDescription.entity(forEntityName: String(describing: Person.self), in: context)!, insertInto: context)
             }
             personObj?.personId = id
             personObj?.personName = Contact.getNameForContact(id)

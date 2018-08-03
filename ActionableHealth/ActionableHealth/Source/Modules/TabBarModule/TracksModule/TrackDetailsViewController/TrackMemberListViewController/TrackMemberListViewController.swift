@@ -21,8 +21,8 @@ class TrackMemberListViewController: CommonViewController {
         setupView()
 
     }
-    override func viewWillAppear(animated: Bool) {
-        setNavigationBarWithTitle("Members", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationBarWithTitle("Members", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,7 +35,7 @@ extension TrackMemberListViewController{
     func setupView() {
         tblVIew.estimatedRowHeight = 100
         tblVIew.rowHeight = UITableViewAutomaticDimension
-        tblVIew.registerNib(UINib(nibName: String(GroupsCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(GroupsCell))
+        tblVIew.register(UINib(nibName: String(describing: GroupsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: GroupsCell.self))
         getMembers()
     }
 
@@ -44,12 +44,12 @@ extension TrackMemberListViewController{
 
 //MARK:- UITableViewDataSource
 extension TrackMemberListViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return membersArray.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(GroupsCell)) as? GroupsCell, let obj = membersArray[indexPath.row] as? UserModel {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GroupsCell.self)) as? GroupsCell, let obj = membersArray[indexPath.row] as? UserModel {
             cell.configureForTrackMemberCell(obj)
             return cell
         }
@@ -59,10 +59,10 @@ extension TrackMemberListViewController:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension TrackMemberListViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let userId = (membersArray[indexPath.row] as? UserModel)?.userID {
-            if userId != NSUserDefaults.getUserId() {
-                dispatch_async(dispatch_get_main_queue(), {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let userId = (membersArray[indexPath.row] as? UserModel)?.userID {
+            if userId != UserDefaults.getUserId() {
+                DispatchQueue.main.async(execute: {
                     viewCont.personObj = Person.getPersonWith(userId)
                     viewCont.trackName = self.currentTemplate?.name
                     AppDelegate.getAppDelegateObject()?.saveContext()
@@ -79,7 +79,7 @@ extension TrackMemberListViewController{
     func getMembers() {
         if NetworkClass.isConnected(true), let id = currentTemplate?.trackId {
             showLoader()
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackMembers)\(id)", RequestType: .GET, CompletionHandler: {
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackMembers)\(id)", RequestType: .get, CompletionHandler: {
                 (status, responseObj, error, statusCode) in
                 if status{
                     self.processResponse(responseObj)
@@ -91,18 +91,18 @@ extension TrackMemberListViewController{
         }
     }
 
-    func processResponse(response:AnyObject?) {
+    func processResponse(_ response:AnyObject?) {
         if let arr = response as? NSArray {
             for obj in arr {
                 if let dict = obj as? [String: AnyObject] {
-                    membersArray.addObject(UserModel.getUserObject(dict))
+                    membersArray.add(UserModel.getUserObject(dict))
                 }
             }
         }
-        tblVIew.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+        tblVIew.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
 
-    func processError(error:NSError?) {
-        UIView.showToast("Something went wrong", theme: Theme.Error)
+    func processError(_ error:NSError?) {
+        UIView.showToast("Something went wrong", theme: Theme.error)
     }
 }

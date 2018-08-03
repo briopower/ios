@@ -9,22 +9,22 @@
 import UIKit
 
 class CommonMethods: NSObject {
-    class func addShadowToView(containerView:UIView) {
-        containerView.layer.shadowColor = UIColor.lightGrayColor().CGColor
+    class func addShadowToView(_ containerView:UIView) {
+        containerView.layer.shadowColor = UIColor.lightGray.cgColor
         containerView.layer.shadowOpacity = 1
         containerView.layer.shadowRadius = 1.2
         containerView.layer.shadowOffset = CGSize(width: 1, height: 1)
         containerView.clipsToBounds = false
     }
 
-    class func addShadowToTabBar(containerView:UIView?) {
-        containerView?.layer.shadowColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.7).CGColor
+    class func addShadowToTabBar(_ containerView:UIView?) {
+        containerView?.layer.shadowColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
         containerView?.layer.shadowOpacity = 1
         containerView?.layer.shadowRadius = 2
         containerView?.clipsToBounds = false
     }
 
-    class func setCornerRadius(containerView:UIView) {
+    class func setCornerRadius(_ containerView:UIView) {
         containerView.layer.cornerRadius = 1
         containerView.clipsToBounds = true
     }

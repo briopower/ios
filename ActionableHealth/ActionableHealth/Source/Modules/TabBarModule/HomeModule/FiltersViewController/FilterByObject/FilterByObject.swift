@@ -14,7 +14,7 @@ class FilterByObject: NSObject {
 
     //MARK:- Additional methods
 
-    func selectSubProperty(subProperty:SubProperties) {
+    func selectSubProperty(_ subProperty:SubProperties) {
         for obj in subProperties {
             if let prop = obj as? SubProperties {
                 if prop == subProperty {
@@ -41,7 +41,7 @@ class FilterByObject: NSObject {
                 }
             }
         }
-        return arr
+        return arr as NSArray
     }
 }
 

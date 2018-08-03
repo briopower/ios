@@ -12,7 +12,7 @@ import CoreData
 
 extension Person {
 
-    @nonobjc public override class func fetchRequest() -> NSFetchRequest {
+    @nonobjc open override class func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest(entityName: "Person");
     }
 
@@ -29,15 +29,15 @@ extension Person {
 extension Person {
 
     @objc(addMessagesObject:)
-    @NSManaged public func addToMessages(value: Messages)
+    @NSManaged public func addToMessages(_ value: Messages)
 
     @objc(removeMessagesObject:)
-    @NSManaged public func removeFromMessages(value: Messages)
+    @NSManaged public func removeFromMessages(_ value: Messages)
 
     @objc(addMessages:)
-    @NSManaged public func addToMessages(values: NSSet)
+    @NSManaged public func addToMessages(_ values: NSSet)
 
     @objc(removeMessages:)
-    @NSManaged public func removeFromMessages(values: NSSet)
+    @NSManaged public func removeFromMessages(_ values: NSSet)
 
 }

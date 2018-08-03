@@ -11,31 +11,31 @@ import UIKit
 //MARK:- ----------VNProgressHUD Class----------
 
 protocol VNProgressHUDDelegate: NSObjectProtocol{
-    func hudWasHidden(hud:VNProgreessHUD)
+    func hudWasHidden(_ hud:VNProgreessHUD)
 }
 
 //MARK:- Enums
 enum VNProgressHUDMode:Int {
     /** Progress is shown using an UIActivityIndicatorView. This is the default. */
-    case Indeterminate
+    case indeterminate
     /** Progress is shown using a round, pie-chart like, progress view. */
-    case Determinate
+    case determinate
     /** Progress is shown using a horizontal progress bar */
-    case HorizontalBar
+    case horizontalBar
     /** Progress is shown using a ring-shaped progress view. */
-    case AnnularDeterminate
+    case annularDeterminate
     /** Shows a custom view */
-    case CustomView
+    case customView
     /** Shows only labels */
-    case Text
+    case text
 }
 
 enum VNProgressHUDAnimation {
     /** Opacity animation */
-    case Fade
+    case fade
     /** Opacity + scale animation */
-    case ZoomOut
-    case ZoomIn
+    case zoomOut
+    case zoomIn
 }
 
 //MARK:- Constants
@@ -52,9 +52,9 @@ class VNProgreessHUD: UIView {
      *
      * @see VNProgreessHUDMode
      */
-    var mode:VNProgressHUDMode = .Indeterminate{
+    var mode:VNProgressHUDMode = .indeterminate{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.updateIndicator()
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -67,7 +67,7 @@ class VNProgreessHUD: UIView {
      *
      * @see VNProgressHUDAnimation
      */
-    var animationType:VNProgressHUDAnimation = .Fade
+    var animationType:VNProgressHUDAnimation = .fade
 
     /**
      * The UIView (e.g., a UIImageView) to be shown when the HUD is in VNProgressHUDMode.CustomView.
@@ -75,7 +75,7 @@ class VNProgreessHUD: UIView {
      */
     var customView:UIView?{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.updateIndicator()
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -97,7 +97,7 @@ class VNProgreessHUD: UIView {
      */
     var labelText:String? = "Please Wait..."{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.label?.text = self.labelText
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -111,7 +111,7 @@ class VNProgreessHUD: UIView {
      */
     var detailsLabelText:String = ""{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.detailsLabel?.text = self.detailsLabelText
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -124,7 +124,7 @@ class VNProgreessHUD: UIView {
      */
     var opacity:CGFloat = 0.8{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
@@ -139,7 +139,7 @@ class VNProgreessHUD: UIView {
     //MARK:- Changed
     var color:UIColor?{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
@@ -152,7 +152,7 @@ class VNProgreessHUD: UIView {
      */
     var xOffset:CGFloat = 0.0{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
@@ -164,7 +164,7 @@ class VNProgreessHUD: UIView {
      */
     var yOffset:CGFloat = 0.0{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
@@ -177,7 +177,7 @@ class VNProgreessHUD: UIView {
      */
     var margin:CGFloat = 20.0{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
@@ -190,7 +190,7 @@ class VNProgreessHUD: UIView {
      */
     var cornerRadius:CGFloat = 10.0{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
@@ -202,7 +202,7 @@ class VNProgreessHUD: UIView {
      */
     var dimBackground:Bool = false{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
             }
@@ -244,9 +244,9 @@ class VNProgreessHUD: UIView {
     /**
      * Font to be used for the main label. Set this property if the default is not adequate.
      */
-    var labelFont:UIFont = UIFont.boldSystemFontOfSize(kHUDLabelFontSize){
+    var labelFont:UIFont = UIFont.boldSystemFont(ofSize: kHUDLabelFontSize){
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.label?.font = self.labelFont
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -258,9 +258,9 @@ class VNProgreessHUD: UIView {
     /**
      * Color to be used for the main label. Set this property if the default is not adequate.
      */
-    var labelColor:UIColor = UIColor.whiteColor(){
+    var labelColor:UIColor = UIColor.white{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.label?.textColor = self.labelColor
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -271,9 +271,9 @@ class VNProgreessHUD: UIView {
     /**
      * Font to be used for the details label. Set this property if the default is not adequate.
      */
-    var detailsLabelFont:UIFont = UIFont.boldSystemFontOfSize(kHUDDetailsLabelFontSize){
+    var detailsLabelFont:UIFont = UIFont.boldSystemFont(ofSize: kHUDDetailsLabelFontSize){
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.detailsLabel?.font = self.detailsLabelFont
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -284,9 +284,9 @@ class VNProgreessHUD: UIView {
     /**
      * Color to be used for the details label. Set this property if the default is not adequate.
      */
-    var detailsLabelColor:UIColor = UIColor.whiteColor(){
+    var detailsLabelColor:UIColor = UIColor.white{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.detailsLabel?.textColor = self.detailsLabelColor
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -298,9 +298,9 @@ class VNProgreessHUD: UIView {
      * The color of the activity indicator. Defaults to [UIColor whiteColor]
      * Does nothing on pre iOS 5.
      */
-    var activityIndicatorColor:UIColor = UIColor.whiteColor(){
+    var activityIndicatorColor:UIColor = UIColor.white{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.updateIndicator()
                 self.setNeedsLayout()
                 self.setNeedsDisplay()
@@ -313,13 +313,14 @@ class VNProgreessHUD: UIView {
      */
     var progress:CGFloat = 0.0{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 let activityInd1 = self.indicator as? VNBarProgressView
                 if (activityInd1 != nil) {
                     self.indicator?.setValue(self.progress, forKey: "progress")
                 }else{
                     let activityInd2 = self.indicator as? VNRoundProgressView
                     if (activityInd2 != nil) {
+                        self.indicator?.setValue(self.progress, forKey: "progress")
                         self.indicator?.setValue(self.progress, forKey: "progress")
                     }
                 }
@@ -332,7 +333,7 @@ class VNProgreessHUD: UIView {
     /**
      * The minimum size of the HUD bezel. Defaults to CGSizeZero (no minimum size).
      */
-    var minSize:CGSize = CGSizeZero
+    var minSize:CGSize = CGSize.zero
 
     /**
      * The actual size of the HUD bezel.
@@ -348,16 +349,16 @@ class VNProgreessHUD: UIView {
 
 
     //MARK: Private Properties
-    private var indicator:UIView?
-    private var graceTimer:NSTimer?
-    private var minShowTimer:NSTimer?
-    private var showStarted:NSDate?
+    fileprivate var indicator:UIView?
+    fileprivate var graceTimer:Timer?
+    fileprivate var minShowTimer:Timer?
+    fileprivate var showStarted:Date?
 
-    private var useAnimation:Bool = false
-    private var label:UILabel?
-    private var detailsLabel:UILabel?
-    private var isFinished:Bool = false
-    private var rotationTransform:CGAffineTransform = CGAffineTransformIdentity
+    fileprivate var useAnimation:Bool = false
+    fileprivate var label:UILabel?
+    fileprivate var detailsLabel:UILabel?
+    fileprivate var isFinished:Bool = false
+    fileprivate var rotationTransform:CGAffineTransform = CGAffineTransform.identity
 
     //MARK:- LifeCycle
 
@@ -367,10 +368,10 @@ class VNProgreessHUD: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentMode = .Center
-        self.autoresizingMask = [.FlexibleTopMargin, .FlexibleBottomMargin, .FlexibleLeftMargin, .FlexibleRightMargin]
-        self.opaque = false
-        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.2)
+        self.contentMode = .center
+        self.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        self.isOpaque = false
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.2)
 
         self.alpha = 0.0
         setupLabels()
@@ -396,18 +397,18 @@ class VNProgreessHUD: UIView {
 }
 //MARK:- Additional methods
 extension VNProgreessHUD{
-    func getTextSize(text:String?, Font font:UIFont?) -> CGSize {
+    func getTextSize(_ text:String?, Font font:UIFont?) -> CGSize {
         if text == nil || font == nil || (text?.isEmpty)! {
-            return CGSizeZero
+            return CGSize.zero
         }else{
-            return (text! as NSString).sizeWithAttributes([NSFontAttributeName : font!])
+            return (text! as NSString).size(withAttributes: [NSAttributedStringKey.font : font!])
         }
     }
-    func getMultipleLineTextSize(text:String?, Font font:UIFont?, MaxSize maxSize:CGSize?, LineBreakMode lineBreak:NSLineBreakMode?) -> CGSize {
+    func getMultipleLineTextSize(_ text:String?, Font font:UIFont?, MaxSize maxSize:CGSize?, LineBreakMode lineBreak:NSLineBreakMode?) -> CGSize {
         if text == nil || font == nil || maxSize == nil || lineBreak == nil  || (text?.isEmpty)!{
-            return CGSizeZero
+            return CGSize.zero
         }else{
-            return (text! as NSString).boundingRectWithSize(maxSize!, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName : font!], context: nil).size
+            return (text! as NSString).boundingRect(with: maxSize!, options: NSStringDrawingOptions.usesLineFragmentOrigin , attributes: [NSAttributedStringKey.font : font!], context: nil).size
         }
     }
 }
@@ -425,10 +426,11 @@ extension VNProgreessHUD{
 
         // Determine the total width and height needed
         let maxWidth:CGFloat = bounds.size.width - 4 * self.margin
-        var totalSize:CGSize = CGSizeZero
+        var totalSize:CGSize = CGSize.zero
 
         var indicatorF = self.indicator?.bounds
-        indicatorF?.size.width = min(indicatorF!.size.width, maxWidth)
+        let minOfTwo = min(indicatorF!.size.width, maxWidth)
+        indicatorF?.size.width = minOfTwo
         totalSize.width = max(totalSize.width, indicatorF!.size.width)
         totalSize.height += indicatorF!.size.height
 
@@ -464,7 +466,7 @@ extension VNProgreessHUD{
             yPos += kHUDPadding * 2
         }
 
-        var labelF = CGRectZero
+        var labelF = CGRect.zero
         labelF.origin.y = yPos
         labelF.origin.x = round((bounds.size.width - labelSize.width) / 2) + xPos
         labelF.size = labelSize
@@ -475,7 +477,7 @@ extension VNProgreessHUD{
             yPos += kHUDPadding
         }
 
-        var detailsLabelF: CGRect = CGRectZero
+        var detailsLabelF: CGRect = CGRect.zero
         detailsLabelF.origin.y = yPos
         detailsLabelF.origin.x = round((bounds.size.width - detailsLabelSize.width) / 2) + xPos
         detailsLabelF.size = detailsLabelSize
@@ -500,8 +502,8 @@ extension VNProgreessHUD{
         size = totalSize
     }
 
-    override func drawRect(rect: CGRect) {
-        let context:CGContextRef = UIGraphicsGetCurrentContext()!
+    override func draw(_ rect: CGRect) {
+        let context:CGContext = UIGraphicsGetCurrentContext()!
         UIGraphicsPushContext(context)
         if dimBackground {
 
@@ -510,42 +512,49 @@ extension VNProgreessHUD{
             let gradLocations:[CGFloat] = [0.0, 1.0]
             let gradColors:[CGFloat] = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.75]
             let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNum)!
+            let gradient = CGGradient(colorSpace: colorSpace, colorComponents: gradColors, locations: gradLocations, count: gradLocationsNum)!
 
             //Gradient center
-            let gradCenter = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2)
+            let gradCenter = CGPoint(x: self.bounds.size.width/2, y: self.bounds.size.height/2)
 
             //Gradient radius
             let gradRadius = min(self.bounds.size.width , self.bounds.size.height)
 
             //Gradient draw
-            CGContextDrawRadialGradient (context, gradient, gradCenter,
-                                         0, gradCenter, gradRadius,
-                                         CGGradientDrawingOptions.DrawsAfterEndLocation)
+            context.drawRadialGradient (gradient, startCenter: gradCenter,
+                                         startRadius: 0, endCenter: gradCenter, endRadius: gradRadius,
+                                         options: CGGradientDrawingOptions.drawsAfterEndLocation)
         }
 
         // Set background rect color
         if self.color != nil {
-            CGContextSetFillColorWithColor(context, self.color!.CGColor)
+            context.setFillColor(self.color!.cgColor)
         }else {
-            CGContextSetGrayFillColor(context, 0.0, self.opacity)
+            context.setFillColor(gray: 0.0, alpha: self.opacity)
         }
 
         // Center HUD
         let allRect = self.bounds
 
         // Draw rounded HUD backgroud rect
-        let boxRect = CGRectMake(round((allRect.size.width - (size?.width ?? 0)) / 2) + self.xOffset,
-                                 round((allRect.size.height - (size?.height ?? 0)) / 2) + self.yOffset, (size?.width ?? 0), (size?.height ?? 0))
+        let boxRect = CGRect(x: round((allRect.size.width - (size?.width ?? 0)) / 2) + self.xOffset,
+                                 y: round((allRect.size.height - (size?.height ?? 0)) / 2) + self.yOffset, width: (size?.width ?? 0), height: (size?.height ?? 0))
         let radius = self.cornerRadius
-        CGContextBeginPath(context)
-        CGContextMoveToPoint(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect))
-        CGContextAddArc(context, CGRectGetMaxX(boxRect) - radius, CGRectGetMinY(boxRect) + radius, radius, 3 * CGFloat(M_PI / 2), 0, 0)
-        CGContextAddArc(context, CGRectGetMaxX(boxRect) - radius, CGRectGetMaxY(boxRect) - radius, radius, 0, CGFloat(M_PI / 2), 0)
-        CGContextAddArc(context, CGRectGetMinX(boxRect) + radius, CGRectGetMaxY(boxRect) - radius, radius, CGFloat(M_PI / 2), CGFloat(M_PI), 0)
-        CGContextAddArc(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect) + radius, radius, CGFloat(M_PI), 3 * CGFloat(M_PI / 2), 0)
-        CGContextClosePath(context)
-        CGContextFillPath(context)
+        context.beginPath()
+        context.move(to: CGPoint(x: boxRect.minX + radius, y: boxRect.minY))
+        //CGContextAddArc(context, boxRect.maxX - radius, boxRect.minY + radius, radius, 3 * CGFloat(M_PI / 2), 0, 0)
+        //CGContextAddArc(context, boxRect.maxX - radius, boxRect.maxY - radius, radius, 0, CGFloat(M_PI / 2), 0)
+        //CGContextAddArc(context, boxRect.minX + radius, boxRect.maxY - radius, radius, CGFloat(M_PI / 2), CGFloat(M_PI), 0)
+        //CGContextAddArc(context, boxRect.minX + radius, boxRect.minY + radius, radius, CGFloat(M_PI), 3 * CGFloat(M_PI / 2), 0)
+        context.addArc(center: CGPoint(x: boxRect.maxX - radius, y: boxRect.minY + radius), radius: radius, startAngle: 3 * CGFloat(M_PI / 2), endAngle: 0, clockwise: false)
+        
+        context.addArc(center: CGPoint(x: boxRect.maxX - radius, y: boxRect.maxY - radius), radius: radius, startAngle: 0, endAngle: CGFloat(M_PI / 2), clockwise: false)
+        
+        context.addArc(center: CGPoint(x: boxRect.minX + radius, y: boxRect.maxY - radius), radius: radius, startAngle: CGFloat(M_PI / 2), endAngle: CGFloat(M_PI), clockwise: false)
+        
+        context.addArc(center: CGPoint(x: boxRect.minX + radius, y: boxRect.minY + radius), radius: radius, startAngle: CGFloat(M_PI), endAngle: 3 * CGFloat(M_PI / 2), clockwise: false)
+        context.closePath()
+        context.fillPath()
 
         UIGraphicsPopContext()
     }
@@ -557,9 +566,9 @@ extension VNProgreessHUD{
     func setupLabels() {
         label = UILabel(frame: self.bounds)
         label!.adjustsFontSizeToFitWidth = false
-        label!.textAlignment = .Center
-        label!.opaque = false
-        label!.backgroundColor = UIColor.clearColor()
+        label!.textAlignment = .center
+        label!.isOpaque = false
+        label!.backgroundColor = UIColor.clear
         label!.textColor = self.labelColor
         label!.font = self.labelFont
         label!.text = self.labelText
@@ -568,9 +577,9 @@ extension VNProgreessHUD{
         detailsLabel = UILabel(frame: self.bounds)
         detailsLabel!.font = self.detailsLabelFont
         detailsLabel!.adjustsFontSizeToFitWidth = false
-        detailsLabel!.textAlignment = .Center
-        detailsLabel!.opaque = false
-        detailsLabel!.backgroundColor = UIColor.clearColor()
+        detailsLabel!.textAlignment = .center
+        detailsLabel!.isOpaque = false
+        detailsLabel!.backgroundColor = UIColor.clear
         detailsLabel!.textColor = self.detailsLabelColor
         detailsLabel!.numberOfLines = 0
         detailsLabel!.text = self.detailsLabelText
@@ -581,42 +590,42 @@ extension VNProgreessHUD{
         var isActivityIndicator:Bool = false
         var isRoundIndicator:Bool = false
         if indicator != nil {
-            isActivityIndicator = indicator!.isKindOfClass(UIActivityIndicatorView)
-            isRoundIndicator = indicator!.isKindOfClass(VNRoundProgressView)
+            isActivityIndicator = indicator!.isKind(of: UIActivityIndicatorView.self)
+            isRoundIndicator = indicator!.isKind(of: VNRoundProgressView.self)
         }
         switch mode {
-        case .Indeterminate:
+        case .indeterminate:
             if !isActivityIndicator {
                 //update to Indeterminate indicator
                 indicator?.removeFromSuperview()
-                self.indicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+                self.indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
                 (indicator as! UIActivityIndicatorView).startAnimating()
                 self.addSubview(indicator!)
 
             }
             (indicator as! UIActivityIndicatorView).color = self.activityIndicatorColor
-        case .HorizontalBar:
+        case .horizontalBar:
             // Update to bar HorizontalBar indicator
             indicator?.removeFromSuperview()
             self.indicator = VNBarProgressView()
             (indicator as! VNBarProgressView).progressColor  = self.activityIndicatorColor
             self.addSubview(indicator!)
-        case .Determinate, .AnnularDeterminate:
+        case .determinate, .annularDeterminate:
             if !isRoundIndicator {
                 // Update to determinante indicator
                 indicator?.removeFromSuperview()
                 self.indicator = VNRoundProgressView()
                 self.addSubview(indicator!)
             }
-            if mode == .AnnularDeterminate {
+            if mode == .annularDeterminate {
                 (indicator as! VNRoundProgressView).annular = true
                 (indicator as! VNRoundProgressView).progressTintColor  = self.activityIndicatorColor
-                (indicator as! VNRoundProgressView).backgroundTintColor = self.activityIndicatorColor.colorWithAlphaComponent(0.1)
+                (indicator as! VNRoundProgressView).backgroundTintColor = self.activityIndicatorColor.withAlphaComponent(0.1)
             }else{
                 (indicator as! VNRoundProgressView).progressTintColor  = self.activityIndicatorColor
             }
 
-        case .CustomView:
+        case .customView:
             if customView != indicator {
                 indicator?.removeFromSuperview()
                 self.indicator = customView
@@ -624,13 +633,13 @@ extension VNProgreessHUD{
                     self.addSubview(indicator!)
                 }
             }
-        case .Text:
+        case .text:
             indicator?.removeFromSuperview()
             self.indicator = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         }
     }
 
-    func statusBarOrientationDidChange(notification:NSNotificationCenter) {
+    @objc func statusBarOrientationDidChange(_ notification:NotificationCenter) {
         #if !TARGET_OS_TV
             if self.superview != nil {
                 updateForCurrentOrientation(Animated: true)
@@ -652,15 +661,15 @@ extension VNProgreessHUD{
 
     func registerForNotifications() {
         #if !TARGET_OS_TV
-            let notificationCenter:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-            notificationCenter.addObserver(self, selector: #selector(self.statusBarOrientationDidChange(_:)), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+            let notificationCenter:NotificationCenter = NotificationCenter.default
+            notificationCenter.addObserver(self, selector: #selector(self.statusBarOrientationDidChange(_:)), name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation, object: nil)
         #endif
     }
 
     func unregisterFromNotifications() {
         #if !TARGET_OS_TV
-            let notificationCenter:NSNotificationCenter = NSNotificationCenter.defaultCenter()
-            notificationCenter.removeObserver(self, name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+            let notificationCenter:NotificationCenter = NotificationCenter.default
+            notificationCenter.removeObserver(self, name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation, object: nil)
         #endif
     }
 }
@@ -668,17 +677,17 @@ extension VNProgreessHUD{
 //MARK:- Private show hide methods methods
 extension VNProgreessHUD{
 
-    func showUsingAnimation(animated:Bool){
+    func showUsingAnimation(_ animated:Bool){
         // Cancel any scheduled hideDelayed: calls
-        NSObject.cancelPreviousPerformRequestsWithTarget(self)
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
         self.setNeedsDisplay()
 
-        if animated && animationType == .ZoomIn{
-            self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5, 0.5))
-        }else if animated && animationType == .ZoomOut{
-            self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5, 1.5))
+        if animated && animationType == .zoomIn{
+            self.transform = rotationTransform.concatenating(CGAffineTransform(scaleX: 0.5, y: 0.5))
+        }else if animated && animationType == .zoomOut{
+            self.transform = rotationTransform.concatenating(CGAffineTransform(scaleX: 1.5, y: 1.5))
         }
-        self.showStarted = NSDate()
+        self.showStarted = Date()
 
         //Fade in
         if animated {
@@ -686,7 +695,7 @@ extension VNProgreessHUD{
             UIView.setAnimationDuration(0.30)
             self.alpha = 1.0
 
-            if animationType == .ZoomIn || animationType == .ZoomOut {
+            if animationType == .zoomIn || animationType == .zoomOut {
                 self.transform = rotationTransform
             }
 
@@ -697,18 +706,18 @@ extension VNProgreessHUD{
         }
     }
 
-    func hideUsingAnimation(animaed:Bool){
+    func hideUsingAnimation(_ animaed:Bool){
 
         //Fade Out
         if  animaed && showStarted != nil {
             UIView.beginAnimations(nil, context: nil)
             UIView.setAnimationDuration(0.30)
             UIView.setAnimationDelegate(self)
-            UIView.setAnimationDidStopSelector(#selector(self.animationFinished))
-            if animationType == .ZoomIn{
-                self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(1.5, 1.5))
-            }else if animationType == .ZoomOut{
-                self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5, 0.5))
+            UIView.setAnimationDidStop(#selector(self.animationFinished))
+            if animationType == .zoomIn{
+                self.transform = rotationTransform.concatenating(CGAffineTransform(scaleX: 1.5, y: 1.5))
+            }else if animationType == .zoomOut{
+                self.transform = rotationTransform.concatenating(CGAffineTransform(scaleX: 0.5, y: 0.5))
             }
             // 0.02 prevents the hud from passing through touches during the animation the hud will get completely hidden
             // in the animation finished method
@@ -717,8 +726,8 @@ extension VNProgreessHUD{
         }
     }
 
-    func animationFinished() {
-        NSObject.cancelPreviousPerformRequestsWithTarget(self)
+    @objc func animationFinished() {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
         isFinished = true
         self.alpha = 0.0
         if removeFromSuperViewOnHide {
@@ -731,14 +740,14 @@ extension VNProgreessHUD{
 //MARK:- Timer callback methods
 extension VNProgreessHUD{
 
-    func handleGraceTimer(theTimer:NSTimer) {
+    @objc func handleGraceTimer(_ theTimer:Timer) {
         // Show the HUD only if the task is still running
         if taskInProgress {
             self.showUsingAnimation(useAnimation)
         }
     }
 
-    func handleMinShowTimer(theTimer:NSTimer) {
+    @objc func handleMinShowTimer(_ theTimer:Timer) {
         self.hideUsingAnimation(useAnimation)
     }
 }
@@ -746,13 +755,13 @@ extension VNProgreessHUD{
 //MARK:- Public show hide methods methods
 extension VNProgreessHUD{
 
-    func show(animated:Bool){
-        dispatch_async(dispatch_get_main_queue()) {
+    func show(_ animated:Bool){
+        DispatchQueue.main.async {
             self.useAnimation = animated
             // If the grace time is set postpone the HUD display
             if self.graceTime > 0.0{
-                let newGraceTimer:NSTimer = NSTimer(timeInterval: self.graceTime, target: self, selector: #selector(self.handleGraceTimer(_:)), userInfo: nil , repeats: false)
-                NSRunLoop.currentRunLoop().addTimer(newGraceTimer, forMode: NSRunLoopCommonModes)
+                let newGraceTimer:Timer = Timer(timeInterval: self.graceTime, target: self, selector: #selector(self.handleGraceTimer(_:)), userInfo: nil , repeats: false)
+                RunLoop.current.add(newGraceTimer, forMode: RunLoopMode.commonModes)
                 self.graceTimer = newGraceTimer
             }
                 // ... otherwise show the HUD imediately
@@ -762,15 +771,15 @@ extension VNProgreessHUD{
         }
     }
 
-    func hide(animated:Bool){
-        dispatch_async(dispatch_get_main_queue()) {
+    func hide(_ animated:Bool){
+        DispatchQueue.main.async {
             self.useAnimation = animated
             // If the minShow time is set, calculate how long the hud was shown,
             // and pospone the hiding operation if necessary
             if self.minShowTime > 0.0 && self.showStarted != nil{
-                let inter = NSDate().timeIntervalSinceDate(self.showStarted!)
+                let inter = Date().timeIntervalSince(self.showStarted!)
                 if inter < self.minShowTime{
-                    self.minShowTimer = NSTimer.scheduledTimerWithTimeInterval(self.minShowTime - inter, target: self, selector: #selector(self.handleMinShowTimer(_:)), userInfo: nil, repeats: false)
+                    self.minShowTimer = Timer.scheduledTimer(timeInterval: self.minShowTime - inter, target: self, selector: #selector(self.handleMinShowTimer(_:)), userInfo: nil, repeats: false)
                     return
                 }
             }
@@ -779,11 +788,11 @@ extension VNProgreessHUD{
         }
     }
 
-    func hide(animated:Bool, AfterDelay delay:NSTimeInterval){
-        self.performSelector(#selector(self.hideDelayed(_:)), withObject: animated, afterDelay: delay)
+    func hide(_ animated:Bool, AfterDelay delay:TimeInterval){
+        self.perform(#selector(self.hideDelayed(_:)), with: animated, afterDelay: delay)
     }
 
-    func hideDelayed(animated:Bool) {
+    @objc func hideDelayed(_ animated:Bool) {
         self.hide(animated)
     }
 }
@@ -791,7 +800,7 @@ extension VNProgreessHUD{
 //MARK:- Class Methods
 extension VNProgreessHUD{
 
-    class func showHUDAddedToView(view:UIView, Animated animated:Bool) -> VNProgreessHUD {
+    class func showHUDAddedToView(_ view:UIView, Animated animated:Bool) -> VNProgreessHUD {
         if let hud = allHUDsForView(view).firstObject as? VNProgreessHUD {
             return hud
 
@@ -804,7 +813,7 @@ extension VNProgreessHUD{
         }
     }
 
-    class func hideHUDForView(view:UIView, Animated animated:Bool) -> Bool {
+    class func hideHUDForView(_ view:UIView, Animated animated:Bool) -> Bool {
         let hud = self.hudForView(view)
 
         if hud != nil {
@@ -815,7 +824,7 @@ extension VNProgreessHUD{
         return false
     }
 
-    class func hideAllHudsFromView(view:UIView, Animated animated:Bool) -> Int {
+    class func hideAllHudsFromView(_ view:UIView, Animated animated:Bool) -> Int {
 
         let huds = self.allHUDsForView(view)
 
@@ -826,22 +835,22 @@ extension VNProgreessHUD{
         return huds.count
     }
 
-    class func hudForView(view:UIView) -> AnyObject? {
+    class func hudForView(_ view:UIView) -> AnyObject? {
         let subViewEnum = (view.subviews as NSArray).reverseObjectEnumerator()
         for view in subViewEnum {
-            if view.isKindOfClass(self) {
+            if (view as AnyObject).isKind(of: self) {
                 return view as! VNProgreessHUD
             }
         }
         return nil
     }
 
-    class func allHUDsForView(view:UIView)-> NSArray {
+    class func allHUDsForView(_ view:UIView)-> NSArray {
         let huds:NSMutableArray = []
         let subViews = view.subviews
         for view in subViews {
-            if view.isKindOfClass(self) {
-                huds.addObject(view)
+            if view.isKind(of: self) {
+                huds.add(view)
             }
         }
         return huds
@@ -858,7 +867,7 @@ class VNRoundProgressView: UIView {
      */
     var progress:CGFloat = 0.0{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -868,9 +877,9 @@ class VNRoundProgressView: UIView {
      * Indicator progress color.
      * Defaults to white [UIColor whiteColor]
      */
-    var progressTintColor:UIColor = UIColor.whiteColor(){
+    var progressTintColor:UIColor = UIColor.white{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -882,7 +891,7 @@ class VNRoundProgressView: UIView {
      */
     var backgroundTintColor:UIColor = UIColor(white: 1.0, alpha: 0.1){
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -893,7 +902,7 @@ class VNRoundProgressView: UIView {
      */
     var annular:Bool = false{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -906,8 +915,8 @@ class VNRoundProgressView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
-        self.opaque = false
+        self.backgroundColor = UIColor.clear
+        self.isOpaque = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -917,9 +926,9 @@ class VNRoundProgressView: UIView {
 
 //MARK:- Drawing Methods
 extension VNRoundProgressView{
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let allRect = self.bounds
-        let circleRect = CGRectInset(allRect, 2.0, 2.0)
+        let circleRect = allRect.insetBy(dx: 2.0, dy: 2.0)
         let context = UIGraphicsGetCurrentContext()!
 
         if self.annular {
@@ -927,30 +936,30 @@ extension VNRoundProgressView{
             let lineWidth:CGFloat = 2.0
             let processBackgroundPath = UIBezierPath()
             processBackgroundPath.lineWidth = lineWidth
-            processBackgroundPath.lineCapStyle = .Butt
+            processBackgroundPath.lineCapStyle = .butt
             let center:CGPoint = CGPoint(x: self.bounds.size.width/2 , y: self.bounds.size.height/2)
             let radius:CGFloat = (self.bounds.size.width - lineWidth)/2
             let startAngle:CGFloat = -CGFloat(M_PI/2) // 90 degrees
             var endAngle = (2 * CGFloat(M_PI)) + startAngle
-            processBackgroundPath.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            processBackgroundPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             self.backgroundTintColor.set()
             processBackgroundPath.stroke()
 
             //Draw progress
             let processPath = UIBezierPath()
-            processPath.lineCapStyle = .Square
+            processPath.lineCapStyle = .square
             processPath.lineWidth = lineWidth
             endAngle = (self.progress * 2 * CGFloat(M_PI)) + startAngle
-            processPath.addArcWithCenter(center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+            processPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
             self.progressTintColor.set()
             processPath.stroke()
         }else{
             // Draw background
             self.progressTintColor.setStroke()
             self.backgroundTintColor.setFill()
-            CGContextSetLineWidth(context, 2.0)
-            CGContextFillEllipseInRect(context, circleRect)
-            CGContextStrokeEllipseInRect(context, circleRect)
+            context.setLineWidth(2.0)
+            context.fillEllipse(in: circleRect)
+            context.strokeEllipse(in: circleRect)
 
             //Draw progress
             let center = CGPoint(x: allRect.size.width/2, y: allRect.size.height/2)
@@ -958,10 +967,11 @@ extension VNRoundProgressView{
             let startAngle:CGFloat = -CGFloat(M_PI/2) // 90 degrees
             let endAngle = (self.progress * 2 * CGFloat(M_PI)) + startAngle
             self.progressTintColor.setFill()
-            CGContextMoveToPoint(context, center.x, center.y)
-            CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0)
-            CGContextClosePath(context)
-            CGContextFillPath(context)
+            context.move(to: CGPoint(x: center.x, y: center.y))
+            //CGContextAddArc(context, center.x, center.y, radius, startAngle, endAngle, 0)
+            context.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+            context.closePath()
+            context.fillPath()
         }
     }
 }
@@ -976,7 +986,7 @@ class VNBarProgressView: UIView {
      */
     var progress:CGFloat = 0.0{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -986,9 +996,9 @@ class VNBarProgressView: UIView {
      * Bar border line color.
      * Defaults to white [UIColor whiteColor].
      */
-    var lineColor:UIColor = UIColor.whiteColor(){
+    var lineColor:UIColor = UIColor.white{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -998,9 +1008,9 @@ class VNBarProgressView: UIView {
      * Bar background color.
      * Defaults to clear [UIColor clearColor]
      */
-    var progressRemainingColor = UIColor.clearColor(){
+    var progressRemainingColor = UIColor.clear{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -1010,9 +1020,9 @@ class VNBarProgressView: UIView {
      * Bar progress color.
      * Defaults to white [UIColor whiteColor].
      */
-    var progressColor = UIColor.whiteColor(){
+    var progressColor = UIColor.white{
         didSet {
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.setNeedsDisplay()
             }
         }
@@ -1025,8 +1035,8 @@ class VNBarProgressView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
-        self.opaque = false
+        self.backgroundColor = UIColor.clear
+        self.isOpaque = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -1036,90 +1046,115 @@ class VNBarProgressView: UIView {
 
 //MARK:- Drawing Methods
 extension VNBarProgressView{
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
 
         let context = UIGraphicsGetCurrentContext()!
-        CGContextSetLineWidth(context, 2)
-        CGContextSetStrokeColorWithColor(context,self.lineColor.CGColor)
-        CGContextSetFillColorWithColor(context,self.progressRemainingColor.CGColor)
+        context.setLineWidth(2)
+        context.setStrokeColor(self.lineColor.cgColor)
+        context.setFillColor(self.progressRemainingColor.cgColor)
 
         // Draw background
         var radius:CGFloat = (rect.size.height / 2) - 2
-        CGContextMoveToPoint(context, 2, rect.size.height/2)
-        CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
-        CGContextAddLineToPoint(context, rect.size.width - radius - 2, 2)
-        CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
-        CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
-        CGContextAddLineToPoint(context, radius + 2, rect.size.height - 2)
-        CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
-        CGContextFillPath(context)
+        context.move(to: CGPoint(x: 2, y: rect.size.height/2))
+        //CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: 2, y: 2), tangent2End: CGPoint.init(x: radius + 2, y: 2), radius: radius)
+        context.addLine(to: CGPoint(x: rect.size.width - radius - 2, y: 2))
+        //CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: rect.size.width - 2, y: 2), tangent2End: CGPoint.init(x: rect.size.width - 2, y: rect.size.height / 2), radius: radius)
+        //CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: rect.size.width - 2, y: rect.size.height - 2), tangent2End: CGPoint.init(x: rect.size.width - radius - 2, y: rect.size.height - 2), radius: radius)
+        context.addLine(to: CGPoint(x: radius + 2, y: rect.size.height - 2))
+        //CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: 2, y: rect.size.height - 2), tangent2End: CGPoint.init(x: 2, y: rect.size.height/2), radius: radius)
+        context.fillPath()
 
         // Draw border
-        CGContextMoveToPoint(context, 2, rect.size.height/2)
-        CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
-        CGContextAddLineToPoint(context, rect.size.width - radius - 2, 2)
-        CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
-        CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
-        CGContextAddLineToPoint(context, radius + 2, rect.size.height - 2)
-        CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
-        CGContextStrokePath(context)
+        context.move(to: CGPoint(x: 2, y: rect.size.height/2))
+        //CGContextAddArcToPoint(context, 2, 2, radius + 2, 2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: 2, y: 2), tangent2End: CGPoint.init(x: radius + 2, y: 2), radius: radius)
+        context.addLine(to: CGPoint(x: rect.size.width - radius - 2, y: 2))
+        //CGContextAddArcToPoint(context, rect.size.width - 2, 2, rect.size.width - 2, rect.size.height / 2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: rect.size.width - 2, y: 2), tangent2End: CGPoint.init(x: rect.size.width - 2, y: rect.size.height / 2), radius: radius)
+        
+        //CGContextAddArcToPoint(context, rect.size.width - 2, rect.size.height - 2, rect.size.width - radius - 2, rect.size.height - 2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: rect.size.width - 2, y: rect.size.height - 2), tangent2End: CGPoint.init(x: rect.size.width - radius - 2, y: rect.size.height - 2), radius: radius)
+        context.addLine(to: CGPoint(x: radius + 2, y: rect.size.height - 2))
+        //CGContextAddArcToPoint(context, 2, rect.size.height - 2, 2, rect.size.height/2, radius)
+        context.addArc(tangent1End: CGPoint.init(x: 2, y: rect.size.height - 2), tangent2End: CGPoint.init(x: 2, y: rect.size.height/2), radius: radius)
+        
+        context.strokePath()
 
-        CGContextSetFillColorWithColor(context, self.progressColor.CGColor)
+        context.setFillColor(self.progressColor.cgColor)
         radius = radius - 2
         let amount:CGFloat = self.progress * rect.size.width
 
         // Progress in the middle area
         if amount >= radius + 4 && amount <= (rect.size.width - radius - 4) {
-            CGContextMoveToPoint(context, 4, rect.size.height/2)
-            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
-            CGContextAddLineToPoint(context, amount, 4)
-            CGContextAddLineToPoint(context, amount, radius + 4)
+            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+            //CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
+            context.addArc(tangent1End: CGPoint.init(x: 4, y: 4), tangent2End: CGPoint.init(x: radius + 4, y: 4), radius: radius)
+            context.addLine(to: CGPoint(x: amount, y: 4))
+            context.addLine(to: CGPoint(x: amount, y: radius + 4))
 
-            CGContextMoveToPoint(context, 4, rect.size.height/2)
-            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
-            CGContextAddLineToPoint(context, amount, rect.size.height - 4)
-            CGContextAddLineToPoint(context, amount, radius + 4)
+            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+            //CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
+            context.addArc(tangent1End: CGPoint.init(x: 4, y: rect.size.height - 4), tangent2End: CGPoint.init(x: radius + 4, y: rect.size.height - 4), radius: radius)
+            context.addLine(to: CGPoint(x: amount, y: rect.size.height - 4))
+            context.addLine(to: CGPoint(x: amount, y: radius + 4))
 
-            CGContextFillPath(context)
+            context.fillPath()
         }
             // Progress in the right arc
         else if amount > radius + 4 {
             let x:CGFloat = amount - (rect.size.width - radius - 4)
 
-            CGContextMoveToPoint(context, 4, rect.size.height/2)
-            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
-            CGContextAddLineToPoint(context, rect.size.width - radius - 4, 4)
+            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+            //CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
+            context.addArc(tangent1End: CGPoint.init(x: 4, y: 4), tangent2End: CGPoint.init(x: radius + 4, y: 4), radius: radius)
+            context.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: 4))
             var angle:CGFloat = -acos(x/radius)
-            if isnan(angle){
+//            if isnan(angle){
+//                angle = 0
+//            }
+            if angle.isNaN{
                 angle = 0
             }
-            CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, CGFloat(M_PI), angle, 0)
-            CGContextAddLineToPoint(context, amount, rect.size.height/2)
+            //CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, CGFloat(M_PI), angle, 0)
+            context.addArc(center: CGPoint.init(x: rect.size.width - radius - 4, y: rect.size.height/2), radius: radius, startAngle: CGFloat(M_PI), endAngle: angle, clockwise: false)
+            context.addLine(to: CGPoint(x: amount, y: rect.size.height/2))
 
-            CGContextMoveToPoint(context, 4, rect.size.height/2)
-            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
-            CGContextAddLineToPoint(context, rect.size.width - radius - 4, rect.size.height - 4)
+            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+            //CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
+            context.addArc(tangent1End: CGPoint.init(x: 4, y: rect.size.height - 4), tangent2End: CGPoint.init(x: radius + 4, y: rect.size.height - 4), radius: radius)
+            context.addLine(to: CGPoint(x: rect.size.width - radius - 4, y: rect.size.height - 4))
             angle = acos(x/radius)
-            if (isnan(angle))
+//            if (isnan(angle))
+//            {
+//                angle = 0
+//            }
+            if angle.isNaN
             {
                 angle = 0
             }
-            CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, -CGFloat(M_PI), angle, 1)
-            CGContextAddLineToPoint(context, amount, rect.size.height/2)
+            //CGContextAddArc(context, rect.size.width - radius - 4, rect.size.height/2, radius, -CGFloat(M_PI), angle, 1)
+            context.addArc(center: CGPoint.init(x: rect.size.width - radius - 4, y: rect.size.height/2), radius: radius, startAngle: -CGFloat(M_PI), endAngle: angle, clockwise: true)
+            context.addLine(to: CGPoint(x: amount, y: rect.size.height/2))
 
-            CGContextFillPath(context)
+            context.fillPath()
         }
             // Progress is in the left arc
         else if amount < radius + 4 && amount > 0 {
-            CGContextMoveToPoint(context, 4, rect.size.height/2)
-            CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
-            CGContextAddLineToPoint(context, radius + 4, rect.size.height/2)
+            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+            //CGContextAddArcToPoint(context, 4, 4, radius + 4, 4, radius)
+            context.addArc(tangent1End: CGPoint.init(x: 4, y: 4), tangent2End: CGPoint.init(x: radius + 4, y: 4), radius: radius)
+            context.addLine(to: CGPoint(x: radius + 4, y: rect.size.height/2))
 
-            CGContextMoveToPoint(context, 4, rect.size.height/2)
-            CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
-            CGContextAddLineToPoint(context, radius + 4, rect.size.height/2)
+            context.move(to: CGPoint(x: 4, y: rect.size.height/2))
+            //CGContextAddArcToPoint(context, 4, rect.size.height - 4, radius + 4, rect.size.height - 4, radius)
+            context.addArc(tangent1End: CGPoint.init(x: 4, y: rect.size.height - 4), tangent2End: CGPoint.init(x: radius + 4, y: rect.size.height - 4), radius: radius)
+            context.addLine(to: CGPoint(x: radius + 4, y: rect.size.height/2))
 
-            CGContextFillPath(context)
+            context.fillPath()
         }
 
     }

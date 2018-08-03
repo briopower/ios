@@ -21,7 +21,7 @@ class SearchByIdHeader: UITableViewHeaderFooterView {
         // Initialization code
     }
 
-    @IBAction func buttonAction(sender: AnyObject) {
+    @IBAction func buttonAction(_ sender: AnyObject) {
         delegate?.searchTapped()
     }
 }

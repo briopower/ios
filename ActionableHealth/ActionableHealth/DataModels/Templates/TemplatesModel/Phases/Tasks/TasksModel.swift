@@ -36,26 +36,26 @@ class TasksModel: NSObject {
 //MARK:- Additional methods
 extension TasksModel{
 
-    func updateRating(response:AnyObject?) {
+    func updateRating(_ response:AnyObject?) {
         if let ratingVal  = response?["rating"] as? String {
             rating = Double(ratingVal) ?? 0.0
         }
     }
 
-    class func getDictForRating(key:String, rating:CGFloat) -> [String : AnyObject] {
+    class func getDictForRating(_ key:String, rating:CGFloat) -> [String : AnyObject] {
         let val = Double(Int(rating * 10))
-        return ["key":key, "rating":"\(Double(val/10))"];
+        return ["key":key as AnyObject, "rating":"\(Double(val/10))" as AnyObject];
     }
 
-    class func getDictForStatus(key:String, status:String) -> [String : AnyObject] {
-        return ["key":key, "status":status];
+    class func getDictForStatus(_ key:String, status:String) -> [String : AnyObject] {
+        return ["key":key as AnyObject, "status":status as AnyObject];
     }
-    class func getDictForProgress(key:String, progress:String) -> [String : AnyObject] {
-        return ["key":key, "progress":progress];
+    class func getDictForProgress(_ key:String, progress:String) -> [String : AnyObject] {
+        return ["key":key as AnyObject, "progress":progress as AnyObject];
     }
 
 
-    class func getTasksUsingObj(dict:AnyObject) -> TasksModel {
+    class func getTasksUsingObj(_ dict:AnyObject) -> TasksModel {
         let model = TasksModel()
         model.taskId = dict["id"] as? String
         model.postIds = dict["postIds"] as? [Int] ?? []
@@ -78,12 +78,12 @@ extension TasksModel{
         return model
     }
 
-    class func addResources(dict:AnyObject, toModel:TasksModel) {
+    class func addResources(_ dict:AnyObject, toModel:TasksModel) {
         toModel.resources = NSMutableArray()
         if let arr = dict["resources"] as? NSArray{
             for resourceObject in arr {
                 if let resourceDict = resourceObject as? [String:AnyObject]{
-                    toModel.resources.addObject(Resources.getResourceUsingObj(resourceDict))
+                    toModel.resources.add(Resources.getResourceUsingObj(resourceDict as AnyObject))
                 }
             }
         }

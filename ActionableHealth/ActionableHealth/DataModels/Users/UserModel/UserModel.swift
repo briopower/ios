@@ -52,7 +52,7 @@ extension UserModel{
         var dict:[String : String] = [:]
         dict["newPassword"] = self.password
         dict["oldPassword"] = self.oldPassword
-        if let userDict = NSUserDefaults.getUser() as? [String : AnyObject]  {
+        if let userDict = UserDefaults.getUser() as? [String : AnyObject]  {
             dict["userId"] = userDict["email"] as? String
         }
         return dict
@@ -60,17 +60,17 @@ extension UserModel{
 
     func getUpdateProfileDictionary() -> [String : AnyObject] {
         var dict:[String : AnyObject] = [:]
-        dict["enableNotifications"] = enableNotifications
-        dict["email"] = email
-        dict["firstName"] = firstName
-        dict["hobbies"] = hobbies
-        dict["lastName"] = lastName
-        dict["phone"] = phoneNumber?.getValidObject() ?? userID ?? ""
-        dict["userId"] = userID
+        dict["enableNotifications"] = enableNotifications as AnyObject?
+        dict["email"] = email as AnyObject?
+        dict["firstName"] = firstName as AnyObject?
+        dict["hobbies"] = hobbies as AnyObject?
+        dict["lastName"] = lastName as AnyObject?
+        dict["phone"] = phoneNumber?.getValidObject() as AnyObject?? ?? userID as AnyObject?? ?? "" as AnyObject?
+        dict["userId"] = userID as AnyObject?
         return dict
     }
 
-    class func getUserObject(dict:[String : AnyObject]) -> UserModel {
+    class func getUserObject(_ dict:[String : AnyObject]) -> UserModel {
         let model = UserModel()
         model.id = dict["id"] as? String
         model.email = dict["email"] as? String
@@ -96,7 +96,7 @@ extension UserModel{
 
     class func getCurrentUser() -> UserModel {
         let model = UserModel()
-        if let userDict = NSUserDefaults.getUser() as? [String : AnyObject] {
+        if let userDict = UserDefaults.getUser() as? [String : AnyObject] {
             let dict = userDict["user"] as? [String : AnyObject] ?? userDict
             model.id = dict["id"] as? String
             model.email = dict["email"] as? String

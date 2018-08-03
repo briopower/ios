@@ -19,9 +19,9 @@ class SettingsViewController: CommonViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle("Settings", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle("Settings", LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.none)
         settingsTblView.reloadData()
     }
 
@@ -36,8 +36,8 @@ extension SettingsViewController{
     func setupView() {
         settingsTblView.estimatedRowHeight = 200
         settingsTblView.rowHeight = UITableViewAutomaticDimension
-        settingsTblView.registerNib(UINib(nibName: String(SettingsViewCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SettingsViewCell))
-        settingsTblView.registerNib(UINib(nibName: String(SeparatorCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(SeparatorCell))
+        settingsTblView.register(UINib(nibName: String(describing: SettingsViewCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SettingsViewCell.self))
+        settingsTblView.register(UINib(nibName: String(describing: SeparatorCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: SeparatorCell.self))
         settingsTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
 
     }
@@ -45,20 +45,20 @@ extension SettingsViewController{
 
 //MARK:- UITableViewDataSource
 extension SettingsViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SettingsCellType.Count.rawValue
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SettingsCellType.count.rawValue
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if let type = SettingsCellType(rawValue: indexPath.row) {
             switch type {
-            case .Separator1:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(SeparatorCell)) as? SeparatorCell {
+            case .separator1:
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SeparatorCell.self)) as? SeparatorCell {
                     return cell
                 }
             default:
-                if let cell = tableView.dequeueReusableCellWithIdentifier(String(SettingsViewCell)) as? SettingsViewCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingsViewCell.self)) as? SettingsViewCell {
                     cell.configureCellForType(type)
                     return cell
                 }
@@ -70,27 +70,27 @@ extension SettingsViewController:UITableViewDataSource{
 
 //MARK:- UITableViewDelegate
 extension SettingsViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let type = SettingsCellType(rawValue: indexPath.row) {
             switch type {
-            case .Edit_Profile:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
-                    viewCont.type = .EditProfile
+            case .edit_Profile:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
+                    viewCont.type = .editProfile
                     getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
-            case .Terms_Conditions:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.termsAndConditionsView) as? TermsAndConditionsViewController {
+            case .terms_Conditions:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.SettingsStoryboard.termsAndConditionsView) as? TermsAndConditionsViewController {
                     getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
-            case .About_Us:
-                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.SettingsStoryboard.aboutUsShortView) as? AboutUsShortViewController {
+            case .about_Us:
+                if let viewCont = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.SettingsStoryboard.aboutUsShortView) as? AboutUsShortViewController {
                     getNavigationController()?.pushViewController(viewCont, animated: true)
                 }
 
             default:
                 break
             }
-            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            tableView.deselectRow(at: indexPath, animated: false)
         }
     }
 }

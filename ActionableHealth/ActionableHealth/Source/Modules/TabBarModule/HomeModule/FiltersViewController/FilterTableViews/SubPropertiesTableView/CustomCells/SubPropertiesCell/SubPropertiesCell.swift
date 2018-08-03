@@ -23,14 +23,14 @@ class SubPropertiesCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
     //MARK:- Additional methods
-    func configureCell(subProperty:SubProperties) {
+    func configureCell(_ subProperty:SubProperties) {
         currentSubProperty = subProperty
         subPropertyNameLabel.text = subProperty.name
         if subProperty.isSelected {

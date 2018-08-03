@@ -8,43 +8,54 @@
 
 import UIKit
 
-class WindowViewController: UIViewController
+open class WindowViewController: UIViewController
 {
-    private var window: UIWindow?
+    fileprivate var window: UIWindow?
     
     let windowLevel: UIWindowLevel
-    var statusBarStyle: UIStatusBarStyle?
+    let config: SwiftMessages.Config
     
-    init(windowLevel: UIWindowLevel = UIWindowLevelNormal)
+    override open var shouldAutorotate: Bool {
+        return config.shouldAutorotate
+    }
+    
+    public init(windowLevel: UIWindowLevel?, config: SwiftMessages.Config)
     {
-        self.windowLevel = windowLevel
-        let window = PassthroughWindow(frame: UIScreen.mainScreen().bounds)
+        self.windowLevel = windowLevel ?? UIWindowLevelNormal
+        self.config = config
+        let window = PassthroughWindow(frame: UIScreen.main.bounds)
         self.window = window
         super.init(nibName: nil, bundle: nil)
         self.view = PassthroughView()
         window.rootViewController = self
-        window.windowLevel = windowLevel
+        window.windowLevel = windowLevel ?? UIWindowLevelNormal
     }
     
-    func install() {
+    func install(becomeKey: Bool) {
         guard let window = window else { return }
-        window.makeKeyAndVisible()
+        if becomeKey {
+            window.makeKeyAndVisible()            
+        } else {
+            window.isHidden = false
+        }
     }
     
     func uninstall() {
-        window?.hidden = true
+        window?.isHidden = true
         window = nil
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return statusBarStyle ?? UIApplication.sharedApplication().statusBarStyle
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return config.preferredStatusBarStyle ?? super.preferredStatusBarStyle
     }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return UIApplication.sharedApplication().statusBarHidden
+}
+
+extension WindowViewController {
+    static func newInstance(windowLevel: UIWindowLevel?, config: SwiftMessages.Config) -> WindowViewController {
+        return config.windowViewController?(windowLevel, config) ?? WindowViewController(windowLevel: windowLevel, config: config)
     }
 }

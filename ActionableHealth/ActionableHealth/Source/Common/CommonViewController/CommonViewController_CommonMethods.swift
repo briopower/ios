@@ -17,7 +17,7 @@ extension CommonViewController{
     }
 
     func showLoaderOnWindow() {
-        if let window = UIApplication.sharedApplication().keyWindow where showLoading {
+        if let window = UIApplication.shared.keyWindow, showLoading {
             loader = window.showLoader(true)
         }
     }
@@ -25,26 +25,26 @@ extension CommonViewController{
     func hideLoader() {
         loader = nil
         self.view.hideLoader(true)
-        UIApplication.sharedApplication().keyWindow?.hideLoader(true)
+        UIApplication.shared.keyWindow?.hideLoader(true)
         UIApplication.enableInteraction()
     }
 
     func showProgressLoader() {
         showLoader()
-        loader?.mode = .Determinate
+        loader?.mode = .determinate
     }
 }
 
 //MARK: NullCase Methods
 extension CommonViewController:NullCaseDelegate{
     // Delegate has been implemented in class Because of issue in swift
-    func showNullCase(view:UIView, type:NullCaseType, identifier:Int?, shouldPassTouch:Bool = false) {
+    func showNullCase(_ view:UIView, type:NullCaseType, identifier:Int?, shouldPassTouch:Bool = false) {
         hideLoader()
         UIApplication.dismissKeyboard()
         nullCaseView = NullCaseView.showNullCaseOn(view, nullCaseType: type, identifier: identifier, delegate: self, shouldPassTouch: shouldPassTouch)
     }
 
-    func hideNullCase(view:UIView) {
+    func hideNullCase(_ view:UIView) {
         NullCaseView.hideNullCaseOn(view)
     }
 }

@@ -23,7 +23,7 @@ class MessageListCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -33,7 +33,7 @@ class MessageListCell: UITableViewCell {
 
 //MARK:- Additional methods
 extension MessageListCell{
-    func configureCell(isLastCell:Bool, personObj:Person) {
+    func configureCell(_ isLastCell:Bool, personObj:Person) {
         var labelText = Contact.getNameForContact(personObj.personId ?? "") ?? personObj.personId ?? ""
         if let trackName = personObj.lastTrack {
             labelText += " (\(trackName))"
@@ -41,11 +41,11 @@ extension MessageListCell{
         userNameLabel.text = labelText
         messageLabel.text = personObj.lastMessage?.message
         let count = personObj.getUnreadMessageCount()
-        unreadMessageCountButton.setTitle("\(count)", forState: .Normal)
-        unreadMessageCountButton.hidden = count == 0
-        if let url = NSURL(string: personObj.personImage ?? "") {
-            profileImageView.sd_setImageWithURL(url)
+        unreadMessageCountButton.setTitle("\(count)", for: UIControlState())
+        unreadMessageCountButton.isHidden = count == 0
+        if let url = URL(string: personObj.personImage ?? "") {
+            profileImageView.sd_setImage(with: url)
         }
-        bottomLine.hidden = !isLastCell
+        bottomLine.isHidden = !isLastCell
     }
 }

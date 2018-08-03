@@ -16,8 +16,8 @@ class TrackFilesViewController: CommonViewController {
     //MARK:- Variables
     var blobKey:String?
     var navigationTitle:String?
-    var responseData:NSData?
-    var httpResponse:NSHTTPURLResponse?
+    var responseData:Data?
+    var httpResponse:HTTPURLResponse?
     var docController:UIDocumentInteractionController?
 
     //MARK:- LifeCycle
@@ -26,9 +26,9 @@ class TrackFilesViewController: CommonViewController {
         setupView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle(navigationTitle ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.Details)
+        setNavigationBarWithTitle(navigationTitle ?? "", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.details)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,9 +44,10 @@ extension TrackFilesViewController{
     }
 
     func loadFileInWebView() {
-        if let data = responseData, let mimeType = httpResponse?.MIMEType{
-            NSFileManager.save(data, fileName: "response", mimeType: mimeType)
-            webView.loadData(data, MIMEType: mimeType, textEncodingName: "utf-8", baseURL: NSURL())
+        if let data = responseData, let mimeType = httpResponse?.mimeType{
+            FileManager.save(data, fileName: "response", mimeType: mimeType)
+            // TODO
+            webView.load(data, mimeType: mimeType, textEncodingName: "utf-8", baseURL: URL.init(string: "")!)
             webView.delegate = self
         }
     }
@@ -54,14 +55,14 @@ extension TrackFilesViewController{
 
 //MARK:- Action
 extension TrackFilesViewController{
-    override func detailsButtonAction(sender: UIButton?) {
+    override func detailsButtonAction(_ sender: UIButton?) {
         super.detailsButtonAction(sender)
-        if let data = responseData, let mimeType = httpResponse?.MIMEType{
-            if let path = NSFileManager.save(data, fileName: (httpResponse?.allHeaderFields["Content-Disposition"] as? String)?.sliceFrom("\"", to: ".") ?? "", mimeType: mimeType){
-                let targetURL = NSURL(fileURLWithPath: path)
-                docController = UIDocumentInteractionController(URL: targetURL)
+        if let data = responseData, let mimeType = httpResponse?.mimeType{
+            if let path = FileManager.save(data, fileName: (httpResponse?.allHeaderFields["Content-Disposition"] as? String)?.sliceFrom("\"", to: ".") ?? "", mimeType: mimeType){
+                let targetURL = URL(fileURLWithPath: path)
+                docController = UIDocumentInteractionController(url: targetURL)
                 docController?.delegate = self
-                docController?.presentOptionsMenuFromRect(CGRect.zero, inView: self.view, animated: true)
+                docController?.presentOptionsMenu(from: CGRect.zero, in: self.view, animated: true)
             }
         }
 
@@ -70,17 +71,17 @@ extension TrackFilesViewController{
 
 //MARK:- UIWebViewDelegate
 extension TrackFilesViewController:UIWebViewDelegate{
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         self.hideLoader()
     }
 
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         self.hideLoader()
     }
 }
 //MARK:- UIDocumentInteractionControllerDelegate
 extension TrackFilesViewController:UIDocumentInteractionControllerDelegate{
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController{
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController{
         return self
     }
 
@@ -90,20 +91,20 @@ extension TrackFilesViewController:UIDocumentInteractionControllerDelegate{
 //MARK:- Network methods
 extension TrackFilesViewController{
     func getFile() {
-        if let blobKey = blobKey where NetworkClass.isConnected(true){
+        if let blobKey = blobKey, NetworkClass.isConnected(true){
             showLoader()
-            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackFiles)\(blobKey)/true", RequestType: .GET, ResponseType: .NONE, CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(Constants.URLs.trackFiles)\(blobKey)/true", RequestType: .get, ResponseType: .none, CompletionHandler: { (status, responseObj, error, statusCode) in
                 self.processResponse(responseObj)
             })
         }
     }
 
-    func processResponse(responseObj:AnyObject?)  {
+    func processResponse(_ responseObj:AnyObject?)  {
         if let arr = responseObj as? NSArray {
-            if let urlResponse = arr.firstObject as? NSHTTPURLResponse {
+            if let urlResponse = arr.firstObject as? HTTPURLResponse {
                 httpResponse = urlResponse
             }
-            if let data = arr[1] as? NSData {
+            if let data = arr[1] as? Data {
                 responseData = data
             }
         }

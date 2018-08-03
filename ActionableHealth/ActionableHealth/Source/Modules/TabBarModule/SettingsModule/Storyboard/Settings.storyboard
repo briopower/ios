@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -133,13 +134,13 @@
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">.
+                                        <string key="content">.
 BY USING THIS APPLICATION, WEBSITE OR ANY WEBSITE OF BRIO POWER, LLC, TEAM BRIO POWER, AND/OR PLACING AN ORDER FOR BRIO POWER, LLC'S SERVICES, YOU AGREE TO BE BOUND AND ABIDE BY THESE TERMS AND CONDITIONS AND ANY AMENDMENTS THERETO, AND AGREE THAT YOU ARE AT LEAST 13 YEARS OF AGE AND ELIGIBLE TO USE THIS SITE AND PLACE AN ORDER FOR BRIO POWER'S SERVICES.
 IF YOU ARE 13 TO 17 YEARS OF AGE, YOU MUST USE THIS SITE AND/OR PURCHASE AND USE BRIO POWER'S SERVICES ONLY WITH THE INVOLVEMENT AND ACKNOWLEDGEMENT OF YOUR PARENT OR GUARDIAN.
 IF YOU DO NOT AGREE TO THE TERMS AND CONDITIONS, PLEASE DO NOT USE THE APPLICATION, WEBSITE OR ORDER OR USE BRIO POWER'S SERVICES.
 We may update or amend these Terms and Conditions from time to time to comply with law or to meet our changing business requirements without notice to you. Your continued use of the Sites and/or other services of Brio Power after any such changes constitutes your acceptance of the new Terms and Conditions. Any updates or amendments will be posted on the Sites (herein after, Brio Power’s Application, Website, or any other web based platform shall be referred to singularly or collectively as “Website” or “Site”. The Terms and Conditions displayed on the Sites at the time the order is accepted will apply to the order.
 Welcome to the Web site of BRIO POWER, LLC, which includes without limitation our related sites such as Brio Power.com / Link.
-These Terms and Conditions govern and apply to your (</mutableString>
+These Terms and Conditions govern and apply to your (</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -176,10 +177,10 @@ These Terms and Conditions govern and apply to your (</mutableString>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">) access to and use of the Sites and their related domains on which these Terms and Conditions appear, any order you place through any of the Sites, and to all services we supply, produce, distribute, or market.
+                                        <string key="content">) access to and use of the Sites and their related domains on which these Terms and Conditions appear, any order you place through any of the Sites, and to all services we supply, produce, distribute, or market.
 To the extent of any express inconsistency with any other agreement you may have with Brio Power for services or otherwise, that other agreement shall prevail unless otherwise explicitly stated therein. If these Terms and Conditions refer or relate to a clause that is not part of that other agreement, then these terms shall apply therein as well, if you are a user of the Sites. If you register for our Support Center features, including, but not limited to, Brio Power Support Team, additional rules, policies, and disclaimers may apply.
 
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -254,7 +255,7 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">	•	not to disrupt or interfere with the security of, or otherwise abuse, the Sites, or any services, system resources, accounts, servers, or networks connected to or accessible through the Sites or affiliated or linked sites;
+                                        <string key="content">	•	not to disrupt or interfere with the security of, or otherwise abuse, the Sites, or any services, system resources, accounts, servers, or networks connected to or accessible through the Sites or affiliated or linked sites;
 	•	not to disrupt or interfere with any other user's enjoyment of the Sites or affiliated or linked Web sites;
 	•	not to upload, post, or otherwise transmit through or on the Sites any viruses or other harmful, disruptive, or destructive files;
 	•	not to use, frame, or utilize framing techniques to enclose any Brio Power trademark, logo, or other proprietary information (including the images found at the Sites, the content of any text, or the layout/design of any page or form contained on a page) without Brio Power's express written consent;
@@ -265,7 +266,7 @@ Cg
 	•	not to attempt to obtain unauthorized access to the Sites or portions of the Sites that are restricted from general access;
 	•	not to post any material that is knowingly false and/or defamatory, inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually oriented, threatening, invasive of a person's privacy, or otherwise violate of any law. You also agree not to post any copyrighted material unless the copyright is owned by you or by Brio Power; and
 	•	to be bound by the Product Submission Policies of Brio Power, including that any product submission you may make to Brio Power will not be held in confidence by Brio Power, and is not proprietary, that Brio Power may use the product submission and any aspect thereof for any purposes in Brio Power's sole discretion, and that Brio Power owes no duties or obligations with respect to you or the product submission made.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -294,10 +295,10 @@ Cg
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">In addition, you agree that you will comply with all applicable local, national, and international laws and regulations that relate to your use of or activities on the Sites.
+                                        <string key="content">In addition, you agree that you will comply with all applicable local, national, and international laws and regulations that relate to your use of or activities on the Sites.
 We will not be responsible, or liable to any third party, for the content or accuracy of any materials posted by you or any other user of the Sites. We have the right to remove any material or posting you make on the Sites if, in our opinion, such material does not comply with the content standards set out in these Terms and Conditions.
 The views and opinions of authors, trainers, experts and any other contributors expressed herein do not necessarily state or reflect the attitudes and opinions of Brio Power. These views and opinions shall not be attributed to or otherwise endorsed by Brio Power, and may not be used for advertising or product endorsement purposes without the express, written consent of Brio Power.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -318,8 +319,8 @@ The views and opinions of authors, trainers, experts and any other contributors 
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Users of the Sites and/or other services of Brio Power should refer to Brio Power's Privacy Policy Link for information about how Brio Power uses and collects information, which may be accessed by clicking on the appropriate link on the particular Site that you visited. You agree that Brio Power may disclose your personal information to a third party if Brio Power believes in good faith that the law or legal process requires it, to protect the rights or property of Brio Power or others, or as otherwise described in the Privacy policy Link
-</mutableString>
+                                        <string key="content">Users of the Sites and/or other services of Brio Power should refer to Brio Power's Privacy Policy Link for information about how Brio Power uses and collects information, which may be accessed by clicking on the appropriate link on the particular Site that you visited. You agree that Brio Power may disclose your personal information to a third party if Brio Power believes in good faith that the law or legal process requires it, to protect the rights or property of Brio Power or others, or as otherwise described in the Privacy policy Link
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -358,11 +359,11 @@ The views and opinions of authors, trainers, experts and any other contributors 
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">"), Brio Power has the exclusive right to use any and all such elements of the Uploaded Content in connection with and/or as part of its business, including in connection with and/or in any advertising in any and all media, including, without limitation, product packaging, printed publications, presentations, promotional materials, events and associated marketing materials, television and cinema commercials, videos, or Web sites, in perpetuity throughout the world as Brio Power in its sole discretion sees fit without further consent or payment. Brio Power has all right, title, and interest in any and all results and proceeds from such use of the Uploaded Content. Brio Power has the right to transfer the aforementioned rights to use the Uploaded Content to any third party, including, but not limited to, any of its subsidiaries or affiliated companies. Brio Power may alter, adapt, or edit the Uploaded Content and any further material created under these Terms and Conditions, and market and exploit it entirely at Brio Power's sole discretion. Brio Power is not obliged to make any use of the Uploaded Content or exercise any of the rights granted by these Terms and Conditions.
+                                        <string key="content">"), Brio Power has the exclusive right to use any and all such elements of the Uploaded Content in connection with and/or as part of its business, including in connection with and/or in any advertising in any and all media, including, without limitation, product packaging, printed publications, presentations, promotional materials, events and associated marketing materials, television and cinema commercials, videos, or Web sites, in perpetuity throughout the world as Brio Power in its sole discretion sees fit without further consent or payment. Brio Power has all right, title, and interest in any and all results and proceeds from such use of the Uploaded Content. Brio Power has the right to transfer the aforementioned rights to use the Uploaded Content to any third party, including, but not limited to, any of its subsidiaries or affiliated companies. Brio Power may alter, adapt, or edit the Uploaded Content and any further material created under these Terms and Conditions, and market and exploit it entirely at Brio Power's sole discretion. Brio Power is not obliged to make any use of the Uploaded Content or exercise any of the rights granted by these Terms and Conditions.
 Users of the Sites must only post Uploaded Content that is owned by, and features, themselves, and no other third parties.
 Users posting Uploaded Content via a user profile must treat their login credentials and password confidential and ensure that they are not shared with any third party that might jeopardize the security of their account.
 
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -405,8 +406,8 @@ Users posting Uploaded Content via a user profile must treat their login credent
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Brio Power makes no claim or representation regarding, and accepts no responsibility for, the quality, content, nature, or reliability of sites accessible by hyperlink from the Sites, or sites linking to these Sites. The linked sites are not under the control of Brio Power, and Brio Power is not responsible for the content of any linked site or any link contained in a linked site, or any review, changes, or updates to such sites. The inclusion of any link does not imply affiliation, endorsement, or adoption by Brio Power of the site or any information contained therein. When leaving the Sites, you should be aware that Brio Power's Terms and Conditions and policies no longer govern, and therefore you should review the applicable terms and policies, including privacy and data-gathering practices, of that site.
-</mutableString>
+                                        <string key="content">Brio Power makes no claim or representation regarding, and accepts no responsibility for, the quality, content, nature, or reliability of sites accessible by hyperlink from the Sites, or sites linking to these Sites. The linked sites are not under the control of Brio Power, and Brio Power is not responsible for the content of any linked site or any link contained in a linked site, or any review, changes, or updates to such sites. The inclusion of any link does not imply affiliation, endorsement, or adoption by Brio Power of the site or any information contained therein. When leaving the Sites, you should be aware that Brio Power's Terms and Conditions and policies no longer govern, and therefore you should review the applicable terms and policies, including privacy and data-gathering practices, of that site.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -471,10 +472,10 @@ Users posting Uploaded Content via a user profile must treat their login credent
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">If you use the Sites or other means to purchase any services, payment must be received by Brio Power prior to Brio Power's acceptance of an order, unless otherwise agreed by Brio Power. All Brio Power products are subject to sales tax which will be applied to your order total. Brio Power may need to verify information you provide before Brio Power accepts an order, and may cancel or limit an order any time after it has been placed. If payment has already been made and your order is cancelled or limited, Brio Power will refund any payment you made for the product that will not be shipped due to cancellation or limitation of an order in the same tender as the original purchase. Brio Power expressly conditions its acceptance of your order on your agreement to these Terms and Conditions.
+                                        <string key="content">If you use the Sites or other means to purchase any services, payment must be received by Brio Power prior to Brio Power's acceptance of an order, unless otherwise agreed by Brio Power. All Brio Power products are subject to sales tax which will be applied to your order total. Brio Power may need to verify information you provide before Brio Power accepts an order, and may cancel or limit an order any time after it has been placed. If payment has already been made and your order is cancelled or limited, Brio Power will refund any payment you made for the product that will not be shipped due to cancellation or limitation of an order in the same tender as the original purchase. Brio Power expressly conditions its acceptance of your order on your agreement to these Terms and Conditions.
 In ordering services through the Sites or otherwise, you agree to provide only true, accurate, current, and complete information. You hereby certify that any email account you provide to Brio Power is registered to you. Brio Power shall have the right to bar your access to and use of the Sites or its other services if it has reasonable grounds to believe that you have provided untrue, inaccurate, not current, or incomplete information to Brio Power, or for any other reason it, in its sole discretion, deems appropriate. You agree that if you are ordering or purchasing services on behalf of a company, that you have sufficient authority to bind that company to the Terms and Conditions. You agree that your placement of an electronic order on the Sites is sufficient to satisfy any applicable Statute of Frauds, and no further writing is required.
 Brio Power's descriptions of, or references to, products not owned by Brio Power on and outside of the Sites do not imply endorsement of that product, or constitute a warranty, by Brio Power.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -495,9 +496,9 @@ Brio Power's descriptions of, or references to, products not owned by Brio Power
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">If you choose to receive services on an auto-renewal or monthly (or other period) basis you must provide current, complete, and accurate information for your billing account. You are responsible for ensuring this information is correct and must promptly update all information to keep your billing account current, complete, and accurate (such as a change in billing address, credit card number, or credit card expiration date). You must promptly notify us if your credit card is cancelled (for example, for loss or theft). Changes to such information can be made by contacting Customer Service.
+                                        <string key="content">If you choose to receive services on an auto-renewal or monthly (or other period) basis you must provide current, complete, and accurate information for your billing account. You are responsible for ensuring this information is correct and must promptly update all information to keep your billing account current, complete, and accurate (such as a change in billing address, credit card number, or credit card expiration date). You must promptly notify us if your credit card is cancelled (for example, for loss or theft). Changes to such information can be made by contacting Customer Service.
 We reserve the right to refuse or discontinue the supply of any services to any user at any time at our sole discretion.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -540,12 +541,12 @@ We reserve the right to refuse or discontinue the supply of any services to any 
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">YOU EXPRESSLY AGREE THAT USE OF THE SITES AND OTHER PRODUCTS AND SERVICES OF BRIO POWER IS AT YOUR SOLE RISK. YOU UNDERSTAND AND AGREE THAT THE SITES AND THE INFORMATION, SERVICES, PRODUCTS, AND MATERIALS AVAILABLE THROUGH IT AND OTHERWISE ARE PROVIDED ON AN "AS-IS" AND "AS-AVAILABLE" BASIS.  YOU ALSO UNDERSTAND THAT BRIO POWER DOES NOT PROVIDE ANY MEDICAL ADVICE, AND YOU SHOULD CONSULT WITH YOUR PHYSICIAN PRIOR TO ENGAGING IN ANY TRAINING, ACTIVITIES, DIETS, OR ANY OTHER PROGRAM PROVIDED BY BRIO POWER.
+                                        <string key="content">YOU EXPRESSLY AGREE THAT USE OF THE SITES AND OTHER PRODUCTS AND SERVICES OF BRIO POWER IS AT YOUR SOLE RISK. YOU UNDERSTAND AND AGREE THAT THE SITES AND THE INFORMATION, SERVICES, PRODUCTS, AND MATERIALS AVAILABLE THROUGH IT AND OTHERWISE ARE PROVIDED ON AN "AS-IS" AND "AS-AVAILABLE" BASIS.  YOU ALSO UNDERSTAND THAT BRIO POWER DOES NOT PROVIDE ANY MEDICAL ADVICE, AND YOU SHOULD CONSULT WITH YOUR PHYSICIAN PRIOR TO ENGAGING IN ANY TRAINING, ACTIVITIES, DIETS, OR ANY OTHER PROGRAM PROVIDED BY BRIO POWER.
 YOU ACKNOWLEDGE THAT BRIO POWER DOES NOT CONTROL IN ANY RESPECT ANY ADVERTISEMENTS, PRODUCT DESCRIPTIONS, PRODUCTS, OR CONTENT OFFERED BY THIRD PARTIES ON OR THROUGH THE SITES, INCLUDING, BUT NOT LIMITED TO, INFORMATION OR PRODUCTS PROVIDED BY LICENSE TO BRIO POWER FROM THIRD PARTIES. EXCEPT AS OTHERWISE AGREED IN WRITING, BRIO POWER AND ITS AFFILIATES ASSUME NO RESPONSIBILITY FOR AND MAKE NO WARRANTY OR REPRESENTATION AS TO THE ACCURACY, CURRENCY, COMPLETENESS, RELIABILITY, OR USEFULNESS OF CONTENT OR PRODUCTS (INCLUDING PRODUCT DESCRIPTIONS) DISTRIBUTED OR MADE AVAILABLE BY THIRD PARTIES THROUGH OR OUTSIDE OF THE SITES. NOR DOES BRIO POWER MAKE ANY WARRANTY AS TO THE RESULTS THAT MAY BE OBTAINED FROM USE OF THE SITES, ANY PRODUCTS OR SERVICES OFFERED OR SOLD THROUGH THE SITES, OR ITS CONTENT.
 ALTHOUGH BRIO POWER STRIVES TO PREVENT THE INTRODUCTION OF VIRUSES OR OTHER DESTRUCTIVE MATERIALS TO THE SITES, BRIO POWER DOES NOT WARRANT, GUARANTEE, OR MAKE ANY REPRESENTATIONS THAT THE SITES IS FREE OF DESTRUCTIVE MATERIALS. IN ADDITION, BRIO POWER DOES NOT WARRANT THAT ACCESS TO THE SITES WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE, OR THAT DEFECTS, IF ANY, WILL BE CORRECTED.
 BRIO POWER DISCLAIMS ANY WARRANTY OR REPRESENTATION THAT CONFIDENTIALITY OF INFORMATION TRANSMITTED THROUGH THE SITES WILL BE MAINTAINED. TO THE EXTENT ALLOWED BY LAW, BRIO POWER DISCLAIMS ALL WARRANTIES AND CONDITIONS NOT EXPLICITLY STATED HEREIN. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF CERTAIN WARRANTIES OR CONDITIONS, SO SOME OF THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU.
 The terms of this section apply to the extent permitted by law and survive any termination of the Terms and Conditions.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -566,13 +567,13 @@ The terms of this section apply to the extent permitted by law and survive any t
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">WE EXCLUDE ALL REPRESENTATIONS, WARRANTIES, CONDITIONS, AND TERMS (WHETHER EXPRESS OR IMPLIED BY STATUTE, COMMON LAW OR OTHERWISE) TO THE FULLEST EXTENT PERMITTED BY LAW.
+                                        <string key="content">WE EXCLUDE ALL REPRESENTATIONS, WARRANTIES, CONDITIONS, AND TERMS (WHETHER EXPRESS OR IMPLIED BY STATUTE, COMMON LAW OR OTHERWISE) TO THE FULLEST EXTENT PERMITTED BY LAW.
 IN NO EVENT, INCLUDING, WITHOUT LIMITATION, NEGLIGENCE, SHALL BRIO POWER OR ITS AFFILIATES BE LIABLE FOR ANY DAMAGES, CLAIMS, OR LOSSES INCURRED (INCLUDING WITHOUT LIMITATION COMPENSATORY, INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES), HOWEVER CAUSED, AND UNDER ANY THEORY OF LIABILITY ARISING IN CONNECTION WITH: (I) THE SITES; (II) THE USE OR INABILITY TO USE THE SITES; (III) THE USE OF OR RELIANCE ON ANY CONTENT OR INFORMATION DISPLAYED IN OR ON THE SITES; (IV) THE PURCHASE OR USE OF ANY PRODUCTS THROUGH THE SITES OR OTHERWISE; (V) UNAUTHORIZED ACCESS TO OR ALTERATION OR LOSS OF YOUR TRANSMISSIONS OR DATA OR OTHER INFORMATION THAT IS SENT OR RECEIVED; (VI) ERRORS, SYSTEM DOWN TIME, NETWORK OR SYSTEM OUTAGES, OR FILE CORRUPTION OR SERVICE INTERRUPTIONS; OR (VII) OTHERWISE UNDER THIS AGREEMENT/TERMS AND CONDITIONS, WHETHER OR NOT REASONABLY FORESEEABLE, EVEN IF BRIO POWER OR ITS REPRESENTATIVES ARE ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, CLAIMS, OR LOSSES AND NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
 NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, BRIO POWER'S LIABILITY TO YOU FOR ANY CAUSE OF ACTION OR CLAIM WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION, WILL AT ALL TIMES BE LIMITED TO THE AMOUNT PAID, IF ANY, BY YOU IN THE LAST 90 DAYS TO BRIO POWER FOR ANY PRODUCTS SUPPLIED BY BRIO POWER THROUGH YOUR USE OF THE SITES OR OTHERWISE.
 BRIO POWER WILL NOT BE LIABLE IN ANY AMOUNT FOR FAILURE TO PERFORM ANY OBLIGATION UNDER THESE TERMS AND CONDITIONS IF SUCH FAILURE IS CAUSED BY THE OCCURRENCE OF ANY UNFORESEEN CONTINGENCY BEYOND ITS REASONABLE CONTROL, INCLUDING, WITHOUT LIMITATION, INTERNET OUTAGES, COMMUNICATIONS OUTAGES, FIRE, FLOOD, OR WAR.
 THESE EXCLUSIONS SHALL BE GOVERNED BY AND CONSTRUED IN ACCORDANCE WITH THE LAW OF THE UNITED STATES OF AMERICA. IF ANY PROVISION OR PART-PROVISION OF THESE TERMS AND CONDITIONS SHALL BE INVALID, UNLAWFUL, VOID, OR FOR ANY REASON UNENFORCEABLE IT SHALL BE DEEMED SEVERABLE AND SHALL NOT AFFECT THE VALIDITY AND ENFORCEABILITY OF THE REMAINING PROVISIONS OF THESE TERMS AND CONDITIONS.
 The terms of this section survive any termination of the Terms and Conditions.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -593,8 +594,8 @@ The terms of this section survive any termination of the Terms and Conditions.
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">The Sites are controlled, operated, and administered by Brio Power from its offices within the United States of America. Brio Power makes no representation that materials on the Sites are appropriate or available for use at other locations outside of the United States, and access to them from territories where the contents or products available through the Sites are illegal is prohibited. You may not use the Sites or export the content or products in violation of U.S. export laws and regulations. If you access the Sites from a location outside of the United States, you are responsible for compliance with all local laws.
-</mutableString>
+                                        <string key="content">The Sites are controlled, operated, and administered by Brio Power from its offices within the United States of America. Brio Power makes no representation that materials on the Sites are appropriate or available for use at other locations outside of the United States, and access to them from territories where the contents or products available through the Sites are illegal is prohibited. You may not use the Sites or export the content or products in violation of U.S. export laws and regulations. If you access the Sites from a location outside of the United States, you are responsible for compliance with all local laws.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -681,7 +682,7 @@ Disputes. </string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">The terms of this Section shall apply to all Disputes between you and Brio Power. For the purposes of this Section, "Dispute" shall mean any dispute, claim, or action between you and Brio Power arising under or relating to the Products, the Sites, this Agreement, or any other transaction involving you and Brio Power, whether in contract, warranty, misrepresentation, fraud, tort, intentional tort, statute, regulation, ordinance, or any other legal or equitable basis, and shall be interpreted to be given the broadest meaning allowable under law. </mutableString>
+                                        <string key="content">The terms of this Section shall apply to all Disputes between you and Brio Power. For the purposes of this Section, "Dispute" shall mean any dispute, claim, or action between you and Brio Power arising under or relating to the Products, the Sites, this Agreement, or any other transaction involving you and Brio Power, whether in contract, warranty, misrepresentation, fraud, tort, intentional tort, statute, regulation, ordinance, or any other legal or equitable basis, and shall be interpreted to be given the broadest meaning allowable under law. </string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -721,8 +722,8 @@ Binding Arbitration. </string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> The arbitrator may award you the same damages as a court sitting in proper jurisdiction could, and may award declaratory or injunctive relief only in favor of the individual party seeking relief and only to the extent necessary to provide relief warranted by that party's individual claim. In addition, in some instances, the costs of arbitration could exceed the costs of litigation and the right to discovery may be more limited in arbitration than in court. The decision of the arbitrator shall be final and enforceable by any court with jurisdiction over the parties.
-</mutableString>
+                                        <string key="content"> The arbitrator may award you the same damages as a court sitting in proper jurisdiction could, and may award declaratory or injunctive relief only in favor of the individual party seeking relief and only to the extent necessary to provide relief warranted by that party's individual claim. In addition, in some instances, the costs of arbitration could exceed the costs of litigation and the right to discovery may be more limited in arbitration than in court. The decision of the arbitrator shall be final and enforceable by any court with jurisdiction over the parties.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -798,8 +799,8 @@ Binding Arbitration. </string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">"). The Dispute Notice to you will be sent by certified mail to the most recent address we have on file or otherwise in our records for you. If Brio Power and you do not reach an agreement to resolve the Dispute within sixty (60) days after the Dispute Notice is received, you or Brio Power may commence an arbitration proceeding pursuant to this Section. Following submission and receipt of the Dispute Notice, each of us agrees to act in good faith to seek to resolve the Dispute before commencing arbitration.
-</mutableString>
+                                        <string key="content">"). The Dispute Notice to you will be sent by certified mail to the most recent address we have on file or otherwise in our records for you. If Brio Power and you do not reach an agreement to resolve the Dispute within sixty (60) days after the Dispute Notice is received, you or Brio Power may commence an arbitration proceeding pursuant to this Section. Following submission and receipt of the Dispute Notice, each of us agrees to act in good faith to seek to resolve the Dispute before commencing arbitration.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -840,9 +841,9 @@ Arbitration Procedure. </string>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">If a party elects to commence arbitration, the arbitration shall be governed by the rules of JAMS that are in effect at the time the arbitration is initiated (the "JAMS Rules"), available at http://www.jamsadr.com or by calling 800-352-5267 and under the rules set forth in this Agreement, except that JAMS may not administer any multiple claimant or class arbitration, as the parties agree that the arbitration shall be limited to the resolution only of individual claims. If there is a conflict between the JAMS Rules and the rules set forth in this Agreement, the rules set forth in this Agreement shall govern. You may, in arbitration, seek any and all remedies otherwise available to you pursuant to federal, state, or local laws. All Disputes shall be resolved by a single neutral arbitrator, and both parties shall have a reasonable opportunity to participate in the selection of the arbitrator. The arbitrator is bound by the terms of this Agreement. The arbitrator, and not any federal, state or local court or agency, shall have exclusive authority to resolve all disputes arising out of or relating to the interpretation, applicability, enforceability or formation of this Agreement, including, but not limited to, any claim that all or any part of this Agreement is void or voidable. Notwithstanding this broad delegation of authority to the arbitrator, a court may determine the limited question of whether a claim or cause of action is for (a) trade secret misappropriation, (b) patent infringement, (c) copyright infringement or misuse, or (d) trademark infringement or dilution, which are excluded from the definition of "Disputes" as stated above. The arbitrator shall be empowered to grant whatever relief would be available in a court under law or in equity. The arbitrator's award shall be binding on the parties and may be entered as a judgment in any court of competent jurisdiction. You may choose to engage in arbitration hearings by telephone. Arbitration hearings not conducted by telephone shall take place in a location reasonably accessible from your primary residence, or in Washoe County, Nevada, at your option.
+                                        <string key="content">If a party elects to commence arbitration, the arbitration shall be governed by the rules of JAMS that are in effect at the time the arbitration is initiated (the "JAMS Rules"), available at http://www.jamsadr.com or by calling 800-352-5267 and under the rules set forth in this Agreement, except that JAMS may not administer any multiple claimant or class arbitration, as the parties agree that the arbitration shall be limited to the resolution only of individual claims. If there is a conflict between the JAMS Rules and the rules set forth in this Agreement, the rules set forth in this Agreement shall govern. You may, in arbitration, seek any and all remedies otherwise available to you pursuant to federal, state, or local laws. All Disputes shall be resolved by a single neutral arbitrator, and both parties shall have a reasonable opportunity to participate in the selection of the arbitrator. The arbitrator is bound by the terms of this Agreement. The arbitrator, and not any federal, state or local court or agency, shall have exclusive authority to resolve all disputes arising out of or relating to the interpretation, applicability, enforceability or formation of this Agreement, including, but not limited to, any claim that all or any part of this Agreement is void or voidable. Notwithstanding this broad delegation of authority to the arbitrator, a court may determine the limited question of whether a claim or cause of action is for (a) trade secret misappropriation, (b) patent infringement, (c) copyright infringement or misuse, or (d) trademark infringement or dilution, which are excluded from the definition of "Disputes" as stated above. The arbitrator shall be empowered to grant whatever relief would be available in a court under law or in equity. The arbitrator's award shall be binding on the parties and may be entered as a judgment in any court of competent jurisdiction. You may choose to engage in arbitration hearings by telephone. Arbitration hearings not conducted by telephone shall take place in a location reasonably accessible from your primary residence, or in Washoe County, Nevada, at your option.
 (a)Initiation of Arbitration Proceeding. If either you or Brio Power decide to arbitrate a Dispute, we agree to the following procedure:
-(i)Write a Demand for Arbitration. The demand must include a description of the Dispute and the amount of damages sought to be recovered. You can find a copy of a Demand for Arbitration at http://www.jamsadr.com ("</mutableString>
+(i)Write a Demand for Arbitration. The demand must include a description of the Dispute and the amount of damages sought to be recovered. You can find a copy of a Demand for Arbitration at http://www.jamsadr.com ("</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -907,10 +908,10 @@ Las Vegas, NV 89169
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">(iii)Send one copy of the Demand for Arbitration to the other party at the same address as the Dispute Notice, or as otherwise agreed to by the parties.
+                                        <string key="content">(iii)Send one copy of the Demand for Arbitration to the other party at the same address as the Dispute Notice, or as otherwise agreed to by the parties.
 (b) Hearing Format. In all hearing formats, the arbitrator shall issue a written decision that explains the essential findings and conclusions on which an award, if any, is based. During the arbitration, the amount of any settlement offer made by Brio Power or you shall not be disclosed to the arbitrator until after the arbitrator determines the amount, if any, to which you or Brio Power is entitled. The discovery or exchange of non-privileged information relevant to the Dispute may be allowed during the arbitration.
 (c) Arbitration Fees. The parties shall be responsible for their individual arbitration fees.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -929,8 +930,8 @@ Las Vegas, NV 89169
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">Notwithstanding any provision in this Agreement to the contrary, you and Brio Power agree that if Brio Power makes any future amendments to the dispute resolution procedure and class action waiver provisions (other than a change to Brio Power's address) in this Agreement, Brio Power will notify you and you will have thirty (30) days from the date of notice to affirmatively opt-out of any such amendments. If you affirmatively opt-out of any future amendments, you are agreeing that you will arbitrate any Dispute between us in accordance with the language of this Section as stated in this current Agreement, without any of the proposed amendments governing. If you do not affirmatively opt-out of any future amendments, you will be deemed to have consented to any such future amendments.
-</mutableString>
+                                        <string key="content">Notwithstanding any provision in this Agreement to the contrary, you and Brio Power agree that if Brio Power makes any future amendments to the dispute resolution procedure and class action waiver provisions (other than a change to Brio Power's address) in this Agreement, Brio Power will notify you and you will have thirty (30) days from the date of notice to affirmatively opt-out of any such amendments. If you affirmatively opt-out of any future amendments, you are agreeing that you will arbitrate any Dispute between us in accordance with the language of this Section as stated in this current Agreement, without any of the proposed amendments governing. If you do not affirmatively opt-out of any future amendments, you will be deemed to have consented to any such future amendments.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -993,9 +994,9 @@ Las Vegas, NV 89169
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">The Terms and Conditions constitute the entire agreement between Brio Power and you with respect to your use of the Sites, your purchase of services through the Sites, and as applicable any products or services of Brio Power. Any cause of action you may have with respect to the Sites or Brio Power's products or services must be commenced within one (1) year after the claim or cause of action arises, notwithstanding any statutes of limitation to the contrary. The section titles used in the Terms and Conditions are purely for convenience and carry with them no legal or contractual effect. Nothing in these Terms and Conditions will be construed as creating a joint venture, partnership, employment, or agency relationship between you and Brio Power, and you do not have any authority to create any obligation or make any representation on Brio Power's behalf. You may not assign or transfer any rights or obligations of these Terms and Conditions, by operation of law or otherwise, without Brio Power's written consent. Subject to the foregoing, these Terms and Conditions will be binding on, inure to the benefit of, and be enforceable against you and Brio Power and their respective successors and assigns.
+                                        <string key="content">The Terms and Conditions constitute the entire agreement between Brio Power and you with respect to your use of the Sites, your purchase of services through the Sites, and as applicable any products or services of Brio Power. Any cause of action you may have with respect to the Sites or Brio Power's products or services must be commenced within one (1) year after the claim or cause of action arises, notwithstanding any statutes of limitation to the contrary. The section titles used in the Terms and Conditions are purely for convenience and carry with them no legal or contractual effect. Nothing in these Terms and Conditions will be construed as creating a joint venture, partnership, employment, or agency relationship between you and Brio Power, and you do not have any authority to create any obligation or make any representation on Brio Power's behalf. You may not assign or transfer any rights or obligations of these Terms and Conditions, by operation of law or otherwise, without Brio Power's written consent. Subject to the foregoing, these Terms and Conditions will be binding on, inure to the benefit of, and be enforceable against you and Brio Power and their respective successors and assigns.
 The terms of this section survive any termination of the Terms and Conditions.
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>
@@ -1038,9 +1039,9 @@ The terms of this section survive any termination of the Terms and Conditions.
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content">These Terms and Conditions supersede any other terms and conditions previously published by us and any other representations or statements made by us to you, whether oral, written, or otherwise. We may assign, transfer, or sub-contract any of our rights or obligations under these Terms and Conditions to any third party at our discretion. No delay by us in exercising any right or remedy under these Terms and Conditions shall operate as waiver of that right or remedy or shall affect our ability to subsequently exercise that right or remedy. Any waiver must be agreed by us in writing.
+                                        <string key="content">These Terms and Conditions supersede any other terms and conditions previously published by us and any other representations or statements made by us to you, whether oral, written, or otherwise. We may assign, transfer, or sub-contract any of our rights or obligations under these Terms and Conditions to any third party at our discretion. No delay by us in exercising any right or remedy under these Terms and Conditions shall operate as waiver of that right or remedy or shall affect our ability to subsequently exercise that right or remedy. Any waiver must be agreed by us in writing.
 Last updated and effective: January 1, 2017
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="TimesNewRomanPSMT"/>

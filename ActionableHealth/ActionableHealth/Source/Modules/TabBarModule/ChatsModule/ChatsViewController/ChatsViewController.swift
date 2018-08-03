@@ -16,19 +16,19 @@ class ChatsViewController: CommonViewController {
     @IBOutlet weak var nullCaseLabel: UILabel!
 
     //MARK:- Variables
-    var _fetchedResultsController: NSFetchedResultsController?
+    var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
 
     //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarWithTitle("Chats", LeftButtonType: BarButtontype.None, RightButtonType: BarButtontype.Add)
+        self.setNavigationBarWithTitle("Chats", LeftButtonType: BarButtontype.none, RightButtonType: BarButtontype.add)
         messagesListTblView.reloadData()
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
     }
@@ -44,18 +44,18 @@ class ChatsViewController: CommonViewController {
 extension ChatsViewController{
     func setupView() {
 
-        _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName(String(Person), predicate: NSPredicate(format: "messages.@count > 0"), sectionNameKeyPath: nil, sorting: [("lastMessage.timestamp", false)])
+        _fetchedResultsController = CoreDataOperationsClass.getFectechedResultsControllerWithEntityName("Person", predicate: NSPredicate(format: "messages.@count > 0"), sectionNameKeyPath: nil, sorting: [("lastMessage.timestamp", false)])
         _fetchedResultsController?.delegate = self
         messagesListTblView.rowHeight = UITableViewAutomaticDimension
         messagesListTblView.estimatedRowHeight = 80
-        messagesListTblView.registerNib(UINib(nibName: String(MessageListCell), bundle: NSBundle.mainBundle()), forCellReuseIdentifier: String(MessageListCell))
+        messagesListTblView.register(UINib(nibName: String(describing: MessageListCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: MessageListCell.self))
         messagesListTblView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
     }
 
-    override func addButtonAction(sender:UIButton?){
+    override func addButtonAction(_ sender:UIButton?){
         super.addButtonAction(sender)
 
-        if let contactList = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: nil).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.contactListView) as? ContactListViewController {
+        if let contactList = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.MessagingStoryboard.contactListView) as? ContactListViewController {
             getNavigationController()?.pushViewController(contactList, animated: true)
         }
     }
@@ -64,14 +64,14 @@ extension ChatsViewController{
 
 //MARK:- UITableViewDataSource
 extension ChatsViewController:UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = _fetchedResultsController?.fetchedObjects?.count ?? 0
-       nullCaseLabel.hidden = count != 0
+       nullCaseLabel.isHidden = count != 0
         return count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier(String(MessageListCell)) as? MessageListCell, let obj = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Person {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MessageListCell.self)) as? MessageListCell, let obj = _fetchedResultsController?.object(at: indexPath) as? Person {
             cell.configureCell(indexPath.row == self.tableView(messagesListTblView, numberOfRowsInSection: indexPath.section) - 1, personObj: obj)
             return cell
         }
@@ -80,9 +80,9 @@ extension ChatsViewController:UITableViewDataSource{
 }
 //MARK:- UITableViewDelegate
 extension ChatsViewController:UITableViewDelegate{
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier(Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = _fetchedResultsController?.objectAtIndexPath(indexPath) as? Person {
-            dispatch_async(dispatch_get_main_queue(), {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = _fetchedResultsController?.object(at: indexPath) as? Person {
+            DispatchQueue.main.async(execute: {
                 viewCont.personObj = person
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             })
@@ -92,7 +92,7 @@ extension ChatsViewController:UITableViewDelegate{
 
 //MARK:- NSFetchedResultsControllerDelegate
 extension ChatsViewController:NSFetchedResultsControllerDelegate{
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         messagesListTblView.reloadData()
     }
 }

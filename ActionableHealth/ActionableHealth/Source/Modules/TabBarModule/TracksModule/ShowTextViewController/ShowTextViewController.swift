@@ -26,24 +26,24 @@ class ShowTextViewController: CommonViewController {
             textView.text = text
             textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         }else{
-            textView.hidden = true
+            textView.isHidden = true
         }
 
         if let html = html {
             webView.loadHTMLString(html, baseURL: nil)
         }else{
-            webView.hidden = true
+            webView.isHidden = true
         }
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarWithTitle(navigationTitle ?? "", LeftButtonType: BarButtontype.Back, RightButtonType: BarButtontype.None)
+        setNavigationBarWithTitle(navigationTitle ?? "", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        textView.contentOffset = CGPointZero
+        textView.contentOffset = CGPoint.zero
     }
 
     override func didReceiveMemoryWarning() {

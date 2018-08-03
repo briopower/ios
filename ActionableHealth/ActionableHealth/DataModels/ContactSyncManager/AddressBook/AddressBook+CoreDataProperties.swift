@@ -12,7 +12,7 @@ import CoreData
 
 extension AddressBook {
 
-    @nonobjc public override class func fetchRequest() -> NSFetchRequest {
+    @nonobjc open override class func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest(entityName: "AddressBook");
     }
 
@@ -26,15 +26,15 @@ extension AddressBook {
 extension AddressBook {
 
     @objc(addContactsObject:)
-    @NSManaged public func addToContacts(value: Contact)
+    @NSManaged public func addToContacts(_ value: Contact)
 
     @objc(removeContactsObject:)
-    @NSManaged public func removeFromContacts(value: Contact)
+    @NSManaged public func removeFromContacts(_ value: Contact)
 
     @objc(addContacts:)
-    @NSManaged public func addToContacts(values: NSSet)
+    @NSManaged public func addToContacts(_ values: NSSet)
 
     @objc(removeContacts:)
-    @NSManaged public func removeFromContacts(values: NSSet)
+    @NSManaged public func removeFromContacts(_ values: NSSet)
 
 }

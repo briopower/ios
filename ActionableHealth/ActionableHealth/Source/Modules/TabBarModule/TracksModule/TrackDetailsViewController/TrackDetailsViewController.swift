@@ -33,7 +33,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 enum TrackSectionTypes:Int {
-    case phases, resources, teamMembers, about,blogs, journals, count
+    case phases, resources, teamMembers, blogs, journals, about, count
 }
 
 enum TemplateSectionTypes:Int {

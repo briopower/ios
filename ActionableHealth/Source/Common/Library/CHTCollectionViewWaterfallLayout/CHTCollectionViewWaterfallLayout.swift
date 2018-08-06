@@ -32,7 +32,7 @@ fileprivate func > <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
 @objc public protocol CHTCollectionViewDelegateWaterfallLayout: UICollectionViewDelegate {
     
     func collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                         sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize
+                         sizeFoItemAtIndexPath indexPath: IndexPath) -> CGSize
     
     @objc optional func collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                                         heightForHeaderInSection section: Int) -> CGFloat
@@ -260,7 +260,7 @@ public class CHTCollectionViewWaterfallLayout: UICollectionViewLayout {
                 let xOffset = sectionInsets.left + (itemWidth + self.minimumColumnSpacing) * CGFloat(columnIndex)
                 
                 let yOffset = ((self.columnHeights[section] as AnyObject).object (at: columnIndex) as AnyObject).doubleValue
-                let itemSize = self.delegate?.collectionView(self.collectionView!, layout: self, sizeForItemAtIndexPath: indexPath)
+                let itemSize = self.delegate?.collectionView(self.collectionView!, layout: self, sizeFoItemAtIndexPath: indexPath)
                 var itemHeight: CGFloat = 0.0
                 if itemSize?.height > 0 && itemSize?.width > 0 {
                     itemHeight = floor(itemSize!.height * itemWidth / itemSize!.width)

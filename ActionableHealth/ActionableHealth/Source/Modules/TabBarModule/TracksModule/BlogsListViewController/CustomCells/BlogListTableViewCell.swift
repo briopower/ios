@@ -17,7 +17,7 @@ class BlogListTableViewCell: UITableViewCell {
 
     //MARK:- Outlets
     @IBOutlet weak var blogTitleLabel: UILabel!
-    @IBOutlet weak var blogContentLabel: UILabel!
+    
     @IBOutlet weak var blogAuthorNameLabel: UILabel!
     @IBOutlet weak var blogPublishedDateLabel: UILabel!
     @IBOutlet weak var deleteSelectionButton: UIButton!

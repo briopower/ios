@@ -245,6 +245,7 @@
 		42C69C101F0666D5003AEAE6 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C69C0E1F0666D5003AEAE6 /* TextViewTableViewCell.swift */; };
 		42C69C111F0666D5003AEAE6 /* TextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C69C0F1F0666D5003AEAE6 /* TextViewTableViewCell.xib */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
+		DE95A76D21187E9100679DAB /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A76C21187E9100679DAB /* BlogViewController.swift */; };
 		DEB1827621180C7700646AF3 /* assert.js in Resources */ = {isa = PBXBuildFile; fileRef = DEB1823121180C7700646AF3 /* assert.js */; };
 		DEB1827721180C7700646AF3 /* normalize.css in Resources */ = {isa = PBXBuildFile; fileRef = DEB1823221180C7700646AF3 /* normalize.css */; };
 		DEB1827821180C7700646AF3 /* rich_editor.html in Resources */ = {isa = PBXBuildFile; fileRef = DEB1823321180C7700646AF3 /* rich_editor.html */; };
@@ -637,6 +638,7 @@
 		84B55A69916C3E142115C351 /* Pods-ActionableHealthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3346372087476E9DB865E13 /* Pods-ActionableHealth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealth.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealth/Pods-ActionableHealth.release.xcconfig"; sourceTree = "<group>"; };
+		DE95A76C21187E9100679DAB /* BlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
 		DEB1823121180C7700646AF3 /* assert.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = assert.js; sourceTree = "<group>"; };
 		DEB1823221180C7700646AF3 /* normalize.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = normalize.css; sourceTree = "<group>"; };
 		DEB1823321180C7700646AF3 /* rich_editor.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rich_editor.html; sourceTree = "<group>"; };
@@ -1937,6 +1939,7 @@
 		3CBD5C711DA7AF71004BCAE0 /* TracksModule */ = {
 			isa = PBXGroup;
 			children = (
+				DE95A76B21187D6A00679DAB /* BlogViewController */,
 				DEECAA9B211485C000C890DD /* AddBlogViewController */,
 				DEECAA93211436B200C890DD /* BlogsListViewController */,
 				3CE600251E7FD6A400904C1C /* PhasesListViewController */,
@@ -2418,6 +2421,14 @@
 				448BCFA3267231BD029472D2 /* Pods-ActionableHealthUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE95A76B21187D6A00679DAB /* BlogViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DE95A76C21187E9100679DAB /* BlogViewController.swift */,
+			);
+			path = BlogViewController;
 			sourceTree = "<group>";
 		};
 		DEB1822E21180C7700646AF3 /* RichEditorView */ = {
@@ -3132,6 +3143,7 @@
 				3CCF8B061DA6682300C76C64 /* Constants.swift in Sources */,
 				3C1EC5911DA3A864003DC2A3 /* AppDelegate.swift in Sources */,
 				DEB182B121180C7700646AF3 /* CJWWebView+HackishAccessoryHiding.m in Sources */,
+				DE95A76D21187E9100679DAB /* BlogViewController.swift in Sources */,
 				3C3AD6261E3F0FA900722122 /* CommentsManager.swift in Sources */,
 				3C1EC5961DA3A864003DC2A3 /* AppDelegate_Common.swift in Sources */,
 				3CCF310A1DB75B24001A1E7B /* TrackDetailsViewController.swift in Sources */,

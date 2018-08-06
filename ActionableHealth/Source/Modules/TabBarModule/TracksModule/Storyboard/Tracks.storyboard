@@ -231,6 +231,51 @@
             </objects>
             <point key="canvasLocation" x="628.98550724637687" y="1166.5760869565217"/>
         </scene>
+        <!--Blog View Controller-->
+        <scene sceneID="n0P-Qc-942">
+            <objects>
+                <viewController id="KYs-uk-UCf" customClass="BlogViewController" customModule="BRIO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fja-Uf-hcI"/>
+                        <viewControllerLayoutGuide type="bottom" id="uGa-wR-xss"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aKq-qA-BGt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kld-Mm-hPC" userLabel="ButtonBack">
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puu-bI-5UP">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="17"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.99607843137254903" green="0.92156862745098034" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="puu-bI-5UP" secondAttribute="bottom" id="5A0-Rt-qrl"/>
+                                    <constraint firstAttribute="trailing" secondItem="puu-bI-5UP" secondAttribute="trailing" id="8AV-oZ-3Yc"/>
+                                    <constraint firstAttribute="height" constant="60" id="Blb-fQ-KyD"/>
+                                    <constraint firstItem="puu-bI-5UP" firstAttribute="top" secondItem="Kld-Mm-hPC" secondAttribute="top" id="SLe-Nt-V8x"/>
+                                    <constraint firstItem="puu-bI-5UP" firstAttribute="leading" secondItem="Kld-Mm-hPC" secondAttribute="leading" id="chQ-4N-CP3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Kld-Mm-hPC" secondAttribute="bottom" id="Ceg-17-GSN"/>
+                            <constraint firstItem="Kld-Mm-hPC" firstAttribute="leading" secondItem="aKq-qA-BGt" secondAttribute="leading" id="DKS-Zg-ALL"/>
+                            <constraint firstAttribute="trailing" secondItem="Kld-Mm-hPC" secondAttribute="trailing" id="VS2-8J-dDg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bkc-2a-q2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="629" y="1851"/>
+        </scene>
         <!--Add Blog View Controller-->
         <scene sceneID="tX1-ex-Veo">
             <objects>

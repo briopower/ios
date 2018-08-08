@@ -8,10 +8,20 @@
 
 import UIKit
 
-class BlogViewController: UIViewController {
+class BlogViewController: CommonViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var commentsButton: UIButton!
+    @IBOutlet weak var commentButtonBgView: UIView!
+    
+    
+    // MARK: - Variables
+    
+    
+    // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarWithTitle("", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
 
         // Do any additional setup after loading the view.
     }
@@ -31,5 +41,16 @@ class BlogViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - Button Actions
+    @IBAction func viewCommentsButtonTapped(_ sender: UIButton) {
+        print("Comments")
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.blogCommentListView) as? BlogCommentsViewController{
+            // TODO pass necessary thing to next controller
+            //viewCont.currentTemplate = currentTemplate
+            self.getNavigationController()?.pushViewController(viewCont, animated: true)
+        }
+        
+    }
+    
 }

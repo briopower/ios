@@ -164,7 +164,11 @@ extension BlogsListViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO work here when Blog is viewed
-        
+        if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.blogView) as? BlogViewController{
+            // TODO pass necessary thing to next controller such as pass blog details
+            
+            self.getNavigationController()?.pushViewController(viewCont, animated: true)
+        }
     }
 }
 

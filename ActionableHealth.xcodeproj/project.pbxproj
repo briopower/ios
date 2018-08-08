@@ -316,6 +316,9 @@
 		DEECAA9921143E4B00C890DD /* BlogListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECAA9721143E4B00C890DD /* BlogListTableViewCell.swift */; };
 		DEECAA9A21143E4B00C890DD /* BlogListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEECAA9821143E4B00C890DD /* BlogListTableViewCell.xib */; };
 		DEECAA9D2114879E00C890DD /* AddBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECAA9C2114879E00C890DD /* AddBlogViewController.swift */; };
+		DEF9E5AB211AF6F900194CE5 /* BlogCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF9E5AA211AF6F900194CE5 /* BlogCommentsViewController.swift */; };
+		DEF9E5AF211AFC0900194CE5 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF9E5AD211AFC0900194CE5 /* CommentsTableViewCell.swift */; };
+		DEF9E5B0211AFC0900194CE5 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEF9E5AE211AFC0900194CE5 /* CommentsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -710,6 +713,9 @@
 		DEECAA9721143E4B00C890DD /* BlogListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogListTableViewCell.swift; sourceTree = "<group>"; };
 		DEECAA9821143E4B00C890DD /* BlogListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogListTableViewCell.xib; sourceTree = "<group>"; };
 		DEECAA9C2114879E00C890DD /* AddBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlogViewController.swift; sourceTree = "<group>"; };
+		DEF9E5AA211AF6F900194CE5 /* BlogCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCommentsViewController.swift; sourceTree = "<group>"; };
+		DEF9E5AD211AFC0900194CE5 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		DEF9E5AE211AFC0900194CE5 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		E3CCF3DA237F8DF2571BA971 /* Pods-ActionableHealthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthTests/Pods-ActionableHealthTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1939,6 +1945,7 @@
 		3CBD5C711DA7AF71004BCAE0 /* TracksModule */ = {
 			isa = PBXGroup;
 			children = (
+				DEF9E5A9211AF6AC00194CE5 /* BlogCommentsViewController */,
 				DE95A76B21187D6A00679DAB /* BlogViewController */,
 				DEECAA9B211485C000C890DD /* AddBlogViewController */,
 				DEECAA93211436B200C890DD /* BlogsListViewController */,
@@ -2563,6 +2570,25 @@
 			path = AddBlogViewController;
 			sourceTree = "<group>";
 		};
+		DEF9E5A9211AF6AC00194CE5 /* BlogCommentsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DEF9E5AC211AFBE200194CE5 /* CustomCells */,
+				DEF9E5AA211AF6F900194CE5 /* BlogCommentsViewController.swift */,
+			);
+			name = BlogCommentsViewController;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		DEF9E5AC211AFBE200194CE5 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				DEF9E5AD211AFC0900194CE5 /* CommentsTableViewCell.swift */,
+				DEF9E5AE211AFC0900194CE5 /* CommentsTableViewCell.xib */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2640,7 +2666,6 @@
 				TargetAttributes = {
 					3C1EC5191DA3A7BF003DC2A3 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4F7SW76LL6;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2812,6 +2837,7 @@
 				DEB1827D21180C7700646AF3 /* bg_color.png in Resources */,
 				DEB1827C21180C7700646AF3 /* style.css in Resources */,
 				DEB182AE21180C7700646AF3 /* undo@2x.png in Resources */,
+				DEF9E5B0211AFC0900194CE5 /* CommentsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2907,6 +2933,7 @@
 				"${BUILT_PRODUCTS_DIR}/DAKeyboardControl/DAKeyboardControl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GrowingTextView/GrowingTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/HCSStarRatingView/HCSStarRatingView.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -2923,6 +2950,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DAKeyboardControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GrowingTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HCSStarRatingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -3044,6 +3072,7 @@
 				3CAD35341E4B315600A0DB43 /* PhasesViewController.swift in Sources */,
 				DEB182B521180C7700646AF3 /* String+Extensions.swift in Sources */,
 				3C3B88691E1A1E85005DA7B4 /* Person+CoreDataProperties.swift in Sources */,
+				DEF9E5AF211AFC0900194CE5 /* CommentsTableViewCell.swift in Sources */,
 				3CF6AAEC1DB4A1030067387F /* EditProfileViewController.swift in Sources */,
 				3C8E47851E165CAE0019C261 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				3C8E479A1E165CAE0019C261 /* JSQMessagesComposerTextView.m in Sources */,
@@ -3102,6 +3131,7 @@
 				3C9D13291DA3CE5800998DA2 /* UILabel_FontSizeLabel.swift in Sources */,
 				3CCF8B031DA667B200C76C64 /* GlobalEnums.swift in Sources */,
 				3CFEBC5B1E38A4BF009B029E /* ShowTextViewController.swift in Sources */,
+				DEF9E5AB211AF6F900194CE5 /* BlogCommentsViewController.swift in Sources */,
 				DEECAA9D2114879E00C890DD /* AddBlogViewController.swift in Sources */,
 				3C8E47941E165CAE0019C261 /* JSQMessagesCollectionView.m in Sources */,
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
@@ -3334,11 +3364,11 @@
 				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4F7SW76LL6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Brio.Briopower;
 				PRODUCT_NAME = BRIO;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3357,11 +3387,11 @@
 				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4F7SW76LL6;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Brio.Briopower;
 				PRODUCT_NAME = BRIO;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

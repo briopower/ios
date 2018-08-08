@@ -70,6 +70,8 @@ class Constants: NSObject {
             static let taskView = "TaskListViewController"
             static let blogsListView = "BlogsListViewController"
             static let addNewBlogView = "AddBlogViewController"
+            static let blogView = "BlogViewController"
+            static let blogCommentListView = "BlogCommentsViewController"
             
         }
     }
@@ -79,9 +81,9 @@ class Constants: NSObject {
         static let countryCodes = "http://country.io/phone.json"
         static let countryNames = "http://country.io/names.json"
 
-//        static let base = "https://briopower-qa.appspot.com/" // Dev
+        static let base = "https://briopower-qa.appspot.com/" // Dev
 //        static let base = "https://briopower-uat.appspot.com/" // UAT
-        static let base = "https://briopower-prod.appspot.com/"
+//        static let base = "https://briopower-prod.appspot.com/"
 
         static let authAPIs = "auth/"
         static let allTemplates = "\(base)\(authAPIs)getAllTemplates/"
@@ -117,5 +119,6 @@ class Constants: NSObject {
         static let searchUser = "\(base)\(trackAPIs)searchAppUsers/"
         static let sendToken = "\(base)\(trackAPIs)saveDeviceToken/"
         static let follow = "\(base)\(trackAPIs)follow/"
+        static let deleteTrack = "\(base)\(trackAPIs)delete/"
     }
 }

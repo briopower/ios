@@ -92,6 +92,19 @@ extension TrackDetailsViewController{
     @objc func deleteButtonTapped(){
         print("delete tapped")
         showLoader()
+        guard let trackID = self.currentTemplate?.trackId else{
+            // this means there is no track id
+            hideLoader()
+            return
+        }
+        //let parameter = ["trackId":trackID]
+        NetworkClass.sendRequest(URL: Constants.URLs.deleteTrack+"\(trackID)", RequestType: .get, ResponseType: ExpectedResponseType.string, Parameters: nil, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            self.hideLoader()
+            if let code = statusCode{
+                print(String(code))
+            }
+        }
         
     }
 }

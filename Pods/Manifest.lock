@@ -43,6 +43,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GoogleToolboxForMac/NSData+zlib (2.1.4):
     - GoogleToolboxForMac/Defines (= 2.1.4)
+  - GrowingTextView (0.5.6)
   - GTMSessionFetcher/Core (1.1.15)
   - HCSStarRatingView (1.5)
   - leveldb-library (1.20)
@@ -74,6 +75,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
+  - GrowingTextView (~> 0.5)
   - HCSStarRatingView
   - PhoneNumberKit
   - SDWebImage
@@ -92,6 +94,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   FirebaseMessaging: f43eb0c0e1da096e659de6f713038e74862a62cd
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  GrowingTextView: 8958f4fb7419de58dd622021b2d0696487e00e70
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
@@ -102,6 +105,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 7c99cb7bae3b775cf8f5e4aa4abe806a24e19a48
+PODFILE CHECKSUM: 27b8659352e3f72f03e240475aa6f3c79138ca17
 
 COCOAPODS: 1.4.0

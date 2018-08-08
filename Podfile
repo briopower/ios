@@ -16,6 +16,7 @@ target 'ActionableHealth' do
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'SwiftMessages'
+    pod 'GrowingTextView', '~> 0.5'
 
     target 'ActionableHealthTests' do
         inherit! :search_paths

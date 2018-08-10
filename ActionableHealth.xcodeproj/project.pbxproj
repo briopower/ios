@@ -312,6 +312,10 @@
 		DEB182B521180C7700646AF3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB1827321180C7700646AF3 /* String+Extensions.swift */; };
 		DEB182B621180C7700646AF3 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB1827421180C7700646AF3 /* UIColor+Extensions.swift */; };
 		DEB182B721180C7700646AF3 /* UIView+Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB1827521180C7700646AF3 /* UIView+Responder.swift */; };
+		DEEA70D7211D615500ACF66D /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D6211D615500ACF66D /* JournalListViewController.swift */; };
+		DEEA70DB211D635C00ACF66D /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */; };
+		DEEA70DC211D635C00ACF66D /* JournalListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEA70DA211D635C00ACF66D /* JournalListTableViewCell.xib */; };
+		DEEA70DF211D77E600ACF66D /* ShowAddJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70DE211D77E600ACF66D /* ShowAddJournalViewController.swift */; };
 		DEECAA95211436E800C890DD /* BlogsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECAA94211436E800C890DD /* BlogsListViewController.swift */; };
 		DEECAA9921143E4B00C890DD /* BlogListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEECAA9721143E4B00C890DD /* BlogListTableViewCell.swift */; };
 		DEECAA9A21143E4B00C890DD /* BlogListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEECAA9821143E4B00C890DD /* BlogListTableViewCell.xib */; };
@@ -709,6 +713,10 @@
 		DEB1827321180C7700646AF3 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DEB1827421180C7700646AF3 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		DEB1827521180C7700646AF3 /* UIView+Responder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Responder.swift"; sourceTree = "<group>"; };
+		DEEA70D6211D615500ACF66D /* JournalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListViewController.swift; sourceTree = "<group>"; };
+		DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
+		DEEA70DA211D635C00ACF66D /* JournalListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalListTableViewCell.xib; sourceTree = "<group>"; };
+		DEEA70DE211D77E600ACF66D /* ShowAddJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAddJournalViewController.swift; sourceTree = "<group>"; };
 		DEECAA94211436E800C890DD /* BlogsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogsListViewController.swift; sourceTree = "<group>"; };
 		DEECAA9721143E4B00C890DD /* BlogListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogListTableViewCell.swift; sourceTree = "<group>"; };
 		DEECAA9821143E4B00C890DD /* BlogListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogListTableViewCell.xib; sourceTree = "<group>"; };
@@ -1945,6 +1953,8 @@
 		3CBD5C711DA7AF71004BCAE0 /* TracksModule */ = {
 			isa = PBXGroup;
 			children = (
+				DEEA70DD211D779000ACF66D /* ShowAddJournalViewController */,
+				DEEA70D5211D613600ACF66D /* JournalListViewController */,
 				DEF9E5A9211AF6AC00194CE5 /* BlogCommentsViewController */,
 				DE95A76B21187D6A00679DAB /* BlogViewController */,
 				DEECAA9B211485C000C890DD /* AddBlogViewController */,
@@ -2544,6 +2554,32 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		DEEA70D5211D613600ACF66D /* JournalListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DEEA70D8211D633E00ACF66D /* CustomCells */,
+				DEEA70D6211D615500ACF66D /* JournalListViewController.swift */,
+			);
+			path = JournalListViewController;
+			sourceTree = "<group>";
+		};
+		DEEA70D8211D633E00ACF66D /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */,
+				DEEA70DA211D635C00ACF66D /* JournalListTableViewCell.xib */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		DEEA70DD211D779000ACF66D /* ShowAddJournalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DEEA70DE211D77E600ACF66D /* ShowAddJournalViewController.swift */,
+			);
+			path = ShowAddJournalViewController;
+			sourceTree = "<group>";
+		};
 		DEECAA93211436B200C890DD /* BlogsListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2734,6 +2770,7 @@
 				3C9641341DB4D73500EE9676 /* Chats.storyboard in Resources */,
 				3CCF30F81DB731CF001A1E7B /* RecievedMessageCell.xib in Resources */,
 				3C6763131DB0EA92001F7A4A /* SettingsViewCell.xib in Resources */,
+				DEEA70DC211D635C00ACF66D /* JournalListTableViewCell.xib in Resources */,
 				40EBFEDE1DF8071500605397 /* PhoneNoCell.xib in Resources */,
 				3CC9D0851DB8AAB600287068 /* AllTaskCompletedHeaderView.xib in Resources */,
 				DEB1829A21180C7700646AF3 /* justify_left@2x.png in Resources */,
@@ -3051,6 +3088,7 @@
 				3C3B88711E1A1F84005DA7B4 /* Contact+CoreDataClass.swift in Sources */,
 				3CC9D0701DB886FC00287068 /* CommonTableView.swift in Sources */,
 				3C91DFFF1DFED4B30074BCB6 /* CommentsModel.swift in Sources */,
+				DEEA70DB211D635C00ACF66D /* JournalListTableViewCell.swift in Sources */,
 				3C3B886D1E1A1EAC005DA7B4 /* Messages+CoreDataProperties.swift in Sources */,
 				3C966DBF1DF6C8DE00E299BF /* CountryListViewController.swift in Sources */,
 				3C7F28791E1F7DE20021D269 /* TermsAndConditionsViewController.swift in Sources */,
@@ -3134,6 +3172,7 @@
 				DEF9E5AB211AF6F900194CE5 /* BlogCommentsViewController.swift in Sources */,
 				DEECAA9D2114879E00C890DD /* AddBlogViewController.swift in Sources */,
 				3C8E47941E165CAE0019C261 /* JSQMessagesCollectionView.m in Sources */,
+				DEEA70D7211D615500ACF66D /* JournalListViewController.swift in Sources */,
 				3C9D132E1DA3CE5800998DA2 /* UITextView_Localizable.swift in Sources */,
 				3C71C40E1E1D2BEA00468E43 /* AddFromPhoneHeader.swift in Sources */,
 				3C1EC5A21DA3A864003DC2A3 /* UIImage_Common.swift in Sources */,
@@ -3179,6 +3218,7 @@
 				3CCF310A1DB75B24001A1E7B /* TrackDetailsViewController.swift in Sources */,
 				3CCF8AF81DA64B1000C76C64 /* CommonMethods.swift in Sources */,
 				3CAD35311E4B313B00A0DB43 /* TrackPhasesCell.swift in Sources */,
+				DEEA70DF211D77E600ACF66D /* ShowAddJournalViewController.swift in Sources */,
 				3CD382281DF7E74A00B1B7A3 /* CommonHeaderButton.swift in Sources */,
 				3C6BF4C91E0155F800F6DC70 /* GroupsCell.swift in Sources */,
 				DEECAA95211436E800C890DD /* BlogsListViewController.swift in Sources */,

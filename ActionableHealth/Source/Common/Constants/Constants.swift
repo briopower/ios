@@ -72,6 +72,8 @@ class Constants: NSObject {
             static let addNewBlogView = "AddBlogViewController"
             static let blogView = "BlogViewController"
             static let blogCommentListView = "BlogCommentsViewController"
+            static let journalListView = "JournalListViewController"
+            static let showAddJournalView = "ShowAddJournalViewController"
             
         }
     }

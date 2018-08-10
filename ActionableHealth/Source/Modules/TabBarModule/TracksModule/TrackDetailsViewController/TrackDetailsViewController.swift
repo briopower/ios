@@ -318,6 +318,13 @@ extension TrackDetailsViewController:UITableViewDelegate{
                         blogView.sourceType = sourceType
                         getNavigationController()?.pushViewController(blogView, animated: true)
                     }
+                case .journals:
+                    if let blogView = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.journalListView) as? JournalListViewController {
+                        blogView.currentTemplate = currentTemplate
+                        blogView.sourceType = sourceType
+                        getNavigationController()?.pushViewController(blogView, animated: true)
+                    }
+                    
                 default:
                     break
                 }

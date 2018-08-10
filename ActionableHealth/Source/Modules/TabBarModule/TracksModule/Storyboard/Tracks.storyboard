@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -486,55 +485,8 @@
                     <view key="view" contentMode="scaleToFill" id="5LF-J2-ffJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UOC-fy-P2F">
-                                <rect key="frame" x="40" y="35" width="334" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2Sy-2c-5R2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frC-OU-3bd" userLabel="SeparatorView">
-                                <rect key="frame" x="40" y="80" width="374" height="1"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="Thf-u6-IrZ"/>
-                                </constraints>
-                            </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZpK-ZU-L55" customClass="RichEditorView" customModule="BRIO" customModuleProvider="target">
-                                <rect key="frame" x="40" y="96" width="334" height="596"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IU-bE-69Q" userLabel="PlaceHolderLabel">
-                                <rect key="frame" x="45" y="40" width="39" height="20"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="PE1-jc-NYU" firstAttribute="top" secondItem="ZpK-ZU-L55" secondAttribute="bottom" constant="44" id="3fW-hY-OmI"/>
-                            <constraint firstItem="frC-OU-3bd" firstAttribute="leading" secondItem="UOC-fy-P2F" secondAttribute="leading" id="7y7-DK-9Vf"/>
-                            <constraint firstItem="ZpK-ZU-L55" firstAttribute="trailing" secondItem="UOC-fy-P2F" secondAttribute="trailing" id="AaO-Iw-jsH"/>
-                            <constraint firstItem="8IU-bE-69Q" firstAttribute="top" secondItem="Xqu-Bj-GKs" secondAttribute="bottom" constant="20" id="BHf-Np-W9w"/>
-                            <constraint firstItem="ZpK-ZU-L55" firstAttribute="top" secondItem="frC-OU-3bd" secondAttribute="bottom" constant="15" id="ONW-vU-kdI"/>
-                            <constraint firstItem="UOC-fy-P2F" firstAttribute="top" secondItem="Xqu-Bj-GKs" secondAttribute="bottom" constant="15" id="Z56-Z8-ZTa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UOC-fy-P2F" secondAttribute="trailing" constant="20" id="d0M-aE-7tF"/>
-                            <constraint firstItem="ZpK-ZU-L55" firstAttribute="leading" secondItem="UOC-fy-P2F" secondAttribute="leading" id="fF3-vY-uAL"/>
-                            <constraint firstAttribute="trailing" secondItem="frC-OU-3bd" secondAttribute="trailing" id="gph-dC-lKX"/>
-                            <constraint firstItem="UOC-fy-P2F" firstAttribute="leading" secondItem="5LF-J2-ffJ" secondAttribute="leadingMargin" constant="20" id="qVb-Wm-5MO"/>
-                            <constraint firstItem="8IU-bE-69Q" firstAttribute="leading" secondItem="UOC-fy-P2F" secondAttribute="leading" constant="5" id="qz7-3T-pSc"/>
-                            <constraint firstItem="frC-OU-3bd" firstAttribute="top" secondItem="UOC-fy-P2F" secondAttribute="bottom" constant="15" id="sZe-ZR-bBH"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="editor" destination="ZpK-ZU-L55" id="9up-Kx-aBy"/>
-                        <outlet property="placeHolderLabel" destination="8IU-bE-69Q" id="baf-wa-TIG"/>
-                        <outlet property="titleTextView" destination="UOC-fy-P2F" id="mTM-TZ-bnN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0r-jE-6gN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

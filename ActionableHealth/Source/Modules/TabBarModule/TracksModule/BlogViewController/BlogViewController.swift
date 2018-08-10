@@ -22,7 +22,10 @@ class BlogViewController: CommonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarWithTitle("", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
-
+        
+        let deleteBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "delete"), style: .plain, target: self, action: #selector(deleteBarButtonTapped))
+        let editBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Edit"), style: .plain, target: self, action: #selector(editBarButtonTapped))
+        getNavigationItem()?.rightBarButtonItems = [editBarButton,deleteBarButton]
         // Do any additional setup after loading the view.
     }
 
@@ -51,6 +54,47 @@ class BlogViewController: CommonViewController {
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
         }
         
+    }
+    // MARK: - BarButtonsActions
+    @objc func deleteBarButtonTapped(){
+        // delete this
+        let alertTitleArray = ["OK"]
+        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Blog", Message: "Are you sure you want to delete this Blog", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
+            guard let indexOfAlert = index else {return}
+            switch(indexOfAlert){
+            case 0:
+                // here write code of OK button tapped
+                //TODO code to call delete API
+                // TODO also call get For Blog API here
+                // TODO below function should be called in completion block
+                
+                self.dismiss(animated: true, completion: nil)
+                self.getNavigationController()?.popViewController(animated: true)
+            default:
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    @objc func editBarButtonTapped(){
+        //self.isEditMode = true
+        //self.journalTextView.isEditable = true
+        //self.journalTextView.becomeFirstResponder()
+        let saveBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "tick"), style: .plain, target: self, action: #selector(saveBarButtonTapped))
+        getNavigationItem()?.setRightBarButtonItems([saveBarButton], animated: true)
+    }
+    @objc func saveBarButtonTapped(){
+        
+        // code to save or update as needed
+//        if journalTextView.isFirstResponder{
+//            journalTextView.resignFirstResponder()
+//        }
+//        if isNewJournal{
+//            // TODO save new journal here
+//        }else{
+//            // TODO updateExisting journal here
+//        }
+//        self.isEditMode = false
+        self.getNavigationController()?.popViewController(animated: true)
     }
     
 }

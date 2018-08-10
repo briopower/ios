@@ -20,7 +20,7 @@ class ShowAddJournalViewController: CommonViewController {
     // MARK: - Variables
     
     var isNewJournal = false
-    var isEditMode = false     // this mode is when we edit a added journal
+    var isEditMode = false     // this mode is true/on when we edit a added journal
     
     
     // MARK: - View LifeCycle
@@ -77,12 +77,14 @@ class ShowAddJournalViewController: CommonViewController {
         }
     }
     @objc func editBarButtonTapped(){
-        journalTextView.isEditable = true
-        journalTextView.becomeFirstResponder()
+        self.isEditMode = true
+        self.journalTextView.isEditable = true
+        self.journalTextView.becomeFirstResponder()
         let saveBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "tick"), style: .plain, target: self, action: #selector(saveBarButtonTapped))
         getNavigationItem()?.setRightBarButtonItems([saveBarButton], animated: true)
     }
     @objc func saveBarButtonTapped(){
+        
         // code to save or update as needed
         if journalTextView.isFirstResponder{
             journalTextView.resignFirstResponder()
@@ -92,7 +94,8 @@ class ShowAddJournalViewController: CommonViewController {
         }else{
             // TODO updateExisting journal here
         }
-        getNavigationController()?.popViewController(animated: true)
+        self.isEditMode = false
+        self.getNavigationController()?.popViewController(animated: true)
     }
     
     

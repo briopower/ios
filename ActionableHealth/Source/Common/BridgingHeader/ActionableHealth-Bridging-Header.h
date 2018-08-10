@@ -17,5 +17,4 @@
 #import "JVFloatLabeledTextField.h"
 #import "JVFloatLabeledTextView.h"
 #import "SwiftMessages/SwiftMessages-umbrella.h"
-#import "CJWWebView+HackishAccessoryHiding.h"
 #endif /* ActionableHealth_Bridging_Header_h */

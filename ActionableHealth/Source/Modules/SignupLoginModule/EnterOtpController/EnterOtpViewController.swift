@@ -50,7 +50,7 @@ extension EnterOtpViewController{
         if let dict = responseObj as? NSDictionary{
             if dict["isAuthenticated"] as? Bool == true {
                 UserDefaults.saveUser(dict)
-                AppDelegate.getAppDelegateObject()?.setupOnAppLauch()
+                (UIApplication.shared.delegate as? AppDelegate)?.setupOnAppLauch()
                 ContactSyncManager.sharedInstance.syncCoreDataContacts()
                 if let vc = UIStoryboard(name: Constants.Storyboard.SettingsStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.SettingsStoryboard.editProfileView) as? EditProfileViewController {
                     vc.type = .updateProfile

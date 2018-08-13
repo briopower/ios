@@ -122,13 +122,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var bgManagedObjectContext: NSManagedObjectContext = {
         var bgContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        bgContext.parent = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        //bgContext.parent = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        bgContext.parent = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
         return bgContext
     }()
 
     lazy var abManagedObjectContext: NSManagedObjectContext = {
         var bgContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        bgContext.parent = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        //bgContext.parent = AppDelegate.getAppDelegateObject()?.managedObjectContext
+        bgContext.parent = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
+        (UIApplication.shared.delegate as! AppDelegate)
         return bgContext
     }()
 

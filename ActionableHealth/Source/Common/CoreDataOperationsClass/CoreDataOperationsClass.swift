@@ -12,7 +12,7 @@ import CoreData
 class CoreDataOperationsClass: NSObject {
 
     //MARK:  data fetching methods via NSFetchRequest
-    class  func fetchObjectsOfClassWithName(_ className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false , fetchLimit :Int?, context:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Array<AnyObject>{
+    class  func fetchObjectsOfClassWithName(_ className : String, predicate : NSPredicate? , sortingKey : [String]? , isAcendingSort : Bool = false , fetchLimit :Int?, context:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) -> Array<AnyObject>{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: className)
         fetchRequest.predicate = predicate
         
@@ -53,7 +53,7 @@ class CoreDataOperationsClass: NSObject {
     
     //MARK:  fetchResultsController setup method
     class func getFectechedResultsControllerWithEntityName(_ className : String, predicate : NSPredicate? ,sectionNameKeyPath : String?, sorting : [(key:String, isAcending:Bool)]?) -> NSFetchedResultsController<NSFetchRequestResult>{
-        let managedObjectContext = AppDelegate.getAppDelegateObject()?.managedObjectContext ?? NSManagedObjectContext()
+        let managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext ?? NSManagedObjectContext()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
         let entityDesc = NSEntityDescription.entity(forEntityName: className, in: managedObjectContext)
         fetchRequest.entity = entityDesc

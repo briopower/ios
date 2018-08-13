@@ -34,12 +34,12 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 //MARK:- Additional methods
-extension AppDelegate{
-    class func getAppDelegateObject() -> AppDelegate?
-    {
-        return UIApplication.shared.delegate as? AppDelegate
-    }
-}
+//extension AppDelegate{
+//    class func getAppDelegateObject() -> AppDelegate?
+//    {
+//        return UIApplication.shared.delegate as? AppDelegate
+//    }
+//}
 
 //MARK:- Location Manager Methods
 extension AppDelegate: CLLocationManagerDelegate{

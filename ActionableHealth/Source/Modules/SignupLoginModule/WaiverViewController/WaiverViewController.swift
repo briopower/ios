@@ -31,7 +31,7 @@ class WaiverViewController: CommonViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+        (UIApplication.shared.delegate as? AppDelegate)?.removeLaunchScreen()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

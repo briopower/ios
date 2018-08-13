@@ -4283,7 +4283,7 @@
 					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
 					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
 					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
-					"$(SRCROOT)/usr/include/libxml2/",
+					"$(SDKROOT)/usr/include/libxml2/",
 				);
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -4316,7 +4316,7 @@
 					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
 					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
 					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
-					"$(SRCROOT)/usr/include/libxml2/",
+					"$(SDKROOT)/usr/include/libxml2/",
 				);
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

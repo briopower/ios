@@ -146,8 +146,8 @@ extension ShowAddJournalViewController: UITextViewDelegate{
         //
         let nsString = textView.text as NSString?
         let updatedText = nsString?.replacingCharacters(in: range, with: text)
-
-        (updatedText?.isEmpty ?? true) ? (placeHolderLabel.isHidden = false) : (placeHolderLabel.isHidden = true)
+        guard let str = updatedText else{ return true } //  nil in string
+        str.isEmpty ? (placeHolderLabel.isHidden = false) : (placeHolderLabel.isHidden = true)
         return true
     }
 }

@@ -190,7 +190,7 @@ class AddBlogViewController: UIViewController {
     /// Placeholder Label
     ///
     fileprivate(set) lazy var titlePlaceholderLabel: UILabel = {
-        let placeholderText = NSLocalizedString("Enter title here", comment: "Post title placeholder")
+        let placeholderText = NSLocalizedString("Title", comment: "Post title placeholder")
         let titlePlaceholderLabel = UILabel()
         
         let attributes: [NSAttributedStringKey: Any] = [.foregroundColor: UIColor.lightGray, .font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
@@ -201,6 +201,19 @@ class AddBlogViewController: UIViewController {
         titlePlaceholderLabel.textAlignment = .natural
         
         return titlePlaceholderLabel
+    }()
+    fileprivate(set) lazy var editorPlaceholderLabel: UILabel = {
+        let placeholderText = NSLocalizedString("Story", comment: "Post editor placeholder")
+        let editorPlaceholderLabel = UILabel()
+        
+        let attributes: [NSAttributedStringKey: Any] = [.foregroundColor: UIColor.lightGray, .font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        
+        editorPlaceholderLabel.attributedText = NSAttributedString(string: placeholderText, attributes: attributes)
+        editorPlaceholderLabel.sizeToFit()
+        editorPlaceholderLabel.translatesAutoresizingMaskIntoConstraints = false
+        editorPlaceholderLabel.textAlignment = .natural
+        
+        return editorPlaceholderLabel
     }()
     
     fileprivate var titleHeightConstraint: NSLayoutConstraint!
@@ -266,6 +279,7 @@ class AddBlogViewController: UIViewController {
         view.addSubview(titleTextView)
         view.addSubview(titlePlaceholderLabel)
         view.addSubview(separatorView)
+        view.addSubview(editorPlaceholderLabel)
         //Don't allow scroll while the constraints are being setup and text set
         editorView.isScrollEnabled = false
         configureConstraints()
@@ -289,6 +303,11 @@ class AddBlogViewController: UIViewController {
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         nc.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        
+        setNavigationBarWithTitle("New Blog", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
+        
+        let saveBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "tick").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(saveBarButtonTapped))
+        getNavigationItem()?.rightBarButtonItem = saveBarButton
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -310,6 +329,15 @@ class AddBlogViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         dismissOptionsViewControllerIfNecessary()
+    }
+    // MARK: - BarButtonActions
+    
+    @objc func saveBarButtonTapped(){
+        // TODO call post api to save the blog
+        print("saved")
+        print("title - " + titleTextView.text)
+        print("Html - " + richTextView.getHTML())
+        getNavigationController()?.popViewController(animated: true)
     }
     
     // MARK: - Title and Title placeholder position methods
@@ -354,6 +382,10 @@ class AddBlogViewController: UIViewController {
         contentInset.top = (titleHeightConstraint.constant + separatorView.frame.height)
         editorView.contentInset = contentInset
         editorView.contentOffset = CGPoint(x: 0, y: -contentInset.top)
+        self.updateEditorPlaceholder()
+    }
+    func updateEditorPlaceholder(){
+        richTextView.text.isEmpty ? (editorPlaceholderLabel.isHidden = false) : (editorPlaceholderLabel.isHidden = true)
     }
     
     // MARK: - Configuration Methods
@@ -366,8 +398,8 @@ class AddBlogViewController: UIViewController {
     private func configureConstraints() {
         
         titleHeightConstraint = titleTextView.heightAnchor.constraint(equalToConstant: ceil(titleTextView.font!.lineHeight))
-        titleTopConstraint = titleTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50)
-        titlePlaceholderTopConstraint = titlePlaceholderLabel.topAnchor.constraint(equalTo: titleTextView.topAnchor, constant:50)
+        titleTopConstraint = titleTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0)
+        titlePlaceholderTopConstraint = titlePlaceholderLabel.topAnchor.constraint(equalTo: titleTextView.topAnchor, constant:0)
         titlePlaceholderLeadingConstraint = titlePlaceholderLabel.leadingAnchor.constraint(equalTo: titleTextView.leadingAnchor, constant: 0)
         updateTitlePosition()
         updateTitleHeight()
@@ -399,6 +431,13 @@ class AddBlogViewController: UIViewController {
             editorView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
             editorView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             editorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            ])
+        
+        // EditorPlaceholder
+        NSLayoutConstraint.activate([
+            editorPlaceholderLabel.leadingAnchor.constraint(equalTo: separatorView.leadingAnchor, constant: 5),
+            editorPlaceholderLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
+            editorPlaceholderLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 5)
             ])
     }
     
@@ -542,6 +581,7 @@ extension AddBlogViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         switch textView {
         case richTextView:
+            self.updateEditorPlaceholder()
             updateFormatBar()
         case titleTextView:
             updateTitleHeight()
@@ -1401,8 +1441,12 @@ private extension AddBlogViewController
         //        progress.totalUnitCount = 100
         //
         //        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AddBlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
-        let htmlOfImage = "<img src= " + self.convertImageToData() + ">"
-        richTextView.setHTML(richTextView.getHTML() + htmlOfImage)
+        if let data = UIImagePNGRepresentation(image.convert())?.base64EncodedString(){
+            
+            //toolbar.editor?.insertImage("data:image/jpeg;base64," + data.base64EncodedString(), alt: "Image")
+            let htmlOfImage = "<img src= data:image/jpeg;base64," + data + ">"
+            richTextView.setHTML(richTextView.getHTML() + htmlOfImage)
+        }
     }
     
     func convertImageToData() -> String{
@@ -1775,6 +1819,33 @@ private extension TextList.Style {
     
     var iconImage: UIImage? {
         return formattingIdentifier.iconImage
+    }
+}
+extension UIImage
+{
+    // convenience function in UIImage extension to resize a given image
+    func convert(toSize size:CGSize = CGSize(width: 450, height: 450), scale:CGFloat = UIScreen.main.scale) ->UIImage
+    {
+        if self.size.height < CGFloat(100) && self.size.width < CGFloat(100){
+            // image size is already too small
+            return self
+        }
+        
+        var imageSize = size
+        if self.size.width < CGFloat(100){
+            imageSize.width = self.size.width
+        }
+        if self.size.height < CGFloat(100){
+            imageSize.height = self.size.height
+        }
+        
+        let imgRect = CGRect(origin: CGPoint(x:0.0, y:0.0), size: imageSize)
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 1)
+        self.draw(in: imgRect)
+        let copied = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return copied!
     }
 }
 

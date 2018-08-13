@@ -65,7 +65,7 @@ extension TrackMemberListViewController:UITableViewDelegate{
                 DispatchQueue.main.async(execute: {
                     viewCont.personObj = Person.getPersonWith(userId)
                     viewCont.trackName = self.currentTemplate?.name
-                    AppDelegate.getAppDelegateObject()?.saveContext()
+                    (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
                     self.getNavigationController()?.pushViewController(viewCont, animated: true)
                 })
             }

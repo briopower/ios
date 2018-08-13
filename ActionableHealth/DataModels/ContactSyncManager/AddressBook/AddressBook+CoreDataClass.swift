@@ -12,7 +12,7 @@ import CoreData
 //MARK:- Public Methods
 open class AddressBook: NSManagedObject {
 
-    class func saveAddressBookObj(_ contact:APContact, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> AddressBook? {
+    class func saveAddressBookObj(_ contact:APContact, contextRef:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) -> AddressBook? {
         if let context = contextRef{
 
             var addBook:AddressBook?

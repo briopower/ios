@@ -47,7 +47,7 @@ class MessagingViewController: JSQMessagesViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         personObj?.markAllAsRead()
-        AppDelegate.getAppDelegateObject()?.saveContext()
+        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
     override func viewDidLayoutSubviews() {

@@ -45,7 +45,7 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         if !UserDefaults.isLoggedIn(){
             if showLoginModule {
-                AppDelegate.getAppDelegateObject()?.addLaunchScreen()
+                (UIApplication.shared.delegate as? AppDelegate)?.addLaunchScreen()
             }
         }
         CommonMethods.addShadowToTabBar(self.tabBarController?.tabBar)
@@ -81,12 +81,12 @@ class CommonViewController: UIViewController, UIGestureRecognizerDelegate {
         if !UserDefaults.isLoggedIn() && showLoginModule {
             UIViewController.presentLoginViewController(true, animated: false, Completion: {
                 if UserDefaults.isDisclaimerWatched(){
-                    AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+                    (UIApplication.shared.delegate as? AppDelegate)?.removeLaunchScreen()
                 }
             })
         }else{
             if UserDefaults.isDisclaimerWatched(){
-                AppDelegate.getAppDelegateObject()?.removeLaunchScreen()
+                (UIApplication.shared.delegate as? AppDelegate)?.removeLaunchScreen()
             }
         }
     }

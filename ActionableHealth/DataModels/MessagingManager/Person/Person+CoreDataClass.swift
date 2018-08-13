@@ -35,7 +35,7 @@ open class Person: NSManagedObject {
         }
     }
 
-    class func getPersonWith(_ id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) -> Person? {
+    class func getPersonWith(_ id:String, contextRef:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) -> Person? {
 
         if let context = contextRef{
 

@@ -19,7 +19,7 @@ enum MessageStatus:String {
 open class Messages: NSManagedObject {
 
     class func saveMessageFor(_ key:String, value:[String:AnyObject]){
-        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.bgManagedObjectContext {
+        if let prntCxt = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext, let bgCxt = (UIApplication.shared.delegate as? AppDelegate)?.bgManagedObjectContext {
 
             let message = CoreDataOperationsClass.fetchObjectsOfClassWithName("Messages", predicate: NSPredicate(format: "messageId = %@", key), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: bgCxt) as? [Messages]
 

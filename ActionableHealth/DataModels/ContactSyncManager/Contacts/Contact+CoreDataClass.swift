@@ -12,7 +12,7 @@ import CoreData
 //MARK:- Public Methods
 open class Contact: NSManagedObject {
 
-    class func saveContactObj(_ addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    class func saveContactObj(_ addressBook:AddressBook, forId: String, contextRef:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) {
         if let context = contextRef{
             var contact:Contact?
 
@@ -40,7 +40,7 @@ open class Contact: NSManagedObject {
         }
     }
 
-    class func deleteContactsForRecordId(_ recordId:NSNumber, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    class func deleteContactsForRecordId(_ recordId:NSNumber, contextRef:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) {
         if let context = contextRef{
             let addBookArr = CoreDataOperationsClass.fetchObjectsOfClassWithName("AddressBook", predicate: NSPredicate(format: "recordId = %@", recordId), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: context) as? [AddressBook]
             for obj in addBookArr ?? [] {
@@ -62,7 +62,7 @@ open class Contact: NSManagedObject {
         if let temp = contactsArr?.first {
             for obj in contactsArr ?? [] {
                 if obj != temp {
-                    AppDelegate.getAppDelegateObject()?.managedObjectContext.delete(obj)
+                    (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext.delete(obj)
                 }
             }
             return temp.addressBook?.name

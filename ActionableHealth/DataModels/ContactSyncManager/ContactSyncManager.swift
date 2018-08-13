@@ -56,7 +56,7 @@ class ContactSyncManager: NSObject {
 
     @objc fileprivate func addContacts(_ contacts:[APContact]) {
 
-        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext, !isSyncing {
+        if let prntCxt = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext, let bgCxt = (UIApplication.shared.delegate as? AppDelegate)?.abManagedObjectContext, !isSyncing {
 
             bgCxt.perform({
                 self.isSyncing = true
@@ -121,7 +121,7 @@ class ContactSyncManager: NSObject {
         NotificationCenter.default.post(name: Notification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
     }
     fileprivate func processResponse(_ response:AnyObject?) {
-        if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext {
+        if let prntCxt = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext, let bgCxt = (UIApplication.shared.delegate as? AppDelegate)?.abManagedObjectContext {
             bgCxt.perform({
                 if let arr = response as? NSArray {
                     for obj in arr {
@@ -148,7 +148,7 @@ class ContactSyncManager: NSObject {
 
     }
 
-    fileprivate func setAppUserWithId(_ id:String, contextRef:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    fileprivate func setAppUserWithId(_ id:String, contextRef:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) {
         if let arr = CoreDataOperationsClass.fetchObjectsOfClassWithName("Contact", predicate: NSPredicate(format: "id = %@", id), sortingKey: nil, isAcendingSort: true, fetchLimit: nil, context: contextRef) as? [Contact] {
             for obj in arr {
                 obj.isAppUser = NSNumber(value: true as Bool)
@@ -156,7 +156,7 @@ class ContactSyncManager: NSObject {
         }
     }
 
-    fileprivate func checkIfUserExists(_ addBook:AddressBook, bgCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext, prntCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    fileprivate func checkIfUserExists(_ addBook:AddressBook, bgCxt:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext, prntCxt:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) {
         if let rId = addBook.recordId {
             ContactSyncManager.apAddressBook.loadContact(byRecordID: rId, completion: { (contact:APContact?) in
                 if contact == nil{
@@ -166,7 +166,7 @@ class ContactSyncManager: NSObject {
         }
     }
 
-    fileprivate func deleteFromCoreData(_ addBook:AddressBook, bgCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext, prntCxt:NSManagedObjectContext? = AppDelegate.getAppDelegateObject()?.managedObjectContext) {
+    fileprivate func deleteFromCoreData(_ addBook:AddressBook, bgCxt:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext, prntCxt:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext) {
 
         bgCxt?.delete(addBook)
 
@@ -246,7 +246,7 @@ extension ContactSyncManager{
 
     func checkForDeletedContacts() {
         if ContactSyncManager.sharedInstance.checkAccess() == .granted{
-            if let prntCxt = AppDelegate.getAppDelegateObject()?.managedObjectContext, let bgCxt = AppDelegate.getAppDelegateObject()?.abManagedObjectContext, !isDeleting {
+            if let prntCxt = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext, let bgCxt = (UIApplication.shared.delegate as? AppDelegate)?.abManagedObjectContext, !isDeleting {
                 self.isDeleting = true
 
                 bgCxt.perform({

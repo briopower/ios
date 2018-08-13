@@ -241,7 +241,7 @@ extension MessagingManager{
                         case .inactive:
                             if let viewCont = UIStoryboard(name: Constants.Storyboard.MessagingStoryboard.storyboardName, bundle: Bundle.main).instantiateViewController(withIdentifier: Constants.Storyboard.MessagingStoryboard.messagingView) as? MessagingViewController, let person = person{
                                 viewCont.personObj = person
-                                AppDelegate.getAppDelegateObject()?.window?.rootViewController?.getNavigationController()?.pushViewController(viewCont, animated: false)
+                                (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController?.getNavigationController()?.pushViewController(viewCont, animated: false)
                             }
                         default:
                             break

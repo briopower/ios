@@ -50,7 +50,7 @@ extension ContactListViewController{
 //MARK:- Additional methods
 extension ContactListViewController{
     func setupView() {
-        AppDelegate.getAppDelegateObject()?.startSyncing()
+        (UIApplication.shared.delegate as? AppDelegate)?.startSyncing()
         NotificationCenter.default.addObserver(self, selector: #selector(self.contactSyncCompleted(_:)), name: NSNotification.Name(rawValue: ContactSyncManager.contactSyncCompleted), object: nil)
         tblView.register(UINib(nibName: String(describing: ContactDetailsCell.self), bundle: Bundle.main), forCellReuseIdentifier: String(describing: ContactDetailsCell.self))
 

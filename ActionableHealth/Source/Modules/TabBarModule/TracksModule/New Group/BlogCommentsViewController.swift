@@ -62,7 +62,7 @@ class BlogCommentsViewController: CommonViewController {
         commentsTableView.register(CommentsTableViewCell.cellNib, forCellReuseIdentifier: CommentsTableViewCell.cellIdentifier)
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
-        commentsTableView.estimatedRowHeight = UITableViewAutomaticDimension
+        commentsTableView.estimatedRowHeight = 100
         commentsTableView.rowHeight = UITableViewAutomaticDimension
     }
     func keyboardSetUp(){
@@ -91,6 +91,7 @@ class BlogCommentsViewController: CommonViewController {
     // MARK: - Button actions
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
+        
     }
     
 }

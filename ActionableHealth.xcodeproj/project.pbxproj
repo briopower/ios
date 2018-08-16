@@ -432,6 +432,7 @@
 		DE75AA89211DAAE500142468 /* UnknownEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75AA88211DAAE500142468 /* UnknownEditorViewController.swift */; };
 		DE75AA8B211DAAED00142468 /* AttachmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75AA8A211DAAED00142468 /* AttachmentDetailsViewController.swift */; };
 		DE75AA91211DBD2E00142468 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE75AA90211DBD2E00142468 /* libxml2.2.tbd */; };
+		DE78F9F321259F86000B7E28 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE78F9F221259F86000B7E28 /* Journals.swift */; };
 		DE95A76D21187E9100679DAB /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A76C21187E9100679DAB /* BlogViewController.swift */; };
 		DEEA70D7211D615500ACF66D /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D6211D615500ACF66D /* JournalListViewController.swift */; };
 		DEEA70DB211D635C00ACF66D /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */; };
@@ -955,6 +956,7 @@
 		DE75AA8A211DAAED00142468 /* AttachmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentDetailsViewController.swift; sourceTree = "<group>"; };
 		DE75AA8E211DAEB400142468 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		DE75AA90211DBD2E00142468 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		DE78F9F221259F86000B7E28 /* Journals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journals.swift; sourceTree = "<group>"; };
 		DE95A76C21187E9100679DAB /* BlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
 		DEEA70D6211D615500ACF66D /* JournalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListViewController.swift; sourceTree = "<group>"; };
 		DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
@@ -1198,6 +1200,7 @@
 		3C1EC5501DA3A864003DC2A3 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				DE78F9EF21259F3B000B7E28 /* Journals */,
 				3C1577B51E13CB54004FFAB1 /* ContactSyncManager */,
 				3C1577BD1E13CB54004FFAB1 /* MessagingManager */,
 				3C91DFFC1DFED31B0074BCB6 /* Comments */,
@@ -3296,6 +3299,14 @@
 			path = Renderers;
 			sourceTree = "<group>";
 		};
+		DE78F9EF21259F3B000B7E28 /* Journals */ = {
+			isa = PBXGroup;
+			children = (
+				DE78F9F221259F86000B7E28 /* Journals.swift */,
+			);
+			path = Journals;
+			sourceTree = "<group>";
+		};
 		DE95A76B21187D6A00679DAB /* BlogViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -3452,6 +3463,7 @@
 				TargetAttributes = {
 					3C1EC5191DA3A7BF003DC2A3 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4F7SW76LL6;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -3898,6 +3910,7 @@
 				3C13A4F41E51938A001B8723 /* FilesCell.swift in Sources */,
 				3C8E47961E165CAE0019C261 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				DE75A9A4211DA87000142468 /* ElementConverter.swift in Sources */,
+				DE78F9F321259F86000B7E28 /* Journals.swift in Sources */,
 				3C7F287B1E1F98820021D269 /* AboutUsShortViewController.swift in Sources */,
 				3CF6AAF21DB4A4F80067387F /* EditProfileDetailsCell.swift in Sources */,
 				3CB8A2961DEDAE0C009B9AE9 /* TasksModel.swift in Sources */,
@@ -4274,7 +4287,7 @@
 				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
@@ -4288,7 +4301,7 @@
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Brio.Briopower;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4307,7 +4320,7 @@
 				CODE_SIGN_ENTITLEMENTS = ActionableHealth/BRIO.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4F7SW76LL6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${PODS_ROOT}/Firebase/CoreOnly/Sources",
@@ -4321,7 +4334,7 @@
 				INFOPLIST_FILE = ActionableHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Brio.Briopower;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finoit.ActionableHealth;
 				PRODUCT_NAME = BRIO;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

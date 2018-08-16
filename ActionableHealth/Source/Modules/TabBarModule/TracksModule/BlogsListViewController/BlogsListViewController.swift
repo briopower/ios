@@ -115,7 +115,7 @@ extension BlogsListViewController{
     func setUpTableView(){
         blogsTableView.register(BlogListTableViewCell.cellNib, forCellReuseIdentifier: BlogListTableViewCell.cellIdentifier)
         blogsTableView.rowHeight = UITableViewAutomaticDimension
-        blogsTableView.estimatedRowHeight = UITableViewAutomaticDimension
+        blogsTableView.estimatedRowHeight = 90
         blogsTableView.dataSource = self
         blogsTableView.delegate = self
     }
@@ -166,7 +166,8 @@ extension BlogsListViewController: UITableViewDelegate{
         // TODO work here when Blog is viewed
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.blogView) as? BlogViewController{
             // TODO pass necessary thing to next controller such as pass blog details
-            
+            viewCont.titleOFBlog = "California designer Dainels Patrick and Simmons the Title is now of 3 lines please check this thing"
+            viewCont.contentOfBlog = "<p>These are world renowned designer</p><p>A</p><p>B</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>T<p></p><p></p><p></p><p></p><p></p><p></p><p>V</p><p></p><p></p><p></p><p></p><p>K</p><p></p><p></p><p>A</p><p></p><p></p><p></p><p></p><p></p><p>S</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>S</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>Q</p><p></p><p></p><p></p><p></p><p></p><p></p><p>HJ</p><p></p><p></p><p></p><p>L</p><p></p><p></p><p>P</p><p></p><p></p><p></p><p></p><p></p><p></p><p><a href=\"https://www.google.co.in/\">Google</a> </p>"
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }

@@ -21,6 +21,8 @@ class JournalListViewController: CommonViewController {
     var currentTemplate:TemplatesModel?
     var sourceType = TrackDetailsSourceType.templates
     var isDeleteModeOn = false
+    var journalManager = JournalsManager()
+    
     
     // MARK: - View LifeCycle
     override func viewDidLoad() {
@@ -35,11 +37,9 @@ class JournalListViewController: CommonViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getJournalsFromServer()
     }
-    
-    // MARK: - UserDefinedfunctions
-    
-    
+
     
     // MARK: - BarButtonActions
     
@@ -96,8 +96,23 @@ class JournalListViewController: CommonViewController {
                 //TODO code to call delete API
                 // TODO also call get For Journal API here
                 // TODO below function should be called in completion block
-                self.cancelBarButtonTapped()
-                self.dismiss(animated: true, completion: nil)
+                self.showLoader()
+                let parameter = [
+                    "toBeDeletedIds": [
+                        "16833128561387576015",
+                        "15008372425954941626"
+                    ]
+                ]
+                NetworkClass.sendRequest(URL: Constants.URLs.deleteJournals, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+                    
+                    self.hideLoader()
+                    if let code = statusCode{
+                        print(String(code))
+                    }
+                    self.cancelBarButtonTapped()
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
             default:
                 self.dismiss(animated: true, completion: nil)
             }
@@ -125,7 +140,7 @@ extension JournalListViewController{
     func setUpTableView(){
         journalListTableView.register(JournalListTableViewCell.cellNib, forCellReuseIdentifier: JournalListTableViewCell.cellIdentifier)
         journalListTableView.rowHeight = UITableViewAutomaticDimension
-        journalListTableView.estimatedRowHeight = UITableViewAutomaticDimension
+        journalListTableView.estimatedRowHeight = 100
         journalListTableView.dataSource = self
         journalListTableView.delegate = self
         
@@ -146,17 +161,54 @@ extension JournalListViewController{
             })
         }
     }
+    
+    func getJournalsFromServer(){
+        showLoader()
+            guard let trackID = self.currentTemplate?.trackId else{
+            // TODO - this means there is no track id please update suitable error
+            hideLoader()
+            return
+        }
+        guard let cursor = journalManager.cursor else {
+            // TODO - this means there is no more journals please update suitably
+            hideLoader()
+            return
+        }
+        let parameter = [
+            "cursor": cursor,
+            "pageSize": "20",
+            "query": "",
+            "trackId": trackID
+            ]
+        NetworkClass.sendRequest(URL: Constants.URLs.getJournals, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            self.hideLoader()
+            if let code = statusCode{
+                if code == 200{
+                    self.journalManager = JournalsManager.initWithDict(dict: responseObj as AnyObject)
+                    self.journalListTableView.reloadData()
+                }else{
+                    // error in request
+                    debugPrint("Error in fetching Journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                }
+            }else if let err = error{
+                // error  in request
+                debugPrint(err.localizedDescription)
+            }
+        }
+    }
 }
 // MARK: - UITableViewDataSource
 extension JournalListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return journalManager.journalResultSet?.count ?? 0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JournalListTableViewCell.cellIdentifier, for: indexPath) as! JournalListTableViewCell
         cell.delegate = self
         cell.indexPath = indexPath
         cell.isEdtingMode = self.isDeleteModeOn
+        cell.journal = journalManager.journalResultSet?[indexPath.row] ?? Journal()
         cell.configCell()
         return cell
         
@@ -185,7 +237,7 @@ extension JournalListViewController: UITableViewDelegate{
 extension JournalListViewController: JournalListTableViewCellDelegate{
 
     func deleteSelectionButtonTapped() {
-        // code here when journal is seleceted
+        // Note:- code here when journal is seleceted not when delete is tapped
         
     }
 }

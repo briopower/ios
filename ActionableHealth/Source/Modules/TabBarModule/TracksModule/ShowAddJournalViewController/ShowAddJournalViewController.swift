@@ -1,3 +1,4 @@
+
 //
 //  ShowAddJournalViewController.swift
 //  ActionableHealth
@@ -85,17 +86,27 @@ class ShowAddJournalViewController: CommonViewController {
     }
     @objc func saveBarButtonTapped(){
         
-        // code to save or update as needed
-        if journalTextView.isFirstResponder{
-            journalTextView.resignFirstResponder()
-        }
-        if isNewJournal{
-            // TODO save new journal here
+        // code to savse or update as needed
+        
+        if journalTextView.text.isEmpty{
+            // TODO alert for empty journal
+            
         }else{
-            // TODO updateExisting journal here
+            if journalTextView.isFirstResponder{
+                journalTextView.resignFirstResponder()
+            }
+            showLoader()
+            if isNewJournal{
+                // TODO save new journal here
+                saveNewJournalOnServer()
+            }else{
+                // TODO updateExisting journal here
+                updateExistingJournalOnServer()
+            }
+            self.isEditMode = false
         }
-        self.isEditMode = false
-        self.getNavigationController()?.popViewController(animated: true)
+        
+        
     }
     
     
@@ -136,6 +147,40 @@ extension ShowAddJournalViewController{
             UIView.commitAnimations()
             self.view.layoutIfNeeded()
         }
+    }
+    
+    func saveNewJournalOnServer(){
+        let parameter = ["description": "Hi there",
+                         "trackId": "5633226290757632",
+                         "userId": UserDefaults.getUserId()   ]
+        NetworkClass.sendRequest(URL: Constants.URLs.saveJournal, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            self.hideLoader()
+            if let code = statusCode{
+                print(String(code))
+            }
+            self.getNavigationController()?.popViewController(animated: true)
+            
+        }
+    }
+    func updateExistingJournalOnServer(){
+        let parameter = [
+                         "description": "Hi there updated",
+                         "id": "16833128561387576015",
+                         "trackId": "5633226290757632",
+                         "userId": UserDefaults.getUserId()]
+        NetworkClass.sendRequest(URL: Constants.URLs.saveJournal, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+
+            self.hideLoader()
+            if let code = statusCode{
+                print(String(code))
+            }
+            self.getNavigationController()?.popViewController(animated: true)
+
+        }
+        
+        // remove this when integrating API
+        //self.getNavigationController()?.popViewController(animated: true)
     }
 }
 extension ShowAddJournalViewController: UITextViewDelegate{

@@ -6,81 +6,6 @@
 //  Copyright © 2018 Finoit Technologies. All rights reserved.
 //
 
-//import UIKit
-//
-//class AddBlogViewController: CommonViewController {
-//
-//    // MARK: - Outlets
-//
-//    @IBOutlet weak var titleTextView: UITextView!
-//    @IBOutlet weak var placeHolderLabel: UILabel!
-//
-//    @IBOutlet weak var editor: RichEditorView!
-//
-//    // MARK: - variables
-//
-//
-//
-//    // MARK: - LifeCycle
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
-//        titleTextView.delegate = self
-//        editor.placeholder = "Story"
-//    }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        setNavigationBarWithTitle("New Blog", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
-//
-//        let saveBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "tick").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(saveBarButtonTapped))
-//        getNavigationItem()?.rightBarButtonItem = saveBarButton
-//    }
-//
-//
-//    // MARK: - BarButtonActions
-//
-//    @objc func saveBarButtonTapped(){
-//        // TODO call post api to save the blog
-//        print("saved")
-//        getNavigationController()?.popViewController(animated: true)
-//    }
-//    func setUpEditorView(){
-//        editor.placeholder = "Story"
-//    }
-//
-//
-//
-//
-//    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//    }
-//    */
-//
-//}
-//// MARK: - UITextViewDelegates
-//extension AddBlogViewController: UITextViewDelegate{
-//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//
-//        let nsString = textView.text as NSString?
-//        let updatedText = nsString?.replacingCharacters(in: range, with: text)
-//        if let text = updatedText, !text.isEmpty{
-//            // text of title to work on
-//            placeHolderLabel.isHidden = true
-//        }else{
-//            placeHolderLabel.isHidden = false
-//        }
-//
-//        return true
-//    }
-//}
-// EditorDemoController
-
 import AVFoundation
 import AVKit
 
@@ -92,8 +17,10 @@ import UIKit
 
 class AddBlogViewController: UIViewController {
     
+    var imageCount = 1
+    var imagesURlsAddedInCode =  [String]()
+    var imageUrlToDeleteFromCode = [String]()
     fileprivate var mediaErrorMode = false
-    
     fileprivate(set) lazy var formatBar: FormatBar = {
         return self.createToolbar()
     }()
@@ -334,9 +261,15 @@ class AddBlogViewController: UIViewController {
     
     @objc func saveBarButtonTapped(){
         // TODO call post api to save the blog
+        
         print("saved")
         print("title - " + titleTextView.text)
         print("Html - " + richTextView.getHTML())
+        for url in imagesURlsAddedInCode{
+            if !richTextView.getHTML().contains(url){
+                imageUrlToDeleteFromCode.append(url)
+            }
+        }
         getNavigationController()?.popViewController(animated: true)
     }
     
@@ -430,7 +363,9 @@ class AddBlogViewController: UIViewController {
             editorView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor),
             editorView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor),
             editorView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            editorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+//            editorView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            editorView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor, constant: -20)
+            
             ])
         
         // EditorPlaceholder
@@ -1059,7 +994,7 @@ extension AddBlogViewController {
     @objc func showImagePicker() {
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) ?? []
+        //picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) ?? []
         picker.delegate = self
         picker.allowsEditing = false
         picker.navigationBar.isTranslucent = false
@@ -1133,7 +1068,7 @@ extension AddBlogViewController {
         return [
             headerButton,
             listButton,
-            makeToolbarButton(identifier: .blockquote),
+//            makeToolbarButton(identifier: .blockquote),
             makeToolbarButton(identifier: .bold),
             makeToolbarButton(identifier: .italic),
             makeToolbarButton(identifier: .link)
@@ -1143,11 +1078,11 @@ extension AddBlogViewController {
     var overflowItemsForToolbar: [FormatBarItem] {
         return [
             makeToolbarButton(identifier: .underline),
-            makeToolbarButton(identifier: .strikethrough),
-            makeToolbarButton(identifier: .code),
-            makeToolbarButton(identifier: .horizontalruler),
-            makeToolbarButton(identifier: .more),
-            makeToolbarButton(identifier: .sourcecode)
+            makeToolbarButton(identifier: .strikethrough)
+//            makeToolbarButton(identifier: .code),
+//            makeToolbarButton(identifier: .horizontalruler),
+//            makeToolbarButton(identifier: .more),
+//            makeToolbarButton(identifier: .sourcecode)
         ]
     }
     
@@ -1426,27 +1361,43 @@ private extension AddBlogViewController
     
     func insertImage(_ image: UIImage) {
         
-        //        let fileURL = saveToDisk(image: image)
-        //
-        //let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: image)
-        //attachment.size = .medium
-        //
-        //
-        //        attachment.alignment = .none
-        //        if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
-        //            richTextView.setLink(fileURL, inRange: attachmentRange)
-        //        }
-        //        let imageID = attachment.identifier
-        //        let progress = Progress(parent: nil, userInfo: [MediaProgressKey.mediaID: imageID])
-        //        progress.totalUnitCount = 100
-        //
-        //        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AddBlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
-        if let data = UIImagePNGRepresentation(image.convert())?.base64EncodedString(){
-            
-            //toolbar.editor?.insertImage("data:image/jpeg;base64," + data.base64EncodedString(), alt: "Image")
-            let htmlOfImage = "<img src= data:image/jpeg;base64," + data + ">"
-            richTextView.setHTML(richTextView.getHTML() + htmlOfImage)
+        
+        var url = ""
+        switch imageCount {
+        case 1:
+            url = "https://cnet3.cbsistatic.com/img/PZzSIhy6If0kezSYlVZwLh1WyUs=/770x578/2015/01/27/a20e0f18-10f4-4ff5-af44-b0c10876199e/snapchatqrcode.jpg"
+        case 2:
+            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCFYgmfCaKoc5isESKwGOgO0dztaS7aqfbRTQWYNqAgwFrjIJLow"
+        case 3:
+            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFU-pbtXVZdCVddJ7h7RouJyXIzXFkf-1nwZAhB622CTl4MMp7rA"
+        case 4:
+            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpppeDS_DK0mr6_nYkzrQ-6BOi54EWgyLxxIVgEA8mjbCVh1bC"
+        default:
+            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7oUWQlSYhmMqpYlI3eMTbPg_36i8ptnHci-QX0CSvyStKOuc1"
         }
+        imageCount += 1
+        imagesURlsAddedInCode.append(url)
+        //let fileURL = saveToDisk(image: image)
+        let fileURL = URL(string: url)!
+        let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: image)
+        attachment.size = .medium
+
+
+                attachment.alignment = .none
+                if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
+                    richTextView.setLink(fileURL, inRange: attachmentRange)
+                }
+                let imageID = attachment.identifier
+                let progress = Progress(parent: nil, userInfo: [MediaProgressKey.mediaID: imageID])
+                progress.totalUnitCount = 100
+
+                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AddBlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
+//        if let data = UIImagePNGRepresentation(image.convert())?.base64EncodedString(){
+//
+//            //toolbar.editor?.insertImage("data:image/jpeg;base64," + data.base64EncodedString(), alt: "Image")
+//            let htmlOfImage = "<img src= data:image/jpeg;base64," + data + ">"
+//            richTextView.setHTML(richTextView.getHTML() + htmlOfImage)
+//        }
     }
     
     func convertImageToData() -> String{

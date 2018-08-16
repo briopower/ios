@@ -19,6 +19,7 @@ class CommentsModel: NSObject {
 //MARK:- Additional Methods
 extension CommentsModel{
     class func getPayloadDictForCommenting(_ key:String, commnt:String) -> [String:AnyObject]{
+        
         return ["comment": commnt as AnyObject, "parentKey": key as AnyObject]
 
     }
@@ -43,6 +44,7 @@ extension CommentsModel{
         if let dict = dict as? [String:AnyObject] {
             commObj.commentedBy = dict["from"] as? String
             commObj.commentedOn = Date.dateWithTimeIntervalInMilliSecs((dict["timeStamp"] as? NSNumber)?.doubleValue ?? 0)
+            
             commObj.comment = dict["data"]?["message"] as? String ?? ""
         }
     }

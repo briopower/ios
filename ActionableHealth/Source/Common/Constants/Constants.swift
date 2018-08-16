@@ -122,5 +122,8 @@ class Constants: NSObject {
         static let sendToken = "\(base)\(trackAPIs)saveDeviceToken/"
         static let follow = "\(base)\(trackAPIs)follow/"
         static let deleteTrack = "\(base)\(trackAPIs)delete/"
+        static let saveJournal = "\(base)\(trackAPIs)saveJournal/"
+        static let getJournals = "\(base)\(trackAPIs)getMyJournals/"
+        static let deleteJournals = "\(base)\(trackAPIs)deleteJournals/"
     }
 }

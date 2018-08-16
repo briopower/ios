@@ -32,6 +32,7 @@ class JournalListTableViewCell: UITableViewCell {
     var indexPath: IndexPath?
     var isEdtingMode = false
     var isDeleteSelected = false
+    var journal = Journal()
     var delegate: JournalListTableViewCellDelegate?
     
     //MARK:- View LifeCycle
@@ -58,6 +59,9 @@ class JournalListTableViewCell: UITableViewCell {
 //MARK:- userDefined functions
 extension JournalListTableViewCell{
     func configCell(){
+        journalTitleLabel.text =  self.journal.description ?? "No description Available"
+        dateLabel.text = self.journal.createdDate?.shortString ?? ""
         self.isEdtingMode ? (buttonBgView.isHidden = false) : (buttonBgView.isHidden = true)
     }
 }
+

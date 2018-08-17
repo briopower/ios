@@ -126,4 +126,12 @@ class Constants: NSObject {
         static let getJournals = "\(base)\(trackAPIs)getMyJournals/"
         static let deleteJournals = "\(base)\(trackAPIs)deleteJournals/"
     }
+    struct NoDataViewText {
+        static let journalList = "No Journals present for this track yet."
+        
+    }
+    struct NoInternertConnectionText {
+        static let journalListing = "Please connect to internet to fetch Journals of this track."
+        
+    }
 }

@@ -28,4 +28,23 @@ class CommonMethods: NSObject {
         containerView.layer.cornerRadius = 1
         containerView.clipsToBounds = true
     }
+    class func getDictFromJSONString(jsonString: String?)-> [String:Any]{
+        guard let jsonStr = jsonString else{
+            return [String : Any]()
+        }
+        
+        if let data = jsonStr.data(using: .utf8){
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,Any>
+                {
+                    return jsonArray
+                } else {
+                    print("bad json")
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return [String : Any]()
+    }
 }

@@ -22,8 +22,9 @@ class JournalListViewController: CommonViewController {
     var sourceType = TrackDetailsSourceType.templates
     var isDeleteModeOn = false
     var journalManager = JournalsManager()
-    
-    
+    var journals = [Journal]()
+    let pageSize = 10
+    var isRequestSent = false
     // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +40,8 @@ class JournalListViewController: CommonViewController {
         super.viewWillAppear(animated)
         getJournalsFromServer()
     }
-
     
-    // MARK: - BarButtonActions
-    
-    // MARK: - BarButtonActions
+    // MARK: - Bar button Tapped
     @objc func actionSheetBarButtonTapped(){
         let actionSheetController = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
         actionSheetController.addAction(UIAlertAction.init(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
@@ -64,6 +62,10 @@ class JournalListViewController: CommonViewController {
                 //viewCont.currentTemplate = currentTemplate
                 viewCont.isNewJournal = true
                 viewCont.isEditing = false
+                if let trackID = self.currentTemplate?.trackId{
+                    viewCont.trackID = trackID
+                }
+                viewCont.delegate = self
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             }
             
@@ -97,17 +99,16 @@ class JournalListViewController: CommonViewController {
                 // TODO also call get For Journal API here
                 // TODO below function should be called in completion block
                 self.showLoader()
+                
                 let parameter = [
-                    "toBeDeletedIds": [
-                        "16833128561387576015",
-                        "15008372425954941626"
-                    ]
+                    "toBeDeletedIds": self.getIdsOfJournalsToBEDeleted()
                 ]
                 NetworkClass.sendRequest(URL: Constants.URLs.deleteJournals, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
                     
                     self.hideLoader()
                     if let code = statusCode{
                         print(String(code))
+                        // get data from server if success
                     }
                     self.cancelBarButtonTapped()
                     self.dismiss(animated: true, completion: nil)
@@ -143,7 +144,7 @@ extension JournalListViewController{
         journalListTableView.estimatedRowHeight = 100
         journalListTableView.dataSource = self
         journalListTableView.delegate = self
-        
+        journalListTableView.tableFooterView = UIView()
     }
     func showDeleteButtonView(){
         DispatchQueue.main.async {
@@ -161,32 +162,71 @@ extension JournalListViewController{
             })
         }
     }
-    
-    func getJournalsFromServer(){
-        showLoader()
-            guard let trackID = self.currentTemplate?.trackId else{
-            // TODO - this means there is no track id please update suitable error
-            hideLoader()
+    func getIdsOfJournalsToBEDeleted()->[String]{
+        var idToBeDeleteArray = [String]()
+        for journal in journals{
+            
+            if journal.isSelcetedForDelete && journal.id != nil{
+                
+                idToBeDeleteArray.append(journal.id!)
+            }
+        }
+        return idToBeDeleteArray
+    }
+    func getJournalsFromServer(showLoader: Bool = true){
+        if !NetworkClass.isConnected(true){
+            // no internet connection
+            if journals.isEmpty{
+                journalListTableView.setNoDataView(textColor: .getAppThemeColor(), message: Constants.NoDataViewText.journalList)
+            }else{
+                journalListTableView.removeNoDataView()
+            }
+            return
+        }
+        if isRequestSent{
+            // already sent a request therefore wait for the previous request to complete
+            return
+        }
+        
+        guard let trackID = self.currentTemplate?.trackId else{
+        // TODO - this means there is no track id please update suitable error
             return
         }
         guard let cursor = journalManager.cursor else {
-            // TODO - this means there is no more journals please update suitably
-            hideLoader()
+            // this means there is no more journals please update suitably
             return
         }
         let parameter = [
             "cursor": cursor,
-            "pageSize": "20",
+            "pageSize": String(pageSize),
             "query": "",
             "trackId": trackID
             ]
+        if showLoader{
+            self.showLoader()
+        }
+        self.isRequestSent = true
         NetworkClass.sendRequest(URL: Constants.URLs.getJournals, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
             
-            self.hideLoader()
+            if showLoader{
+                self.hideLoader()
+            }
             if let code = statusCode{
                 if code == 200{
-                    self.journalManager = JournalsManager.initWithDict(dict: responseObj as AnyObject)
-                    self.journalListTableView.reloadData()
+                    let responseDict = CommonMethods.getDictFromJSONString(jsonString: responseObj as? String )
+                    self.journalManager = JournalsManager.initWithDict(dict: responseDict)
+                    if let newJournals = self.journalManager.journalResultSet{
+                        self.journals.append(contentsOf: newJournals)
+                        self.journalListTableView.reloadData()
+                    }
+                    
+                    // Adding and removing no Data view
+                    if self.journals.isEmpty{
+                        self.journalListTableView.setNoDataView(textColor: .getAppThemeColor(), message: Constants.NoDataViewText.journalList)
+                    }else{
+                        self.journalListTableView.removeNoDataView()
+                    }
+                    
                 }else{
                     // error in request
                     debugPrint("Error in fetching Journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
@@ -195,20 +235,22 @@ extension JournalListViewController{
                 // error  in request
                 debugPrint(err.localizedDescription)
             }
+            self.isRequestSent = false
         }
     }
 }
 // MARK: - UITableViewDataSource
 extension JournalListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return journalManager.journalResultSet?.count ?? 0
+        return journals.count
+        // TODO add no dataview in respective tables
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JournalListTableViewCell.cellIdentifier, for: indexPath) as! JournalListTableViewCell
         cell.delegate = self
         cell.indexPath = indexPath
         cell.isEdtingMode = self.isDeleteModeOn
-        cell.journal = journalManager.journalResultSet?[indexPath.row] ?? Journal()
+        cell.journal = journals[indexPath.row]
         cell.configCell()
         return cell
         
@@ -223,13 +265,34 @@ extension JournalListViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO work here when Journal is viewed
+        // TODO pagination
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.showAddJournalView) as? ShowAddJournalViewController{
             // TODO pass necessary thing to next controller such as pass Journal details
             viewCont.isEditing = false
             viewCont.isNewJournal = false
+            viewCont.selectedJournal = self.journalManager.journalResultSet?[indexPath.row] ?? Journal.init()
+            viewCont.delegate = self
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
         }
+    }
+    
+    
+}
+
+// MARK: - UIScrollViewDelegate
+extension JournalListViewController: UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let _ = journalManager.cursor else {
+            // no more list present on server
+            return
+        }
+        if let visibleIndex = journalListTableView.indexPathsForVisibleRows?.last?.row{
+            if (visibleIndex % (pageSize-1)) < 3{
+                
+                self.getJournalsFromServer(showLoader: true)
+            }
+        }
+        
     }
 }
 
@@ -239,5 +302,13 @@ extension JournalListViewController: JournalListTableViewCellDelegate{
     func deleteSelectionButtonTapped() {
         // Note:- code here when journal is seleceted not when delete is tapped
         
+    }
+}
+
+// MARK: - ShowAddJournalViewControllerDelegate
+extension JournalListViewController : ShowAddJournalViewControllerDelegate{
+    func savedOrUpdatedNewJournal() {
+        journalManager.cursor = ""
+        journals.removeAll()
     }
 }

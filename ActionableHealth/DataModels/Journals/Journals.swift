@@ -15,13 +15,14 @@ class JournalsManager {
     var journalResultSet: [Journal]?
     var returnedCount: String?
     
+    
     init() {
         cursor = ""
         totalCount = "0"
         returnedCount = "0"
         journalResultSet = [Journal]()
     }
-    class func initWithDict(dict: AnyObject)-> JournalsManager{
+    class func initWithDict(dict: [String : Any])-> JournalsManager{
         let journalsManager = JournalsManager()
         journalsManager.cursor = dict["cursor"] as? String
         journalsManager.totalCount = dict["totalCount"] as? String
@@ -40,7 +41,7 @@ class Journal {
     var trackId: String?
     var description: String?
     var createdDate: Date?
-    
+    var isSelcetedForDelete = false
     init() {
         id = ""
         userId = ""

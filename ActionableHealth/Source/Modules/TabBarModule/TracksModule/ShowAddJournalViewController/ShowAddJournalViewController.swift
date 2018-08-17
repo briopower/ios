@@ -9,6 +9,12 @@
 
 import UIKit
 
+
+
+protocol ShowAddJournalViewControllerDelegate {
+    func savedOrUpdatedNewJournal()
+}
+
 class ShowAddJournalViewController: CommonViewController {
 
     // MARK: - Outlets
@@ -19,17 +25,18 @@ class ShowAddJournalViewController: CommonViewController {
     
     
     // MARK: - Variables
-    
+    var delegate: ShowAddJournalViewControllerDelegate?
     var isNewJournal = false
     var isEditMode = false     // this mode is true/on when we edit a added journal
-    
-    
+    var selectedJournal = Journal.init()
+    var trackID: String = ""
     // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if !isNewJournal{
             // showing existing journal
+            journalTextView.text = selectedJournal.description
             placeHolderLabel.isHidden = true
             journalTextView.isEditable = false
             setNavigationBarWithTitle("", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
@@ -90,8 +97,12 @@ class ShowAddJournalViewController: CommonViewController {
         
         if journalTextView.text.isEmpty{
             // TODO alert for empty journal
-            
+            UIAlertController.showAlertOfStyle(Message: "Please write something before saving", completion: nil)
         }else{
+            if !NetworkClass.isConnected(true){
+                // no internet connection
+                return
+            }
             if journalTextView.isFirstResponder{
                 journalTextView.resignFirstResponder()
             }
@@ -150,37 +161,67 @@ extension ShowAddJournalViewController{
     }
     
     func saveNewJournalOnServer(){
-        let parameter = ["description": "Hi there",
-                         "trackId": "5633226290757632",
-                         "userId": UserDefaults.getUserId()   ]
+        
+        if trackID.isEmpty {
+            // no track ID present
+            return
+        }
+        let parameter = ["description": journalTextView.text,
+                         "trackId": trackID,
+                         "userId": UserDefaults.getUserId()   ] as [String : Any]
         NetworkClass.sendRequest(URL: Constants.URLs.saveJournal, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
             
             self.hideLoader()
             if let code = statusCode{
-                print(String(code))
+                if code == 200{
+                    print("Journal Saved with status code 200")
+                    self.delegate?.savedOrUpdatedNewJournal()
+                }else{
+                    // error in request
+                    debugPrint("Error in fetching Journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                }
+            }else if let err = error{
+                // error  in request
+                debugPrint(err.localizedDescription)
             }
             self.getNavigationController()?.popViewController(animated: true)
             
         }
     }
     func updateExistingJournalOnServer(){
+        
+        guard let trackId = selectedJournal.trackId else{
+            // no track ID present
+            return
+        }
+        guard  let journalId = selectedJournal.id else {
+            // no journal ID present
+            return
+        }
+        
         let parameter = [
-                         "description": "Hi there updated",
-                         "id": "16833128561387576015",
-                         "trackId": "5633226290757632",
-                         "userId": UserDefaults.getUserId()]
+                         "description": journalTextView.text,
+                         "id": journalId,
+                         "trackId": trackId,
+                         "userId": UserDefaults.getUserId()] as [String : Any]
         NetworkClass.sendRequest(URL: Constants.URLs.saveJournal, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
 
             self.hideLoader()
             if let code = statusCode{
-                print(String(code))
+                if code == 200{
+                    print("Updated with status code 200")
+                    self.delegate?.savedOrUpdatedNewJournal()
+                }else{
+                    // error in request
+                    debugPrint("Error in fetching Journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                }
+            }else if let err = error{
+                // error  in request
+                debugPrint(err.localizedDescription)
             }
+            
             self.getNavigationController()?.popViewController(animated: true)
-
         }
-        
-        // remove this when integrating API
-        //self.getNavigationController()?.popViewController(animated: true)
     }
 }
 extension ShowAddJournalViewController: UITextViewDelegate{

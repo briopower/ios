@@ -434,6 +434,7 @@
 		DE75AA91211DBD2E00142468 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE75AA90211DBD2E00142468 /* libxml2.2.tbd */; };
 		DE78F9F321259F86000B7E28 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE78F9F221259F86000B7E28 /* Journals.swift */; };
 		DE95A76D21187E9100679DAB /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A76C21187E9100679DAB /* BlogViewController.swift */; };
+		DEDBBF6F2126AB2A0054E158 /* UITableView_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBBF6E2126AB2A0054E158 /* UITableView_Common.swift */; };
 		DEEA70D7211D615500ACF66D /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D6211D615500ACF66D /* JournalListViewController.swift */; };
 		DEEA70DB211D635C00ACF66D /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */; };
 		DEEA70DC211D635C00ACF66D /* JournalListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEEA70DA211D635C00ACF66D /* JournalListTableViewCell.xib */; };
@@ -958,6 +959,7 @@
 		DE75AA90211DBD2E00142468 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		DE78F9F221259F86000B7E28 /* Journals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journals.swift; sourceTree = "<group>"; };
 		DE95A76C21187E9100679DAB /* BlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
+		DEDBBF6E2126AB2A0054E158 /* UITableView_Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Common.swift; sourceTree = "<group>"; };
 		DEEA70D6211D615500ACF66D /* JournalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListViewController.swift; sourceTree = "<group>"; };
 		DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
 		DEEA70DA211D635C00ACF66D /* JournalListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalListTableViewCell.xib; sourceTree = "<group>"; };
@@ -1290,6 +1292,7 @@
 		3C1EC55D1DA3A864003DC2A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DEDBBF6D2126AB040054E158 /* UITableView */,
 				3CB54AF21E1E2B930026A999 /* UITableViewCell */,
 				3CEDA2341E0D27F400EF6919 /* NSFileManager */,
 				3CDD48A91E03E6BB00ACAFB4 /* UIImagePickerController */,
@@ -3315,6 +3318,14 @@
 			path = BlogViewController;
 			sourceTree = "<group>";
 		};
+		DEDBBF6D2126AB040054E158 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				DEDBBF6E2126AB2A0054E158 /* UITableView_Common.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
 		DEEA70D5211D613600ACF66D /* JournalListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -4093,6 +4104,7 @@
 				DE75AA75211DA88E00142468 /* GutenbergAttributeDecoder.swift in Sources */,
 				DE75A9EB211DA87000142468 /* FormatBarItem.swift in Sources */,
 				3C1EC5991DA3A864003DC2A3 /* String_Common.swift in Sources */,
+				DEDBBF6F2126AB2A0054E158 /* UITableView_Common.swift in Sources */,
 				DE75A9A3211DA87000142468 /* AttachmentElementConverter.swift in Sources */,
 				3C8E47981E165CAE0019C261 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				DE75A9D2211DA87000142468 /* UIStackView+Helpers.swift in Sources */,

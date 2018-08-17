@@ -275,7 +275,7 @@ extension ContactSyncManager{
 extension ContactSyncManager{
 
     fileprivate func syncContactFromServer(_ array:NSMutableArray) {
-        NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .post, Parameters: array, Headers: nil) { (status, responseObj, error, statusCode) in
+        NetworkClass.sendRequest(URL: Constants.URLs.appUsers, RequestType: .post, Parameters: array, Headers: nil, networkActivityIndicatorVisible: false) { (status, responseObj, error, statusCode) in
             if status{
                 self.processResponse(responseObj)
             }else{

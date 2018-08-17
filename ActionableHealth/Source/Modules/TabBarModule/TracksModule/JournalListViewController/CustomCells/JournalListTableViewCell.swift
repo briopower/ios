@@ -31,7 +31,6 @@ class JournalListTableViewCell: UITableViewCell {
     }
     var indexPath: IndexPath?
     var isEdtingMode = false
-    var isDeleteSelected = false
     var journal = Journal()
     var delegate: JournalListTableViewCellDelegate?
     
@@ -49,8 +48,8 @@ class JournalListTableViewCell: UITableViewCell {
     
     //MARK:- Button Actions
     @IBAction func selectionButtonTapped(_ sender: UIButton) {
-        self.isDeleteSelected = !self.isDeleteSelected
-        isDeleteSelected ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
+        journal.isSelcetedForDelete = !journal.isSelcetedForDelete
+        journal.isSelcetedForDelete ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
         self.delegate?.deleteSelectionButtonTapped()
     }
     
@@ -62,6 +61,7 @@ extension JournalListTableViewCell{
         journalTitleLabel.text =  self.journal.description ?? "No description Available"
         dateLabel.text = self.journal.createdDate?.shortString ?? ""
         self.isEdtingMode ? (buttonBgView.isHidden = false) : (buttonBgView.isHidden = true)
+        journal.isSelcetedForDelete ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
     }
 }
 

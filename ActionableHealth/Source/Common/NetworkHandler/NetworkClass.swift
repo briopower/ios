@@ -154,10 +154,12 @@ class NetworkClass:NSObject  {
 //MARK:- Request Methods
 extension NetworkClass{
 
-    class func sendRequest(URL url:String, RequestType requestType:HTTPMethod, ResponseType responseType:ExpectedResponseType = .json , Parameters parameters: AnyObject? = nil, Headers headers: [String: String]? = nil, CompletionHandler completion:CompletionHandler?){
-
-        DispatchQueue.main.async {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    class func sendRequest(URL url:String, RequestType requestType:HTTPMethod, ResponseType responseType:ExpectedResponseType = .json , Parameters parameters: AnyObject? = nil, Headers headers: [String: String]? = nil , networkActivityIndicatorVisible: Bool = true, CompletionHandler completion:CompletionHandler?){
+        
+        if networkActivityIndicatorVisible{
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            }
         }
         if let dataRequest = getRequest(requestType, responseType: responseType, URLString: url, headers: headers, parameters: parameters){
             dataRequest.validate()

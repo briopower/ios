@@ -73,12 +73,37 @@ class ShowAddJournalViewController: CommonViewController {
             switch(indexOfAlert){
             case 0:
                 // here write code of OK button tapped
-                //TODO code to call delete API
-                // TODO also call get For Journal API here
                 // TODO below function should be called in completion block
+                guard let journalID = self.selectedJournal.id else{
+                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    return
+                }
+                self.showLoader()
+                let parameter = [
+                    "toBeDeletedIds": journalID
+                ]
+                NetworkClass.sendRequest(URL: Constants.URLs.deleteJournals, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+                    self.delegate?.savedOrUpdatedNewJournal()
+                    self.hideLoader()
+                    if let code = statusCode{
+                        if code == 200{
+                            print("Updated with status code 200")
+                            self.delegate?.savedOrUpdatedNewJournal()
+                        }else{
+                            // error in request with status code
+                            UIView.showToast("Something went wrong", theme: Theme.error)
+                            debugPrint("Error in fetching Journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                        }
+                    }else if let err = error{
+                        // error  in request
+                        UIView.showToast("Something went wrong", theme: Theme.error)
+                        debugPrint(err.localizedDescription)
+                    }
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    self.getNavigationController()?.popViewController(animated: true)
+                }
                 
-                self.dismiss(animated: true, completion: nil)
-                self.getNavigationController()?.popViewController(animated: true)
             default:
                 self.dismiss(animated: true, completion: nil)
             }

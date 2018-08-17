@@ -38,6 +38,7 @@ class JournalListViewController: CommonViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.journalListTableView.tableFooterView?.isHidden = true
         getJournalsFromServer()
     }
     
@@ -210,6 +211,8 @@ extension JournalListViewController{
             
             if showLoader{
                 self.hideLoader()
+            }else{
+                self.removeLoaderFromFooter()
             }
             if let code = statusCode{
                 if code == 200{
@@ -237,6 +240,19 @@ extension JournalListViewController{
             }
             self.isRequestSent = false
         }
+    }
+    func showLoaderInTableFootor(){
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        spinner.startAnimating()
+        spinner.tag = 555
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: journalListTableView.bounds.width, height: CGFloat(44))
+        
+        self.journalListTableView.tableFooterView = spinner
+        self.journalListTableView.tableFooterView?.isHidden = false
+    }
+    func removeLoaderFromFooter(){
+        self.journalListTableView.tableFooterView = nil
+        
     }
 }
 // MARK: - UITableViewDataSource
@@ -270,7 +286,7 @@ extension JournalListViewController: UITableViewDelegate{
             // TODO pass necessary thing to next controller such as pass Journal details
             viewCont.isEditing = false
             viewCont.isNewJournal = false
-            viewCont.selectedJournal = self.journalManager.journalResultSet?[indexPath.row] ?? Journal.init()
+            viewCont.selectedJournal = self.journals[indexPath.row]
             viewCont.delegate = self
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
         }
@@ -287,9 +303,9 @@ extension JournalListViewController: UIScrollViewDelegate{
             return
         }
         if let visibleIndex = journalListTableView.indexPathsForVisibleRows?.last?.row{
-            if (visibleIndex % (pageSize-1)) < 3{
-                
-                self.getJournalsFromServer(showLoader: true)
+            if (visibleIndex % (pageSize-1)) < 3 && !self.isRequestSent{
+                self.showLoaderInTableFootor()
+                self.getJournalsFromServer(showLoader: false)
             }
         }
         

@@ -80,6 +80,7 @@ class JournalListViewController: CommonViewController {
     @objc func cancelBarButtonTapped(){
         self.hideDeleteButtonView()
         self.isDeleteModeOn = false
+        self.setJounalsSelectionForDeleteToFalse()
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
         journalListTableView.reloadData()
@@ -173,6 +174,13 @@ extension JournalListViewController{
             }
         }
         return idToBeDeleteArray
+    }
+    func setJounalsSelectionForDeleteToFalse(){
+        for journal in journals{
+            if journal.isSelcetedForDelete{
+                journal.isSelcetedForDelete = false
+            }
+        }
     }
     func getJournalsFromServer(showLoader: Bool = true){
         if !NetworkClass.isConnected(true){

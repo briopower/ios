@@ -33,7 +33,7 @@ class ShowAddJournalViewController: CommonViewController {
     // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         if !isNewJournal{
             // showing existing journal
             journalTextView.text = selectedJournal.description
@@ -223,9 +223,13 @@ extension ShowAddJournalViewController{
             // no journal ID present
             return
         }
+        guard let descriptionText = journalTextView.text else{
+            // nil found this is not that much required as we have already checked this case before calling this function
+            return
+        }
         
         let parameter = [
-                         "description": journalTextView.text,
+                         "description": descriptionText,
                          "id": journalId,
                          "trackId": trackId,
                          "userId": UserDefaults.getUserId()] as [String : Any]

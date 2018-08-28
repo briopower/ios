@@ -21,7 +21,10 @@ class BlogsListViewController: CommonViewController {
     var currentTemplate:TemplatesModel?
     var sourceType = TrackDetailsSourceType.templates
     var isDeleteModeOn = false
-    
+    var blogManager = BlogsManager()
+    var blogs = [Blog]()
+    let pageSize = 10
+    var isRequestSent = false
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -38,6 +41,7 @@ class BlogsListViewController: CommonViewController {
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
         setUpTableView()
+        self.getBlogsFromServer()
     }
     
     // MARK: - BarButtonActions
@@ -135,6 +139,89 @@ extension BlogsListViewController{
             })
         }
     }
+    
+    func getBlogsFromServer(showLoader: Bool = true){
+        if !NetworkClass.isConnected(true){
+            // no internet connection
+            if blogs.isEmpty{
+                blogsTableView.setNoDataView(textColor: .getAppThemeColor(), message: Constants.NoDataViewText.blogList)
+            }else{
+                blogsTableView.removeNoDataView()
+            }
+            return
+        }
+        if isRequestSent{
+            // already sent a request therefore wait for the previous request to complete
+            return
+        }
+        
+        guard let trackID = self.currentTemplate?.trackId else{
+            // TODO - this means there is no track id please update suitable error
+            return
+        }
+        guard let cursor = blogManager.cursor else {
+            // this means there is no more journals please update suitably
+            return
+        }
+        let parameter = [
+            "cursor": cursor,
+            "pageSize": String(pageSize),
+            "query": "",
+            "trackId": trackID
+        ]
+        if showLoader{
+            self.showLoader()
+        }
+        self.isRequestSent = true
+        NetworkClass.sendRequest(URL: Constants.URLs.getBlogs, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            if showLoader{
+                self.hideLoader()
+            }else{
+                self.removeLoaderFromFooter()
+            }
+            if let code = statusCode{
+                if code == 200{
+                    let responseDict = CommonMethods.getDictFromJSONString(jsonString: responseObj as? String )
+                    self.blogManager = BlogsManager.initWithDict(dict: responseDict)
+                    if let newBlogs = self.blogManager.blogResultSet{
+                        self.blogs.append(contentsOf: newBlogs)
+                        self.blogsTableView.reloadData()
+                    }
+                    
+                    // Adding and removing no Data view
+                    if self.blogs.isEmpty{
+                        self.blogsTableView.setNoDataView(textColor: .getAppThemeColor(), message: Constants.NoDataViewText.blogList)
+                    }else{
+                        self.blogsTableView.removeNoDataView()
+                    }
+                    
+                }else{
+                    // error in request
+                    debugPrint("Error in fetching Blogs with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                }
+            }else if let err = error{
+                // error  in request
+                debugPrint(err.localizedDescription)
+            }
+            self.isRequestSent = false
+        }
+    }
+    func showLoaderInTableFootor(){
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        spinner.startAnimating()
+        spinner.tag = 555
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: blogsTableView.bounds.width, height: CGFloat(44))
+        
+        self.blogsTableView.tableFooterView = spinner
+        self.blogsTableView.tableFooterView?.isHidden = false
+    }
+    func removeLoaderFromFooter(){
+        self.blogsTableView.tableFooterView = nil
+        
+    }
+    
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -172,6 +259,23 @@ extension BlogsListViewController: UITableViewDelegate{
         }
     }
 }
+
+// MARK: - UIScrollViewDelegate
+//extension BlogsListViewController: UIScrollViewDelegate{
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        guard let _ = self.blogManager.cursor else {
+//            // no more blog list present on server
+//            return
+//        }
+//        if let visibleIndex = blogsTableView.indexPathsForVisibleRows?.last?.row{
+//            if (visibleIndex % (pageSize-1)) < 3 && !self.isRequestSent{
+//                self.showLoaderInTableFootor()
+//                self.getBlogsFromServer(showLoader: false)
+//            }
+//        }
+//
+//    }
+//}
 
 
 // MARK: - UITableViewDelegate

@@ -105,12 +105,24 @@ class JournalListViewController: CommonViewController {
                 let parameter = [
                     "toBeDeletedIds": self.getIdsOfJournalsToBEDeleted()
                 ]
-                NetworkClass.sendRequest(URL: Constants.URLs.deleteJournals, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+                NetworkClass.sendRequest(URL: Constants.URLs.deleteJournals, RequestType: .post, ResponseType: ExpectedResponseType.json, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
                     
                     self.hideLoader()
-                    if let code = statusCode{
-                        print(String(code))
-                        // get data from server if success
+                    if let error = error{
+                        UIView.showToast(error.localizedDescription, theme: Theme.error)
+                        self.cancelBarButtonTapped()
+                        self.dismiss(animated: true, completion: nil)
+                        return
+                    }
+                    
+                    if let code = statusCode, code == 200{
+                        //  data from server is success
+                        self.journalManager.cursor = ""
+                        self.journals.removeAll()
+                        self.getJournalsFromServer()
+                    }else {
+                        // some error
+                        UIView.showToast("Something went wrong", theme: Theme.error)
                     }
                     self.cancelBarButtonTapped()
                     self.dismiss(animated: true, completion: nil)
@@ -246,7 +258,7 @@ extension JournalListViewController{
                 // error  in request
                 debugPrint(err.localizedDescription)
             }
-            self.isRequestSent = false
+            self.isRequestSent = false 
         }
     }
     func showLoaderInTableFootor(){

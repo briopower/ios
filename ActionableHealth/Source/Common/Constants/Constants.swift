@@ -125,10 +125,16 @@ class Constants: NSObject {
         static let saveJournal = "\(base)\(trackAPIs)saveJournal/"
         static let getJournals = "\(base)\(trackAPIs)getMyJournals/"
         static let deleteJournals = "\(base)\(trackAPIs)deleteJournals/"
+        static let getBlogs = "\(base)\(trackAPIs)getMyBlogs/"
+        static let saveBlog = "\(base)\(trackAPIs)saveBlog/"
+        static let saveBlogComment = "\(base)\(trackAPIs)saveBlogComment/"
+        static let getBlogComments = "\(base)\(trackAPIs)getMyBlogComments/"
+        static let saveBlogImage = "\(base)\(trackAPIs)uploadBlogImage/"
     }
     struct NoDataViewText {
         static let journalList = "No Journals present for this track yet."
-        
+        static let blogList = "No Blogs present for this track yet."
+        static let blogCommentList = "No Comments present for this Blog yet."
     }
     struct NoInternertConnectionText {
         static let journalListing = "Please connect to internet to fetch Journals of this track."

@@ -11,8 +11,12 @@ import UIKit
 class CommentsTableViewCell: UITableViewCell {
 
     //MARK:- outlets
+    @IBOutlet weak var createdByLabel: UILabel!
+    @IBOutlet weak var commentDescriptionLabel: UILabel!
     
     //MARK:- variables
+    var blogComment = BlogComment()
+    
     class var cellNib: UINib{
         return UINib(nibName: String(describing: CommentsTableViewCell.self), bundle: nil)
     }
@@ -29,6 +33,11 @@ class CommentsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func configCell(){
+        commentDescriptionLabel.text = self.blogComment.description ?? ""
+        createdByLabel.text = self.blogComment.createdBy ?? "Anonymous"
+        
     }
     
 }

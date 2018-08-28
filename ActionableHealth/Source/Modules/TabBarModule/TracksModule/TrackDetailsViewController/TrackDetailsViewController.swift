@@ -97,10 +97,13 @@ extension TrackDetailsViewController{
         guard let trackID = self.currentTemplate?.trackId else{
             // this means there is no track id
             hideLoader()
+            UIView.showToast("Something went wrong", theme: Theme.error)
             return
         }
         //let parameter = ["trackId":trackID]
-        NetworkClass.sendRequest(URL: Constants.URLs.deleteTrack+"\(trackID)", RequestType: .get, ResponseType: ExpectedResponseType.string, Parameters: nil, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+        print(trackID)
+        print(Constants.URLs.deleteTrack+"\(trackID)")
+        NetworkClass.sendRequest(URL: Constants.URLs.deleteTrack+"\(trackID)", RequestType: .get, ResponseType: ExpectedResponseType.json, Parameters: nil, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
             
             self.hideLoader()
             if let code = statusCode{

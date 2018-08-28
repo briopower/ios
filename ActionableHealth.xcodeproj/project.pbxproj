@@ -245,6 +245,8 @@
 		42C69C101F0666D5003AEAE6 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C69C0E1F0666D5003AEAE6 /* TextViewTableViewCell.swift */; };
 		42C69C111F0666D5003AEAE6 /* TextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C69C0F1F0666D5003AEAE6 /* TextViewTableViewCell.xib */; };
 		6EFD9EFB3B7B6E58DE420129 /* Pods_ActionableHealthUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */; };
+		DE0673C12133E58A0025E620 /* Blogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0673C02133E58A0025E620 /* Blogs.swift */; };
+		DE40624E21350D9A00A13204 /* BlogComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE40624D21350D9A00A13204 /* BlogComments.swift */; };
 		DE75A99A211DA87000142468 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = DE75A8E5211DA86E00142468 /* .gitkeep */; };
 		DE75A99B211DA87000142468 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE75A8E6211DA86E00142468 /* Media.xcassets */; };
 		DE75A99C211DA87000142468 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = DE75A8E8211DA86E00142468 /* .gitkeep */; };
@@ -768,6 +770,8 @@
 		84B55A69916C3E142115C351 /* Pods-ActionableHealthUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealthUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealthUITests/Pods-ActionableHealthUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C032CEC0C9C7A5D1FE1AA331 /* Pods_ActionableHealthUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActionableHealthUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3346372087476E9DB865E13 /* Pods-ActionableHealth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActionableHealth.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActionableHealth/Pods-ActionableHealth.release.xcconfig"; sourceTree = "<group>"; };
+		DE0673C02133E58A0025E620 /* Blogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blogs.swift; sourceTree = "<group>"; };
+		DE40624D21350D9A00A13204 /* BlogComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogComments.swift; sourceTree = "<group>"; };
 		DE75A8E5211DA86E00142468 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		DE75A8E6211DA86E00142468 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		DE75A8E8211DA86E00142468 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -1202,6 +1206,8 @@
 		3C1EC5501DA3A864003DC2A3 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				DE40624C21350D7D00A13204 /* BlogComments */,
+				DE0673BF2133E56D0025E620 /* Blogs */,
 				DE78F9EF21259F3B000B7E28 /* Journals */,
 				3C1577B51E13CB54004FFAB1 /* ContactSyncManager */,
 				3C1577BD1E13CB54004FFAB1 /* MessagingManager */,
@@ -2692,6 +2698,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE0673BF2133E56D0025E620 /* Blogs */ = {
+			isa = PBXGroup;
+			children = (
+				DE0673C02133E58A0025E620 /* Blogs.swift */,
+			);
+			path = Blogs;
+			sourceTree = "<group>";
+		};
+		DE40624C21350D7D00A13204 /* BlogComments */ = {
+			isa = PBXGroup;
+			children = (
+				DE40624D21350D9A00A13204 /* BlogComments.swift */,
+			);
+			path = BlogComments;
+			sourceTree = "<group>";
+		};
 		DE75A8E2211DA84B00142468 /* RichTextEditorModules */ = {
 			isa = PBXGroup;
 			children = (
@@ -3802,6 +3824,7 @@
 				3C7DA1DE1DB0A5E3002C9A50 /* NotificationsViewController.swift in Sources */,
 				DE75A9B0211DA87000142468 /* Array+Helpers.swift in Sources */,
 				DE75A99E211DA87000142468 /* Metrics.swift in Sources */,
+				DE0673C12133E58A0025E620 /* Blogs.swift in Sources */,
 				DE75A9B5211DA87000142468 /* DocumentType+Swift4.swift in Sources */,
 				DE75A9DD211DA87000142468 /* FigureFormatter.swift in Sources */,
 				DE75AA6F211DA88E00142468 /* GalleryElementConverter.swift in Sources */,
@@ -4086,6 +4109,7 @@
 				DE75A9D0211DA87000142468 /* UILayoutPriority+Swift4.swift in Sources */,
 				DE75A9AE211DA87000142468 /* ElementToStringConverter.swift in Sources */,
 				DE75A9F4211DA87000142468 /* Attribute.swift in Sources */,
+				DE40624E21350D9A00A13204 /* BlogComments.swift in Sources */,
 				3C8E477A1E165CAE0019C261 /* UIColor+JSQMessages.m in Sources */,
 				DE75AA1F211DA87000142468 /* Header.swift in Sources */,
 				3C1EC5981DA3A864003DC2A3 /* NSUserDefaults_Common.swift in Sources */,

@@ -80,9 +80,9 @@ class ShowAddJournalViewController: CommonViewController {
                 }
                 self.showLoader()
                 let parameter = [
-                    "toBeDeletedIds": journalID
+                    "toBeDeletedIds": [journalID]
                 ]
-                NetworkClass.sendRequest(URL: Constants.URLs.deleteJournals, RequestType: .post, ResponseType: ExpectedResponseType.none, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+                NetworkClass.sendRequest(URL: Constants.URLs.deleteJournals, RequestType: .post, ResponseType: ExpectedResponseType.json, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
                     self.delegate?.savedOrUpdatedNewJournal()
                     self.hideLoader()
                     if let code = statusCode{

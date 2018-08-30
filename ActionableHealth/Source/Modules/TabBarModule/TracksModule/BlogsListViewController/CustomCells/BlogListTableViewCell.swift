@@ -35,7 +35,7 @@ class BlogListTableViewCell: UITableViewCell {
     var isEdtingMode = false
     var isDeleteSelected = false
     var delegate: BlogListTableViewCellDelegate?
-    
+    var blog: Blog?
     //MARK:- LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +49,21 @@ class BlogListTableViewCell: UITableViewCell {
     }
     func configCell(){
         self.isEdtingMode ? (deleteSelectionBgView.isHidden = false) : (deleteSelectionBgView.isHidden = true)
+        if let title = blog?.title{
+            blogTitleLabel.text = title
+        }else{
+            blogTitleLabel.text = "No title found"
+        }
+        if (blog?.isCreatedByMe)!{
+            blogAuthorNameLabel.text = "Me"
+        }else if let author = blog?.userId{
+            blogAuthorNameLabel.text = author
+        }else{
+            blogAuthorNameLabel.text = "Anonymous"
+        }
+        if let date = self.blog?.createdDate{
+          blogPublishedDateLabel.text = date.shortString
+        }
     }
     
     

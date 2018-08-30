@@ -436,6 +436,7 @@
 		DE75AA91211DBD2E00142468 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE75AA90211DBD2E00142468 /* libxml2.2.tbd */; };
 		DE78F9F321259F86000B7E28 /* Journals.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE78F9F221259F86000B7E28 /* Journals.swift */; };
 		DE95A76D21187E9100679DAB /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE95A76C21187E9100679DAB /* BlogViewController.swift */; };
+		DEA88AE02137EB9B001707AD /* AttachmentDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEA88ADF2137EB9A001707AD /* AttachmentDetailsViewController.storyboard */; };
 		DEDBBF6F2126AB2A0054E158 /* UITableView_Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDBBF6E2126AB2A0054E158 /* UITableView_Common.swift */; };
 		DEEA70D7211D615500ACF66D /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D6211D615500ACF66D /* JournalListViewController.swift */; };
 		DEEA70DB211D635C00ACF66D /* JournalListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */; };
@@ -963,6 +964,7 @@
 		DE75AA90211DBD2E00142468 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		DE78F9F221259F86000B7E28 /* Journals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journals.swift; sourceTree = "<group>"; };
 		DE95A76C21187E9100679DAB /* BlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
+		DEA88ADF2137EB9A001707AD /* AttachmentDetailsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AttachmentDetailsViewController.storyboard; sourceTree = "<group>"; };
 		DEDBBF6E2126AB2A0054E158 /* UITableView_Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView_Common.swift; sourceTree = "<group>"; };
 		DEEA70D6211D615500ACF66D /* JournalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListViewController.swift; sourceTree = "<group>"; };
 		DEEA70D9211D635C00ACF66D /* JournalListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTableViewCell.swift; sourceTree = "<group>"; };
@@ -2717,6 +2719,7 @@
 		DE75A8E2211DA84B00142468 /* RichTextEditorModules */ = {
 			isa = PBXGroup;
 			children = (
+				DEA88ADF2137EB9A001707AD /* AttachmentDetailsViewController.storyboard */,
 				DE75AA88211DAAE500142468 /* UnknownEditorViewController.swift */,
 				DE75AA8A211DAAED00142468 /* AttachmentDetailsViewController.swift */,
 				DE75AA86211DAADB00142468 /* OptionsTableView.swift */,
@@ -3580,6 +3583,7 @@
 				3CAE70B31DB0A01D00D733C2 /* SignupLogin.storyboard in Resources */,
 				3CAE3C651DA7898C006F5212 /* ProximaNova-Semibold.otf in Resources */,
 				3C13A4F51E51938A001B8723 /* FilesCell.xib in Resources */,
+				DEA88AE02137EB9B001707AD /* AttachmentDetailsViewController.storyboard in Resources */,
 				3C71C40F1E1D2BEA00468E43 /* AddFromPhoneHeader.xib in Resources */,
 				3CF6AAFB1DB4AFA40067387F /* EditProfileDetailsCell_Name.xib in Resources */,
 				3C5979E91E5F11C900D4380B /* TrackPhasesCell_Template.xib in Resources */,

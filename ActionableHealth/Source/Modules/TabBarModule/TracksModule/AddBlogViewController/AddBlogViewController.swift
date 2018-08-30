@@ -14,12 +14,18 @@ import MobileCoreServices
 import Photos
 import UIKit
 
-
-class AddBlogViewController: UIViewController {
+protocol AddNewBlogControllerDelegate {
+    func addedNewBlog()
+}
+class AddBlogViewController: CommonViewController {
     
     var imageCount = 1
     var imagesURlsAddedInCode =  [String]()
     var imageUrlToDeleteFromCode = [String]()
+    var trackID: String = ""
+    var delegate: AddNewBlogControllerDelegate?
+    // as we cannot access the Constant file so we have to get it from previous controller
+    var addNewBlogUrl = ""
     fileprivate var mediaErrorMode = false
     fileprivate(set) lazy var formatBar: FormatBar = {
         return self.createToolbar()
@@ -262,7 +268,19 @@ class AddBlogViewController: UIViewController {
     @objc func saveBarButtonTapped(){
         // TODO call post api to save the blog
         
-        print("saved")
+        if !NetworkClass.isConnected(true){
+            // no internet connection
+            return
+        }
+        if titleTextView.text.isEmpty{
+            UIAlertController.showAlertOfStyle(Message: "Please add a title as it cannot be empty.", completion: nil)
+            return
+        }
+        if richTextView.getHTML().isEmpty{
+            UIAlertController.showAlertOfStyle(Message: "Please add some content as it cannot be empty.", completion: nil)
+            return
+        }
+        
         print("title - " + titleTextView.text)
         print("Html - " + richTextView.getHTML())
         for url in imagesURlsAddedInCode{
@@ -270,7 +288,42 @@ class AddBlogViewController: UIViewController {
                 imageUrlToDeleteFromCode.append(url)
             }
         }
-        getNavigationController()?.popViewController(animated: true)
+        if !imageUrlToDeleteFromCode.isEmpty{
+            // call image delete api to delete extra images
+        }
+        
+        self.saveNewBlogOnServer()
+    }
+    
+    // MARK: - My Custom methods
+    func saveNewBlogOnServer(){
+        
+        if trackID.isEmpty {
+            // no track ID present
+            return
+        }
+        showLoader()
+        let parameter = ["description": richTextView.getHTML(),
+                         "title" : titleTextView.text,
+                         "trackId": trackID,
+                         ] as [String : Any] // add this if neccessary"userId": UserDefaults.getUserId()
+        NetworkClass.sendRequest(URL: addNewBlogUrl, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            self.hideLoader()
+            if let code = statusCode{
+                if code == 200{
+                    self.delegate?.addedNewBlog()
+                    print("Blog Saved with status code 200")
+                    self.getNavigationController()?.popViewController(animated: true)
+                }else{
+                    // error in request
+                    debugPrint("Error in savingBlogs with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                }
+            }else if let err = error{
+                // error  in request
+                debugPrint(err.localizedDescription)
+            }
+        }
     }
     
     // MARK: - Title and Title placeholder position methods

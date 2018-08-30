@@ -14,6 +14,9 @@ import MobileCoreServices
 import Photos
 import UIKit
 
+protocol BlogViewControllerDelegate {
+    func updatedExistingBlog()
+}
 
 class BlogViewController: CommonViewController {
     
@@ -25,6 +28,10 @@ class BlogViewController: CommonViewController {
     // MARK: - variables
     var titleOFBlog = ""
     var contentOfBlog = ""
+    var blog: Blog?
+    var isEditMode = false
+    var editBlogURL: String?
+    var delegate: BlogViewControllerDelegate?
     fileprivate var mediaErrorMode = false
     
     fileprivate(set) lazy var formatBar: FormatBar = {
@@ -219,8 +226,19 @@ class BlogViewController: CommonViewController {
         view.addSubview(titlePlaceholderLabel)
         view.addSubview(separatorView)
         view.addSubview(editorPlaceholderLabel)
-        editorView.setHTML(contentOfBlog)
-        titleTextView.text = "this is the a  long long text in the textview to test the height of the textview.\nIf we can see the correct height then its working just fine."
+        if let content = blog?.description{
+            editorView.setHTML(content)
+        }else{
+            editorView.setHTML("")
+        }
+        if let title = blog?.title{
+            titleTextView.text = title
+        }else{
+            titleTextView.text = "No title present"
+        }
+        if let commentCount = blog?.commentCount{
+            self.commentsButton.setTitle("View Comments (\(commentCount))", for: .normal)
+        }
         //Don't allow scroll while the constraints are being setup and text set
         editorView.isScrollEnabled = false
         configureConstraints()
@@ -277,6 +295,7 @@ class BlogViewController: CommonViewController {
         if let viewCont = UIStoryboard(name: "Tracks", bundle: nil).instantiateViewController(withIdentifier: "BlogCommentsViewController") as? BlogCommentsViewController{
             // TODO pass necessary thing to next controller
             //viewCont.currentTemplate = currentTemplate
+            viewCont.blogId = blog?.id
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
         }
         
@@ -304,6 +323,7 @@ class BlogViewController: CommonViewController {
     @objc func editBarButtonTapped() {
         editorView.richTextView.isEditable  = true
         titleTextView.isEditable = true
+        self.isEditMode = true
         let saveBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "tick"), style: .plain, target: self, action: #selector(saveBarButtonTapped))
         getNavigationItem()?.setRightBarButtonItems([saveBarButton], animated: true)
         self.hideDeleteButtonView()
@@ -313,24 +333,70 @@ class BlogViewController: CommonViewController {
 
     @objc func saveBarButtonTapped(){
         // TODO call post api to save the blog
-        
-        // code to save or update as needed
-        //        if journalTextView.isFirstResponder{
-        //            journalTextView.resignFirstResponder()
-        //        }
-        //        if isNewJournal{
-        //            // TODO save new journal here
-        //        }else{
-        //            // TODO updateExisting journal here
-        //        }
-        //        self.isEditMode = false
+
+        if !NetworkClass.isConnected(true){
+            // no internet connection
+            return
+        }
+        if titleTextView.text.isEmpty{
+            // no title
+            UIAlertController.showAlertOfStyle(Message: "Please add a title as it cannot be empty.", completion: nil)
+            return
+        }
+        if richTextView.getHTML().isEmpty{
+            // no content
+            UIAlertController.showAlertOfStyle(Message: "Please add some content as it cannot be empty.", completion: nil)
+            return
+        }
         print("saved")
         print("title - " + titleTextView.text)
         print("Html - " + richTextView.getHTML())
-        getNavigationController()?.popViewController(animated: true)
+        
+        self.updateExistingBlogOnServer()
     }
     
-    
+    func updateExistingBlogOnServer(){
+        
+        guard let id = self.blog?.id else{
+            // no track ID present
+            return
+        }
+        guard let trackID = self.blog?.trackId else {
+            // NO track id present
+            return
+        }
+        
+        guard let url = editBlogURL else {
+            // NO url present
+            return
+        }
+        
+        
+        let parameter = [
+            "description": richTextView.getHTML(),
+            "title" : titleTextView.text,
+            "trackId": trackID,
+            "id": id,
+            "userId": UserDefaults.getUserId()] as [String : Any]
+        NetworkClass.sendRequest(URL: url, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            self.hideLoader()
+            if let code = statusCode{
+                if code == 200{
+                    print("Updated Blog with status code 200")
+                    self.delegate?.updatedExistingBlog()
+                    
+                }else{
+                    // error in request
+                    debugPrint("Error in updating Blog with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                }
+            }else if let err = error{
+                // error  in request
+                debugPrint(err.localizedDescription)
+            }
+            self.getNavigationController()?.popViewController(animated: true)
+        }
+    }
     
     
     

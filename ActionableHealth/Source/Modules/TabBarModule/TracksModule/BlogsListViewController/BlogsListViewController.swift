@@ -32,15 +32,15 @@ class BlogsListViewController: CommonViewController {
         
         // as it is shown after delete mode on
         self.hideDeleteButtonView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setNavigationBarWithTitle("Blog", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
         setUpTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.getBlogsFromServer()
     }
     
@@ -62,7 +62,11 @@ class BlogsListViewController: CommonViewController {
             self.dismiss(animated: true, completion: nil)
             if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.addNewBlogView) as? AddBlogViewController{
                 // TODO pass necessary thing to next controller
-                //viewCont.currentTemplate = currentTemplate
+                if let trackID = self.currentTemplate?.trackId{
+                    viewCont.trackID = trackID
+                }
+                viewCont.delegate = self
+                viewCont.addNewBlogUrl = Constants.URLs.saveBlog
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             }
             
@@ -122,6 +126,7 @@ extension BlogsListViewController{
         blogsTableView.estimatedRowHeight = 90
         blogsTableView.dataSource = self
         blogsTableView.delegate = self
+        blogsTableView.tableFooterView = UIView()
     }
     func showDeleteButtonView(){
         DispatchQueue.main.async {
@@ -160,7 +165,7 @@ extension BlogsListViewController{
             return
         }
         guard let cursor = blogManager.cursor else {
-            // this means there is no more journals please update suitably
+            // this means there is no more blogs please update suitably
             return
         }
         let parameter = [
@@ -230,13 +235,14 @@ extension BlogsListViewController: UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return blogs.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BlogListTableViewCell.cellIdentifier, for: indexPath) as! BlogListTableViewCell
         cell.delegate = self
         cell.indexPath = indexPath
         cell.isEdtingMode = self.isDeleteModeOn
+        cell.blog = self.blogs[indexPath.row]
         cell.configCell()
         return cell
     }
@@ -253,29 +259,31 @@ extension BlogsListViewController: UITableViewDelegate{
         // TODO work here when Blog is viewed
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.blogView) as? BlogViewController{
             // TODO pass necessary thing to next controller such as pass blog details
-            viewCont.titleOFBlog = "California designer Dainels Patrick and Simmons the Title is now of 3 lines please check this thing"
-            viewCont.contentOfBlog = "<p>These are world renowned designer</p><p>A</p><p>B</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>T<p></p><p></p><p></p><p></p><p></p><p></p><p>V</p><p></p><p></p><p></p><p></p><p>K</p><p></p><p></p><p>A</p><p></p><p></p><p></p><p></p><p></p><p>S</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>S</p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p>Q</p><p></p><p></p><p></p><p></p><p></p><p></p><p>HJ</p><p></p><p></p><p></p><p>L</p><p></p><p></p><p>P</p><p></p><p></p><p></p><p></p><p></p><p></p><p><a href=\"https://www.google.co.in/\">Google</a> </p>"
+            viewCont.blog = blogs[indexPath.row]
+            viewCont.isEditMode = false
+            viewCont.editBlogURL = Constants.URLs.saveBlog
+            viewCont.delegate = self
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
         }
     }
 }
 
 // MARK: - UIScrollViewDelegate
-//extension BlogsListViewController: UIScrollViewDelegate{
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        guard let _ = self.blogManager.cursor else {
-//            // no more blog list present on server
-//            return
-//        }
-//        if let visibleIndex = blogsTableView.indexPathsForVisibleRows?.last?.row{
-//            if (visibleIndex % (pageSize-1)) < 3 && !self.isRequestSent{
-//                self.showLoaderInTableFootor()
-//                self.getBlogsFromServer(showLoader: false)
-//            }
-//        }
-//
-//    }
-//}
+extension BlogsListViewController: UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let _ = self.blogManager.cursor else {
+            // no more blog list present on server
+            return
+        }
+        if let visibleIndex = blogsTableView.indexPathsForVisibleRows?.last?.row{
+            if (visibleIndex % (pageSize-1)) < 3 && !self.isRequestSent{
+                self.showLoaderInTableFootor()
+                self.getBlogsFromServer(showLoader: false)
+            }
+        }
+
+    }
+}
 
 
 // MARK: - UITableViewDelegate
@@ -286,4 +294,15 @@ extension BlogsListViewController: BlogListTableViewCellDelegate{
         
     }
 }
-
+extension BlogsListViewController: AddNewBlogControllerDelegate{
+    func addedNewBlog() {
+        blogManager.cursor = ""
+        blogs.removeAll()
+    }
+}
+extension BlogsListViewController: BlogViewControllerDelegate{
+    func updatedExistingBlog() {
+        blogManager.cursor = ""
+        blogs.removeAll()
+    }
+}

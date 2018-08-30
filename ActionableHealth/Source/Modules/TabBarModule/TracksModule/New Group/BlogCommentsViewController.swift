@@ -32,7 +32,7 @@ class BlogCommentsViewController: CommonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO - remove this static blog id
-        blogId = "9092833956765760217"
+//        blogId = "9092833956765760217"
         setNavigationBarWithTitle("Comments", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         setUpCommentsTableView()
         commentTextView.layer.cornerRadius = 10

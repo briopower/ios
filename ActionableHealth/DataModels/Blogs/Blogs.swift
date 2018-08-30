@@ -42,7 +42,9 @@ class Blog {
     var description: String?
     var title: String?
     var createdDate: Date?
+    var commentCount: Int?
     var isSelcetedForDelete = false
+    var isCreatedByMe = true
     init() {
         id = ""
         userId = ""
@@ -50,6 +52,8 @@ class Blog {
         description = ""
         title = ""
         createdDate = Date()
+        commentCount = 0
+        isCreatedByMe = true
     }
     class func initWithDict(dict: [String : Any])-> Blog{
         let blog = Blog()
@@ -59,6 +63,10 @@ class Blog {
         blog.trackId = dict["trackId"] as? String
         blog.userId = dict["userId"] as? String
         blog.title = dict["title"] as? String
+        blog.commentCount = dict["commentCount"] as? Int
+        if blog.userId != UserDefaults.getUserId(){
+            blog.isCreatedByMe = false
+        }
         
         return blog
     }

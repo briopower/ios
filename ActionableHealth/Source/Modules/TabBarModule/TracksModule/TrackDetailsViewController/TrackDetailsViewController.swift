@@ -92,24 +92,18 @@ class TrackDetailsViewController: CommonViewController, UINavigationControllerDe
 //MARK:- Bar Button Actions
 extension TrackDetailsViewController{
     @objc func deleteButtonTapped(){
-        print("delete tapped")
-        showLoader()
-        guard let trackID = self.currentTemplate?.trackId else{
-            // this means there is no track id
-            hideLoader()
-            UIView.showToast("Something went wrong", theme: Theme.error)
-            return
-        }
-        //let parameter = ["trackId":trackID]
-        print(trackID)
-        print(Constants.URLs.deleteTrack+"\(trackID)")
-        NetworkClass.sendRequest(URL: Constants.URLs.deleteTrack+"\(trackID)", RequestType: .get, ResponseType: ExpectedResponseType.json, Parameters: nil, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
-            
-            self.hideLoader()
-            if let code = statusCode{
-                print(String(code))
+        let alertTitleArray = ["OK"]
+        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Track", Message: "Press OK if you want to delete this Track", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
+            guard let indexOfAlert = index else {return}
+            switch(indexOfAlert){
+            case 0:
+                // here write code of OK button tapped
+                self.deleteTrackOnServer()
+            default:
+                self.dismiss(animated: true, completion: nil)
             }
         }
+        
         
     }
 }
@@ -212,6 +206,32 @@ extension TrackDetailsViewController{
             self.ratingView.isUserInteractionEnabled = false
             self.ratingView.removeFromSuperview()
         }) 
+    }
+    func deleteTrackOnServer(){
+        showLoader()
+        guard let trackID = self.currentTemplate?.trackId else{
+            // this means there is no track id
+            hideLoader()
+            UIView.showToast("Something went wrong", theme: Theme.error)
+            return
+        }
+        //let parameter = ["trackId":trackID]
+        print(trackID)
+        print(Constants.URLs.deleteTrack+"\(trackID)")
+        NetworkClass.sendRequest(URL: Constants.URLs.deleteTrack+"\(trackID)", RequestType: .get, ResponseType: ExpectedResponseType.json, Parameters: nil, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            self.hideLoader()
+            if let code = statusCode{
+                print("Statuscode :- " + String(code))
+                if code == 200{
+                    self.getNavigationController()?.popViewController(animated: true)
+                }else{
+                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    print("Error in deleting track")
+                }
+                
+            }
+        }
     }
 }
 

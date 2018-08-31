@@ -26,6 +26,8 @@ class AddBlogViewController: CommonViewController {
     var delegate: AddNewBlogControllerDelegate?
     // as we cannot access the Constant file so we have to get it from previous controller
     var addNewBlogUrl = ""
+    var createBlogImageUploadUrl: String?
+    var getBlogImageUrl: String?
     fileprivate var mediaErrorMode = false
     fileprivate(set) lazy var formatBar: FormatBar = {
         return self.createToolbar()
@@ -324,6 +326,62 @@ class AddBlogViewController: CommonViewController {
                 debugPrint(err.localizedDescription)
             }
         }
+    }
+    
+    func createImageUploadUrl(imageToBeUploaded: UIImage){
+        if NetworkClass.isConnected(true) {
+            guard let url = self.createBlogImageUploadUrl else{
+                // no create image url was passed Down
+                return
+            }
+            NetworkClass.sendRequest(URL: "\(url)\(UserDefaults.getUserId())", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+                if let str = responseObj as? String{
+                    self.uploadImage(imageUploadURL: str, image: imageToBeUploaded)
+                }else{
+                    // not able to create imageUrl
+                }
+            })
+        }
+    }
+    
+    func uploadImage(imageUploadURL: String, image: UIImage) {
+        if NetworkClass.isConnected(true) {
+            if !imageUploadURL.isEmpty{
+                self.showProgressLoader()
+                NetworkClass.sendBlogsImageRequest(URL: imageUploadURL, RequestType: .post, ResponseType: .none, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+                    
+                    let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
+                    self.loader?.progress = progress
+                    
+                }, CompletionHandler: { (status, responseObj, error, statusCode) in
+                    if status{
+                        self.loader?.progress = 1
+                        self.getBlogImageURLFromServer()
+                    }else{
+                        self.hideLoader()
+                    }
+                })
+            }else{
+                // image url was empty
+                //createImageUploadUrl()
+            }
+        }
+    }
+    func getBlogImageURLFromServer(){
+        if NetworkClass.isConnected(true) {
+            guard let url = self.getBlogImageUrl else{
+                // no create image url was passed Down
+                return
+            }
+            NetworkClass.sendRequest(URL: "\(url)\(UserDefaults.getUserId())", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+                if let str = responseObj as? String{
+                    self.uploadImage(imageUploadURL: str, image: imageToBeUploaded)
+                }else{
+                    // not able to create imageUrl
+                }
+            })
+        }
+        
     }
     
     // MARK: - Title and Title placeholder position methods

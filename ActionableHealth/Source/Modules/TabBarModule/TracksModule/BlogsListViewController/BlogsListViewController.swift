@@ -67,6 +67,8 @@ class BlogsListViewController: CommonViewController {
                 }
                 viewCont.delegate = self
                 viewCont.addNewBlogUrl = Constants.URLs.saveBlog
+                viewCont.createImageUploadUrl() = Constants.URLs.createUploadURL
+                viewCont.getBlogImageUrl = Constants.URLs.saveBlogImage
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             }
             
@@ -262,6 +264,9 @@ extension BlogsListViewController: UITableViewDelegate{
             viewCont.blog = blogs[indexPath.row]
             viewCont.isEditMode = false
             viewCont.editBlogURL = Constants.URLs.saveBlog
+            if let blogId = blogs[indexPath.row].id{
+                viewCont.getBlogCommentCountUrl = Constants.URLs.getBlogCommentCount + blogId
+            }
             viewCont.delegate = self
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
         }

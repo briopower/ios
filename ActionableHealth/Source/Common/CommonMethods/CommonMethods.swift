@@ -39,7 +39,7 @@ class CommonMethods: NSObject {
                 {
                     return jsonArray
                 } else {
-                    print("bad json")
+                    print("bad json cannot convert to Dictionary")
                 }
             } catch let error as NSError {
                 print(error)
@@ -47,4 +47,25 @@ class CommonMethods: NSObject {
         }
         return [String : Any]()
     }
+    
+    class func getIntFromJSONString(jsonString: String?)-> Int{
+        guard let jsonStr = jsonString else{
+            return 0
+        }
+        
+        if let data = jsonStr.data(using: .utf8){
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Int
+                {
+                    return jsonArray
+                } else {
+                    print("bad json cannot convert to Int")
+                }
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return 0
+    }
+    
 }

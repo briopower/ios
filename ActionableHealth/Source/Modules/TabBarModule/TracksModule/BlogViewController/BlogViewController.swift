@@ -31,6 +31,7 @@ class BlogViewController: CommonViewController {
     var blog: Blog?
     var isEditMode = false
     var editBlogURL: String?
+    var getBlogCommentCountUrl :String?
     var delegate: BlogViewControllerDelegate?
     fileprivate var mediaErrorMode = false
     
@@ -264,7 +265,7 @@ class BlogViewController: CommonViewController {
         nc.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         editorView.richTextView.isEditable  = false
         titleTextView.isEditable = false
-        
+        self.getCommentCountFromServer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -287,7 +288,40 @@ class BlogViewController: CommonViewController {
         super.viewWillTransition(to: size, with: coordinator)
         dismissOptionsViewControllerIfNecessary()
     }
-    
+    // MARK: - fetchDataFromServer methods
+    func getCommentCountFromServer(){
+        if !NetworkClass.isConnected(true){
+            // no internet connection
+            return
+        }
+        guard let url = getBlogCommentCountUrl else{
+            return
+        }
+        showLoader()
+        NetworkClass.sendRequest(URL: url, RequestType: .get, ResponseType: ExpectedResponseType.json, Parameters: nil, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            
+            self.hideLoader()
+            if let code = statusCode{
+                print("Statuscode :- " + String(code))
+                if code == 200{
+                    if let commentCount = responseObj as? Int {
+                        if commentCount == 0{
+                            self.commentsButton.setTitle("View Comment", for: .normal)
+                        } else{
+                            self.commentsButton.setTitle("View Comments (\(commentCount))", for: .normal)
+                        }
+                    }else{
+                        self.commentsButton.setTitle("View Comment", for: .normal)
+                    }
+                    
+                }else{
+                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    print("Error in deleting track")
+                }
+                
+            }
+        }
+    }
     
     // MARK: - Button Actions
     @IBAction func viewCommentsButtonTapped(_ sender: UIButton) {

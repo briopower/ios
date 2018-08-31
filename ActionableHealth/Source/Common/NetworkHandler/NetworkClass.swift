@@ -278,6 +278,27 @@ extension NetworkClass{
 //        }
         
     }
+    class func sendBlogsImageRequest(URL url:String, RequestType requestType:HTTPMethod, ResponseType responseType:ExpectedResponseType = .none, Parameters parameters: [String: AnyObject]? = nil, Headers headers: [String: String]? = [:], ImageData imageData:Data?, ProgressHandler progress:ProgressHandler?, CompletionHandler completion:CompletionHandler?){
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        //let request = getRequest(requestType, responseType: responseType, URLString: url, headers: headers, parameters: parameters as AnyObject)
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            
+            if let imageData = imageData{
+                multipartFormData.append(imageData, withName: "blogImage", fileName: "blogImage", mimeType: "image/jpeg")
+            }
+            if let parameters = parameters{
+                for (key, value) in parameters {
+                    multipartFormData.append(value.data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                }
+            }
+            
+        }, to:url)
+        { (result) in
+            processEncodingResult(result, responseType: responseType, ProgressHandler: progress, CompletionHandler: completion)
+        }
+    }
 }
 
 //MARK:- Video Uploading Methods

@@ -121,7 +121,7 @@ class Constants: NSObject {
         static let searchUser = "\(base)\(trackAPIs)searchAppUsers/"
         static let sendToken = "\(base)\(trackAPIs)saveDeviceToken/"
         static let follow = "\(base)\(trackAPIs)follow/"
-        static let deleteTrack = "\(base)\(trackAPIs)delete/"
+        static let deleteTrack = "\(base)\(trackAPIs)deleteTrack/"
         static let saveJournal = "\(base)\(trackAPIs)saveJournal/"
         static let getJournals = "\(base)\(trackAPIs)getMyJournals/"
         static let deleteJournals = "\(base)\(trackAPIs)deleteJournals/"
@@ -130,6 +130,7 @@ class Constants: NSObject {
         static let saveBlogComment = "\(base)\(trackAPIs)saveBlogComment/"
         static let getBlogComments = "\(base)\(trackAPIs)getMyBlogComments/"
         static let saveBlogImage = "\(base)\(trackAPIs)uploadBlogImage/"
+        static let getBlogCommentCount = "\(base)\(trackAPIs)getBlogCommentCount/"
     }
     struct NoDataViewText {
         static let journalList = "No Journals present for this track yet."

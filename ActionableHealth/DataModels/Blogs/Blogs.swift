@@ -43,11 +43,13 @@ class Blog {
     var title: String?
     var createdDate: Date?
     var commentCount: Int?
+    var author: String?
     var isSelcetedForDelete = false
     var isCreatedByMe = true
     init() {
         id = ""
         userId = ""
+        author = ""
         trackId = ""
         description = ""
         title = ""
@@ -67,7 +69,7 @@ class Blog {
         if blog.userId != UserDefaults.getUserId(){
             blog.isCreatedByMe = false
         }
-        
+        blog.author = dict["author"] as? String
         return blog
     }
     class func getblogsArray(array: [[String : Any]]) -> [Blog] {

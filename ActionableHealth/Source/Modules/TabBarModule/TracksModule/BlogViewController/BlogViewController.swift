@@ -32,6 +32,7 @@ class BlogViewController: CommonViewController {
     var isEditMode = false
     var editBlogURL: String?
     var getBlogCommentCountUrl :String?
+    var deleteBlogUrl :String?
     var delegate: BlogViewControllerDelegate?
     fileprivate var mediaErrorMode = false
     
@@ -206,9 +207,12 @@ class BlogViewController: CommonViewController {
         
         setNavigationBarWithTitle("", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         
-        let deleteBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "delete"), style: .plain, target: self, action: #selector(deleteBarButtonTapped))
-        let editBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Edit"), style: .plain, target: self, action: #selector(editBarButtonTapped))
-        getNavigationItem()?.rightBarButtonItems = [editBarButton,deleteBarButton]
+        if (self.blog?.isCreatedByMe)!{
+            let deleteBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "delete"), style: .plain, target: self, action: #selector(deleteBarButtonTapped))
+            let editBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Edit"), style: .plain, target: self, action: #selector(editBarButtonTapped))
+            getNavigationItem()?.rightBarButtonItems = [editBarButton,deleteBarButton]
+        }
+        
         
         MediaAttachment.defaultAppearance.progressColor = UIColor.blue
         MediaAttachment.defaultAppearance.progressBackgroundColor = UIColor.lightGray
@@ -344,11 +348,9 @@ class BlogViewController: CommonViewController {
             case 0:
                 // here write code of OK button tapped
                 //TODO code to call delete API
-                // TODO also call get For Blog API here
-                // TODO below function should be called in completion block
-                
-                self.dismiss(animated: true, completion: nil)
-                self.getNavigationController()?.popViewController(animated: true)
+                self.deleteBlogOnServer()
+//                self.dismiss(animated: true, completion: nil)
+//                self.getNavigationController()?.popViewController(animated: true)
             default:
                 self.dismiss(animated: true, completion: nil)
             }
@@ -431,7 +433,42 @@ class BlogViewController: CommonViewController {
             self.getNavigationController()?.popViewController(animated: true)
         }
     }
-    
+    func deleteBlogOnServer(){
+        guard let blogId = self.blog?.id else{
+            UIView.showToast("Something went wrong", theme: Theme.error)
+            return
+        }
+        self.showLoader()
+        guard let url = deleteBlogUrl else{
+            UIView.showToast("Something went wrong", theme: Theme.error)
+            return
+        }
+        //let parameters = ["16014523560352903348","11122351640912313259"]
+        //url+"\(blogId)" , parameters as AnyObject
+        NetworkClass.sendRequest(URL: url+"\(blogId)", RequestType: .get, ResponseType: ExpectedResponseType.json, Parameters: nil, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+            //self.delegate?.savedOrUpdatedNewJournal()
+            self.hideLoader()
+            
+            if let code = statusCode{
+                if code == 200{
+                    print("Deleted blog with status code 200")
+                    self.delegate?.updatedExistingBlog()
+                    
+                }else{
+                    // error in request with status code
+                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    debugPrint("Error in deleting blog with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                }
+            }else if let err = error{
+                // error  in request
+                UIView.showToast("Something went wrong", theme: Theme.error)
+                debugPrint(err.localizedDescription)
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+            self.getNavigationController()?.popViewController(animated: true)
+        }
+    }
     
     
     // MARK: - Title and Title placeholder position methods

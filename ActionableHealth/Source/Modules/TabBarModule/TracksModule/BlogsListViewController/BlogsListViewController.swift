@@ -67,7 +67,7 @@ class BlogsListViewController: CommonViewController {
                 }
                 viewCont.delegate = self
                 viewCont.addNewBlogUrl = Constants.URLs.saveBlog
-                viewCont.createImageUploadUrl() = Constants.URLs.createUploadURL
+                viewCont.createBlogImageUploadUrl = Constants.URLs.createUploadURL
                 viewCont.getBlogImageUrl = Constants.URLs.saveBlogImage
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             }
@@ -82,6 +82,7 @@ class BlogsListViewController: CommonViewController {
     @objc func cancelBarButtonTapped(){
         self.hideDeleteButtonView()
         self.isDeleteModeOn = false
+        self.setBlogSelectionForDeleteToFalse()
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
         blogsTableView.reloadData()
@@ -172,10 +173,9 @@ extension BlogsListViewController{
         }
         let parameter = [
             "cursor": cursor,
-            "pageSize": String(pageSize),
-            "query": "",
+            "pageSize": pageSize,
             "trackId": trackID
-        ]
+            ] as [String : Any]
         if showLoader{
             self.showLoader()
         }
@@ -227,7 +227,13 @@ extension BlogsListViewController{
         self.blogsTableView.tableFooterView = nil
         
     }
-    
+    func setBlogSelectionForDeleteToFalse(){
+        for blog in blogs{
+            if blog.isSelcetedForDelete{
+                blog.isSelcetedForDelete = false
+            }
+        }
+    }
     
 }
 
@@ -264,6 +270,7 @@ extension BlogsListViewController: UITableViewDelegate{
             viewCont.blog = blogs[indexPath.row]
             viewCont.isEditMode = false
             viewCont.editBlogURL = Constants.URLs.saveBlog
+            viewCont.deleteBlogUrl = Constants.URLs.deleteBlog
             if let blogId = blogs[indexPath.row].id{
                 viewCont.getBlogCommentCountUrl = Constants.URLs.getBlogCommentCount + blogId
             }

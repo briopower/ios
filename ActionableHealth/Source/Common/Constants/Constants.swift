@@ -125,6 +125,7 @@ class Constants: NSObject {
         static let saveJournal = "\(base)\(trackAPIs)saveJournal/"
         static let getJournals = "\(base)\(trackAPIs)getMyJournals/"
         static let deleteJournals = "\(base)\(trackAPIs)deleteJournals/"
+        static let deleteBlog = "\(base)\(trackAPIs)deleteBlog/"
         static let getBlogs = "\(base)\(trackAPIs)getMyBlogs/"
         static let saveBlog = "\(base)\(trackAPIs)saveBlog/"
         static let saveBlogComment = "\(base)\(trackAPIs)saveBlogComment/"

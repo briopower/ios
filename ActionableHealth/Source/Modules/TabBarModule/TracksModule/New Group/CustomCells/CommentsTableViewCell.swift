@@ -36,7 +36,12 @@ class CommentsTableViewCell: UITableViewCell {
     }
     func configCell(){
         commentDescriptionLabel.text = self.blogComment.description ?? ""
-        createdByLabel.text = self.blogComment.createdBy ?? "Anonymous"
+        if let createdBy = self.blogComment.createdBy , !createdBy.trimmingCharacters(in: NSCharacterSet.whitespaces).isEmpty{
+            createdByLabel.text = createdBy
+        }else{
+            createdByLabel.text = "Anonymous"
+        }
+        //createdByLabel.text = self.blogComment.createdBy ?? "Anonymous"
         
     }
     

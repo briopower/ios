@@ -304,10 +304,20 @@ class AddBlogViewController: CommonViewController {
             // no track ID present
             return
         }
+        var author = ""
+        if let authorName  = UserModel.getCurrentUser().name{
+            author = authorName
+        }else if let name = UserModel.getCurrentUser().firstName{
+            author = name
+        }else{
+            author = UserDefaults.getUserId()
+        }
         showLoader()
         let parameter = ["description": richTextView.getHTML(),
                          "title" : titleTextView.text,
                          "trackId": trackID,
+                         "author" : author,
+                         "userId" : UserDefaults.getUserId()
                          ] as [String : Any] // add this if neccessary"userId": UserDefaults.getUserId()
         NetworkClass.sendRequest(URL: addNewBlogUrl, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
             
@@ -375,7 +385,7 @@ class AddBlogViewController: CommonViewController {
             }
             NetworkClass.sendRequest(URL: "\(url)\(UserDefaults.getUserId())", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
-                    self.uploadImage(imageUploadURL: str, image: imageToBeUploaded)
+                    self.uploadImage(imageUploadURL: str, image: UIImage())
                 }else{
                     // not able to create imageUrl
                 }

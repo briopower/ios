@@ -48,7 +48,13 @@ class BlogListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func configCell(){
-        self.isEdtingMode ? (deleteSelectionBgView.isHidden = false) : (deleteSelectionBgView.isHidden = true)
+        //self.isEdtingMode ? (deleteSelectionBgView.isHidden = false) : (deleteSelectionBgView.isHidden = true)
+        if (blog?.isCreatedByMe)! && self.isEdtingMode {
+            deleteSelectionBgView.isHidden = false
+            (self.blog?.isSelcetedForDelete)! ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
+        }else {
+            deleteSelectionBgView.isHidden = true
+        }
         if let title = blog?.title{
             blogTitleLabel.text = title
         }else{
@@ -56,7 +62,7 @@ class BlogListTableViewCell: UITableViewCell {
         }
         if (blog?.isCreatedByMe)!{
             blogAuthorNameLabel.text = "Me"
-        }else if let author = blog?.userId{
+        }else if let author = blog?.author{
             blogAuthorNameLabel.text = author
         }else{
             blogAuthorNameLabel.text = "Anonymous"
@@ -69,8 +75,10 @@ class BlogListTableViewCell: UITableViewCell {
     
     //MARK:- button actions
     @IBAction func deleteSelectionButtonTapped(_ sender: Any) {
-        self.isDeleteSelected = !self.isDeleteSelected
-        isDeleteSelected ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
+        
+        self.blog?.isSelcetedForDelete = !(self.blog?.isSelcetedForDelete)!
+        (self.blog?.isSelcetedForDelete)! ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
+        
         self.delegate?.deleteButtonTapped()
     }
     

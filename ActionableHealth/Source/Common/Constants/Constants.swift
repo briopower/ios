@@ -132,6 +132,8 @@ class Constants: NSObject {
         static let getBlogComments = "\(base)\(trackAPIs)getMyBlogComments/"
         static let saveBlogImage = "\(base)\(trackAPIs)uploadBlogImage/"
         static let getBlogCommentCount = "\(base)\(trackAPIs)getBlogCommentCount/"
+        static let getBlogImageUrl = "\(base)\(trackAPIs)getBlogImageURL/"
+        static let createBlogImageUploadURL = "\(base)\(trackAPIs)createBlogImageUploadURL/"
     }
     struct NoDataViewText {
         static let journalList = "No Journals present for this track yet."

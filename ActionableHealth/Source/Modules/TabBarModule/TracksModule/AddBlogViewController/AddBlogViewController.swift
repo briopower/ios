@@ -344,7 +344,13 @@ class AddBlogViewController: CommonViewController {
                 // no create image url was passed Down
                 return
             }
-            NetworkClass.sendRequest(URL: "\(url)\(UserDefaults.getUserId())", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+            // TODO - Add blogID in url but how
+//            guard let url = self.blog else{
+//                // no create image url was passed Down
+//                return
+//            }
+            
+            NetworkClass.sendRequest(URL: "\(url)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
                     self.uploadImage(imageUploadURL: str, image: imageToBeUploaded)
                 }else{

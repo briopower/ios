@@ -24,7 +24,7 @@ class BlogCommentsViewController: CommonViewController {
     
     var blogCommentManager = BlogCommentsManager()
     var blogComments = [BlogComment]()
-    let pageSize = 20
+    let pageSize = 10
     var isRequestSent = false
     var blogId: String?
     

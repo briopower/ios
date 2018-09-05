@@ -67,8 +67,8 @@ class BlogsListViewController: CommonViewController {
                 }
                 viewCont.delegate = self
                 viewCont.addNewBlogUrl = Constants.URLs.saveBlog
-                viewCont.createBlogImageUploadUrl = Constants.URLs.createUploadURL
-                viewCont.getBlogImageUrl = Constants.URLs.saveBlogImage
+                viewCont.createBlogImageUploadUrl = Constants.URLs.createBlogImageUploadURL
+                viewCont.getBlogImageUrl = Constants.URLs.getBlogImageUrl
                 self.getNavigationController()?.pushViewController(viewCont, animated: true)
             }
             

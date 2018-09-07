@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>project</key>
+	<string>ActionableHealth.xcworkspace</string>
+	<key>scheme</key>
+	<string>ActionableHealth</string>
+	<key>buildtype</key>
+	<string>enterprise</string>
+	<key>teamid</key>
+	<string>4F7SW76LL6</string>
+	<key>keepsamelink</key>
+	<false/>
+	<key>dropboxfoldername</key>
+	<string></string>
+	<key>email</key>
+	<string>pratibha@finoit.co.in, vaibhav.singla@finoit.co.in</string>
+	<key>personalmessage</key>
+	<string>{PROJECT_NAME} - {BUILD_VERSION}({BUILD_NUMBER}) is ready to test. </string>
+</dict>
+</plist>

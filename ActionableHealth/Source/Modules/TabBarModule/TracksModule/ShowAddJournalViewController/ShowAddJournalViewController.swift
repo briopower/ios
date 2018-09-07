@@ -68,7 +68,7 @@ class ShowAddJournalViewController: CommonViewController {
     @objc func deleteBarButtonTapped(){
         // delete this
         let alertTitleArray = ["OK"]
-        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Journal", Message: "Are you sure you want to delete this Journal", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
+        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Journal", Message: "Are you sure you want to delete this journal?", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
             guard let indexOfAlert = index else {return}
             switch(indexOfAlert){
             case 0:
@@ -122,7 +122,7 @@ class ShowAddJournalViewController: CommonViewController {
         
         if journalTextView.text.isEmpty{
             // TODO alert for empty journal
-            UIAlertController.showAlertOfStyle(Message: "Please write something before saving", completion: nil)
+             UIAlertController.showAlertOfStyle(Title: "Enter Text", Message: "Please enter some text", completion: nil)
         }else{
             if !NetworkClass.isConnected(true){
                 // no internet connection
@@ -203,7 +203,7 @@ extension ShowAddJournalViewController{
                     self.delegate?.savedOrUpdatedNewJournal()
                 }else{
                     // error in request
-                    debugPrint("Error in fetching Journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
+                    debugPrint("Error in fetching journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
                 }
             }else if let err = error{
                 // error  in request

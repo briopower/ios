@@ -89,6 +89,12 @@ class NetworkClass:NSObject  {
             upload.uploadProgress { (progress) in
                 // code
             }
+            upload.uploadProgress { (progressObj: Progress) in
+            
+                if let progress = progress{
+                    progress(progressObj.completedUnitCount, progressObj.totalUnitCount)
+                 }
+            }
 //            upload.progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
 //                if let progress = progress{
 //                    progress(totalBytesSent: totalBytesWritten, totalBytesExpectedToSend: totalBytesExpectedToWrite)
@@ -245,7 +251,7 @@ extension NetworkClass{
             }
             if let parameters = parameters{
                 for (key, value) in parameters {
-                    multipartFormData.append(value.data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                    multipartFormData.append(value.data, withName: key)
                 }
             }
             
@@ -290,15 +296,25 @@ extension NetworkClass{
             }
             if let parameters = parameters{
                 for (key, value) in parameters {
-                    multipartFormData.append(value.data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                    if let uploadID = value as? Int{
+                        var temp = uploadID
+                        let data = Data(bytes: &temp,
+                             count: MemoryLayout.size(ofValue: temp))
+                        multipartFormData.append(data, withName: key)
+                    }
                 }
             }
             
         }, to:url)
         { (result) in
-            processEncodingResult(result, responseType: responseType, ProgressHandler: progress, CompletionHandler: completion)
+            DispatchQueue.main.async {
+                processEncodingResult(result, responseType: responseType, ProgressHandler: progress, CompletionHandler: completion)
+                
+            }
         }
+        
     }
+    
 }
 
 //MARK:- Video Uploading Methods

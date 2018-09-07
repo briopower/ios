@@ -29,10 +29,14 @@ class BlogViewController: CommonViewController {
     var titleOFBlog = ""
     var contentOfBlog = ""
     var blog: Blog?
+    var randomID = arc4random()
     var isEditMode = false
     var editBlogURL: String?
     var getBlogCommentCountUrl :String?
     var deleteBlogUrl :String?
+    var createBlogImageUploadUrl: String?
+    var getBlogImageUrl: String?
+    var didCameFromCommentsPage = true
     var delegate: BlogViewControllerDelegate?
     fileprivate var mediaErrorMode = false
     
@@ -241,24 +245,19 @@ class BlogViewController: CommonViewController {
         }else{
             titleTextView.text = "No title present"
         }
-        if let commentCount = blog?.commentCount{
+        if let commentCount = blog?.commentCount, commentCount != 0{
             self.commentsButton.setTitle("View Comments (\(commentCount))", for: .normal)
+        }else{
+            self.commentsButton.setTitle("View Comment", for: .normal)
         }
         //Don't allow scroll while the constraints are being setup and text set
         editorView.isScrollEnabled = false
         configureConstraints()
         registerAttachmentImageProviders()
         
-        let html: String
         
-        if let sampleHTML = sampleHTML {
-            html = sampleHTML
-        } else {
-            html = ""
-        }
-        
-        //editorView.setHTML(html)
-        //editorView.becomeFirstResponder()
+        editorView.richTextView.isEditable  = false
+        titleTextView.isEditable = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -267,9 +266,10 @@ class BlogViewController: CommonViewController {
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         nc.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-        editorView.richTextView.isEditable  = false
-        titleTextView.isEditable = false
-        self.getCommentCountFromServer()
+        if didCameFromCommentsPage{
+            self.getCommentCountFromServer()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -326,15 +326,85 @@ class BlogViewController: CommonViewController {
             }
         }
     }
+    func createImageUploadUrl(imageToBeUploaded: UIImage){
+        if NetworkClass.isConnected(true) {
+            guard let url = self.createBlogImageUploadUrl else{
+                // no create image url was passed Down
+                return
+            }
+            randomID = arc4random()
+            
+            NetworkClass.sendRequest(URL: "\(url)"+"\(randomID)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+                if let str = responseObj as? String{
+                    self.uploadImage(imageUploadURL: str, image: imageToBeUploaded)
+                }else{
+                    // not able to create imageUrl
+                    self.processError()
+                }
+            })
+        }
+    }
     
+    func uploadImage(imageUploadURL: String, image: UIImage) {
+        if NetworkClass.isConnected(true) {
+            if !imageUploadURL.isEmpty{
+                self.showProgressLoader()
+                
+                let parameter = ["uploadId": randomID]
+                NetworkClass.sendBlogsImageRequest(URL: imageUploadURL, RequestType: .post, ResponseType: .none, Parameters: parameter as [String : AnyObject], ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+                    
+                    let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
+                    self.loader?.progress = progress
+                    
+                }, CompletionHandler: { (status, responseObj, error, statusCode) in
+                    if status{
+                        self.loader?.progress = 1
+                        self.hideLoader()
+                        self.getBlogImageURLFromServer()
+                    }else{
+                        self.hideLoader()
+                    }
+                })
+            }else{
+                
+                self.processError()
+            }
+        }
+    }
+    func getBlogImageURLFromServer(){
+        if NetworkClass.isConnected(true) {
+            self.showLoader()
+            guard let url = self.getBlogImageUrl else{
+                // no create image url was passed Down
+                return
+            }
+            NetworkClass.sendRequest(URL: "\(url)\(randomID)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+                if let str = responseObj as? String{
+                    self.hideLoader()
+                    self.insertImage(str)
+                    
+                    
+                }else{
+                    // not able to create imageUrl
+                    self.hideLoader()
+                    self.processError()
+                }
+            })
+        }
+        
+    }
+    func processError(){
+        UIView.showToast("Something Went wrong", theme: .error)
+    }
     // MARK: - Button Actions
     @IBAction func viewCommentsButtonTapped(_ sender: UIButton) {
-        print("Comments")
+        
         if let viewCont = UIStoryboard(name: "Tracks", bundle: nil).instantiateViewController(withIdentifier: "BlogCommentsViewController") as? BlogCommentsViewController{
             // TODO pass necessary thing to next controller
             //viewCont.currentTemplate = currentTemplate
             viewCont.blogId = blog?.id
             self.getNavigationController()?.pushViewController(viewCont, animated: true)
+            self.didCameFromCommentsPage = true
         }
         
     }
@@ -342,7 +412,7 @@ class BlogViewController: CommonViewController {
     @objc func deleteBarButtonTapped(){
         // delete this
         let alertTitleArray = ["OK"]
-        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Blog", Message: "Are you sure you want to delete this Blog", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
+        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Blog", Message: "Are you sure you want to delete this blog?", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
             guard let indexOfAlert = index else {return}
             switch(indexOfAlert){
             case 0:
@@ -1203,6 +1273,7 @@ extension BlogViewController {
     }
     
     @objc func showImagePicker() {
+        self.didCameFromCommentsPage = false
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         //picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) ?? []
@@ -1251,6 +1322,7 @@ extension BlogViewController {
         
         toolbar.leadingItemHandler = { [weak self] item in
             self?.showImagePicker()
+            self?.editorView.richTextView.resignFirstResponder()
         }
         
         return toolbar
@@ -1423,8 +1495,8 @@ extension BlogViewController: UINavigationControllerDelegate
 extension BlogViewController: UIImagePickerControllerDelegate
 {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        editorView.resignFirstResponder()
         dismiss(animated: true, completion: nil)
-        richTextView.becomeFirstResponder()
         guard let mediaType =  info[UIImagePickerControllerMediaType] as? String else {
             return
         }
@@ -1438,7 +1510,7 @@ extension BlogViewController: UIImagePickerControllerDelegate
             }
             
             // Insert Image + Reclaim Focus
-            insertImage(image)
+            self.createImageUploadUrl(imageToBeUploaded: image)
             
         case typeMovie:
             guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
@@ -1448,6 +1520,10 @@ extension BlogViewController: UIImagePickerControllerDelegate
         default:
             print("Media type not supported: \(mediaType)")
         }
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        editorView.becomeFirstResponder()
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -1570,39 +1646,27 @@ private extension BlogViewController
         return fileURL
     }
     
-    func insertImage(_ image: UIImage) {
+    func insertImage(_ imageUrl: String) {
         
-        let fileURL = saveToDisk(image: image)
-
-        let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: image)
-        attachment.size = .medium
-
-
-                attachment.alignment = .none
-                if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
-                    richTextView.setLink(fileURL, inRange: attachmentRange)
-                }
-                let imageID = attachment.identifier
-                let progress = Progress(parent: nil, userInfo: [MediaProgressKey.mediaID: imageID])
-                progress.totalUnitCount = 100
-
-                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(BlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
-        if let data = UIImagePNGRepresentation(image.convert())?.base64EncodedString(){
-            
-            //toolbar.editor?.insertImage("data:image/jpeg;base64," + data.base64EncodedString(), alt: "Image")
-            let htmlOfImage = "<img src= data:image/jpeg;base64," + data + ">"
-            richTextView.setHTML(richTextView.getHTML() + htmlOfImage)
-            richTextView.isEditable = true
-            titleTextView.isScrollEnabled = true
-            //richTextView.insertText(htmlOfImage)
-            
+        guard let fileURL = URL.init(string: imageUrl) else{
+            self.processError()
+            return
         }
+
+        let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: #imageLiteral(resourceName: "image"))
+        attachment.size = .medium
+        attachment.alignment = .none
+        if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
+            richTextView.setLink(fileURL, inRange: attachmentRange)
+        }
+        let imageID = attachment.identifier
+        let progress = Progress(parent: nil, userInfo: [MediaProgressKey.mediaID: imageID])
+        progress.totalUnitCount = 100
+        
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(BlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
+
     }
     
-    func convertImageToData() -> String{
-        
-        return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAPAAAAKAAAAA8AAAAPAAACJkBdO78AAAHySURBVEgNrJM7axVRFEYnJj4q34VNJIiPVhAbRbDQnyApLQRLQQRBxEo7URsbbSQWiqAoGLCLESu1s7CwVhR/hWuN+8s9MzegBD9Ys/c+Z8+3Z+4903UTzZDOjdhCPVstV4jf4Rf8gJ8Vrb/BZVB6eJ9xc8X4OmOgqYXBbtedpv4IZ2AT7IVdsAd8sLPwCU7C3zQ1y6dcgP3FIeJh2AnP4AXsBofNw76KWXtJ/RR2wBE4CHrEb4HcGWvyDdQBeA1f4AOswCq8ha/wufL3xDGrtW9f7ntXuV566u0MlZl94U92HBy0BL7tKfDnOwrHKj9BHGOP+/aZu++9euilp97OGMhDEN0luZbiP0S99IzaWYMnuU/HveraSkzjTOXWYr3eGsv9vvcqvfSMBm/dFrfpSGP+C/eTx8B6vbV4ZU8vPaPs93WaLG7Bw351cvEbPTcp++wCV2llT77nrOulZ9TOGjz5DTo8EK38lG62C+QPinbZHntb6aVnNBjsfxVdJXmSouIj4vjA3WFNWtljbyu99IzaWWsHxc1L8DxdFR8Tr4/WPDQ5hNmyx95WeumpHDo1OD/BRTZfQWrS3mwjg/XQS09lPRjs4qwXdB6WYZtFaYn4r4PtjfTQS0+VGX+qus5VXCS+ge1VGzY6WA+99FSZ0f0GAAD//+9sHFgAAAGzSURBVJ2UOy+EYRSE1/1SUNCIgqxsIxpUVKgkCoWSVoFWgW2VEpVCI1EhoZFIxOUH8DNc/od59j2TPRSKb5I5553znm9md/Nla7U2uuO4rv4kjravapc6N5PmeBrMY3bYNfDAC0/gjKKi9kRfVX8Wx0PTqgbjgReewBlFRfVwSfpFrMecVjUYD7yWMRGcUVTU3ugL6q/idGha1WA88FrERHBGUVE9nJdmeS7dVg3Gg2+MJ3BGUVE9nJFm2Z+S66rBeOCFJ3BGUVE9bEjzJq6k26rBeOCFJ3BGUVE9nJB+FNfSbdVgPPDCEzijqKgejkk/iBvp9kLnw6Q5ngTzmB12DTzwwhM4o6ioftVHpO/FrXR7q/Nx0hzPg3nMDrsGHnjhCZxRVFQPh6TvxO10e6DzZtIc98TdPzN22DXwwAtP4Iyiono4KH0j7sS8T51Zv9gpdkUfUId5xg67PAP4YHgxA84oKqr/RzG6Evd/3VYTeFyLeAJnFBW1I6kjnd/FWZEXoyHWxcnEKZ1hnrHDLs/w7JvYFI2c4Vmr8zOCYfFM/BY/xM/gl7r534xneBYPvIC9W+IHXBmscsw6y2cAAAAASUVORK5CYII="
-    }
     func insertVideo(_ videoURL: URL) {
         let asset = AVURLAsset(url: videoURL, options: nil)
         let imgGenerator = AVAssetImageGenerator(asset: asset)

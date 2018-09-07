@@ -218,7 +218,7 @@ class BlogCommentsViewController: CommonViewController {
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         if commentTextView.text.isEmpty{
             // TODO alert for empty journal
-            UIAlertController.showAlertOfStyle(Message: "Please write something before saving", completion: nil)
+            UIAlertController.showAlertOfStyle(Title: "Enter Text", Message: "Please enter some text", completion: nil)
         }else{
             if !NetworkClass.isConnected(true){
                 // no internet connection

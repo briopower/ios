@@ -62,8 +62,11 @@ class BlogListTableViewCell: UITableViewCell {
         }
         if (blog?.isCreatedByMe)!{
             blogAuthorNameLabel.text = "Me"
+            blogAuthorNameLabel.font = blogTitleLabel.font
+            blogAuthorNameLabel.textColor = blogTitleLabel.textColor
         }else if let author = blog?.author{
             blogAuthorNameLabel.text = author
+            
         }else{
             blogAuthorNameLabel.text = "Anonymous"
         }

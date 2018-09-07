@@ -28,6 +28,7 @@ class AddBlogViewController: CommonViewController {
     var addNewBlogUrl = ""
     var createBlogImageUploadUrl: String?
     var getBlogImageUrl: String?
+    var randomID = arc4random()
     fileprivate var mediaErrorMode = false
     fileprivate(set) lazy var formatBar: FormatBar = {
         return self.createToolbar()
@@ -275,11 +276,11 @@ class AddBlogViewController: CommonViewController {
             return
         }
         if titleTextView.text.isEmpty{
-            UIAlertController.showAlertOfStyle(Message: "Please add a title as it cannot be empty.", completion: nil)
+            UIAlertController.showAlertOfStyle(Title: "Empty title",Message: "Please add a title for this blog.", completion: nil)
             return
         }
         if richTextView.getHTML().isEmpty{
-            UIAlertController.showAlertOfStyle(Message: "Please add some content as it cannot be empty.", completion: nil)
+            UIAlertController.showAlertOfStyle(Title: "Empty Content",Message: "Please add some content for this blog.", completion: nil)
             return
         }
         
@@ -344,17 +345,14 @@ class AddBlogViewController: CommonViewController {
                 // no create image url was passed Down
                 return
             }
-            // TODO - Add blogID in url but how
-//            guard let url = self.blog else{
-//                // no create image url was passed Down
-//                return
-//            }
+            randomID = arc4random()
             
-            NetworkClass.sendRequest(URL: "\(url)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(url)"+"\(randomID)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
                     self.uploadImage(imageUploadURL: str, image: imageToBeUploaded)
                 }else{
                     // not able to create imageUrl
+                    self.processError()
                 }
             })
         }
@@ -364,7 +362,9 @@ class AddBlogViewController: CommonViewController {
         if NetworkClass.isConnected(true) {
             if !imageUploadURL.isEmpty{
                 self.showProgressLoader()
-                NetworkClass.sendBlogsImageRequest(URL: imageUploadURL, RequestType: .post, ResponseType: .none, ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
+                
+                let parameter = ["uploadId": randomID]
+                NetworkClass.sendBlogsImageRequest(URL: imageUploadURL, RequestType: .post, ResponseType: .none, Parameters: parameter as [String : AnyObject], ImageData: UIImagePNGRepresentation(image), ProgressHandler: { (totalBytesSent, totalBytesExpectedToSend) in
                     
                     let progress = CGFloat(totalBytesSent)/CGFloat(totalBytesExpectedToSend)
                     self.loader?.progress = progress
@@ -372,32 +372,41 @@ class AddBlogViewController: CommonViewController {
                 }, CompletionHandler: { (status, responseObj, error, statusCode) in
                     if status{
                         self.loader?.progress = 1
+                        self.hideLoader()
                         self.getBlogImageURLFromServer()
                     }else{
                         self.hideLoader()
                     }
                 })
             }else{
-                // image url was empty
-                //createImageUploadUrl()
+                
+                self.processError()
             }
         }
     }
     func getBlogImageURLFromServer(){
         if NetworkClass.isConnected(true) {
+            self.showLoader()
             guard let url = self.getBlogImageUrl else{
                 // no create image url was passed Down
                 return
             }
-            NetworkClass.sendRequest(URL: "\(url)\(UserDefaults.getUserId())", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+            NetworkClass.sendRequest(URL: "\(url)\(randomID)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
                 if let str = responseObj as? String{
-                    self.uploadImage(imageUploadURL: str, image: UIImage())
+                    self.hideLoader()
+                    self.insertImage(str)
+                    
                 }else{
                     // not able to create imageUrl
+                    self.hideLoader()
+                    self.processError()
                 }
             })
         }
         
+    }
+    func processError(){
+        UIView.showToast("Something Went wrong", theme: .error)
     }
     
     // MARK: - Title and Title placeholder position methods
@@ -1119,6 +1128,7 @@ extension AddBlogViewController {
     }
     
     @objc func showImagePicker() {
+        richTextView.resignFirstResponder()
         let picker = UIImagePickerController()
         picker.sourceType = .photoLibrary
         //picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) ?? []
@@ -1340,7 +1350,6 @@ extension AddBlogViewController: UIImagePickerControllerDelegate
 {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         dismiss(animated: true, completion: nil)
-        richTextView.becomeFirstResponder()
         guard let mediaType =  info[UIImagePickerControllerMediaType] as? String else {
             return
         }
@@ -1354,7 +1363,8 @@ extension AddBlogViewController: UIImagePickerControllerDelegate
             }
             
             // Insert Image + Reclaim Focus
-            insertImage(image)
+            //insertImage(image)
+            self.createImageUploadUrl(imageToBeUploaded: image)
             
         case typeMovie:
             guard let videoURL = info[UIImagePickerControllerMediaURL] as? URL else {
@@ -1364,6 +1374,10 @@ extension AddBlogViewController: UIImagePickerControllerDelegate
         default:
             print("Media type not supported: \(mediaType)")
         }
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        richTextView.becomeFirstResponder()
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -1486,45 +1500,25 @@ private extension AddBlogViewController
         return fileURL
     }
     
-    func insertImage(_ image: UIImage) {
+    func insertImage(_ imageUrl: String) {
         
         
-        var url = ""
-        switch imageCount {
-        case 1:
-            url = "https://cnet3.cbsistatic.com/img/PZzSIhy6If0kezSYlVZwLh1WyUs=/770x578/2015/01/27/a20e0f18-10f4-4ff5-af44-b0c10876199e/snapchatqrcode.jpg"
-        case 2:
-            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCFYgmfCaKoc5isESKwGOgO0dztaS7aqfbRTQWYNqAgwFrjIJLow"
-        case 3:
-            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFU-pbtXVZdCVddJ7h7RouJyXIzXFkf-1nwZAhB622CTl4MMp7rA"
-        case 4:
-            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpppeDS_DK0mr6_nYkzrQ-6BOi54EWgyLxxIVgEA8mjbCVh1bC"
-        default:
-            url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7oUWQlSYhmMqpYlI3eMTbPg_36i8ptnHci-QX0CSvyStKOuc1"
-        }
-        imageCount += 1
-        imagesURlsAddedInCode.append(url)
+        imagesURlsAddedInCode.append(imageUrl)
         //let fileURL = saveToDisk(image: image)
-        let fileURL = URL(string: url)!
-        let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: image)
+        let fileURL = URL(string: imageUrl)!
+        let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: #imageLiteral(resourceName: "image"))
         attachment.size = .medium
 
 
-                attachment.alignment = .none
-                if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
-                    richTextView.setLink(fileURL, inRange: attachmentRange)
-                }
-                let imageID = attachment.identifier
-                let progress = Progress(parent: nil, userInfo: [MediaProgressKey.mediaID: imageID])
-                progress.totalUnitCount = 100
-
-                Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AddBlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
-//        if let data = UIImagePNGRepresentation(image.convert())?.base64EncodedString(){
-//
-//            //toolbar.editor?.insertImage("data:image/jpeg;base64," + data.base64EncodedString(), alt: "Image")
-//            let htmlOfImage = "<img src= data:image/jpeg;base64," + data + ">"
-//            richTextView.setHTML(richTextView.getHTML() + htmlOfImage)
-//        }
+        attachment.alignment = .none
+        if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
+            richTextView.setLink(fileURL, inRange: attachmentRange)
+        }
+        let imageID = attachment.identifier
+        let progress = Progress(parent: nil, userInfo: [MediaProgressKey.mediaID: imageID])
+        progress.totalUnitCount = 100
+        
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AddBlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
     }
     
     func convertImageToData() -> String{

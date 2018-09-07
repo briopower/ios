@@ -92,7 +92,7 @@ class JournalListViewController: CommonViewController {
     
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
         let alertTitleArray = ["OK"]
-        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Journals", Message: "Are you sure you want to delete selected Journals", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
+        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Journals", Message: "Are you sure you want to delete selected the journals?", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
             guard let indexOfAlert = index else {return}
             switch(indexOfAlert){
             case 0:

@@ -90,18 +90,39 @@ class BlogsListViewController: CommonViewController {
     }
     // MARK: - ButtonActions
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
-        
         let alertTitleArray = ["OK"]
-        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Blogs", Message: "Are you sure you want to delete selected Blogs", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
+        UIAlertController.showAlertOfStyle(.alert, Title: "Delete Blogs", Message: "Are you sure you want to delete the selected blogs?", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
             guard let indexOfAlert = index else {return}
             switch(indexOfAlert){
             case 0:
-                // here write code of OK button tapped
-                //TODO code to call delete API
-                // TODO also call get For blogs API here
-                // TODO below function should be called in completion block
-                self.cancelBarButtonTapped()
-                self.dismiss(animated: true, completion: nil)
+                self.showLoader()
+                
+                let parameter = [
+                    "toBeDeletedIds": self.getIdsOfBlogsToBeDeleted()
+                ]
+                NetworkClass.sendRequest(URL: Constants.URLs.deleteBlogs, RequestType: .post, ResponseType: ExpectedResponseType.json, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
+                    
+                    self.hideLoader()
+                    if let error = error{
+                        UIView.showToast(error.localizedDescription, theme: Theme.error)
+                        self.cancelBarButtonTapped()
+                        self.dismiss(animated: true, completion: nil)
+                        return
+                    }
+                    
+                    if let code = statusCode, code == 200{
+                        //  data from server is success
+                        self.blogManager.cursor = ""
+                        self.blogs.removeAll()
+                        self.getBlogsFromServer()
+                    }else {
+                        // some error
+                        UIView.showToast("Something went wrong", theme: Theme.error)
+                    }
+                    self.cancelBarButtonTapped()
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
             default:
                 self.dismiss(animated: true, completion: nil)
             }
@@ -146,6 +167,17 @@ extension BlogsListViewController{
                 self.view.layoutIfNeeded()
             })
         }
+    }
+    func getIdsOfBlogsToBeDeleted()->[String]{
+        var idToBeDeleteArray = [String]()
+        for blog in blogs{
+            
+            if blog.isSelcetedForDelete && blog.id != nil{
+                
+                idToBeDeleteArray.append(blog.id!)
+            }
+        }
+        return idToBeDeleteArray
     }
     
     func getBlogsFromServer(showLoader: Bool = true){
@@ -271,6 +303,8 @@ extension BlogsListViewController: UITableViewDelegate{
             viewCont.isEditMode = false
             viewCont.editBlogURL = Constants.URLs.saveBlog
             viewCont.deleteBlogUrl = Constants.URLs.deleteBlog
+            viewCont.createBlogImageUploadUrl = Constants.URLs.createBlogImageUploadURL
+            viewCont.getBlogImageUrl = Constants.URLs.getBlogImageUrl
             if let blogId = blogs[indexPath.row].id{
                 viewCont.getBlogCommentCountUrl = Constants.URLs.getBlogCommentCount + blogId
             }

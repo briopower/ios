@@ -277,7 +277,7 @@ Tap here to create or join a track</string>
                             <constraint firstItem="ZaX-s9-l9n" firstAttribute="top" secondItem="k6A-O7-zxG" secondAttribute="bottom" constant="5" id="5Gc-io-2iS"/>
                             <constraint firstAttribute="trailing" secondItem="k6A-O7-zxG" secondAttribute="trailing" constant="5" id="QPc-8x-m40"/>
                             <constraint firstAttribute="trailing" secondItem="qQP-kR-Pb0" secondAttribute="trailing" id="TxK-bQ-aan"/>
-                            <constraint firstItem="qQP-kR-Pb0" firstAttribute="top" secondItem="Z1G-5m-pcb" secondAttribute="top" constant="64" id="lsh-dh-xPC"/>
+                            <constraint firstItem="qQP-kR-Pb0" firstAttribute="top" secondItem="Cvj-R6-Qsd" secondAttribute="bottom" id="lsh-dh-xPC"/>
                             <constraint firstItem="k6A-O7-zxG" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" constant="5" id="pjy-Sx-wRx"/>
                             <constraint firstItem="qQP-kR-Pb0" firstAttribute="leading" secondItem="Z1G-5m-pcb" secondAttribute="leading" id="qdA-D4-l38"/>
                         </constraints>

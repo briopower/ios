@@ -9,7 +9,7 @@
 import UIKit
 //MARK:- Protocols
 protocol JournalListTableViewCellDelegate {
-    func deleteSelectionButtonTapped()
+    func deleteSelectionButtonTapped(_ isSelectedForDelete: Bool)
 }
 
 class JournalListTableViewCell: UITableViewCell {
@@ -50,7 +50,7 @@ class JournalListTableViewCell: UITableViewCell {
     @IBAction func selectionButtonTapped(_ sender: UIButton) {
         journal.isSelcetedForDelete = !journal.isSelcetedForDelete
         journal.isSelcetedForDelete ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
-        self.delegate?.deleteSelectionButtonTapped()
+        self.delegate?.deleteSelectionButtonTapped(self.journal.isSelcetedForDelete)
     }
     
 }

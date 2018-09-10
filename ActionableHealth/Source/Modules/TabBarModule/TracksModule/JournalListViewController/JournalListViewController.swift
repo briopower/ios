@@ -25,6 +25,9 @@ class JournalListViewController: CommonViewController {
     var journals = [Journal]()
     let pageSize = 10
     var isRequestSent = false
+    var totalItemsSelectedForDelete: Int = 0
+    
+    
     // MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,7 @@ class JournalListViewController: CommonViewController {
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
         setUpTableView()
-        
+        self.deleteButton.isEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +83,7 @@ class JournalListViewController: CommonViewController {
     @objc func cancelBarButtonTapped(){
         self.hideDeleteButtonView()
         self.isDeleteModeOn = false
+        totalItemsSelectedForDelete = 0
         self.setJounalsSelectionForDeleteToFalse()
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
@@ -169,6 +173,7 @@ extension JournalListViewController{
         }
     }
     func hideDeleteButtonView(){
+        self.deleteButton.isEnabled = false
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {
                 self.deleteButtonBgViewBottomConstraint.constant = -self.deleteButtonBGView.bounds.height
@@ -301,7 +306,16 @@ extension JournalListViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO pagination
+        
+        if isDeleteModeOn{
+            // cell is selected for the delete since delete mode is active
+            if let cell = tableView.cellForRow(at: indexPath) as? JournalListTableViewCell{
+                cell.journal.isSelcetedForDelete = !cell.journal.isSelcetedForDelete
+                self.deleteSelectionButtonTapped(cell.journal.isSelcetedForDelete)
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+            return
+        }
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.showAddJournalView) as? ShowAddJournalViewController{
             // TODO pass necessary thing to next controller such as pass Journal details
             viewCont.isEditing = false
@@ -335,9 +349,14 @@ extension JournalListViewController: UIScrollViewDelegate{
 // MARK: - JournalListTableViewCellDelegate
 extension JournalListViewController: JournalListTableViewCellDelegate{
 
-    func deleteSelectionButtonTapped() {
+    func deleteSelectionButtonTapped(_ isSelectedForDelete: Bool) {
         // Note:- code here when journal is seleceted not when delete is tapped
-        
+        isSelectedForDelete ? (self.totalItemsSelectedForDelete += 1) : (self.totalItemsSelectedForDelete -= 1)
+        if totalItemsSelectedForDelete > 0{
+            self.deleteButton.isEnabled = true
+        }else{
+            self.deleteButton.isEnabled = false
+        }
     }
 }
 

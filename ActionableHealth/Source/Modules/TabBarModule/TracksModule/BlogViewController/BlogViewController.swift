@@ -430,6 +430,10 @@ class BlogViewController: CommonViewController {
         editorView.richTextView.isEditable  = true
         titleTextView.isEditable = true
         self.isEditMode = true
+        //let startPosition: UITextPosition = richTextView.beginningOfDocument
+        let endPosition = richTextView.endOfDocument
+        richTextView.selectedTextRange = richTextView.textRange(from: endPosition, to: endPosition)
+
         let saveBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "tick"), style: .plain, target: self, action: #selector(saveBarButtonTapped))
         getNavigationItem()?.setRightBarButtonItems([saveBarButton], animated: true)
         self.hideDeleteButtonView()

@@ -1,7 +1,7 @@
 # BrioPower 
 
 BrioPower an interactive platform integrating progressive, cutting-edge methods to give you more vitality. More strength. More energy. More life. More brio. 
-BrioPower enhances mindfulness, inspires action, and strengths commitment in all aspects of life. Your life. Turned on. 
+BrioPower enhances mindfulness, inspires action, and strengths commitment in all aspects of life.
 
 
 

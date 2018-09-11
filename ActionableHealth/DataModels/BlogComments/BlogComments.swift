@@ -48,6 +48,7 @@ class BlogComment {
         blogId = ""
         description = ""
         createdDate = Date()
+        
     }
    
     class func initWithDict(dict: [String : Any])-> BlogComment{

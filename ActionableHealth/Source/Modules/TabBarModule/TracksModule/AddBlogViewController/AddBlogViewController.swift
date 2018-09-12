@@ -313,6 +313,11 @@ class AddBlogViewController: CommonViewController {
         }else{
             author = UserDefaults.getUserId()
         }
+        if richTextView.canResignFirstResponder{
+            richTextView.resignFirstResponder()
+        }else if titleTextView.canResignFirstResponder{
+            titleTextView.resignFirstResponder()
+        }
         showLoader()
         let parameter = ["description": richTextView.getHTML(),
                          "title" : titleTextView.text,
@@ -405,8 +410,8 @@ class AddBlogViewController: CommonViewController {
         }
         
     }
-    func processError(){
-        UIView.showToast("Something Went wrong", theme: .error)
+    func processError(_ text: String = "Something Went wrong"){
+        UIView.showToast(text, theme: .error)
     }
     
     // MARK: - Title and Title placeholder position methods
@@ -1067,8 +1072,9 @@ extension AddBlogViewController {
                                             
                                             guard
                                                 let urlString = linkURLString,
-                                                let url = URL(string:urlString)
+                                                let url = URL(string:urlString), UIApplication.shared.canOpenURL(url)
                                                 else {
+                                                    self?.processError("Invalid Url. Please try again with valid Url")
                                                     return
                                             }
                                             if allowTextEdit {
@@ -1363,7 +1369,6 @@ extension AddBlogViewController: UIImagePickerControllerDelegate
             }
             
             // Insert Image + Reclaim Focus
-            //insertImage(image)
             self.createImageUploadUrl(imageToBeUploaded: image)
             
         case typeMovie:
@@ -1502,14 +1507,14 @@ private extension AddBlogViewController
     
     func insertImage(_ imageUrl: String) {
         
-        
+        guard let _ = URL.init(string: imageUrl) else{
+            self.processError()
+            return
+        }
         imagesURlsAddedInCode.append(imageUrl)
-        //let fileURL = saveToDisk(image: image)
         let fileURL = URL(string: imageUrl)!
         let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: #imageLiteral(resourceName: "image"))
-        attachment.size = .medium
-
-
+        attachment.size = .full
         attachment.alignment = .none
         if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
             richTextView.setLink(fileURL, inRange: attachmentRange)
@@ -1521,10 +1526,6 @@ private extension AddBlogViewController
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AddBlogViewController.timerFireMethod(_:)), userInfo: progress, repeats: true)
     }
     
-    func convertImageToData() -> String{
-        
-        return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAAgAAAAAAAAAPAAAAKAAAAA8AAAAPAAACJkBdO78AAAHySURBVEgNrJM7axVRFEYnJj4q34VNJIiPVhAbRbDQnyApLQRLQQRBxEo7URsbbSQWiqAoGLCLESu1s7CwVhR/hWuN+8s9MzegBD9Ys/c+Z8+3Z+4903UTzZDOjdhCPVstV4jf4Rf8gJ8Vrb/BZVB6eJ9xc8X4OmOgqYXBbtedpv4IZ2AT7IVdsAd8sLPwCU7C3zQ1y6dcgP3FIeJh2AnP4AXsBofNw76KWXtJ/RR2wBE4CHrEb4HcGWvyDdQBeA1f4AOswCq8ha/wufL3xDGrtW9f7ntXuV566u0MlZl94U92HBy0BL7tKfDnOwrHKj9BHGOP+/aZu++9euilp97OGMhDEN0luZbiP0S99IzaWYMnuU/HveraSkzjTOXWYr3eGsv9vvcqvfSMBm/dFrfpSGP+C/eTx8B6vbV4ZU8vPaPs93WaLG7Bw351cvEbPTcp++wCV2llT77nrOulZ9TOGjz5DTo8EK38lG62C+QPinbZHntb6aVnNBjsfxVdJXmSouIj4vjA3WFNWtljbyu99IzaWWsHxc1L8DxdFR8Tr4/WPDQ5hNmyx95WeumpHDo1OD/BRTZfQWrS3mwjg/XQS09lPRjs4qwXdB6WYZtFaYn4r4PtjfTQS0+VGX+qus5VXCS+ge1VGzY6WA+99FSZ0f0GAAD//+9sHFgAAAGzSURBVJ2UOy+EYRSE1/1SUNCIgqxsIxpUVKgkCoWSVoFWgW2VEpVCI1EhoZFIxOUH8DNc/od59j2TPRSKb5I5553znm9md/Nla7U2uuO4rv4kjravapc6N5PmeBrMY3bYNfDAC0/gjKKi9kRfVX8Wx0PTqgbjgReewBlFRfVwSfpFrMecVjUYD7yWMRGcUVTU3ugL6q/idGha1WA88FrERHBGUVE9nJdmeS7dVg3Gg2+MJ3BGUVE9nJFm2Z+S66rBeOCFJ3BGUVE9bEjzJq6k26rBeOCFJ3BGUVE9nJB+FNfSbdVgPPDCEzijqKgejkk/iBvp9kLnw6Q5ngTzmB12DTzwwhM4o6ioftVHpO/FrXR7q/Nx0hzPg3nMDrsGHnjhCZxRVFQPh6TvxO10e6DzZtIc98TdPzN22DXwwAtP4Iyiono4KH0j7sS8T51Zv9gpdkUfUId5xg67PAP4YHgxA84oKqr/RzG6Evd/3VYTeFyLeAJnFBW1I6kjnd/FWZEXoyHWxcnEKZ1hnrHDLs/w7JvYFI2c4Vmr8zOCYfFM/BY/xM/gl7r534xneBYPvIC9W+IHXBmscsw6y2cAAAAASUVORK5CYII="
-    }
     func insertVideo(_ videoURL: URL) {
         let asset = AVURLAsset(url: videoURL, options: nil)
         let imgGenerator = AVAssetImageGenerator(asset: asset)

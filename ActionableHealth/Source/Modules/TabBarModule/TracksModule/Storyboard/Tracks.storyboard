@@ -185,9 +185,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dsf-sq-J49" userLabel="DeleteButtonView">
                                 <rect key="frame" x="0.0" y="736" width="414" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BI-Ox-Zy3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BI-Ox-Zy3">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.1450980392" green="0.15686274510000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
                                         <state key="normal" title="Delete">
@@ -201,7 +200,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2BI-Ox-Zy3" secondAttribute="bottom" id="7bk-GE-3Fv"/>
+                                    <constraint firstItem="2BI-Ox-Zy3" firstAttribute="leading" secondItem="Dsf-sq-J49" secondAttribute="leading" id="AiK-ik-b1P"/>
+                                    <constraint firstItem="2BI-Ox-Zy3" firstAttribute="top" secondItem="Dsf-sq-J49" secondAttribute="top" id="E3P-DV-LS3"/>
                                     <constraint firstAttribute="height" constant="60" id="heE-PT-xhD"/>
+                                    <constraint firstAttribute="trailing" secondItem="2BI-Ox-Zy3" secondAttribute="trailing" id="rPf-V7-mBv"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o8e-Kn-UVI">
@@ -246,9 +249,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-pJ-vFc" userLabel="DeleteButtonView">
                                 <rect key="frame" x="0.0" y="736" width="414" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koJ-xy-aQQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koJ-xy-aQQ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.15686274509803921" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="20"/>
                                         <state key="normal" title="Delete">
@@ -261,6 +263,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="koJ-xy-aQQ" secondAttribute="trailing" id="SUN-Gu-U4D"/>
+                                    <constraint firstItem="koJ-xy-aQQ" firstAttribute="top" secondItem="W1Q-pJ-vFc" secondAttribute="top" id="Sez-Id-yfr"/>
+                                    <constraint firstItem="koJ-xy-aQQ" firstAttribute="leading" secondItem="W1Q-pJ-vFc" secondAttribute="leading" id="eYf-OR-XKc"/>
+                                    <constraint firstAttribute="bottom" secondItem="koJ-xy-aQQ" secondAttribute="bottom" id="q2l-7D-VT9"/>
                                     <constraint firstAttribute="height" constant="60" id="zE8-5e-hme"/>
                                 </constraints>
                             </view>
@@ -635,7 +641,7 @@
                                 <rect key="frame" x="0.0" y="688" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type your message here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kf-F08" customClass="UILabel_FontSizeLabel" customModule="BRIO" customModuleProvider="target">
-                                        <rect key="frame" x="21" y="16" width="162.66666666666666" height="15"/>
+                                        <rect key="frame" x="21" y="16" width="162.66666666666666" height="17.666666666666671"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

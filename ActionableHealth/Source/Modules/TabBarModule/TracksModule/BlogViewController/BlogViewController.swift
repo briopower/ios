@@ -211,12 +211,11 @@ class BlogViewController: CommonViewController {
         
         setNavigationBarWithTitle("", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         
-        if (self.blog?.isCreatedByMe)!{
+        if (self.blog?.isCreatedByMe) ?? false{
             let deleteBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "delete"), style: .plain, target: self, action: #selector(deleteBarButtonTapped))
             let editBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Edit"), style: .plain, target: self, action: #selector(editBarButtonTapped))
             getNavigationItem()?.rightBarButtonItems = [editBarButton,deleteBarButton]
         }
-        
         
         MediaAttachment.defaultAppearance.progressColor = UIColor.blue
         MediaAttachment.defaultAppearance.progressBackgroundColor = UIColor.lightGray
@@ -235,6 +234,7 @@ class BlogViewController: CommonViewController {
         view.addSubview(titlePlaceholderLabel)
         view.addSubview(separatorView)
         view.addSubview(editorPlaceholderLabel)
+        self.view.bringSubview(toFront: commentButtonBgView)
         if let content = blog?.description{
             editorView.setHTML(content)
         }else{
@@ -379,7 +379,7 @@ class BlogViewController: CommonViewController {
                 return
             }
             NetworkClass.sendRequest(URL: "\(url)\(randomID)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
-                if let str = responseObj as? String{
+                if let str = responseObj as? String, !str.isEmpty{
                     self.hideLoader()
                     self.insertImage(str)
                     
@@ -393,8 +393,8 @@ class BlogViewController: CommonViewController {
         }
         
     }
-    func processError(){
-        UIView.showToast("Something Went wrong", theme: .error)
+    func processError(_ text: String = "Something Went wrong"){
+        UIView.showToast(text, theme: .error)
     }
     // MARK: - Button Actions
     @IBAction func viewCommentsButtonTapped(_ sender: UIButton) {
@@ -1216,8 +1216,9 @@ extension BlogViewController {
                                             
                                             guard
                                                 let urlString = linkURLString,
-                                                let url = URL(string:urlString)
+                                                let url = URL(string:urlString), UIApplication.shared.canOpenURL(url)
                                                 else {
+                                                    self?.processError("Invalid Url. Please try again with valid Url")
                                                     return
                                             }
                                             if allowTextEdit {
@@ -1658,7 +1659,7 @@ private extension BlogViewController
         }
 
         let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: #imageLiteral(resourceName: "image"))
-        attachment.size = .medium
+        attachment.size = .full
         attachment.alignment = .none
         if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
             richTextView.setLink(fileURL, inRange: attachmentRange)

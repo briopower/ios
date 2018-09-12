@@ -48,16 +48,18 @@ class JournalListViewController: CommonViewController {
     // MARK: - Bar button Tapped
     @objc func actionSheetBarButtonTapped(){
         let actionSheetController = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheetController.addAction(UIAlertAction.init(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
-            // code here for Delete Action
-            self.isDeleteModeOn = !self.isDeleteModeOn
-            self.dismiss(animated: true, completion: nil)
-            self.journalListTableView.reloadData()
-            let cancelBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "cut").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.cancelBarButtonTapped))
-            self.getNavigationItem()?.rightBarButtonItem = cancelBarButton
-            self.showDeleteButtonView()
-            
-        }))
+        if !journals.isEmpty{
+            actionSheetController.addAction(UIAlertAction.init(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
+                // code here for Delete Action
+                self.isDeleteModeOn = !self.isDeleteModeOn
+                self.dismiss(animated: true, completion: nil)
+                self.journalListTableView.reloadData()
+                let cancelBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "cut").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.cancelBarButtonTapped))
+                self.getNavigationItem()?.rightBarButtonItem = cancelBarButton
+                self.showDeleteButtonView()
+                
+            }))
+        }
         actionSheetController.addAction(UIAlertAction.init(title: "Add New Journal", style: .default, handler: { (action: UIAlertAction) in
             // code here for addding a new Journal
             self.dismiss(animated: true, completion: nil)

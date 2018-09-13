@@ -319,7 +319,7 @@ class BlogViewController: CommonViewController {
                     }
                     
                 }else{
-                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    self.processError()
                     print("Error in deleting track")
                 }
                 
@@ -390,7 +390,7 @@ class BlogViewController: CommonViewController {
         }
         
     }
-    func processError(_ text: String = "Something Went wrong"){
+    func processError(_ text: String = "Something went wrong"){
         UIView.showToast(text, theme: .error)
     }
     // MARK: - Button Actions
@@ -513,12 +513,12 @@ class BlogViewController: CommonViewController {
     }
     func deleteBlogOnServer(){
         guard let blogId = self.blog?.id else{
-            UIView.showToast("Something went wrong", theme: Theme.error)
+            processError()
             return
         }
         self.showLoader()
         guard let url = deleteBlogUrl else{
-            UIView.showToast("Something went wrong", theme: Theme.error)
+            processError()
             return
         }
         //let parameters = ["16014523560352903348","11122351640912313259"]
@@ -534,12 +534,12 @@ class BlogViewController: CommonViewController {
                     self.getNavigationController()?.popViewController(animated: true)
                 }else{
                     // error in request with status code
-                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    self.processError()
                     debugPrint("Error in deleting blog with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
                 }
             }else if let err = error{
                 // error  in request
-                UIView.showToast("Something went wrong", theme: Theme.error)
+                self.processError()
                 debugPrint(err.localizedDescription)
             }
             

@@ -408,7 +408,7 @@ class AddBlogViewController: CommonViewController {
         }
         
     }
-    func processError(_ text: String = "Something Went wrong"){
+    func processError(_ text: String = "Something went wrong"){
         UIView.showToast(text, theme: .error)
     }
     

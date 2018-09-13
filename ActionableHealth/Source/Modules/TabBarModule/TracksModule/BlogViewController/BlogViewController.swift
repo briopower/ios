@@ -379,14 +379,11 @@ class BlogViewController: CommonViewController {
                 return
             }
             NetworkClass.sendRequest(URL: "\(url)\(randomID)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
+                self.hideLoader()
                 if let str = responseObj as? String, !str.isEmpty{
-                    self.hideLoader()
                     self.insertImage(str)
-                    
-                    
                 }else{
                     // not able to create imageUrl
-                    self.hideLoader()
                     self.processError()
                 }
             })
@@ -480,14 +477,19 @@ class BlogViewController: CommonViewController {
             // NO url present
             return
         }
-        
+        var imageURLsArray = [String]()
+        if let imageURLArray = self.blog?.imageURL {
+            imageURLsArray.append(contentsOf: imageURLArray)
+        }
         
         let parameter = [
             "description": richTextView.getHTML(),
             "title" : titleTextView.text,
             "trackId": trackID,
             "id": id,
-            "userId": UserDefaults.getUserId()] as [String : Any]
+            "userId": UserDefaults.getUserId(),
+            "imageURL": imageURLsArray] as [String : Any]
+        
         NetworkClass.sendRequest(URL: url, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
             
             self.hideLoader()
@@ -495,16 +497,18 @@ class BlogViewController: CommonViewController {
                 if code == 200{
                     print("Updated Blog with status code 200")
                     self.delegate?.updatedExistingBlog()
-                    
+                    self.getNavigationController()?.popViewController(animated: true)
                 }else{
                     // error in request
+                    self.processError()
                     debugPrint("Error in updating Blog with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
                 }
             }else if let err = error{
                 // error  in request
                 debugPrint(err.localizedDescription)
+                self.processError()
             }
-            self.getNavigationController()?.popViewController(animated: true)
+            
         }
     }
     func deleteBlogOnServer(){
@@ -527,7 +531,7 @@ class BlogViewController: CommonViewController {
                 if code == 200{
                     print("Deleted blog with status code 200")
                     self.delegate?.updatedExistingBlog()
-                    
+                    self.getNavigationController()?.popViewController(animated: true)
                 }else{
                     // error in request with status code
                     UIView.showToast("Something went wrong", theme: Theme.error)
@@ -540,7 +544,7 @@ class BlogViewController: CommonViewController {
             }
             
             self.dismiss(animated: true, completion: nil)
-            self.getNavigationController()?.popViewController(animated: true)
+            
         }
     }
     
@@ -1657,7 +1661,7 @@ private extension BlogViewController
             self.processError()
             return
         }
-
+        self.blog?.imageURL.append(imageUrl)
         let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: #imageLiteral(resourceName: "image"))
         attachment.size = .full
         attachment.alignment = .none

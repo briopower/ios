@@ -21,7 +21,6 @@ class AddBlogViewController: CommonViewController {
     
     var imageCount = 1
     var imagesURlsAddedInCode =  [String]()
-    var imageUrlToDeleteFromCode = [String]()
     var trackID: String = ""
     var delegate: AddNewBlogControllerDelegate?
     // as we cannot access the Constant file so we have to get it from previous controller
@@ -286,14 +285,12 @@ class AddBlogViewController: CommonViewController {
         
         print("title - " + titleTextView.text)
         print("Html - " + richTextView.getHTML())
-        for url in imagesURlsAddedInCode{
-            if !richTextView.getHTML().contains(url){
-                imageUrlToDeleteFromCode.append(url)
-            }
-        }
-        if !imageUrlToDeleteFromCode.isEmpty{
-            // call image delete api to delete extra images
-        }
+//        for url in imagesURlsAddedInCode{
+//            if !richTextView.getHTML().contains(url){
+//
+//            }
+//        }
+       
         
         self.saveNewBlogOnServer()
     }
@@ -323,7 +320,8 @@ class AddBlogViewController: CommonViewController {
                          "title" : titleTextView.text,
                          "trackId": trackID,
                          "author" : author,
-                         "userId" : UserDefaults.getUserId()
+                         "userId" : UserDefaults.getUserId(),
+                         "imageURL": imagesURlsAddedInCode
                          ] as [String : Any] // add this if neccessary"userId": UserDefaults.getUserId()
         NetworkClass.sendRequest(URL: addNewBlogUrl, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
             

@@ -46,6 +46,7 @@ class Blog {
     var author: String?
     var isSelcetedForDelete = false
     var isCreatedByMe = true
+    var imageURL = [String]()
     init() {
         id = ""
         userId = ""
@@ -70,6 +71,9 @@ class Blog {
             blog.isCreatedByMe = false
         }
         blog.author = dict["author"] as? String
+        if let imageURLArray = dict["imageURL"] as? [String]{
+            blog.imageURL = imageURLArray
+        }
         return blog
     }
     class func getblogsArray(array: [[String : Any]]) -> [Blog] {

@@ -137,9 +137,9 @@ class Constants: NSObject {
         static let createBlogImageUploadURL = "\(base)\(trackAPIs)createBlogImageUploadURL/"
     }
     struct NoDataViewText {
-        static let journalList = "No journals."
-        static let blogList = "No blogs ."
-        static let blogCommentList = "No comments."
+        static let journalList = "NO JOURNALS"
+        static let blogList = "NO BLOGS"
+        static let blogCommentList = "NO COMMENTS"
     }
     struct NoInternertConnectionText {
         static let journalListing = "Please connect to internet to fetch Journals of this track."

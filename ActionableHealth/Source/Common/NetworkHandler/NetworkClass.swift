@@ -375,7 +375,7 @@ extension NetworkClass{
 
         if !val && showAlert {
           //  UIAlertController.showAlertOfStyle(UIAlertControllerStyle.Alert, Message: "No Internet Connection", completion: nil)
-            UIView.showToast("No Internet Connection !!", theme: Theme.warning)
+            UIView.showToast("No Internet Connection !!", theme: Theme.error)
         }
         return val
     }

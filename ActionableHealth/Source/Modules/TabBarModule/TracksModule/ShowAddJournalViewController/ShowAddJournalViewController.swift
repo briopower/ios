@@ -201,6 +201,7 @@ extension ShowAddJournalViewController{
                 if code == 200{
                     print("Journal Saved with status code 200")
                     self.delegate?.savedOrUpdatedNewJournal()
+                    self.getNavigationController()?.popViewController(animated: true)
                 }else{
                     // error in request
                     debugPrint("Error in fetching journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
@@ -209,7 +210,7 @@ extension ShowAddJournalViewController{
                 // error  in request
                 debugPrint(err.localizedDescription)
             }
-            self.getNavigationController()?.popViewController(animated: true)
+            
             
         }
     }
@@ -240,6 +241,7 @@ extension ShowAddJournalViewController{
                 if code == 200{
                     print("Updated with status code 200")
                     self.delegate?.savedOrUpdatedNewJournal()
+                    self.getNavigationController()?.popViewController(animated: true)
                 }else{
                     // error in request
                     debugPrint("Error in fetching Journals with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
@@ -248,8 +250,6 @@ extension ShowAddJournalViewController{
                 // error  in request
                 debugPrint(err.localizedDescription)
             }
-            
-            self.getNavigationController()?.popViewController(animated: true)
         }
     }
 }

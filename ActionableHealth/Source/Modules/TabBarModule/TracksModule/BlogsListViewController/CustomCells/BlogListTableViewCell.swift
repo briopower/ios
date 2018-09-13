@@ -10,7 +10,7 @@ import UIKit
 
 //MARK:- Protocols
 protocol BlogListTableViewCellDelegate {
-    func deleteButtonTapped()
+    func deleteSelectionButtonTapped(_ isSelectedForDelete: Bool)
 }
 
 class BlogListTableViewCell: UITableViewCell {
@@ -73,6 +73,7 @@ class BlogListTableViewCell: UITableViewCell {
         if let date = self.blog?.createdDate{
           blogPublishedDateLabel.text = date.shortString
         }
+        (self.blog?.isSelcetedForDelete)! ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
     }
     
     
@@ -82,7 +83,7 @@ class BlogListTableViewCell: UITableViewCell {
         self.blog?.isSelcetedForDelete = !(self.blog?.isSelcetedForDelete)!
         (self.blog?.isSelcetedForDelete)! ? (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Selected-Circle"), for: .normal)) : (deleteSelectionButton.setImage(#imageLiteral(resourceName: "Blank-Circle"), for: .normal))
         
-        self.delegate?.deleteButtonTapped()
+        self.delegate?.deleteSelectionButtonTapped(self.blog?.isSelcetedForDelete ?? false)
     }
     
 }

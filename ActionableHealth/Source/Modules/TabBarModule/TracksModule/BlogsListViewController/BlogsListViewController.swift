@@ -25,14 +25,14 @@ class BlogsListViewController: CommonViewController {
     var blogs = [Blog]()
     let pageSize = 10
     var isRequestSent = false
-    
+    var totalItemsSelectedForDelete: Int = 0
     //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // as it is shown after delete mode on
         self.hideDeleteButtonView()
-        setNavigationBarWithTitle("Blog", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
+        setNavigationBarWithTitle("Blogs", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
@@ -47,16 +47,18 @@ class BlogsListViewController: CommonViewController {
     // MARK: - BarButtonActions
     @objc func actionSheetBarButtonTapped(){
         let actionSheetController = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheetController.addAction(UIAlertAction.init(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
-            // code here for Delete Action
-            self.isDeleteModeOn = !self.isDeleteModeOn
-            self.dismiss(animated: true, completion: nil)
-            self.blogsTableView.reloadData()
-            let cancelBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "cut").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.cancelBarButtonTapped))
-            self.getNavigationItem()?.rightBarButtonItem = cancelBarButton
-            self.showDeleteButtonView()
-            
-        }))
+        if !blogs.isEmpty{
+            actionSheetController.addAction(UIAlertAction.init(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
+                // code here for Delete Action
+                self.isDeleteModeOn = !self.isDeleteModeOn
+                self.dismiss(animated: true, completion: nil)
+                self.blogsTableView.reloadData()
+                let cancelBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "cut").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.cancelBarButtonTapped))
+                self.getNavigationItem()?.rightBarButtonItem = cancelBarButton
+                self.showDeleteButtonView()
+                
+            }))
+        }
         actionSheetController.addAction(UIAlertAction.init(title: "Add New Blog", style: .default, handler: { (action: UIAlertAction) in
             // code here for addding a new Blog
             self.dismiss(animated: true, completion: nil)
@@ -82,6 +84,7 @@ class BlogsListViewController: CommonViewController {
     @objc func cancelBarButtonTapped(){
         self.hideDeleteButtonView()
         self.isDeleteModeOn = false
+        totalItemsSelectedForDelete = 0
         self.setBlogSelectionForDeleteToFalse()
         let actionSheetBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "actionSheet"), style: .plain, target: self, action: #selector(actionSheetBarButtonTapped))
         getNavigationItem()?.rightBarButtonItem = actionSheetBarButton
@@ -90,6 +93,7 @@ class BlogsListViewController: CommonViewController {
     }
     // MARK: - ButtonActions
     @IBAction func deleteButtonTapped(_ sender: UIButton) {
+        
         let alertTitleArray = ["OK"]
         UIAlertController.showAlertOfStyle(.alert, Title: "Delete Blogs", Message: "Are you sure you want to delete the selected blogs?", OtherButtonTitles: alertTitleArray, CancelButtonTitle: "Cancel") { (index: Int?) in
             guard let indexOfAlert = index else {return}
@@ -161,6 +165,8 @@ extension BlogsListViewController{
         }
     }
     func hideDeleteButtonView(){
+        self.deleteButton.isEnabled = false
+        
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, animations: {
                 self.deleteButtonBgViewBottomConstraint.constant = -self.deleteButtonBGView.bounds.height
@@ -296,7 +302,16 @@ extension BlogsListViewController: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO work here when Blog is viewed
+        // worked here when Blog is viewed
+        if isDeleteModeOn{
+            // cell is selected for the delete since delete mode is active
+            if let cell = tableView.cellForRow(at: indexPath) as? BlogListTableViewCell{
+                cell.blog?.isSelcetedForDelete = !(cell.blog?.isSelcetedForDelete)!
+                self.deleteSelectionButtonTapped((cell.blog?.isSelcetedForDelete)!)
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+            return
+        }
         if let viewCont = UIStoryboard(name: Constants.Storyboard.TracksStoryboard.storyboardName, bundle: nil).instantiateViewController(withIdentifier: Constants.Storyboard.TracksStoryboard.blogView) as? BlogViewController{
             // TODO pass necessary thing to next controller such as pass blog details
             viewCont.blog = blogs[indexPath.row]
@@ -334,10 +349,14 @@ extension BlogsListViewController: UIScrollViewDelegate{
 
 // MARK: - UITableViewDelegate
 extension BlogsListViewController: BlogListTableViewCellDelegate{
-    func deleteButtonTapped() {
+    func deleteSelectionButtonTapped(_ isSelectedForDelete: Bool) {
         // TODO work when blog is seletected for deletion also add a check to enable disable delete button
-        
-        
+        isSelectedForDelete ? (self.totalItemsSelectedForDelete += 1) : (self.totalItemsSelectedForDelete -= 1)
+        if totalItemsSelectedForDelete > 0{
+            self.deleteButton.isEnabled = true
+        }else{
+            self.deleteButton.isEnabled = false
+        }
     }
 }
 extension BlogsListViewController: AddNewBlogControllerDelegate{

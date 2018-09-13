@@ -211,12 +211,11 @@ class BlogViewController: CommonViewController {
         
         setNavigationBarWithTitle("", LeftButtonType: BarButtontype.back, RightButtonType: BarButtontype.none)
         
-        if (self.blog?.isCreatedByMe)!{
+        if (self.blog?.isCreatedByMe) ?? false{
             let deleteBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "delete"), style: .plain, target: self, action: #selector(deleteBarButtonTapped))
             let editBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "Edit"), style: .plain, target: self, action: #selector(editBarButtonTapped))
             getNavigationItem()?.rightBarButtonItems = [editBarButton,deleteBarButton]
         }
-        
         
         MediaAttachment.defaultAppearance.progressColor = UIColor.blue
         MediaAttachment.defaultAppearance.progressBackgroundColor = UIColor.lightGray
@@ -235,6 +234,7 @@ class BlogViewController: CommonViewController {
         view.addSubview(titlePlaceholderLabel)
         view.addSubview(separatorView)
         view.addSubview(editorPlaceholderLabel)
+        self.view.bringSubview(toFront: commentButtonBgView)
         if let content = blog?.description{
             editorView.setHTML(content)
         }else{
@@ -319,7 +319,7 @@ class BlogViewController: CommonViewController {
                     }
                     
                 }else{
-                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    self.processError()
                     print("Error in deleting track")
                 }
                 
@@ -379,22 +379,19 @@ class BlogViewController: CommonViewController {
                 return
             }
             NetworkClass.sendRequest(URL: "\(url)\(randomID)", RequestType: .get, ResponseType: .string,CompletionHandler: { (status, responseObj, error, statusCode) in
-                if let str = responseObj as? String{
-                    self.hideLoader()
+                self.hideLoader()
+                if let str = responseObj as? String, !str.isEmpty{
                     self.insertImage(str)
-                    
-                    
                 }else{
                     // not able to create imageUrl
-                    self.hideLoader()
                     self.processError()
                 }
             })
         }
         
     }
-    func processError(){
-        UIView.showToast("Something Went wrong", theme: .error)
+    func processError(_ text: String = "Something went wrong"){
+        UIView.showToast(text, theme: .error)
     }
     // MARK: - Button Actions
     @IBAction func viewCommentsButtonTapped(_ sender: UIButton) {
@@ -430,6 +427,10 @@ class BlogViewController: CommonViewController {
         editorView.richTextView.isEditable  = true
         titleTextView.isEditable = true
         self.isEditMode = true
+        //let startPosition: UITextPosition = richTextView.beginningOfDocument
+        let endPosition = richTextView.endOfDocument
+        richTextView.selectedTextRange = richTextView.textRange(from: endPosition, to: endPosition)
+
         let saveBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "tick"), style: .plain, target: self, action: #selector(saveBarButtonTapped))
         getNavigationItem()?.setRightBarButtonItems([saveBarButton], animated: true)
         self.hideDeleteButtonView()
@@ -476,14 +477,19 @@ class BlogViewController: CommonViewController {
             // NO url present
             return
         }
-        
+        var imageURLsArray = [String]()
+        if let imageURLArray = self.blog?.imageURL {
+            imageURLsArray.append(contentsOf: imageURLArray)
+        }
         
         let parameter = [
             "description": richTextView.getHTML(),
             "title" : titleTextView.text,
             "trackId": trackID,
             "id": id,
-            "userId": UserDefaults.getUserId()] as [String : Any]
+            "userId": UserDefaults.getUserId(),
+            "imageURL": imageURLsArray] as [String : Any]
+        
         NetworkClass.sendRequest(URL: url, RequestType: .post, ResponseType: ExpectedResponseType.string, Parameters: parameter as AnyObject, Headers: nil) { (status: Bool, responseObj, error :NSError?, statusCode: Int?) in
             
             self.hideLoader()
@@ -491,26 +497,28 @@ class BlogViewController: CommonViewController {
                 if code == 200{
                     print("Updated Blog with status code 200")
                     self.delegate?.updatedExistingBlog()
-                    
+                    self.getNavigationController()?.popViewController(animated: true)
                 }else{
                     // error in request
+                    self.processError()
                     debugPrint("Error in updating Blog with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
                 }
             }else if let err = error{
                 // error  in request
                 debugPrint(err.localizedDescription)
+                self.processError()
             }
-            self.getNavigationController()?.popViewController(animated: true)
+            
         }
     }
     func deleteBlogOnServer(){
         guard let blogId = self.blog?.id else{
-            UIView.showToast("Something went wrong", theme: Theme.error)
+            processError()
             return
         }
         self.showLoader()
         guard let url = deleteBlogUrl else{
-            UIView.showToast("Something went wrong", theme: Theme.error)
+            processError()
             return
         }
         //let parameters = ["16014523560352903348","11122351640912313259"]
@@ -523,20 +531,20 @@ class BlogViewController: CommonViewController {
                 if code == 200{
                     print("Deleted blog with status code 200")
                     self.delegate?.updatedExistingBlog()
-                    
+                    self.getNavigationController()?.popViewController(animated: true)
                 }else{
                     // error in request with status code
-                    UIView.showToast("Something went wrong", theme: Theme.error)
+                    self.processError()
                     debugPrint("Error in deleting blog with status code \(String(describing: statusCode))  \(error?.localizedDescription ?? "")")
                 }
             }else if let err = error{
                 // error  in request
-                UIView.showToast("Something went wrong", theme: Theme.error)
+                self.processError()
                 debugPrint(err.localizedDescription)
             }
             
             self.dismiss(animated: true, completion: nil)
-            self.getNavigationController()?.popViewController(animated: true)
+            
         }
     }
     
@@ -1212,8 +1220,9 @@ extension BlogViewController {
                                             
                                             guard
                                                 let urlString = linkURLString,
-                                                let url = URL(string:urlString)
+                                                let url = URL(string:urlString), UIApplication.shared.canOpenURL(url)
                                                 else {
+                                                    self?.processError("Invalid Url. Please try again with valid Url")
                                                     return
                                             }
                                             if allowTextEdit {
@@ -1652,9 +1661,9 @@ private extension BlogViewController
             self.processError()
             return
         }
-
+        self.blog?.imageURL.append(imageUrl)
         let attachment = richTextView.replaceWithImage(at: richTextView.selectedRange, sourceURL: fileURL, placeHolderImage: #imageLiteral(resourceName: "image"))
-        attachment.size = .medium
+        attachment.size = .full
         attachment.alignment = .none
         if let attachmentRange = richTextView.textStorage.ranges(forAttachment: attachment).first {
             richTextView.setLink(fileURL, inRange: attachmentRange)
